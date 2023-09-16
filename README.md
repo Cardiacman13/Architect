@@ -29,16 +29,15 @@ Télécharger l’ISO : [**Arch Linux - Downloads**](https://archlinux.org/downl
     ```
 
 2. **Paramétrer votre Wi-Fi**
-    - Tapez
+    Tapez
     ```bash
     iwctl
     ```
-    - Puis (remplacez NOM-DE-VOTRE-WIFI par le nom de votre wifi)
+    Puis (remplacez NOM-DE-VOTRE-WIFI par le nom de votre wifi)
     ```bash
     station wlan0 connect NOM-DE-VOTRE-WIFI (SSID)
     ```
-
-    - Entrer le mot de passe de votre wifi puis `quit` pour quitter iwctl
+    Entrer le mot de passe de votre wifi puis `quit` pour quitter iwctl
 
 2. **Archinstall**
     - Tapez
@@ -77,44 +76,44 @@ Télécharger l’ISO : [**Arch Linux - Downloads**](https://archlinux.org/downl
     ```
 
 4. Alias maintenance
-    - Cette modification permet de n’avoir à taper que “u” dans un terminal afin de faciliter la maintenance du système (inutile si vous comptez faire les bonus).
+    Cette modification permet de n’avoir à taper que “u” dans un terminal afin de faciliter la maintenance du système (inutile si vous comptez faire les bonus).
     ```bash
     kate ~/.bashrc
     ```
     ```bash
     alias u="sudo pacman -Syy && yay -S archlinux-keyring && yay && yay -Sc && sudo pacman -Rns $(pacman -Qdtq)"
     ```
-    - Relancer le terminal.
-
-    - Quand vous avez l'erreur : **“erreur : aucune cible spécifiée (utiliser -h pour l’aide)**” cela signifie que pacman ne trouve pas de dépendance orpheline, **tout va bien!**
+    Relancer le terminal.
+    Quand vous avez l'erreur : **“erreur : aucune cible spécifiée (utiliser -h pour l’aide)**” cela signifie que pacman ne trouve pas de dépendance orpheline, **tout va bien!**
 
 ## SUPPORT MATÉRIEL
 
 ### NVIDIA
 
-1. <img src="assets/images/Cardiac-icon.png" width="30" height="30"> [Debian et Arch Linux Gnome Wayland avec Nvidia (Debian dans le doc)](https://www.youtube.com/watch?v=DVkWLvwtQ18)
+<img src="assets/images/Cardiac-icon.png" width="30" height="30"> [Debian et Arch Linux Gnome Wayland avec Nvidia (Debian dans le doc)](https://www.youtube.com/watch?v=DVkWLvwtQ18)
 
-    - **Installer les composants core :**
+- **Installer les composants core :**
     ```bash
     yay -S --needed nvidia-dkms nvidia-utils lib32-nvidia-utils nvidia-settings vulkan-icd-loader lib32-vulkan-icd-loader cuda
     ```
 
-    - **Activer nvidia-drm.modeset=1 :**
+- **Activer nvidia-drm.modeset=1 :**
     ```bash
     kate /boot/loader/entries/NOMDELENTÉE.conf
     ```
-    - <span style="color:blue;">nvidia-drm.modeset=1</span>
-    - **Charger les modules Nvidia en priorité au lancement de Arch :**
+    <span style="color:blue;">**nvidia-drm.modeset=1**</span>
+- **Charger les modules Nvidia en priorité au lancement de Arch :**
     ```bash
     kate /etc/mkinitcpio.conf
     ```
-    - <span style="color:blue;">MODULES=(nvidia nvidia_modeset nvidia_uvm nvidia_drm)</span>
-    - hook mkinitcpio :
+    <span style="color:blue;">**MODULES=(nvidia nvidia_modeset nvidia_uvm nvidia_drm)**</span>
+    
+- hook mkinitcpio :
     ```bash
     sudo mkdir /etc/pacman.d/hooks/
     kate /etc/pacman.d/hooks/nvidia.hook
     ```
-    - Puis :
+- Puis :
     ```bash
     [Trigger]
     Operation=Install
@@ -134,10 +133,10 @@ Télécharger l’ISO : [**Arch Linux - Downloads**](https://archlinux.org/downl
     ```
 
 ### AMD
-- Installer les composants core :
-    ```bash
-    yay -S --needed mesa lib32-mesa vulkan-radeon lib32-vulkan-radeon vulkan-icd-loader lib32-vulkan-icd-loader
-    ```
+Installer les composants core :
+```bash
+yay -S --needed mesa lib32-mesa vulkan-radeon lib32-vulkan-radeon vulkan-icd-loader lib32-vulkan-icd-loader
+```
 
 #### Imprimantes
 - Les indispensables
@@ -161,11 +160,10 @@ yay -S --needed bluez bluez-utils bluez-plugins
 sudo systemctl enable --now  bluetooth.service
 ```
 ### [PipeWire](https://pipewire.org/)
-    ```bash
-    sudo pacman -S --needed pipewire-pulse pipewire-alsa pipewire-jack wireplumber
-    ```
-    Dire oui à tout pour bien tout écraser avec les nouveaux paquets.
-
+```bash
+sudo pacman -S --needed pipewire-pulse pipewire-alsa pipewire-jack wireplumber
+```
+Dire oui à tout pour bien tout écraser avec les nouveaux paquets.
 
 ## SOFTWARE CORE
 
@@ -199,48 +197,48 @@ yay -S reflector-simple
 ## GAMING
 
 ### Steam
-- A noter que les drivers AMD ou Nvidia doivent être installés précédemment comme mentionné dans la section [SUPPORT MATÉRIEL](#SUPPORT-MATÉRIEL)
-    ```bash
-    yay -S steam
-    ```
+A noter que les drivers AMD ou Nvidia doivent être installés précédemment comme mentionné dans la section [SUPPORT MATÉRIEL](#SUPPORT-MATÉRIEL)
+```bash
+yay -S steam
+```
 
 ### Lutris
 
 - Lutris est un gestionnaire de jeux FOSS (libre, gratuit et open source) pour les systèmes d'exploitation basés sur Linux.
 
-<img src="assets/images/Cardiac-icon.png" width="30" height="30"> [Paramétrer Lutris pour PC portable Intel/Nvidia ](https://www.youtube.com/watch?v=Am3pgTXiUAA)
+    <img src="assets/images/Cardiac-icon.png" width="30" height="30"> [Paramétrer Lutris pour PC portable Intel/Nvidia ](https://www.youtube.com/watch?v=Am3pgTXiUAA)
 
-<img src="assets/images/Cardiac-icon.png" width="30" height="30"> [Tuto Diablo IV bêta LINUX sur lutris ](https://www.youtube.com/watch?v=090SyVMtbCM)
+    <img src="assets/images/Cardiac-icon.png" width="30" height="30"> [Tuto Diablo IV bêta LINUX sur lutris ](https://www.youtube.com/watch?v=090SyVMtbCM)
 
-```bash
-sudo pacman -S --needed lutris wine-staging winetricks wine-mono giflib lib32-giflib libpng lib32-libpng libldap lib32-libldap gnutls lib32-gnutls
-mpg123 lib32-mpg123 openal lib32-openal v4l-utils lib32-v4l-utils libpulse lib32-libpulse libgpg-error
-lib32-libgpg-error alsa-plugins lib32-alsa-plugins alsa-lib lib32-alsa-lib libjpeg-turbo lib32-libjpeg-turbo
-sqlite lib32-sqlite libxcomposite lib32-libxcomposite libxinerama lib32-libgcrypt libgcrypt lib32-libxinerama
-ncurses lib32-ncurses ocl-icd lib32-ocl-icd libxslt lib32-libxslt libva lib32-libva gtk3
-lib32-gtk3 gst-plugins-base-libs lib32-gst-plugins-base-libs vulkan-icd-loader lib32-vulkan-icd-loader
-```
+    ```bash
+    sudo pacman -S --needed lutris wine-staging winetricks wine-mono giflib lib32-giflib libpng lib32-libpng libldap lib32-libldap gnutls lib32-gnutls
+    mpg123 lib32-mpg123 openal lib32-openal v4l-utils lib32-v4l-utils libpulse lib32-libpulse libgpg-error
+    lib32-libgpg-error alsa-plugins lib32-alsa-plugins alsa-lib lib32-alsa-lib libjpeg-turbo lib32-libjpeg-turbo
+    sqlite lib32-sqlite libxcomposite lib32-libxcomposite libxinerama lib32-libgcrypt libgcrypt lib32-libxinerama
+    ncurses lib32-ncurses ocl-icd lib32-ocl-icd libxslt lib32-libxslt libva lib32-libva gtk3
+    lib32-gtk3 gst-plugins-base-libs lib32-gst-plugins-base-libs vulkan-icd-loader lib32-vulkan-icd-loader
+    ```
 
 ### Support manettes Xbox
 
-- Pilote Linux avancé pour la manette sans fil Xbox One (livrée avec la Xbox One S) Et tout un tas d’autres manettes : [ce lien](https://github.com/atar-axis/xpadneo)
+Pilote Linux avancé pour la manette sans fil Xbox One (livrée avec la Xbox One S) Et tout un tas d’autres manettes ([ce lien](https://github.com/atar-axis/xpadneo))
 
-    ```bash
-    yay -S  xpadneo-dkms --needed
-    ```
+```bash
+yay -S  xpadneo-dkms --needed
+```
 
 ### Afficher les performances en jeu
 
-- [MagoHub](https://wiki.archlinux.org/title/MangoHud) est une surcouche Vulkan et OpenGL permettant de surveiller les performances du système à l'intérieur des applications et d'enregistrer des métriques pour l'analyse comparative.
+[MagoHub](https://wiki.archlinux.org/title/MangoHud) est une surcouche Vulkan et OpenGL permettant de surveiller les performances du système à l'intérieur des applications et d'enregistrer des métriques pour l'analyse comparative.
 
-    ```bash
-    yay -S goverlay --needed
-    ```
+```bash
+yay -S goverlay --needed
+```
 
 ### Augmentez  la compatibilité des jeux Windows
 
 - L'objectif est d'améliorer la compatibilité avec les jeux Windows via Wine ou Steam.
-
+    
     <img src="assets/images/Cardiac-icon.png" width="30" height="30"> [Gaming LINUX supprimer les crashs / augmenter la compatibilité](https://youtu.be/sr4RgshrUYY)
 
     ```bash
@@ -269,7 +267,7 @@ lib32-gtk3 gst-plugins-base-libs lib32-gst-plugins-base-libs vulkan-icd-loader l
 Installer fish.
 1.
     ```bash
-    yay -S fish                            #Installer Fish
+    yay -S fish                       #Installer Fish
     ```
 2.
     ```bash
@@ -277,36 +275,36 @@ Installer fish.
     ```
 3.
     ```bash
-    fish                                      #Lancez fish ou reboot et il sera par défaut.
+    fish                              # Lancez fish ou reboot et il sera par défaut.
     ```
 4.
     ```bash
-    fish_update_completions  # Mettre à jour les completions.
+    fish_update_completions           # Mettre à jour les completions.
     ```
 5.
     ```bash
-    set -U fish_greeting          # Enlever le message de bienvenue
+    set -U fish_greeting              # Enlever le message de bienvenue
     ```
 6.
     ```bash
-    kate ~/.config/fish/config.fish      # Créer un alias comme pour bash en début de tuto
+    kate ~/.config/fish/config.fish   # Créer un alias comme pour bash en début de tuto
     ```
 - Puis rajouter l'alais suivant :
-```bash
-alias u="sudo pacman -Syy && yay -S archlinux-keyring && yay && yay -Sc && sudo pacman -Rns $(pacman -Qdtq)"
-```
+    ```bash
+    alias u="sudo pacman -Syy && yay -S archlinux-keyring && yay && yay -Sc && sudo pacman -Rns $(pacman -Qdtq)"
+    ```
 - Reboot sauf si ça a été fait à l’étape 3, les alias quels qu’ils soient, ne fonctionnent qu’après avoir relancer le terminal.
 
 ## Kernel TKG <span style="color:red;">(WARNING utilisateurs avancés)</span>
 
-- [TkG](https://github.com/Frogging-Family/linux-tkg) propose un build de kernel hautement personnalisable qui - fournit une sélection de corrections et d'ajustements visant à améliorer les performances des ordinateurs de bureau et des jeux.
+[TkG](https://github.com/Frogging-Family/linux-tkg) propose un build de kernel hautement personnalisable qui - fournit une sélection de corrections et d'ajustements visant à améliorer les performances des ordinateurs de bureau et des jeux.
 
-    <img src="assets/images/Cardiac-icon.png" width="30" height="30"> [Kernel TKG sur Arch + Booster ses perfs](https://youtu.be/43yYIWMnDJA)
-    ```bash
-    git clone https://github.com/Frogging-Family/linux-tkg.git
-    cd linux-tkg
-    makepkg -si
-    ```
+<img src="assets/images/Cardiac-icon.png" width="30" height="30"> [Kernel TKG sur Arch + Booster ses perfs](https://youtu.be/43yYIWMnDJA)
+```bash
+git clone https://github.com/Frogging-Family/linux-tkg.git
+cd linux-tkg
+makepkg -si
+```
 
 ## Autre solution NVIDIA <span style="color:red;">(WARNING utilisateurs avancés)</span>
 
@@ -320,12 +318,13 @@ Dire oui à tout pour bien tout écraser avec les nouveaux paquets.
 
 ## Installation [Flatpak](https://wiki.archlinux.org/title/Flatpak)
 
-- Anciennement connu sous le nom de xdg-app, est un utilitaire de déploiement de logiciels et de gestion de paquets pour Linux. Il est présenté comme offrant un environnement "bac à sable" dans lequel les utilisateurs peuvent exécuter des logiciels d'application de manière isolée du reste du système.
+Anciennement connu sous le nom de xdg-app, est un utilitaire de déploiement de logiciels et de gestion de paquets pour Linux. Il est présenté comme offrant un environnement "bac à sable" dans lequel les utilisateurs peuvent exécuter des logiciels d'application de manière isolée du reste du système.
+
 <img src="assets/images/Cardiac-icon.png" width="30" height="30"> [MangoHUD, Goverlay, Steam, Lutris FLATPAK !](https://www.youtube.com/watch?v=1dha2UDSF4M)
-    ```bash
-    yay -S flatpak flatpak-kcm
-    flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
-    ```
+```bash
+yay -S flatpak flatpak-kcm
+flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+```
 
 ## [Chaotic AUR](https://aur.chaotic.cx/)
 - Dans un terminal :
