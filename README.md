@@ -309,7 +309,7 @@ cd linux-tkg
 makepkg -si
 ```
 
-## Autre solution NVIDIA (WARNING utilisateurs avancés)
+## MESA-TKG (WARNING utilisateurs avancés)
 
 Très utile pour les joueurs AMD.
 ```bash
