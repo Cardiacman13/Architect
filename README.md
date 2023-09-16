@@ -15,7 +15,9 @@ Le but de ce tuto est d’installer une Arch stock avec un minimum de paquets, s
 Ce tuto est optimisé pour les choix suivant : 
 
 - systemd-boot
-- Ext4 (pas de BTRFS)
+- Ext4
+- KDE
+- Une Arch pure (incompatible avec Garuda, Endeavor os, Manjaro…) Néanmoins, si vous savez ce que vous faites, les modifications pour d’autres choix sont minimes.
 
 Télécharger l’ISO : [**Arch Linux - Downloads**](https://archlinux.org/download/)
 
@@ -43,6 +45,9 @@ Télécharger l’ISO : [**Arch Linux - Downloads**](https://archlinux.org/downl
     archinstall                 # pour lancer le script d'aide à l'installation de arch linux
     ```
     **/!\ Le menu d’archinstall est susceptible de changer au fil des mises à jour du script /!\\**
+    
+    Si vous avez des difficultés avec archinstall, vous pouvez suivre cette video :  
+    <img src="assets/images/Cardiac-icon.png" width="30" height="30"> [ Tuto Arch Linux Partie 1 : Archinstall ](https://www.youtube.com/watch?v=JE6VwNHLcyk)
 
 ## POST INSTALLATION
 
