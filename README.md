@@ -1,8 +1,8 @@
 # TUTO ARCH LINUX 
 
-## Fonctionnement du tuto
+**Dernière modification du tuto le : 16/09/2023**
 
-<span style="color:blue;">BLEU C’EST DU TEXTE</span>, <span style="color:green;">VERT C’EST DES COMMANDES</span>
+## Fonctionnement du tuto
 
 **À FAIRE DANS L'ORDRE ET VIDÉO OBLIGATOIRE !** (qui n’est pas encore sortie)
 
@@ -18,8 +18,6 @@ Ce tuto est optimisé pour les choix suivant :
 - Ext4 (pas de BTRFS)
 
 Télécharger l’ISO : [**Arch Linux - Downloads**](https://archlinux.org/download/)
-
-<span style="color:red;">Dernière modification du tuto le : 15/09/2023</span>
 
 ## INSTALLATION
 
@@ -40,23 +38,21 @@ Télécharger l’ISO : [**Arch Linux - Downloads**](https://archlinux.org/downl
     Entrer le mot de passe de votre wifi puis `quit` pour quitter iwctl
 
 2. **Archinstall**
-    - Tapez
     ```bash
     pacman -Sy archinstall      # mise à jour du script archinstall avant l’installation
     archinstall                 # pour lancer le script d'aide à l'installation de arch linux
     ```
-    <span style="color:red;">/!\ Le menu d’archinstall est susceptible de changer au fil des mises à jour du script /!\
-    </span>
+    **/!\ Le menu d’archinstall est susceptible de changer au fil des mises à jour du script /!\\**
 
 ## POST INSTALLATION
 
 ### Optimiser pacman
 
-1. Cette [modification](https://wiki.archlinux.org/title/Pacman#Enabling_parallel_downloads) permet la parallélisation du téléchargement des packages.
+1. Cette [modification](https://wiki.archlinux.org/title/Pacman#Enabling_parallel_downloads) permet la parallélisation du téléchargement des packages. (PS: avec kate, quand vous sauvegardez, il est possible qu'on vous demande d'entrer un mot de passe, entrez votre mot de passe root/sudo)
     ```
     kate /etc/pacman.conf
     ```
-2. Décommenter (enlever les <span style="color:red;">#</span> des lignes suivantes):
+2. Décommenter (enlever les **#** des lignes suivantes):
     ```bash
     #Misc options
     #UseSyslog
@@ -80,6 +76,7 @@ Télécharger l’ISO : [**Arch Linux - Downloads**](https://archlinux.org/downl
     ```bash
     kate ~/.bashrc
     ```
+    Et ajouter ceci a la fin du fichier :
     ```bash
     alias u="sudo pacman -Syy && yay -S archlinux-keyring && yay && yay -Sc && sudo pacman -Rns $(pacman -Qdtq)"
     ```
@@ -92,28 +89,34 @@ Télécharger l’ISO : [**Arch Linux - Downloads**](https://archlinux.org/downl
 
 <img src="assets/images/Cardiac-icon.png" width="30" height="30"> [Debian et Arch Linux Gnome Wayland avec Nvidia (Debian dans le doc)](https://www.youtube.com/watch?v=DVkWLvwtQ18)
 
-- **Installer les composants core :**
+1. **Installer les composants core :**
     ```bash
     yay -S --needed nvidia-dkms nvidia-utils lib32-nvidia-utils nvidia-settings vulkan-icd-loader lib32-vulkan-icd-loader cuda
     ```
 
-- **Activer nvidia-drm.modeset=1 :**
+2. **Activer nvidia-drm.modeset=1 :**
     ```bash
     kate /boot/loader/entries/NOMDELENTÉE.conf
     ```
-    <span style="color:blue;">**nvidia-drm.modeset=1**</span>
-- **Charger les modules Nvidia en priorité au lancement de Arch :**
+    Et y ajouter :
+    ```bash
+    nvidia-drm.modeset=1
+    ```
+3. **Charger les modules Nvidia en priorité au lancement de Arch :**
     ```bash
     kate /etc/mkinitcpio.conf
     ```
-    <span style="color:blue;">**MODULES=(nvidia nvidia_modeset nvidia_uvm nvidia_drm)**</span>
+    Puis modifier la ligne MODULES=() en :
+    ```bash
+    MODULES=(nvidia nvidia_modeset nvidia_uvm nvidia_drm)
+    ```
     
-- hook mkinitcpio :
+4. **hook mkinitcpio** :
     ```bash
     sudo mkdir /etc/pacman.d/hooks/
     kate /etc/pacman.d/hooks/nvidia.hook
     ```
-- Puis :
+    - Puis y ajouter :
     ```bash
     [Trigger]
     Operation=Install
@@ -160,10 +163,10 @@ yay -S --needed bluez bluez-utils bluez-plugins
 sudo systemctl enable --now  bluetooth.service
 ```
 ### [PipeWire](https://pipewire.org/)
-```bash
-sudo pacman -S --needed pipewire-pulse pipewire-alsa pipewire-jack wireplumber
-```
-Dire oui à tout pour bien tout écraser avec les nouveaux paquets.
+- Pour avoir du son **/!\ Dire oui à tout pour bien tout écraser avec les nouveaux paquets. /!\\**
+    ```bash
+    sudo pacman -S --needed pipewire-pulse pipewire-alsa pipewire-jack wireplumber
+    ```
 
 ## SOFTWARE CORE
 
@@ -237,7 +240,7 @@ yay -S goverlay --needed
 
 ### Augmentez  la compatibilité des jeux Windows
 
-- L'objectif est d'améliorer la compatibilité avec les jeux Windows via Wine ou Steam.
+- L'objectif est d'améliorer la compatibilité avec les jeux Windows via Wine ou Steam. (Voir [ProtonDB](https://www.protondb.com/))
     
     <img src="assets/images/Cardiac-icon.png" width="30" height="30"> [Gaming LINUX supprimer les crashs / augmenter la compatibilité](https://youtu.be/sr4RgshrUYY)
 
@@ -289,13 +292,13 @@ Installer fish.
     ```bash
     kate ~/.config/fish/config.fish   # Créer un alias comme pour bash en début de tuto
     ```
-- Puis rajouter l'alais suivant :
+- Puis rajouter l'alias suivant :
     ```bash
     alias u="sudo pacman -Syy && yay -S archlinux-keyring && yay && yay -Sc && sudo pacman -Rns $(pacman -Qdtq)"
     ```
-- Reboot sauf si ça a été fait à l’étape 3, les alias quels qu’ils soient, ne fonctionnent qu’après avoir relancer le terminal.
+- ***Reboot sauf si ça a été fait à l’étape 3***, les alias quels qu’ils soient, ne fonctionnent qu’après avoir relancer le terminal.
 
-## Kernel TKG <span style="color:red;">(WARNING utilisateurs avancés)</span>
+## Kernel TKG (WARNING utilisateurs avancés)
 
 [TkG](https://github.com/Frogging-Family/linux-tkg) propose un build de kernel hautement personnalisable qui - fournit une sélection de corrections et d'ajustements visant à améliorer les performances des ordinateurs de bureau et des jeux.
 
@@ -306,9 +309,9 @@ cd linux-tkg
 makepkg -si
 ```
 
-## Autre solution NVIDIA <span style="color:red;">(WARNING utilisateurs avancés)</span>
+## Autre solution NVIDIA (WARNING utilisateurs avancés)
 
-Très utile pour les joueurs AMD, installe une version git custom de mesa par TKG.
+Très utile pour les joueurs AMD.
 ```bash
 git clone https://github.com/Frogging-Family/mesa-git.git
 cd mesa-git
@@ -327,7 +330,7 @@ flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.f
 ```
 
 ## [Chaotic AUR](https://aur.chaotic.cx/)
-- Dans un terminal :
+- Le chaotic AUR est un dépôt AUR qui contient des paquets binaires précompilés pour Arch Linux et ses dérivés.
     ```bash
     pacman-key --recv-key 3056513887B78AEB --keyserver keyserver.ubuntu.com
     pacman-key --lsign-key 3056513887B78AEB
@@ -340,21 +343,22 @@ flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.f
     Include = /etc/pacman.d/chaotic-mirrorlist
     ```
 
-### Troubleshooting
+### Problème récurrent :
 
-Si vous n’avez pas de son tentez :
-```bash
-yay -S sof-firmware
-```
+- Si vous n’avez pas de son tentez :
+    ```bash
+    yay -S sof-firmware
+    ```
 
-Pour de l’aide Discord GLF : [Discord GLF](http://discord.gg/EP3Jm8YMvj)
+- Pour de l’aide venez sur le Discord GLF (fr/en): [Discord GLF](http://discord.gg/EP3Jm8YMvj)
 
 ## Sources
 
-<img src="assets/images/Cardiac-icon.png" width="30" height="30"> [Fonctionnement du WIKI d'Arch.](https://www.youtube.com/watch?v=TQ3A9l2N5lI)
-
 Source et liens utiles
 - [ArchWiki](https://wiki.archlinux.org/)
+
+    <img src="assets/images/Cardiac-icon.png" width="30" height="30"> [Fonctionnement du WIKI d'Arch.](https://www.youtube.com/watch?v=TQ3A9l2N5lI)
+
 - [Site GLF](https://www.gaminglinux.fr/)
 - [Discord GLF](http://discord.gg/EP3Jm8YMvj)
 - [Ma chaine Youtube](https://www.youtube.com/@Cardiacman)
