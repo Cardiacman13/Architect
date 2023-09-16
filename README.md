@@ -367,4 +367,3 @@ Source et liens utiles
 - [Site GLF](https://www.gaminglinux.fr/)
 - [Discord GLF](http://discord.gg/EP3Jm8YMvj)
 - [Ma chaine Youtube](https://www.youtube.com/@Cardiacman)
-- [Ma source d'inspiration](https://www.ricard.com/)
