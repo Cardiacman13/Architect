@@ -17,7 +17,7 @@ Ce tuto est optimisé pour les choix suivant :
 - systemd-boot
 - Ext4
 - KDE
-- Une Arch pure (incompatible avec Garuda, Endeavor os, Manjaro…) Néanmoins, si vous savez ce que vous faites, les modifications pour d’autres choix sont minimes.
+- Une Arch pure (incompatible avec Garuda, EndeavourOS, Manjaro…) Néanmoins, si vous savez ce que vous faites, les modifications pour d’autres choix sont minimes.
 
 Télécharger l’ISO : [**Arch Linux - Downloads**](https://archlinux.org/download/)
 
