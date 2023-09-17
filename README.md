@@ -336,8 +336,6 @@ flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.f
 
 - ISO personnalisée, crée avec les outils de [Arco linux](https://arcolinuxb.com/byoi/). Téléchargez via ce lien Google drive : [ISO](https://drive.google.com/drive/folders/1oGaA9sNU0I4sArTlekiublxkkZSIkIvp?usp=sharing)
 
-Pour le moment avec nvidia sudo pacman -S wine-staging lib32-nvidia-utils à faire en post install.
-
 
 ### Problème récurrent :
 
