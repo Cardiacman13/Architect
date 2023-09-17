@@ -297,9 +297,9 @@ Installer fish.
     ```bash
     kate ~/.config/fish/config.fish   # Créer un alias comme pour bash en début de tuto
     ```
-- Puis rajouter l'alias suivant :
+- Puis rajouter l'alias suivant entre if et end :
     ```bash
-    alias u="sudo pacman -Syy && yay -S archlinux-keyring && yay && yay -Sc && sudo pacman -Rns $(pacman -Qdtq)"
+    alias u='sudo pacman -Syy && yay -S archlinux-keyring && yay && yay -Sc && sudo pacman -Rns $(pacman -Qdtq)'
     ```
 - ***Reboot sauf si ça a été fait à l’étape 3***, les alias quels qu’ils soient, ne fonctionnent qu’après avoir relancer le terminal.
 
