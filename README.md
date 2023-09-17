@@ -332,12 +332,6 @@ flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.f
     Include = /etc/pacman.d/chaotic-mirrorlist
     ```
 
-### Iso custom BETA WARNING
-
-- ISO personnalisée, créée avec les outils de [Arco linux](https://arcolinuxb.com/byoi/). Téléchargez via ce lien Google drive : [ISO](https://drive.google.com/drive/folders/1oGaA9sNU0I4sArTlekiublxkkZSIkIvp?usp=sharing)
-
-Surtout les Nvidia boys si vous testez cette iso n'hésitez pas à sélectionner X11 au lieu de Wayland en haut à gauche au login en attendant KDE 6.
-
 ### Problème récurrent :
 
 - Si vous n’avez pas de son tentez :
@@ -357,3 +351,15 @@ Source et liens utiles
 - [Site GLF](https://www.gaminglinux.fr/)
 - [Discord GLF](http://discord.gg/EP3Jm8YMvj)
 - [Ma chaine Youtube](https://www.youtube.com/@Cardiacman)
+
+### Iso custom BETA
+
+- ISO personnalisée, créée avec les outils de [Arco linux](https://arcolinuxb.com/byoi/). Téléchargez via ce lien Google drive : [ISO](https://drive.google.com/drive/folders/1oGaA9sNU0I4sArTlekiublxkkZSIkIvp?usp=sharing)
+
+Surtout les Nvidia boys si vous testez cette iso n'hésitez pas à sélectionner X11 au lieu de Wayland en haut à gauche au login en attendant KDE 6.
+
+Qualités de cette iso : vous choisissez beginner install et vous vous laissez faire ça sera bien plus simple que le tuto. 
+
+Défauts : On ne se retrouve pas sur une arch pure car l’iso est faite à partir de ArcoLinux et le travail sera beaucoup moins propre, tout est préinstallé et même plus… 
+
+
