@@ -90,7 +90,7 @@ Télécharger l’ISO : [**Arch Linux - Downloads**](https://archlinux.org/downl
 
 ## SUPPORT MATÉRIEL
 
-### NVIDIA
+### NVIDIA (restez en X11 au moins jusqu’à la sortie de KDE 6)
 
 <img src="assets/images/Cardiac-icon.png" width="30" height="30"> [Debian et Arch Linux Gnome Wayland avec Nvidia (Debian dans le doc)](https://www.youtube.com/watch?v=DVkWLvwtQ18)
 
