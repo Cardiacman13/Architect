@@ -273,29 +273,13 @@ yay -S goverlay --needed
 
 - [Fish](https://fishshell.com/) le shell interactif convivial, est un shell de ligne de commande conçu pour être interactif et convivial. Voir également [ArchWiki](https://wiki.archlinux.org/title/fish) sur le sujet.
 Installer fish.
-1.
     ```bash
-    yay -S fish                       #Installer Fish
-    ```
-2.
-    ```bash
-    chsh -s /usr/bin/fish             # Le mettre par défaut.
-    ```
-3.
-    ```bash
-    fish                              # Lancez fish ou reboot et il sera par défaut.
-    ```
-4.
-    ```bash
-    fish_update_completions           # Mettre à jour les completions.
-    ```
-5.
-    ```bash
-    set -U fish_greeting              # Enlever le message de bienvenue
-    ```
-6.
-    ```bash
-    kate ~/.config/fish/config.fish   # Créer un alias comme pour bash en début de tuto
+    yay -S fish                       # 1. Installer Fish
+    chsh -s /usr/bin/fish             # 2. Le mettre par défaut.
+    fish                              # 3. Lancez fish ou reboot et il sera par défaut.
+    fish_update_completions           # 4. Mettre à jour les completions.
+    set -U fish_greeting              # 5. Enlever le message de bienvenue
+    kate ~/.config/fish/config.fish   # 6. Créer un alias comme pour bash en début de tuto
     ```
 - Puis rajouter l'alias suivant entre if et end :
     ```bash
@@ -303,9 +287,9 @@ Installer fish.
     ```
 - ***Reboot sauf si ça a été fait à l’étape 3***, les alias quels qu’ils soient, ne fonctionnent qu’après avoir relancer le terminal.
 
-## Kernel TKG (WARNING utilisateurs avancés)
+### [Kernel TKG](https://github.com/Frogging-Family/linux-tkg) (WARNING utilisateurs avancés)
 
-[TkG](https://github.com/Frogging-Family/linux-tkg) propose un build de kernel hautement personnalisable qui - fournit une sélection de corrections et d'ajustements visant à améliorer les performances des ordinateurs de bureau et des jeux.
+[TKG](https://github.com/Frogging-Family) propose un build de kernel hautement personnalisable qui - fournit une sélection de corrections et d'ajustements visant à améliorer les performances des ordinateurs de bureau et des jeux.
 
 <img src="assets/images/Cardiac-icon.png" width="30" height="30"> [Kernel TKG sur Arch + Booster ses perfs](https://youtu.be/43yYIWMnDJA)
 ```bash
@@ -314,7 +298,7 @@ cd linux-tkg
 makepkg -si
 ```
 
-## MESA-TKG (WARNING utilisateurs avancés)
+### [MESA-TKG](https://github.com/Frogging-Family/mesa-git) (WARNING utilisateurs avancés)
 
 Très utile pour les joueurs AMD.
 ```bash
@@ -324,7 +308,7 @@ makepkg -si
 ```
 Dire oui à tout pour bien tout écraser avec les nouveaux paquets.
 
-## Installation [Flatpak](https://wiki.archlinux.org/title/Flatpak)
+### Installation [Flatpak](https://wiki.archlinux.org/title/Flatpak)
 
 Anciennement connu sous le nom de xdg-app, est un utilitaire de déploiement de logiciels et de gestion de paquets pour Linux. Il est présenté comme offrant un environnement "bac à sable" dans lequel les utilisateurs peuvent exécuter des logiciels d'application de manière isolée du reste du système.
 
@@ -334,7 +318,7 @@ yay -S flatpak flatpak-kcm
 flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 ```
 
-## [Chaotic AUR](https://aur.chaotic.cx/)
+### [Chaotic AUR](https://aur.chaotic.cx/)
 - Le chaotic AUR est un dépôt AUR qui contient des paquets binaires précompilés pour Arch Linux et ses dérivés.
     ```bash
     pacman-key --recv-key 3056513887B78AEB --keyserver keyserver.ubuntu.com
@@ -348,11 +332,12 @@ flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.f
     Include = /etc/pacman.d/chaotic-mirrorlist
     ```
 
-## Iso custom BETA
+### Iso custom BETA
 
 - ISO personnalisée, crée avec les outils de [Arco linux](https://arcolinuxb.com/byoi/). Téléchargez via ce lien Google drive : [ISO](https://drive.google.com/drive/folders/1oGaA9sNU0I4sArTlekiublxkkZSIkIvp?usp=sharing)
 
 Pour le moment avec nvidia sudo pacman -S wine-staging lib32-nvidia-utils à faire en post install.
+
 
 ### Problème récurrent :
 
