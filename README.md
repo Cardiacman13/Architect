@@ -352,14 +352,17 @@ Source et liens utiles
 - [Discord GLF](http://discord.gg/EP3Jm8YMvj)
 - [Ma chaine Youtube](https://www.youtube.com/@Cardiacman)
 
-### Iso custom BETA
+### Iso custom BETA basée sur le tuto : KDE et Kernel ZEN
 
 - ISO personnalisée, créée avec les outils de [Arco linux](https://arcolinuxb.com/byoi/). Téléchargez via ce lien Google drive : [ISO](https://drive.google.com/drive/folders/1oGaA9sNU0I4sArTlekiublxkkZSIkIvp?usp=sharing)
+- Prête à jouer : Lutris, Steam, Wine et Discord préinstallés.
 
-Surtout les Nvidia boys si vous testez cette iso n'hésitez pas à sélectionner X11 au lieu de Wayland en haut à gauche au login en attendant KDE 6.
+Les **Nvidia Boys** si vous testez cette iso n'hésitez pas à sélectionner X11 au lieu de Wayland en haut à gauche au login en attendant KDE 6.
 
-Qualités de cette iso : vous choisissez beginner install et vous vous laissez faire ça sera bien plus simple que le tuto. 
+Les **AMD Boys** en post install vous pouvez faire ```pacman -R nvidia-dkms nvidia-utils lib32-nvidia-utils nvidia-settings``` 
 
-Défauts : On ne se retrouve pas sur une arch pure car l’iso est faite à partir de ArcoLinux et le travail sera beaucoup moins propre, tout est préinstallé et même plus… 
+Qualités de cette iso : Vous choisissez beginner install et vous vous laissez faire ça sera bien plus simple que le tuto. 
+
+Défauts : On ne se retrouve pas sur une Arch pure car l’iso est faite à partir de ArcoLinux et le travail sera beaucoup moins propre que si vous le faites vous même avec seulement vos besoins, ici tout est préinstallé et même plus pour reconnaître le plus de matériels possible…
 
 
