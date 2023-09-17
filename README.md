@@ -146,7 +146,7 @@ Installer les composants core :
 yay -S --needed mesa lib32-mesa vulkan-radeon lib32-vulkan-radeon vulkan-icd-loader lib32-vulkan-icd-loader
 ```
 
-#### Imprimantes
+### Imprimantes
 - Les indispensables
     ```bash
     yay -S ghostscript gsfonts cups cups-filters cups-pdf system-config-printer
