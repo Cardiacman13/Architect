@@ -121,7 +121,7 @@ Télécharger l’ISO : [**Arch Linux - Downloads**](https://archlinux.org/downl
     sudo mkdir /etc/pacman.d/hooks/
     kate /etc/pacman.d/hooks/nvidia.hook
     ```
-    - Puis y ajouter :
+    Puis y ajouter :
     ```bash
     [Trigger]
     Operation=Install
@@ -168,10 +168,10 @@ yay -S --needed bluez bluez-utils bluez-plugins
 sudo systemctl enable --now  bluetooth.service
 ```
 ### [PipeWire](https://pipewire.org/)
-- Pour avoir du son **/!\ Dire oui à tout pour bien tout écraser avec les nouveaux paquets. /!\\**
-    ```bash
-    sudo pacman -S --needed pipewire-pulse pipewire-alsa pipewire-jack wireplumber
-    ```
+Pour avoir du son **/!\ Dire oui à tout pour bien tout écraser avec les nouveaux paquets. /!\\**
+```bash
+sudo pacman -S --needed pipewire-pulse pipewire-alsa pipewire-jack wireplumber
+```
 
 ## SOFTWARE CORE
 
@@ -332,6 +332,37 @@ flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.f
     Include = /etc/pacman.d/chaotic-mirrorlist
     ```
 
+### Iso custom BETA basée sur le tuto : KDE et Kernel ZEN
+
+- ISO Créée avec l'outil "**BYOI**" de [Arco linux](https://arcolinuxb.com/byoi/). Téléchargez via ce lien Google drive : [ISO](https://drive.google.com/drive/folders/1oGaA9sNU0I4sArTlekiublxkkZSIkIvp?usp=sharing)
+- Prête à jouer : Lutris, Steam, Wine et Discord préinstallés
+
+**Qualités** :
+- Vous choisissez beginner install et vous vous laissez faire ça sera bien plus simple que le tuto.
+
+**Défauts** : 
+- On ne se retrouve pas sur une Arch pure car l’iso est faite à partir de **ArcoLinux**, le travail sera beaucoup moins propre que si vous le faites vous même avec seulement vos besoins, ici tout est préinstallé et même plus pour reconnaître le plus de matériels possible…
+- Les **Nvidia Boys** si vous testez cette iso sélectionnez **X11** au lieu de Wayland en haut à gauche au login en attendant KDE 6.
+- Si vous voulez vraiment Wayland avec nvidia il va falloir ajouter `nvidia-drm.modeset=1` à vos paramètres grub déjà présents :
+    ```bash
+    kate /etc/default/grub
+    ```
+    Et modifier `nvidia-drm.modeset` a `1` :
+    ```bash
+    GRUB_CMDLINE_LINUX_DEFAULT='quiet splash loglevel=3 audit=0 nvidia-drm.modeset=1 nvme_load=yes'
+    ```
+    Puis update grub :
+    ```bash
+    update-grub
+    ```
+    Puis reboot.
+
+- Les AMD Boys en post install vous pouvez faire 
+    ```bash
+    pacman -R nvidia-dkms nvidia-utils lib32-nvidia-utils nvidia-settings
+    ```
+
+
 ### Problème récurrent :
 
 - Si vous n’avez pas de son tentez :
@@ -351,18 +382,3 @@ Source et liens utiles
 - [Site GLF](https://www.gaminglinux.fr/)
 - [Discord GLF](http://discord.gg/EP3Jm8YMvj)
 - [Ma chaine Youtube](https://www.youtube.com/@Cardiacman)
-
-### Iso custom BETA basée sur le tuto : KDE et Kernel ZEN
-
-- ISO personnalisée, créée avec les outils de [Arco linux](https://arcolinuxb.com/byoi/). Téléchargez via ce lien Google drive : [ISO](https://drive.google.com/drive/folders/1oGaA9sNU0I4sArTlekiublxkkZSIkIvp?usp=sharing)
-- Prête à jouer : Lutris, Steam, Wine et Discord préinstallés.
-
-Les **Nvidia Boys** si vous testez cette iso n'hésitez pas à sélectionner X11 au lieu de Wayland en haut à gauche au login en attendant KDE 6.
-
-Les **AMD Boys** en post install vous pouvez faire ```pacman -R nvidia-dkms nvidia-utils lib32-nvidia-utils nvidia-settings``` 
-
-Qualités de cette iso : Vous choisissez beginner install et vous vous laissez faire ça sera bien plus simple que le tuto. 
-
-Défauts : On ne se retrouve pas sur une Arch pure car l’iso est faite à partir de ArcoLinux et le travail sera beaucoup moins propre que si vous le faites vous même avec seulement vos besoins, ici tout est préinstallé et même plus pour reconnaître le plus de matériels possible…
-
-
