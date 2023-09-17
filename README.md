@@ -348,6 +348,10 @@ flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.f
     Include = /etc/pacman.d/chaotic-mirrorlist
     ```
 
+## Iso custom
+
+- ISO personnalisée, crée avec les outils de [Arco linux](https://arcolinuxb.com/byoi/). Téléchargez via ce lien Google drive : [ISO](https://drive.google.com/drive/folders/1oGaA9sNU0I4sArTlekiublxkkZSIkIvp?usp=sharing)
+
 ### Problème récurrent :
 
 - Si vous n’avez pas de son tentez :
