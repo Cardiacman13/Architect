@@ -332,10 +332,11 @@ flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.f
     Include = /etc/pacman.d/chaotic-mirrorlist
     ```
 
-### Iso custom ALPHA c'est bugué WARNING
+### Iso custom BETA WARNING
 
 - ISO personnalisée, crée avec les outils de [Arco linux](https://arcolinuxb.com/byoi/). Téléchargez via ce lien Google drive : [ISO](https://drive.google.com/drive/folders/1oGaA9sNU0I4sArTlekiublxkkZSIkIvp?usp=sharing)
 
+Surtout les Nvidia boys si vous testez cette iso n'hésitez pas à selectionner X11 au mieu de Wayland en haut à gauche au login en attendant KDE 6.
 
 ### Problème récurrent :
 
