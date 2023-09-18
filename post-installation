@@ -61,7 +61,7 @@ source $HOME/.bashrc
 
 # Installation de pipewire (son)
 print_step "Installation de pipewire $step/$max_step"
-sudo pacman -R --noconfirm pulseaudio jack2 pipewire-media-session
+sudo pacman -Rdd --noconfirm pulseaudio jack2 pipewire-media-session
 sudo pacman -S --needed --noconfirm pipewire pipewire-pulse pipewire-alsa pipewire-jack wireplumber
 
 # Détecter Nvidia ou AMD
@@ -121,6 +121,17 @@ if [[ $amd ]]; then
     print_step "Installation des pilotes AMD $step/$max_step"
     yay -S --needed --noconfirm mesa lib32-mesa vulkan-radeon lib32-vulkan-radeon vulkan-icd-loader lib32-vulkan-icd-loader
     echo "Configuration terminée pour AMD."
+fi
+
+# Installation des packets indispensables
+print_step "Installation des packets indispensables $step/$max_step"
+sudo pacman -S --needed --noconfirm mkinitcpio-firmware xdg-desktop-portal neofetch power-profiles-daemon lib32-pipewire hunspell-fr p7zip unrar ttf-liberation noto-fonts noto-fonts-emoji ntfs-3g fuse2 bash-completion
+
+# Installation des drivers manettes
+print_step "Installation des drivers manettes (Xbox, etc...) $step/$max_step"
+read -p "Voulez-vous installer les drivers pour les manettes ? (y/n): " gamepad
+if [[ $gamepad == "y" ]]; then
+    yay -S --needed --noconfirm xpadneo-dkms
 fi
 
 # Activation du bluetooth
