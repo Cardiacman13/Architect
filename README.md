@@ -46,7 +46,7 @@ Télécharger l’ISO : [**Arch Linux - Downloads**](https://archlinux.org/downl
     ```
     **/!\ Le menu d’archinstall est susceptible de changer au fil des mises à jour du script /!\\**
     
-    Si vous avez des difficultés avec archinstall, vous pouvez suivre cette video :  
+    **Suivre scrupuleusement cette video :** 
     <img src="assets/images/Cardiac-icon.png" width="30" height="30"> [ Tuto Arch Linux Partie 1 : Archinstall ](https://www.youtube.com/watch?v=JE6VwNHLcyk)
 
 ## POST INSTALLATION
