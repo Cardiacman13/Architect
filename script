@@ -25,10 +25,10 @@ sudo sed -i 's/^#ParallelDownloads = 5/ParallelDownloads = 5/' /etc/pacman.conf
 installed_kernels=$(pacman -Q | grep '^linux[0-9]*\-' | awk '{print $1}')
 
 print_step "Installation des headers pour les kernels installés"
-for kernel in $installed_kernels; do
-  header_pkg="${kernel}-headers"
-  echo "Installation des headers pour $kernel..."
-  sudo pacman -S --noconfirm $header_pkg
+for kernel in $(ls /boot | grep vmlinuz); do
+    kernel_name=$(echo $kernel | sed -e 's/vmlinuz-//')
+    echo "Installation des en-têtes pour $kernel_name..."
+    sudo pacman -Suy --needed --noconfirm "${kernel_name}-headers"
 done
 
 echo "Tous les headers ont été installés."
