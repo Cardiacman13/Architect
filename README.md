@@ -4,7 +4,7 @@
 
 ## Fonctionnement du tuto
 
-**À FAIRE DANS L'ORDRE ET VIDÉO OBLIGATOIRE !**
+**À FAIRE DANS L'ORDRE !**
 
 Le but de ce tuto est d’installer une Arch stock avec un minimum de paquets, selon nos besoins pour de la bureautique et ou du gaming. 
 
