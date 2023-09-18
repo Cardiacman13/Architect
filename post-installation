@@ -5,16 +5,13 @@ GREEN='\033[0;32m'
 BLUE='\033[0;34m'
 NC='\033[0m'
 
-step=0
-max_step=16
-
 print_step() {
     terminal_width=$(tput cols)
     text_length=${#1}
     num_equals=$(((terminal_width - text_length - 2) / 2))
     equals=$(printf "%${num_equals}s" " " | tr ' ' '=')
     echo -e "${BLUE}${equals} ${1} ${equals}${NC}"
-    step=$((step + 1))
+    sleep 1
 }
 
 if [ ! -t 1 ]; then
@@ -23,17 +20,17 @@ if [ ! -t 1 ]; then
 fi
 
 # Mettre à jour le système
-print_step "Mise à jour du système $step/$max_step"
+print_step "Mise à jour du système"
 sudo pacman -Syu --noconfirm
 
 # Mettre à jour la configuration de pacman
-print_step "Optimiser pacman $step/$max_step"
+print_step "Optimiser pacman"
 sudo sed -i 's/^#Color/Color/' /etc/pacman.conf
 sudo sed -i 's/^#VerbosePkgLists/VerbosePkgLists/' /etc/pacman.conf
 sudo sed -i 's/^#ParallelDownloads = 5/ParallelDownloads = 5/' /etc/pacman.conf
 sudo sed -i 's/^#IgnorePkg   =/IgnorePkg   = amdvlk lib32-amdvlk/' /etc/pacman.conf
 
-print_step "Installation des headers pour les kernels installés $step/$max_step"
+print_step "Installation des headers pour les kernels installés"
 for kernel in $(ls /boot | grep vmlinuz); do
     kernel_name=$(echo $kernel | sed -e 's/vmlinuz-//')
     echo "Installation des en-têtes pour $kernel_name..."
@@ -42,11 +39,11 @@ done
 
 echo "Tous les headers ont été installés."
 
-print_step "Augmenter la compatibilité des jeux Windows $step/$max_step"
+print_step "Augmenter la compatibilité des jeux Windows"
 echo "vm.max_map_count=16777216" | sudo tee -a /etc/sysctl.d/99-sysctl.conf
 
 # Installer yay
-print_step "Installation de yay $step/$max_step"
+print_step "Installation de yay"
 sudo pacman -S --needed --noconfirm git base-devel
 git clone https://aur.archlinux.org/yay-bin.git
 cd yay-bin || exit 1
@@ -55,21 +52,28 @@ cd .. || exit 1
 rm -rf yay-bin
 
 # Alias de maintenance
-print_step "Alias maintenance $step/$max_step"
+print_step "Alias maintenance"
 echo 'alias u="sudo pacman -Syy && yay -S archlinux-keyring && yay && yay -Sc && sudo pacman -Rns \$(pacman -Qdtq)"' >> $HOME/.bashrc
 source $HOME/.bashrc
 
 # Installation de pipewire (son)
-print_step "Installation de pipewire $step/$max_step"
+print_step "Installation de pipewire"
 sudo pacman -Rdd --noconfirm pulseaudio jack2 pipewire-media-session
 sudo pacman -S --needed --noconfirm pipewire pipewire-pulse pipewire-alsa pipewire-jack wireplumber
 
 # Détecter Nvidia ou AMD
-nvidia=$(lspci | grep -i nvidia)
-amd=$(lspci | grep -i amd)
+read -p "Quel carte graphique avez-vous ? (1: nvidia, 2: amd/intel, 3: 1 et 2, 4: aucun): " gpu
+if [[ $gpu == "1" ]]; then
+    nvidia=true
+elif [[ $gpu == "2" ]]; then
+    amd=true
+elif [[ $gpu == "3" ]]; then
+    nvidia=true
+    amd=true
+fi
 
 if [[ $nvidia ]]; then
-    print_step "Installation des pilotes NVIDIA $step/$max_step"
+    print_step "Installation des pilotes NVIDIA"
     yay -S --needed --noconfirm nvidia-dkms nvidia-utils lib32-nvidia-utils nvidia-settings vulkan-icd-loader lib32-vulkan-icd-loader cuda
     echo "Activation de nvidia-drm.modeset=1..."
     sudo sed -i '/^options/ s/\"$/ nvidia-drm.modeset=1"/' /boot/loader/entries/*.conf
@@ -118,24 +122,24 @@ if [[ $nvidia ]]; then
 fi
 
 if [[ $amd ]]; then
-    print_step "Installation des pilotes AMD $step/$max_step"
+    print_step "Installation des pilotes AMD"
     yay -S --needed --noconfirm mesa lib32-mesa vulkan-radeon lib32-vulkan-radeon vulkan-icd-loader lib32-vulkan-icd-loader
     echo "Configuration terminée pour AMD."
 fi
 
 # Installation des packets indispensables
-print_step "Installation des packets indispensables $step/$max_step"
+print_step "Installation des packets indispensables"
 sudo pacman -S --needed --noconfirm mkinitcpio-firmware xdg-desktop-portal neofetch power-profiles-daemon lib32-pipewire hunspell-fr p7zip unrar ttf-liberation noto-fonts noto-fonts-emoji ntfs-3g fuse2 bash-completion
 
 # Installation des drivers manettes
-print_step "Installation des drivers manettes (Xbox, etc...) $step/$max_step"
+print_step "Installation des drivers manettes (Xbox, etc...)"
 read -p "Voulez-vous installer les drivers pour les manettes ? (y/n): " gamepad
 if [[ $gamepad == "y" ]]; then
     yay -S --needed --noconfirm xpadneo-dkms
 fi
 
 # Activation du bluetooth
-print_step "Activation du bluetooth $step/$max_step"
+print_step "Activation du bluetooth"
 read -p "Voulez-vous installer le support pour Bluetooth ? (y/n): " bluetooth
 if [[ $bluetooth == "y" ]]; then
     yay -S --needed --noconfirm bluez bluez-utils bluez-plugins
@@ -143,7 +147,7 @@ if [[ $bluetooth == "y" ]]; then
 fi
 
 # Installation de la suite bureautique
-print_step "Installation de la suite bureautique $step/$max_step"
+print_step "Installation de la suite bureautique"
 sudo pacman -S --needed --noconfirm gnome-disk-utility vlc
 
 # Installation des drivers pour les imprimantes
@@ -156,14 +160,14 @@ if [[ $printer == "y" ]]; then
 fi
 
 # Installation des logiciels de tiers
-print_step "Installation de logiciels de base $step/$max_step"
+print_step "Installation de logiciels de base"
 read -p "Voulez-vous installer des logiciels divers ? (y/n): " software
 if [[ $software == "y" ]]; then
     yay -S --needed --noconfirm libreoffice-fresh libreoffice-fresh-fr discord gimp obs-studio kdenlive 
 fi
 
 # Installation du shell Fish
-print_step "Installation de Fish $step/$max_step"
+print_step "Installation de Fish"
 read -p "Voulez-vous installer le shell Fish ? (y/n): " fish
 if [[ $fish == "y" ]]; then
     yay -S --needed --noconfirm fish
@@ -174,7 +178,7 @@ if [[ $fish == "y" ]]; then
 fi
 
 # Installation de flatpak
-print_step "Installation de Flatpak $step/$max_step"
+print_step "Installation de Flatpak"
 read -p "Voulez-vous installer Flatpak ? (y/n): " flatpak
 if [[ $flatpak == "y" ]]; then
     yay -S --needed --noconfirm flatpak flatpak-kcm
@@ -182,12 +186,12 @@ if [[ $flatpak == "y" ]]; then
 fi
 
 # Installation et configuration du pare-feu
-print_step "Installation du pare-feu $step/$max_step"
+print_step "Installation du pare-feu"
 sudo pacman -S --needed --noconfirm ufw
 sudo systemctl enable --now ufw.service
 
 # Installation de Steam et Lutris
-print_step "Installation de Steam et Lutris $step/$max_step"
+print_step "Installation de Steam et Lutris"
 yay -S --needed --noconfirm steam lutris
 
 sudo sed -i 's/^IgnorePkg   = amdvlk lib32-amdvlk/#IgnorePkg   =/' /etc/pacman.conf
