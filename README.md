@@ -1,6 +1,6 @@
 # TUTO ARCH LINUX 
 
-**Dernière modification du tuto le : 16/09/2023**
+**Dernière modification du tuto le : 19/09/2023**
 
 ## Fonctionnement du tuto
 
