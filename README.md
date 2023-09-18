@@ -51,7 +51,7 @@ Télécharger l’ISO : [**Arch Linux - Downloads**](https://archlinux.org/downl
 
 ## POST INSTALLATION
 
-Script post installation BETA :
+**Script post installation BETA :**
 
 Ne fonctionne que si l'on a scrupuleusement respecté mes choix dans archinstall.
 
