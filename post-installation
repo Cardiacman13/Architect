@@ -5,12 +5,16 @@ GREEN='\033[0;32m'
 BLUE='\033[0;34m'
 NC='\033[0m'
 
+step=0
+max_step=16
+
 print_step() {
     terminal_width=$(tput cols)
     text_length=${#1}
     num_equals=$(((terminal_width - text_length - 2) / 2))
     equals=$(printf "%${num_equals}s" " " | tr ' ' '=')
     echo -e "${BLUE}${equals} ${1} ${equals}${NC}"
+    step=$((step + 1))
 }
 
 if [ ! -t 1 ]; then
@@ -18,17 +22,18 @@ if [ ! -t 1 ]; then
   exit 0
 fi
 
-# Mettre à jour le système\
-print_step "Mise à jour du système"
+# Mettre à jour le système
+print_step "Mise à jour du système $step/$max_step"
 sudo pacman -Syu --noconfirm
 
 # Mettre à jour la configuration de pacman
-print_step "Optimiser pacman"
+print_step "Optimiser pacman $step/$max_step"
 sudo sed -i 's/^#Color/Color/' /etc/pacman.conf
 sudo sed -i 's/^#VerbosePkgLists/VerbosePkgLists/' /etc/pacman.conf
 sudo sed -i 's/^#ParallelDownloads = 5/ParallelDownloads = 5/' /etc/pacman.conf
+sudo sed -i 's/^#IgnorePkg   =/IgnorePkg   = amdvlk lib32-amdvlk/' /etc/pacman.conf
 
-print_step "Installation des headers pour les kernels installés"
+print_step "Installation des headers pour les kernels installés $step/$max_step"
 for kernel in $(ls /boot | grep vmlinuz); do
     kernel_name=$(echo $kernel | sed -e 's/vmlinuz-//')
     echo "Installation des en-têtes pour $kernel_name..."
@@ -37,11 +42,11 @@ done
 
 echo "Tous les headers ont été installés."
 
-print_step "Augmenter la compatibilité des jeux Windows"
+print_step "Augmenter la compatibilité des jeux Windows $step/$max_step"
 echo "vm.max_map_count=16777216" | sudo tee -a /etc/sysctl.d/99-sysctl.conf
 
 # Installer yay
-print_step "Installation de yay"
+print_step "Installation de yay $step/$max_step"
 sudo pacman -S --needed --noconfirm git base-devel
 git clone https://aur.archlinux.org/yay-bin.git
 cd yay-bin || exit 1
@@ -50,17 +55,21 @@ cd .. || exit 1
 rm -rf yay-bin
 
 # Alias de maintenance
-print_step "Alias maintenance"
+print_step "Alias maintenance $step/$max_step"
 echo 'alias u="sudo pacman -Syy && yay -S archlinux-keyring && yay && yay -Sc && sudo pacman -Rns \$(pacman -Qdtq)"' >> $HOME/.bashrc
 source $HOME/.bashrc
+
+# Installation de pipewire (son)
+print_step "Installation de pipewire $step/$max_step"
+sudo pacman -R --noconfirm pulseaudio jack2 pipewire-media-session
+sudo pacman -S --needed --noconfirm pipewire pipewire-pulse pipewire-alsa pipewire-jack wireplumber
 
 # Détecter Nvidia ou AMD
 nvidia=$(lspci | grep -i nvidia)
 amd=$(lspci | grep -i amd)
 
 if [[ $nvidia ]]; then
-    print_step "Carte Nvidia détectée."
-    print_step "Installation des pilotes NVIDIA"
+    print_step "Installation des pilotes NVIDIA $step/$max_step"
     yay -S --needed --noconfirm nvidia-dkms nvidia-utils lib32-nvidia-utils nvidia-settings vulkan-icd-loader lib32-vulkan-icd-loader cuda
     echo "Activation de nvidia-drm.modeset=1..."
     sudo sed -i '/^options/ s/\"$/ nvidia-drm.modeset=1"/' /boot/loader/entries/*.conf
@@ -109,24 +118,25 @@ if [[ $nvidia ]]; then
 fi
 
 if [[ $amd ]]; then
-    echo "Carte AMD détectée."
-    echo "Installation des composants AMD..."
+    print_step "Installation des pilotes AMD $step/$max_step"
     yay -S --needed --noconfirm mesa lib32-mesa vulkan-radeon lib32-vulkan-radeon vulkan-icd-loader lib32-vulkan-icd-loader
     echo "Configuration terminée pour AMD."
 fi
 
 # Activation du bluetooth
+print_step "Activation du bluetooth $step/$max_step"
 read -p "Voulez-vous installer le support pour Bluetooth ? (y/n): " bluetooth
 if [[ $bluetooth == "y" ]]; then
     yay -S --needed --noconfirm bluez bluez-utils bluez-plugins
     sudo systemctl enable --now bluetooth.service
 fi
 
-print_step "Installation de pipewire"
-sudo pacman -S --needed --noconfirm pipewire-pulse pipewire-alsa pipewire-jack wireplumber
+# Installation de la suite bureautique
+print_step "Installation de la suite bureautique $step/$max_step"
+sudo pacman -S --needed --noconfirm gnome-disk-utility vlc
 
-print_step "Installation du support pour les imprimantes"
 # Installation des drivers pour les imprimantes
+print_step "Installation du support pour les imprimantes"
 read -p "Voulez-vous installer le support pour les imprimantes ? (y/n): " printer
 if [[ $printer == "y" ]]; then
     yay -S --needed --noconfirm ghostscript gsfonts cups cups-filters cups-pdf system-config-printer avahi
@@ -134,15 +144,15 @@ if [[ $printer == "y" ]]; then
     sudo systemctl enable --now cups
 fi
 
-print_step "Installation de logiciels de base"
 # Installation des logiciels de tiers
+print_step "Installation de logiciels de base $step/$max_step"
 read -p "Voulez-vous installer des logiciels divers ? (y/n): " software
 if [[ $software == "y" ]]; then
-    yay -S --needed --noconfirm libreoffice-fresh libreoffice-fresh-fr vlc discord gimp obs-studio gnome-disk-utility
+    yay -S --needed --noconfirm libreoffice-fresh libreoffice-fresh-fr discord gimp obs-studio kdenlive 
 fi
 
-print_step "Installation de Fish"
 # Installation du shell Fish
+print_step "Installation de Fish $step/$max_step"
 read -p "Voulez-vous installer le shell Fish ? (y/n): " fish
 if [[ $fish == "y" ]]; then
     yay -S --needed --noconfirm fish
@@ -152,13 +162,23 @@ if [[ $fish == "y" ]]; then
     echo 'alias u="sudo pacman -Syy && yay -S archlinux-keyring && yay && yay -Sc && sudo pacman -Rns \$(pacman -Qdtq)"' >> $HOME/.config/fish/config.fish
 fi
 
-print_step "Installation du pare-feu"
+# Installation de flatpak
+print_step "Installation de Flatpak $step/$max_step"
+read -p "Voulez-vous installer Flatpak ? (y/n): " flatpak
+if [[ $flatpak == "y" ]]; then
+    yay -S --needed --noconfirm flatpak flatpak-kcm
+    flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+fi
+
 # Installation et configuration du pare-feu
+print_step "Installation du pare-feu $step/$max_step"
 sudo pacman -S --needed --noconfirm ufw
 sudo systemctl enable --now ufw.service
 
-print_step "Installation de Steam et Lutris"
 # Installation de Steam et Lutris
+print_step "Installation de Steam et Lutris $step/$max_step"
 yay -S --needed --noconfirm steam lutris
+
+sudo sed -i 's/^IgnorePkg   = amdvlk lib32-amdvlk/#IgnorePkg   =/' /etc/pacman.conf
 
 print_step "Le script est terminé. N'oubliez pas de redémarrer votre système."
