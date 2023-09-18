@@ -52,10 +52,6 @@ Télécharger l’ISO : [**Arch Linux - Downloads**](https://archlinux.org/downl
 ## POST INSTALLATION
 
 Script post installation BETA :
-```sudo pacman -Sy git
-   git clone https://github.com/Cardiacman13/Tuto-Arch.git
-   cd Tuto-Arch
-   ./post-installation```
 
 ### Optimiser pacman
 
