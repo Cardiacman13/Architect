@@ -4,59 +4,47 @@ RED='\033[0;31m'
 GREEN='\033[0;32m'
 NC='\033[0m'
 
-detect_graphics_card() {
-    if lspci | grep -i "NVIDIA" >/dev/null; then
-        echo "NVIDIA"
-    elif lspci | grep -i "AMD" >/dev/null; then
-        echo "AMD"
-    elif lspci | grep -i "Intel" >/dev/null; then
-        echo "Intel"
-    else
-        echo "Carte graphique non détectée."
-        exit 1
-    fi
+print_step() {
+  echo -e "\e[34m============ $1 ============$NC"
 }
 
-install_yay() {
-    sudo pacman -S --needed --noconfirm git base-devel
-    git clone https://aur.archlinux.org/yay-bin.git
-    cd yay-bin
-    makepkg -si --noconfirm
-    cd .. 
-    rm -rf yay-bin
-    yay
-}
+# Mettre à jour le système\
+print_step "Mise à jour du système"
+sudo pacman -Syu --noconfirm
 
-install_style() {
-    sudo sed -i 's/#Color/Color/' /etc/pacman.conf
-    sudo sed -i 's/#CheckSpace/CheckSpace/' /etc/pacman.conf
-    sudo sed -i 's/#ParallelDownloads = 8/ParallelDownloads = 8/' /etc/pacman.conf
+# Mettre à jour la configuration de pacman
+print_step "Optimiser pacman"
+sudo sed -i 's/^#Color/Color/' /etc/pacman.conf
+sudo sed -i 's/^#VerbosePkgLists/VerbosePkgLists/' /etc/pacman.conf
+sudo sed -i 's/^#ParallelDownloads = 5/ParallelDownloads = 5/' /etc/pacman.conf
+echo "vm.max_map_count=16777216" | sudo tee -a /etc/sysctl.d/99-sysctl.conf
 
-    echo 'alias u="sudo pacman -Syy && yay -S archlinux-keyring && yay && yay -Sc && sudo pacman -Rns \$(pacman -Qdtq)"' >> ~/.bashrc
-}
+# Installer yay
+print_step "Installation de yay"
+sudo pacman -S --needed --noconfirm git base-devel
+git clone https://aur.archlinux.org/yay-bin.git
+cd yay-bin || exit 1
+makepkg -si --noconfirm
+cd .. || exit 1
+rm -rf yay-bin
 
-install_base_components() {
-    yay -S --noconfirm mkinitcpio-firmware xdg-desktop-portal neofetch power-profiles-daemon lib32-pipewire hunspell-fr p7zip unrar ttf-liberation noto-fonts noto-fonts-emoji ntfs-3g fuse2 bash-completion reflector-simple --needed
-}
+# Alias de maintenance
+print_step "Alias maintenance"
+echo 'alias u="sudo pacman -Syy && yay -S archlinux-keyring && yay && yay -Sc && sudo pacman -Rns \$(pacman -Qdtq)"' >> $HOME/.bashrc
+source $HOME/.bashrc
 
-install_misc_software() {
-    yay -S --noconfirm --needed libreoffice-fresh libreoffice-fresh-fr vlc discord gimp obs-studio gnome-disk-utility timeshift
-}
+# Détecter Nvidia ou AMD
+nvidia=$(lspci | grep -i nvidia)
+amd=$(lspci | grep -i amd)
 
-install_kde_software() {
-    yay -S --noconfirm xdg-desktop-portal-kde xdg-desktop-portal-gtk okular print-manager kdenlive gwenview spectacle partitionmanager ffmpegthumbs qt6-wayland
-}
-
-install_firewall() {
-    sudo pacman -S --noconfirm ufw
-    sudo systemctl enable --now ufw.service
-}
-
-install_nvidia_support() {
-    echo "Installation des composants NVIDIA..."
+if [[ $nvidia ]]; then
+    print_step "Carte Nvidia détectée."
+    print_step "Installation des pilotes NVIDIA"
     yay -S --needed --noconfirm nvidia-dkms nvidia-utils lib32-nvidia-utils nvidia-settings vulkan-icd-loader lib32-vulkan-icd-loader cuda
     echo "Activation de nvidia-drm.modeset=1..."
     sudo sed -i '/^options/ s/\"$/ nvidia-drm.modeset=1"/' /boot/loader/entries/*.conf
+    echo "Charger les modules Nvidia en priorité au lancement de Arch"
+    sudo sed -i '/^MODULES/ s/()/(nvidia nvidia_modeset nvidia_uvm nvidia_drm)/' /etc/mkinitcpio.conf
     echo "Configuration du module mkinitcpio..."
     sudo mkdir -p /etc/pacman.d/hooks/
     echo "[Trigger]
@@ -97,97 +85,52 @@ install_nvidia_support() {
     NeedsTargets
     Exec=/bin/sh -c 'while read -r trg; do case $trg in linux) exit 0; esac; done; /usr/bin/mkinitcpio -P'" | sudo tee /etc/pacman.d/hooks/nvidia.hook > /dev/null
     echo "Configuration terminée pour NVIDIA."
-}
+fi
 
-install_amd_support() {
+if [[ $amd ]]; then
+    echo "Carte AMD détectée."
     echo "Installation des composants AMD..."
     yay -S --needed --noconfirm mesa lib32-mesa vulkan-radeon lib32-vulkan-radeon vulkan-icd-loader lib32-vulkan-icd-loader
     echo "Configuration terminée pour AMD."
-}
+fi
 
-install_printer() {
-    yay -S --noconfirm ghostscript gsfonts cups cups-filters cups-pdf system-config-printer
-    avahi  --needed
+# Activation du bluetooth
+read -p "Voulez-vous installer le support pour Bluetooth ? (y/n): " bluetooth
+if [[ $bluetooth == "y" ]]; then
+    yay -S --needed --noconfirm bluez bluez-utils bluez-plugins
+    sudo systemctl enable --now bluetooth.service
+fi
+
+# Installation des drivers pour les imprimantes
+read -p "Voulez-vous installer le support pour les imprimantes ? (y/n): " printer
+if [[ $printer == "y" ]]; then
+    print_step "Installation du support pour les imprimantes"
+    yay -S --noconfirm ghostscript gsfonts cups cups-filters cups-pdf system-config-printer avahi --needed
     sudo systemctl enable --now avahi-daemon
     sudo systemctl enable --now cups
-    yay -S --noconfirm foomatic-db-engine foomatic-db foomatic-db-ppds foomatic-db-nonfree foomatic-db-nonfree-ppds gutenprint foomatic-db-gutenprint-ppds --needed
+fi
 
-    read -p "Voulez-vous installer les drivers d'imprimantes HP ? (y/N) " -n 1 -r
-    echo
-    if [[ $REPLY =~ ^[Yy]$ ]]; then
-        yay -S python-pyqt5 hplip --needed
-    fi
-}
+# Installation des logiciels de tiers
+read -p "Voulez-vous installer des logiciels divers ? (y/n): " software
+if [[ $software == "y" ]]; then
+    print_step "Installation de logiciels de base"
+    yay -S --noconfirm libreoffice-fresh libreoffice-fresh-fr vlc discord gimp obs-studio gnome-disk-utility
+fi
 
-enable_bluetooth() {
-    yay -S --needed --noconfirm bluez bluez-utils bluez-plugins
-    sudo systemctl enable --now  bluetooth.service
-}
-
-install_pipewire() {
-    sudo pacman -S --needed --noconfirm pipewire-pulse pipewire-alsa pipewire-jack wireplumber
-}
-
-install_game() {
-    yay -S --needed --noconfirm lutris wine-staging winetricks wine-mono giflib lib32-giflib libpng lib32-libpng libldap lib32-libldap gnutls lib32-gnutls mpg123 lib32-mpg123 openal lib32-openal v4l-utils lib32-v4l-utils libpulse lib32-libpulse libgpg-error lib32-libgpg-error alsa-plugins lib32-alsa-plugins alsa-lib lib32-alsa-lib libjpeg-turbo lib32-libjpeg-turbo sqlite lib32-sqlite libxcomposite lib32-libxcomposite libxinerama lib32-libgcrypt libgcrypt lib32-libxinerama ncurses lib32-ncurses ocl-icd lib32-ocl-icd libxslt lib32-libxslt libva lib32-libva gtk3 lib32-gtk3 gst-plugins-base-libs lib32-gst-plugins-base-libs vulkan-icd-loader lib32-vulkan-icd-loader steam goverlay
-
-    sudo touch /etc/sysctl.d/99-sysctl.conf | echo 'vm.max_map_count=16777216' >> /etc/sysctl.d/99-sysctl.conf
-}
-
-install_bonus() {
+# Installation du shell Fish
+read -p "Voulez-vous installer le shell Fish ? (y/n): " fish
+if [[ $fish == "y" ]]; then
+    print_step "Installation de Fish"
     yay -S --noconfirm fish
     chsh -s $(which fish)
-    fish -c "fish_update_completions | set -U fish_greeting"
-    echo 'alias u="sudo pacman -Syy && yay -S archlinux-keyring && yay && yay -Sc && sudo pacman -Rns \$(pacman -Qdtq)"' >> ${HOME}/.config/fish/config.fish
-}
+    echo 'alias u="sudo pacman -Syy && yay -S archlinux-keyring && yay && yay -Sc && sudo pacman -Rns \$(pacman -Qdtq)"' >> $HOME/.config/fish/config.fish
+fi
 
-main() {
-    graphics_card=$(detect_graphics_card)
-    echo "Carte graphique détectée : $graphics_card"
+# Installation et configuration du pare-feu
+sudo pacman -S --noconfirm ufw
+sudo systemctl enable --now ufw.service
 
-    install_style
-    install_yay
-    install_base_components
-    install_misc_software
-    install_kde_software
-    install_firewall
+# Installation de Steam et Lutris
+yay -S --noconfirm steam lutris
 
-    if [ "$graphics_card" == "NVIDIA" ]; then
-        install_nvidia_support
-    elif [ "$graphics_card" == "AMD" ]; then
-        install_amd_support
-    else
-        echo "Carte graphique non prise en charge."
-        exit 1
-    fi
-
-    install_printer
-    read -p "Voulez-vous activer le bluethooth ? (y/N) " -n 1 -r
-    if [[ $REPLY =~ ^[Yy]$ ]]; then
-        enable_bluetooth
-    fi
-
-    install_pipewire
-    install_game
-
-    read -p "Voulez-vous support manette xpadneo-dkms ? (y/N) " -n 1 -r
-    if [[ $REPLY =~ ^[Yy]$ ]]; then
-        yay -S --noconfirm xpadneo-dkms
-    fi
-    
-    read -p "Voulez-vous faire la partie BONUS ? (y/N) " -n 1 -r
-    if [[ $REPLY =~ ^[Yy]$ ]]; then
-        install_bonus
-    fi
-
-    echo -e "${GREEN}Installation terminée.${NC}\nMaintenant, il ${RED}faut${NC} redémarrez le système."
-
-    read -p "Voulez-vous redémarrer maintenant ? (y/N) " -n 1 -r
-    if [[ $REPLY =~ ^[Yy]$ ]]; then
-        reboot
-    fi
-
-    exit 0
-}
-
-main
+echo "Le script est terminé. N'oubliez pas de redémarrer votre système."
