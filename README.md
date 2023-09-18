@@ -53,6 +53,8 @@ Télécharger l’ISO : [**Arch Linux - Downloads**](https://archlinux.org/downl
 
 Script post installation BETA :
 
+Ne fonctionne que si l'on a scrupuleusement respecté mes choix dans archinstall.
+
    ```bash
    sudo pacman -Sy git
    git clone https://github.com/Cardiacman13/Tuto-Arch.git
