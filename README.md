@@ -51,6 +51,12 @@ Télécharger l’ISO : [**Arch Linux - Downloads**](https://archlinux.org/downl
 
 ## POST INSTALLATION
 
+Script post installation BETA :
+```sudo pacman -Sy git
+   git clone https://github.com/Cardiacman13/Tuto-Arch.git
+   cd Tuto-Arch
+   ./post-installation```
+
 ### Optimiser pacman
 
 1. Cette [modification](https://wiki.archlinux.org/title/Pacman#Enabling_parallel_downloads) permet la parallélisation du téléchargement des packages. (PS: avec kate, quand vous sauvegardez, il est possible qu'on vous demande d'entrer un mot de passe, entrez votre mot de passe root/sudo)
