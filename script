@@ -2,14 +2,15 @@
 
 RED='\033[0;31m'
 GREEN='\033[0;32m'
+BLUE='\033[0;34m'
 NC='\033[0m'
 
 print_step() {
-  terminal_width=$(tput cols)
-  text_length=${#1}
-  num_equals=$(((terminal_width - text_length - 2) / 2))
-  equals=$(printf "%${num_equals}s" " " | tr ' ' '=')
-  echo "${equals} $1 ${equals}"
+    terminal_width=$(tput cols)
+    text_length=${#1}
+    num_equals=$(((terminal_width - text_length - 2) / 2))
+    equals=$(printf "%${num_equals}s" " " | tr ' ' '=')
+    echo -e "${BLUE}${equals} ${1} ${equals}${NC}"
 }
 
 # Mettre à jour le système\
@@ -22,7 +23,6 @@ sudo sed -i 's/^#Color/Color/' /etc/pacman.conf
 sudo sed -i 's/^#VerbosePkgLists/VerbosePkgLists/' /etc/pacman.conf
 sudo sed -i 's/^#ParallelDownloads = 5/ParallelDownloads = 5/' /etc/pacman.conf
 
-installed_kernels=$(pacman -Q | grep '^linux[0-9]*\-' | awk '{print $1}')
 
 print_step "Installation des headers pour les kernels installés"
 for kernel in $(ls /boot | grep vmlinuz); do
@@ -122,7 +122,7 @@ print_step "Installation du support pour les imprimantes"
 # Installation des drivers pour les imprimantes
 read -p "Voulez-vous installer le support pour les imprimantes ? (y/n): " printer
 if [[ $printer == "y" ]]; then
-    yay -S --noconfirm ghostscript gsfonts cups cups-filters cups-pdf system-config-printer avahi --needed
+    yay -S --needed --noconfirm ghostscript gsfonts cups cups-filters cups-pdf system-config-printer avahi
     sudo systemctl enable --now avahi-daemon
     sudo systemctl enable --now cups
 fi
@@ -131,25 +131,25 @@ print_step "Installation de logiciels de base"
 # Installation des logiciels de tiers
 read -p "Voulez-vous installer des logiciels divers ? (y/n): " software
 if [[ $software == "y" ]]; then
-    yay -S --noconfirm libreoffice-fresh libreoffice-fresh-fr vlc discord gimp obs-studio gnome-disk-utility
+    yay -S --needed --noconfirm libreoffice-fresh libreoffice-fresh-fr vlc discord gimp obs-studio gnome-disk-utility
 fi
 
 print_step "Installation de Fish"
 # Installation du shell Fish
 read -p "Voulez-vous installer le shell Fish ? (y/n): " fish
 if [[ $fish == "y" ]]; then
-    yay -S --noconfirm fish
+    yay -S --needed --noconfirm fish
     chsh -s $(which fish)
     echo 'alias u="sudo pacman -Syy && yay -S archlinux-keyring && yay && yay -Sc && sudo pacman -Rns \$(pacman -Qdtq)"' >> $HOME/.config/fish/config.fish
 fi
 
 print_step "Installation du pare-feu"
 # Installation et configuration du pare-feu
-sudo pacman -S --noconfirm ufw
+sudo pacman -S --needed --noconfirm ufw
 sudo systemctl enable --now ufw.service
 
 print_step "Installation de Steam et Lutris"
 # Installation de Steam et Lutris
-yay -S --noconfirm steam lutris
+yay -S --needed --noconfirm steam lutris
 
 print_step "Le script est terminé. N'oubliez pas de redémarrer votre système."
