@@ -13,6 +13,11 @@ print_step() {
     echo -e "${BLUE}${equals} ${1} ${equals}${NC}"
 }
 
+if [ ! -t 1 ]; then
+  konsole -e "$0" "$@"
+  exit 0
+fi
+
 # Mettre à jour le système\
 print_step "Mise à jour du système"
 sudo pacman -Syu --noconfirm
@@ -22,7 +27,6 @@ print_step "Optimiser pacman"
 sudo sed -i 's/^#Color/Color/' /etc/pacman.conf
 sudo sed -i 's/^#VerbosePkgLists/VerbosePkgLists/' /etc/pacman.conf
 sudo sed -i 's/^#ParallelDownloads = 5/ParallelDownloads = 5/' /etc/pacman.conf
-
 
 print_step "Installation des headers pour les kernels installés"
 for kernel in $(ls /boot | grep vmlinuz); do
@@ -117,6 +121,9 @@ if [[ $bluetooth == "y" ]]; then
     yay -S --needed --noconfirm bluez bluez-utils bluez-plugins
     sudo systemctl enable --now bluetooth.service
 fi
+
+print_step "Installation de pipewire"
+sudo pacman -S --needed --noconfirm pipewire-pulse pipewire-alsa pipewire-jack wireplumber
 
 print_step "Installation du support pour les imprimantes"
 # Installation des drivers pour les imprimantes
