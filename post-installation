@@ -129,7 +129,7 @@ fi
 
 # Installation des packets indispensables
 print_step "Installation des packets indispensables"
-sudo pacman -S --needed --noconfirm mkinitcpio-firmware xdg-desktop-portal neofetch power-profiles-daemon lib32-pipewire hunspell-fr p7zip unrar ttf-liberation noto-fonts noto-fonts-emoji ntfs-3g fuse2 bash-completion
+sudo pacman -S --needed --noconfirm mkinitcpio-firmware xdg-desktop-portal neofetch power-profiles-daemon lib32-pipewire hunspell-fr p7zip unrar ttf-liberation noto-fonts noto-fonts-emoji ntfs-3g fuse2 bash-completion xdg-desktop-portal-kde xdg-desktop-portal-gtk okular print-manager gwenview spectacle partitionmanager ffmpegthumbs qt6-wayland kdeplasma-addons vlc
 
 # Installation des drivers manettes
 print_step "Installation des drivers manettes (Xbox, etc...)"
@@ -146,10 +146,6 @@ if [[ $bluetooth == "y" ]]; then
     sudo systemctl enable --now bluetooth.service
 fi
 
-# Installation de la suite bureautique
-print_step "Installation de la suite bureautique"
-sudo pacman -S --needed --noconfirm gnome-disk-utility vlc
-
 # Installation des drivers pour les imprimantes
 print_step "Installation du support pour les imprimantes"
 read -p "Voulez-vous installer le support pour les imprimantes ? (y/n): " printer
@@ -163,7 +159,30 @@ fi
 print_step "Installation de logiciels de base"
 read -p "Voulez-vous installer des logiciels divers ? (y/n): " software
 if [[ $software == "y" ]]; then
-    yay -S --needed --noconfirm libreoffice-fresh libreoffice-fresh-fr discord gimp obs-studio kdenlive 
+    read -p "Voulez-vous installer Discord ? (y/n): " discord
+    read -p "Voulez-vous installer OBS Studio ? (y/n): " obs
+    read -p "Voulez-vous installer Kdenlive ? (y/n): " kdenlive
+    read -p "Voulez-vous installer LibreOffice ? (y/n): " libreoffice
+    read -p "Voulez-vous installer GIMP ? (y/n): " gimp
+
+    software_list=()
+    if [[ $discord == "y" ]]; then
+        software_list+=("discord")
+    fi
+    if [[ $obs == "y" ]]; then
+        software_list+=("obs-studio")
+    fi
+    if [[ $kdenlive == "y" ]]; then
+        software_list+=("kdenlive")
+    fi
+    if [[ $libreoffice == "y" ]]; then
+        software_list+=("libreoffice-fresh libreoffice-fresh-fr")
+    fi
+    if [[ $gimp == "y" ]]; then
+        software_list+=("gimp")
+    fi
+
+    yay -S --needed --noconfirm "${software_list[@]}"
 fi
 
 # Installation du shell Fish
