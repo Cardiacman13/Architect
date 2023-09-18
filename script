@@ -139,7 +139,9 @@ print_step "Installation de Fish"
 read -p "Voulez-vous installer le shell Fish ? (y/n): " fish
 if [[ $fish == "y" ]]; then
     yay -S --needed --noconfirm fish
-    chsh -s $(which fish)
+    if [[ $SHELL != "/usr/bin/fish" ]]; then
+        chsh -s /usr/bin/fish
+    fi
     echo 'alias u="sudo pacman -Syy && yay -S archlinux-keyring && yay && yay -Sc && sudo pacman -Rns \$(pacman -Qdtq)"' >> $HOME/.config/fish/config.fish
 fi
 
