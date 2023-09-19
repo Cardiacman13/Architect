@@ -97,7 +97,9 @@ if [[ $nvidia == "y" ]]; then
         sudo grub-mkconfig -o /boot/grub/grub.cfg
     else
         echo "Activation de nvidia-drm.modeset=1..."
-        sudo sed -i '/^options/ s/\"$/ nvidia-drm.modeset=1"/' /boot/loader/entries/*.conf
+        for file in /boot/loader/entries/*; do
+            sudo sed -i '/^options/ s/"$/ nvidia-drm.modeset=1"/' $file
+        done
     fi
     
     echo "Charger les modules Nvidia en priorité au lancement de Arch"
