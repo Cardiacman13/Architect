@@ -23,6 +23,30 @@ fi
 print_step "Mise à jour du système"
 sudo pacman -Syu --noconfirm
 
+use_grub = false
+
+# Check we using grub
+print_step "Vérification de l'utilisation de grub"
+if [[ ! -f /boot/grub/grub.cfg ]]; then
+    use_grub = true
+    echo -e "${RED}Vous n'utilisez pas grub. Ce script ne fonctionnera pas.${NC}"
+
+    echo "Création du fichier de configuration pacman..."
+    sudo mkdir -p /etc/pacman.d/hooks/
+    sudo touch /etc/pacman.d/hooks/100-grub.hook
+    sudo echo "[Trigger]
+    Type = File
+    Operation = Install
+    Operation = Upgrade
+    Operation = Remove
+
+    [Action]
+    Description = Updating grub configuration ...
+    When = PostTransaction
+    Exec = /usr/bin/grub-mkconfig -o /boot/grub/grub.cfg" | sudo tee /etc/pacman.d/hooks/100-grub.hook > /dev/null
+    exit 1
+fi
+
 # Mettre à jour la configuration de pacman
 print_step "Optimiser pacman"
 sudo sed -i 's/^#Color/Color/' /etc/pacman.conf
@@ -69,8 +93,15 @@ read -p "Avez-vous une carte graphique Intel ? (y/n): " intel
 if [[ $nvidia == "y" ]]; then
     print_step "Installation des pilotes NVIDIA"
     yay -S --needed --noconfirm nvidia-dkms nvidia-utils lib32-nvidia-utils nvidia-settings vulkan-icd-loader lib32-vulkan-icd-loader cuda
-    echo "Activation de nvidia-drm.modeset=1..."
-    sudo sed -i '/^options/ s/\"$/ nvidia-drm.modeset=1"/' /boot/loader/entries/*.conf
+
+    if [[ $use_grub == true ]]; then
+        echo "Activation de nvidia-drm.modeset=1..."
+        sudo sed -i '/^GRUB_CMDLINE_LINUX_DEFAULT/ s/"$/ nvidia-drm.modeset=1"/' /etc/default/grub
+        sudo grub-mkconfig -o /boot/grub/grub.cfg
+    else
+        echo "Activation de nvidia-drm.modeset=1..."
+        sudo sed -i '/^options/ s/\"$/ nvidia-drm.modeset=1"/' /boot/loader/entries/*.conf
+    fi
     
     echo "Charger les modules Nvidia en priorité au lancement de Arch"
     read -p "Utilisez-vous BTRFS ? (y/n):" btrfs
