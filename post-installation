@@ -101,9 +101,9 @@ if [[ $nvidia == "y" ]]; then
     echo "Charger les modules Nvidia en priorité au lancement de Arch"
     read -p "Utilisez-vous BTRFS ? (y/n):" btrfs
     if [[ $btrfs == "y" ]]; then
-        sudo sed -i '/^MODULES/ s/()/(btrfs nvidia nvidia_modeset nvidia_uvm nvidia_drm)/' /etc/mkinitcpio.conf
+        sudo sed -i 's/MODULES=()/MODULES=(btrfs nvidia nvidia_modeset nvidia_uvm nvidia_drm)/' /etc/mkinitcpio.conf
     else
-        sudo sed -i '/^MODULES/ s/()/(nvidia nvidia_modeset nvidia_uvm nvidia_drm)/' /etc/mkinitcpio.conf
+        sudo sed -i 's/MODULES=()/MODULES=(nvidia nvidia_modeset nvidia_uvm nvidia_drm)/' /etc/mkinitcpio.conf
     fi
 
     print_step "Installation des pilotes NVIDIA"
