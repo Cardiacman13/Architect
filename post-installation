@@ -98,7 +98,7 @@ if [[ $nvidia == "y" ]]; then
     else
         echo "Activation de nvidia-drm.modeset=1..."
         for file in /boot/loader/entries/*; do
-            sudo sed -i '/^options/ s/"$/ nvidia-drm.modeset=1"/' $file
+            sudo sed -i '/^options/ s/\"$/ nvidia-drm.modeset=1"/' $file
         done
     fi
     
