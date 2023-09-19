@@ -36,6 +36,23 @@ if [[ -f /boot/grub/grub.cfg ]]; then
     Operation = Install
     Operation = Upgrade
     Operation = Remove
+    Target = linux
+    Target = linux-next*
+    Target = linux-new*
+    Target = linux-amd*
+    Target = linux-lts*
+    Target = linux-zen*
+    Target = linux-rt*
+    Target = linux-hardened*
+    Target = linux-xanmod*
+    Target = linux-tkg*
+    Target = linux-raven*
+    Target = linux-slim*
+    Target = linux-test*
+    Target = linux-main*
+    Target = linux-dctxmei*
+    Target = linux-froidzen*
+    Target = linux-jwrdegoede
 
     [Action]
     Description = Updating grub configuration ...
