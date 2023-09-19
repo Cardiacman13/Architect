@@ -25,12 +25,9 @@ sudo pacman -Syu --noconfirm
 
 use_grub = false
 
-# Check we using grub
 print_step "Vérification de l'utilisation de grub"
-if [[ ! -f /boot/grub/grub.cfg ]]; then
+if [[ -f /boot/grub/grub.cfg ]]; then
     use_grub = true
-    echo -e "${RED}Vous n'utilisez pas grub. Ce script ne fonctionnera pas.${NC}"
-
     echo "Création du fichier de configuration pacman..."
     sudo mkdir -p /etc/pacman.d/hooks/
     sudo touch /etc/pacman.d/hooks/100-grub.hook
