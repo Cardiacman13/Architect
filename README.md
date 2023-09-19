@@ -320,6 +320,20 @@ makepkg -si
 ```
 Dire oui à tout pour bien tout écraser avec les nouveaux paquets.
 
+### [NVIDIA-ALL](https://github.com/Frogging-Family/nvidia-all) (WARNING utilisateurs avancés)
+
+Nvidia-all est une intégration du driver nvidia par TkG. Il comporte des patchs de support pour les nouveaux kernels ainsi que les drivers vulkan-dev.
+
+<img src="assets/images/Cardiac-icon.png" width="30" height="30"> [Vous utilisez Arch et Nvidia regardez ça !](https://youtu.be/43yYIWMnDJA)
+```bash
+git clone https://github.com/Frogging-Family/nvidia-all.git
+cd nvidia-all
+makepkg -si
+```
+
+Dire oui à tout pour bien tout écraser avec les nouveaux paquets.
+
+
 ### Installation [Flatpak](https://wiki.archlinux.org/title/Flatpak)
 
 Anciennement connu sous le nom de xdg-app, est un utilitaire de déploiement de logiciels et de gestion de paquets pour Linux. Il est présenté comme offrant un environnement "bac à sable" dans lequel les utilisateurs peuvent exécuter des logiciels d'application de manière isolée du reste du système.
