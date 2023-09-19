@@ -42,7 +42,6 @@ if [[ -f /boot/grub/grub.cfg ]]; then
     Description = Updating grub configuration ...
     When = PostTransaction
     Exec = /usr/bin/grub-mkconfig -o /boot/grub/grub.cfg" | sudo tee /etc/pacman.d/hooks/100-grub.hook > /dev/null
-    exit 1
 fi
 
 # Mettre à jour la configuration de pacman
