@@ -88,8 +88,6 @@ read -p "Avez-vous une carte graphique AMD ? (y/n): " amd
 read -p "Avez-vous une carte graphique Intel ? (y/n): " intel
 
 if [[ $nvidia == "y" ]]; then
-    print_step "Installation des pilotes NVIDIA"
-    yay -S --needed --noconfirm nvidia-dkms nvidia-utils lib32-nvidia-utils nvidia-settings vulkan-icd-loader lib32-vulkan-icd-loader cuda
 
     if [[ $use_grub == true ]]; then
         echo "Activation de nvidia-drm.modeset=1..."
@@ -99,7 +97,7 @@ if [[ $nvidia == "y" ]]; then
         echo "Activation de nvidia-drm.modeset=1..."
         sudo find /boot/loader/entries/ -type f -exec sed -i 's/^\(options .*\)$/\1 nvidia-drm.modeset=1/' {} \;
     fi
-    
+
     echo "Charger les modules Nvidia en priorité au lancement de Arch"
     read -p "Utilisez-vous BTRFS ? (y/n):" btrfs
     if [[ $btrfs == "y" ]]; then
@@ -107,6 +105,10 @@ if [[ $nvidia == "y" ]]; then
     else
         sudo sed -i '/^MODULES/ s/()/(nvidia nvidia_modeset nvidia_uvm nvidia_drm)/' /etc/mkinitcpio.conf
     fi
+
+    print_step "Installation des pilotes NVIDIA"
+    yay -S --needed --noconfirm nvidia-dkms nvidia-utils lib32-nvidia-utils nvidia-settings vulkan-icd-loader lib32-vulkan-icd-loader cuda
+
     echo "Configuration du module mkinitcpio..."
     sudo mkdir -p /etc/pacman.d/hooks/
     echo "[Trigger]
