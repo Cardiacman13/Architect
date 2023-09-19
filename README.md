@@ -59,7 +59,7 @@ Ne fonctionne que si l'on a scrupuleusement respecté mes choix dans archinstall
    sudo pacman -Sy git
    git clone https://github.com/Cardiacman13/Tuto-Arch.git
    cd Tuto-Arch
-   ./post-installation
+   bash post-installation
    ```
 
 
