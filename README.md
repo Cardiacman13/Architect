@@ -182,7 +182,7 @@ sudo systemctl enable --now  bluetooth.service
 ### [PipeWire](https://pipewire.org/)
 Pour avoir du son **/!\ Dire oui à tout pour bien tout écraser avec les nouveaux paquets. /!\\**
 ```bash
-sudo pacman -S --needed pipewire pipewire-pulse pipewire-alsa pipewire-jack wireplumber
+sudo pacman -S --needed pipewire lib32-pipewire pipewire-pulse pipewire-alsa pipewire-jack wireplumber
 ```
 
 ## SOFTWARE CORE
