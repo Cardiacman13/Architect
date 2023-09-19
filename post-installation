@@ -62,7 +62,7 @@ sudo pacman -Rdd --noconfirm pulseaudio jack2 pipewire-media-session
 sudo pacman -S --needed --noconfirm pipewire pipewire-pulse pipewire-alsa pipewire-jack wireplumber
 
 # Détecter Nvidia ou AMD
-read -p "Quel carte graphique avez-vous ? (1: nvidia, 2: amd/intel, 3: les deux, 4: aucun): " gpu
+read -p "Quel carte graphique avez-vous ? (1: nvidia, 2: amd, 3: les deux, 4: aucun): " gpu
 if [[ $gpu == "1" ]]; then
     nvidia=true
 elif [[ $gpu == "2" ]]; then
