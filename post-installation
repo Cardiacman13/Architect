@@ -23,11 +23,11 @@ fi
 print_step "Mise à jour du système"
 sudo pacman -Syu --noconfirm
 
-use_grub = false
+use_grub=false
 
 print_step "Vérification de l'utilisation de grub"
 if [[ -f /boot/grub/grub.cfg ]]; then
-    use_grub = true
+    use_grub=true
     echo "Création du fichier de configuration pacman..."
     sudo mkdir -p /etc/pacman.d/hooks/
     sudo touch /etc/pacman.d/hooks/100-grub.hook
