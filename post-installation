@@ -91,7 +91,7 @@ if [[ $nvidia == "y" ]]; then
 
     if [[ $use_grub == true ]]; then
         echo "Activation de nvidia-drm.modeset=1..."
-        sudo find /etc/default/grub -type f -exec sed -i 's/^\(GRUB_CMDLINE_LINUX_DEFAULT=".*"\)$/\1 nvidia-drm.modeset=1/' {} \;
+        sudo find /etc/default/grub -type f -exec sed -i 's/^\(GRUB_CMDLINE_LINUX_DEFAULT="\)\(loglevel=3 quiet\)\("\)$/\1\2 nvidia-drm.modeset=1\3/' {} \;
         sudo grub-mkconfig -o /boot/grub/grub.cfg
     else
         echo "Activation de nvidia-drm.modeset=1..."
