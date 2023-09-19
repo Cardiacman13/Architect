@@ -147,9 +147,21 @@ if [[ $intel == "y" ]]; then
     echo "Configuration terminée pour Intel."
 fi
 
+# Installation du shell Fish
+print_step "Installation de Fish"
+read -p "Voulez-vous installer le shell Fish ? (y/n): " fish
+if [[ $fish == "y" ]]; then
+    yay -S --needed --noconfirm fish
+    if [[ $SHELL != "/usr/bin/fish" ]]; then
+        chsh -s /usr/bin/fish
+    fi
+    fish -c "fish_update_completions; set -U fish_greeting"
+    echo 'alias u="sudo pacman -Syy && yay -S archlinux-keyring && yay && yay -Sc && sudo pacman -Rns \$(pacman -Qdtq)"' >> $HOME/.config/fish/config.fish
+fi
+
 # Installation des packets indispensables
 print_step "Installation des packets indispensables"
-yay -S --needed --noconfirm reflector-simple rebuild-detector mkinitcpio-firmware xdg-desktop-portal neofetch power-profiles-daemon hunspell-fr p7zip unrar ttf-liberation noto-fonts noto-fonts-emoji ntfs-3g fuse2 bash-completion xdg-desktop-portal-kde xdg-desktop-portal-gtk okular print-manager gwenview spectacle partitionmanager ffmpegthumbs qt6-wayland kdeplasma-addons vlc
+yay -S --needed --noconfirm powerdevil reflector-simple rebuild-detector mkinitcpio-firmware xdg-desktop-portal neofetch power-profiles-daemon hunspell-fr p7zip unrar ttf-liberation noto-fonts noto-fonts-emoji ntfs-3g fuse2 bash-completion xdg-desktop-portal-kde xdg-desktop-portal-gtk okular print-manager gwenview spectacle partitionmanager ffmpegthumbs qt6-wayland kdeplasma-addons vlc
 
 # Installation des drivers manettes
 print_step "Installation des drivers manettes (Xbox, etc...)"
@@ -175,22 +187,37 @@ if [[ $printer == "y" ]]; then
     sudo systemctl enable --now cups
 fi
 
+# Installation de flatpak
+print_step "Installation de Flatpak"
+read -p "Voulez-vous installer Flatpak (recommander)? (y/n): " flatpak
+if [[ $flatpak == "y" ]]; then
+    yay -S --needed --noconfirm flatpak flatpak-kcm
+    flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+    flatpak install flathub com.github.tchx84.Flatseal
+    flatpak install flathub io.github.giantpinkrobots.flatsweep
+fi
+
 # Installation des logiciels de tiers
 print_step "Installation de logiciels de base"
 read -p "Voulez-vous installer des logiciels divers ? (y/n): " software
 if [[ $software == "y" ]]; then
     read -p "Voulez-vous installer Discord ? (y/n): " discord
-    read -p "Voulez-vous installer OBS Studio ? (y/n): " obs
+
+    if [[ $flatpak == "y" ]]; then
+        read -p "Voulez-vous installer OBS Studio (flatpak) ? (y/n): " obs
+    else
+        read -p "Voulez-vous installer OBS Studio ? (y/n): " obs
+    fi
+
     read -p "Voulez-vous installer Kdenlive ? (y/n): " kdenlive
     read -p "Voulez-vous installer LibreOffice ? (y/n): " libreoffice
     read -p "Voulez-vous installer GIMP ? (y/n): " gimp
+    read -p "Voulez-vous installer Steam ? (y/n): " steam
+    read -p "Voulez-vous installer Lutris ? (y/n): " lutris
 
     software_list=()
     if [[ $discord == "y" ]]; then
         software_list+=("discord")
-    fi
-    if [[ $obs == "y" ]]; then
-        software_list+=("obs-studio")
     fi
     if [[ $kdenlive == "y" ]]; then
         software_list+=("kdenlive")
@@ -203,35 +230,20 @@ if [[ $software == "y" ]]; then
     fi
 
     yay -S --needed --noconfirm "${software_list[@]}"
-fi
 
-# Installation du shell Fish
-print_step "Installation de Fish"
-read -p "Voulez-vous installer le shell Fish ? (y/n): " fish
-if [[ $fish == "y" ]]; then
-    yay -S --needed --noconfirm fish
-    if [[ $SHELL != "/usr/bin/fish" ]]; then
-        chsh -s /usr/bin/fish
+    if [[ $obs == "y" ]]; then
+        if [[ $flatpak == "y" ]]; then
+            flatpak install flathub com.obsproject.Studio
+        else
+            yay -S --needed --noconfirm obs-studio
+        fi
     fi
-    echo 'alias u="sudo pacman -Syy && yay -S archlinux-keyring && yay && yay -Sc && sudo pacman -Rns \$(pacman -Qdtq)"' >> $HOME/.config/fish/config.fish
-fi
-
-# Installation de flatpak
-print_step "Installation de Flatpak"
-read -p "Voulez-vous installer Flatpak ? (y/n): " flatpak
-if [[ $flatpak == "y" ]]; then
-    yay -S --needed --noconfirm flatpak flatpak-kcm
-    flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 fi
 
 # Installation et configuration du pare-feu
 print_step "Installation du pare-feu"
 sudo pacman -S --needed --noconfirm ufw
 sudo systemctl enable --now ufw.service
-
-# Installation de Steam et Lutris
-print_step "Installation de Steam et Lutris"
-yay -S --needed --noconfirm steam lutris
 
 sudo sed -i 's/^IgnorePkg   = amdvlk lib32-amdvlk/#IgnorePkg   =/' /etc/pacman.conf
 
