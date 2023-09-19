@@ -140,9 +140,8 @@ Ne fonctionne que si l'on a scrupuleusement respecté mes choix dans archinstall
     Operation=Upgrade
     Operation=Remove
     Type=Package
-    Target=VOTRE-DRIVER-ACTUEL # (nvidia ou nvidia-lts ou nvidia-dkms)
-    Target=VOTRE-KERNEL-ACTUEL # (linux ou linux-lts ou linux-zen)
-    Target=VOTRE-SECOND-KERNEL 
+    Target=nvidia-dkms
+    Target = usr/lib/modules/*/vmlinuz
 
     [Action]
     Description=Update NVIDIA module in initcpio
