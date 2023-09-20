@@ -126,7 +126,7 @@ install_pipewire() {
     local packages=("pulseaudio" "jack2" "pipewire-media-session")
     for package in "${packages[@]}"; do
         if pacman -Qs "${package}" > /dev/null; then
-            safe_run sudo pacman -Rdd --noconfirm "${package}"
+            sudo pacman -Rdd --noconfirm "${package}"
         fi
     done
     safe_run sudo pacman -S --needed --noconfirm pipewire lib32-pipewire pipewire-pulse pipewire-alsa pipewire-jack wireplumber
