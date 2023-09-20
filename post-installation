@@ -28,19 +28,10 @@ safe_ask() {
     fi
 }
 
-SILENT=false
-
 safe_run() {
-    if [[ "$SILENT" == "true" ]]; then
-        if ! "$@" > /dev/null 2>&1; then
-            print_colored "0;31" "Erreur lors de l'exécution de la commande : $*"
-            exit 1
-        fi
-    else
-        if ! "$@"; then
-            print_colored "0;31" "Erreur lors de l'exécution de la commande : $*"
-            exit 1
-        fi
+    if ! "$@"; then
+        print_colored "0;31" "Erreur lors de l'exécution de la commande : $*"
+        exit 1
     fi
 }
 
@@ -305,8 +296,6 @@ fi
 
 main() {
     print_step "Début du script"
-
-    safe_ask "Voulez-vous exécuter le script en mode silencieux ?" && SILENT=true
 
     update_system
     check_grub
