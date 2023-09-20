@@ -1,6 +1,10 @@
 #!/usr/bin/env bash
 
-set -euo pipefail
+if [ -z "$DISPLAY" ]; then
+    konsole -e "$0" &
+    exit 0
+fi
+
 sudo -v
 
 if [[ $(id -u) -eq 0 ]]; then
@@ -109,9 +113,9 @@ configure_maintenance_alias() {
 install_pipewire() {
     print_step "Installation de pipewire"
     local packages=("pulseaudio" "jack2" "pipewire-media-session")
-    for packages in "${packages[@]}"; do
-        if pacman -Qs "${packages}" > /dev/null; then
-            sudo pacman -Rdd --noconfirm "${packages}"
+    for package in "${packages[@]}"; do
+        if pacman -Qs "${package}" > /dev/null; then
+            sudo pacman -Rdd --noconfirm "${package}"
         fi
     done
     safe_run sudo pacman -Suy --needed --noconfirm pipewire pipewire-alsa pipewire-jack pipewire-pulse
