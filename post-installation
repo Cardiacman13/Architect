@@ -10,14 +10,11 @@ print_colored() {
 }
 
 print_step() {
-    local terminal_width
-    terminal_width=$(tput cols)
+    local terminal_width=$(tput cols)
     local text="$1"
     local text_length=${#text}
-    local num_equals
-    num_equals=$(((terminal_width - text_length - 2) / 2))
-    local equals
-    equals=$(printf "%${num_equals}s" | tr ' ' '=')
+    local num_equals=$(((terminal_width - text_length - 2) / 2))
+    local equals=$(printf "%${num_equals}s" | tr ' ' '=')
     print_colored "0;34" "${equals} ${text} ${equals}"
     sleep 1
 }
@@ -116,9 +113,9 @@ safe_ask() {
     fi
 }
 
-local nvidia=false
-local amd=false
-local intel=false
+nvidia=false
+amd=false
+intel=false
 
 detect_graphics_card() {
     print_step "Détection de la carte graphique"
