@@ -112,8 +112,9 @@ Ne fonctionne que si l'on a scrupuleusement respecté mes choix dans archinstall
     ```
 
 2. **Activer nvidia-drm.modeset=1 :**
+
    Dans le dossier:
-   ```bash
+    ```bash
    /boot/loader/entries/
    ```
    Il y a plusieurs fichiers .conf, il faut ajouter nvidia-drm.modeset=1 à la ligne options de chaque fichiers,
