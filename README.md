@@ -112,14 +112,14 @@ Ne fonctionne que si l'on a scrupuleusement respecté mes choix dans archinstall
     ```
 
 2. **Activer nvidia-drm.modeset=1 :**
-    ```bash
-    kate /boot/loader/entries/NOMDELENTÉE.conf
-    ```
-    Et y ajouter :
-    ```bash
-    nvidia-drm.modeset=1
-    ```
-3. **Charger les modules Nvidia en priorité au lancement de Arch :**
+   Dans le dossier:
+   ```bash
+   /boot/loader/entries/
+   ```
+   Il y a plusieurs fichiers .conf, il faut ajouter nvidia-drm.modeset=1 à la ligne options de chaque fichiers,
+   exemple : options                 root=PARTUUID=fb680c54-466d-4708-a1ac-fcc338ed57f1 rw rootfstype=ext4 nvidia-drm.modeset=1
+   
+4. **Charger les modules Nvidia en priorité au lancement de Arch :**
     ```bash
     kate /etc/mkinitcpio.conf
     ```
