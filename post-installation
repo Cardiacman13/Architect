@@ -3,6 +3,18 @@
 set -euo pipefail
 sudo -v
 
+if [ ! -t 1 ]; then
+  konsole -e "$0" "$@"
+  exit 0
+fi
+
+safe_run() {
+    if ! "$@"; then
+        print_colored "0;31" "Erreur lors de l'exécution de la commande : $*"
+        exit 1
+    fi
+}
+
 print_colored() {
     local color_code="$1"
     shift
@@ -17,13 +29,6 @@ print_step() {
     local equals=$(printf "%${num_equals}s" | tr ' ' '=')
     print_colored "0;34" "${equals} ${text} ${equals}"
     sleep 1
-}
-
-safe_run() {
-    if ! "$@"; then
-        print_colored "0;31" "Erreur lors de l'exécution de la commande : $*"
-        exit 1
-    fi
 }
 
 safe_append_to_file() {
@@ -107,9 +112,9 @@ safe_ask() {
     local answer
     read -p "${question} (y/n): " answer
     if [[ "${answer}" == "y" ]]; then
-        return false
+        return 0
     else
-        return true
+        return 1
     fi
 }
 
