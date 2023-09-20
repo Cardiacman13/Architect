@@ -133,7 +133,7 @@ detect_graphics_card() {
 install_nvidia_drivers() {
     if [[ "${nvidia}" == true ]]; then
         print_step "Installation des pilotes NVIDIA"
-        if [[ "${grub}" == true]]; then
+        if [[ "${grub}" == true ]]; then
             safe_run sudo sed -i 's/^GRUB_CMDLINE_LINUX_DEFAULT="loglevel=3 quiet"$/GRUB_CMDLINE_LINUX_DEFAULT="loglevel=3 quiet nvidia-drm.modeset=1"/' /etc/default/grub
             safe_run sudo grub-mkconfig -o /boot/grub/grub.cfg
         else
