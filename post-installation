@@ -71,12 +71,12 @@ update_system() {
     safe_run sudo pacman -Syy --noconfirm
 }
 
-grub=false
+GRUB=false
 
 check_grub() {
     print_step "Vérification de l'utilisation de GRUB"
     if [[ -f /boot/grub/grub.cfg ]]; then
-        grub=true
+        GRUB=true
         safe_run sudo mkdir -p /etc/pacman.d/hooks/
         safe_append_to_file "[Trigger]
         Type = File
@@ -141,27 +141,27 @@ install_pipewire() {
     safe_run sudo pacman -S --needed --noconfirm pipewire lib32-pipewire pipewire-pulse pipewire-alsa pipewire-jack wireplumber
 }
 
-nvidia=false
-amd=false
-intel=false
+NVIDIA=false
+AMD=false
+INTEL=false
 
 detect_graphics_card() {
     print_step "Choix de la carte graphique"
     if safe_ask "Voulez-vous installer les pilotes NVIDIA ?"; then
-        nvidia=true
+        NVIDIA=true
     fi
     if safe_ask "Voulez-vous installer les pilotes AMD ?"; then
-        amd=true
+        AMD=true
     fi
     if safe_ask "Voulez-vous installer les pilotes Intel ?"; then
-        intel=true
+        INTEL=true
     fi
 }
 
 install_nvidia_drivers() {
-    if [[ "${nvidia}" == true ]]; then
+    if [[ "${NVIDIA}" == true ]]; then
         print_step "Installation des pilotes NVIDIA"
-        if [[ "${grub}" == true ]]; then
+        if [[ "${GRUB}" == true ]]; then
             safe_run sudo sed -i 's/^GRUB_CMDLINE_LINUX_DEFAULT="loglevel=3 quiet"$/GRUB_CMDLINE_LINUX_DEFAULT="loglevel=3 quiet nvidia-drm.modeset=1"/' /etc/default/grub
             safe_run sudo grub-mkconfig -o /boot/grub/grub.cfg
         else
@@ -204,14 +204,14 @@ install_nvidia_drivers() {
 }
 
 install_amd_drivers() {
-    if [[ "${amd}" == true ]]; then
+    if [[ "${AMD}" == true ]]; then
         print_step "Installation des pilotes AMD"
         safe_run yay -S --needed --noconfirm mesa lib32-mesa vulkan-radeon lib32-vulkan-radeon vulkan-icd-loader lib32-vulkan-icd-loader
     fi
 }
 
 install_intel_drivers() {
-    if [[ "${intel}" == true ]]; then
+    if [[ "${INTEL}" == true ]]; then
         print_step "Installation des pilotes Intel"
         safe_run yay -S --needed --noconfirm mesa lib32-mesa vulkan-intel lib32-vulkan-intel vulkan-icd-loader lib32-vulkan-icd-loader
     fi
@@ -300,7 +300,6 @@ if [[ $(date '+%m%d') == "0401" ]]; then
         print_step "Installation de lolcat pour le 1er avril !"
         safe_run yay -S --needed --noconfirm lolcat
     fi
-    # Redirige la sortie standard et d'erreur vers lolcat
     exec > >(lolcat) 2> >(lolcat >&2)
 fi
 
