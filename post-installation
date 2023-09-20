@@ -98,7 +98,12 @@ configure_maintenance_alias() {
 
 install_pipewire() {
     print_step "Installation de pipewire"
-    sudo pacman -Rdd --noconfirm pulseaudio jack2 pipewire-media-session
+    local packages=("pulseaudio" "jack2" "pipewire-media-session")
+    for packages in "${packages[@]}"; do
+        if pacman -Qs "${packages}" > /dev/null; then
+            sudo pacman -Rdd --noconfirm "${packages}"
+        fi
+    done
     safe_run sudo pacman -Suy --needed --noconfirm pipewire pipewire-alsa pipewire-jack pipewire-pulse
 }
 
