@@ -1,250 +1,323 @@
 #!/usr/bin/env bash
 
-RED='\033[0;31m'
-GREEN='\033[0;32m'
-BLUE='\033[0;34m'
-NC='\033[0m'
+if [ -z "$DISPLAY" ]; then
+    konsole -e "$0" &
+    exit 0
+fi
+
+sudo -v
+
+if [[ $(id -u) -eq 0 ]]; then
+    print_colored "0;31" "Ce script ne doit pas être exécuté en tant que root"
+    exit 1
+fi
+
+if ! command -v sudo &> /dev/null; then
+    print_colored "0;31" "Veuillez installer sudo"
+    exit 1
+fi
+
+safe_ask() {
+    local question="$1"
+    local answer
+    read -p "${question} (y/n): " answer
+    if [[ "${answer}" == "y" ]]; then
+        return 0
+    else
+        return 1
+    fi
+}
+
+safe_run() {
+    if ! "$@"; then
+        print_colored "0;31" "Erreur lors de l'exécution de la commande : $*"
+        exit 1
+    fi
+}
+
+print_colored() {
+    local color_code="$1"
+    shift
+    echo -e "\033[${color_code}m$@\033[0m"
+}
 
 print_step() {
-    terminal_width=$(tput cols)
-    text_length=${#1}
-    num_equals=$(((terminal_width - text_length - 2) / 2))
-    equals=$(printf "%${num_equals}s" " " | tr ' ' '=')
-    echo -e "${BLUE}${equals} ${1} ${equals}${NC}"
+    local terminal_width=$(tput cols)
+    local text="$1"
+    local text_length=${#text}
+    local num_equals=$(((terminal_width - text_length - 2) / 2))
+    local equals=$(printf "%${num_equals}s" | tr ' ' '=')
+    print_colored "0;34" "${equals} ${text} ${equals}"
     sleep 1
 }
 
-if [ ! -t 1 ]; then
-  konsole -e "$0" "$@"
-  exit 0
-fi
+safe_append_to_file() {
+    local text="$1"
+    local file="$2"
+    safe_run echo "${text}" | sudo tee -a "${file}" > /dev/null
+}
 
-# Mettre à jour le système
-print_step "Mise à jour du système"
-sudo pacman -Syu --noconfirm
+update_system() {
+    print_step "Mise à jour du système"
+    safe_run sudo pacman -Syy --noconfirm
+}
 
-use_grub=false
+GRUB=false
 
-print_step "Vérification de l'utilisation de grub"
-if [[ -f /boot/grub/grub.cfg ]]; then
-    use_grub=true
-    echo "Création du fichier de configuration pacman..."
-    sudo mkdir -p /etc/pacman.d/hooks/
-    sudo touch /etc/pacman.d/hooks/100-grub.hook
-    sudo echo "[Trigger]
-    Type = File
-    Operation = Install
-    Operation = Upgrade
-    Operation = Remove
-    Target = usr/lib/modules/*/vmlinuz
+check_grub() {
+    print_step "Vérification de l'utilisation de GRUB"
+    if [[ -f /boot/grub/grub.cfg ]]; then
+        GRUB=true
+        safe_run sudo mkdir -p /etc/pacman.d/hooks/
+        safe_append_to_file "[Trigger]
+        Type = File
+        Operation = Install
+        Operation = Upgrade
+        Operation = Remove
+        Target = usr/lib/modules/*/vmlinuz
 
-    [Action]
-    Description = Updating grub configuration ...
-    When = PostTransaction
-    Exec = /usr/bin/grub-mkconfig -o /boot/grub/grub.cfg" | sudo tee /etc/pacman.d/hooks/100-grub.hook > /dev/null
-fi
-
-# Mettre à jour la configuration de pacman
-print_step "Optimiser pacman"
-sudo sed -i 's/^#Color/Color/' /etc/pacman.conf
-sudo sed -i 's/^#VerbosePkgLists/VerbosePkgLists/' /etc/pacman.conf
-sudo sed -i 's/^#ParallelDownloads = 5/ParallelDownloads = 5/' /etc/pacman.conf
-sudo sed -i 's/^#IgnorePkg   =/IgnorePkg   = amdvlk lib32-amdvlk/' /etc/pacman.conf
-
-print_step "Installation des headers pour les kernels installés"
-for kernel in $(ls /boot | grep vmlinuz); do
-    kernel_name=$(echo $kernel | sed -e 's/vmlinuz-//')
-    echo "Installation des en-têtes pour $kernel_name..."
-    sudo pacman -Suy --needed --noconfirm "${kernel_name}-headers"
-done
-
-echo "Tous les headers ont été installés."
-
-print_step "Augmenter la compatibilité des jeux Windows"
-echo "vm.max_map_count=16777216" | sudo tee -a /etc/sysctl.d/99-sysctl.conf
-
-# Installer yay
-print_step "Installation de yay"
-sudo pacman -S --needed --noconfirm git base-devel
-git clone https://aur.archlinux.org/yay-bin.git
-cd yay-bin || exit 1
-makepkg -si --noconfirm
-cd .. || exit 1
-rm -rf yay-bin
-
-# Alias de maintenance
-print_step "Alias maintenance"
-echo 'alias u="sudo pacman -Syy && yay -S archlinux-keyring && yay && yay -Sc && sudo pacman -Rns \$(pacman -Qdtq)"' >> $HOME/.bashrc
-source $HOME/.bashrc
-
-# Installation de pipewire (son)
-print_step "Installation de pipewire"
-sudo pacman -Rdd --noconfirm pulseaudio jack2 pipewire-media-session
-sudo pacman -S --needed --noconfirm pipewire lib32-pipewire pipewire-pulse pipewire-alsa pipewire-jack wireplumber
-
-# Détecter Nvidia ou AMD
-read -p "Avez-vous une carte graphique Nvidia ? (y/n): " nvidia
-read -p "Avez-vous une carte graphique AMD ? (y/n): " amd
-read -p "Avez-vous une carte graphique Intel ? (y/n): " intel
-
-if [[ $nvidia == "y" ]]; then
-
-    if [[ $use_grub == true ]]; then
-        echo "Activation de nvidia-drm.modeset=1..."
-        sudo sed -i 's/^GRUB_CMDLINE_LINUX_DEFAULT="loglevel=3 quiet"$/GRUB_CMDLINE_LINUX_DEFAULT="loglevel=3 quiet nvidia-drm.modeset=1"/' /etc/default/grub
-        sudo grub-mkconfig -o /boot/grub/grub.cfg
-    else
-        echo "Activation de nvidia-drm.modeset=1..."
-        sudo find /boot/loader/entries/ -type f -exec sed -i 's/^\(options .*\)$/\1 nvidia-drm.modeset=1/' {} \;
+        [Action]
+        Description = Updating grub configuration ...
+        When = PostTransaction
+        Exec = /usr/bin/grub-mkconfig -o /boot/grub/grub.cfg" "/etc/pacman.d/hooks/100-grub.hook"
     fi
+}
 
-    echo "Charger les modules Nvidia en priorité au lancement de Arch"
-    read -p "Utilisez-vous BTRFS ? (y/n):" btrfs
-    if [[ $btrfs == "y" ]]; then
-        sudo sed -i 's/MODULES=(btrfs)/MODULES=(btrfs nvidia nvidia_modeset nvidia_uvm nvidia_drm)/' /etc/mkinitcpio.conf
-    else
-        sudo sed -i 's/MODULES=()/MODULES=(nvidia nvidia_modeset nvidia_uvm nvidia_drm)/' /etc/mkinitcpio.conf
+optimize_pacman() {
+    print_step "Optimisation de pacman"
+    safe_run sudo sed -i 's/^#Color/Color/' /etc/pacman.conf
+    safe_run sudo sed -i 's/^#VerbosePkgLists/VerbosePkgLists/' /etc/pacman.conf
+    safe_run sudo sed -i 's/^#ParallelDownloads = 5/ParallelDownloads = 5/' /etc/pacman.conf
+    safe_run sudo sed -i 's/^#IgnorePkg   =/IgnorePkg   = amdvlk lib32-amdvlk/' /etc/pacman.conf
+}
+
+install_kernel_headers() {
+    print_step "Installation des headers pour les kernels installés"
+    for kernel in $(ls /boot | grep vmlinuz); do
+        local kernel_name=$(echo $kernel | sed -e 's/vmlinuz-//')
+        safe_run sudo pacman -S --needed --noconfirm "${kernel_name}-headers"
+    done
+}
+
+increase_vm_max_map_count() {
+    print_step "Augmenter la compatibilité des jeux Windows"
+    safe_append_to_file "vm.max_map_count=16777216" "/etc/sysctl.d/99-sysctl.conf"
+}
+
+install_yay() {
+    print_step "Installation de yay"
+    if ! command -v yay &> /dev/null; then
+        safe_run sudo pacman -S --needed --noconfirm git base-devel
+        safe_run git clone https://aur.archlinux.org/yay-bin.git
+        safe_run cd yay-bin
+        safe_run makepkg -si --noconfirm
+        safe_run cd ..
+        safe_run rm -rf yay-bin
     fi
+}
 
-    print_step "Installation des pilotes NVIDIA"
-    yay -S --needed --noconfirm nvidia-dkms nvidia-utils lib32-nvidia-utils nvidia-settings vulkan-icd-loader lib32-vulkan-icd-loader cuda
+configure_maintenance_alias() {
+    print_step "Configuration de l'alias de maintenance"
+    safe_append_to_file "alias maintenance='sudo pacman -Suy --needed --noconfirm && yay -Suy --needed --noconfirm && flatpak update && fwupdmgr update'" "${HOME}/.bashrc"
+}
 
-    echo "Configuration du module mkinitcpio..."
-    sudo mkdir -p /etc/pacman.d/hooks/
-    echo "[Trigger]
-    Operation=Install
-    Operation=Upgrade
-    Operation=Remove
-    Type=Package
-    Target = usr/lib/modules/*/vmlinuz
-    Target=nvidia-dkms
-    Target=nvidia
-    Target=nvidia-lts
-    Target=nvidia-dkms
-    Target=nvidia-beta
-    Target=nvidia-340xx
-    Target=nvidia-390xx
-    Target=dkms
+install_pipewire() {
+    print_step "Installation de pipewire"
+    local packages=("pulseaudio" "jack2" "pipewire-media-session")
+    for package in "${packages[@]}"; do
+        if pacman -Qs "${package}" > /dev/null; then
+            safe_run sudo pacman -Rdd --noconfirm "${package}"
+        fi
+    done
+    safe_run sudo pacman -S --needed --noconfirm pipewire lib32-pipewire pipewire-pulse pipewire-alsa pipewire-jack wireplumber
+}
 
-    [Action]
-    Description=Update NVIDIA module in initcpio
-    Depends=mkinitcpio
-    When=PostTransaction
-    NeedsTargets
-    Exec=/bin/sh -c 'while read -r trg; do case $trg in linux) exit 0; esac; done; /usr/bin/mkinitcpio -P'" | sudo tee /etc/pacman.d/hooks/nvidia.hook > /dev/null
-    echo "Configuration terminée pour NVIDIA."
-fi
+NVIDIA=false
+AMD=false
+INTEL=false
 
-if [[ $amd == "y" ]]; then
-    print_step "Installation des pilotes AMD"
-    yay -S --needed --noconfirm mesa lib32-mesa vulkan-radeon lib32-vulkan-radeon vulkan-icd-loader lib32-vulkan-icd-loader
-    echo "Configuration terminée pour AMD."
-fi
-
-if [[ $intel == "y" ]]; then
-    print_step "Installation des pilotes Intel"
-    yay -S --needed --noconfirm mesa lib32-mesa vulkan-intel lib32-vulkan-intel vulkan-icd-loader lib32-vulkan-icd-loader
-    echo "Configuration terminée pour Intel."
-fi
-
-# Installation du shell Fish
-print_step "Installation de Fish"
-read -p "Voulez-vous installer le shell Fish ? (y/n): " fish
-if [[ $fish == "y" ]]; then
-    yay -S --needed --noconfirm fish
-    if [[ $SHELL != "/usr/bin/fish" ]]; then
-        chsh -s /usr/bin/fish
+detect_graphics_card() {
+    print_step "Choix de la carte graphique"
+    if safe_ask "Voulez-vous installer les pilotes NVIDIA ?"; then
+        NVIDIA=true
     fi
-    fish -c "fish_update_completions; set -U fish_greeting"
-    echo 'alias u="sudo pacman -Syy && yay -S archlinux-keyring && yay && yay -Sc && sudo pacman -Rns \$(pacman -Qdtq)"' >> $HOME/.config/fish/config.fish
-fi
-
-# Installation des packets indispensables
-print_step "Installation des packets indispensables"
-yay -S --needed --noconfirm powerdevil reflector-simple rebuild-detector mkinitcpio-firmware xdg-desktop-portal neofetch power-profiles-daemon hunspell-fr p7zip unrar ttf-liberation noto-fonts noto-fonts-emoji ntfs-3g fuse2 bash-completion xdg-desktop-portal-kde xdg-desktop-portal-gtk okular print-manager gwenview spectacle partitionmanager ffmpegthumbs qt6-wayland kdeplasma-addons vlc
-
-# Installation des drivers manettes
-print_step "Installation des drivers manettes (Xbox, etc...)"
-read -p "Voulez-vous installer les drivers pour les manettes ? (y/n): " gamepad
-if [[ $gamepad == "y" ]]; then
-    yay -S --needed --noconfirm xpadneo-dkms
-fi
-
-# Activation du bluetooth
-print_step "Activation du bluetooth"
-read -p "Voulez-vous installer le support pour Bluetooth ? (y/n): " bluetooth
-if [[ $bluetooth == "y" ]]; then
-    yay -S --needed --noconfirm bluez bluez-utils bluez-plugins
-    sudo systemctl enable --now bluetooth.service
-fi
-
-# Installation des drivers pour les imprimantes
-print_step "Installation du support pour les imprimantes"
-read -p "Voulez-vous installer le support pour les imprimantes ? (y/n): " printer
-if [[ $printer == "y" ]]; then
-    yay -S --needed --noconfirm ghostscript gsfonts cups cups-filters cups-pdf system-config-printer avahi
-    sudo systemctl enable --now avahi-daemon
-    sudo systemctl enable --now cups
-fi
-
-# Installation de flatpak
-print_step "Installation de Flatpak"
-read -p "Voulez-vous installer Flatpak (recommander)? (y/n): " flatpak
-if [[ $flatpak == "y" ]]; then
-    yay -S --needed --noconfirm flatpak flatpak-kcm
-    flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
-    flatpak install flathub com.github.tchx84.Flatseal
-    flatpak install flathub io.github.giantpinkrobots.flatsweep
-fi
-
-# Installation des logiciels de tiers
-print_step "Installation de logiciels de base"
-read -p "Voulez-vous installer des logiciels divers ? (y/n): " software
-if [[ $software == "y" ]]; then
-    read -p "Voulez-vous installer Discord ? (y/n): " discord
-
-    if [[ $flatpak == "y" ]]; then
-        read -p "Voulez-vous installer OBS Studio (flatpak) ? (y/n): " obs
-    else
-        read -p "Voulez-vous installer OBS Studio ? (y/n): " obs
+    if safe_ask "Voulez-vous installer les pilotes AMD ?"; then
+        AMD=true
     fi
-
-    read -p "Voulez-vous installer Kdenlive ? (y/n): " kdenlive
-    read -p "Voulez-vous installer LibreOffice ? (y/n): " libreoffice
-    read -p "Voulez-vous installer GIMP ? (y/n): " gimp
-    read -p "Voulez-vous installer Steam ? (y/n): " steam
-    read -p "Voulez-vous installer Lutris ? (y/n): " lutris
-
-    software_list=()
-    if [[ $discord == "y" ]]; then
-        software_list+=("discord")
+    if safe_ask "Voulez-vous installer les pilotes Intel ?"; then
+        INTEL=true
     fi
-    if [[ $kdenlive == "y" ]]; then
-        software_list+=("kdenlive")
-    fi
-    if [[ $libreoffice == "y" ]]; then
-        software_list+=("libreoffice-fresh libreoffice-fresh-fr")
-    fi
-    if [[ $gimp == "y" ]]; then
-        software_list+=("gimp")
-    fi
+}
 
-    yay -S --needed --noconfirm "${software_list[@]}"
-
-    if [[ $obs == "y" ]]; then
-        if [[ $flatpak == "y" ]]; then
-            flatpak install flathub com.obsproject.Studio
+install_nvidia_drivers() {
+    if [[ "${NVIDIA}" == true ]]; then
+        print_step "Installation des pilotes NVIDIA"
+        if [[ "${GRUB}" == true ]]; then
+            safe_run sudo sed -i 's/^GRUB_CMDLINE_LINUX_DEFAULT="loglevel=3 quiet"$/GRUB_CMDLINE_LINUX_DEFAULT="loglevel=3 quiet nvidia-drm.modeset=1"/' /etc/default/grub
+            safe_run sudo grub-mkconfig -o /boot/grub/grub.cfg
         else
-            yay -S --needed --noconfirm obs-studio
+            safe_run sudo sed -i '/^options root=/ s/$/ nvidia-drm.modeset=1/' /boot/loader/entries/*.conf
+        fi
+
+        print_step "Charger en priorité les pilotes NVIDIA"
+        if [[ $(cat /etc/mkinitcpio.conf | grep -c "MODULES=(btrfs)") -eq 1 ]]; then
+            safe_run sudo sed -i 's/MODULES=(btrfs)/MODULES=(btrfs nvidia nvidia_modeset nvidia_uvm nvidia_drm)/' /etc/mkinitcpio.conf
+        else
+            safe_run sudo sed -i 's/MODULES=()/MODULES=(nvidia nvidia_modeset nvidia_uvm nvidia_drm)/' /etc/mkinitcpio.conf
+        fi
+
+        print_step "Installation des pilotes NVIDIA"
+        safe_run yay -S --needed --noconfirm nvidia-dkms nvidia-utils lib32-nvidia-utils nvidia-settings vulkan-icd-loader lib32-vulkan-icd-loader cuda
+
+        safe_run sudo mkdir -p /etc/pacman.d/hooks/
+        safe_append_to_file "[Trigger]
+        Operation=Install
+        Operation=Upgrade
+        Operation=Remove
+        Type=Package
+        Target = usr/lib/modules/*/vmlinuz
+        Target=nvidia-dkms
+        Target=nvidia
+        Target=nvidia-lts
+        Target=nvidia-dkms
+        Target=nvidia-beta
+        Target=nvidia-340xx
+        Target=nvidia-390xx
+        Target=dkms
+
+        [Action]
+        Description=Update NVIDIA module in initcpio
+        Depends=mkinitcpio
+        When=PostTransaction
+        NeedsTargets
+        Exec=/bin/sh -c 'while read -r trg; do case $trg in linux) exit 0; esac; done; /usr/bin/mkinitcpio -P'" "/etc/pacman.d/hooks/nvidia.hook"
+    fi
+}
+
+install_amd_drivers() {
+    if [[ "${AMD}" == true ]]; then
+        print_step "Installation des pilotes AMD"
+        safe_run yay -S --needed --noconfirm mesa lib32-mesa vulkan-radeon lib32-vulkan-radeon vulkan-icd-loader lib32-vulkan-icd-loader
+    fi
+}
+
+install_intel_drivers() {
+    if [[ "${INTEL}" == true ]]; then
+        print_step "Installation des pilotes Intel"
+        safe_run yay -S --needed --noconfirm mesa lib32-mesa vulkan-intel lib32-vulkan-intel vulkan-icd-loader lib32-vulkan-icd-loader
+    fi
+}
+
+install_fish_shell() {
+    print_step "Installation de fish"
+    if ! command -v fish &> /dev/null; then
+        if safe_ask "Voulez-vous installer fish ?"; then
+            safe_run yay -S --needed --noconfirm fish
+            chsh -s $(which fish)
+            safe_run fish -c "fish_update_completions; set -U fish_greeting"
         fi
     fi
+}
+
+install_essential_packages() {
+    print_step "Installation des paquets essentiels"
+    safe_run yay -S --needed --noconfirm powerdevil reflector-simple rebuild-detector mkinitcpio-firmware xdg-desktop-portal neofetch power-profiles-daemon hunspell-fr p7zip unrar ttf-liberation noto-fonts noto-fonts-emoji ntfs-3g fuse2 bash-completion xdg-desktop-portal-kde xdg-desktop-portal-gtk okular print-manager gwenview spectacle partitionmanager ffmpegthumbs qt6-wayland kdeplasma-addons vlc
+}
+
+install_gamepad_drivers() {
+    print_step "Installation des pilotes de manette de jeu"
+    if safe_ask "Voulez-vous installer les pilotes de manette de jeu ?"; then
+        safe_run yay -S --needed --noconfirm xpadneo-dkms
+    fi
+}
+
+activate_bluetooth() {
+    print_step "Activation du bluetooth"
+    if safe_ask "Voulez-vous activer le bluetooth ?"; then
+        safe_run yay -S --needed --noconfirm bluez bluez-utils bluez-plugins
+        safe_run systemctl enable --now bluetooth.service
+    fi
+}
+
+install_printer_support() {
+    print_step "Installation du support d'imprimante"
+    if safe_ask "Voulez-vous installer le support d'imprimante ?"; then
+        safe_run yay -S --needed --noconfirm ghostscript gsfonts cups cups-filters cups-pdf system-config-printer avahi
+        if safe_ask "Avez-vous une imprimente HP ?"; then
+            safe_run yay -S --needed --noconfirm python-pyqt5 hplip 
+        fi
+        safe_run sudo systemctl enable --now avahi-daemon
+        safe_run systemctl enable --now cups
+    fi
+}
+
+install_flatpak() {
+    print_step "Installation de flatpak"
+    if ! command -v flatpak &> /dev/null; then
+        safe_run yay -S --needed --noconfirm flatpak flatpak-kcm
+        safe_run flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+        safe_run flatpak install flathub com.github.tchx84.Flatseal
+        safe_run flatpak install flathub io.github.giantpinkrobots.flatsweep
+    fi
+}
+
+install_misc_software() {
+    print_step "Installation de logiciels divers"
+    if safe_ask "Voulez-vous installer des logiciels divers ?"; then
+        safe_ask "Voulez-vous installer Discord ?" && safe_run yay -S --needed --noconfirm discord
+        safe_ask "Voulez-vous installer Spotify ?" && safe_run yay -S --needed --noconfirm spotify
+        safe_ask "Voulez-vous installer Steam ?" && safe_run yay -S --needed --noconfirm steam
+        if safe_ask "Voulez-vous installer Obs ?"; then
+            if safe_ask "Voulez-vous installer Obs en flatpak ?"; then
+                safe_run flatpak install flathub com.obsproject.Studio
+            else
+                safe_run yay -S --needed --noconfirm obs-studio
+            fi
+        fi
+        safe_ask "Voulez-vous installer kdenlive ?" && safe_run yay -S --needed --noconfirm kdenlive
+        safe_ask "Voulez-vous installer libreoffice ?" && safe_run yay -S --needed --noconfirm libreoffice-fresh libreoffice-fresh-fr
+        safe_ask "Voulez-vous installer gimp ?" && safe_run yay -S --needed --noconfirm gimp
+    fi
+}
+
+install_firewall() {
+    print_step "Installation du pare-feu"
+    safe_run yay -S --needed --noconfirm gufw
+    safe_run sudo systemctl enable --now ufw.service
+}
+
+if [[ $(date '+%m%d') == "0401" ]]; then
+    if ! command -v lolcat &> /dev/null; then
+        print_step "Installation de lolcat pour le 1er avril !"
+        safe_run yay -S --needed --noconfirm lolcat
+    fi
+    exec > >(lolcat) 2> >(lolcat >&2)
 fi
 
-# Installation et configuration du pare-feu
-print_step "Installation du pare-feu"
-sudo pacman -S --needed --noconfirm ufw
-sudo systemctl enable --now ufw.service
+main() {
+    print_step "Début du script"
 
-sudo sed -i 's/^IgnorePkg   = amdvlk lib32-amdvlk/#IgnorePkg   =/' /etc/pacman.conf
+    update_system
+    check_grub
+    optimize_pacman
+    install_kernel_headers
+    increase_vm_max_map_count
+    install_yay
+    configure_maintenance_alias
+    install_pipewire
+    detect_graphics_card
+    install_nvidia_drivers
+    install_amd_drivers
+    install_intel_drivers
+    install_fish_shell
+    install_essential_packages
+    install_gamepad_drivers
+    activate_bluetooth
+    install_printer_support
+    install_flatpak
+    install_misc_software
+    install_firewall
+    print_step "Le script est terminé. N'oubliez pas de redémarrer votre système."
+}
 
-print_step "Le script est terminé. N'oubliez pas de redémarrer votre système."
+main
