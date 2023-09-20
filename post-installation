@@ -137,7 +137,7 @@ install_nvidia_drivers() {
             safe_run sudo sed -i 's/^GRUB_CMDLINE_LINUX_DEFAULT="loglevel=3 quiet"$/GRUB_CMDLINE_LINUX_DEFAULT="loglevel=3 quiet nvidia-drm.modeset=1"/' /etc/default/grub
             safe_run sudo grub-mkconfig -o /boot/grub/grub.cfg
         else
-            local directory="/etc/loader/entries/"
+            local directory="/boot/loader/entries/"
             for file in "${directory}"*.conf; do
                 if grep -q "options root=" "$file" && ! grep -q "nvidia-drm.modeset=1" "$file"; then
                     safe_run sed -i '/^options root=/ s/.*/& nvidia-drm.modeset=1/' "$file"
