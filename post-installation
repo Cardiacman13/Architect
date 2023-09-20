@@ -3,11 +3,6 @@
 set -euo pipefail
 sudo -v
 
-if [ ! -t 1 ]; then
-  konsole -e "$0" "$@"
-  exit 0
-fi
-
 safe_run() {
     if ! "$@"; then
         print_colored "0;31" "Erreur lors de l'exécution de la commande : $*"
@@ -146,7 +141,7 @@ install_nvidia_drivers() {
         fi
 
         print_step "Forcer le chargement des modules NVIDIA"
-        if [[ $(lsblk -f | grep / | awk '{print $2}') == "btrfs" ]]; then
+        if [[ grep -Fxq "MODULES=(btrfs)" /etc/mkinitcpio.conf ]]; then
             safe_run sudo sed -i 's/MODULES=(btrfs)/MODULES=(btrfs nvidia nvidia_modeset nvidia_uvm nvidia_drm)/' /etc/mkinitcpio.conf
         else
             safe_run sudo sed -i 's/MODULES=()/MODULES=(nvidia nvidia_modeset nvidia_uvm nvidia_drm)/' /etc/mkinitcpio.conf
@@ -295,4 +290,8 @@ main() {
     print_step "Le script est terminé. N'oubliez pas de redémarrer votre système."
 }
 
-main "$@"
+if [[ -n "${KONSOLE_DBUS_SESSION}" ]]; then
+    main "$@" | konsole --hold --workdir "${PWD}"
+    exit 0
+fi
+
