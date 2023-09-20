@@ -98,7 +98,7 @@ configure_maintenance_alias() {
 
 install_pipewire() {
     print_step "Installation de pipewire"
-    safe_run sudo pacman -Rdd --noconfirm pulseaudio jack2 pipewire-media-session
+    sudo pacman -Rdd --noconfirm pulseaudio jack2 pipewire-media-session
     safe_run sudo pacman -Suy --needed --noconfirm pipewire pipewire-alsa pipewire-jack pipewire-pulse
 }
 
@@ -137,7 +137,12 @@ install_nvidia_drivers() {
             safe_run sudo sed -i 's/^GRUB_CMDLINE_LINUX_DEFAULT="loglevel=3 quiet"$/GRUB_CMDLINE_LINUX_DEFAULT="loglevel=3 quiet nvidia-drm.modeset=1"/' /etc/default/grub
             safe_run sudo grub-mkconfig -o /boot/grub/grub.cfg
         else
-            safe_run sudo find /boot/loader/entries/ -type f -exec sed -i 's/^\(options .*\)$/\1 nvidia-drm.modeset=1/' {} \;
+            local directory="/etc/loader/entries/"
+            for file in "${directory}"*.conf; do
+                if [[ grep -q "options root=" "$file" && ! grep -q "nvidia-drm.modeset=1" "$file" ]]; then
+                    safe_run sed -i '/^options root=/ s/.*/& nvidia-drm.modeset=1/' "$file"
+                fi
+            done
         fi
 
         print_step "Forcer le chargement des modules NVIDIA"
