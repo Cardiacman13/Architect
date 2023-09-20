@@ -17,10 +17,30 @@ if ! command -v sudo &> /dev/null; then
     exit 1
 fi
 
+safe_ask() {
+    local question="$1"
+    local answer
+    read -p "${question} (y/n): " answer
+    if [[ "${answer}" == "y" ]]; then
+        return 0
+    else
+        return 1
+    fi
+}
+
+SILENT=false
+
 safe_run() {
-    if ! "$@"; then
-        print_colored "0;31" "Erreur lors de l'exécution de la commande : $*"
-        exit 1
+    if [[ "$SILENT" == "true" ]]; then
+        if ! "$@" > /dev/null 2>&1; then
+            print_colored "0;31" "Erreur lors de l'exécution de la commande : $*"
+            exit 1
+        fi
+    else
+        if ! "$@"; then
+            print_colored "0;31" "Erreur lors de l'exécution de la commande : $*"
+            exit 1
+        fi
     fi
 }
 
@@ -48,7 +68,7 @@ safe_append_to_file() {
 
 update_system() {
     print_step "Mise à jour du système"
-    safe_run sudo pacman -Syu --noconfirm
+    safe_run sudo pacman -Syy --noconfirm
 }
 
 grub=false
@@ -84,7 +104,7 @@ install_kernel_headers() {
     print_step "Installation des headers pour les kernels installés"
     for kernel in $(ls /boot | grep vmlinuz); do
         local kernel_name=$(echo $kernel | sed -e 's/vmlinuz-//')
-        safe_run sudo pacman -Suy --needed --noconfirm "${kernel_name}-headers"
+        safe_run sudo pacman -S --needed --noconfirm "${kernel_name}-headers"
     done
 }
 
@@ -115,21 +135,10 @@ install_pipewire() {
     local packages=("pulseaudio" "jack2" "pipewire-media-session")
     for package in "${packages[@]}"; do
         if pacman -Qs "${package}" > /dev/null; then
-            sudo pacman -Rdd --noconfirm "${package}"
+            safe_run sudo pacman -Rdd --noconfirm "${package}"
         fi
     done
-    safe_run sudo pacman -Suy --needed --noconfirm pipewire pipewire-alsa pipewire-jack pipewire-pulse
-}
-
-safe_ask() {
-    local question="$1"
-    local answer
-    read -p "${question} (y/n): " answer
-    if [[ "${answer}" == "y" ]]; then
-        return 0
-    else
-        return 1
-    fi
+    safe_run sudo pacman -S --needed --noconfirm pipewire lib32-pipewire pipewire-pulse pipewire-alsa pipewire-jack wireplumber
 }
 
 nvidia=false
@@ -137,7 +146,7 @@ amd=false
 intel=false
 
 detect_graphics_card() {
-    print_step "Détection de la carte graphique"
+    print_step "Choix de la carte graphique"
     if safe_ask "Voulez-vous installer les pilotes NVIDIA ?"; then
         nvidia=true
     fi
@@ -159,7 +168,7 @@ install_nvidia_drivers() {
             safe_run sudo sed -i '/^options root=/ s/$/ nvidia-drm.modeset=1/' /boot/loader/entries/*.conf
         fi
 
-        print_step "Forcer le chargement des modules NVIDIA"
+        print_step "Charger en priorité les pilotes NVIDIA"
         if [[ $(cat /etc/mkinitcpio.conf | grep -c "MODULES=(btrfs)") -eq 1 ]]; then
             safe_run sudo sed -i 's/MODULES=(btrfs)/MODULES=(btrfs nvidia nvidia_modeset nvidia_uvm nvidia_drm)/' /etc/mkinitcpio.conf
         else
@@ -256,8 +265,8 @@ install_flatpak() {
     if ! command -v flatpak &> /dev/null; then
         safe_run yay -S --needed --noconfirm flatpak flatpak-kcm
         safe_run flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
-        flatpak install flathub com.github.tchx84.Flatseal
-        flatpak install flathub io.github.giantpinkrobots.flatsweep
+        safe_run flatpak install flathub com.github.tchx84.Flatseal
+        safe_run flatpak install flathub io.github.giantpinkrobots.flatsweep
     fi
 }
 
@@ -286,7 +295,20 @@ install_firewall() {
     safe_run sudo systemctl enable --now ufw.service
 }
 
+if [[ $(date '+%m%d') == "0401" ]]; then
+    if ! command -v lolcat &> /dev/null; then
+        print_step "Installation de lolcat pour le 1er avril !"
+        safe_run yay -S --needed --noconfirm lolcat
+    fi
+    # Redirige la sortie standard et d'erreur vers lolcat
+    exec > >(lolcat) 2> >(lolcat >&2)
+fi
+
 main() {
+    print_step "Début du script"
+
+    safe_ask "Voulez-vous exécuter le script en mode silencieux ?" && SILENT=true
+
     update_system
     check_grub
     optimize_pacman
