@@ -3,6 +3,16 @@
 set -euo pipefail
 sudo -v
 
+if [[ $(id -u) -eq 0 ]]; then
+    print_colored "0;31" "Ce script ne doit pas être exécuté en tant que root"
+    exit 1
+fi
+
+if ! command -v sudo &> /dev/null; then
+    print_colored "0;31" "Veuillez installer sudo"
+    exit 1
+fi
+
 safe_run() {
     if ! "$@"; then
         print_colored "0;31" "Erreur lors de l'exécution de la commande : $*"
@@ -234,6 +244,9 @@ install_printer_support() {
     print_step "Installation du support d'imprimante"
     if safe_ask "Voulez-vous installer le support d'imprimante ?"; then
         safe_run yay -S --needed --noconfirm ghostscript gsfonts cups cups-filters cups-pdf system-config-printer avahi
+        if safe_ask "Avez-vous une imprimente HP ?"; then
+            safe_run yay -S --needed --noconfirm python-pyqt5 hplip 
+        fi
         safe_run sudo systemctl enable --now avahi-daemon
         safe_run systemctl enable --now cups
     fi
@@ -270,10 +283,8 @@ install_misc_software() {
 
 install_firewall() {
     print_step "Installation du pare-feu"
-    if safe_ask "Voulez-vous installer le pare-feu ?"; then
-        safe_run yay -S --needed --noconfirm gufw
-        safe_run sudo systemctl enable --now ufw.service
-    fi
+    safe_run yay -S --needed --noconfirm gufw
+    safe_run sudo systemctl enable --now ufw.service
 }
 
 main() {
