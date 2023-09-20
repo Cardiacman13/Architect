@@ -255,6 +255,7 @@ install_misc_software() {
         safe_ask "Voulez-vous installer kdenlive ?" && safe_run yay -S --needed --noconfirm kdenlive
         safe_ask "Voulez-vous installer libreoffice ?" && safe_run yay -S --needed --noconfirm libreoffice-fresh libreoffice-fresh-fr
         safe_ask "Voulez-vous installer gimp ?" && safe_run yay -S --needed --noconfirm gimp
+    fi
 }
 
 install_firewall() {
