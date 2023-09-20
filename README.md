@@ -75,7 +75,7 @@ Télécharger l’ISO : [**Arch Linux - Downloads**](https://archlinux.org/downl
     #NoProgressBar
     #CheckSpace
     VerbosePkgLists <- 
-    ParallelDownloads = 8 <-
+    ParallelDownloads = 5 <-
     ```
 3. Installation de yay
     [Yay](https://github.com/Jguer/yay) est un outil pratique pour gérer l'installation et la mise à jour de logiciels sur les systèmes basés sur Arch Linux.
