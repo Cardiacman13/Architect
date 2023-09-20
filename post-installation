@@ -256,8 +256,8 @@ install_flatpak() {
     if ! command -v flatpak &> /dev/null; then
         safe_run yay -S --needed --noconfirm flatpak flatpak-kcm
         safe_run flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
-        safe_run flatpak install flathub com.github.tchx84.Flatseal
-        safe_run flatpak install flathub io.github.giantpinkrobots.flatsweep
+        safe_run flatpak install -y flathub com.github.tchx84.Flatseal
+        safe_run flatpak install -y flathub io.github.giantpinkrobots.flatsweep
     fi
 }
 
@@ -269,7 +269,7 @@ install_misc_software() {
         safe_ask "Voulez-vous installer Steam ?" && safe_run yay -S --needed --noconfirm steam
         if safe_ask "Voulez-vous installer Obs ?"; then
             if safe_ask "Voulez-vous installer Obs en flatpak ?"; then
-                safe_run flatpak install flathub com.obsproject.Studio
+                safe_run flatpak install -y flathub com.obsproject.Studio
             else
                 safe_run yay -S --needed --noconfirm obs-studio
             fi
