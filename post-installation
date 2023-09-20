@@ -141,7 +141,7 @@ install_nvidia_drivers() {
         fi
 
         print_step "Forcer le chargement des modules NVIDIA"
-        if [[ $(grep -Fxq "MODULES=(btrfs)" /etc/mkinitcpio.conf) ]]; then
+        if [[ $(cat /etc/mkinitcpio.conf | grep -c "MODULES=(btrfs)") -eq 1 ]]; then
             safe_run sudo sed -i 's/MODULES=(btrfs)/MODULES=(btrfs nvidia nvidia_modeset nvidia_uvm nvidia_drm)/' /etc/mkinitcpio.conf
         else
             safe_run sudo sed -i 's/MODULES=()/MODULES=(nvidia nvidia_modeset nvidia_uvm nvidia_drm)/' /etc/mkinitcpio.conf
