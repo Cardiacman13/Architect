@@ -242,7 +242,7 @@ activate_bluetooth() {
 install_printer_support() {
     print_step "Installation du support d'imprimante"
     if safe_ask "Voulez-vous installer le support d'imprimante ?"; then
-        safe_run yay -S --needed --noconfirm ghostscript gsfonts cups cups-filters cups-pdf system-config-printer avahi
+        safe_run yay -S --needed --noconfirm ghostscript gsfonts cups cups-filters cups-pdf system-config-printer avahi foomatic-db-engine foomatic-db foomatic-db-ppds foomatic-db-nonfree foomatic-db-nonfree-ppds gutenprint foomatic-db-gutenprint-ppds
         if safe_ask "Avez-vous une imprimente HP ?"; then
             safe_run yay -S --needed --noconfirm python-pyqt5 hplip 
         fi
