@@ -127,8 +127,11 @@ Ne fonctionne que si l'on a scrupuleusement respecté mes choix dans archinstall
     ```bash
     MODULES=(nvidia nvidia_modeset nvidia_uvm nvidia_drm)
     ```
-    
-4. **hook mkinitcpio** :
+    si btrfs :
+    ```bash
+    MODULES=(btrfs nvidia nvidia_modeset nvidia_uvm nvidia_drm)
+    ```
+5. **hook mkinitcpio** :
     ```bash
     sudo mkdir /etc/pacman.d/hooks/
     kate /etc/pacman.d/hooks/nvidia.hook
