@@ -139,7 +139,7 @@ install_nvidia_drivers() {
         else
             local directory="/etc/loader/entries/"
             for file in "${directory}"*.conf; do
-                if [[ grep -q "options root=" "$file" && ! grep -q "nvidia-drm.modeset=1" "$file" ]]; then
+                if grep -q "options root=" "$file" && ! grep -q "nvidia-drm.modeset=1" "$file"; then
                     safe_run sed -i '/^options root=/ s/.*/& nvidia-drm.modeset=1/' "$file"
                 fi
             done
