@@ -53,7 +53,7 @@ Télécharger l’ISO : [**Arch Linux - Downloads**](https://archlinux.org/downl
 
 ## POST INSTALLATION
 
-**Script post installation ALPHA :**
+**Script post installation ALPHA KDE uniquement :**
 
    ```bash
    sudo pacman -Sy git
