@@ -118,7 +118,7 @@ install_yay() {
 
 configure_maintenance_alias() {
     print_step "Configuration de l'alias de maintenance"
-    safe_append_to_file "alias maintenance='sudo pacman -Syy --noconfirm && yay && flatpak update'" "${HOME}/.bashrc"
+    safe_append_to_file "alias u='sudo pacman -Syy && yay -S archlinux-keyring && yay && yay -Sc && sudo pacman -Rns $(pacman -Qdtq)'" "${HOME}/.bashrc"
 }
 
 install_pipewire() {
