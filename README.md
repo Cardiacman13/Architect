@@ -59,9 +59,16 @@ Télécharger l’ISO : [**Arch Linux - Downloads**](https://archlinux.org/downl
    sudo pacman -Sy git
    git clone https://github.com/Cardiacman13/Tuto-Arch.git
    cd Tuto-Arch
+   ./post-installation-KDE
+   ```
+**Script post installation ALPHA AUTRES DE :**
+
+   ```bash
+   sudo pacman -Sy git
+   git clone https://github.com/Cardiacman13/Tuto-Arch.git
+   cd Tuto-Arch
    ./post-installation
    ```
-
 
 ### Optimiser pacman
 
