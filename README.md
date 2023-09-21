@@ -1,6 +1,6 @@
 # TUTO ARCH LINUX 
 
-**Dernière modification du tuto le : 19/09/2023**
+**Dernière modification du tuto le : 21/09/2023**
 
 ## Fonctionnement du tuto
 
@@ -17,7 +17,9 @@ Ce tuto est optimisé pour les choix suivant :
 - systemd-boot
 - Ext4
 - KDE
-- Une Arch pure (incompatible avec Garuda, EndeavourOS, Manjaro…) Néanmoins, si vous savez ce que vous faites, les modifications pour d’autres choix sont minimes.
+- Une Arch pure (incompatible avec Garuda, EndeavourOS, Manjaro…) 
+
+Néanmoins, si vous savez ce que vous faites, les modifications pour d’autres choix sont minimes.
 
 Télécharger l’ISO : [**Arch Linux - Downloads**](https://archlinux.org/download/)
 
