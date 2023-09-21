@@ -283,7 +283,7 @@ install_misc_software() {
 
 install_firewall() {
     print_step "Installation du pare-feu"
-    safe_run yay -S --needed --noconfirm gufw
+    safe_run yay -S --needed --noconfirm ufw
     safe_run sudo systemctl enable --now ufw.service
 }
 
