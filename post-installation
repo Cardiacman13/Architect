@@ -58,14 +58,13 @@ safe_append_to_file() {
 }
 
 update_system() {
-    print_step "Mise à jour du système"
+    print_step "Mise à jour des dépots"
     safe_run sudo pacman -Syy --noconfirm
 }
 
 GRUB=false
 
 check_grub() {
-    print_step "Vérification de l'utilisation de GRUB"
     if [[ -f /boot/grub/grub.cfg ]]; then
         GRUB=true
         safe_run sudo mkdir -p /etc/pacman.d/hooks/
@@ -137,7 +136,7 @@ AMD=false
 INTEL=false
 
 detect_graphics_card() {
-    print_step "Choix de la carte graphique"
+    print_step "Choix de la/les carte(s) graphique(s)"
     if safe_ask "Voulez-vous installer les pilotes NVIDIA ?"; then
         NVIDIA=true
     fi
@@ -222,7 +221,7 @@ install_essential_packages() {
 
 install_gamepad_drivers() {
     print_step "Installation des pilotes de manette de jeu"
-    if safe_ask "Voulez-vous installer les pilotes de manette de jeu ?"; then
+    if safe_ask "Voulez-vous installer les pilotes de manette de jeu (xpadneo) ?"; then
         safe_run yay -S --needed --noconfirm xpadneo-dkms
     fi
 }
