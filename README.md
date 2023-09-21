@@ -287,7 +287,7 @@ yay -S goverlay --needed
 - [Fish](https://fishshell.com/) le shell interactif convivial, est un shell de ligne de commande conçu pour être interactif et convivial. Voir également [ArchWiki](https://wiki.archlinux.org/title/fish) sur le sujet.
 Installer fish.
     ```bash
-    yay -S fish                       # 1. Installer Fish
+    yay -S fish man-db man-pages      # 1. Installer Fish
     chsh -s /usr/bin/fish             # 2. Le mettre par défaut.
     fish                              # 3. Lancez fish ou reboot et il sera par défaut.
     fish_update_completions           # 4. Mettre à jour les completions.
