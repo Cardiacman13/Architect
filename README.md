@@ -53,7 +53,7 @@ Télécharger l’ISO : [**Arch Linux - Downloads**](https://archlinux.org/downl
 
 ## POST INSTALLATION
 
-**Script post installation ALPHA KDE uniquement :**
+**Script post installation BETA KDE uniquement :**
 
    ```bash
    sudo pacman -Sy git
@@ -61,7 +61,7 @@ Télécharger l’ISO : [**Arch Linux - Downloads**](https://archlinux.org/downl
    cd Tuto-Arch
    ./post-installation-KDE
    ```
-**Script post installation ALPHA AUTRES DE :**
+**Script post installation BETA AUTRES DE :**
 
    ```bash
    sudo pacman -Sy git
@@ -249,7 +249,7 @@ yay -S steam
     lib32-gtk3 gst-plugins-base-libs lib32-gst-plugins-base-libs vulkan-icd-loader lib32-vulkan-icd-loader
     ```
 
-### Support manettes Xbox
+### Support manettes avancé 
 
 Pilote Linux avancé pour la manette sans fil Xbox One (livrée avec la Xbox One S) Et tout un tas d’autres manettes ([ce lien](https://github.com/atar-axis/xpadneo))
 
