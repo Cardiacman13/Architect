@@ -53,8 +53,8 @@ Télécharger l’ISO : [**Arch Linux - Downloads**](https://archlinux.org/downl
 
 ## POST INSTALLATION
 
-**Script post installation BETA KDE uniquement :**
-
+**Script post installation BETA KDE uniquement :** 
+Script à exécuter sur une installation propre, fraichement installée avec archinstall
    ```bash
    sudo pacman -Sy git
    git clone https://github.com/Cardiacman13/Tuto-Arch.git
