@@ -212,7 +212,7 @@ install_fish_shell() {
     print_step "Installation de fish"
     if ! command -v fish &> /dev/null; then
         if safe_ask "Voulez-vous installer fish ?"; then
-            safe_run yay -S --needed --noconfirm fish
+            safe_run yay -S --needed --noconfirm fish man-db man-pages
             chsh -s $(which fish)
             safe_run fish -c "fish_update_completions; set -U fish_greeting"
         fi
