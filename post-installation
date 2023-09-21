@@ -247,7 +247,7 @@ install_printer_support() {
             safe_run yay -S --needed --noconfirm python-pyqt5 hplip 
         fi
         safe_run sudo systemctl enable --now avahi-daemon
-        safe_run systemctl enable --now cups
+        safe_run sudo systemctl enable --now cups
     fi
 }
 
