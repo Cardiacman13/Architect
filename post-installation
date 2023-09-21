@@ -118,7 +118,7 @@ install_yay() {
 
 configure_maintenance_alias() {
     print_step "Configuration de l'alias de maintenance"
-    safe_append_to_file "alias maintenance='sudo pacman -Suy --needed --noconfirm && yay -Suy --needed --noconfirm && flatpak update && fwupdmgr update'" "${HOME}/.bashrc"
+    safe_append_to_file "alias maintenance='sudo pacman -Syy --noconfirm && yay && flatpak update'" "${HOME}/.bashrc"
 }
 
 install_pipewire() {
@@ -256,8 +256,6 @@ install_flatpak() {
     if ! command -v flatpak &> /dev/null; then
         safe_run yay -S --needed --noconfirm flatpak flatpak-kcm
         safe_run flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
-        safe_run flatpak install -y flathub com.github.tchx84.Flatseal
-        safe_run flatpak install -y flathub io.github.giantpinkrobots.flatsweep
     fi
 }
 
