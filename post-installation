@@ -262,6 +262,7 @@ install_misc_software() {
         safe_ask "Voulez-vous installer Steam ?" && safe_run yay -S --needed --noconfirm steam
         safe_ask "Voulez-vous installer Lutris ?" && safe_run yay -S --needed --noconfirm lutris wine-staging
         safe_ask "Voulez-vous installer Timeshift ?" && safe_run yay -S --needed --noconfirm timeshift
+        safe_ask "Voulez-vous installer Goverlay ?" && safe_run yay -S --needed --noconfirm goverlay
         if safe_ask "Voulez-vous installer Obs ?"; then
             if safe_ask "Voulez-vous installer Obs en flatpak ?"; then
                 safe_run flatpak install -y flathub com.obsproject.Studio
