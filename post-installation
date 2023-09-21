@@ -138,13 +138,13 @@ INTEL=false
 
 detect_graphics_card() {
     print_step "Choix de la carte graphique"
-    if safe_ask "Voulez-vous installer les pilotes NVIDIA ?"; then
+    if safe_ask "Voulez-vous installer les pilotes NVIDIA ? (y/N): "; then
         NVIDIA=true
     fi
-    if safe_ask "Voulez-vous installer les pilotes AMD ?"; then
+    if safe_ask "Voulez-vous installer les pilotes AMD ? (y/N): "; then
         AMD=true
     fi
-    if safe_ask "Voulez-vous installer les pilotes Intel ?"; then
+    if safe_ask "Voulez-vous installer les pilotes Intel ? (y/N): "; then
         INTEL=true
     fi
 }
@@ -211,7 +211,7 @@ install_intel_drivers() {
 install_fish_shell() {
     print_step "Installation de fish"
     if ! command -v fish &> /dev/null; then
-        if safe_ask "Voulez-vous installer fish ?"; then
+        if safe_ask "Voulez-vous installer fish ? (y/N): "; then
             safe_run yay -S --needed --noconfirm fish man-db man-pages
             chsh -s $(which fish)
             safe_run fish -c "fish_update_completions; set -U fish_greeting"
@@ -222,18 +222,22 @@ install_fish_shell() {
 install_essential_packages() {
     print_step "Installation des paquets essentiels"
     safe_run yay -S --needed --noconfirm powerdevil reflector-simple rebuild-detector mkinitcpio-firmware xdg-desktop-portal neofetch power-profiles-daemon hunspell-fr p7zip unrar ttf-liberation noto-fonts noto-fonts-emoji ntfs-3g fuse2 bash-completion xdg-desktop-portal-kde xdg-desktop-portal-gtk okular print-manager gwenview spectacle partitionmanager ffmpegthumbs qt6-wayland kdeplasma-addons vlc
+
+    if [[ $(lsblk -f | grep -c btrfs) -gt 0 ]]; then
+        safe_run yay -S --needed --noconfirm btrfs-assistant
+    fi
 }
 
 install_gamepad_drivers() {
     print_step "Installation des pilotes de manette de jeu"
-    if safe_ask "Voulez-vous installer les pilotes de manette de jeu ?"; then
+    if safe_ask "Voulez-vous installer les pilotes de manette de jeu ? (y/N): "; then
         safe_run yay -S --needed --noconfirm xpadneo-dkms
     fi
 }
 
 activate_bluetooth() {
     print_step "Activation du bluetooth"
-    if safe_ask "Voulez-vous activer le bluetooth ?"; then
+    if safe_ask "Voulez-vous activer le bluetooth ? (y/N): "; then
         safe_run yay -S --needed --noconfirm bluez bluez-utils bluez-plugins
         safe_run systemctl enable --now bluetooth.service
     fi
@@ -241,9 +245,9 @@ activate_bluetooth() {
 
 install_printer_support() {
     print_step "Installation du support d'imprimante"
-    if safe_ask "Voulez-vous installer le support d'imprimante ?"; then
+    if safe_ask "Voulez-vous installer le support d'imprimante ? (y/N): "; then
         safe_run yay -S --needed --noconfirm ghostscript gsfonts cups cups-filters cups-pdf system-config-printer avahi foomatic-db-engine foomatic-db foomatic-db-ppds foomatic-db-nonfree foomatic-db-nonfree-ppds gutenprint foomatic-db-gutenprint-ppds
-        if safe_ask "Avez-vous une imprimente HP ?"; then
+        if safe_ask "Avez-vous une imprimente HP ? (y/N): "; then
             safe_run yay -S --needed --noconfirm python-pyqt5 hplip 
         fi
         safe_run sudo systemctl enable --now avahi-daemon
@@ -261,23 +265,22 @@ install_flatpak() {
 
 install_misc_software() {
     print_step "Installation de logiciels divers"
-    if safe_ask "Voulez-vous installer des logiciels divers ?"; then
-        safe_ask "Voulez-vous installer Discord ?" && safe_run yay -S --needed --noconfirm discord
-        safe_ask "Voulez-vous installer Spotify ?" && safe_run yay -S --needed --noconfirm spotify
-        safe_ask "Voulez-vous installer Steam ?" && safe_run yay -S --needed --noconfirm steam
-        safe_ask "Voulez-vous installer Lutris ?" && safe_run yay -S --needed --noconfirm lutris wine-staging
-        safe_ask "Voulez-vous installer Timeshift ?" && safe_run yay -S --needed --noconfirm timeshift
-        safe_ask "Voulez-vous installer btrfs-assistant ?" && safe_run yay -S --needed --noconfirm btrfs-assistant
-        if safe_ask "Voulez-vous installer Obs ?"; then
-            if safe_ask "Voulez-vous installer Obs en flatpak ?"; then
+    if safe_ask "Voulez-vous installer des logiciels divers ? (y/N): "; then
+        safe_ask "Voulez-vous installer Discord ? (y/N): " && safe_run yay -S --needed --noconfirm discord
+        safe_ask "Voulez-vous installer Spotify ? (y/N): " && safe_run yay -S --needed --noconfirm spotify
+        safe_ask "Voulez-vous installer Steam ? (y/N): " && safe_run yay -S --needed --noconfirm steam
+        safe_ask "Voulez-vous installer Lutris ? (y/N): " && safe_run yay -S --needed --noconfirm lutris wine-staging
+        safe_ask "Voulez-vous installer Timeshift ? (y/N): " && safe_run yay -S --needed --noconfirm timeshift
+        if safe_ask "Voulez-vous installer Obs ? (y/N): "; then
+            if safe_ask "Voulez-vous installer Obs en flatpak ? (y/N): "; then
                 safe_run flatpak install -y flathub com.obsproject.Studio
             else
                 safe_run yay -S --needed --noconfirm obs-studio
             fi
         fi
-        safe_ask "Voulez-vous installer kdenlive ?" && safe_run yay -S --needed --noconfirm kdenlive
-        safe_ask "Voulez-vous installer libreoffice ?" && safe_run yay -S --needed --noconfirm libreoffice-fresh libreoffice-fresh-fr
-        safe_ask "Voulez-vous installer gimp ?" && safe_run yay -S --needed --noconfirm gimp
+        safe_ask "Voulez-vous installer kdenlive ? (y/N): " && safe_run yay -S --needed --noconfirm kdenlive
+        safe_ask "Voulez-vous installer libreoffice ? (y/N): " && safe_run yay -S --needed --noconfirm libreoffice-fresh libreoffice-fresh-fr
+        safe_ask "Voulez-vous installer gimp ? (y/N): " && safe_run yay -S --needed --noconfirm gimp
     fi
 }
 
