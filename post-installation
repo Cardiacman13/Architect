@@ -210,12 +210,11 @@ install_intel_drivers() {
 
 install_fish_shell() {
     print_step "Installation de fish"
-    if ! command -v fish &> /dev/null; then
-        if safe_ask "Voulez-vous installer fish ?"; then
-            safe_run yay -S --needed --noconfirm fish man-db man-pages
-            chsh -s $(which fish)
-            safe_run fish -c "fish_update_completions; set -U fish_greeting"
-        fi
+    if safe_ask "Voulez-vous installer fish ?"; then
+        safe_run yay -S --needed --noconfirm fish man-db man-pages
+        chsh -s $(which fish)
+        safe_run fish -c "fish_update_completions; set -U fish_greeting"
+        safe_append_to_file "alias u='sudo pacman -Syy && yay -S archlinux-keyring && yay && yay -Sc && sudo pacman -Rns $(pacman -Qdtq)'" "${HOME}/.config/fish/config.fish"
     fi
 }
 
