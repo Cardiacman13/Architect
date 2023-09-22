@@ -7,11 +7,47 @@ source src/setup/shell.sh
 source src/setup/software.sh
 source src/setup/system_setup.sh
 
-function main() {
-    system_setup
-    install_video_drivers
-    chose_shell
-    install_peripheries
-    install_useful_packages
-    install_useful_software
+# Définition des couleurs
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+NC='\033[0m' # Pas de couleur
+
+function display_progress() {
+    local total_tasks=$1
+    local completed_tasks=$2
+    local term_width=$(tput cols)
+    local progress_width=$((term_width - 17))
+    local progress_chars=$((progress_width * completed_tasks / total_tasks))
+    local progress_bar=""
+    for ((i = 0; i < progress_chars; i++)); do
+        progress_bar+="#"
+    done
+    printf "\r[%-${progress_width}s] %d/%d" "${progress_bar}" "${completed_tasks}" "${total_tasks}"
+    echo ""
 }
+
+function main() {
+    local total_tasks=6
+    local completed_tasks=0
+    
+    system_setup
+    ((completed_tasks++))
+    display_progress $total_tasks $completed_tasks
+    install_video_drivers
+    ((completed_tasks++))
+    display_progress $total_tasks $completed_tasks
+    chose_shell
+    ((completed_tasks++))
+    display_progress $total_tasks $completed_tasks
+    install_peripheries
+    ((completed_tasks++))
+    display_progress $total_tasks $completed_tasks
+    install_useful_packages
+    ((completed_tasks++))
+    display_progress $total_tasks $completed_tasks
+    install_useful_software
+    ((completed_tasks++))
+    display_progress $total_tasks $completed_tasks
+}
+
+main

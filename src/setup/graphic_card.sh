@@ -1,6 +1,8 @@
-source ../drivers/nvidia.sh
-source ../drivers/amd.sh
-source ../drivers/intel.sh
+BASE_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
+
+source "$BASE_DIR/src/drivers/nvidia.sh"
+source "$BASE_DIR/src/drivers/amd.sh"
+source "$BASE_DIR/src/drivers/intel.sh"
 
 function install_video_drivers() {
     while IFS= read -r video_driver; do

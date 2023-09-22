@@ -1,4 +1,6 @@
-source ../utils.sh
+BASE_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
+
+source "$BASE_DIR/src/utils.sh"
 
 function gamepad() {
     if read_user "Voulez vous supporter les manettes de jeux ?"; then

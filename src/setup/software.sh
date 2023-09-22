@@ -1,5 +1,6 @@
+BASE_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
 
-source ../utils.sh
+source "$BASE_DIR/src/utils.sh"
 
 function install_useful_software() {
     local PACKAGE_LIST="steam lutris wine-staging protonup-qt discord"

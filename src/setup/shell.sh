@@ -1,5 +1,6 @@
+BASE_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
 
-source ../utils.sh
+source "$BASE_DIR/src/utils.sh"
 
 function add_alias_u() {
     local FILE=$1
