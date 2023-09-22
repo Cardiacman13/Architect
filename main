@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+sudo -v
+
 source src/setup/graphic_card.sh
 source src/setup/packages.sh
 source src/setup/peripheries.sh
@@ -7,47 +9,60 @@ source src/setup/shell.sh
 source src/setup/software.sh
 source src/setup/system_setup.sh
 
-# Définition des couleurs
-RED='\033[0;31m'
-GREEN='\033[0;32m'
-NC='\033[0m' # Pas de couleur
-
 function display_progress() {
     local total_tasks=$1
     local completed_tasks=$2
+    local start_time=$3
     local term_width=$(tput cols)
-    local progress_width=$((term_width - 17))
-    local progress_chars=$((progress_width * completed_tasks / total_tasks))
-    local progress_bar=""
-    for ((i = 0; i < progress_chars; i++)); do
-        progress_bar+="#"
-    done
-    printf "\r[%-${progress_width}s] %d/%d" "${progress_bar}" "${completed_tasks}" "${total_tasks}"
-    echo ""
+    local elapsed_time=$(echo "$(date +%s.%N) - $start_time" | bc)
+    elapsed_time=$(printf "%.2f" $elapsed_time)
+
+    local progress_text=" $completed_tasks/$total_tasks in ${elapsed_time}s "
+    local equal_chars=$(( (term_width - ${#progress_text}) / 2))
+    local progress_bar=$(printf "=%.0s" $(seq 1 $equal_chars))
+
+    progress_bar+="$progress_text"
+    progress_bar+=$(printf "=%.0s" $(seq 1 $equal_chars))
+
+    if [ $((term_width % 2)) -ne 0 ]; then
+        progress_bar+="="
+    fi
+    echo "$progress_bar" | lolcat
 }
 
 function main() {
+    local start_time=$(date +%s.%N) 
     local total_tasks=6
     local completed_tasks=0
-    
-    system_setup
+
+    sudo pacman -Syy --noconfirm
+
+    if ! command -v bc &> /dev/null; then
+        sudo pacman -S --needed --noconfirm bc
+    fi
+    if ! command -v lolcat &> /dev/null; then
+        sudo pacman -S --needed --noconfirm lolcat
+    fi
+    display_progress $total_tasks $completed_tasks $start_time
+    system_setup            # 1
     ((completed_tasks++))
-    display_progress $total_tasks $completed_tasks
-    install_video_drivers
+    display_progress $total_tasks $completed_tasks $start_time
+    install_video_drivers   # 2
     ((completed_tasks++))
-    display_progress $total_tasks $completed_tasks
-    chose_shell
+    display_progress $total_tasks $completed_tasks $start_time
+    chose_shell             # 3
     ((completed_tasks++))
-    display_progress $total_tasks $completed_tasks
-    install_peripheries
+    display_progress $total_tasks $completed_tasks $start_time
+    install_peripheries     # 4
     ((completed_tasks++))
-    display_progress $total_tasks $completed_tasks
-    install_useful_packages
+    display_progress $total_tasks $completed_tasks $start_time
+    install_useful_packages # 5
     ((completed_tasks++))
-    display_progress $total_tasks $completed_tasks
-    install_useful_software
+    display_progress $total_tasks $completed_tasks $start_time
+    install_useful_software # 6
     ((completed_tasks++))
-    display_progress $total_tasks $completed_tasks
+    display_progress $total_tasks $completed_tasks $start_time
 }
 
 main
+

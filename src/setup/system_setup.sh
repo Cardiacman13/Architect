@@ -61,8 +61,6 @@ function install_firewall() {
 }
 
 function system_setup() {
-    sudo pacman -Syy --noconfirm
-
     optimize_pacman
     install_kernel_headers
     increase_vm_max_map_count
