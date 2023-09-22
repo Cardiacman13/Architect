@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+source src/setup/graphic_card.sh
+source src/setup/packages.sh
+source src/setup/peripheries.sh
+source src/setup/shell.sh
+source src/setup/software.sh
+source src/setup/system_setup.sh
+
+function main() {
+    system_setup
+    install_video_drivers
+    chose_shell
+    install_peripheries
+    install_useful_packages
+    install_useful_software
+}
