@@ -212,7 +212,7 @@ install_fish_shell() {
 
 install_essential_packages() {
     print_step "Installation des paquets essentiels"
-    safe_run yay -S --needed --noconfirm powerdevil reflector-simple rebuild-detector mkinitcpio-firmware xdg-desktop-portal xdg-desktop-portal-gnome neofetch power-profiles-daemon hunspell-fr p7zip unrar ttf-liberation noto-fonts noto-fonts-emoji ntfs-3g fuse2 bash-completion xdg-desktop-portal-gtk ffmpegthumbs qt6-wayland vlc
+    safe_run yay -S --needed --noconfirm reflector-simple rebuild-detector mkinitcpio-firmware xdg-desktop-portal xdg-desktop-portal-gnome neofetch power-profiles-daemon hunspell-fr p7zip unrar ttf-liberation noto-fonts noto-fonts-emoji ntfs-3g fuse2 bash-completion xdg-desktop-portal-gtk ffmpegthumbs vlc
 
     if [[ $(lsblk -f | grep -c btrfs) -gt 0 ]]; then
         safe_run yay -S --needed --noconfirm btrfs-assistant
@@ -257,7 +257,7 @@ install_flatpak() {
 install_misc_software() {
     print_step "Installation de logiciels divers"
     if safe_ask "Voulez-vous installer des logiciels divers ?"; then
-        safe_ask "Voulez-vous installer Discord ?" && safe_run yay -S --needed --noconfirm discord
+        safe_ask "Voulez-vous installer Discord ?" && safe_run yay -S --needed --noconfirm discord qt6-wayland
         safe_ask "Voulez-vous installer Spotify ?" && safe_run yay -S --needed --noconfirm spotify
         safe_ask "Voulez-vous installer Steam ?" && safe_run yay -S --needed --noconfirm steam
         safe_ask "Voulez-vous installer Lutris ?" && safe_run yay -S --needed --noconfirm lutris wine-staging
