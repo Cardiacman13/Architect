@@ -13,9 +13,9 @@ function printer() {
         yay -S --needed --noconfirm ghostscript gsfonts cups cups-filters cups-pdf system-config-printer avahi foomatic-db-engine foomatic-db foomatic-db-ppds foomatic-db-nonfree foomatic-db-nonfree-ppds gutenprint foomatic-db-gutenprint-ppds
 
         read -p "Avec vous des imprimante parmi ces marques ? EPSON/HP" printer_type
-        if [ "$printer_type" == "EPSON" ]; then
+        if [[ "$printer_type" == "EPSON" ]]; then
             yay -S --needed --noconfirm epson-inkjet-printer-escpr  epson-inkjet-printer-escpr2  epson-inkjet-printer-201601w  epson-inkjet-printer-n10-nx127
-        elif [ "$printer_type" == "HP" ]; then
+        elif [[ "$printer_type" == "HP" ]]; then
             yay -S --needed --noconfirm hplip python-pyqt5
         fi
     fi

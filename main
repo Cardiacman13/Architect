@@ -20,15 +20,22 @@ function display_progress() {
     local seconds=$(echo "scale=0; $elapsed_time % 60" | bc)
     
     local progress=$(echo "scale=2; ($completed_tasks / $total_tasks) * 100" | bc)
-    local completed_bar_length=$(echo "scale=0; ($progress * 50) / 100" | bc)
-    local uncompleted_bar_length=$(echo "50 - $completed_bar_length" | bc)
+    local terminal_width=$(tput cols)
+    local bar_length=$(echo "$terminal_width - 20" | bc)
+    
+    local completed_bar_length=$(echo "scale=0; ($progress * $bar_length) / 100" | bc)
+    local uncompleted_bar_length=$(echo "$bar_length - $completed_bar_length" | bc)
     
     local completed_bar=$(printf "%0.s#" $(seq 1 $completed_bar_length))
     local uncompleted_bar=$(printf "%0.s-" $(seq 1 $uncompleted_bar_length))
     
+    local green='\e[32m' # Green color
+    local red='\e[31m'   # Red color
+    local reset='\e[0m'  # Reset color
+    
     clear
     echo -e "Progress: $completed_tasks/$total_tasks tasks completed."
-    echo -e "[$completed_bar$uncompleted_bar] $progress% completed."
+    echo -e "${green}[$completed_bar${red}$uncompleted_bar${reset}] $progress% completed."
     echo -e "Elapsed Time: $minutes minutes $seconds seconds."
 }
 
@@ -46,7 +53,6 @@ function desktop_environment_management() {
     if [ "$de" ]; then
         if [ -f src/setup/desktop_environments/$de.sh ]; then
             source src/setup/desktop_environments/$de.sh
-            desktop_environment
         fi
     fi
 }
@@ -56,6 +62,9 @@ function main() {
     local total_tasks=6
     local completed_tasks=0
 
+    if grep -q "^#\[multilib\]" "$pacman_conf"; then
+        sudo sed -i '/^#\[multilib\]/,/^#Include = \/etc\/pacman.d\/mirrorlist/ s/^#//' "$pacman_conf"
+    fi
     sudo pacman -Syy --noconfirm
 
     if ! command -v bc &> /dev/null; then
@@ -69,8 +78,8 @@ function main() {
     ((completed_tasks++))
     display_progress $total_tasks $completed_tasks $start_time
 
-
-    install_video_drivers   # 2
+    nvidia_drivers
+    # install_video_drivers   # 2
     ((completed_tasks++))
     display_progress $total_tasks $completed_tasks $start_time
     chose_shell             # 3
@@ -86,7 +95,7 @@ function main() {
     ((completed_tasks++))
     display_progress $total_tasks $completed_tasks $start_time
 
-    sudo pacmans -Rs --noconfirm bc lolcat
+    sudo pacman -Rs --noconfirm bc lolcat
 }
 
 main

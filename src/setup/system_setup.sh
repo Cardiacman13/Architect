@@ -67,8 +67,4 @@ function system_setup() {
     install_aur_helper
     install_server_sound
     install_firewall
-
-    if grep -q "^#\[multilib\]" "$pacman_conf"; then
-        sudo sed -i '/^#\[multilib\]/,/^#Include = \/etc\/pacman.d\/mirrorlist/ s/^#//' "$pacman_conf"
-    fi
 }
