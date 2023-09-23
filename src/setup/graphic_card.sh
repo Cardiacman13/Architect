@@ -9,15 +9,15 @@ function install_video_drivers() {
         case "${video_driver}" in
             "NVIDIA")
                 echo "Carte graphique NVIDIA détectée."
-                install_nvidia
+                nvidia_drivers
                 ;;
             "AMD")
                 echo "Carte graphique AMD détectée."
-                install_amd
+                amd_drivers
                 ;;
             "Intel")
                 echo "Carte graphique Intel détectée."
-                install_intel
+                intel_drivers
                 ;;
             *)
                 echo "Pas de carte graphique détectée."

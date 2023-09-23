@@ -1,5 +1,5 @@
 
-function omptize_pacman() {
+function optimize_pacman() {
     local PACMAN_CONF="/etc/pacman.conf"
 
     if [[ -f "${PACMAN_CONF}" ]]; then
@@ -19,42 +19,23 @@ function install_kernel_headers() {
 function increase_vm_max_map_count() {
     local SYSCTL_CONF="/etc/sysctl.d/99-sysctl.conf"
 
-    if [[ -f "${SYSCTL_CONF}" ]]; then
-        local vm_max_map_count=$(cat "${SYSCTL_CONF}" | grep vm.max_map_count | awk '{print $3}')
-
-        if [[ -z "${vm_max_map_count}" ]]; then
-            sudo echo "vm.max_map_count=16777216" >> "${SYSCTL_CONF}"
-        fi
-    else
-        sudo echo "vm.max_map_count=16777216" >> "${SYSCTL_CONF}"
+    if [[ ! -f "${SYSCTL_CONF}" ]]; then
+        sudo touch "${SYSCTL_CONF}"
     fi
-}
-
-function install_aur_helper() {
-    if ! command -v yay &> /dev/null; then
-        git clone https://aur.archlinux.org/yay-bin.git
-        cd yay-bin
-        makepkg -si --noconfirm
-        cd ..
-        rm -rf yay-bin
+    if [[ -z $(cat "${SYSCTL_CONF}") ]]; then
+        echo "vm.max_map_count=16777216" | sudo tee -a "${SYSCTL_CONF}"
     fi
 }
 
 function install_server_sound() {
-    if pacman -Qi pulseaudio &> /dev/null; then
-        sudo pacman -Rns --noconfirm pulseaudio
-    fi
-    if pacman -Qi jack2 &> /dev/null; then
-        sudo pacman -Rns --noconfirm jack2
-    fi
-    if pacman -Qi pipewire-media-session &> /dev/null; then
-        sudo pacman -Rns --noconfirm pipewire-media-session
-    fi
+    sudo pacman -Rdd --noconfirm pulseaudio
+    sudo pacman -Rdd --noconfirm jack2
+    sudo pacman -Rdd --noconfirm pipewire-media-session
     sudo pacman -S --needed --noconfirm pipewire lib32-pipewire pipewire-pulse pipewire-alsa pipewire-jack wireplumber
 }
 
 function install_firewall() {
-    yay -S --needed --noconfirm gufw
+    yay -S --needed --noconfirm ufw
     if ! sudo systemctl is-active ufw.service &> /dev/null; then
         sudo systemctl enable --now ufw.service
     fi
@@ -67,8 +48,4 @@ function system_setup() {
     install_aur_helper
     install_server_sound
     install_firewall
-
-    if grep -q "^#\[multilib\]" "$pacman_conf"; then
-        sudo sed -i '/^#\[multilib\]/,/^#Include = \/etc\/pacman.d\/mirrorlist/ s/^#//' "$pacman_conf"
-    fi
 }

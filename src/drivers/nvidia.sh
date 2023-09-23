@@ -2,18 +2,16 @@
 function hook() {
     local HOOK_FODLER="/etc/pacman.d/hooks/"
     local HOOK_FILE="nvidia.hook"
-    local HOOK_SRC="../../data/nvidia.hook"
+    local HOOK_SRC="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)/data/nvidia.hook"
 
-    if [[ ! -f "${HOOK_FODLER}${HOOK_FILE}" ]]; then
-        sudo cp "${HOOK_SRC}" "${HOOK_FODLER}"
-    fi
+    sudo mkdir -p "${HOOK_FODLER}"
+    sudo cp "${HOOK_SRC}" "${HOOK_FODLER}${HOOK_FILE}"
 }
 
 function mkinitcpio() {
     local MKINITCPIO_CONF="/etc/mkinitcpio.conf"
-    local NEW_MODULES="nvidia nvidia_modeset nvidia_uvm nvidia_drm"
 
-    sudo sed -i "s/MODULES=()/MODULES=(${NEW_MODULES})/" "${MKINITCPIO_CONF}"
+    sudo sed -i '/MODULES=/ s/)/ nvidia nvidia_modeset nvidia_uvm nvidia_drm)/' "$MKINITCPIO_CONF"
 }
 
 function bootloaders() {
@@ -35,12 +33,14 @@ function bootloaders() {
     else
         local BOOT_LOADER_ENTRIES="/boot/loader/entries/*.conf"
 
-        sudo sed -i '/^options root=/ s/$/ nvidia-drm.modeset=1/' "${BOOT_LOADER_ENTRIES}"
+        sudo sed -i '/^options root/ s/$/ nvidia-drm.modeset=1/' $BOOT_LOADER_ENTRIES
     fi
 }
 
 function nvidia_drivers() {
-    bootloaders && mkinitcpio && hook
+    bootloaders
+    mkinitcpio
+    hook
 
-    yay -S --needed --noconfirm nvidia-dkms nvidia-utils lib32-nvidia-utils nvidia-settings vulkan-icd-loader lib32-vulkan-icd-loader cuda
+    yay -S --needed --noconfirm nvidia-dkms nvidia-utils lib32-nvidia-utils nvidia-settings vulkan-icd-loader lib32-vulkan-icd-loader # cuda
 }
