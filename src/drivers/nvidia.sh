@@ -10,9 +10,8 @@ function hook() {
 
 function mkinitcpio() {
     local MKINITCPIO_CONF="/etc/mkinitcpio.conf"
-    local NEW_MODULES="nvidia nvidia_modeset nvidia_uvm nvidia_drm"
 
-    sudo sed -i "s/MODULES=()/MODULES=(${NEW_MODULES})/" "${MKINITCPIO_CONF}"
+    sudo sed -i '/MODULES=/ s/)/ nvidia nvidia_modeset nvidia_uvm nvidia_drm)/' "$MKINITCPIO_CONF"
 }
 
 function bootloaders() {
