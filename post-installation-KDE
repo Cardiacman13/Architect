@@ -63,10 +63,7 @@ safe_append_to_file() {
     if [[ -f ${file} ]] ; then
         echo "Le fichier ${file} a été détecté"
         if [[ -f ${file}.ori ]] ; then
-            echo "Fichier original.ori détecté. Il sera utilisé comme source."
-            sudo rm ${file}
-            sudo cp ${file}.ori ${file}
-            safe_run echo "${text}" | sudo tee -a "${file}" > /dev/null
+            echo "Fichier ${file}.ori a été détecté. rien a faire."
         else
         echo "Sauvegarde du fichier d'origine en .ori"
         sudo cp ${file} ${file}.ori
