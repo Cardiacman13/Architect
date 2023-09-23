@@ -52,6 +52,7 @@ Télécharger l’ISO : [**Arch Linux - Downloads**](https://archlinux.org/downl
     <img src="assets/images/Cardiac-icon.png" width="30" height="30"> [ Tuto Arch Linux Partie 1 : Archinstall ](https://www.youtube.com/watch?v=JE6VwNHLcyk)
 
 ## POST INSTALLATION
+
 Script à exécuter sur une installation propre, fraichement installée avec archinstall, il réalise le tuto pour vous quelque soit vos choix de DE et file system.
 
 **Script post installation BETA :**
@@ -62,6 +63,7 @@ Script à exécuter sur une installation propre, fraichement installée avec arc
    cd Tuto-Arch
    ./post-installation
    ```
+Je ce répète le script est actuellement en **BETA** le but de votre test et de remonter les bugs sur le git merci :) 
 
 ### Optimiser pacman
 
