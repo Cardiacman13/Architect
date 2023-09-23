@@ -52,9 +52,9 @@ Télécharger l’ISO : [**Arch Linux - Downloads**](https://archlinux.org/downl
     <img src="assets/images/Cardiac-icon.png" width="30" height="30"> [ Tuto Arch Linux Partie 1 : Archinstall ](https://www.youtube.com/watch?v=JE6VwNHLcyk)
 
 ## POST INSTALLATION
-
+Script à exécuter sur une installation propre, fraichement installée avec archinstall, il réalise le tuto pour vous.
 **Script post installation BETA KDE uniquement :** 
-Script à exécuter sur une installation propre, fraichement installée avec archinstall
+
    ```bash
    sudo pacman -Sy git
    git clone https://github.com/Cardiacman13/Tuto-Arch.git
