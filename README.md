@@ -97,9 +97,11 @@ Je ce répète le script est actuellement en **BETA** le but de votre test et de
     ```
     Et ajouter ceci a la fin du fichier :
     ```bash
-    alias update-arch="sudo pacman -Syy && yay -S archlinux-keyring && yay && yay -Sc && sudo pacman -Rns $(pacman -Qdtq) && flatpak update"
+    alias update-arch="sudo pacman -Syy && yay -S archlinux-keyring && yay && yay -Sc && sudo pacman -Rns $(pacman -Qdtq)"
     ```
-    Relancer le terminal.
+    Ajouter :  **&& flatpak update** si par la suite vous comptez installer les flatpak
+
+   Relancer le terminal.
     Quand vous avez l'erreur : **“erreur : aucune cible spécifiée (utiliser -h pour l’aide)**” cela signifie que pacman ne trouve pas de dépendance orpheline, **tout va bien!**
 
 ## SUPPORT MATÉRIEL
@@ -302,6 +304,8 @@ Installer fish.
     ```bash
     alias update-arch='sudo pacman -Syy && yay -S archlinux-keyring && yay && yay -Sc && sudo pacman -Rns $(pacman -Qdtq) && flatpak update'
     ```
+    Ajouter :  **&& flatpak update** si par la suite vous comptez installer les flatpak
+
 - ***Reboot sauf si ça a été fait à l’étape 3***, les alias quels qu’ils soient, ne fonctionnent qu’après avoir relancer le terminal.
 
 ### [Kernel TKG](https://github.com/Frogging-Family/linux-tkg) (WARNING utilisateurs avancés)
