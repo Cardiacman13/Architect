@@ -1,0 +1,93 @@
+#!/usr/bin/env bash
+
+sudo -v
+
+source src/setup/graphic_card.sh
+source src/setup/packages.sh
+source src/setup/peripheries.sh
+source src/setup/shell.sh
+source src/setup/software.sh
+source src/setup/system_setup.sh
+
+function display_progress() {
+    local total_tasks=$1
+    local completed_tasks=$2
+    local start_time=$3
+
+    local current_time=$(date +%s.%N)
+    local elapsed_time=$(echo "$current_time - $start_time" | bc)
+    local minutes=$(echo "scale=0; $elapsed_time / 60" | bc)
+    local seconds=$(echo "scale=0; $elapsed_time % 60" | bc)
+    
+    local progress=$(echo "scale=2; ($completed_tasks / $total_tasks) * 100" | bc)
+    local completed_bar_length=$(echo "scale=0; ($progress * 50) / 100" | bc)
+    local uncompleted_bar_length=$(echo "50 - $completed_bar_length" | bc)
+    
+    local completed_bar=$(printf "%0.s#" $(seq 1 $completed_bar_length))
+    local uncompleted_bar=$(printf "%0.s-" $(seq 1 $uncompleted_bar_length))
+    
+    clear
+    echo -e "Progress: $completed_tasks/$total_tasks tasks completed."
+    echo -e "[$completed_bar$uncompleted_bar] $progress% completed."
+    echo -e "Elapsed Time: $minutes minutes $seconds seconds."
+}
+
+function desktop_environment_management() {
+    local de=""
+    if [ "$XDG_CURRENT_DESKTOP" ]; then
+        de=$XDG_CURRENT_DESKTOP
+    elif [ "$GDMSESSION" ]; then
+        de=$GDMSESSION
+    elif [ "$DESKTOP_SESSION" ]; then
+        de=$DESKTOP_SESSION
+    fi
+
+    # execute la fonction de gestion du DE si elle existe
+    if [ "$de" ]; then
+        if [ -f src/setup/desktop_environments/$de.sh ]; then
+            source src/setup/desktop_environments/$de.sh
+            desktop_environment
+        fi
+    fi
+}
+
+function main() {
+    local start_time=$(date +%s.%N) 
+    local total_tasks=6
+    local completed_tasks=0
+
+    sudo pacman -Syy --noconfirm
+
+    if ! command -v bc &> /dev/null; then
+        sudo pacman -S --needed --noconfirm bc
+    fi
+    if ! command -v lolcat &> /dev/null; then
+        sudo pacman -S --needed --noconfirm lolcat
+    fi
+    display_progress $total_tasks $completed_tasks $start_time
+    system_setup            # 1
+    ((completed_tasks++))
+    display_progress $total_tasks $completed_tasks $start_time
+
+
+    install_video_drivers   # 2
+    ((completed_tasks++))
+    display_progress $total_tasks $completed_tasks $start_time
+    chose_shell             # 3
+    ((completed_tasks++))
+    display_progress $total_tasks $completed_tasks $start_time
+    install_peripheries     # 4
+    ((completed_tasks++))
+    display_progress $total_tasks $completed_tasks $start_time
+    install_useful_packages # 5
+    ((completed_tasks++))
+    display_progress $total_tasks $completed_tasks $start_time
+    install_useful_software # 6
+    ((completed_tasks++))
+    display_progress $total_tasks $completed_tasks $start_time
+
+    sudo pacmans -Rs --noconfirm bc lolcat
+}
+
+main
+
