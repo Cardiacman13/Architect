@@ -41,7 +41,7 @@ function install_server_sound() {
 }
 
 function install_firewall() {
-    yay -S --needed --noconfirm gufw
+    yay -S --needed --noconfirm ufw
     if ! sudo systemctl is-active ufw.service &> /dev/null; then
         sudo systemctl enable --now ufw.service
     fi
