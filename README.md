@@ -185,6 +185,11 @@ yay -S --needed mesa lib32-mesa vulkan-radeon lib32-vulkan-radeon vulkan-icd-loa
     ```bash
     yay -S python-pyqt5 hplip --needed
     ```
+- Imprimantes Epson
+  ```bash
+  yay -S --needed epson-inkjet-printer-escpr  epson-inkjet-printer-escpr2  epson-inkjet-printer-201601w  epson-inkjet-printer-n10-nx127
+  ```
+
 ### Bluetooth
 ```bash
 yay -S --needed bluez bluez-utils bluez-plugins
