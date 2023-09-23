@@ -52,17 +52,9 @@ Télécharger l’ISO : [**Arch Linux - Downloads**](https://archlinux.org/downl
     <img src="assets/images/Cardiac-icon.png" width="30" height="30"> [ Tuto Arch Linux Partie 1 : Archinstall ](https://www.youtube.com/watch?v=JE6VwNHLcyk)
 
 ## POST INSTALLATION
-Script à exécuter sur une installation propre, fraichement installée avec archinstall, il réalise le tuto pour vous.
+Script à exécuter sur une installation propre, fraichement installée avec archinstall, il réalise le tuto pour vous quelque soit vos choix de DE et file system.
 
-**Script post installation BETA KDE uniquement :** 
-
-   ```bash
-   sudo pacman -Sy git
-   git clone https://github.com/Cardiacman13/Tuto-Arch.git
-   cd Tuto-Arch
-   ./post-installation-KDE
-   ```
-**Script post installation BETA AUTRES DE :**
+**Script post installation BETA :**
 
    ```bash
    sudo pacman -Sy git
@@ -185,6 +177,11 @@ yay -S --needed mesa lib32-mesa vulkan-radeon lib32-vulkan-radeon vulkan-icd-loa
     ```bash
     yay -S python-pyqt5 hplip --needed
     ```
+- Imprimantes Epson
+  ```bash
+  yay -S --needed epson-inkjet-printer-escpr  epson-inkjet-printer-escpr2  epson-inkjet-printer-201601w  epson-inkjet-printer-n10-nx127
+  ```
+
 ### Bluetooth
 ```bash
 yay -S --needed bluez bluez-utils bluez-plugins
@@ -211,7 +208,7 @@ yay -S libreoffice-fresh libreoffice-fresh-fr vlc discord gimp obs-studio gnome-
 ### Logiciels KDE
 <img src="assets/images/Cardiac-icon.png" width="30" height="30"> [Customiser KDE Partie 1 Layout, Thème, Kvantum, bonnes pratiques !](https://www.youtube.com/watch?v=vdlj83sb84s&t=1240s)
 ```bash
-yay -S xdg-desktop-portal-kde xdg-desktop-portal-gtk okular print-manager kdenlive gwenview spectacle partitionmanager ffmpegthumbs qt6-wayland kdeplasma-addons
+yay -S xdg-desktop-portal-kde xdg-desktop-portal-gtk okular print-manager kdenlive gwenview spectacle partitionmanager ffmpegthumbs qt6-wayland kdeplasma-addons powerdevil
 ```
 
 ### Pare-feu
