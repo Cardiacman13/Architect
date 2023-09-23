@@ -4,6 +4,7 @@ function hook() {
     local HOOK_FILE="nvidia.hook"
     local HOOK_SRC="../../data/nvidia.hook"
 
+    sudo mkdir -p "${HOOK_FODLER}"
     if [[ ! -f "${HOOK_FODLER}${HOOK_FILE}" ]]; then
         sudo cp "${HOOK_SRC}" "${HOOK_FODLER}"
     fi
