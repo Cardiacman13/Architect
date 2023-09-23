@@ -33,7 +33,6 @@ function display_progress() {
     local completed_bar=$(printf "%0.s#" $(seq 1 $completed_bar_length))
     local uncompleted_bar=$(printf "%0.s-" $(seq 1 $uncompleted_bar_length))
     
-    clear
     echo -e "Progress: $completed_tasks/$total_tasks tasks completed."
     echo -e "[${GREEN}${completed_bar}${RED}${uncompleted_bar}${RESET}] $progress% completed."
     echo -e "Elapsed Time: $minutes minutes $seconds seconds."
