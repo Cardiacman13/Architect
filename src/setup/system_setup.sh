@@ -1,5 +1,5 @@
 
-function omptize_pacman() {
+function optimize_pacman() {
     local PACMAN_CONF="/etc/pacman.conf"
 
     if [[ -f "${PACMAN_CONF}" ]]; then

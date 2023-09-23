@@ -33,7 +33,7 @@ function display_progress() {
     local red='\e[31m'   # Red color
     local reset='\e[0m'  # Reset color
     
-    clear
+    # clear
     echo -e "Progress: $completed_tasks/$total_tasks tasks completed."
     echo -e "${green}[$completed_bar${red}$uncompleted_bar${reset}] $progress% completed."
     echo -e "Elapsed Time: $minutes minutes $seconds seconds."
