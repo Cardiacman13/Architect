@@ -19,7 +19,7 @@ function display_progress() {
     local minutes=$(echo "scale=0; $elapsed_time / 60" | bc)
     local seconds=$(echo "scale=0; $elapsed_time % 60" | bc)
     
-    local progress=$(
+    local progress=$(echo "scale=0; ($completed_tasks * 100) / $total_tasks" | bc)
     local terminal_width=$(tput cols)
     local bar_length=$(echo "$terminal_width - 20" | bc)
     
