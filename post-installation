@@ -2,6 +2,10 @@
 
 sudo -v
 
+GREEN='\e[32m' # Green color
+RED='\e[31m'   # Red color
+RESET='\e[0m'  # Reset color
+
 source src/setup/graphic_card.sh
 source src/setup/packages.sh
 source src/setup/peripheries.sh
@@ -29,13 +33,9 @@ function display_progress() {
     local completed_bar=$(printf "%0.s#" $(seq 1 $completed_bar_length))
     local uncompleted_bar=$(printf "%0.s-" $(seq 1 $uncompleted_bar_length))
     
-    local green='\e[32m' # Green color
-    local red='\e[31m'   # Red color
-    local reset='\e[0m'  # Reset color
-    
-    # clear
+    clear
     echo -e "Progress: $completed_tasks/$total_tasks tasks completed."
-    echo -e "[${green}${completed_bar}${red}${uncompleted_bar}${reset}] $progress% completed."
+    echo -e "[${GREEN}${completed_bar}${RED}${uncompleted_bar}${RESET}] $progress% completed."
     echo -e "Elapsed Time: $minutes minutes $seconds seconds."
 }
 
@@ -84,6 +84,15 @@ function main() {
     display_progress $total_tasks $completed_tasks $start_time
 
     sudo pacman -Rs --noconfirm bc lolcat
+
+    echo "Le système redémarre dans 5 secondes ou appuyez sur Ctrl+C pour annuler."
+    TMP=5
+    while [[ $TMP -gt 0 ]]; do
+        echo -e "${RED}Redémarrage dans ${TMP} secondes...${RESET}"
+        sleep 1
+        ((TMP--))
+    done
+    sudo reboot
 }
 
 main

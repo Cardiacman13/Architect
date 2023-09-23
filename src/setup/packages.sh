@@ -1,6 +1,6 @@
 BASE_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
 
-source "$BASE_DIR/src/desktop_environment/KDE.sh"
+source "$BASE_DIR/src/desktop_environments/KDE.sh"
 
 function desktop_environment_management() {
     local de=""
@@ -14,7 +14,7 @@ function desktop_environment_management() {
 
     case $de in
         "KDE" | "kde" | "KDE Plasma" | "plasma" | "Plasma")
-            install_kde
+            config_kde
             ;;
         *)
             echo "Desktop environment not supported"
