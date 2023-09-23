@@ -5,9 +5,7 @@ function hook() {
     local HOOK_SRC="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)/src/drivers/nvidia.hook"
 
     sudo mkdir -p "${HOOK_FODLER}"
-    if [[ ! -f "${HOOK_FODLER}${HOOK_FILE}" ]]; then
-        sudo cp "${HOOK_SRC}" "${HOOK_FODLER}"
-    fi
+    sudo cp "${HOOK_SRC}" "${HOOK_FODLER}${HOOK_FILE}"
 }
 
 function mkinitcpio() {
@@ -41,7 +39,9 @@ function bootloaders() {
 }
 
 function nvidia_drivers() {
-    bootloaders && mkinitcpio && hook
+    bootloaders
+    mkinitcpio
+    hook
 
     yay -S --needed --noconfirm nvidia-dkms nvidia-utils lib32-nvidia-utils nvidia-settings vulkan-icd-loader lib32-vulkan-icd-loader # cuda
 }

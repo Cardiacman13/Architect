@@ -76,7 +76,7 @@ function main() {
         sudo sed -i '/^#\[multilib\]/,/^#Include = \/etc\/pacman.d\/mirrorlist/ s/^#//' "/etc/pacman.conf"
     fi
     sudo pacman -Syy --noconfirm
-    sudo pacman -S --needed --noconfirm git
+    sudo pacman -S --noconfirm git
     install_aur_helper
     yay -S --needed --noconfirm bc lolcat
 
