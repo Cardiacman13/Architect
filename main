@@ -66,13 +66,8 @@ function main() {
         sudo sed -i '/^#\[multilib\]/,/^#Include = \/etc\/pacman.d\/mirrorlist/ s/^#//' "/etc/pacman.conf"
     fi
     sudo pacman -Syy --noconfirm
+    sudo pacman -S --needed --noconfirm bc lolcat build-essential git base-devel
 
-    if ! command -v bc &> /dev/null; then
-        sudo pacman -S --needed --noconfirm bc
-    fi
-    if ! command -v lolcat &> /dev/null; then
-        sudo pacman -S --needed --noconfirm lolcat
-    fi
     display_progress $total_tasks $completed_tasks $start_time
     system_setup            # 1
     ((completed_tasks++))
