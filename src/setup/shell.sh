@@ -22,8 +22,8 @@ function chose_shell() {
             sudo pacman -S --noconfirm fish man-db man-pages
             chsh -s /usr/bin/fish
             fish -c "fish_update_completions"
-            fish -c "set -U fish_greeting"
             add_alias_u "${HOME}/.config/fish/config.fish"            
+            fish -c "set -U fish_greeting"
         else
             add_alias_u "${HOME}/.bashrc"
         fi
