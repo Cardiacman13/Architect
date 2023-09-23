@@ -20,8 +20,9 @@ function chose_shell() {
     if ! echo "${SHELL}" | grep fish &> /dev/null; then
         if read_user "Voulez vous utiliser fish comme terminal ?"; then
             sudo pacman -S --noconfirm fish man-db man-pages
-            sudo chsh -s /usr/bin/fish
+            chsh -s /usr/bin/fish
             fish -c "fish_update_completions"
+            fish -c "set -U fish_greeting"
             add_alias_u "${HOME}/.config/fish/config.fish"            
         else
             add_alias_u "${HOME}/.bashrc"
