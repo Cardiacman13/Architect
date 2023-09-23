@@ -66,6 +66,7 @@ safe_append_to_file() {
             echo "Fichier original.ori détecté. Il sera utilisé comme source."
             sudo rm ${file}
             sudo cp ${file}.ori ${file}
+            safe_run echo "${text}" | sudo tee -a "${file}" > /dev/null
         else
         echo "Sauvegarde du fichier d'origine en .ori"
         sudo cp ${file} ${file}.ori
