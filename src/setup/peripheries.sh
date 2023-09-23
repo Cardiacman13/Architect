@@ -3,7 +3,7 @@ BASE_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
 source "$BASE_DIR/src/utils.sh"
 
 function gamepad() {
-    if read_user "Voulez vous supporter les manettes de jeux ?"; then
+    if read_user "Voulez Xpadneo pour manettes Xbox Series X|S|Elite et 8BitDo ?"; then
         yay -S --needed --noconfirm xpadneo-dkms
     fi 
 }
