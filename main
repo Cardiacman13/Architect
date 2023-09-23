@@ -67,8 +67,7 @@ function main() {
     system_setup            # 1
     ((completed_tasks++))
     display_progress $total_tasks $completed_tasks $start_time
-    nvidia_drivers
-    # install_video_drivers   # 2
+    install_video_drivers   # 2
     ((completed_tasks++))
     display_progress $total_tasks $completed_tasks $start_time
     chose_shell             # 3
