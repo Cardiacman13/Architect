@@ -16,11 +16,14 @@ source src/setup/system_setup.sh
 
 function install_aur_helper() {
     if ! command -v yay &> /dev/null; then
-        git clone https://aur.archlinux.org/yay-bin.git
-        cd yay-bin
-        makepkg -si --noconfirm
-        cd ..
-        rm -rf yay-bin
+        echo "Installation de yay..."
+        git clone https://aur.archlinux.org/yay-bin.git >> /dev/null 2>&1
+        cd yay-bin || exit
+        echo "|- Compilation de yay..."
+        makepkg -si --noconfirm >> /dev/null 2>&1
+        cd .. || exit
+        rm -rf yay-bin >> /dev/null 2>&1
+        echo "--------------------------------------------------"
     fi
 }
 
@@ -41,9 +44,6 @@ function welcome_msg() {
 -----------------------------------------------------------------------------------------------------------\n"
 }
 
- 
-
-
 function main() {
     welcome_msg
     local start_time=$(date +%s.%N) 
@@ -53,7 +53,7 @@ function main() {
     fi
 
     sudo pacman -Syy --noconfirm >> /dev/null 2>&1
-    sudo pacman -S --noconfirm git >> /dev/null 2>&1
+    sudo pacman -S --needed --noconfirm git >> /dev/null 2>&1
     install_aur_helper
     yay -S --needed --noconfirm bc lolcat >> /dev/null 2>&1
 
