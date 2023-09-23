@@ -23,17 +23,17 @@ function desktop_environment_management() {
 }
 
 function install_flatpak() {
-    sudo pacman -S --needed --noconfirm flatpak
-    flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+    sudo pacman -S --needed --noconfirm flatpak >> /dev/null 2>&1
+    flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo >> /dev/null 2>&1
 }
 
 function install_useful_packages() {
     desktop_environment_management
 
-    yay -S --needed --noconfirm xdg-utils reflector-simple downgrade rebuild-detector mkinitcpio-firmware xdg-desktop-portal xdg-desktop-portal-gnome neofetch power-profiles-daemon hunspell-fr p7zip unrar ttf-liberation noto-fonts noto-fonts-emoji ntfs-3g fuse2 bash-completion xdg-desktop-portal-gtk ffmpegthumbs vlc
+    yay -S --needed --noconfirm xdg-utils reflector-simple downgrade rebuild-detector mkinitcpio-firmware xdg-desktop-portal xdg-desktop-portal-gnome neofetch power-profiles-daemon hunspell-fr p7zip unrar ttf-liberation noto-fonts noto-fonts-emoji ntfs-3g fuse2 bash-completion xdg-desktop-portal-gtk ffmpegthumbs vlc >> /dev/null 2>&1
 
     if [[ $(lsblk -f | grep btrfs) ]]; then
-        yay -S --needed --noconfirm btrfs-progs btrfs-assistant
+        yay -S --needed --noconfirm btrfs-progs btrfs-assistant >> /dev/null 2>&1
     fi
 
     install_flatpak

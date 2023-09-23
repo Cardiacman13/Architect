@@ -3,6 +3,7 @@ BASE_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
 source "$BASE_DIR/src/utils.sh"
 
 function install_useful_software() {
+    echo "Installation des logiciels utiles"
     local PACKAGE_LIST="discord"
     local FLATPAK_LIST=""
     
@@ -25,6 +26,8 @@ function install_useful_software() {
         PACKAGE_LIST="${PACKAGE_LIST} gimp"
     fi
 
-    yay -S --needed --noconfirm ${PACKAGE_LIST}
-    flatpak install -y ${FLATPAK_LIST}
+    echo "|- Installation des paquets"
+    yay -S --needed --noconfirm ${PACKAGE_LIST} >> /dev/null 2>&1
+    echo "|- Installation des flatpaks"
+    flatpak install -y ${FLATPAK_LIST} >> /dev/null 2>&1
 }

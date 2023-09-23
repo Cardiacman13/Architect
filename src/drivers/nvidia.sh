@@ -1,5 +1,7 @@
 
 function hook() {
+    echo "|- Configuration du hook nvidia..."
+
     local HOOK_FODLER="/etc/pacman.d/hooks/"
     local HOOK_FILE="nvidia.hook"
     local HOOK_SRC="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)/data/nvidia.hook"
@@ -9,12 +11,16 @@ function hook() {
 }
 
 function mkinitcpio() {
+    echo "|- Configuration de mkinitcpio..."
+
     local MKINITCPIO_CONF="/etc/mkinitcpio.conf"
 
     sudo sed -i '/MODULES=/ s/)/ nvidia nvidia_modeset nvidia_uvm nvidia_drm)/' "$MKINITCPIO_CONF"
 }
 
 function bootloaders() {
+    echo "|- Configuration du bootloader..."
+
     if [[ -d "/boot/loader/entries" ]]; then
         local BOOT_LOADER="systemd-boot"
     else
@@ -29,7 +35,7 @@ function bootloaders() {
                 sudo sed -i '/GRUB_CMDLINE_LINUX_DEFAULT/ s/\"$/ nvidia-drm.modeset=1\"/' "$BOOT_LOADER_ENTRIES"
             fi
         fi
-        sudo grub-mkconfig -o /boot/grub/grub.cfg
+        sudo grub-mkconfig -o /boot/grub/grub.cfg >> /dev/null 2>&1
     else
         local BOOT_LOADER_ENTRIES="/boot/loader/entries/*.conf"
 
@@ -38,9 +44,12 @@ function bootloaders() {
 }
 
 function nvidia_drivers() {
+    echo "Installation des drivers nvidia..."
+
     bootloaders
     mkinitcpio
     hook
 
-    yay -S --needed --noconfirm nvidia-dkms nvidia-utils lib32-nvidia-utils nvidia-settings vulkan-icd-loader lib32-vulkan-icd-loader cuda
+    echo "|- Installation des paquets nvidia..."
+    yay -S --needed --noconfirm nvidia-dkms nvidia-utils lib32-nvidia-utils nvidia-settings vulkan-icd-loader lib32-vulkan-icd-loader cuda >> /dev/null 2>&1
 }
