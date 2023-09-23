@@ -12,7 +12,6 @@ function install_useful_software() {
     if read_user "Voulez vous installer OBS ?"; then
         FLATPAK_LIST="${FLATPAK_LIST} com.obsproject.Studio"
     fi
-    fi
     if read_user "Voulez vous installer Libreoffice ?"; then
         PACKAGE_LIST="${PACKAGE_LIST} libreoffice-fresh libreoffice-fresh-fr"
     fi
