@@ -42,13 +42,13 @@ function install_aur_helper() {
 
 function install_server_sound() {
     if pacman -Qi pulseaudio &> /dev/null; then
-        sudo pacman -Rns --noconfirm pulseaudio
+        sudo pacman -Rdd --noconfirm pulseaudio
     fi
     if pacman -Qi jack2 &> /dev/null; then
-        sudo pacman -Rns --noconfirm jack2
+        sudo pacman -Rdd --noconfirm jack2
     fi
     if pacman -Qi pipewire-media-session &> /dev/null; then
-        sudo pacman -Rns --noconfirm pipewire-media-session
+        sudo pacman -Rdd --noconfirm pipewire-media-session
     fi
     sudo pacman -S --needed --noconfirm pipewire lib32-pipewire pipewire-pulse pipewire-alsa pipewire-jack wireplumber
 }

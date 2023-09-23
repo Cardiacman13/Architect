@@ -62,8 +62,8 @@ function main() {
     local total_tasks=6
     local completed_tasks=0
 
-    if grep -q "^#\[multilib\]" "$pacman_conf"; then
-        sudo sed -i '/^#\[multilib\]/,/^#Include = \/etc\/pacman.d\/mirrorlist/ s/^#//' "$pacman_conf"
+    if grep -q "^#\[multilib\]" "/etc/pacman.conf"; then
+        sudo sed -i '/^#\[multilib\]/,/^#Include = \/etc\/pacman.d\/mirrorlist/ s/^#//' "/etc/pacman.conf"
     fi
     sudo pacman -Syy --noconfirm
 
