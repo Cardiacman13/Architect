@@ -4,7 +4,7 @@ source "$BASE_DIR/src/utils.sh"
 
 function gamepad() {
     if read_user "Voulez Xpadneo pour manettes Xbox Series X|S|Elite et 8BitDo ?"; then
-        echo "|- Installation de xpadneo"
+        echo "|- Installation de xpadneo."
         yay -S --needed --noconfirm xpadneo-dkms >> /dev/null 2>&1
     fi 
 }
@@ -38,6 +38,9 @@ function enable_bluethooth() {
 
 function install_peripheries() {
     gamepad
+    echo "--------------------------------------------------"
     printer
+    echo "--------------------------------------------------"
     enable_bluethooth
+    echo "--------------------------------------------------"
 }

@@ -45,8 +45,8 @@ function welcome_msg() {
 }
 
 function main() {
+    local start_time=$(date +%s)
     welcome_msg
-    local start_time=$(date +%s.%N) 
 
     if grep -q "^#\[multilib\]" "/etc/pacman.conf"; then
         sudo sed -i '/^#\[multilib\]/,/^#Include = \/etc\/pacman.d\/mirrorlist/ s/^#//' "/etc/pacman.conf"
@@ -66,12 +66,12 @@ function main() {
 
     sudo pacman -Rs --noconfirm bc lolcat >> /dev/null 2>&1
 
-    local end_time=$(date +%s.%N)
-    local duration=$(echo "$end_time - $start_time" | bc)
+    local end_time=$(date +%s)
+    local duration=$((end_time - start_time))
 
     echo -e "${GREEN}Le script a mis ${duration} secondes à s'exécuter.${RESET}"
     sleep 1
-    echo "Le système redémarre dans 5 secondes ou appuyez sur Ctrl+C pour annuler."
+    echo "${RED}Le système redémarre dans 5 secondes ou appuyez sur Ctrl+C pour annuler.${RESET}"
     TMP=10
     while [[ $TMP -gt 0 ]]; do
         echo -e "${RED}Redémarrage dans ${TMP} secondes...${RESET}"

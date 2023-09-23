@@ -23,7 +23,7 @@ function chose_shell() {
             echo "|- Installation de fish"
             sudo pacman -S --noconfirm fish man-db man-pages >> /dev/null 2>&1
             echo "|- Changement du shell par défaut"
-            chsh -s /usr/bin/fish >> /dev/null 2>&1
+            chsh -s /usr/bin/fish
             fish -c "fish_update_completions" >> /dev/null 2>&1
             echo "|- Ajout de l'alias update-arch"
             add_alias_u "${HOME}/.config/fish/config.fish"
@@ -32,5 +32,5 @@ function chose_shell() {
             add_alias_u "${HOME}/.bashrc"
         fi
     fi
-
+    echo "--------------------------------------------------"
 }
