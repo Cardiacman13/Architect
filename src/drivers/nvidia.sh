@@ -34,7 +34,11 @@ function bootloaders() {
     else
         local BOOT_LOADER_ENTRIES="/boot/loader/entries/*.conf"
 
-        sudo sed -i '/^options root=/ s/$/ nvidia-drm.modeset=1/' "${BOOT_LOADER_ENTRIES}"
+        if grep -q "options root=" "$BOOT_LOADER_ENTRIES"; then
+            if ! grep -q "nvidia-drm.modeset=1" "$BOOT_LOADER_ENTRIES"; then
+                sudo sed -i '/options root=/ s/\"$/ nvidia-drm.modeset=1\"/' "$BOOT_LOADER_ENTRIES"
+            fi
+        fi
     fi
 }
 
