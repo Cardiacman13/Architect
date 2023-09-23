@@ -85,7 +85,7 @@ function main() {
     sudo pacman -Rs --noconfirm bc lolcat
 
     echo "Le système redémarre dans 5 secondes ou appuyez sur Ctrl+C pour annuler."
-    TMP=5
+    TMP=10
     while [[ $TMP -gt 0 ]]; do
         echo -e "${RED}Redémarrage dans ${TMP} secondes...${RESET}"
         sleep 1
