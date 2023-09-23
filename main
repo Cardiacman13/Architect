@@ -14,26 +14,29 @@ function display_progress() {
     local completed_tasks=$2
     local start_time=$3
 
-    # echo -e "Progress: $completed_tasks/$total_tasks tasks completed."
-    # echo -e "$[{green}$completed_bar${red}$uncompleted_bar${reset}] $progress% completed."
-    # echo -e "Elapsed Time: $minutes minutes $seconds seconds."
-
-    local progress=$(echo "scale=2; $completed_tasks/$total_tasks*100" | bc)
-    local completed_bar=$(echo "$progress/2" | bc)
-    local uncompleted_bar=$(echo "50-$completed_bar" | bc)
-    local minutes=$(echo "$elapsed_time/60" | bc)
-    local seconds=$(echo "$elapsed_time%60" | bc)
-
-    local green=$(tput setaf 2)
-    local red=$(tput setaf 1)
-    local reset=$(tput sgr0)
-
-    local elapsed_time=$(echo "$(date +%s.%N) - $start_time" | bc)
-    local progress_bar=$(echo -e "$green%${completed_bar}s$reset%${uncompleted_bar}s" | tr ' ' '=')
-    local progress_bar=$(echo -e "$progress_bar $green$progress%$reset")
-    local elapsed_time=$(echo -e "$green$minutes minutes $seconds seconds$reset")
-
-    echo -ne "\rProgress: $completed_tasks/$total_tasks tasks completed.\n[$progress_bar]\nElapsed Time: $elapsed_time"
+    local current_time=$(date +%s.%N)
+    local elapsed_time=$(echo "$current_time - $start_time" | bc)
+    local minutes=$(echo "scale=0; $elapsed_time / 60" | bc)
+    local seconds=$(echo "scale=0; $elapsed_time % 60" | bc)
+    
+    local progress=$(
+    local terminal_width=$(tput cols)
+    local bar_length=$(echo "$terminal_width - 20" | bc)
+    
+    local completed_bar_length=$(echo "scale=0; ($progress * $bar_length) / 100" | bc)
+    local uncompleted_bar_length=$(echo "$bar_length - $completed_bar_length" | bc)
+    
+    local completed_bar=$(printf "%0.s#" $(seq 1 $completed_bar_length))
+    local uncompleted_bar=$(printf "%0.s-" $(seq 1 $uncompleted_bar_length))
+    
+    local green='\e[32m' # Green color
+    local red='\e[31m'   # Red color
+    local reset='\e[0m'  # Reset color
+    
+    # clear
+    echo -e "Progress: $completed_tasks/$total_tasks tasks completed."
+    echo -e "$[{green}$completed_bar${red}$uncompleted_bar${reset}] $progress% completed."
+    echo -e "Elapsed Time: $minutes minutes $seconds seconds."
 }
 
 function desktop_environment_management() {
