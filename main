@@ -13,21 +13,42 @@ function display_progress() {
     local total_tasks=$1
     local completed_tasks=$2
     local start_time=$3
-    local term_width=$(tput cols)
-    local elapsed_time=$(echo "$(date +%s.%N) - $start_time" | bc)
-    elapsed_time=$(printf "%.2f" $elapsed_time)
 
-    local progress_text=" $completed_tasks/$total_tasks in ${elapsed_time}s "
-    local equal_chars=$(( (term_width - ${#progress_text}) / 2))
-    local progress_bar=$(printf "=%.0s" $(seq 1 $equal_chars))
+    local current_time=$(date +%s.%N)
+    local elapsed_time=$(echo "$current_time - $start_time" | bc)
+    local minutes=$(echo "scale=0; $elapsed_time / 60" | bc)
+    local seconds=$(echo "scale=0; $elapsed_time % 60" | bc)
+    
+    local progress=$(echo "scale=2; ($completed_tasks / $total_tasks) * 100" | bc)
+    local completed_bar_length=$(echo "scale=0; ($progress * 50) / 100" | bc)
+    local uncompleted_bar_length=$(echo "50 - $completed_bar_length" | bc)
+    
+    local completed_bar=$(printf "%0.s#" $(seq 1 $completed_bar_length))
+    local uncompleted_bar=$(printf "%0.s-" $(seq 1 $uncompleted_bar_length))
+    
+    clear
+    echo -e "Progress: $completed_tasks/$total_tasks tasks completed."
+    echo -e "[$completed_bar$uncompleted_bar] $progress% completed."
+    echo -e "Elapsed Time: $minutes minutes $seconds seconds."
+}
 
-    progress_bar+="$progress_text"
-    progress_bar+=$(printf "=%.0s" $(seq 1 $equal_chars))
-
-    if [ $((term_width % 2)) -ne 0 ]; then
-        progress_bar+="="
+function desktop_environment_management() {
+    local de=""
+    if [ "$XDG_CURRENT_DESKTOP" ]; then
+        de=$XDG_CURRENT_DESKTOP
+    elif [ "$GDMSESSION" ]; then
+        de=$GDMSESSION
+    elif [ "$DESKTOP_SESSION" ]; then
+        de=$DESKTOP_SESSION
     fi
-    echo "$progress_bar" | lolcat
+
+    # execute la fonction de gestion du DE si elle existe
+    if [ "$de" ]; then
+        if [ -f src/setup/desktop_environments/$de.sh ]; then
+            source src/setup/desktop_environments/$de.sh
+            desktop_environment
+        fi
+    fi
 }
 
 function main() {
@@ -47,6 +68,8 @@ function main() {
     system_setup            # 1
     ((completed_tasks++))
     display_progress $total_tasks $completed_tasks $start_time
+
+
     install_video_drivers   # 2
     ((completed_tasks++))
     display_progress $total_tasks $completed_tasks $start_time
@@ -62,6 +85,8 @@ function main() {
     install_useful_software # 6
     ((completed_tasks++))
     display_progress $total_tasks $completed_tasks $start_time
+
+    sudo pacmans -Rs --noconfirm bc lolcat
 }
 
 main
