@@ -53,6 +53,7 @@ Télécharger l’ISO : [**Arch Linux - Downloads**](https://archlinux.org/downl
 
 ## POST INSTALLATION
 Script à exécuter sur une installation propre, fraichement installée avec archinstall, il réalise le tuto pour vous.
+
 **Script post installation BETA KDE uniquement :** 
 
    ```bash
