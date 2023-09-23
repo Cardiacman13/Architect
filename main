@@ -35,7 +35,7 @@ function display_progress() {
     
     # clear
     echo -e "Progress: $completed_tasks/$total_tasks tasks completed."
-    echo -e "$[{green}$completed_bar${red}$uncompleted_bar${reset}] $progress% completed."
+    echo -e "[${green}${completed_bar}${red}${uncompleted_bar}${reset}] $progress% completed."
     echo -e "Elapsed Time: $minutes minutes $seconds seconds."
 }
 
