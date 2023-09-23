@@ -3,9 +3,15 @@ BASE_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
 source "$BASE_DIR/src/utils.sh"
 
 function install_useful_software() {
-    local PACKAGE_LIST="steam lutris wine-staging discord"
+    local PACKAGE_LIST="discord"
     local FLATPAK_LIST=""
-
+    
+    if read_user "Voulez vous installer Steam ?"; then
+        PACKAGE_LIST="${PACKAGE_LIST} Steam"
+    fi
+    if read_user "Voulez vous installer Lutris ?"; then
+        PACKAGE_LIST="${PACKAGE_LIST} lutris wine-staging"
+    fi
     if read_user "Voulez vous installer Spotify ?"; then
         PACKAGE_LIST="${PACKAGE_LIST} spotify"
     fi
