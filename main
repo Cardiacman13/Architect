@@ -39,24 +39,6 @@ function display_progress() {
     echo -e "Elapsed Time: $minutes minutes $seconds seconds."
 }
 
-function desktop_environment_management() {
-    local de=""
-    if [ "$XDG_CURRENT_DESKTOP" ]; then
-        de=$XDG_CURRENT_DESKTOP
-    elif [ "$GDMSESSION" ]; then
-        de=$GDMSESSION
-    elif [ "$DESKTOP_SESSION" ]; then
-        de=$DESKTOP_SESSION
-    fi
-
-    # execute la fonction de gestion du DE si elle existe
-    if [ "$de" ]; then
-        if [ -f src/setup/desktop_environments/$de.sh ]; then
-            source src/setup/desktop_environments/$de.sh
-        fi
-    fi
-}
-
 function install_aur_helper() {
     if ! command -v yay &> /dev/null; then
         git clone https://aur.archlinux.org/yay-bin.git
@@ -75,6 +57,7 @@ function main() {
     if grep -q "^#\[multilib\]" "/etc/pacman.conf"; then
         sudo sed -i '/^#\[multilib\]/,/^#Include = \/etc\/pacman.d\/mirrorlist/ s/^#//' "/etc/pacman.conf"
     fi
+
     sudo pacman -Syy --noconfirm
     sudo pacman -S --noconfirm git
     install_aur_helper

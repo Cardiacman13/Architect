@@ -28,15 +28,7 @@ function increase_vm_max_map_count() {
 }
 
 function install_server_sound() {
-    if pacman -Qi pulseaudio &> /dev/null; then
-        sudo pacman -Rdd --noconfirm pulseaudio
-    fi
-    if pacman -Qi jack2 &> /dev/null; then
-        sudo pacman -Rdd --noconfirm jack2
-    fi
-    if pacman -Qi pipewire-media-session &> /dev/null; then
-        sudo pacman -Rdd --noconfirm pipewire-media-session
-    fi
+    sudo pacman -Rdd --noconfirm pulseaudio jack2 pipewire-media-session
     sudo pacman -S --needed --noconfirm pipewire lib32-pipewire pipewire-pulse pipewire-alsa pipewire-jack wireplumber
 }
 
