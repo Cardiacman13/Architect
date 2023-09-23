@@ -57,6 +57,16 @@ function desktop_environment_management() {
     fi
 }
 
+function install_aur_helper() {
+    if ! command -v yay &> /dev/null; then
+        git clone https://aur.archlinux.org/yay-bin.git
+        cd yay-bin
+        makepkg -si --noconfirm
+        cd ..
+        rm -rf yay-bin
+    fi
+}
+
 function main() {
     local start_time=$(date +%s.%N) 
     local total_tasks=6
@@ -66,13 +76,14 @@ function main() {
         sudo sed -i '/^#\[multilib\]/,/^#Include = \/etc\/pacman.d\/mirrorlist/ s/^#//' "/etc/pacman.conf"
     fi
     sudo pacman -Syy --noconfirm
-    sudo pacman -S --needed --noconfirm bc lolcat build-essential git base-devel
+    sudo pacman -S --needed --noconfirm git
+    install_aur_helper
+    yay -S --needed --noconfirm bc lolcat
 
     display_progress $total_tasks $completed_tasks $start_time
     system_setup            # 1
     ((completed_tasks++))
     display_progress $total_tasks $completed_tasks $start_time
-
     nvidia_drivers
     # install_video_drivers   # 2
     ((completed_tasks++))

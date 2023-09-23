@@ -2,7 +2,7 @@
 function hook() {
     local HOOK_FODLER="/etc/pacman.d/hooks/"
     local HOOK_FILE="nvidia.hook"
-    local HOOK_SRC="../../data/nvidia.hook"
+    local HOOK_SRC="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)/src/drivers/nvidia.hook"
 
     sudo mkdir -p "${HOOK_FODLER}"
     if [[ ! -f "${HOOK_FODLER}${HOOK_FILE}" ]]; then

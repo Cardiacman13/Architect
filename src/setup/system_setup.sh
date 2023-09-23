@@ -27,16 +27,6 @@ function increase_vm_max_map_count() {
     fi
 }
 
-function install_aur_helper() {
-    if ! command -v yay &> /dev/null; then
-        git clone https://aur.archlinux.org/yay-bin.git
-        cd yay-bin
-        makepkg -si --noconfirm
-        cd ..
-        rm -rf yay-bin
-    fi
-}
-
 function install_server_sound() {
     if pacman -Qi pulseaudio &> /dev/null; then
         sudo pacman -Rdd --noconfirm pulseaudio
