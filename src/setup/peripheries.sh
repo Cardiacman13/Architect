@@ -13,8 +13,8 @@ function printer() {
     if read_user "Voulez vous supporter les imprimantes ?"; then
         echo "|- Installation des paquets."
         yay -S --needed --noconfirm ghostscript gsfonts cups cups-filters cups-pdf system-config-printer avahi foomatic-db-engine foomatic-db foomatic-db-ppds foomatic-db-nonfree foomatic-db-nonfree-ppds gutenprint foomatic-db-gutenprint-ppds >> /dev/null 2>&1
-        sudo systemctl enable --now avahi-daemon
-        sudo systemctl enable --now cups
+        sudo systemctl enable --now avahi-daemon >> /dev/null 2>&1
+        sudo systemctl enable --now cups >> /dev/null 2>&1
 
         if read_user "Avec vous une imprimante EPSON ?"; then
             echo "|- Installation des paquets pour les imprimantes EPSON."
