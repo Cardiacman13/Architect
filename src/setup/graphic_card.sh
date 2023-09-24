@@ -14,7 +14,7 @@ function install_video_drivers() {
         "AMD")
             amd_drivers
             ;;
-        "Intel")
+        "INTEL")
             intel_drivers
             ;;
         *)
