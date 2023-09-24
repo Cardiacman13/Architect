@@ -6,7 +6,8 @@ function gamepad() {
     if read_user "Voulez Xpadneo pour manettes Xbox Series X|S|Elite et 8BitDo ?"; then
         echo "|- Installation de xpadneo."
         yay -S --needed --noconfirm xpadneo-dkms >> /dev/null 2>&1
-    fi 
+    fi
+    echo "--------------------------------------------------" 
 }
 
 function printer() {
@@ -25,6 +26,7 @@ function printer() {
             yay -S --needed --noconfirm hplip python-pyqt5 >> /dev/null 2>&1
         fi
     fi
+    echo "--------------------------------------------------"
 }
 
 function enable_bluethooth() {
@@ -35,14 +37,12 @@ function enable_bluethooth() {
             echo "|- Activation du service bluetooth."
             systemctl enable --now bluetooth.service >> /dev/null 2>&1
         fi
+        echo "--------------------------------------------------"
     fi
 }
 
 function install_peripheries() {
     gamepad
-    echo "--------------------------------------------------"
     printer
-    echo "--------------------------------------------------"
     enable_bluethooth
-    echo "--------------------------------------------------"
 }
