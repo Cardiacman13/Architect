@@ -4,32 +4,32 @@ source "$BASE_DIR/src/utils.sh"
 
 function install_useful_software() {
     echo "Installation des logiciels utiles"
-    local PACKAGE_LIST="discord"
-    local FLATPAK_LIST=""
+    local package_list="discord"
+    local flatpak_list=""
     
 
     if read_user "|- Voulez vous installer Steam ?"; then
-        PACKAGE_LIST="${PACKAGE_LIST} steam"
+        package_list="${package_list} steam"
     fi
     if read_user "|- Voulez vous installer Lutris ?"; then
-        PACKAGE_LIST="${PACKAGE_LIST} lutris wine-staging"
+        package_list="${package_list} lutris wine-staging"
     fi
     if read_user "|- Voulez vous installer Spotify ?"; then
-        PACKAGE_LIST="${PACKAGE_LIST} spotify"
+        package_list="${package_list} spotify"
     fi
     if read_user "|- Voulez vous installer OBS ?"; then
-        FLATPAK_LIST="${FLATPAK_LIST} com.obsproject.Studio"
+        flatpak_list="${flatpak_list} com.obsproject.Studio"
     fi
     if read_user "|- Voulez vous installer Libreoffice ?"; then
-        PACKAGE_LIST="${PACKAGE_LIST} libreoffice-fresh libreoffice-fresh-fr"
+        package_list="${package_list} libreoffice-fresh libreoffice-fresh-fr"
     fi
     if read_user "|- Voulez vous installer Gimp ?"; then
-        PACKAGE_LIST="${PACKAGE_LIST} gimp"
+        package_list="${package_list} gimp"
     fi
 
     echo "|- Installation des paquets"
-    yay -S --needed --noconfirm ${PACKAGE_LIST} >> /dev/null 2>&1
+    yay -S --needed --noconfirm ${package_list} >> /dev/null 2>&1
     echo "|- Installation des flatpaks"
-    flatpak install -y ${FLATPAK_LIST} >> /dev/null 2>&1
+    flatpak install -y ${flatpak_list} >> /dev/null 2>&1
     echo "--------------------------------------------------"
 }

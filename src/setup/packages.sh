@@ -5,7 +5,7 @@ source "$BASE_DIR/src/desktop_environments/KDE.sh"
 function desktop_environment_management() {
     local de=""
 
-    echo "|- Détection de l'environnement de bureau..."
+    echo "|- Détection de l'environnement de bureau."
     if [ "$XDG_CURRENT_DESKTOP" ]; then
         de=$XDG_CURRENT_DESKTOP
     elif [ "$GDMSESSION" ]; then
@@ -25,7 +25,7 @@ function desktop_environment_management() {
 }
 
 function install_flatpak() {
-    echo "|- Installation de la compatibilité Flatpak..."
+    echo "|- Installation de la compatibilité Flatpak."
     sudo pacman -S --needed --noconfirm flatpak >> /dev/null 2>&1
     flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo >> /dev/null 2>&1
 }

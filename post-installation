@@ -2,10 +2,10 @@
 
 sudo -v
 
-GREEN='\e[38;2;11;249;163m'  # Green color
-RED='\e[31m'    # Red color
+GREEN='\e[38;2;11;249;163m'     # Green color
+RED='\e[31m'                    # Red color
 PURPLE='\033[38;2;180;130;255m' # Purple color
-RESET='\e[0m'   # Reset color
+RESET='\e[0m'                   # Reset color
 
 source src/setup/graphic_card.sh
 source src/setup/packages.sh
@@ -55,7 +55,7 @@ function main() {
     sudo pacman -Syy --noconfirm >> /dev/null 2>&1
     sudo pacman -S --needed --noconfirm git >> /dev/null 2>&1
     install_aur_helper
-    yay -S --needed --noconfirm bc lolcat >> /dev/null 2>&1
+    yay -S --needed --noconfirm bc >> /dev/null 2>&1
 
     system_setup            # 1
     install_video_drivers   # 2
@@ -64,7 +64,7 @@ function main() {
     install_useful_packages # 5
     install_useful_software # 6
 
-    sudo pacman -Rs --noconfirm bc lolcat >> /dev/null 2>&1
+    sudo pacman -Rs --noconfirm bc >> /dev/null 2>&1
 
     local end_time=$(date +%s)
     local duration=$((end_time - start_time))

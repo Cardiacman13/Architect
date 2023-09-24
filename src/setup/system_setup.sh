@@ -1,15 +1,15 @@
 
 function optimize_pacman() {
     echo "Optimisation de pacman..."
-    local PACMAN_CONF="/etc/pacman.conf"
+    local pacman_src="/etc/pacman.conf"
 
-    if [[ -f "${PACMAN_CONF}" ]]; then
+    if [[ -f "${pacman_src}" ]]; then
         echo "|- Activation des couleurs"
-        sudo sed -i 's/^#Color$/Color/' "${PACMAN_CONF}"
+        sudo sed -i 's/^#Color$/Color/' "${pacman_src}"
         echo "|- Activation des listes de paquets détaillées"
-        sudo sed -i 's/^#VerbosePkgLists$/VerbosePkgLists/' "${PACMAN_CONF}"
+        sudo sed -i 's/^#VerbosePkgLists$/VerbosePkgLists/' "${pacman_src}"
         echo "|- Activation du parallel download"
-        sudo sed -i 's/^#\(ParallelDownloads.*\)/\1/' "${PACMAN_CONF}"
+        sudo sed -i 's/^#\(ParallelDownloads.*\)/\1/' "${pacman_src}"
     fi
     echo "--------------------------------------------------"
 }
@@ -26,15 +26,15 @@ function install_kernel_headers() {
 
 function increase_vm_max_map_count() {
     echo "Augmentation de la valeur vm.max_map_count..."
-    local SYSCTL_CONF="/etc/sysctl.d/99-sysctl.conf"
+    local sysctl_src="/etc/sysctl.d/99-sysctl.conf"
 
-    if [[ ! -f "${SYSCTL_CONF}" ]]; then
-        echo "|- Création du fichier ${SYSCTL_CONF}"
-        sudo touch "${SYSCTL_CONF}"
+    if [[ ! -f "${sysctl_src}" ]]; then
+        echo "|- Création du fichier ${sysctl_src}"
+        sudo touch "${sysctl_src}"
     fi
-    if [[ -z $(cat "${SYSCTL_CONF}") ]]; then
-        echo "|- Ajout de la valeur vm.max_map_count=16777216 dans ${SYSCTL_CONF}"
-        echo "vm.max_map_count=16777216" | sudo tee -a "${SYSCTL_CONF}" >> /dev/null 2>&1
+    if [[ -z $(cat "${sysctl_src}") ]]; then
+        echo "|- Ajout de la valeur vm.max_map_count=16777216 dans ${sysctl_src}"
+        echo "vm.max_map_count=16777216" | sudo tee -a "${sysctl_src}" >> /dev/null 2>&1
     fi
     echo "--------------------------------------------------"
 }

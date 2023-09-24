@@ -3,16 +3,16 @@ BASE_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
 source "$BASE_DIR/src/utils.sh"
 
 function add_alias_u() {
-    local FILE=$1
-    local ALIAS="alias update-arch='sudo pacman -Scc && sudo pacman -Syy && yay -S archlinux-keyring && yay && yay -Sc && sudo pacman -Rns \$(pacman -Qdtq) && flatpak update'"
+    local file=$1
+    local alias="alias update-arch='sudo pacman -Scc && sudo pacman -Syy && yay -S archlinux-keyring && yay && yay -Sc && sudo pacman -Rns \$(pacman -Qdtq) && flatpak update'"
 
-    if [[ -f "${FILE}" ]]; then
-        local ALIAS_FOUND=$(cat "${FILE}" | grep "${ALIAS}")
-        if [[ -z "${ALIAS_FOUND}" ]]; then
-            sudo echo "${ALIAS}" >> "${FILE}"
+    if [[ -f "${file}" ]]; then
+        local alias_found=$(cat "${file}" | grep "${alias}")
+        if [[ -z "${alias_found}" ]]; then
+            sudo echo "${alias}" >> "${file}"
         fi
     else
-        sudo echo "${ALIAS}" >> "${FILE}"
+        sudo echo "${alias}" >> "${file}"
     fi
 }
 
