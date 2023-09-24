@@ -28,6 +28,7 @@ function install_aur_helper() {
 }
 
 function welcome_msg() {
+    clear
     echo -e "${GREEN}Bienvenue dans le script d'installation d'Arch Linux !${RESET}"
     echo -e "-----------------------------------------------------------------------------------------------------------
 
