@@ -8,7 +8,7 @@ function install_useful_software() {
     local FLATPAK_LIST=""
     
     if read_user "|- Voulez vous installer Steam ?"; then
-        PACKAGE_LIST="${PACKAGE_LIST} Steam"
+        PACKAGE_LIST="${PACKAGE_LIST} steam"
     fi
     if read_user "|- Voulez vous installer Lutris ?"; then
         PACKAGE_LIST="${PACKAGE_LIST} lutris wine-staging"
