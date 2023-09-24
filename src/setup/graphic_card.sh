@@ -5,7 +5,7 @@ source "$BASE_DIR/src/drivers/amd.sh"
 source "$BASE_DIR/src/drivers/intel.sh"
 
 function install_video_drivers() {
-    read -p "Quel est votre GPU ? (INTEL/AMD/NVIDIA)" user_gpu
+    read -p "Quel est votre GPU ? (INTEL/AMD/NVIDIA) " user_gpu
     
     case "${user_gpu}" in
         "NVIDIA")
