@@ -19,11 +19,11 @@ function printer() {
         sudo systemctl enable --now cups >> /dev/null 2>&1
         
         if read_user "|- Avec vous une imprimante EPSON ?"; then
-            echo "   |- Installation des paquets pour les imprimantes EPSON."
+            echo "|- Installation des paquets pour les imprimantes EPSON."
             yay -S --needed --noconfirm epson-inkjet-printer-escpr  epson-inkjet-printer-escpr2  epson-inkjet-printer-201601w  epson-inkjet-printer-n10-nx127 >> /dev/null 2>&1
         fi           
         if read_user "|- Avec vous une imprimante HP ?"; then
-            echo "   |- Installation des paquets pour les imprimantes HP."
+            echo "|- Installation des paquets pour les imprimantes HP."
             yay -S --needed --noconfirm hplip python-pyqt5 >> /dev/null 2>&1
         fi
     fi

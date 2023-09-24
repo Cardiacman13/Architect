@@ -17,6 +17,7 @@ function add_alias_u() {
 }
 
 function chose_shell() {
+    echo "Detection de fish..."
     if ! echo "${SHELL}" | grep fish &> /dev/null; then
         if read_user "Voulez vous utiliser fish comme terminal ?"; then
             echo "Configuration du shell"

@@ -43,6 +43,13 @@ function welcome_msg() {
              ${PURPLE}%%%%%%%%${RESET}  ${GREEN}***********${RESET}     
 
 -----------------------------------------------------------------------------------------------------------\n"
+    sleep 1
+    echo -e "${RED}Ce script va effectuer des modifications sur votre système.${RESET}"
+    echo -e "Certaines étapes peuvent prendre du temps en fonction de votre connexion internet et de votre CPU.\nAppuyez sur ${GREEN}Entrée${RESET} pour continuer ou ${GREEN}Ctrl+C${RESET} pour annuler."
+    read -p "" choice
+    if [[ $choice != "" ]]; then
+        exit 0
+    fi
 }
 
 function main() {
