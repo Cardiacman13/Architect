@@ -55,7 +55,7 @@ Télécharger l’ISO : [**Arch Linux - Downloads**](https://archlinux.org/downl
 
 Script à exécuter sur une installation propre, fraichement installée avec archinstall, il réalise le tuto pour vous quelque soit vos choix de DE et file system.
 
-**Script post installation BETA :**
+**Script post installation :**
 
    ```bash
    sudo pacman -Sy git
@@ -63,7 +63,7 @@ Script à exécuter sur une installation propre, fraichement installée avec arc
    cd Tuto-Arch
    ./post-installation
    ```
-Je répète le script est actuellement en **BETA** le but de votre test et de remonter les bugs sur le git merci :) 
+N'hésitez pas à faire remonter les bugs merci :) 
 
 ### Optimiser pacman
 
