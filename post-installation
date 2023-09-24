@@ -72,7 +72,7 @@ function main() {
     echo -e "${GREEN}Le script a mis ${duration} secondes à s'exécuter.${RESET}"
     sleep 1
     TMP=10
-    echo "${RED}Le système redémarre dans ${TMP} secondes ou appuyez sur Ctrl+C pour annuler.${RESET}"
+    echo -e "${RED}Le système redémarre dans ${TMP} secondes ou appuyez sur Ctrl+C pour annuler.${RESET}"
     while [[ $TMP -gt 0 ]]; do
         echo -e "${RED}Redémarrage dans ${TMP} secondes...${RESET}"
         sleep 1
