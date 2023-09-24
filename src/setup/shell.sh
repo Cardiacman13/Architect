@@ -19,13 +19,18 @@ function add_alias_u() {
 function chose_shell() {
     if ! echo "${SHELL}" | grep fish &> /dev/null; then
         if read_user "Voulez vous utiliser fish comme terminal ?"; then
-            sudo pacman -S --noconfirm fish man-db man-pages
+            echo "Configuration du shell"
+            echo "|- Installation de fish"
+            sudo pacman -S --noconfirm fish man-db man-pages >> /dev/null 2>&1
+            echo "|- Changement du shell par défaut"
             chsh -s /usr/bin/fish
-            fish -c "fish_update_completions"
-            add_alias_u "${HOME}/.config/fish/config.fish"            
-            fish -c "set -U fish_greeting"
+            fish -c "fish_update_completions" >> /dev/null 2>&1
+            echo "|- Ajout de l'alias update-arch"
+            add_alias_u "${HOME}/.config/fish/config.fish"
+            fish -c "set -U fish_greeting" >> /dev/null 2>&1
         else
             add_alias_u "${HOME}/.bashrc"
         fi
     fi
+    echo "--------------------------------------------------"
 }

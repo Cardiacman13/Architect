@@ -2,9 +2,10 @@
 
 sudo -v
 
-GREEN='\e[32m' # Green color
-RED='\e[31m'   # Red color
-RESET='\e[0m'  # Reset color
+GREEN='\e[38;2;11;249;163m'  # Green color
+RED='\e[31m'    # Red color
+PURPLE='\033[38;2;180;130;255m' # Purple color
+RESET='\e[0m'   # Reset color
 
 source src/setup/graphic_card.sh
 source src/setup/packages.sh
@@ -13,79 +14,65 @@ source src/setup/shell.sh
 source src/setup/software.sh
 source src/setup/system_setup.sh
 
-function display_progress() {
-    local total_tasks=$1
-    local completed_tasks=$2
-    local start_time=$3
-
-    local current_time=$(date +%s.%N)
-    local elapsed_time=$(echo "$current_time - $start_time" | bc)
-    local minutes=$(echo "scale=0; $elapsed_time / 60" | bc)
-    local seconds=$(echo "scale=0; $elapsed_time % 60" | bc)
-    
-    local progress=$(echo "scale=0; ($completed_tasks * 100) / $total_tasks" | bc)
-    local terminal_width=$(tput cols)
-    local bar_length=$(echo "$terminal_width - 20" | bc)
-    
-    local completed_bar_length=$(echo "scale=0; ($progress * $bar_length) / 100" | bc)
-    local uncompleted_bar_length=$(echo "$bar_length - $completed_bar_length" | bc)
-    
-    local completed_bar=$(printf "%0.s#" $(seq 1 $completed_bar_length))
-    local uncompleted_bar=$(printf "%0.s-" $(seq 1 $uncompleted_bar_length))
-    
-    echo -e "Progress: $completed_tasks/$total_tasks tasks completed."
-    echo -e "[${GREEN}${completed_bar}${RED}${uncompleted_bar}${RESET}] $progress% completed."
-    echo -e "Elapsed Time: $minutes minutes $seconds seconds."
-}
-
 function install_aur_helper() {
     if ! command -v yay &> /dev/null; then
-        git clone https://aur.archlinux.org/yay-bin.git
-        cd yay-bin
-        makepkg -si --noconfirm
-        cd ..
-        rm -rf yay-bin
+        echo "Installation de yay..."
+        git clone https://aur.archlinux.org/yay-bin.git >> /dev/null 2>&1
+        cd yay-bin || exit
+        echo "|- Compilation de yay..."
+        makepkg -si --noconfirm >> /dev/null 2>&1
+        cd .. || exit
+        rm -rf yay-bin >> /dev/null 2>&1
+        echo "--------------------------------------------------"
     fi
 }
 
+function welcome_msg() {
+    echo -e "${GREEN}Bienvenue dans le script d'installation d'Arch Linux !${RESET}"
+    echo -e "-----------------------------------------------------------------------------------------------------------
+
+       ${PURPLE}%%%%%%%%%%${RESET}  ${GREEN}*********${RESET}            
+       ${PURPLE}%%%${RESET}                 ${GREEN}******${RESET}       
+       ${PURPLE}%%%${RESET}                     ${GREEN}***${RESET}      Script d'installation d'Arch Linux
+       ${PURPLE}%%%${RESET}                     ${GREEN}***${RESET}      
+       ${PURPLE}%%%${RESET}                     ${GREEN}***${RESET}      GitHub : https://github.com/Cardiacman13/Tuto-Arch
+       ${PURPLE}%%%${RESET}                     ${GREEN}***${RESET}      
+       ${PURPLE}%%%${RESET}                     ${GREEN}***${RESET}      Par https://github.com/Cardiacman13
+        ${PURPLE}%%%%%%${RESET}                 ${GREEN}***${RESET}       et https://github.com/wmemcpy
+             ${PURPLE}%%%%%%%%${RESET}  ${GREEN}***********${RESET}     
+
+-----------------------------------------------------------------------------------------------------------\n"
+}
+
 function main() {
-    local start_time=$(date +%s.%N) 
-    local total_tasks=6
-    local completed_tasks=0
+    local start_time=$(date +%s)
+    welcome_msg
 
     if grep -q "^#\[multilib\]" "/etc/pacman.conf"; then
         sudo sed -i '/^#\[multilib\]/,/^#Include = \/etc\/pacman.d\/mirrorlist/ s/^#//' "/etc/pacman.conf"
     fi
 
-    sudo pacman -Syy --noconfirm
-    sudo pacman -S --noconfirm git
+    sudo pacman -Syy --noconfirm >> /dev/null 2>&1
+    sudo pacman -S --needed --noconfirm git >> /dev/null 2>&1
     install_aur_helper
-    yay -S --needed --noconfirm bc lolcat
+    yay -S --needed --noconfirm bc lolcat >> /dev/null 2>&1
 
-    display_progress $total_tasks $completed_tasks $start_time
     system_setup            # 1
-    ((completed_tasks++))
-    display_progress $total_tasks $completed_tasks $start_time
     install_video_drivers   # 2
-    ((completed_tasks++))
-    display_progress $total_tasks $completed_tasks $start_time
     chose_shell             # 3
-    ((completed_tasks++))
-    display_progress $total_tasks $completed_tasks $start_time
     install_peripheries     # 4
-    ((completed_tasks++))
-    display_progress $total_tasks $completed_tasks $start_time
     install_useful_packages # 5
-    ((completed_tasks++))
-    display_progress $total_tasks $completed_tasks $start_time
     install_useful_software # 6
-    ((completed_tasks++))
-    display_progress $total_tasks $completed_tasks $start_time
 
-    sudo pacman -Rs --noconfirm bc lolcat
+    sudo pacman -Rs --noconfirm bc lolcat >> /dev/null 2>&1
 
-    echo "Le système redémarre dans 5 secondes ou appuyez sur Ctrl+C pour annuler."
+    local end_time=$(date +%s)
+    local duration=$((end_time - start_time))
+
+    echo -e "${GREEN}Le script a mis ${duration} secondes à s'exécuter.${RESET}"
+    sleep 1
     TMP=10
+    echo "${RED}Le système redémarre dans ${TMP} secondes ou appuyez sur Ctrl+C pour annuler.${RESET}"
     while [[ $TMP -gt 0 ]]; do
         echo -e "${RED}Redémarrage dans ${TMP} secondes...${RESET}"
         sleep 1
@@ -95,4 +82,3 @@ function main() {
 }
 
 main
-
