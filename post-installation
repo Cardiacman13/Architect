@@ -44,6 +44,13 @@ function welcome_msg() {
 -----------------------------------------------------------------------------------------------------------\n"
 }
 
+# Fonction poisson d'avril qui fait passer tout ce qui sort sur l'entrée standard dans la commande lolcat
+function april_fool() {
+    while read -r line; do
+        echo "$line" | lolcat
+    done
+}
+
 function main() {
     local start_time=$(date +%s)
     welcome_msg
@@ -56,6 +63,12 @@ function main() {
     sudo pacman -S --needed --noconfirm git >> /dev/null 2>&1
     install_aur_helper
     yay -S --needed --noconfirm bc lolcat >> /dev/null 2>&1
+
+    local current_date=$(date +%d-%m)
+
+    if [ "${current_date}" = "01-04" ]; then
+        exec > >(lolcat)
+    fi
 
     system_setup            # 1
     install_video_drivers   # 2
