@@ -7,6 +7,7 @@ function install_useful_software() {
     local PACKAGE_LIST="discord"
     local FLATPAK_LIST=""
     
+
     if read_user "|- Voulez vous installer Steam ?"; then
         PACKAGE_LIST="${PACKAGE_LIST} steam"
     fi
