@@ -63,7 +63,7 @@ Script à exécuter sur une installation propre, fraichement installée avec arc
    cd Tuto-Arch
    ./post-installation
    ```
-Je ce répète le script est actuellement en **BETA** le but de votre test et de remonter les bugs sur le git merci :) 
+Je répète le script est actuellement en **BETA** le but de votre test et de remonter les bugs sur le git merci :) 
 
 ### Optimiser pacman
 
