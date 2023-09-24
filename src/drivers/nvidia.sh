@@ -2,52 +2,53 @@
 function hook() {
     echo "|- Configuration du hook nvidia"
 
-    local HOOK_FODLER="/etc/pacman.d/hooks/"
-    local HOOK_FILE="nvidia.hook"
-    local HOOK_SRC="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)/data/nvidia.hook"
+    local hook_folder="/etc/pacman.d/hooks/"
+    local hook_file="nvidia.hook"
+    local hook_src="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)/data/nvidia.hook"
 
-    sudo mkdir -p "${HOOK_FODLER}"
-    sudo cp "${HOOK_SRC}" "${HOOK_FODLER}${HOOK_FILE}"
+    sudo mkdir -p "${hook_folder}"
+    sudo cp "${hook_src}" "${hook_folder}${hook_file}"
 }
 
 function mkinitcpio() {
     echo "   |- Configuration de mkinitcpio."
 
-    local MKINITCPIO_CONF="/etc/mkinitcpio.conf"
+    local mkinitcpio_src="/etc/mkinitcpio.conf"
 
-    sudo sed -i '/MODULES=/ s/)/nvidia nvidia_modeset nvidia_uvm nvidia_drm)/' "$MKINITCPIO_CONF"
+    sudo sed -i '/MODULES=/ s/)/nvidia nvidia_modeset nvidia_uvm nvidia_drm)/' "${mkinitcpio_src}"
 }
 
 function bootloaders() {
     echo "   |- Détection du bootloader."
 
     if [[ -d "/boot/loader/entries" ]]; then
-        local BOOT_LOADER="systemd-boot"
+        local boot_loader="systemd-boot"
     else
-        local BOOT_LOADER="grub"
+        local boot_loader="grub"
     fi
 
-    if [[ "${BOOT_LOADER}" == "grub" ]]; then
-        local BOOT_LOADER_ENTRIES="/etc/default/grub"
+    if [[ "${boot_loader}" == "grub" ]]; then
+        local boot_loader_src="/etc/default/grub"
 
-        if grep -q "GRUB_CMDLINE_LINUX_DEFAULT" "$BOOT_LOADER_ENTRIES"; then
-            if ! grep -q "nvidia-drm.modeset=1" "$BOOT_LOADER_ENTRIES"; then
+        if grep -q "GRUB_CMDLINE_LINUX_DEFAULT" "${boot_loader_src}"; then
+            if ! grep -q "nvidia-drm.modeset=1" "${boot_loader_src}"; then
                 echo "   |- Ajout de nvidia-drm.modeset=1 dans les options de boot."
-                sudo sed -i '/GRUB_CMDLINE_LINUX_DEFAULT/ s/\"$/ nvidia-drm.modeset=1\"/' "$BOOT_LOADER_ENTRIES"
+                sudo sed -i '/GRUB_CMDLINE_LINUX_DEFAULT/ s/\"$/ nvidia-drm.modeset=1\"/' "${boot_loader_src}"
             fi
         fi
         echo "   |- Mise à jour de grub."
         sudo grub-mkconfig -o /boot/grub/grub.cfg >> /dev/null 2>&1
     else
-        local BOOT_LOADER_ENTRIES="/boot/loader/entries/*.conf"
+        local boot_loader_src="/boot/loader/entries/*.conf"
 
         echo "   |- Ajout de nvidia-drm.modeset=1 dans les options de boot."
-        sudo sed -i '/^options root/ s/$/ nvidia-drm.modeset=1/' $BOOT_LOADER_ENTRIES
+        sudo sed -i '/^options root/ s/$/ nvidia-drm.modeset=1/' ${boot_loader_src}
     fi
 }
 
 function nvidia_drivers() {
     echo "|- Carte graphique NVIDIA détectée."
+
     bootloaders
     mkinitcpio
     hook

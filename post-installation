@@ -2,10 +2,10 @@
 
 sudo -v
 
-GREEN='\e[38;2;11;249;163m'  # Green color
-RED='\e[31m'    # Red color
+GREEN='\e[38;2;11;249;163m'     # Green color
+RED='\e[31m'                    # Red color
 PURPLE='\033[38;2;180;130;255m' # Purple color
-RESET='\e[0m'   # Reset color
+RESET='\e[0m'                   # Reset color
 
 source src/setup/graphic_card.sh
 source src/setup/packages.sh
