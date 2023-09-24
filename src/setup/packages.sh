@@ -25,7 +25,7 @@ function desktop_environment_management() {
 }
 
 function install_flatpak() {
-    echo "|- Installation de Flatpak..."
+    echo "|- Installation de la compatibilité Flatpak..."
     sudo pacman -S --needed --noconfirm flatpak >> /dev/null 2>&1
     flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo >> /dev/null 2>&1
 }
