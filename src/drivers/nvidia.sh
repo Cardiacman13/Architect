@@ -50,7 +50,7 @@ function bootloaders() {
 }
 
 function nvidia_drivers() {
-    echo "|- Carte graphique NVIDIA détectée."
+    echo "|- Installation pilotes NVIDIA."
 
     bootloaders
     mkinitcpio
