@@ -59,6 +59,12 @@ function install_firewall() {
         echo "|- Activation du firewall"
         sudo systemctl enable --now ufw.service >> /dev/null 2>&1
     fi
+
+    echo "|- Installation de fwupd"
+    yay -S --needed --noconfirm fwupd >> /dev/null 2>&1
+    # echo "|- Mise à jour des firmwares"
+    # sudo fwupdmgr get-devices -y && sudo fwupdmgr refresh -y --force && sudo fwupdmgr get-updates -y && sudo fwupdmgr update -y
+
     echo "--------------------------------------------------"
 }
 
