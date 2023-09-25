@@ -53,7 +53,7 @@ function nvidia_drivers() {
     mkinitcpio
     hook
 
-    echo "   |- Installation des paquets nvidia"
+    echo "   |- Installation des paquets nvidia (très long)"
     yay -S --needed --noconfirm nvidia-dkms nvidia-utils lib32-nvidia-utils nvidia-settings vulkan-icd-loader lib32-vulkan-icd-loader cuda >> /dev/null 2>&1
     echo "--------------------------------------------------"
 }
