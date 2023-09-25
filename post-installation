@@ -16,10 +16,10 @@ source src/setup/system_setup.sh
 
 function install_aur_helper() {
     if ! command -v yay &> /dev/null; then
-        echo "Installation de yay..."
+        echo "Installation de yay"
         git clone https://aur.archlinux.org/yay-bin.git >> /dev/null 2>&1
         cd yay-bin || exit
-        echo "|- Compilation de yay..."
+        echo "|- Compilation de yay"
         makepkg -si --noconfirm >> /dev/null 2>&1
         cd .. || exit
         rm -rf yay-bin >> /dev/null 2>&1
