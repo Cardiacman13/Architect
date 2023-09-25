@@ -81,4 +81,5 @@ function system_setup() {
     increase_vm_max_map_count
     install_server_sound
     install_firewall
+    setup_grub
 }
