@@ -52,20 +52,14 @@ function install_server_sound() {
     echo "--------------------------------------------------"
 }
 
-function install_firmware() {
-    echo "Installation du firmware."
-    echo "|- Installation du firewall"
+function install_firewall() {
+    echo "Installation du firewall."
 
     yay -S --needed --noconfirm ufw >> /dev/null 2>&1
     if ! sudo systemctl is-active ufw.service &> /dev/null; then
         echo "|- Activation du firewall"
         sudo systemctl enable --now ufw.service >> /dev/null 2>&1
     fi
-
-    echo "|- Installation de fwupd"
-    yay -S --needed --noconfirm fwupd >> /dev/null 2>&1
-    # echo "|- Mise à jour des firmwares"
-    # sudo fwupdmgr get-devices -y && sudo fwupdmgr refresh -y --force && sudo fwupdmgr get-updates -y && sudo fwupdmgr update -y
 
     echo "--------------------------------------------------"
 }
@@ -75,5 +69,5 @@ function system_setup() {
     install_kernel_headers
     increase_vm_max_map_count
     install_server_sound
-    install_firmware
+    install_firewall
 }
