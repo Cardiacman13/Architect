@@ -15,7 +15,7 @@ function mkinitcpio() {
 
     local mkinitcpio_src="/etc/mkinitcpio.conf"
 
-    sudo sed -i '/MODULES=/ s/)/nvidia nvidia_modeset nvidia_uvm nvidia_drm)/' "${mkinitcpio_src}"
+    sudo sed -i '/MODULES=/ s/)/ nvidia nvidia_modeset nvidia_uvm nvidia_drm)/' "${mkinitcpio_src}"
 }
 
 function bootloaders() {
