@@ -19,7 +19,7 @@ function desktop_environment_management() {
             config_kde
             ;;
         *)
-            echo "|- Aucun environnement de bureau supporté détecté."
+            echo "|- Configuration en cours."
             ;;
     esac
 }
