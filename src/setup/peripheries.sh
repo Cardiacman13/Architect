@@ -6,7 +6,7 @@ RED="\033[1;31m"
 RESET="\033[0m"
 
 function gamepad() {
-    if read_user "Voulez Xpadneo pour manettes Xbox Series X|S|Elite et 8BitDo ?"; then
+    if read_user "Voulez vous Xpadneo pour manettes Xbox Series X|S|Elite et 8BitDo ?"; then
         echo "|- Installation de xpadneo."
         yay -S --needed --noconfirm xpadneo-dkms >> /dev/null 2>&1
     fi
