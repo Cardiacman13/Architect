@@ -2,6 +2,9 @@ BASE_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
 
 source "$BASE_DIR/src/utils.sh"
 
+RED="\033[1;31m"
+RESET="\033[0m"
+
 function gamepad() {
     if read_user "Voulez Xpadneo pour manettes Xbox Series X|S|Elite et 8BitDo ?"; then
         echo "|- Installation de xpadneo."
@@ -12,7 +15,7 @@ function gamepad() {
 
 function printer() {
     if read_user "Voulez vous supporter les imprimantes ?"; then
-        echo "|- Installation des paquets."
+        echo "|- Installation des paquets. ${RED}(tres long)${RESET}."
         yay -S --needed --noconfirm ghostscript gsfonts cups cups-filters cups-pdf system-config-printer avahi foomatic-db-engine foomatic-db foomatic-db-ppds foomatic-db-nonfree foomatic-db-nonfree-ppds gutenprint foomatic-db-gutenprint-ppds >> /dev/null 2>&1
         echo "|- Activation du service d'impression et de la découverte réseau"
         sudo systemctl enable --now avahi-daemon >> /dev/null 2>&1

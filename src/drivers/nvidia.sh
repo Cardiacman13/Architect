@@ -1,4 +1,7 @@
 
+RED='\033[0;31m'
+RESET='\033[0m'
+
 function hook() {
     echo "|- Configuration du hook nvidia"
 
@@ -11,7 +14,7 @@ function hook() {
 }
 
 function mkinitcpio() {
-    echo "   |- Configuration de mkinitcpio."
+    echo "|- Configuration de mkinitcpio."
 
     local mkinitcpio_src="/etc/mkinitcpio.conf"
 
@@ -19,7 +22,7 @@ function mkinitcpio() {
 }
 
 function bootloaders() {
-    echo "   |- Détection du bootloader."
+    echo "|- Détection du bootloader."
 
     if [[ -d "/boot/loader/entries" ]]; then
         local boot_loader="systemd-boot"
@@ -36,12 +39,12 @@ function bootloaders() {
                 sudo sed -i '/GRUB_CMDLINE_LINUX_DEFAULT/ s/\"$/ nvidia-drm.modeset=1\"/' "${boot_loader_src}"
             fi
         fi
-        echo "   |- Mise à jour de grub."
+        echo "|- Mise à jour de grub."
         sudo grub-mkconfig -o /boot/grub/grub.cfg >> /dev/null 2>&1
     else
         local boot_loader_src="/boot/loader/entries/*.conf"
 
-        echo "   |- Ajout de nvidia-drm.modeset=1 dans les options de boot."
+        echo "|- Ajout de nvidia-drm.modeset=1 dans les options de boot."
         sudo sed -i '/^options root/ s/$/ nvidia-drm.modeset=1/' ${boot_loader_src}
     fi
 }
@@ -53,7 +56,7 @@ function nvidia_drivers() {
     mkinitcpio
     hook
 
-    echo "   |- Installation des paquets nvidia (très long)"
+    echo "|- Installation des paquets nvidia ${RED}(tres long)${RESET}."
     yay -S --needed --noconfirm nvidia-dkms nvidia-utils lib32-nvidia-utils nvidia-settings vulkan-icd-loader lib32-vulkan-icd-loader cuda >> /dev/null 2>&1
     echo "--------------------------------------------------"
 }
