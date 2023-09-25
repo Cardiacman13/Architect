@@ -34,7 +34,7 @@ function welcome_msg() {
 
        ${PURPLE}%%%%%%%%%%${RESET}  ${GREEN}*********${RESET}            
        ${PURPLE}%%%${RESET}                 ${GREEN}******${RESET}       
-       ${PURPLE}%%%${RESET}                     ${GREEN}***${RESET}      Script d'installation d'Arch Linux
+       ${PURPLE}%%%${RESET}                     ${GREEN}***${RESET}      Script post-installation Arch Linux
        ${PURPLE}%%%${RESET}                     ${GREEN}***${RESET}      
        ${PURPLE}%%%${RESET}                     ${GREEN}***${RESET}      GitHub : https://github.com/Cardiacman13/Tuto-Arch
        ${PURPLE}%%%${RESET}                     ${GREEN}***${RESET}      
@@ -60,7 +60,7 @@ function main() {
         sudo sed -i '/^#\[multilib\]/,/^#Include = \/etc\/pacman.d\/mirrorlist/ s/^#//' "/etc/pacman.conf"
     fi
 
-    echo "|- Mise à jour des mirroirs. ${RED}(long)${RESET}"
+    echo -e "|- Mise à jour des mirroirs. ${RED}(long)${RESET}"
     sudo pacman -Syy --noconfirm >> /dev/null 2>&1
     sudo pacman -S --needed --noconfirm reflector >> /dev/null 2>&1
     sudo reflector --latest 20 --protocol https --sort rate --fastest 20 --save /etc/pacman.d/mirrorlist >> /dev/null 2>&1
@@ -80,7 +80,7 @@ function main() {
     local end_time=$(date +%s)
     local duration=$((end_time - start_time))
 
-    echo -e "${GREEN}Le script a mis ${duration} secondes à s'exécuter.${RESET}"
+    echo -e "${GREEN}Le script à mis ${duration} secondes à s'exécuter.${RESET}"
     sleep 1
     TMP=10
     echo -e "${RED}Le système redémarre dans ${TMP} secondes ou appuyez sur Ctrl+C pour annuler.${RESET}"

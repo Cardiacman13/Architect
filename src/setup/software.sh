@@ -27,7 +27,7 @@ function install_useful_software() {
         package_list="${package_list} gimp"
     fi
 
-    echo "|- Installation des paquets"
+    echo -e "|- Installation des paquets ${RED}(long)${RESET}"
     yay -S --needed --noconfirm ${package_list} >> /dev/null 2>&1
     echo "|- Installation des flatpaks"
     flatpak install -y ${flatpak_list} >> /dev/null 2>&1
