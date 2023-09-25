@@ -225,6 +225,10 @@ sudo systemctl enable --now ufw.service
 ```bash
 yay -S reflector-simple
 ```
+Activer le service :
+```bash
+systemctl enable --now reflector.service
+```
 
 ## GAMING
 
