@@ -64,6 +64,17 @@ function install_firewall() {
     echo "--------------------------------------------------"
 }
 
+
+function setup_grub() {
+    echo "Configuration de grub."
+    local hook_folder="/etc/pacman.d/hooks/"
+    local hook_file="grub.hook"
+    local hook_src="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)/data/grub.hook"
+
+    sudo mkdir -p "${hook_folder}"
+    sudo cp "${hook_src}" "${hook_folder}${hook_file}"
+}
+
 function system_setup() {
     optimize_pacman
     install_kernel_headers
