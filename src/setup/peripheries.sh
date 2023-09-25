@@ -15,14 +15,14 @@ function gamepad() {
 
 function printer() {
     if read_user "Voulez vous supporter les imprimantes ?"; then
-        echo -e "|- Installation des paquets. ${RED}(tres long)${RESET}."
+        echo "|- Installation des paquets."
         yay -S --needed --noconfirm ghostscript gsfonts cups cups-filters cups-pdf system-config-printer avahi foomatic-db-engine foomatic-db foomatic-db-ppds foomatic-db-nonfree foomatic-db-nonfree-ppds gutenprint foomatic-db-gutenprint-ppds >> /dev/null 2>&1
         echo "|- Activation du service d'impression et de la découverte réseau"
         sudo systemctl enable --now avahi-daemon >> /dev/null 2>&1
         sudo systemctl enable --now cups >> /dev/null 2>&1
         
         if read_user "|- Avec vous une imprimante EPSON ?"; then
-            echo "|- Installation des paquets pour les imprimantes EPSON."
+            echo "|- Installation des paquets pour les imprimantes EPSON. ${RED}(long)${RESET}"
             yay -S --needed --noconfirm epson-inkjet-printer-escpr  epson-inkjet-printer-escpr2  epson-inkjet-printer-201601w  epson-inkjet-printer-n10-nx127 >> /dev/null 2>&1
         fi           
         if read_user "|- Avec vous une imprimante HP ?"; then
