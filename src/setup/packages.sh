@@ -31,7 +31,7 @@ function install_flatpak() {
 }
 
 function install_useful_packages() {
-    echo "Installation des paquets utiles..."
+    echo "Installation des paquets utiles."
     desktop_environment_management
 
     yay -S --needed --noconfirm xdg-utils reflector-simple downgrade rebuild-detector mkinitcpio-firmware xdg-desktop-portal xdg-desktop-portal-gnome neofetch power-profiles-daemon hunspell-fr p7zip unrar ttf-liberation noto-fonts noto-fonts-emoji ntfs-3g fuse2 bash-completion xdg-desktop-portal-gtk ffmpegthumbs vlc >> /dev/null 2>&1
