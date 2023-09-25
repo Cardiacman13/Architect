@@ -34,7 +34,7 @@ function welcome_msg() {
 
        ${PURPLE}%%%%%%%%%%${RESET}  ${GREEN}*********${RESET}            
        ${PURPLE}%%%${RESET}                 ${GREEN}******${RESET}       
-       ${PURPLE}%%%${RESET}                     ${GREEN}***${RESET}      Script d'installation d'Arch Linux
+       ${PURPLE}%%%${RESET}                     ${GREEN}***${RESET}      Script post-installation Arch Linux
        ${PURPLE}%%%${RESET}                     ${GREEN}***${RESET}      
        ${PURPLE}%%%${RESET}                     ${GREEN}***${RESET}      GitHub : https://github.com/Cardiacman13/Tuto-Arch
        ${PURPLE}%%%${RESET}                     ${GREEN}***${RESET}      
