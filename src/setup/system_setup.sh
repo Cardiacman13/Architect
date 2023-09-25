@@ -75,5 +75,5 @@ function system_setup() {
     install_kernel_headers
     increase_vm_max_map_count
     install_server_sound
-    install_firewall
+    install_firmware
 }
