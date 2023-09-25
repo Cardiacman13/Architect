@@ -9,7 +9,6 @@ function hook() {
     local hook_file="nvidia.hook"
     local hook_src="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)/data/nvidia.hook"
 
-    sudo mkdir -p "${hook_folder}"
     sudo cp "${hook_src}" "${hook_folder}${hook_file}"
 }
 
