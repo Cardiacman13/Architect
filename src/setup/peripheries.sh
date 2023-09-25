@@ -21,11 +21,11 @@ function printer() {
         sudo systemctl enable --now avahi-daemon >> /dev/null 2>&1
         sudo systemctl enable --now cups >> /dev/null 2>&1
         
-        if read_user "|- Avec vous une imprimante EPSON ?"; then
+        if read_user "|- Avez vous une imprimante EPSON ?"; then
             echo -e "|- Installation des paquets pour les imprimantes EPSON. ${RED}(long)${RESET}"
             yay -S --needed --noconfirm epson-inkjet-printer-escpr  epson-inkjet-printer-escpr2  epson-inkjet-printer-201601w  epson-inkjet-printer-n10-nx127 >> /dev/null 2>&1
         fi           
-        if read_user "|- Avec vous une imprimante HP ?"; then
+        if read_user "|- Avez vous une imprimante HP ?"; then
             echo "|- Installation des paquets pour les imprimantes HP."
             yay -S --needed --noconfirm hplip python-pyqt5 >> /dev/null 2>&1
         fi
