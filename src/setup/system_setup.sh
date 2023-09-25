@@ -52,8 +52,10 @@ function install_server_sound() {
     echo "--------------------------------------------------"
 }
 
-function install_firewall() {
-    echo "Installation du firewall..."
+function install_firmware() {
+    echo "Installation du firmware..."
+    echo "|- Installation du firewall"
+
     yay -S --needed --noconfirm ufw >> /dev/null 2>&1
     if ! sudo systemctl is-active ufw.service &> /dev/null; then
         echo "|- Activation du firewall"
