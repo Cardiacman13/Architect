@@ -35,7 +35,7 @@ function printer() {
 
 function enable_bluethooth() {
     if read_user "Voulez vous activer le bluetooth ?"; then
-        echo "|- Installation des paquets."u
+        echo "|- Installation des paquets."
         yay -S --needed --noconfirm bluez bluez-utils bluez-plugins >> /dev/null 2>&1
         echo "|- Activation du service bluetooth"
         sudo systemctl enable --now bluetooth >> /dev/null 2>&1
