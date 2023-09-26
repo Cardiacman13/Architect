@@ -6,7 +6,6 @@ function install_useful_software() {
     echo "Installation des logiciels utiles"
     local package_list=()
     local flatpak_list=()
-    
 
     if read_user "|- Voulez vous installer Discord ?"; then
         package_list+=("discord")

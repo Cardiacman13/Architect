@@ -34,15 +34,13 @@ function printer() {
 }
 
 function enable_bluethooth() {
-    if lspci | grep -i bluetooth &> /dev/null; then
-        echo "Installation des paquets pour le bluetooth."
-        yay -S --needed --noconfirm bluez bluez-utils bluez-plugins >> /dev/null 2>&1
-        if ! systemctl is-active bluetooth &> /dev/null; then
-            echo "|- Activation du service bluetooth."
-            systemctl enable --now bluetooth.service >> /dev/null 2>&1
-        fi
-        echo "--------------------------------------------------"
+    if read_user "Voulez vous activer le bluetooth ?"; then
+        echo "|- Installation des paquets."
+        yay -S --needed --noconfirm bluez bluez-utils pulseaudio-bluetooth >> /dev/null 2>&1
+        echo "|- Activation du service bluetooth"
+        sudo systemctl enable --now bluetooth >> /dev/null 2>&1
     fi
+    echo "--------------------------------------------------"
 }
 
 function install_peripheries() {
