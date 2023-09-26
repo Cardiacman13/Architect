@@ -52,8 +52,26 @@ function welcome_msg() {
     fi
 }
 
+function reboot_timer() {
+    local timer=$1
+
+    read -t "${timer}" -p "${RED}Le systeme a fait des mises a jour il doit redemarrer${RESET}. Faite ${GREEN}Ctrl+C${RESET} pour annuler." choice
+    if [[ $choice == "" ]]; then
+        while [[ $timer -gt 0 ]]; do
+            echo -e "${RED}Redémarrage dans ${timer} secondes...${RESET}"
+            sleep 1
+            ((timer--))
+        done
+    fi
+    sudo reboot
+}
+
 function main() {
     local start_time=$(date +%s)
+    
+    sudo pacman -Syyu --noconfirm
+    reboot_timer 10
+
     welcome_msg
 
     if grep -q "^#\[multilib\]" "/etc/pacman.conf"; then
@@ -81,15 +99,8 @@ function main() {
     local duration=$((end_time - start_time))
 
     echo -e "${GREEN}Le script à mis ${duration} secondes à s'exécuter.${RESET}"
-    sleep 1
-    TMP=10
-    echo -e "${RED}Le système redémarre dans ${TMP} secondes ou appuyez sur Ctrl+C pour annuler.${RESET}"
-    while [[ $TMP -gt 0 ]]; do
-        echo -e "${RED}Redémarrage dans ${TMP} secondes...${RESET}"
-        sleep 1
-        ((TMP--))
-    done
-    sudo reboot
+    reboot_timer 10
+
 }
 
 main
