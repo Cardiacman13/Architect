@@ -4,10 +4,13 @@ source "$BASE_DIR/src/utils.sh"
 
 function install_useful_software() {
     echo "Installation des logiciels utiles"
-    local package_list=("discord")
+    local package_list=()
     local flatpak_list=()
     
 
+    if read_user "|- Voulez vous installer Discord ?"; then
+        package_list+=("discord")
+    fi
     if read_user "|- Voulez vous installer Steam ?"; then
         package_list+=("steam")
     fi
@@ -20,7 +23,7 @@ function install_useful_software() {
     if read_user "|- Voulez vous installer Spotify ?"; then
         package_list+=("spotify")
     fi
-    if read_user "|- Voulez vous installer OBS ?"; then
+    if read_user "|- Voulez vous installer OBS (flatpak) ?"; then
         flatpak_list+=("com.obsproject.Studio")
     fi
     if read_user "|- Voulez vous installer Libreoffice ?"; then
