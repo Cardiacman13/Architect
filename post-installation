@@ -71,7 +71,6 @@ function main() {
     local start_time=$(date +%s)
     
     sudo pacman -Syyu --noconfirm
-    reboot_timer 10
 
     welcome_msg
 
