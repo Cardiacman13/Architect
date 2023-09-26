@@ -2,7 +2,7 @@
 
 **Dernière modification du tuto le : 26/09/2023**
 
-N'hésitez pas à fork le script et à le moddifier selon vos besoins mais SVP supprimez mon tuto et mes vidéos, merci :).
+N'hésitez pas à fork le script et à le modifier selon vos besoins mais SVP supprimez mon tuto et mes vidéos (le read-me quoi), merci :).
 
 ## Fonctionnement du tuto
 
