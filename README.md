@@ -1,6 +1,8 @@
 # TUTO ARCH LINUX 
 
-**Dernière modification du tuto le : 21/09/2023**
+**Dernière modification du tuto le : 26/09/2023**
+
+N'hésitez pas à fork le script et à le modifier selon vos besoins mais SVP supprimez mon tuto et mes vidéos (le read-me quoi), merci :).
 
 ## Fonctionnement du tuto
 
@@ -53,7 +55,7 @@ Télécharger l’ISO : [**Arch Linux - Downloads**](https://archlinux.org/downl
 
 ## POST INSTALLATION
 
-Script à exécuter sur une installation propre, fraichement installée avec archinstall, il réalise le tuto pour vous quelque soit vos choix de DE et file system.
+Script à exécuter sur une installation propre, **fraîchement installée avec archinstall**, il réalise le tuto pour vous quelque soit vos choix de DE et file system.
 
 **Script post installation :**
 
