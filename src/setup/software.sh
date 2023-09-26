@@ -14,6 +14,9 @@ function install_useful_software() {
     if read_user "|- Voulez vous installer Lutris ?"; then
         package_list+=("lutris" "wine-staging")
     fi
+    if read_user "|- Voulez vous installer Heroic Games Launcher (Epic Games/Gog) ?"; then
+        package_list+=("heroic-games-launcher-bin")
+    fi
     if read_user "|- Voulez vous installer Spotify ?"; then
         package_list+=("spotify")
     fi
