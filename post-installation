@@ -55,7 +55,7 @@ function welcome_msg() {
 function reboot_timer() {
     local timer=$1
 
-    echo -e "${RED}Script est terminé le système doit redémarrer${RESET} : Appuyez sur ${GREEN}Entrée${RESET} pour continuer ou ${GREEN}Ctrl+C${RESET} pour annuler."
+    echo -e "${RED}Script est terminé, le système doit redémarrer${RESET} : Appuyez sur ${GREEN}Entrée${RESET} pour redémarrer ou ${GREEN}Ctrl+C${RESET} pour annuler."
     read -p "" choice
     if [[ "${choice}" == "" ]]; then
         while [[ ${timer} -gt 0 ]]; do
