@@ -29,7 +29,7 @@ function increase_vm_max_map_count() {
     local sysctl_src="/etc/sysctl.d/99-sysctl.conf"
 
     if [[ ! -f "${sysctl_src}" ]]; then
-        echo "|- Création du fichier. ${sysctl_src}"
+        echo "|- Création du fichier .${sysctl_src}."
         sudo touch "${sysctl_src}"
     fi
     if [[ -z $(cat "${sysctl_src}") ]]; then
