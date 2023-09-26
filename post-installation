@@ -90,9 +90,9 @@ function main() {
     fi
 
     echo -e "|- Mise à jour des mirroirs. ${RED}(long)${RESET}"
-    sudo pacman -Syy --noconfirm >> /dev/null 2>&1
     sudo pacman -S --needed --noconfirm reflector >> /dev/null 2>&1
     sudo reflector --latest 20 --protocol https --sort rate --fastest 20 --save /etc/pacman.d/mirrorlist >> /dev/null 2>&1
+    sudo pacman -Syy --noconfirm >> /dev/null 2>&1
     sudo pacman -S --needed --noconfirm git >> /dev/null 2>&1
     install_aur_helper
     yay -S --needed --noconfirm bc >> /dev/null 2>&1
