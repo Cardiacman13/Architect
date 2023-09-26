@@ -55,9 +55,10 @@ function welcome_msg() {
 function reboot_timer() {
     local timer=$1
 
-    read -t "${timer}" -p "${RED}Le systeme a fait des mises a jour il doit redemarrer${RESET}. Faite ${GREEN}Ctrl+C${RESET} pour annuler." choice
-    if [[ $choice == "" ]]; then
-        while [[ $timer -gt 0 ]]; do
+    echo -e "${RED}Le systeme a fait des mises a jour il doit redemarrer${RESET}. Faite ${GREEN}Ctrl+C${RESET} pour annuler"
+    read -p "" choice
+    if [[ "${choice}" == "" ]]; then
+        while [[ ${timer} -gt 0 ]]; do
             echo -e "${RED}Redémarrage dans ${timer} secondes...${RESET}"
             sleep 1
             ((timer--))
