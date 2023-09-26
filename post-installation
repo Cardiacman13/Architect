@@ -54,26 +54,19 @@ function welcome_msg() {
 
 function main() {
     local start_time=$(date +%s)
+    welcome_msg
 
     if grep -q "^#\[multilib\]" "/etc/pacman.conf"; then
         sudo sed -i '/^#\[multilib\]/,/^#Include = \/etc\/pacman.d\/mirrorlist/ s/^#//' "/etc/pacman.conf"
     fi
 
-    echo -e "Mise à jour des mirroirs. ${RED}(long)${RESET}"
-    echo "--------------------------------------------------" 
+    echo -e "|- Mise à jour des mirroirs. ${RED}(long)${RESET}"
     sudo pacman -Syy --noconfirm >> /dev/null 2>&1
     sudo pacman -S --needed --noconfirm reflector >> /dev/null 2>&1
     sudo reflector --latest 20 --protocol https --sort rate --fastest 20 --save /etc/pacman.d/mirrorlist >> /dev/null 2>&1
     sudo pacman -S --needed --noconfirm git >> /dev/null 2>&1
     install_aur_helper
-    
-    yay --noconfirm
-    if [[ $? -eq 0 ]]; then
-        echo -e "Si vous avez eu des packets à mettre à jour, il est ${RED}fortement recommandé de redémarrer${RESET} votre système avant de continuer."
-        exit 0
-    fi
-
-    welcome_msg
+    yay -S --needed --noconfirm bc >> /dev/null 2>&1
 
     system_setup            # 1
     install_video_drivers   # 2
