@@ -1,6 +1,8 @@
 # TUTO ARCH LINUX 
 
-**Dernière modification du tuto le : 21/09/2023**
+**Dernière modification du tuto le : 26/09/2023**
+
+N'hésitez pas à fork le script et à le moddifier selon vos besoins mais SVP supprimez mon tuto et mes vidéos, merci :).
 
 ## Fonctionnement du tuto
 
