@@ -14,7 +14,7 @@ function desktop_environment_management() {
         de=$DESKTOP_SESSION
     fi
 
-    if [[ $de == "plasma" ]]; then
+    if [[ $de == "KDE" ]]; then
         config_kde
     fi
 }
