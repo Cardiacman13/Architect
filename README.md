@@ -53,7 +53,7 @@ Télécharger l’ISO : [**Arch Linux - Downloads**](https://archlinux.org/downl
 
 ## POST INSTALLATION
 
-Script à exécuter sur une installation propre, fraîchement installée avec archinstall, il réalise le tuto pour vous quelque soit vos choix de DE et file system.
+Script à exécuter sur une installation propre, **fraîchement installée avec archinstall**, il réalise le tuto pour vous quelque soit vos choix de DE et file system.
 
 **Script post installation :**
 
