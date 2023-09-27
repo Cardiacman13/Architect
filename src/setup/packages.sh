@@ -2,6 +2,7 @@ BASE_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
 
 source "$BASE_DIR/src/desktop_environments/KDE.sh"
 source "$BASE_DIR/src/desktop_environments/XFCE.sh"
+source "$BASE_DIR/src/desktop_environments/GNOME.sh"
 
 function desktop_environment_management() {
     local de=""
@@ -19,6 +20,8 @@ function desktop_environment_management() {
         config_kde
     elif [[ $de == "XFCE" ]]; then
         config_xfce
+    elif [[ $de == "GNOME" ]]; then
+        config_gnome
     fi
 }
 
