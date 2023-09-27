@@ -226,7 +226,7 @@ yay -S reflector-simple downgrade rebuild-detector mkinitcpio-firmware xdg-deskt
 
 ### Logiciels divers
 ```bash
-yay -S libreoffice-fresh libreoffice-fresh-fr vlc discord gimp obs-studio gnome-disk-utility
+yay -S libreoffice-fresh libreoffice-fresh-fr vlc discord gimp obs-studio gnome-disk-utility visual-studio-code-bin
 ```
 
 ### Logiciels KDE
