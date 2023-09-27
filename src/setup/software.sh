@@ -35,7 +35,7 @@ function install_useful_software() {
         package_list+=("visual-studio-code-bin")
     fi
     if read_user "|- Voulez vous installer Open RGB ?"; then
-        package_list+=("openrgb")
+        package_list+=("openrgb-bin")
     fi
 
     echo -e "|- Installation des paquets ${RED}(long)${RESET}"
