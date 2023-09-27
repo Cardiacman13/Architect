@@ -135,12 +135,13 @@ N'hésitez pas à faire remonter les bugs merci :)
    kate /etc/default/grub
    ```
 
-   Ligne "GRUB_CMDLINE_LINUX" ajouter **nvidia-drm.modeset=1**
+   Ligne "grub_cmdline_linux_default=" ajouter **nvidia-drm.modeset=1**
+    exemple : GRUB_CMDLINE_LINUX_DEFAULT="loglevel=3 quiet nvidia-drm.modeset=1"
 
     puis :
 
     ```bash
-   grub-mkconfig -o /boot/grub/grub.cfg
+   sudo grub-mkconfig -o /boot/grub/grub.cfg
    ```
    
 4. **Charger les modules Nvidia en priorité au lancement de Arch :**
