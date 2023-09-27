@@ -80,7 +80,7 @@ function reboot_timer() {
 
 function main() {
     local start_time=$(date +%s)
-    
+
     sudo pacman -Syyu --noconfirm
     welcome_msg
 
