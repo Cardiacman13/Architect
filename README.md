@@ -118,13 +118,22 @@ N'hésitez pas à faire remonter les bugs merci :)
     ```
 
 2. **Activer nvidia-drm.modeset=1 :**
+   **Si systemd boot**
 
-   Dans le dossier:
+    Dans le dossier:
     ```bash
    /boot/loader/entries/
    ```
    Il y a plusieurs fichiers .conf, il faut ajouter nvidia-drm.modeset=1 à la ligne options de chaque fichiers,
    exemple : options                 root=PARTUUID=fb680c54-466d-4708-a1ac-fcc338ed57f1 rw rootfstype=ext4 nvidia-drm.modeset=1
+
+    **Si grub**
+
+    ```bash
+   kate /etc/default/grub
+   ```
+
+   Ligne "GRUB_CMDLINE_LINUX" ajouter nvidia-drm.modeset=1 
    
 4. **Charger les modules Nvidia en priorité au lancement de Arch :**
     ```bash
