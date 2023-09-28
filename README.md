@@ -119,12 +119,30 @@ N'hésitez pas à faire remonter les bugs merci :)
 
 2. **Activer nvidia-drm.modeset=1 :**
 
-   Dans le dossier:
-    ```bash
+   **Si systemd boot**
+
+    Dans le dossier:
+
+   ```bash
    /boot/loader/entries/
    ```
    Il y a plusieurs fichiers .conf, il faut ajouter nvidia-drm.modeset=1 à la ligne options de chaque fichiers,
    exemple : options                 root=PARTUUID=fb680c54-466d-4708-a1ac-fcc338ed57f1 rw rootfstype=ext4 nvidia-drm.modeset=1
+
+    **Si grub**
+
+    ```bash
+   kate /etc/default/grub
+   ```
+
+   Ligne "grub_cmdline_linux_default=" ajouter **nvidia-drm.modeset=1**
+    exemple : GRUB_CMDLINE_LINUX_DEFAULT="loglevel=3 quiet nvidia-drm.modeset=1"
+
+    puis :
+
+    ```bash
+   sudo grub-mkconfig -o /boot/grub/grub.cfg
+   ```
    
 4. **Charger les modules Nvidia en priorité au lancement de Arch :**
     ```bash
@@ -208,7 +226,7 @@ yay -S reflector-simple downgrade rebuild-detector mkinitcpio-firmware xdg-deskt
 
 ### Logiciels divers
 ```bash
-yay -S libreoffice-fresh libreoffice-fresh-fr vlc discord gimp obs-studio gnome-disk-utility
+yay -S libreoffice-fresh libreoffice-fresh-fr vlc discord gimp obs-studio gnome-disk-utility visual-studio-code-bin
 ```
 
 ### Logiciels KDE
