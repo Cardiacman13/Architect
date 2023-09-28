@@ -41,7 +41,7 @@ Télécharger l’ISO : [**Arch Linux - Downloads**](https://archlinux.org/downl
     ```bash
     station wlan0 connect NOM-DE-VOTRE-WIFI (SSID)
     ```
-    Entrer le mot de passe de votre wifi puis `quit` pour quitter iwctl
+    Entrez le mot de passe de votre wifi puis `quit` pour quitter iwctl
 
 2. **Archinstall**
     ```bash
@@ -73,7 +73,7 @@ N'hésitez pas à faire remonter les bugs merci :)
     ```
     kate /etc/pacman.conf
     ```
-2. Décommenter (enlever les **#** des lignes suivantes):
+2. Décommenter (enlevez les **#** des lignes suivantes):
     ```bash
     #Misc options
     #UseSyslog
@@ -83,7 +83,7 @@ N'hésitez pas à faire remonter les bugs merci :)
     VerbosePkgLists <- 
     ParallelDownloads = 5 <-
     ```
-3. Installation de yay
+3. Installation de yay,
     [Yay](https://github.com/Jguer/yay) est un outil pratique pour gérer l'installation et la mise à jour de logiciels sur les systèmes basés sur Arch Linux.
     ```bash
     sudo pacman -S --needed git base-devel
@@ -92,12 +92,12 @@ N'hésitez pas à faire remonter les bugs merci :)
     makepkg -si
     ```
 
-4. Alias maintenance
-    Cette modification permet de n’avoir à taper que “u” dans un terminal afin de faciliter la maintenance du système (inutile si vous comptez faire les bonus).
+4. Alias maintenance,
+    cette modification permet de n’avoir à taper que “u” dans un terminal afin de faciliter la maintenance du système (inutile si vous comptez faire les bonus).
     ```bash
     kate ~/.bashrc
     ```
-    Et ajouter ceci a la fin du fichier :
+    Ajouter ceci à la fin du fichier :
     ```bash
     alias update-arch="sudo pacman -Syy && yay -S archlinux-keyring && yay && yay -Sc && sudo pacman -Rns $(pacman -Qdtq)"
     ```
@@ -149,7 +149,7 @@ N'hésitez pas à faire remonter les bugs merci :)
     ```bash
     kate /etc/mkinitcpio.conf
     ```
-    Puis modifier la ligne MODULES=() en :
+    Puis modifiez la ligne MODULES=() en :
     ```bash
     MODULES=(nvidia nvidia_modeset nvidia_uvm nvidia_drm)
     ```
@@ -281,13 +281,13 @@ yay -S  xpadneo-dkms --needed
 
 ### Afficher les performances en jeu
 
-[MagoHub](https://wiki.archlinux.org/title/MangoHud) est une surcouche Vulkan et OpenGL permettant de surveiller les performances du système à l'intérieur des applications et d'enregistrer des métriques pour l'analyse comparative.
+[MangoHub](https://wiki.archlinux.org/title/MangoHud) est une surcouche Vulkan et OpenGL permettant de surveiller les performances du système à l'intérieur des applications et d'enregistrer des métriques pour l'analyse comparative.
 
 ```bash
 yay -S goverlay --needed
 ```
 
-### Augmentez  la compatibilité des jeux Windows
+### Augmenter la compatibilité des jeux Windows
 
 - L'objectif est d'améliorer la compatibilité avec les jeux Windows via Wine ou Steam. (Voir [ProtonDB](https://www.protondb.com/))
     
@@ -331,7 +331,7 @@ Installer fish.
     ```
     Ajouter :  **&& flatpak update** si par la suite vous comptez installer les flatpak
 
-- ***Reboot sauf si ça a été fait à l’étape 3***, les alias quels qu’ils soient, ne fonctionnent qu’après avoir relancer le terminal.
+- ***Reboot sauf si ça a été fait à l’étape 3***, les alias quels qu’ils soient, ne fonctionnent qu’après avoir relancé le terminal.
 
 ### [Kernel TKG](https://github.com/Frogging-Family/linux-tkg) (WARNING utilisateurs avancés)
 
@@ -394,12 +394,12 @@ flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.f
 
 ### Problème récurrent :
 
-- Si vous n’avez pas de son tentez :
+- Si vous n’avez pas de son, tentez :
     ```bash
     yay -S sof-firmware
     ```
 
-- Pour de l’aide venez sur le Discord GLF (fr/en): [Discord GLF](http://discord.gg/EP3Jm8YMvj)
+- Pour de l’aide, venez sur le Discord GLF (fr/en): [Discord GLF](http://discord.gg/EP3Jm8YMvj)
 
 ## Sources
 
