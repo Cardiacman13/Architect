@@ -84,7 +84,8 @@ N'hésitez pas à faire remonter les bugs merci :)
     ParallelDownloads = 5 <-
     ```
 3. Installation de yay,
-    [Yay](https://github.com/Jguer/yay) est un outil pratique pour gérer l'installation et la mise à jour de logiciels sur les systèmes basés sur Arch Linux.
+
+   [Yay](https://github.com/Jguer/yay) est un outil pratique pour gérer l'installation et la mise à jour de logiciels sur les systèmes basés sur Arch Linux.
     ```bash
     sudo pacman -S --needed git base-devel
     git clone https://aur.archlinux.org/yay-bin.git
@@ -92,7 +93,7 @@ N'hésitez pas à faire remonter les bugs merci :)
     makepkg -si
     ```
 
-4. Alias maintenance,
+5. Alias maintenance,
     cette modification permet de n’avoir à taper que “u” dans un terminal afin de faciliter la maintenance du système (inutile si vous comptez faire les bonus).
     ```bash
     kate ~/.bashrc
