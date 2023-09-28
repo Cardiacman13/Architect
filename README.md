@@ -94,7 +94,8 @@ N'hésitez pas à faire remonter les bugs merci :)
     ```
 
 5. Alias maintenance,
-    cette modification permet de n’avoir à taper que “u” dans un terminal afin de faciliter la maintenance du système (inutile si vous comptez faire les bonus).
+
+   cette modification permet de n’avoir à taper que “update-arch” dans un terminal afin de faciliter la maintenance du système.
     ```bash
     kate ~/.bashrc
     ```
@@ -150,7 +151,7 @@ N'hésitez pas à faire remonter les bugs merci :)
     ```bash
     kate /etc/mkinitcpio.conf
     ```
-    Puis modifiez la ligne MODULES=() en :
+    Modifiez la ligne MODULES=() en :
     ```bash
     MODULES=(nvidia nvidia_modeset nvidia_uvm nvidia_drm)
     ```
@@ -163,7 +164,7 @@ N'hésitez pas à faire remonter les bugs merci :)
     sudo mkdir /etc/pacman.d/hooks/
     kate /etc/pacman.d/hooks/nvidia.hook
     ```
-    Puis y ajouter :
+    Ajouter :
     ```bash
     [Trigger]
     Operation=Install
