@@ -136,7 +136,8 @@ N'hésitez pas à faire remonter les bugs merci :)
    ```
 
    Ligne "grub_cmdline_linux_default=" ajouter **nvidia-drm.modeset=1**
-    exemple : GRUB_CMDLINE_LINUX_DEFAULT="loglevel=3 quiet nvidia-drm.modeset=1"
+
+   exemple : GRUB_CMDLINE_LINUX_DEFAULT="loglevel=3 quiet nvidia-drm.modeset=1"
 
     puis :
 
