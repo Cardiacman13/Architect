@@ -119,7 +119,7 @@ N'hésitez pas à faire remonter les bugs merci :)
 
 2. **Activer nvidia-drm.modeset=1 :**
 
-   **Si systemd boot**
+   - **Si systemd boot**
 
     Dans le dossier:
 
@@ -129,7 +129,7 @@ N'hésitez pas à faire remonter les bugs merci :)
    Il y a plusieurs fichiers .conf, il faut ajouter nvidia-drm.modeset=1 à la ligne options de chaque fichiers,
    exemple : options                 root=PARTUUID=fb680c54-466d-4708-a1ac-fcc338ed57f1 rw rootfstype=ext4 nvidia-drm.modeset=1
 
-    **Si grub**
+    - **Si grub**
 
     ```bash
    kate /etc/default/grub
