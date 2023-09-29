@@ -35,7 +35,7 @@ function install_useful_packages() {
     echo "Installation des paquets utiles."
     desktop_environment_management
 
-    yay -S --needed --noconfirm fwupd xdg-utils reflector-simple downgrade rebuild-detector mkinitcpio-firmware xdg-desktop-portal xdg-desktop-portal-gnome neofetch power-profiles-daemon hunspell-fr p7zip unrar ttf-liberation noto-fonts-emoji-flags ntfs-3g fuse2 bash-completion xdg-desktop-portal-gtk ffmpegthumbs vlc >> /dev/null 2>&1
+    yay -S --needed --noconfirm sof-firmware fwupd xdg-utils reflector-simple downgrade rebuild-detector mkinitcpio-firmware xdg-desktop-portal xdg-desktop-portal-gnome neofetch power-profiles-daemon hunspell-fr p7zip unrar ttf-liberation noto-fonts-emoji-flags ntfs-3g fuse2 bash-completion xdg-desktop-portal-gtk ffmpegthumbs vlc >> /dev/null 2>&1
     sudo systemctl enable reflector.service >> /dev/null 2>&1
 
     # sudo fwupdmgr get-devices -y && sudo fwupdmgr refresh -y --force && sudo fwupdmgr get-updates -y && sudo fwupdmgr update -y
