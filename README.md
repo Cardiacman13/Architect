@@ -185,7 +185,7 @@ N'hésitez pas à faire remonter les bugs merci :)
 ### AMD
 Installer les composants core :
 ```bash
-yay -S --needed mesa lib32-mesa vulkan-radeon lib32-vulkan-radeon vulkan-icd-loader lib32-vulkan-icd-loader
+yay -S --needed mesa lib32-mesa vulkan-radeon lib32-vulkan-radeon vulkan-icd-loader lib32-vulkan-icd-loader mesa-vulkan-layers lib32-mesa-vulkan-layers
 ```
 
 ### Imprimantes
