@@ -54,5 +54,5 @@ function enable_bluetooth() {
 function install_peripheries() {
     gamepad
     printer
-    enable_bluethooth
+    enable_bluetooth
 }
