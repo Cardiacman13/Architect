@@ -1,4 +1,5 @@
 
+# This function optimizes pacman by enabling colored output, verbose package lists, and parallel downloads.
 function optimize_pacman() {
     echo "Optimisation de pacman."
     local pacman_src="/etc/pacman.conf"
@@ -14,6 +15,11 @@ function optimize_pacman() {
     echo "--------------------------------------------------"
 }
 
+# Installs kernel headers for all installed kernels
+#
+# This function installs kernel headers for all installed kernels. It loops through all the installed kernels in /boot
+# and installs the corresponding headers package for each kernel using pacman. The function suppresses all output except
+# for errors.
 function install_kernel_headers() {
     echo "Installation des headers des kernels."
     for kernel in $(ls /boot | grep vmlinuz); do
@@ -24,6 +30,9 @@ function install_kernel_headers() {
     echo "--------------------------------------------------"
 }
 
+# Function to increase the value of vm.max_map_count in the system
+# This function creates a file /etc/sysctl.d/99-sysctl.conf if it doesn't exist
+# and adds the value vm.max_map_count=16777216 to it if it's not already present
 function increase_vm_max_map_count() {
     echo "Augmentation de la valeur vm.max_map_count."
     local sysctl_src="/etc/sysctl.d/99-sysctl.conf"
@@ -39,6 +48,17 @@ function increase_vm_max_map_count() {
     echo "--------------------------------------------------"
 }
 
+# Installs the server sound by removing pulseaudio packages and installing pipewire packages.
+# This function installs the following packages:
+# - pipewire
+# - lib32-pipewire
+# - pipewire-pulse
+# - pipewire-alsa
+# - pipewire-jack
+# - wireplumber
+# - alsa-utils
+# - alsa-firmware
+# - alsa-tools
 function install_server_sound() {
     echo "Installation du serveur audio."
     echo "|- Suppression des paquets pulseaudio."
@@ -52,6 +72,7 @@ function install_server_sound() {
     echo "--------------------------------------------------"
 }
 
+# Installs and activates the ufw firewall
 function install_firewall() {
     echo "Installation du firewall."
 
@@ -65,8 +86,10 @@ function install_firewall() {
 }
 
 
+# Sets up the bootloader configuration for the system.
+# If the system uses systemd-boot, it does nothing.
+# If the system uses grub, it copies a hook file to the pacman hooks folder.
 function setup_grub() {
-
     if [[ -d "/boot/loader/entries" ]]; then
         local boot_loader="systemd-boot"
     else
@@ -84,6 +107,8 @@ function setup_grub() {
     fi
 }
 
+# This function performs system setup by optimizing pacman, installing kernel headers, increasing vm max map count,
+# installing server sound, installing firewall, and setting up grub.
 function system_setup() {
     optimize_pacman
     install_kernel_headers

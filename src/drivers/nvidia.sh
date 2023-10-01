@@ -2,6 +2,7 @@
 RED='\033[0;31m'
 RESET='\033[0m'
 
+# This function sets up the nvidia hook by copying the nvidia.hook file to /etc/pacman.d/hooks/
 function hook() {
     echo "|- Configuration du hook nvidia"
 
@@ -12,6 +13,7 @@ function hook() {
     sudo cp "${hook_src}" "${hook_folder}${hook_file}"
 }
 
+# This function updates the mkinitcpio configuration file to include the necessary NVIDIA modules.
 function mkinitcpio() {
     echo "|- Configuration de mkinitcpio."
 
@@ -20,6 +22,9 @@ function mkinitcpio() {
     sudo sed -i '/MODULES=/ s/)/ nvidia nvidia_modeset nvidia_uvm nvidia_drm)/' "${mkinitcpio_src}"
 }
 
+# This function detects the bootloader used by the system and adds the "nvidia-drm.modeset=1" option to the boot configuration.
+# If the bootloader is "grub", it updates the "/etc/default/grub" file and runs "grub-mkconfig" to update the grub configuration.
+# If the bootloader is "systemd-boot", it updates all "*.conf" files in "/boot/loader/entries/" directory with the "nvidia-drm.modeset=1" option.
 function bootloaders() {
     echo "|- Détection du bootloader."
 
@@ -48,6 +53,7 @@ function bootloaders() {
     fi
 }
 
+# Function to install NVIDIA drivers and related packages
 function nvidia_drivers() {
     echo "|- Installation pilotes NVIDIA."
 

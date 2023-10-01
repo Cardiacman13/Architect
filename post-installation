@@ -25,6 +25,9 @@ source src/setup/shell.sh
 source src/setup/software.sh
 source src/setup/system_setup.sh
 
+# This function installs the AUR helper 'yay' if it is not already installed.
+# It clones the 'yay-bin' repository from AUR, compiles it, and installs it using 'makepkg'.
+# The cloned repository is then removed to free up disk space.
 function install_aur_helper() {
     if ! command -v yay &> /dev/null; then
         echo "Installation de yay"
@@ -38,6 +41,9 @@ function install_aur_helper() {
     fi
 }
 
+# This function displays a welcome message to the user and prompts them to continue with the script or cancel it.
+# It also provides information about the script and its author.
+# If the user chooses to cancel, the script exits with status code 0.
 function welcome_msg() {
     clear
     echo -e "${GREEN}Bienvenue dans le script post-installation d'Arch Linux !${RESET}"
@@ -63,6 +69,11 @@ function welcome_msg() {
     fi
 }
 
+# This function displays a message indicating that the script has finished running and prompts the user to reboot the system.
+# If the user chooses to reboot, a timer is started and the system is rebooted after the timer expires.
+# If the user chooses not to reboot, the function exits without doing anything.
+# Arguments:
+#   $1: The number of seconds to wait before rebooting the system (optional, default is 0).
 function reboot_timer() {
     local timer=$1
 
@@ -78,6 +89,10 @@ function reboot_timer() {
     sudo reboot
 }
 
+# This function performs post-installation tasks for an Arch Linux system.
+# It updates the system, sets up multilib if necessary, updates the mirrorlist,
+# installs git and an AUR helper, and runs several other setup functions.
+# It also prints the time it took to run the script and schedules a reboot.
 function main() {
     local start_time=$(date +%s)
 
@@ -108,7 +123,6 @@ function main() {
 
     echo -e "${GREEN}Le script à mis ${duration} secondes à s'exécuter.${RESET}"
     reboot_timer 10
-
 }
 
 main

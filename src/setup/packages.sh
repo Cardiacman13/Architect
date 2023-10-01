@@ -4,6 +4,11 @@ source "$BASE_DIR/src/desktop_environments/KDE.sh"
 source "$BASE_DIR/src/desktop_environments/XFCE.sh"
 source "$BASE_DIR/src/desktop_environments/GNOME.sh"
 
+# This function detects the current desktop environment and calls the corresponding configuration function.
+# It first checks the XDG_CURRENT_DESKTOP environment variable, then GDMSESSION, and finally DESKTOP_SESSION.
+# If the detected environment is KDE, it calls the config_kde function.
+# If the detected environment is XFCE, it calls the config_xfce function.
+# If the detected environment is GNOME, it calls the config_gnome function.
 function desktop_environment_management() {
     local de=""
 
@@ -25,12 +30,17 @@ function desktop_environment_management() {
     fi
 }
 
+# Installs Flatpak compatibility and adds flathub remote repository.
 function install_flatpak() {
     echo "|- Installation de la compatibilité Flatpak."
     sudo pacman -S --needed --noconfirm flatpak >> /dev/null 2>&1
     flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo >> /dev/null 2>&1
 }
 
+# Installs useful packages for the system.
+# This function installs various packages including sof-firmware, fwupd, xdg-utils, reflector-simple, downgrade, rebuild-detector, mkinitcpio-firmware, xdg-desktop-portal, xdg-desktop-portal-gnome, neofetch, power-profiles-daemon, hunspell-fr, p7zip, unrar, ttf-liberation, noto-fonts-emoji-flags, ntfs-3g, fuse2, bash-completion, xdg-desktop-portal-gtk, ffmpegthumbs, and vlc.
+# If the system uses BTRFS, it also installs btrfs-progs and btrfs-assistant.
+# Finally, it calls the install_flatpak function.
 function install_useful_packages() {
     echo "Installation des paquets utiles."
     desktop_environment_management

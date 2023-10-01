@@ -5,6 +5,8 @@ source "$BASE_DIR/src/utils.sh"
 RED="\033[1;31m"
 RESET="\033[0m"
 
+# This function prompts the user to install xpadneo for Xbox Series X|S|Elite and 8BitDo gamepads.
+# If the user confirms, xpadneo is installed using yay package manager.
 function gamepad() {
     if read_user "Voulez Xpadneo pour manettes Xbox Series X|S|Elite et 8BitDo ?"; then
         echo "|- Installation de xpadneo."
@@ -13,6 +15,10 @@ function gamepad() {
     echo "--------------------------------------------------" 
 }
 
+# This function installs and configures printer-related packages on Arch Linux.
+# It prompts the user to confirm if they want to support printers and then installs the necessary packages.
+# If the user has an EPSON or HP printer, it installs the necessary packages for those printers as well.
+# FILEPATH: src/setup/peripheries.sh
 function printer() {
     if read_user "Voulez vous supporter les imprimantes ?"; then
         echo "|- Installation des paquets."
@@ -33,7 +39,8 @@ function printer() {
     echo "--------------------------------------------------"
 }
 
-function enable_bluethooth() {
+# Enables Bluetooth if the user confirms. Installs necessary packages and activates the Bluetooth service.
+function enable_bluetooth() {
     if read_user "Voulez vous activer le bluetooth ?"; then
         echo "|- Installation des paquets."
         yay -S --needed --noconfirm bluez bluez-utils bluez-plugins >> /dev/null 2>&1
@@ -43,6 +50,7 @@ function enable_bluethooth() {
     echo "--------------------------------------------------"
 }
 
+# Installs and enables various peripheries such as gamepad, printer, and bluetooth.
 function install_peripheries() {
     gamepad
     printer
