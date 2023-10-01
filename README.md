@@ -1,6 +1,6 @@
 # TUTO ARCH LINUX 
 
-**Dernière modification du tuto le : 26/09/2023**
+**Dernière modification du tuto le : 01/10/2023**
 
 N'hésitez pas à fork le script et à le modifier selon vos besoins mais SVP supprimez mon tuto et mes vidéos (le read-me quoi), merci :).
 
@@ -217,7 +217,7 @@ sudo systemctl enable --now  bluetooth.service
 ### [PipeWire](https://pipewire.org/)
 Pour avoir du son **/!\ Dire oui à tout pour bien tout écraser avec les nouveaux paquets. /!\\**
 ```bash
-sudo pacman -S --needed pipewire lib32-pipewire pipewire-pulse pipewire-alsa pipewire-jack wireplumber
+sudo pacman -S --needed pipewire lib32-pipewire pipewire-pulse pipewire-alsa pipewire-jack wireplumber alsa-utils alsa-firmware alsa-tools
 ```
 
 ## SOFTWARE CORE
