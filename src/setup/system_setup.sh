@@ -48,7 +48,7 @@ function install_server_sound() {
     sudo pacman -Rdd --noconfirm pulseaudio-bluetooth >> /dev/null 2>&1
     sudo pacman -Rdd --noconfirm pulseaudio-alsa >> /dev/null 2>&1
     echo "|- Installation des paquets pipewire."
-    sudo pacman -S --needed --noconfirm pipewire lib32-pipewire pipewire-pulse pipewire-alsa pipewire-jack wireplumber >> /dev/null 2>&1
+    sudo pacman -S --needed --noconfirm pipewire lib32-pipewire pipewire-pulse pipewire-alsa pipewire-jack wireplumber alsa-utils alsa-firmware alsa-tools >> /dev/null 2>&1
     echo "--------------------------------------------------"
 }
 
