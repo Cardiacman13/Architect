@@ -66,6 +66,7 @@ function install_firewall() {
 
 
 function setup_grub() {
+    if [[ "${boot_loader}" == "grub" ]]; then
     echo "Configuration de grub."
     local hook_folder="/etc/pacman.d/hooks/"
     local hook_file="grub.hook"
@@ -73,6 +74,7 @@ function setup_grub() {
 
     sudo mkdir -p "${hook_folder}"
     sudo cp "${hook_src}" "${hook_folder}${hook_file}"
+    fi
 }
 
 function system_setup() {
