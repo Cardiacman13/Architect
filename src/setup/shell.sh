@@ -2,6 +2,11 @@ BASE_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
 
 source "$BASE_DIR/src/utils.sh"
 
+# Adds an alias to update Arch Linux system using pacman, yay, and flatpak.
+# The alias is added to the specified file if it exists and the alias is not already present.
+# If the file does not exist, it is created and the alias is added to it.
+# Parameters:
+#   $1: The file to add the alias to.
 function add_alias_u() {
     local file=$1
     local alias="alias update-arch='sudo pacman -Scc && sudo pacman -Syy && yay -S archlinux-keyring && yay && yay -Sc && sudo pacman -Rns \$(pacman -Qdtq) && flatpak update'"
@@ -16,6 +21,10 @@ function add_alias_u() {
     fi
 }
 
+# Function to detect and configure the shell
+# If the current shell is not fish, it prompts the user to switch to fish shell
+# If the user agrees, it installs fish shell, sets it as the default shell, and adds an alias for updating Arch Linux
+# If the user disagrees, it adds an alias for updating Arch Linux to the bashrc file
 function chose_shell() {
     echo "Detection de fish..."
     if ! echo "${SHELL}" | grep fish &> /dev/null; then
