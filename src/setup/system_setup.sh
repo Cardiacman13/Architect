@@ -89,6 +89,7 @@ function install_firewall() {
 # Sets up the bootloader configuration for the system.
 # If the system uses systemd-boot, it does nothing.
 # If the system uses grub, it copies a hook file to the pacman hooks folder.
+# If the system uses grub, it installs "update-grub" to update grub easily
 function setup_grub() {
     if [[ -d "/boot/loader/entries" ]]; then
         local boot_loader="systemd-boot"
@@ -104,6 +105,7 @@ function setup_grub() {
 
         sudo mkdir -p "${hook_folder}"
         sudo cp "${hook_src}" "${hook_folder}${hook_file}"
+        yay -S --noconfirm update-grub >> /dev/null 2>&1
     fi
 }
 
