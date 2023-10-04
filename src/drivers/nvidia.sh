@@ -5,7 +5,7 @@ RESET='\033[0m'
 # This function sets up the nvidia hook by copying the nvidia.hook file to /etc/pacman.d/hooks/
 function hook() {
     echo "|- Configuration du hook nvidia"
-
+    sudo mkdir -p /etc/pacman.d/hooks/
     local hook_folder="/etc/pacman.d/hooks/"
     local hook_file="nvidia.hook"
     local hook_src="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)/data/nvidia.hook"
