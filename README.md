@@ -315,6 +315,13 @@ yay -S goverlay --needed
 
     “BTRFS snapshots are supported only on BTRFS systems having an Ubuntu-type subvolume layout ”
 
+- Pour bénéficier des sauvegardes automatiques vous aurez besoin de cronie. (facultatif) 
+
+  ```bash
+  yay -S cronie
+  sudo systemctl enable --now cronie
+  ```
+  
 ### Fish
 
 - [Fish](https://fishshell.com/) le shell interactif convivial, est un shell de ligne de commande conçu pour être interactif et convivial. Voir également [ArchWiki](https://wiki.archlinux.org/title/fish) sur le sujet.
