@@ -226,7 +226,7 @@ sudo pacman -S --needed pipewire lib32-pipewire pipewire-pulse pipewire-alsa pip
 ```bash
 yay -S reflector-simple downgrade rebuild-detector mkinitcpio-firmware xdg-desktop-portal neofetch power-profiles-daemon lib32-pipewire hunspell-fr p7zip unrar ttf-liberation noto-fonts noto-fonts-emoji ntfs-3g fuse2 bash-completion --needed
 ```
-
+ 
 ### Logiciels divers
 ```bash
 yay -S libreoffice-fresh libreoffice-fresh-fr vlc discord gimp obs-studio gnome-disk-utility visual-studio-code-bin
@@ -250,7 +250,7 @@ sudo systemctl enable --now ufw.service
 yay -S reflector-simple
 ```
 
-Une commande pour regénérer une liste de mirrors à faire 1 fois après la première installation et à réitérer si vous voyagez, ou changez de pays, ou si vous voyez que le téléchargelent des paquets est trop long, ou encore si vous avez une érreur qui vous dis que un mirror est down:
+Une commande pour générer une liste de mirrors à faire 1 fois après la première installation et à réitérer si vous voyagez, ou changez de pays, ou si vous voyez que le téléchargement des paquets est trop long, ou encore si vous avez une erreur qui vous dis que un mirror est down:
 
 ```bash
 sudo reflector --score 20 --fastest 5 --sort rate --save /etc/pacman.d/mirrorlist
