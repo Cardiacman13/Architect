@@ -105,7 +105,7 @@ function main() {
 
     echo -e "|- Mise à jour des mirroirs. ${RED}(long)${RESET}"
     sudo pacman -S --needed --noconfirm reflector >> /dev/null 2>&1
-    sudo reflector --score 50 --fastest 5 --sort rate --save /etc/pacman.d/mirrorlist >> /dev/null 2>&1
+    sudo reflector --score 20 --fastest 5 --sort rate --save /etc/pacman.d/mirrorlist >> /dev/null 2>&1
 
     install_aur_helper
 
