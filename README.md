@@ -245,12 +245,15 @@ sudo systemctl enable --now ufw.service
 ```
 
 ### Reflector pour update les mirrors automatiquement
+
 ```bash
 yay -S reflector-simple
 ```
-Activer le service :
+
+Une commande pour regénérer une liste de mirrors à faire 1 fois après la première installation et à réitérer si vous voyagez, ou changez de pays, ou si vous voyez que le téléchargelent des paquets est trop long, ou encore si vous avez une érreur qui vous dis que un mirror est down:
+
 ```bash
-systemctl enable --now reflector.service
+sudo reflector --score 20 --fastest 5 --sort rate --save /etc/pacman.d/mirrorlist
 ```
 
 ## GAMING
