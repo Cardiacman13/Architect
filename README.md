@@ -54,6 +54,7 @@ Télécharger l’ISO : [**Arch Linux - Downloads**](https://archlinux.org/downl
     <img src="assets/images/Cardiac-icon.png" width="30" height="30"> [ Tuto Arch Linux Partie 1 : Archinstall ](https://www.youtube.com/watch?v=JE6VwNHLcyk)
 
 ## POST INSTALLATION
+<img src="assets/images/Cardiac-icon.png" width="30" height="30"> [ Tuto Arch Linux Partie 2 : Post installation ](https://youtu.be/FEFhC46BkXo?si=Gi-6BOhqENLoh5Ak)
 
 Script à exécuter sur une installation propre, **fraîchement installée avec archinstall**, il réalise le tuto pour vous quelque soit vos choix de DE, bootloader et file system.
 
@@ -94,6 +95,8 @@ N'hésitez pas à faire remonter les bugs merci :)
     ```
 
 5. Alias maintenance,
+
+   <img src="assets/images/Cardiac-icon.png" width="30" height="30"> [ Tuto Arch Linux Partie 4 : Maintenance ](https://www.youtube.com/watch?v=Z7POSK2jnII)
 
    cette modification permet de n’avoir à taper que “update-arch” dans un terminal afin de mettre à jour le système ou clean-arch pour le néttoyer.
 
@@ -410,6 +413,8 @@ flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.f
     ```
 
 ### Problème récurrent :
+
+ <img src="assets/images/Cardiac-icon.png" width="30" height="30"> [Arch Linux Partie 3 les problèmes les plus courants.](https://youtu.be/vbOOQsYyPfc?si=wA2W8bOG1gtpfmnZ)
 
 - Si vous n’avez pas de son, tentez :
     ```bash
