@@ -103,10 +103,13 @@ N'hésitez pas à faire remonter les bugs merci :)
     ```bash
     alias update-arch="sudo pacman -Syy && yay -S archlinux-keyring && yay && yay -Sc && sudo pacman -Rns $(pacman -Qdtq)"
     ```
-    Ajouter :  **&& flatpak update** si par la suite vous comptez installer les flatpak
+    ```bash
+    alias clean-arch='yay -Sc && sudo pacman -Rns $(pacman -Qdtq) && flatpak remove --unused'
+    ```
+    
 
    Relancer le terminal.
-    Quand vous avez l'erreur : **“erreur : aucune cible spécifiée (utiliser -h pour l’aide)**” cela signifie que pacman ne trouve pas de dépendance orpheline, **tout va bien!**
+   Aves l'alias clean-arch si avez l'erreur : **“erreur : aucune cible spécifiée (utiliser -h pour l’aide)**” cela signifie que pacman ne trouve pas de dépendance orpheline, **tout va    bien!**
 
 ## SUPPORT MATÉRIEL
 
@@ -341,8 +344,9 @@ Installer fish.
     ```bash
     alias update-arch='sudo pacman -Syu && yay && flatpak update'
     ```
-    Ajouter :  **&& flatpak update** si par la suite vous comptez installer les flatpak
-
+    ```bash
+    alias clean-arch='yay -Sc && sudo pacman -Rns $(pacman -Qdtq) && flatpak remove --unused'
+    ```
 - ***Reboot sauf si ça a été fait à l’étape 3***, les alias quels qu’ils soient, ne fonctionnent qu’après avoir relancé le terminal.
 
 ### [Kernel TKG](https://github.com/Frogging-Family/linux-tkg) (WARNING utilisateurs avancés)
