@@ -9,7 +9,7 @@ source "$BASE_DIR/src/utils.sh"
 #   $1: The file to add the alias to.
 function add_alias_u() {
     local file=$1
-    local alias="alias update-arch='sudo pacman -Scc && sudo pacman -Syy && yay -S archlinux-keyring && yay && yay -Sc && sudo pacman -Rns \$(pacman -Qdtq) && flatpak update'"
+    local alias="alias update-arch='sudo pacman -Syu && yay && flatpak update'"
 
     if [[ -f "${file}" ]]; then
         local alias_found=$(cat "${file}" | grep "${alias}")
