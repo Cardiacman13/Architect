@@ -101,7 +101,7 @@ N'hésitez pas à faire remonter les bugs merci :)
     ```
     Ajouter ceci à la fin du fichier :
     ```bash
-    alias update-arch="sudo pacman -Syy && yay -S archlinux-keyring && yay && yay -Sc && sudo pacman -Rns $(pacman -Qdtq)"
+    alias update-arch='yay && flatpak update'
     ```
     ```bash
     alias clean-arch='yay -Sc && sudo pacman -Rns $(pacman -Qdtq) && flatpak remove --unused'
