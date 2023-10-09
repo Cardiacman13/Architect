@@ -111,7 +111,7 @@ N'hésitez pas à faire remonter les bugs merci :)
     alias clean-arch='yay -Sc && sudo pacman -Rns $(pacman -Qdtq) && flatpak remove --unused'
     ```
     ```bash
-    alias fix-key='sudo rm /var/lib/pacman/sync/* && sudo rm -rf /etc/pacman.d/gnupg/* && sudo pacman-key --init      &&         sudo pacman-key --populate && sudo pacman -Sy --noconfirm archlinux-keyring'"
+    alias fix-key='sudo rm /var/lib/pacman/sync/* && sudo rm -rf /etc/pacman.d/gnupg/* && sudo pacman-key --init      &&         sudo pacman-key --populate && sudo pacman -Sy --noconfirm archlinux-keyring'
     ```
     
 
@@ -355,7 +355,7 @@ Installer fish.
     alias clean-arch='yay -Sc && sudo pacman -Rns $(pacman -Qdtq) && flatpak remove --unused'
     ```
     ```bash
-    alias fix-key='sudo rm /var/lib/pacman/sync/* && sudo rm -rf /etc/pacman.d/gnupg/* && sudo pacman-key --init      &&         sudo pacman-key --populate && sudo pacman -Sy --noconfirm archlinux-keyring'"
+    alias fix-key='sudo rm /var/lib/pacman/sync/* && sudo rm -rf /etc/pacman.d/gnupg/* && sudo pacman-key --init      &&         sudo pacman-key --populate && sudo pacman -Sy --noconfirm archlinux-keyring'
     ```
 - ***Reboot sauf si ça a été fait à l’étape 3***, les alias quels qu’ils soient, ne fonctionnent qu’après avoir relancé le terminal.
 
