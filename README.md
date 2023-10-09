@@ -98,7 +98,7 @@ N'hésitez pas à faire remonter les bugs merci :)
 
    <img src="assets/images/Cardiac-icon.png" width="30" height="30"> [ Tuto Arch Linux Partie 4 : Maintenance ](https://www.youtube.com/watch?v=Z7POSK2jnII)
 
-   cette modification permet de n’avoir à taper que “update-arch” dans un terminal afin de mettre à jour le système ou clean-arch pour le néttoyer.
+   cette modification permet de n’avoir à taper que “update-arch” dans un terminal afin de mettre à jour le système, clean-arch pour le néttoyer ou fix-key en cas d'erreur avec les clés gpg.
 
     ```bash
     kate ~/.bashrc
@@ -109,6 +109,9 @@ N'hésitez pas à faire remonter les bugs merci :)
     ```
     ```bash
     alias clean-arch='yay -Sc && sudo pacman -Rns $(pacman -Qdtq) && flatpak remove --unused'
+    ```
+    ```bash
+    alias fix-key='sudo rm /var/lib/pacman/sync/* && sudo rm -rf /etc/pacman.d/gnupg/* && sudo pacman-key --init      &&         sudo pacman-key --populate && sudo pacman -Sy --noconfirm archlinux-keyring'"
     ```
     
 
@@ -344,12 +347,15 @@ Installer fish.
     set -U fish_greeting              # 5. Enlever le message de bienvenue
     kate ~/.config/fish/config.fish   # 6. Créer un alias comme pour bash en début de tuto
     ```
-- Puis rajouter l'alias suivant entre if et end :
+- Puis rajouter les alias suivants entre if et end :
     ```bash
     alias update-arch='sudo pacman -Syy && sudo pacman -Syu && yay && flatpak update'
     ```
     ```bash
     alias clean-arch='yay -Sc && sudo pacman -Rns $(pacman -Qdtq) && flatpak remove --unused'
+    ```
+    ```bash
+    alias fix-key='sudo rm /var/lib/pacman/sync/* && sudo rm -rf /etc/pacman.d/gnupg/* && sudo pacman-key --init      &&         sudo pacman-key --populate && sudo pacman -Sy --noconfirm archlinux-keyring'"
     ```
 - ***Reboot sauf si ça a été fait à l’étape 3***, les alias quels qu’ils soient, ne fonctionnent qu’après avoir relancé le terminal.
 
