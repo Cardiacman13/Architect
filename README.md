@@ -102,7 +102,7 @@ N'hésitez pas à faire remonter les bugs merci :)
     ```
     Ajouter ceci à la fin du fichier :
     ```bash
-    alias update-arch='yay && flatpak update'
+    alias update-arch='sudo pacman -Syy && yay && flatpak update'
     ```
     ```bash
     alias clean-arch='yay -Sc && sudo pacman -Rns $(pacman -Qdtq) && flatpak remove --unused'
@@ -343,7 +343,7 @@ Installer fish.
     ```
 - Puis rajouter l'alias suivant entre if et end :
     ```bash
-    alias update-arch='sudo pacman -Syu && yay && flatpak update'
+    alias update-arch='sudo pacman -Syy && sudo pacman -Syu && yay && flatpak update'
     ```
     ```bash
     alias clean-arch='yay -Sc && sudo pacman -Rns $(pacman -Qdtq) && flatpak remove --unused'
