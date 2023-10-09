@@ -339,7 +339,7 @@ Installer fish.
     ```
 - Puis rajouter l'alias suivant entre if et end :
     ```bash
-    alias update-arch='sudo pacman -Syy && yay -S archlinux-keyring && yay && yay -Sc && sudo pacman -Rns $(pacman -Qdtq) && flatpak update'
+    alias update-arch='sudo pacman -Syu && yay && flatpak update'
     ```
     Ajouter :  **&& flatpak update** si par la suite vous comptez installer les flatpak
 
