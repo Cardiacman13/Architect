@@ -109,7 +109,7 @@ N'hésitez pas à faire remonter les bugs merci :)
     
 
    Relancer le terminal.
-   Aves l'alias clean-arch si avez l'erreur : **“erreur : aucune cible spécifiée (utiliser -h pour l’aide)**” cela signifie que pacman ne trouve pas de dépendance orpheline, **tout va    bien!**
+   Avec l'alias clean-arch si avez l'erreur : **“erreur : aucune cible spécifiée (utiliser -h pour l’aide)**” cela signifie que pacman ne trouve pas de dépendance orpheline, **tout va    bien!**
 
 ## SUPPORT MATÉRIEL
 
