@@ -9,15 +9,18 @@ source "$BASE_DIR/src/utils.sh"
 #   $1: The file to add the alias to.
 function add_alias_u() {
     local file=$1
-    local alias="alias update-arch='sudo pacman -Syu && yay && flatpak update'"
+    local alias="alias update-arch='yay && flatpak update'"
+    local alias_clean="alias clean-arch='yay -Sc && sudo pacman -Rns \$(pacman -Qdtq) && flatpak remove --unused'"
 
     if [[ -f "${file}" ]]; then
         local alias_found=$(cat "${file}" | grep "${alias}")
         if [[ -z "${alias_found}" ]]; then
             sudo echo "${alias}" >> "${file}"
+            sudo echo "${alias_clean}" >> "${file}"
         fi
     else
         sudo echo "${alias}" >> "${file}"
+        sudo echo "${alias_clean}" >> "${file}"
     fi
 }
 
