@@ -95,7 +95,8 @@ N'hésitez pas à faire remonter les bugs merci :)
 
 5. Alias maintenance,
 
-   cette modification permet de n’avoir à taper que “update-arch” dans un terminal afin de faciliter la maintenance du système.
+   cette modification permet de n’avoir à taper que “update-arch” dans un terminal afin de mettre à jour le système ou clean-arch pour le néttoyer.
+
     ```bash
     kate ~/.bashrc
     ```
