@@ -58,7 +58,7 @@ Télécharger l’ISO : [**Arch Linux - Downloads**](https://archlinux.org/downl
 
 Script à exécuter sur une installation propre, **fraîchement installée avec archinstall**, il réalise le tuto pour vous quelque soit vos choix de DE, bootloader et file system.
 
-Si Nvidia, s'assurer que sa carte est compatible avec les derniers driver Nvidia en date, de manière générale ce script/tuto n'est pas pensé pour les ordinosaures.
+Si Nvidia, s'assurer que sa carte est compatible avec les derniers drivers Nvidia en date, de manière générale ce script/tuto n'est pas pensé pour les ordinosaures.
 
 **Script post installation :**
 
