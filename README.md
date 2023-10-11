@@ -295,6 +295,10 @@ Pilote Linux avancé pour la manette sans fil Xbox One (livrée avec la Xbox One
 ```bash
 yay -S  xpadneo-dkms --needed
 ```
+Pilote Linux avancé pour les manettes PS4/PS5
+```bash
+yay -S --needed bluez-utils-compat ds4drv dualsencectl-git
+```
 
 ### Afficher les performances en jeu
 
