@@ -45,7 +45,7 @@ function install_useful_packages() {
     echo "Installation des paquets utiles."
     desktop_environment_management
 
-    yay -S --needed --noconfirm gstreamer-vaapi libvdpau-va-gl sof-firmware fwupd xdg-utils reflector-simple downgrade rebuild-detector mkinitcpio-firmware xdg-desktop-portal neofetch power-profiles-daemon hunspell-fr p7zip unrar ttf-liberation noto-fonts-emoji-flags ntfs-3g fuse2 bash-completion xdg-desktop-portal-gtk ffmpegthumbs vlc >> /dev/null 2>&1
+    yay -S --needed --noconfirm gstreamer sof-firmware fwupd xdg-utils reflector-simple downgrade rebuild-detector mkinitcpio-firmware xdg-desktop-portal neofetch power-profiles-daemon hunspell-fr p7zip unrar ttf-liberation noto-fonts-emoji-flags ntfs-3g fuse2 bash-completion xdg-desktop-portal-gtk ffmpegthumbs vlc >> /dev/null 2>&1
 
     # sudo fwupdmgr get-devices -y && sudo fwupdmgr refresh -y --force && sudo fwupdmgr get-updates -y && sudo fwupdmgr update -y
 
