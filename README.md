@@ -296,10 +296,10 @@ yay -S steam
 
 ### Support manettes avancé 
 
-Pilote Linux avancé pour la manette sans fil Xbox One (livrée avec la Xbox One S) Et tout un tas d’autres manettes ([ce lien](https://github.com/atar-axis/xpadneo))
+Pilote Linux avancé pour la manette sans fil Xbox One (livrée avec la Xbox One S) Et tout un tas d’autres manettes ([ce lien](https://github.com/atar-axis/xpadneo)) ([ce lien](https://github.com/medusalix/xone))
 
 ```bash
-yay -S  xpadneo-dkms --needed
+yay -S  xpadneo-dkms xone-dkms --needed
 ```
 Pilote Linux avancé pour les manettes PS4/PS5
 ```bash
