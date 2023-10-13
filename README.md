@@ -1,6 +1,6 @@
-# TUTO ARCH LINUX 
+# TUTO ET SCRIPT POST-INSTALLATION ARCH LINUX 
 
-**Dernière modification du tuto le : 01/10/2023**
+**Dernière modification du tuto le : 13/10/2023**
 
 N'hésitez pas à fork le script et à le modifier selon vos besoins mais SVP supprimez mon tuto et mes vidéos (le read-me quoi), merci :).
 
@@ -54,8 +54,11 @@ Télécharger l’ISO : [**Arch Linux - Downloads**](https://archlinux.org/downl
     <img src="assets/images/Cardiac-icon.png" width="30" height="30"> [ Tuto Arch Linux Partie 1 : Archinstall ](https://www.youtube.com/watch?v=JE6VwNHLcyk)
 
 ## POST INSTALLATION
+<img src="assets/images/Cardiac-icon.png" width="30" height="30"> [ Tuto Arch Linux Partie 2 : Post installation ](https://youtu.be/FEFhC46BkXo?si=Gi-6BOhqENLoh5Ak)
 
 Script à exécuter sur une installation propre, **fraîchement installée avec archinstall**, il réalise le tuto pour vous quelque soit vos choix de DE, bootloader et file system.
+
+Si Nvidia, s'assurer que sa carte est compatible avec les derniers drivers Nvidia en date, de manière générale ce script/tuto n'est pas pensé pour les ordinosaures.
 
 **Script post installation :**
 
@@ -95,18 +98,27 @@ N'hésitez pas à faire remonter les bugs merci :)
 
 5. Alias maintenance,
 
-   cette modification permet de n’avoir à taper que “update-arch” dans un terminal afin de faciliter la maintenance du système.
+   <img src="assets/images/Cardiac-icon.png" width="30" height="30"> [ Tuto Arch Linux Partie 4 : Maintenance ](https://www.youtube.com/watch?v=Z7POSK2jnII)
+
+   cette modification permet de n’avoir à taper que “update-arch” dans un terminal afin de mettre à jour le système, clean-arch pour le néttoyer ou fix-key en cas d'erreur avec les clés gpg.
+
     ```bash
     kate ~/.bashrc
     ```
     Ajouter ceci à la fin du fichier :
     ```bash
-    alias update-arch="sudo pacman -Syy && yay -S archlinux-keyring && yay && yay -Sc && sudo pacman -Rns $(pacman -Qdtq)"
+    alias update-arch='sudo pacman -Syy && yay && flatpak update'
     ```
-    Ajouter :  **&& flatpak update** si par la suite vous comptez installer les flatpak
+    ```bash
+    alias clean-arch='yay -Sc && sudo pacman -Rns $(pacman -Qdtq) && flatpak remove --unused'
+    ```
+    ```bash
+    alias fix-key='sudo rm /var/lib/pacman/sync/* && sudo rm -rf /etc/pacman.d/gnupg/* && sudo pacman-key --init && sudo pacman-key --populate && sudo pacman -Sy --noconfirm archlinux-keyring'
+    ```
+    
 
    Relancer le terminal.
-    Quand vous avez l'erreur : **“erreur : aucune cible spécifiée (utiliser -h pour l’aide)**” cela signifie que pacman ne trouve pas de dépendance orpheline, **tout va bien!**
+   Avec l'alias clean-arch si avez l'erreur : **“erreur : aucune cible spécifiée (utiliser -h pour l’aide)**” cela signifie que pacman ne trouve pas de dépendance orpheline, **tout va    bien!**
 
 ## SUPPORT MATÉRIEL
 
@@ -182,10 +194,16 @@ N'hésitez pas à faire remonter les bugs merci :)
     Exec=/bin/sh -c 'while read -r trg; do case $trg in linux) exit 0; esac; done; /usr/bin/mkinitcpio -P'
     ```
 
-### AMD
+### AMD (ne pas faire si Nvidia)
 Installer les composants core :
 ```bash
 yay -S --needed mesa lib32-mesa vulkan-radeon lib32-vulkan-radeon vulkan-icd-loader lib32-vulkan-icd-loader vulkan-mesa-layers lib32-vulkan-mesa-layers
+```
+
+### INTEL (ne pas faire si Nvidia)
+Installer les composants core :
+```bash
+yay -S --needed mesa lib32-mesa vulkan-intel lib32-vulkan-intel vulkan-icd-loader lib32-vulkan-icd-loader intel-media-driver
 ```
 
 ### Imprimantes
@@ -224,9 +242,9 @@ sudo pacman -S --needed pipewire lib32-pipewire pipewire-pulse pipewire-alsa pip
 
 ### Composants de base
 ```bash
-yay -S reflector-simple downgrade rebuild-detector mkinitcpio-firmware xdg-desktop-portal neofetch power-profiles-daemon lib32-pipewire hunspell-fr p7zip unrar ttf-liberation noto-fonts noto-fonts-emoji ntfs-3g fuse2 bash-completion --needed
+yay -S gst-plugins-bad gst-plugins-base gst-plugins-ugly gst-plugin-pipewire gstreamer-vaapi gst-plugins-good gst-libav gstreamer reflector-simple downgrade rebuild-detector mkinitcpio-firmware xdg-desktop-portal neofetch power-profiles-daemon lib32-pipewire hunspell-fr p7zip unrar ttf-liberation noto-fonts noto-fonts-emoji ntfs-3g fuse2 bash-completion --needed
 ```
-
+ 
 ### Logiciels divers
 ```bash
 yay -S libreoffice-fresh libreoffice-fresh-fr vlc discord gimp obs-studio gnome-disk-utility visual-studio-code-bin
@@ -245,12 +263,15 @@ sudo systemctl enable --now ufw.service
 ```
 
 ### Reflector pour update les mirrors automatiquement
+
 ```bash
 yay -S reflector-simple
 ```
-Activer le service :
+
+Une commande pour générer une liste de mirrors à faire 1 fois après la première installation et à réitérer si vous voyagez, ou changez de pays, ou si vous voyez que le téléchargement des paquets est trop long, ou encore si vous avez une erreur qui vous dis que un mirror est down:
+
 ```bash
-systemctl enable --now reflector.service
+sudo reflector --score 20 --fastest 5 --sort rate --save /etc/pacman.d/mirrorlist
 ```
 
 ## GAMING
@@ -275,10 +296,14 @@ yay -S steam
 
 ### Support manettes avancé 
 
-Pilote Linux avancé pour la manette sans fil Xbox One (livrée avec la Xbox One S) Et tout un tas d’autres manettes ([ce lien](https://github.com/atar-axis/xpadneo))
+Pilote Linux avancé pour la manette sans fil Xbox 360|One|S|X (livrée avec la Xbox One S) Et tout un tas d’autres manettes comme la 8bitdo ([xpadneo](https://github.com/atar-axis/xpadneo)) ([xone](https://github.com/medusalix/xone))
 
 ```bash
-yay -S  xpadneo-dkms --needed
+yay -S  xpadneo-dkms xone-dkms --needed
+```
+Pilote Linux avancé pour les manettes PS4/PS5
+```bash
+yay -S --needed bluez-utils-compat ds4drv dualsencectl-git
 ```
 
 ### Afficher les performances en jeu
@@ -315,6 +340,13 @@ yay -S goverlay --needed
 
     “BTRFS snapshots are supported only on BTRFS systems having an Ubuntu-type subvolume layout ”
 
+- Pour bénéficier des sauvegardes automatiques vous aurez besoin de cronie. (facultatif) 
+
+  ```bash
+  yay -S cronie
+  sudo systemctl enable --now cronie
+  ```
+  
 ### Fish
 
 - [Fish](https://fishshell.com/) le shell interactif convivial, est un shell de ligne de commande conçu pour être interactif et convivial. Voir également [ArchWiki](https://wiki.archlinux.org/title/fish) sur le sujet.
@@ -327,12 +359,16 @@ Installer fish.
     set -U fish_greeting              # 5. Enlever le message de bienvenue
     kate ~/.config/fish/config.fish   # 6. Créer un alias comme pour bash en début de tuto
     ```
-- Puis rajouter l'alias suivant entre if et end :
+- Puis rajouter les alias suivants entre if et end :
     ```bash
-    alias update-arch='sudo pacman -Syy && yay -S archlinux-keyring && yay && yay -Sc && sudo pacman -Rns $(pacman -Qdtq) && flatpak update'
+    alias update-arch='sudo pacman -Syy && sudo pacman -Syu && yay && flatpak update'
     ```
-    Ajouter :  **&& flatpak update** si par la suite vous comptez installer les flatpak
-
+    ```bash
+    alias clean-arch='yay -Sc && sudo pacman -Rns $(pacman -Qdtq) && flatpak remove --unused'
+    ```
+    ```bash
+    alias fix-key='sudo rm /var/lib/pacman/sync/* && sudo rm -rf /etc/pacman.d/gnupg/* && sudo pacman-key --init && sudo pacman-key --populate && sudo pacman -Sy --noconfirm archlinux-keyring'
+    ```
 - ***Reboot sauf si ça a été fait à l’étape 3***, les alias quels qu’ils soient, ne fonctionnent qu’après avoir relancé le terminal.
 
 ### [Kernel TKG](https://github.com/Frogging-Family/linux-tkg) (WARNING utilisateurs avancés)
@@ -395,6 +431,8 @@ flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.f
     ```
 
 ### Problème récurrent :
+
+ <img src="assets/images/Cardiac-icon.png" width="30" height="30"> [Arch Linux Partie 3 les problèmes les plus courants.](https://youtu.be/vbOOQsYyPfc?si=wA2W8bOG1gtpfmnZ)
 
 - Si vous n’avez pas de son, tentez :
     ```bash

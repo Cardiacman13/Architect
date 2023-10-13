@@ -5,12 +5,16 @@ source "$BASE_DIR/src/utils.sh"
 RED="\033[1;31m"
 RESET="\033[0m"
 
-# This function prompts the user to install xpadneo for Xbox Series X|S|Elite and 8BitDo gamepads.
-# If the user confirms, xpadneo is installed using yay package manager.
+# This function prompts the user to install xpadneo for Xbox Series X|S|Elite, 8BitDo gamepads and/or PS4 /PS5 drivers.
+# If the user confirms, xpadneo and/or PS4/PS5 drivers are installed using yay package manager.
 function gamepad() {
-    if read_user "Voulez Xpadneo pour manettes Xbox Series X|S|Elite et 8BitDo ?"; then
+    if read_user "Voulez Xpadneo et xone pour manettes Xbox 360, Series X|S|Elite et 8BitDo ?"; then
         echo "|- Installation de xpadneo."
-        yay -S --needed --noconfirm xpadneo-dkms >> /dev/null 2>&1
+        yay -S --needed --noconfirm xpadneo-dkms xone-dkms >> /dev/null 2>&1
+    fi
+    if read_user "Avez-vous une manette PS4/PS5 ?"; then
+        echo -e "|- Installation de bluez-utils-compat, ds4drv et dualsencectl. ${RED}(long)${RESET}"
+        yay -S --needed --noconfirm bluez-utils-compat ds4drv dualsensectl-git >> /dev/null 2>&1
     fi
     echo "--------------------------------------------------" 
 }
