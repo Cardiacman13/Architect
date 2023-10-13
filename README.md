@@ -1,6 +1,6 @@
-# TUTO ARCH LINUX 
+# TUTO ET SCRIPT POST-INSTALLATION ARCH LINUX 
 
-**Dernière modification du tuto le : 01/10/2023**
+**Dernière modification du tuto le : 13/10/2023**
 
 N'hésitez pas à fork le script et à le modifier selon vos besoins mais SVP supprimez mon tuto et mes vidéos (le read-me quoi), merci :).
 
