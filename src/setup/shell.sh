@@ -9,7 +9,7 @@ source "$BASE_DIR/src/utils.sh"
 #   $1: The file to add the alias to.
 function add_alias_u() {
     local file=$1
-    local alias="alias update-arch='sudo pacman -Syy && yay && flatpak update'"
+    local alias="alias update-arch='yay -Syyu && flatpak update'"
     local alias_clean="alias clean-arch='yay -Sc && yay -Yc && flatpak remove --unused'"
     local alias_key="alias fix-key='sudo rm /var/lib/pacman/sync/* && sudo rm -rf /etc/pacman.d/gnupg/* && sudo pacman-key --init && sudo pacman-key --populate && sudo pacman -Sy --noconfirm archlinux-keyring'"
     
