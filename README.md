@@ -184,7 +184,8 @@ N'hésitez pas à faire remonter les bugs merci :)
     Operation=Remove
     Type=Package
     Target=nvidia-dkms
-    Target = usr/lib/modules/*/vmlinuz
+    Target=nvidia-470xx-dkms
+    Target=usr/lib/modules/*/vmlinuz
 
     [Action]
     Description=Update NVIDIA module in initcpio
