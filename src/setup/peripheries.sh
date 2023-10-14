@@ -8,8 +8,8 @@ RESET="\033[0m"
 # This function prompts the user to install xpadneo for Xbox Series X|S|Elite, 8BitDo gamepads and/or PS4 /PS5 drivers.
 # If the user confirms, xpadneo and/or PS4/PS5 drivers are installed using yay package manager.
 function gamepad() {
-    if read_user "Voulez Xpadneo et xone pour manettes Xbox 360, Series X|S|Elite et 8BitDo ?"; then
-        echo "|- Installation de xpadneo."
+    if read_user "Voulez Xpadneo et Xone pour manettes Xbox 360, Series X|S|Elite et 8BitDo ?"; then
+        echo "|- Installation de xpadneo et xone."
         yay -S --needed --noconfirm xpadneo-dkms xone-dkms >> /dev/null 2>&1
     fi
     if read_user "Avez-vous une manette PS4/PS5 ?"; then
