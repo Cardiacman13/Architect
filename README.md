@@ -116,9 +116,7 @@ N'hésitez pas à faire remonter les bugs merci :)
     alias fix-key='sudo rm /var/lib/pacman/sync/* && sudo rm -rf /etc/pacman.d/gnupg/* && sudo pacman-key --init && sudo pacman-key --populate && sudo pacman -Sy --noconfirm archlinux-keyring'
     ```
     
-
    Relancer le terminal.
-   Avec l'alias clean-arch si avez l'erreur : **“erreur : aucune cible spécifiée (utiliser -h pour l’aide)**” cela signifie que pacman ne trouve pas de dépendance orpheline, **tout va    bien!**
 
 ## SUPPORT MATÉRIEL
 
