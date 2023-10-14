@@ -435,6 +435,10 @@ flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.f
 
  <img src="assets/images/Cardiac-icon.png" width="30" height="30"> [Arch Linux Partie 3 les problèmes les plus courants.](https://youtu.be/vbOOQsYyPfc?si=wA2W8bOG1gtpfmnZ)
 
+ <img src="assets/images/Cardiac-icon.png" width="30" height="30"> [Arch Linux Partie 4 Maintenance / mise à jour](https://youtu.be/Z7POSK2jnII?si=SNwagGGJXRVkYPdc)
+ 
+ <img src="assets/images/Cardiac-icon.png" width="30" height="30"> [Arch Linux Partie 5 Arch-Chroot](https://youtu.be/iandJSjePiA?si=7uI8JZ-VxAVOsPTh)
+
 - Si vous n’avez pas de son, tentez :
     ```bash
     yay -S sof-firmware
