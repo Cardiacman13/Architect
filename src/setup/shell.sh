@@ -41,7 +41,7 @@ function chose_shell() {
             echo "|- Changement du shell par défaut"
             chsh -s /usr/bin/fish
             fish -c "fish_update_completions" >> /dev/null 2>&1
-            echo "|- Ajout de l'alias update-arch"
+            echo "|- Ajout de l'alias update-arch clean-arch et fix-key"
             add_alias_u "${HOME}/.config/fish/config.fish"
             fish -c "set -U fish_greeting" >> /dev/null 2>&1
         else
