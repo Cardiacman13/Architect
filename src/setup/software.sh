@@ -27,6 +27,11 @@ function install_useful_software() {
     if read_user "|- Voulez vous installer Heroic Games Launcher (Epic Games/Gog) ?"; then
         package_list+=("heroic-games-launcher-bin")
     fi
+      
+        # Ask user if they want to install protonup-qt-bin and add it to package_list if yes
+    if read_user "|- Voulez vous installer protonup-qt ?"; then
+        package_list+=("protonup-qt-bin")
+    fi
 
     # Ask user if they want to install Spotify and add it to package_list if yes
     if read_user "|- Voulez vous installer Spotify ?"; then
