@@ -8,13 +8,13 @@ N'hésitez pas à fork le script et à le modifier selon vos besoins mais SVP su
 
 **À FAIRE DANS L'ORDRE !**
 
-Le but de ce tuto est d’installer une Arch stock avec un minimum de paquets, selon nos besoins pour de la bureautique et ou du gaming. 
+Le but de ce tuto est d’installer une Arch stock avec un minimum de paquets, selon nos besoins pour de la bureautique et/ou du gaming. 
 
-<img src="assets/images/Cardiac-icon.png" width="30" height="30"> Cette icône vous redirige vers mes vidéos sur certaines parties de ce tuto
+<img src="assets/images/Cardiac-icon.png" width="30" height="30"> Cette icône vous redirige vers mes vidéos sur certaines parties de ce tuto.
 
 ## Conditions
 
-Ce tuto est optimisé pour les choix suivant : 
+Ce tuto est optimisé pour les choix suivants : 
 
 - systemd-boot
 - Ext4
@@ -41,7 +41,7 @@ Télécharger l’ISO : [**Arch Linux - Downloads**](https://archlinux.org/downl
     ```bash
     station wlan0 connect NOM-DE-VOTRE-WIFI (SSID)
     ```
-    Entrez le mot de passe de votre wifi puis `quit` pour quitter iwctl
+    Entrez le mot de passe de votre wifi puis `quit` pour quitter iwctl.
 
 2. **Archinstall**
     ```bash
@@ -56,7 +56,7 @@ Télécharger l’ISO : [**Arch Linux - Downloads**](https://archlinux.org/downl
 ## POST INSTALLATION
 <img src="assets/images/Cardiac-icon.png" width="30" height="30"> [ Tuto Arch Linux Partie 2 : Post installation ](https://youtu.be/FEFhC46BkXo?si=Gi-6BOhqENLoh5Ak)
 
-Script à exécuter sur une installation propre, **fraîchement installée avec archinstall**, il réalise le tuto pour vous quelque soit vos choix de DE, bootloader et file system.
+Script à exécuter sur une installation propre, **fraîchement installée avec archinstall**, il réalise le tuto pour vous quelques soient vos choix de DE, bootloader et file system.
 
 Si Nvidia, s'assurer que sa carte est compatible avec les derniers drivers Nvidia en date, de manière générale ce script/tuto n'est pas pensé pour les ordinosaures.
 
@@ -68,11 +68,11 @@ Si Nvidia, s'assurer que sa carte est compatible avec les derniers drivers Nvidi
    cd Tuto-Arch
    ./post-installation
    ```
-N'hésitez pas à faire remonter les bugs merci :) 
+N'hésitez pas à faire remonter les bugs, merci :) 
 
 ### Optimiser pacman
 
-1. Cette [modification](https://wiki.archlinux.org/title/Pacman#Enabling_parallel_downloads) permet la parallélisation du téléchargement des packages. (PS: avec kate, quand vous sauvegardez, il est possible qu'on vous demande d'entrer un mot de passe, entrez votre mot de passe root/sudo)
+1. Cette [modification](https://wiki.archlinux.org/title/Pacman#Enabling_parallel_downloads) permet la parallélisation du téléchargement des packages. (PS: avec kate, quand vous sauvegardez, il est possible qu'on vous demande d'entrer un mot de passe. Entrez votre mot de passe root/sudo.)
     ```
     kate /etc/pacman.conf
     ```
@@ -100,7 +100,7 @@ N'hésitez pas à faire remonter les bugs merci :)
 
    <img src="assets/images/Cardiac-icon.png" width="30" height="30"> [ Tuto Arch Linux Partie 4 : Maintenance ](https://www.youtube.com/watch?v=Z7POSK2jnII)
 
-   cette modification permet de n’avoir à taper que “update-arch” dans un terminal afin de mettre à jour le système, clean-arch pour le néttoyer ou fix-key en cas d'erreur avec les clés gpg.
+   cette modification permet de n’avoir à taper que “update-arch” dans un terminal afin de mettre à jour le système, “clean-arch” pour le néttoyer ou “fix-key” en cas d'erreur avec les clés gpg.
 
     ```bash
     kate ~/.bashrc
@@ -133,12 +133,12 @@ N'hésitez pas à faire remonter les bugs merci :)
 
    - **Si systemd boot**
 
-    Dans le dossier:
+    Dans le dossier :
 
    ```bash
    /boot/loader/entries/
    ```
-   Il y a plusieurs fichiers .conf, il faut ajouter nvidia-drm.modeset=1 à la ligne options de chaque fichiers,
+   Il y a plusieurs fichiers .conf, il faut ajouter nvidia-drm.modeset=1 à la ligne “options” de chaque fichier,
    exemple : options                 root=PARTUUID=fb680c54-466d-4708-a1ac-fcc338ed57f1 rw rootfstype=ext4 nvidia-drm.modeset=1
 
     - **Si grub**
@@ -261,13 +261,13 @@ sudo pacman -S ufw
 sudo systemctl enable --now ufw.service
 ```
 
-### Reflector pour update les mirrors automatiquement
+### Reflector pour update les miroirs automatiquement
 
 ```bash
 yay -S reflector-simple
 ```
 
-Une commande pour générer une liste de mirrors à faire 1 fois après la première installation et à réitérer si vous voyagez, ou changez de pays, ou si vous voyez que le téléchargement des paquets est trop long, ou encore si vous avez une erreur qui vous dis que un mirror est down:
+Une commande pour générer une liste de miroirs, à faire 1 fois après la première installation et à réitérer si vous voyagez, ou changez de pays, ou si vous voyez que le téléchargement des paquets est trop long, ou encore si vous avez une erreur qui vous dit que un miroir est down :
 
 ```bash
 sudo reflector --score 20 --fastest 5 --sort rate --save /etc/pacman.d/mirrorlist
@@ -322,7 +322,7 @@ yay -S goverlay --needed
     ```bash
     kate /etc/sysctl.d/99-sysctl.conf
     ```
-- Ajouter la ligne suivante
+- Ajouter la ligne suivante :
     ```bash
     vm.max_map_count=16777216
     ```
@@ -331,15 +331,15 @@ yay -S goverlay --needed
 
 ### Timeshift
 
-- [Timeshift](https://github.com/linuxmint/timeshift) est un utilitaire Linux open source pour créer des sauvegardes systèmes.
+- [Timeshift](https://github.com/linuxmint/timeshift) est un utilitaire Linux open source pour créer des sauvegardes système.
     ```bash
     yay -S timeshift
     ```
-- Évitez timeshift et btrfs sur Arch J’ai déjà eu de la [casse](https://github.com/linuxmint/timeshift).
+- Évitez timeshift et btrfs sur Arch, J’ai déjà eu de la [casse](https://github.com/linuxmint/timeshift).
 
     “BTRFS snapshots are supported only on BTRFS systems having an Ubuntu-type subvolume layout ”
 
-- Pour bénéficier des sauvegardes automatiques vous aurez besoin de cronie. (facultatif) 
+- Pour bénéficier des sauvegardes automatiques, vous aurez besoin de cronie. (facultatif) 
 
   ```bash
   yay -S cronie
@@ -348,15 +348,15 @@ yay -S goverlay --needed
   
 ### Fish
 
-- [Fish](https://fishshell.com/) le shell interactif convivial, est un shell de ligne de commande conçu pour être interactif et convivial. Voir également [ArchWiki](https://wiki.archlinux.org/title/fish) sur le sujet.
+- [Fish](https://fishshell.com/) est un shell de ligne de commande conçu pour être interactif et convivial. Voir également [ArchWiki](https://wiki.archlinux.org/title/fish) sur le sujet.
 Installer fish.
     ```bash
     yay -S fish man-db man-pages      # 1. Installer Fish
     chsh -s /usr/bin/fish             # 2. Le mettre par défaut.
-    fish                              # 3. Lancez fish ou reboot et il sera par défaut.
-    fish_update_completions           # 4. Mettre à jour les completions.
-    set -U fish_greeting              # 5. Enlever le message de bienvenue
-    kate ~/.config/fish/config.fish   # 6. Créer un alias comme pour bash en début de tuto
+    fish                              # 3. Lancer fish ou reboot et il sera par défaut.
+    fish_update_completions           # 4. Mettre à jour les complétions.
+    set -U fish_greeting              # 5. Enlever le message de bienvenue.
+    kate ~/.config/fish/config.fish   # 6. Créer un alias comme pour bash en début de tuto.
     ```
 - Puis rajouter les alias suivants entre if et end :
     ```bash
@@ -368,11 +368,11 @@ Installer fish.
     ```bash
     alias fix-key='sudo rm /var/lib/pacman/sync/* && sudo rm -rf /etc/pacman.d/gnupg/* && sudo pacman-key --init && sudo pacman-key --populate && sudo pacman -Sy --noconfirm archlinux-keyring'
     ```
-- ***Reboot sauf si ça a été fait à l’étape 3***, les alias quels qu’ils soient, ne fonctionnent qu’après avoir relancé le terminal.
+- ***Reboot sauf si ça a été fait à l’étape 3***, les alias quels qu’ils soient ne fonctionnent qu’après avoir relancé le terminal.
 
 ### [Kernel TKG](https://github.com/Frogging-Family/linux-tkg) (WARNING utilisateurs avancés)
 
-[TKG](https://github.com/Frogging-Family) propose un build de kernel hautement personnalisable qui - fournit une sélection de corrections et d'ajustements visant à améliorer les performances des ordinateurs de bureau et des jeux.
+[TKG](https://github.com/Frogging-Family) propose un build de kernel hautement personnalisable qui fournit une sélection de corrections et d'ajustements visant à améliorer les performances des ordinateurs de bureau et des jeux.
 
 <img src="assets/images/Cardiac-icon.png" width="30" height="30"> [Kernel TKG sur Arch + Booster ses perfs](https://youtu.be/43yYIWMnDJA)
 ```bash
@@ -407,7 +407,7 @@ Dire oui à tout pour bien tout écraser avec les nouveaux paquets.
 
 ### Installation [Flatpak](https://wiki.archlinux.org/title/Flatpak)
 
-Anciennement connu sous le nom de xdg-app, est un utilitaire de déploiement de logiciels et de gestion de paquets pour Linux. Il est présenté comme offrant un environnement "bac à sable" dans lequel les utilisateurs peuvent exécuter des logiciels d'application de manière isolée du reste du système.
+Anciennement connu sous le nom de xdg-app, c'est un utilitaire de déploiement de logiciels et de gestion de paquets pour Linux. Il est présenté comme offrant un environnement "bac à sable" dans lequel les utilisateurs peuvent exécuter des logiciels de manière isolée du reste du système.
 
 <img src="assets/images/Cardiac-icon.png" width="30" height="30"> [MangoHUD, Goverlay, Steam, Lutris FLATPAK !](https://www.youtube.com/watch?v=1dha2UDSF4M)
 ```bash
@@ -429,7 +429,7 @@ flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.f
     Include = /etc/pacman.d/chaotic-mirrorlist
     ```
 
-### Problème récurrent :
+### Problèmes récurrents :
 
  <img src="assets/images/Cardiac-icon.png" width="30" height="30"> [Arch Linux Partie 3 les problèmes les plus courants.](https://youtu.be/vbOOQsYyPfc?si=wA2W8bOG1gtpfmnZ)
 
@@ -446,7 +446,7 @@ flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.f
 
 ## Sources
 
-Source et liens utiles
+Sources et liens utiles :
 - [ArchWiki](https://wiki.archlinux.org/)
 
     <img src="assets/images/Cardiac-icon.png" width="30" height="30"> [Fonctionnement du WIKI d'Arch.](https://www.youtube.com/watch?v=TQ3A9l2N5lI)
