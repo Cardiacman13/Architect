@@ -78,7 +78,7 @@ function install_firewall() {
 
     yay -S --needed --noconfirm ufw >> /dev/null 2>&1
     if ! sudo systemctl is-active ufw.service &> /dev/null; then
-        echo "|- Activation du firewall"
+        echo "|- Activation du firewall."
         sudo systemctl enable --now ufw.service >> /dev/null 2>&1
     fi
 
