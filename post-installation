@@ -120,7 +120,7 @@ function main() {
     local end_time=$(date +%s)
     local duration=$((end_time - start_time))
 
-    echo -e "${GREEN}Le script à mis ${duration} secondes à s'exécuter.${RESET}"
+    echo -e "${GREEN}Le script a mis ${duration} secondes à s'exécuter.${RESET}"
     reboot_timer 10
 }
 
