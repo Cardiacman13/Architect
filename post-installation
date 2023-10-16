@@ -103,7 +103,7 @@ function main() {
         sudo sed -i '/^#\[multilib\]/,/^#Include = \/etc\/pacman.d\/mirrorlist/ s/^#//' "/etc/pacman.conf"
     fi
 
-    echo -e "|- Mise à jour des mirroirs. ${RED}(long)${RESET}"
+    echo -e "|- Mise à jour des miroirs. ${RED}(long)${RESET}"
     sudo pacman -S --needed --noconfirm reflector >> /dev/null 2>&1
     sudo reflector --score 20 --fastest 5 --sort rate --save /etc/pacman.d/mirrorlist >> /dev/null 2>&1
     sudo pacman -Syy >> /dev/null 2>&1
