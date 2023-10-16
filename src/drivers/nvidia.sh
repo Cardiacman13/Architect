@@ -4,7 +4,7 @@ RESET='\033[0m'
 
 # This function sets up the nvidia hook by copying the nvidia.hook file to /etc/pacman.d/hooks/
 function hook() {
-    echo "|- Configuration du hook nvidia"
+    echo "|- Configuration du hook Nvidia."
     local hook_folder="/etc/pacman.d/hooks/"
     local hook_file="nvidia.hook"
     local hook_src="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)/data/nvidia.hook"
@@ -55,13 +55,13 @@ function bootloaders() {
 
 # Function to install NVIDIA drivers and related packages
 function nvidia_drivers() {
-    echo "|- Installation pilotes NVIDIA."
+    echo "|- Installation des pilotes Nvidia."
 
     bootloaders
     mkinitcpio
     hook
 
-    echo -e "|- Installation des paquets nvidia. ${RED}(très long)${RESET}"
+    echo -e "|- Installation des paquets Nvidia. ${RED}(très long)${RESET}"
     yay -S --needed --noconfirm nvidia-dkms nvidia-utils lib32-nvidia-utils nvidia-settings vulkan-icd-loader lib32-vulkan-icd-loader cuda >> /dev/null 2>&1
     echo "--------------------------------------------------"
 }
