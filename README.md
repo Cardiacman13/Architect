@@ -1,4 +1,4 @@
-# TUTO ET SCRIPT POST-INSTALLATION ARCH LINUX 
+# TUTO ET SCRIPT POST-INSTALLATION ARCH LINUX
 
 **Dernière modification du tuto le : 13/10/2023**
 
@@ -11,6 +11,8 @@ N'hésitez pas à fork le script et à le modifier selon vos besoins mais SVP su
 Le but de ce tuto est d’installer une Arch stock avec un minimum de paquets, selon nos besoins pour de la bureautique et/ou du gaming. 
 
 <img src="assets/images/Cardiac-icon.png" width="30" height="30"> Cette icône vous redirige vers mes vidéos sur certaines parties de ce tuto.
+
+<img src="assets/images/Cardiac-icon.png" width="30" height="30"> [ Tuto Arch Linux Playlist ](https://www.youtube.com/watch?v=JE6VwNHLcyk&list=PLuIP_-MWRwtWEX0tyDpZPdwU6zCE1O1cY)
 
 ## Conditions
 
