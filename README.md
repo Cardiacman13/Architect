@@ -16,7 +16,9 @@ Le but de ce tuto est d’installer une Arch stock avec un minimum de paquets, s
 
 ## Conditions
 
-Ce tuto est optimisé pour les choix suivants : 
+Le script que vous retrouverez plus loin fonctionne quelques soient vos choix DE / BOOT LOADER / FS.
+
+Le tuto est optimisé pour les choix suivants : 
 
 - systemd-boot
 - Ext4
