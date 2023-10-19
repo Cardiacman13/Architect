@@ -9,4 +9,5 @@ function config_gnome() {
     echo -e "|- Configuration de Gnome. ${RED}(long)${RESET}"
     yay -S --needed --noconfirm gnome-browser-connector adw-gtk3 >> /dev/null 2>&1
     gsettings set org.gnome.desktop.interface gtk-theme adw-gtk3 >> /dev/null 2>&1
+    gsettings set org.gnome.desktop.peripherals.keyboard numlock-state true >> /dev/null 2>&1    
 }
