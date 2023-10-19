@@ -2,7 +2,7 @@
 
 **Dernière modification du tuto le : 18/10/2023**
 
-N'hésitez pas à fork le script et à le modifier selon vos besoins mais SVP supprimez mon tuto et mes vidéos (le read-me quoi), merci :).
+N'hésitez pas à fork le script et à le modifier selon vos besoins mais SVP supprimez mon tuto et mes vidéos (le read-me quoi) ou du moins modifiez le en fonction de vos modifications vu que de base il y a marqué que le script fait le read me, merci :).
 
 ## Fonctionnement du tuto
 
