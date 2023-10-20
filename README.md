@@ -304,11 +304,11 @@ Pilote Linux avancé pour la manette sans fil Xbox 360|One|S|X (livrée avec la 
 
 
 ```bash
-yay -S --needed xpadneo-dkms-git xone-dkms-git 
+yay -S --needed xpadneo-dkms 
 ```
 Pilote Linux avancé pour les manettes PS4/PS5
 ```bash
-yay -S --needed bluez-utils-compat ds4drv dualsencectl-git
+yay -S --needed bluez-utils-compat ds4drv dualsencectl
 ```
 
 ### Afficher les performances en jeu
