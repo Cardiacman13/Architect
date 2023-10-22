@@ -1,5 +1,7 @@
 # TUTO ET SCRIPT POST-INSTALLATION ARCH LINUX
 
+[ **English version** ](https://github.com/Cardiacman13/post-install-arch)
+
 **Dernière modification du tuto le : 22/10/2023**
 
 ## Fonctionnement du tuto
