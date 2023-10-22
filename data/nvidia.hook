@@ -4,6 +4,11 @@ Operation=Upgrade
 Operation=Remove
 Type=Package
 Target=nvidia-dkms
+Target=nvidia
+Target=nvidia-dkms
+Target=nvidia-lts
+Target=nvidia-beta
+Target=nvidia-470xx-dkms
 Target=usr/lib/modules/*/vmlinuz
 
 [Action]

@@ -9,8 +9,8 @@ source "$BASE_DIR/src/utils.sh"
 #   $1: The file to add the alias to.
 function add_alias_u() {
     local file=$1
-    local alias="alias update-arch='sudo pacman -Syy && yay && flatpak update'"
-    local alias_clean="alias clean-arch='yay -Sc && sudo pacman -Rns \$(pacman -Qdtq) && flatpak remove --unused'"
+    local alias="alias update-arch='yay -Syyu && flatpak update'"
+    local alias_clean="alias clean-arch='yay -Sc && yay -Yc && flatpak remove --unused'"
     local alias_key="alias fix-key='sudo rm /var/lib/pacman/sync/* && sudo rm -rf /etc/pacman.d/gnupg/* && sudo pacman-key --init && sudo pacman-key --populate && sudo pacman -Sy --noconfirm archlinux-keyring'"
     
     if [[ -f "${file}" ]]; then
@@ -32,16 +32,16 @@ function add_alias_u() {
 # If the user agrees, it installs fish shell, sets it as the default shell, and adds an alias for updating Arch Linux
 # If the user disagrees, it adds an alias for updating Arch Linux to the bashrc file
 function chose_shell() {
-    echo "Detection de fish..."
+    echo "Détection de fish..."
     if ! echo "${SHELL}" | grep fish &> /dev/null; then
-        if read_user "Voulez vous utiliser fish comme terminal ?"; then
-            echo "Configuration du shell"
-            echo "|- Installation de fish"
+        if read_user "Voulez-vous utiliser fish comme terminal ?"; then
+            echo "Configuration du shell."
+            echo "|- Installation de fish."
             sudo pacman -S --noconfirm fish man-db man-pages >> /dev/null 2>&1
-            echo "|- Changement du shell par défaut"
+            echo "|- Changement du shell par défaut."
             chsh -s /usr/bin/fish
             fish -c "fish_update_completions" >> /dev/null 2>&1
-            echo "|- Ajout de l'alias update-arch"
+            echo "|- Ajout des alias update-arch, clean-arch et fix-key."
             add_alias_u "${HOME}/.config/fish/config.fish"
             fish -c "set -U fish_greeting" >> /dev/null 2>&1
         else
