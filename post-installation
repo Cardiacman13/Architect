@@ -36,13 +36,13 @@ function install_aur_helper() {
 
     # Check if both yay and paru are not installed
     if ! command -v yay &> /dev/null && ! command -v paru &> /dev/null; then
-        echo "Choose an AUR helper (yay/paru):"
-        read -p "Enter your choice: " AUR_HELPER
+        echo "Choisissez un AUR helper (yay/paru):"
+        read -p "Entrez votre choix: " AUR_HELPER
         AUR_HELPER=$(echo "$AUR_HELPER" | tr '[:upper:]' '[:lower:]')  # Convert input to lowercase
 
         while [[ ! " yay paru " =~ " ${AUR_HELPER} " ]]; do
             echo "Choix invalide."
-            read -p "Entez yay ou paru: " AUR_HELPER
+            read -p "Entrez yay ou paru: " AUR_HELPER
             AUR_HELPER=$(echo "$AUR_HELPER" | tr '[:upper:]' '[:lower:]')  # Convert input to lowercase
         done
 
@@ -56,7 +56,7 @@ function install_aur_helper() {
         esac
 
         echo "Installation de $AUR_HELPER."
-        sudo pacman -S git >> /dev/null 2>&1
+        sudo pacman -S --noconfirm git >> /dev/null 2>&1
         git clone $git_repo >> /dev/null 2>&1
         cd "${AUR_HELPER}-bin" || exit
         echo "|- Compilation de $AUR_HELPER."
