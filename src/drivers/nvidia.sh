@@ -65,33 +65,32 @@ function nvidia_drivers() {
     local choice=""
 
     # Use a while loop to keep prompting the user until a valid choice is made
-    while [[ "$choice" != "nvidia" && "$choice" != "nvidia-all" ]]; do
-        echo -e "Veuillez choisir entre 'nvidia' ${RED}Recommandé${RESET} ou 'nvidia-all' ${RED}! VOUS DEVEZ savoir le maintenir !${RESET} :"
-        read -r choice
+    read -p "Choisissez entre 'nvidia' (Recommandé) ou 'nvidia-all' (Remarque : Vous devez savoir comment le maintenir) :" choice
 
-        case $choice in
-            "nvidia")
-                echo -e "|- Installation des paquets Nvidia. ${RED}(long)${RESET}"
-                yay -S --needed --noconfirm nvidia-dkms nvidia-utils lib32-nvidia-utils nvidia-settings vulkan-icd-loader lib32-vulkan-icd-loader >> /dev/null 2>&1
-                echo -e "|- Installation de CUDA. ${RED}(long)${RESET}"
-                yay -S --needed --noconfirm cuda
-                ;;
-            "nvidia-all")
-                yay -Rdd --noconfirm egl-wayland >> /dev/null 2>&1
-                echo -e "|- Installation de nvidia-all. ${RED}(long)${RESET}"
-                git clone https://github.com/Frogging-Family/nvidia-all.git >> /dev/null 2>&1
-                cd nvidia-all  || exit
-                makepkg -si
-                cd .. || exit
-                rm -rf nvidia-all >> /dev/null 2>&1
-                echo -e "|- Installation de CUDA. ${RED}(long)${RESET}"
-                yay -S --needed --noconfirm cuda
-                ;;
-            *)
-                echo "Option invalide. Veuillez choisir 'nvidia' ou 'nvidia-all'."
-                ;;
-        esac
+    while [[ ! "nvidia nvidia-all" =~ $choice ]]; do
+        read -p "Option invalide. Veuillez choisir 'nvidia' ou 'nvidia-all':" choice
     done
 
-    echo "--------------------------------------------------"
+    case "${choice}" in
+        "nvidia")
+            echo -e "|- Installation des paquets Nvidia. ${RED}(lon)${RESET}"
+            yay -S --needed --noconfirm nvidia-dkms nvidia-utils lib32-nvidia-utils nvidia-settings vulkan-icd-loader lib32-vulkan-icd-loader >> /dev/null 2>&1
+            echo -e "|- Installation de CUDA. ${RED}(très long)${RESET}"
+            yay -S --needed --noconfirm cuda
+            ;;
+        "nvidia-all")
+            yay -Rdd --noconfirm egl-wayland >> /dev/null 2>&1
+            echo -e "|- Installation de nvidia-all. ${RED}(long)${RESET}"
+            git clone https://github.com/Frogging-Family/nvidia-all.git >> /dev/null 2>&1
+            cd nvidia-all  || exit
+            makepkg -si
+            cd .. || exit
+            rm -rf nvidia-all >> /dev/null 2>&1
+            echo -e "|- Téléchargment et installation de CUDA. ${RED}(très long)${RESET}"
+            yay -S --needed --noconfirm cuda
+            ;;
+        *)
+            echo "Erreur inattendue."
+            ;;
+    esac
 }
