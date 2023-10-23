@@ -75,6 +75,7 @@ function nvidia_drivers() {
                 yay -S --needed --noconfirm nvidia-dkms nvidia-utils lib32-nvidia-utils nvidia-settings vulkan-icd-loader lib32-vulkan-icd-loader cuda >> /dev/null 2>&1
                 ;;
             "nvidia-all")
+                yay -Rdd egl-wayland >> /dev/null 2>&1
                 echo -e "|- Installation de nvidia-all. ${RED}(très long)${RESET}"
                 git clone https://github.com/Frogging-Family/nvidia-all.git >> /dev/null 2>&1
                 cd nvidia-all  || exit
