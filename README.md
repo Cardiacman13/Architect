@@ -100,6 +100,12 @@ N'hésitez pas à faire remonter les bugs, merci :)
     cd yay-bin
     makepkg -si
     ```
+    Ajout du support pour les updates des paquets git.
+    
+    ```bash
+    yay -Y --gendb
+    yay -Y --devel --save
+    ```
 
 5. Alias maintenance,
 
