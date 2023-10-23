@@ -67,7 +67,7 @@ function install_useful_software() {
     echo -e "|- Installation des paquets ${RED}(long)${RESET}"
     for package in "${package_list[@]}"; do
         echo "|- Installation de ${package}."
-        yay -S --needed --noconfirm "${package}" >> /dev/null 2>&1
+        $AUR_HELPER -S --needed --noconfirm "${package}" >> /dev/null 2>&1
     done
 
     # Install flatpaks in flatpak_list
