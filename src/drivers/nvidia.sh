@@ -61,7 +61,34 @@ function nvidia_drivers() {
     mkinitcpio
     hook
 
-    echo -e "|- Installation des paquets Nvidia. ${RED}(très long)${RESET}"
-    yay -S --needed --noconfirm nvidia-dkms nvidia-utils lib32-nvidia-utils nvidia-settings vulkan-icd-loader lib32-vulkan-icd-loader cuda >> /dev/null 2>&1
+    # Initialize an empty choice variable
+    local choice=""
+
+    # Use a while loop to keep prompting the user until a valid choice is made
+    while [[ "$choice" != "nvidia" && "$choice" != "nvidia-all" ]]; do
+        echo "Veuillez choisir entre 'nvidia' ou 'nvidia-all':"
+        read -r choice
+
+        case $choice in
+            "nvidia")
+                echo -e "|- Installation des paquets Nvidia. ${RED}(très long)${RESET}"
+                yay -S --needed --noconfirm nvidia-dkms nvidia-utils lib32-nvidia-utils nvidia-settings vulkan-icd-loader lib32-vulkan-icd-loader cuda >> /dev/null 2>&1
+                ;;
+            "nvidia-all")
+                echo -e "|- Installation de nvidia-all. ${RED}(très long)${RESET}"
+                git clone https://github.com/Frogging-Family/nvidia-all.git >> /dev/null 2>&1
+                cd nvidia-all  || exit
+                makepkg -si  --noconfirm >> /dev/null 2>&1
+                cd .. || exit
+                rm -rf nvidia-all >> /dev/null 2>&1
+                echo -e "|- Installation de CUDA. ${RED}(très long)${RESET}"
+                yay -S --needed --noconfirm cuda
+                ;;
+            *)
+                echo "Option invalide. Veuillez choisir 'nvidia' ou 'nvidia-all'."
+                ;;
+        esac
+    done
+
     echo "--------------------------------------------------"
 }
