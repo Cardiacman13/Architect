@@ -66,7 +66,7 @@ function nvidia_drivers() {
 
     # Use a while loop to keep prompting the user until a valid choice is made
     while [[ "$choice" != "nvidia" && "$choice" != "nvidia-all" ]]; do
-        echo "Veuillez choisir entre 'nvidia' ${RED}Recommandé${RESET} ou 'nvidia-all' ${RED}Demande de savoir le maintenir !${RESET} :"
+        echo -e "Veuillez choisir entre 'nvidia' ${RED}Recommandé${RESET} ou 'nvidia-all' ${RED}Demande de savoir le maintenir !${RESET} :"
         read -r choice
 
         case $choice in
