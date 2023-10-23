@@ -74,7 +74,7 @@ function nvidia_drivers() {
                 echo -e "|- Installation des paquets Nvidia. ${RED}(long)${RESET}"
                 yay -S --needed --noconfirm nvidia-dkms nvidia-utils lib32-nvidia-utils nvidia-settings vulkan-icd-loader lib32-vulkan-icd-loader >> /dev/null 2>&1
                 echo -e "|- Installation de CUDA. ${RED}(long)${RESET}"
-                yay -S --needed --noconfirm cuda >> /dev/null 2>&1
+                yay -S --needed --noconfirm cuda
                 ;;
             "nvidia-all")
                 yay -Rdd --noconfirm egl-wayland >> /dev/null 2>&1
@@ -85,7 +85,7 @@ function nvidia_drivers() {
                 cd .. || exit
                 rm -rf nvidia-all >> /dev/null 2>&1
                 echo -e "|- Installation de CUDA. ${RED}(long)${RESET}"
-                yay -S --needed --noconfirm cuda >> /dev/null 2>&1
+                yay -S --needed --noconfirm cuda
                 ;;
             *)
                 echo "Option invalide. Veuillez choisir 'nvidia' ou 'nvidia-all'."
