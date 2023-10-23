@@ -101,6 +101,12 @@ N'hésitez pas à faire remonter les bugs, merci :)
     makepkg -si
     ```
 
+   Ajout du support pour les updates des paquets git. (Normalement à de faire q'une seule fois)
+    ```bash
+    yay -Y --gendb
+    yay -Y --devel --save
+    ```
+
 5. Alias maintenance,
 
    <img src="assets/images/Cardiac-icon.png" width="30" height="30"> [ Tuto Arch Linux Partie 4 : Maintenance ](https://www.youtube.com/watch?v=Z7POSK2jnII)
