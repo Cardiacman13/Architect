@@ -64,10 +64,10 @@ function install_aur_helper() {
     rm -rf "${AUR_HELPER}-bin" >> /dev/null 2>&1
 
     if [ "$AUR_HELPER" == "yay" ]; then
-        yay -Y --gendb
-        yay -Y --devel --save
+        yay -Y --gendb >> /dev/null 2>&1
+        yay -Y --devel --save >> /dev/null 2>&1
     elif [ "$AUR_HELPER" == "paru" ]; then
-        paru --gendb
+        paru --gendb >> /dev/null 2>&1
     fi
 
     echo "--------------------------------------------------"
