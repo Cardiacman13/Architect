@@ -14,6 +14,7 @@ function gamepad() {
     fi
     if read_user "Avez-vous une manette PS4/PS5 ?"; then
         echo -e "|- Installation de bluez-utils-compat, ds4drv et dualsencectl. ${RED}(long)${RESET}"
+        $AUR_HELPER -Rdd bluez-utils >> /dev/null 2>&1
         $AUR_HELPER -S --needed --noconfirm bluez-utils-compat ds4drv dualsensectl >> /dev/null 2>&1
     fi
     echo "--------------------------------------------------" 
