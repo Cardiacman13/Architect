@@ -1,8 +1,8 @@
 # TUTO ET SCRIPT POST-INSTALLATION ARCH LINUX
 
-**Dernière modification du tuto le : 18/10/2023**
+[ **English version** ](https://github.com/Cardiacman13/post-install-arch)
 
-N'hésitez pas à fork le script et à le modifier selon vos besoins mais SVP supprimez mon tuto et mes vidéos (le read-me quoi) ou du moins modifiez le en fonction de vos modifications vu que de base il y a marqué que le script fait le read me, merci :).
+**Dernière modification du tuto le : 22/10/2023**
 
 ## Fonctionnement du tuto
 
@@ -99,6 +99,12 @@ N'hésitez pas à faire remonter les bugs, merci :)
     git clone https://aur.archlinux.org/yay-bin.git
     cd yay-bin
     makepkg -si
+    ```
+    Ajout du support pour les updates des paquets git.
+    
+    ```bash
+    yay -Y --gendb
+    yay -Y --devel --save
     ```
 
 5. Alias maintenance,
@@ -400,7 +406,7 @@ Dire oui à tout pour bien tout écraser avec les nouveaux paquets.
 
 Nvidia-all est une intégration du driver nvidia par TkG. Il comporte des patchs de support pour les nouveaux kernels ainsi que les drivers vulkan-dev.
 
-<img src="assets/images/Cardiac-icon.png" width="30" height="30"> [Vous utilisez Arch et Nvidia regardez ça !](https://youtu.be/43yYIWMnDJA)
+<img src="assets/images/Cardiac-icon.png" width="30" height="30"> [Vous utilisez Arch et Nvidia regardez ça !](https://youtu.be/T0laE8gPtfY)
 ```bash
 git clone https://github.com/Frogging-Family/nvidia-all.git
 cd nvidia-all
