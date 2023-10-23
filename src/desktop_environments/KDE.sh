@@ -7,5 +7,5 @@ RESET="\033[0m"
 function config_kde() {
     echo -e "|- Configuration de KDE. ${RED}(long)${RESET}"
     echo "Numlock=on" | sudo tee -a /etc/sddm.conf >> /dev/null 2>&1
-    yay -S --needed --noconfirm powerdevil xdg-desktop-portal-kde okular print-manager gwenview spectacle partitionmanager ffmpegthumbs qt6-multimedia qt6-multimedia-gstreamer qt6-multimedia-ffmpeg qt6-wayland kdeplasma-addons powerdevil kcalc plasma-systemmonitor kwalletmanager >> /dev/null 2>&1
+    $AUR_HELPER -S --needed --noconfirm powerdevil xdg-desktop-portal-kde okular print-manager gwenview spectacle partitionmanager ffmpegthumbs qt6-multimedia qt6-multimedia-gstreamer qt6-multimedia-ffmpeg qt6-wayland kdeplasma-addons powerdevil kcalc plasma-systemmonitor kwalletmanager >> /dev/null 2>&1
 }
