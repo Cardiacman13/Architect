@@ -16,7 +16,10 @@ fi
 GREEN='\e[38;2;11;249;163m'     # Green color
 RED='\e[31m'                    # Red color
 PURPLE='\033[38;2;180;130;255m' # Purple color
-RESET='\e[0m'                   # Reset color
+RESET='\e[0m'   
+
+# Declare the global AUR helper variable
+AUR_HELPER=""                # Reset color
 
 source src/setup/graphic_card.sh
 source src/setup/packages.sh
@@ -25,20 +28,48 @@ source src/setup/shell.sh
 source src/setup/software.sh
 source src/setup/system_setup.sh
 
-# This function installs the AUR helper 'yay' if it is not already installed.
-# It clones the 'yay-bin' repository from AUR, compiles it, and installs it using 'makepkg'.
+# This function installs the AUR helper 'yay' or 'paru' if it is not already installed.
+# It clones the 'yay-bin' or 'paru-bin' repository from AUR, compiles it, and installs it using 'makepkg'.
 # The cloned repository is then removed to free up disk space.
 function install_aur_helper() {
-    if ! command -v yay &> /dev/null; then
-        echo "Installation de yay"
-        git clone https://aur.archlinux.org/yay-bin.git >> /dev/null 2>&1
-        cd yay-bin || exit
-        echo "|- Compilation de yay"
+    local git_repo
+
+    # Check if both yay and paru are not installed
+    if ! command -v yay &> /dev/null && ! command -v paru &> /dev/null; then
+        echo "Choose an AUR helper (yay/paru):"
+        read -p "Enter your choice: " AUR_HELPER
+        AUR_HELPER=$(echo "$AUR_HELPER" | tr '[:upper:]' '[:lower:]')  # Convert input to lowercase
+
+        while [[ ! " yay paru " =~ " ${AUR_HELPER} " ]]; do
+            echo "Invalid choice."
+            read -p "Please enter yay or paru: " AUR_HELPER
+            AUR_HELPER=$(echo "$AUR_HELPER" | tr '[:upper:]' '[:lower:]')  # Convert input to lowercase
+        done
+
+        case "$AUR_HELPER" in
+            yay)
+                git_repo="https://aur.archlinux.org/yay-bin.git"
+                ;;
+            paru)
+                git_repo="https://aur.archlinux.org/paru-bin.git"
+                ;;
+        esac
+
+        echo "Installation of $AUR_HELPER."
+        git clone $git_repo >> /dev/null 2>&1
+        cd "${AUR_HELPER}-bin" || exit
+        echo "|- Compilation of $AUR_HELPER."
         makepkg -si --noconfirm >> /dev/null 2>&1
         cd .. || exit
-        rm -rf yay-bin >> /dev/null 2>&1
-        yay -Y --gendb >> /dev/null 2>&1
-        yay -Y --devel --save >> /dev/null 2>&1
+        rm -rf "${AUR_HELPER}-bin" >> /dev/null 2>&1
+
+        if [ "$AUR_HELPER" == "yay" ]; then
+            yay -Y --gendb
+            yay -Y --devel --save
+        elif [ "$AUR_HELPER" == "paru" ]; then
+            paru --gendb
+        fi
+
         echo "--------------------------------------------------"
     fi
 }

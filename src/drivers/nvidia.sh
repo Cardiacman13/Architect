@@ -53,7 +53,7 @@ function bootloaders() {
     fi
 }
 
-# Function to install NVIDIA drivers and related packages
+#Function to install NVIDIA drivers and related packages
 function nvidia_drivers() {
     echo "|- Installation des pilotes Nvidia."
 
@@ -61,33 +61,34 @@ function nvidia_drivers() {
     mkinitcpio
     hook
 
-    # Initialize an empty choice variable
-    local choice=""
-
     # Use a while loop to keep prompting the user until a valid choice is made
-    read -p "Choisissez entre 'nvidia' (Recommandé) ou 'nvidia-all' (Remarque : Vous devez savoir comment le maintenir) :" choice
+    read -p "Choisissez entre 'nvidia' (Recommandé) ou 'nvidia-all' (Note : Si vous choisissez nvidia-all vous devez savoir comment le maintenir) :" choice
 
-    while [[ ! "nvidia nvidia-all" =~ $choice ]]; do
-        read -p "Option invalide. Veuillez choisir 'nvidia' ou 'nvidia-all':" choice
+    choice=$(echo "$choice" | tr '[:lower:]' '[:upper:]')  # Converts the input to uppercase.
+
+    # Check if the choice is empty or not in the valid options
+    while [[ -z "$choice" || ! " NVIDIA NVIDIA-ALL " =~ " $choice " ]]; do
+        read -p "Option invalide ou vide. Veuillez choisir 'nvidia' ou 'nvidia-all':" choice
+        choice=$(echo "$choice" | tr '[:lower:]' '[:upper:]')  # Converts the input to uppercase.
     done
 
     case "${choice}" in
-        "nvidia")
-            echo -e "|- Installation des paquets Nvidia. ${RED}(lon)${RESET}"
-            yay -S --needed --noconfirm nvidia-dkms nvidia-utils lib32-nvidia-utils nvidia-settings vulkan-icd-loader lib32-vulkan-icd-loader >> /dev/null 2>&1
-            echo -e "|- Installation de CUDA. ${RED}(très long)${RESET}"
-            yay -S --needed --noconfirm cuda
+        "NVIDIA")
+            echo -e "|- Installation des paquets Nvidia. ${RED}(long)${RESET}"
+            $AUR_HELPER -S --needed --noconfirm nvidia-dkms nvidia-utils lib32-nvidia-utils nvidia-settings vulkan-icd-loader lib32-vulkan-icd-loader >> /dev/null 2>&1
+            echo -e "|- Installation de CUDA. ${RED}(long)${RESET}"
+            $AUR_HELPER -S --needed --noconfirm cuda
             ;;
-        "nvidia-all")
-            yay -Rdd --noconfirm egl-wayland >> /dev/null 2>&1
+        "NVIDIA-ALL")
+            $AUR_HELPER -Rdd --noconfirm egl-wayland >> /dev/null 2>&1
             echo -e "|- Installation de nvidia-all. ${RED}(long)${RESET}"
             git clone https://github.com/Frogging-Family/nvidia-all.git >> /dev/null 2>&1
             cd nvidia-all  || exit
             makepkg -si
             cd .. || exit
             rm -rf nvidia-all >> /dev/null 2>&1
-            echo -e "|- Téléchargment et installation de CUDA. ${RED}(très long)${RESET}"
-            yay -S --needed --noconfirm cuda
+            echo -e "|- Installation de CUDA. ${RED}(long)${RESET}"
+            $AUR_HELPER -S --needed --noconfirm cuda
             ;;
         *)
             echo "Erreur inattendue."

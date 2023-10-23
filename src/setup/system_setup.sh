@@ -76,7 +76,7 @@ function install_server_sound() {
 function install_firewall() {
     echo "Installation du firewall."
 
-    yay -S --needed --noconfirm ufw >> /dev/null 2>&1
+    $AUR_HELPER -S --needed --noconfirm ufw >> /dev/null 2>&1
     if ! sudo systemctl is-active ufw.service &> /dev/null; then
         echo "|- Activation du firewall."
         sudo systemctl enable --now ufw.service >> /dev/null 2>&1
@@ -105,7 +105,7 @@ function setup_grub() {
 
         sudo mkdir -p "${hook_folder}"
         sudo cp "${hook_src}" "${hook_folder}${hook_file}"
-        yay -S --noconfirm update-grub >> /dev/null 2>&1
+        $AUR_HELPER -S --noconfirm update-grub >> /dev/null 2>&1
     fi
 }
 
