@@ -76,8 +76,8 @@ function nvidia_drivers() {
         "NVIDIA")
             echo -e "|- Installation des paquets Nvidia. ${RED}(long)${RESET}"
             $AUR_HELPER -S --needed --noconfirm nvidia-dkms nvidia-utils lib32-nvidia-utils nvidia-settings vulkan-icd-loader lib32-vulkan-icd-loader >> /dev/null 2>&1
-            echo -e "|- Installation de CUDA. ${RED}(long)${RESET}"
-            $AUR_HELPER -S --needed --noconfirm cuda
+            echo -e "|- Installation de CUDA. ${RED}(très long)${RESET}"
+            $AUR_HELPER -S --needed --noconfirm cuda >> /dev/null 2>&1
             ;;
         "NVIDIA-ALL")
             $AUR_HELPER -Rdd --noconfirm egl-wayland >> /dev/null 2>&1
@@ -87,8 +87,8 @@ function nvidia_drivers() {
             makepkg -si
             cd .. || exit
             rm -rf nvidia-all >> /dev/null 2>&1
-            echo -e "|- Installation de CUDA. ${RED}(long)${RESET}"
-            $AUR_HELPER -S --needed --noconfirm cuda
+            echo -e "|- Installation de CUDA. ${RED}(très long)${RESET}"
+            $AUR_HELPER -S --needed --noconfirm cuda >> /dev/null 2>&1
             ;;
         *)
             echo "Erreur inattendue."
