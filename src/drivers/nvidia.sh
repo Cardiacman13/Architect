@@ -66,7 +66,7 @@ function nvidia_drivers() {
 
     # Use a while loop to keep prompting the user until a valid choice is made
     while [[ "$choice" != "nvidia" && "$choice" != "nvidia-all" ]]; do
-        echo "Veuillez choisir entre 'nvidia' ou 'nvidia-all':"
+        echo "Veuillez choisir entre 'nvidia' ${RED}Recommandé${RESET} ou 'nvidia-all' ${RED}Demande de savoir le maintenir !${RESET} :"
         read -r choice
 
         case $choice in
@@ -78,7 +78,7 @@ function nvidia_drivers() {
                 echo -e "|- Installation de nvidia-all. ${RED}(très long)${RESET}"
                 git clone https://github.com/Frogging-Family/nvidia-all.git >> /dev/null 2>&1
                 cd nvidia-all  || exit
-                makepkg -si  --noconfirm >> /dev/null 2>&1
+                makepkg -si
                 cd .. || exit
                 rm -rf nvidia-all >> /dev/null 2>&1
                 echo -e "|- Installation de CUDA. ${RED}(très long)${RESET}"
