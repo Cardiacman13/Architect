@@ -37,8 +37,6 @@ function install_aur_helper() {
         makepkg -si --noconfirm >> /dev/null 2>&1
         cd .. || exit
         rm -rf yay-bin >> /dev/null 2>&1
-        yay -Y --gendb
-        yay -Y --devel --save
         echo "--------------------------------------------------"
     fi
 }
