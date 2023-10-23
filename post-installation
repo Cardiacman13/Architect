@@ -16,10 +16,10 @@ fi
 GREEN='\e[38;2;11;249;163m'     # Green color
 RED='\e[31m'                    # Red color
 PURPLE='\033[38;2;180;130;255m' # Purple color
-RESET='\e[0m'   
+RESET='\e[0m'                   # Reset color
 
 # Declare the global AUR helper variable
-AUR_HELPER=""                # Reset color
+AUR_HELPER=""                
 
 source src/setup/graphic_card.sh
 source src/setup/packages.sh
@@ -41,8 +41,8 @@ function install_aur_helper() {
         AUR_HELPER=$(echo "$AUR_HELPER" | tr '[:upper:]' '[:lower:]')  # Convert input to lowercase
 
         while [[ ! " yay paru " =~ " ${AUR_HELPER} " ]]; do
-            echo "Invalid choice."
-            read -p "Please enter yay or paru: " AUR_HELPER
+            echo "Choix invalide."
+            read -p "Entez yay ou paru: " AUR_HELPER
             AUR_HELPER=$(echo "$AUR_HELPER" | tr '[:upper:]' '[:lower:]')  # Convert input to lowercase
         done
 
@@ -55,10 +55,10 @@ function install_aur_helper() {
                 ;;
         esac
 
-        echo "Installation of $AUR_HELPER."
+        echo "Installation de $AUR_HELPER."
         git clone $git_repo >> /dev/null 2>&1
         cd "${AUR_HELPER}-bin" || exit
-        echo "|- Compilation of $AUR_HELPER."
+        echo "|- Compilation de $AUR_HELPER."
         makepkg -si --noconfirm >> /dev/null 2>&1
         cd .. || exit
         rm -rf "${AUR_HELPER}-bin" >> /dev/null 2>&1
