@@ -56,6 +56,7 @@ function install_aur_helper() {
         esac
 
         echo "Installation de $AUR_HELPER."
+        sudo pacman -S git >> /dev/null 2>&1
         git clone $git_repo >> /dev/null 2>&1
         cd "${AUR_HELPER}-bin" || exit
         echo "|- Compilation de $AUR_HELPER."
