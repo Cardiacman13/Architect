@@ -18,6 +18,7 @@ RED='\e[31m'                    # Red color
 PURPLE='\033[38;2;180;130;255m' # Purple color
 RESET='\e[0m'                   # Reset color             
 
+source src/setup/aur_helper.sh
 source src/setup/graphic_card.sh
 source src/setup/packages.sh
 source src/setup/peripheries.sh
@@ -92,14 +93,13 @@ function main() {
     sudo reflector --score 20 --fastest 5 --sort rate --save /etc/pacman.d/mirrorlist >> /dev/null 2>&1
     sudo pacman -Syy >> /dev/null 2>&1
 
-    install_aur_helper
-
-    system_setup            # 1
-    install_video_drivers   # 2
-    chose_shell             # 3
-    install_peripheries     # 4
-    install_useful_packages # 5
-    install_useful_software # 6
+    install_aur_helper      # 1
+    system_setup            # 2
+    install_video_drivers   # 3
+    chose_shell             # 4
+    install_peripheries     # 5
+    install_useful_packages # 6
+    install_useful_software # 7
 
     local end_time=$(date +%s)
     local duration=$((end_time - start_time))
