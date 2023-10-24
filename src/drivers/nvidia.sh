@@ -1,10 +1,7 @@
-
-RED='\033[0;31m'
-RESET='\033[0m'
-
-# This function sets up the nvidia hook by copying the nvidia.hook file to /etc/pacman.d/hooks/
+# Fonction pour configurer le hook Nvidia en copiant le fichier nvidia.hook dans /etc/pacman.d/hooks/
 function hook() {
     echo "|- Configuration du hook Nvidia."
+
     local hook_folder="/etc/pacman.d/hooks/"
     local hook_file="nvidia.hook"
     local hook_src="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)/data/nvidia.hook"
@@ -13,18 +10,15 @@ function hook() {
     sudo cp "${hook_src}" "${hook_folder}${hook_file}"
 }
 
-# This function updates the mkinitcpio configuration file to include the necessary NVIDIA modules.
+# Fonction pour mettre à jour le fichier de configuration mkinitcpio pour inclure les modules NVIDIA nécessaires.
 function mkinitcpio() {
     echo "|- Configuration de mkinitcpio."
 
     local mkinitcpio_src="/etc/mkinitcpio.conf"
-
     sudo sed -i '/MODULES=/ s/)/ nvidia nvidia_modeset nvidia_uvm nvidia_drm)/' "${mkinitcpio_src}"
 }
 
-# This function detects the bootloader used by the system and adds the "nvidia-drm.modeset=1" option to the boot configuration.
-# If the bootloader is "grub", it updates the "/etc/default/grub" file and runs "grub-mkconfig" to update the grub configuration.
-# If the bootloader is "systemd-boot", it updates all "*.conf" files in "/boot/loader/entries/" directory with the "nvidia-drm.modeset=1" option.
+# Fonction pour détecter le bootloader utilisé par le système et ajouter l'option "nvidia-drm.modeset=1" à la configuration de démarrage.
 function bootloaders() {
     echo "|- Détection du bootloader."
 
@@ -39,21 +33,22 @@ function bootloaders() {
 
         if grep -q "GRUB_CMDLINE_LINUX_DEFAULT" "${boot_loader_src}"; then
             if ! grep -q "nvidia-drm.modeset=1" "${boot_loader_src}"; then
-                echo "   |- Ajout de nvidia-drm.modeset=1 dans les options de boot."
+                echo "   |- Ajout de nvidia-drm.modeset=1 aux options de démarrage."
                 sudo sed -i '/GRUB_CMDLINE_LINUX_DEFAULT/ s/\"$/ nvidia-drm.modeset=1\"/' "${boot_loader_src}"
             fi
         fi
+
         echo "|- Mise à jour de grub."
         sudo grub-mkconfig -o /boot/grub/grub.cfg >> /dev/null 2>&1
+
     else
         local boot_loader_src="/boot/loader/entries/*.conf"
-
-        echo "|- Ajout de nvidia-drm.modeset=1 dans les options de boot."
+        echo "|- Ajout de nvidia-drm.modeset=1 aux options de démarrage."
         sudo sed -i '/^options root/ s/$/ nvidia-drm.modeset=1/' ${boot_loader_src}
     fi
 }
 
-#Function to install NVIDIA drivers and related packages
+# Fonction pour installer les pilotes NVIDIA et les paquets associés
 function nvidia_drivers() {
     echo "|- Installation des pilotes Nvidia."
 
@@ -61,15 +56,14 @@ function nvidia_drivers() {
     mkinitcpio
     hook
 
-    # Use a while loop to keep prompting the user until a valid choice is made
-    read -p "Choisissez entre 'nvidia' (Recommandé) ou 'nvidia-all' (Note : Si vous choisissez nvidia-all vous devez savoir comment le maintenir) :" choice
+    # Utilise une boucle while pour continuer à inviter l'utilisateur jusqu'à ce qu'un choix valide soit fait
+    read -p "Choisissez entre 'nvidia' (Recommandé) ou 'nvidia-all' (Note : Si vous choisissez nvidia-all, vous devez savoir comment le maintenir) :" choice
 
-    choice=$(echo "$choice" | tr '[:lower:]' '[:upper:]')  # Converts the input to uppercase.
+    choice=$(echo "$choice" | tr '[:lower:]' '[:upper:]')  # Convertit la saisie en majuscules.
 
-    # Check if the choice is empty or not in the valid options
     while [[ -z "$choice" || ! " NVIDIA NVIDIA-ALL " =~ " $choice " ]]; do
         read -p "Option invalide ou vide. Veuillez choisir 'nvidia' ou 'nvidia-all':" choice
-        choice=$(echo "$choice" | tr '[:lower:]' '[:upper:]')  # Converts the input to uppercase.
+        choice=$(echo "$choice" | tr '[:lower:]' '[:upper:]')
     done
 
     case "${choice}" in
@@ -79,6 +73,7 @@ function nvidia_drivers() {
             echo -e "|- Installation de CUDA. ${RED}(très long)${RESET}"
             $AUR_HELPER -S --needed --noconfirm cuda >> /dev/null 2>&1
             ;;
+
         "NVIDIA-ALL")
             $AUR_HELPER -Rdd --noconfirm egl-wayland >> /dev/null 2>&1
             echo -e "|- Installation de nvidia-all. ${RED}(long)${RESET}"
@@ -90,6 +85,7 @@ function nvidia_drivers() {
             echo -e "|- Installation de CUDA. ${RED}(très long)${RESET}"
             $AUR_HELPER -S --needed --noconfirm cuda >> /dev/null 2>&1
             ;;
+
         *)
             echo "Erreur inattendue."
             ;;
