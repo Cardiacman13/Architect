@@ -1,3 +1,6 @@
+# Declare the global AUR helper variable
+AUR_HELPER=""   
+
 function install_aur_helper() {
     local git_repo
 
