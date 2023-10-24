@@ -29,7 +29,7 @@ function install_useful_software() {
     # Utiliser la fonction d'aide pour l'interrogation
     prompt_and_add "|- Voulez-vous installer Discord ?" "package" "discord"
     prompt_and_add "|- Voulez-vous installer Steam ?" "package" "steam"
-    prompt_and_add "|- Voulez-vous installer Lutris ?" "package" "lutris" "wine-staging"
+    prompt_and_add "|- Voulez-vous installer Lutris ?" "package" "lutris-git" "wine-staging"
     prompt_and_add "|- Voulez-vous installer Heroic Games Launcher (Epic Games/GOG) ?" "package" "heroic-games-launcher-bin"
     prompt_and_add "|- Voulez-vous installer protonup-qt ?" "package" "protonup-qt-bin"
     prompt_and_add "|- Voulez-vous installer Spotify ?" "package" "spotify"
