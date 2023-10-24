@@ -1,22 +1,9 @@
-######################################################
-# HOOK NVIDIA POUR PACMAN
-# 
-# Ce hook est destiné au gestionnaire de paquets pacman utilisé par Arch Linux.
-# L'objectif principal de ce hook est de mettre à jour le module NVIDIA dans l'initcpio chaque fois que certains 
-# paquets NVIDIA sont installés, mis à niveau ou supprimés.
-# 
-# L'initcpio est un petit système de fichiers racine initial qui est chargé en mémoire pendant le processus de démarrage de Linux.
-# Il initialise le matériel et monte le système de fichiers racine, entre autres tâches.
-# Lorsque vous utilisez des pilotes NVIDIA, en particulier ceux construits pour des versions de noyau spécifiques (dkms signifie 
-# Dynamic Kernel Module Support), il est essentiel de s'assurer que les pilotes sont correctement incorporés dans l'initcpio.
-######################################################
-
 [Trigger]
-Operation=Install             # Lors de l'installation d'un paquet
-Operation=Upgrade             # Lors de la mise à niveau d'un paquet
-Operation=Remove              # Lors de la suppression d'un paquet
-Type=Package                  # Type de l'opération est un paquet
-Target=nvidia-dkms            # Cibles spécifiques pour le déclencheur
+Operation=Install
+Operation=Upgrade
+Operation=Remove
+Type=Package
+Target=nvidia-dkms
 Target=nvidia
 Target=nvidia-dkms
 Target=nvidia-lts
@@ -25,8 +12,8 @@ Target=nvidia-470xx-dkms
 Target=usr/lib/modules/*/vmlinuz
 
 [Action]
-Description=Update NVIDIA module in initcpio    # Description de l'action
-Depends=mkinitcpio                               # Dépendances nécessaires pour exécuter l'action
-When=PostTransaction                             # Quand exécuter l'action (après la transaction)
-NeedsTargets                                     # Nécessite les cibles pour exécuter
-Exec=/bin/sh -c 'while read -r trg; do case \$trg in linux) exit 0; esac; done; /usr/bin/mkinitcpio -P'   # Commande à exécuter
+Description=Update NVIDIA module in initcpio
+Depends=mkinitcpio
+When=PostTransaction
+NeedsTargets
+Exec=/bin/sh -c 'while read -r trg; do case \$trg in linux) exit 0; esac; done; /usr/bin/mkinitcpio -P'
