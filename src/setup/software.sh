@@ -1,80 +1,62 @@
+# Définir le répertoire de base
 BASE_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
 
+# Inclure les fonctions utilitaires
 source "$BASE_DIR/src/utils.sh"
 
-# This function installs useful software based on user input
+# Fonction d'aide pour interroger l'utilisateur et ajouter des logiciels aux listes
+function prompt_and_add() {
+    local prompt="$1"
+    local type="$2"
+    shift 2
+    local software=("$@")
+
+    if read_user "${prompt}"; then
+        if [[ "${type}" == "package" ]]; then
+            package_list+=("${software[@]}")
+        elif [[ "${type}" == "flatpak" ]]; then
+            flatpak_list+=("${software[@]}")
+        fi
+    fi
+}
+
+# Fonction pour installer des logiciels utiles en fonction de la saisie de l'utilisateur
 function install_useful_software() {
     echo "Installation des logiciels utiles."
-    local package_list=() # List of packages to be installed
-    local flatpak_list=() # List of flatpaks to be installed
+    local package_list=()   # Liste des paquets à installer
+    local flatpak_list=()   # Liste des flatpaks à installer
 
-    # Ask user if they want to install Discord and add it to package_list if yes
-    if read_user "|- Voulez-vous installer Discord ?"; then
-        package_list+=("discord")
-    fi
+    # Utiliser la fonction d'aide pour l'interrogation
+    prompt_and_add "|- Voulez-vous installer Discord ?" "package" "discord"
+    prompt_and_add "|- Voulez-vous installer Steam ?" "package" "steam"
+    prompt_and_add "|- Voulez-vous installer Lutris ?" "package" "lutris-git" "wine-staging"
+    prompt_and_add "|- Voulez-vous installer Heroic Games Launcher (Epic Games/GOG) ?" "package" "heroic-games-launcher-bin"
+    prompt_and_add "|- Voulez-vous installer protonup-qt ?" "package" "protonup-qt-bin"
+    prompt_and_add "|- Voulez-vous installer Spotify ?" "package" "spotify"
+    prompt_and_add "|- Voulez-vous installer OBS Studio (flatpak) ?" "flatpak" "com.obsproject.Studio"
+    prompt_and_add "|- Voulez-vous installer LibreOffice ?" "package" "libreoffice-fresh" "libreoffice-fresh-fr"
+    prompt_and_add "|- Voulez-vous installer Gimp ?" "package" "gimp"
+    prompt_and_add "|- Voulez-vous installer Visual Studio Code ?" "package" "visual-studio-code-bin"
+    prompt_and_add "|- Voulez-vous installer Open RGB ?" "package" "openrgb-bin"
 
-    # Ask user if they want to install Steam and add it to package_list if yes
-    if read_user "|- Voulez-vous installer Steam ?"; then
-        package_list+=("steam")
-    fi
-
-    # Ask user if they want to install Lutris and add it to package_list if yes
-    if read_user "|- Voulez-vous installer Lutris ?"; then
-        package_list+=("lutris" "wine-staging")
-    fi
-
-    # Ask user if they want to install Heroic Games Launcher and add it to package_list if yes
-    if read_user "|- Voulez-vous installer Heroic Games Launcher (Epic Games/GOG) ?"; then
-        package_list+=("heroic-games-launcher-bin")
-    fi
-      
-        # Ask user if they want to install protonup-qt-bin and add it to package_list if yes
-    if read_user "|- Voulez-vous installer protonup-qt ?"; then
-        package_list+=("protonup-qt-bin")
-    fi
-
-    # Ask user if they want to install Spotify and add it to package_list if yes
-    if read_user "|- Voulez-vous installer Spotify ?"; then
-        package_list+=("spotify")
-    fi
-
-    # Ask user if they want to install OBS (flatpak) and add it to flatpak_list if yes
-    if read_user "|- Voulez-vous installer OBS Studio (flatpak) ?"; then
-        flatpak_list+=("com.obsproject.Studio")
-    fi
-
-    # Ask user if they want to install Libreoffice and add it to package_list if yes
-    if read_user "|- Voulez-vous installer LibreOffice ?"; then
-        package_list+=("libreoffice-fresh" "libreoffice-fresh-fr")
-    fi
-
-    # Ask user if they want to install Gimp and add it to package_list if yes
-    if read_user "|- Voulez-vous installer Gimp ?"; then
-        package_list+=("gimp")
-    fi
-
-    # Ask user if they want to install Visual Studio Code and add it to package_list if yes
-    if read_user "|- Voulez-vous installer Visual Studio Code ?"; then
-        package_list+=("visual-studio-code-bin")
-    fi
-
-    # Ask user if they want to install Open RGB and add it to package_list if yes
-    if read_user "|- Voulez-vous installer Open RGB ?"; then
-        package_list+=("openrgb-bin")
-    fi
-
-    # Install packages in package_list
-    echo -e "|- Installation des paquets ${RED}(long)${RESET}"
+    # Installer les paquets de la liste package_list
+    echo -e "|- Installation des paquets ${RED}(peut être long)${RESET}"
     for package in "${package_list[@]}"; do
         echo "|- Installation de ${package}."
-        $AUR_HELPER -S --needed --noconfirm "${package}" >> /dev/null 2>&1
+        if ! $AUR_HELPER -S --needed --noconfirm "${package}" >> /dev/null 2>&1; then
+            echo -e "${RED}Erreur lors de l'installation de ${package}${RESET}"
+            exit 1
+        fi
     done
 
-    # Install flatpaks in flatpak_list
+    # Installer les flatpaks de la liste flatpak_list
     echo "|- Installation des flatpaks."
     for flatpak in "${flatpak_list[@]}"; do
         echo "|- Installation de ${flatpak}"
-        flatpak install flathub -y "${flatpak}" >> /dev/null 2>&1
+        if ! flatpak install flathub -y "${flatpak}" >> /dev/null 2>&1; then
+            echo -e "${RED}Erreur lors de l'installation de ${flatpak}${RESET}"
+            exit 1
+        fi
     done
 
     echo "--------------------------------------------------"

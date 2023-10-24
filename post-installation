@@ -1,81 +1,38 @@
 #!/usr/bin/env bash
 
-sudo -v
+# ====================================== Définitions & Configurations ======================================
 
-if [ $? -eq 0 ]; then
-    echo "--------------------------------------------------"
-    echo "|- Authentification réussie."
-    echo "--------------------------------------------------"
+# Définition des couleurs
+GREEN='\e[38;2;11;249;163m'     # Couleur verte
+RED='\e[31m'                    # Couleur rouge
+PURPLE='\033[38;2;180;130;255m' # Couleur violette
+RESET='\e[0m'                   # Réinitialisation de la couleur
+
+# ============================================= Vérifications ==============================================
+
+# Vérification des droits root
+if sudo -v; then
+    echo -e "${GREEN}Authentification réussie.${RESET}"
 else
-    echo "--------------------------------------------------"
-    echo "|- Authentification échouée."
-    echo "--------------------------------------------------"
+    echo -e "${RED}L'authentification a échoué. Le script nécessite des privilèges root pour s'exécuter.${RESET}"
     exit 1
 fi
 
-GREEN='\e[38;2;11;249;163m'     # Green color
-RED='\e[31m'                    # Red color
-PURPLE='\033[38;2;180;130;255m' # Purple color
-RESET='\e[0m'                   # Reset color
+# =========================================== Importations ===========================================
 
-# Declare the global AUR helper variable
-AUR_HELPER=""                
-
+# Importation des scripts de configuration
+source src/setup/aur_helper.sh
 source src/setup/graphic_card.sh
 source src/setup/packages.sh
 source src/setup/peripheries.sh
 source src/setup/shell.sh
 source src/setup/software.sh
 source src/setup/system_setup.sh
+source src/setup/reboot_timer.sh
 
-# This function installs the AUR helper 'yay' or 'paru' if it is not already installed.
-# It clones the 'yay-bin' or 'paru-bin' repository from AUR, compiles it, and installs it using 'makepkg'.
-# The cloned repository is then removed to free up disk space.
-function install_aur_helper() {
-    local git_repo
+# ============================================= Fonctions =============================================
 
-    # Always prompt the user for AUR helper choice
-    echo "Choisissez un AUR helper (yay/paru):"
-    read -p "Entrez votre choix: " AUR_HELPER 
-    AUR_HELPER=$(echo "$AUR_HELPER" | tr '[:upper:]' '[:lower:]')  # Convert input to lowercase
-
-    while [[ ! " yay paru " =~ " ${AUR_HELPER} " ]]; do
-        echo "Choix invalide."
-        read -p "Entrez yay ou paru: " AUR_HELPER
-        AUR_HELPER=$(echo "$AUR_HELPER" | tr '[:upper:]' '[:lower:]')  # Convert input to lowercase
-    done
-
-    case "$AUR_HELPER" in
-        yay)
-            git_repo="https://aur.archlinux.org/yay-bin.git"
-            ;;
-        paru)
-            git_repo="https://aur.archlinux.org/paru-bin.git"
-            ;;
-    esac
-
-    echo "Installation de $AUR_HELPER."
-    sudo pacman -S --noconfirm git >> /dev/null 2>&1
-    git clone $git_repo >> /dev/null 2>&1
-    cd "${AUR_HELPER}-bin" || exit
-    echo "|- Compilation de $AUR_HELPER."
-    makepkg -si --noconfirm >> /dev/null 2>&1
-    cd .. || exit
-    rm -rf "${AUR_HELPER}-bin" >> /dev/null 2>&1
-
-    if [ "$AUR_HELPER" == "yay" ]; then
-        yay -Y --gendb >> /dev/null 2>&1
-        yay -Y --devel --save >> /dev/null 2>&1
-    elif [ "$AUR_HELPER" == "paru" ]; then
-        paru --gendb >> /dev/null 2>&1
-    fi
-
-    echo "--------------------------------------------------"
-}
-
-# This function displays a welcome message to the user and prompts them to continue with the script or cancel it.
-# It also provides information about the script and its author.
-# If the user chooses to cancel, the script exits with status code 0.
+# Fonction d'affichage du message de bienvenue
 function welcome_msg() {
     clear
     echo -e "${GREEN}Bienvenue dans le script post-installation d'Arch Linux !${RESET}"
@@ -101,57 +58,53 @@ function welcome_msg() {
     fi
 }
 
-# This function displays a message indicating that the script has finished running and prompts the user to reboot the system.
-# If the user chooses to reboot, a timer is started and the system is rebooted after the timer expires.
-# If the user chooses not to reboot, the function exits without doing anything.
-# Arguments:
-#   $1: The number of seconds to wait before rebooting the system (optional, default is 0).
-function reboot_timer() {
-    local timer=$1
+# ============================================ Exécution ============================================
 
-    echo -e "${RED}Le script est terminé, le système doit redémarrer${RESET} : Appuyez sur ${GREEN}Entrée${RESET} pour redémarrer ou ${GREEN}Ctrl+C${RESET} pour annuler."
-    read -p "" choice
-    if [[ "${choice}" == "" ]]; then
-        while [[ ${timer} -gt 0 ]]; do
-            echo -e "${RED}Redémarrage dans ${timer} secondes...${RESET}"
-            sleep 1
-            ((timer--))
-        done
-    fi
-    sudo reboot
-}
-
-# This function performs post-installation tasks for an Arch Linux system.
-# It updates the system, sets up multilib if necessary, updates the mirrorlist,
-# installs git and an AUR helper, and runs several other setup functions.
-# It also prints the time it took to run the script and schedules a reboot.
+# Fonction principale
 function main() {
     local start_time=$(date +%s)
 
-    sudo pacman -Syyu --noconfirm
+    # Mise à jour des paquets
+    echo -e "|- Mise à jour des paquets."
+    if sudo pacman -Syyu --noconfirm; then
+        echo -e "${GREEN}Mise à jour réussie.${RESET}"
+    else
+        echo -e "${RED}La mise à jour a échoué.${RESET}"
+        exit 1
+    fi
+    
     welcome_msg
 
+    # Activation du dépôt multilib si nécessaire
     if grep -q "^#\[multilib\]" "/etc/pacman.conf"; then
+        echo -e "|- Activation du dépôt multilib."
         sudo sed -i '/^#\[multilib\]/,/^#Include = \/etc\/pacman.d\/mirrorlist/ s/^#//' "/etc/pacman.conf"
     fi
 
-    echo -e "|- Mise à jour des miroirs. ${RED}(long)${RESET}"
+    # Mise à jour des miroirs
+    echo -e "|- Mise à jour des miroirs. ${RED}(peut être long)${RESET}"
     sudo pacman -S --needed --noconfirm reflector >> /dev/null 2>&1
-    sudo reflector --score 20 --fastest 5 --sort rate --save /etc/pacman.d/mirrorlist >> /dev/null 2>&1
+    if sudo reflector --score 20 --fastest 5 --sort rate --save /etc/pacman.d/mirrorlist >> /dev/null 2>&1; then
+        echo -e "${GREEN}Miroirs mis à jour avec succès!${RESET}"
+    else
+        echo -e "${RED}La mise à jour des miroirs a échoué.${RESET}"
+    fi
+    
     sudo pacman -Syy >> /dev/null 2>&1
 
-    install_aur_helper
-
-    system_setup            # 1
-    install_video_drivers   # 2
-    chose_shell             # 3
-    install_peripheries     # 4
-    install_useful_packages # 5
-    install_useful_software # 6
+    # Exécution des scripts de configuration
+    install_aur_helper      # 1
+    system_setup            # 2
+    install_video_drivers   # 3
+    chose_shell             # 4
+    install_peripheries     # 5
+    install_useful_packages # 6
+    install_useful_software # 7
 
     local end_time=$(date +%s)
     local duration=$((end_time - start_time))
 
+    # Affichage de la durée d'exécution du script
     echo -e "${GREEN}Le script a mis ${duration} secondes à s'exécuter.${RESET}"
     reboot_timer 10
 }

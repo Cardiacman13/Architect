@@ -1,22 +1,26 @@
+# Détermine le répertoire de base du script
 BASE_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
 
+# Inclusion des scripts de pilotes graphiques
 source "$BASE_DIR/src/drivers/nvidia.sh"
 source "$BASE_DIR/src/drivers/amd.sh"
 source "$BASE_DIR/src/drivers/intel.sh"
 source "$BASE_DIR/src/drivers/vm.sh"
 
-# This function installs video drivers based on the user's GPU selection.
-# It prompts the user to enter their GPU type (INTEL/AMD/NVIDIA) and installs the corresponding drivers.
-# If an invalid GPU type is entered, it displays an error message and asks again.
+# Cette fonction installe les pilotes vidéo en fonction de la sélection GPU de l'utilisateur.
+# Elle demande à l'utilisateur de saisir le type de leur GPU (INTEL/AMD/NVIDIA) et installe les pilotes correspondants.
+# Si un type de GPU invalide est saisi, elle affiche un message d'erreur et redemande.
 function install_video_drivers() {
-    read -p "Quelle est votre carte graphique ? (INTEL/AMD/NVIDIA/VM):" user_gpu
-    user_gpu=$(echo "$user_gpu" | tr '[:lower:]' '[:upper:]')  # Converts the input to uppercase
+    read -p "Quel est le type de votre carte graphique ? (INTEL/AMD/NVIDIA/VM):" user_gpu
+    user_gpu=$(echo "$user_gpu" | tr '[:lower:]' '[:upper:]')  # Conversion de la saisie en majuscules
 
+    # Boucle tant que l'entrée de l'utilisateur n'est pas valide
     while [[ -z "$user_gpu" || ! " INTEL AMD NVIDIA VM " =~ " $user_gpu " ]]; do
-        read -p "Choix de carte graphique invalide. Entrez INTEL, AMD, NVIDIA, or VM:" user_gpu
-        user_gpu=$(echo "$user_gpu" | tr '[:lower:]' '[:upper:]')  # Converts the input to uppercase
+        read -p "Type de carte graphique invalide. Veuillez saisir INTEL, AMD, NVIDIA ou VM:" user_gpu
+        user_gpu=$(echo "$user_gpu" | tr '[:lower:]' '[:upper:]')  # Conversion de la saisie en majuscules
     done
     
+    # Installation des pilotes en fonction du choix de l'utilisateur
     case "${user_gpu}" in
         "NVIDIA")
             nvidia_drivers
@@ -31,7 +35,7 @@ function install_video_drivers() {
             vm_drivers
             ;;
         *)
-            echo "Choix de carte graphique invalide ! ${user_gpu}"
+            echo "Type de carte graphique invalide : ${user_gpu}"
             ;;
     esac
 
