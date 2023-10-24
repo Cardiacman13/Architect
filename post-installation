@@ -9,7 +9,7 @@ PURPLE='\033[38;2;180;130;255m' # Couleur violette
 RESET='\e[0m'                   # Réinitialisation de la couleur
 
 # Intercepter les interruptions utilisateur
-trap 'echo -e "${RED}Interruption par l'utilisateur${RESET}"; exit 1' SIGINT
+trap 'echo "Interruption detected"; exit 1' INT
 
 # ============================================= Vérifications ==============================================
 
