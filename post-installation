@@ -1,23 +1,30 @@
 #!/usr/bin/env bash
 
-sudo -v
+# ====================================== Définitions & Configurations ======================================
 
+# Définition des couleurs
+GREEN='\e[38;2;11;249;163m'     # Couleur verte
+RED='\e[31m'                    # Couleur rouge
+PURPLE='\033[38;2;180;130;255m' # Couleur violette
+RESET='\e[0m'                   # Réinitialisation de la couleur
+
+# Intercepter les interruptions utilisateur
+trap 'echo -e "${RED}Aborted by user${RESET}"; exit 1' SIGINT
+
+# ============================================= Vérifications ==============================================
+
+# Vérification des droits root
+sudo -v
 if [ $? -eq 0 ]; then
-    echo "--------------------------------------------------"
-    echo "|- Authentification réussie."
-    echo "--------------------------------------------------"
+    echo -e "${GREEN}Authentification réussie.${RESET}"
 else
-    echo "--------------------------------------------------"
-    echo "|- Authentification échouée."
-    echo "--------------------------------------------------"
+    echo -e "${RED}Authentification échouée.${RESET}"
     exit 1
 fi
 
-GREEN='\e[38;2;11;249;163m'     # Green color
-RED='\e[31m'                    # Red color
-PURPLE='\033[38;2;180;130;255m' # Purple color
-RESET='\e[0m'                   # Reset color             
+# =========================================== Importations ===========================================
 
+# Importation des scripts de configuration
 source src/setup/aur_helper.sh
 source src/setup/graphic_card.sh
 source src/setup/packages.sh
@@ -25,10 +32,11 @@ source src/setup/peripheries.sh
 source src/setup/shell.sh
 source src/setup/software.sh
 source src/setup/system_setup.sh
+source src/setup/reboot_timer.sh
 
-# This function displays a welcome message to the user and prompts them to continue with the script or cancel it.
-# It also provides information about the script and its author.
-# If the user chooses to cancel, the script exits with status code 0.
+# ============================================= Fonctions =============================================
+
+# Fonction d'affichage du message de bienvenue
 function welcome_msg() {
     clear
     echo -e "${GREEN}Bienvenue dans le script post-installation d'Arch Linux !${RESET}"
@@ -54,45 +62,28 @@ function welcome_msg() {
     fi
 }
 
-# This function displays a message indicating that the script has finished running and prompts the user to reboot the system.
-# If the user chooses to reboot, a timer is started and the system is rebooted after the timer expires.
-# If the user chooses not to reboot, the function exits without doing anything.
-# Arguments:
-#   $1: The number of seconds to wait before rebooting the system (optional, default is 0).
-function reboot_timer() {
-    local timer=$1
+# ============================================ Exécution ============================================
 
-    echo -e "${RED}Le script est terminé, le système doit redémarrer${RESET} : Appuyez sur ${GREEN}Entrée${RESET} pour redémarrer ou ${GREEN}Ctrl+C${RESET} pour annuler."
-    read -p "" choice
-    if [[ "${choice}" == "" ]]; then
-        while [[ ${timer} -gt 0 ]]; do
-            echo -e "${RED}Redémarrage dans ${timer} secondes...${RESET}"
-            sleep 1
-            ((timer--))
-        done
-    fi
-    sudo reboot
-}
-
-# This function performs post-installation tasks for an Arch Linux system.
-# It updates the system, sets up multilib if necessary, updates the mirrorlist,
-# installs git and an AUR helper, and runs several other setup functions.
-# It also prints the time it took to run the script and schedules a reboot.
+# Fonction principale
 function main() {
     local start_time=$(date +%s)
 
+    # Mise à jour des paquets
     sudo pacman -Syyu --noconfirm
     welcome_msg
 
+    # Activation du dépôt multilib si nécessaire
     if grep -q "^#\[multilib\]" "/etc/pacman.conf"; then
         sudo sed -i '/^#\[multilib\]/,/^#Include = \/etc\/pacman.d\/mirrorlist/ s/^#//' "/etc/pacman.conf"
     fi
 
+    # Mise à jour des miroirs
     echo -e "|- Mise à jour des miroirs. ${RED}(long)${RESET}"
     sudo pacman -S --needed --noconfirm reflector >> /dev/null 2>&1
     sudo reflector --score 20 --fastest 5 --sort rate --save /etc/pacman.d/mirrorlist >> /dev/null 2>&1
     sudo pacman -Syy >> /dev/null 2>&1
 
+    # Exécution des scripts de configuration
     install_aur_helper      # 1
     system_setup            # 2
     install_video_drivers   # 3
@@ -104,6 +95,7 @@ function main() {
     local end_time=$(date +%s)
     local duration=$((end_time - start_time))
 
+    # Affichage de la durée d'exécution du script
     echo -e "${GREEN}Le script a mis ${duration} secondes à s'exécuter.${RESET}"
     reboot_timer 10
 }
