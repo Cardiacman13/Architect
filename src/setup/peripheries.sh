@@ -4,10 +4,6 @@ BASE_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
 # Inclusion des utilitaires
 source "$BASE_DIR/src/utils.sh"
 
-# Définir les couleurs
-RED="\033[1;31m"
-RESET="\033[0m"
-
 # Installe le support pour les manettes de jeu Xbox 360, Series X|S|Elite, 8BitDo, PS4 et PS5.
 function gamepad() {
     if read_user "Voulez-vous installer Xpadneo pour manettes Xbox 360, Series X|S|Elite et 8BitDo ?"; then
