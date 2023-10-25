@@ -1,3 +1,16 @@
+######################################################
+# HOOK NVIDIA POUR PACMAN
+# 
+# Ce hook est destiné au gestionnaire de paquets pacman utilisé par Arch Linux.
+# L'objectif principal de ce hook est de mettre à jour le module NVIDIA dans l'initcpio chaque fois que certains 
+# paquets NVIDIA sont installés, mis à niveau ou supprimés.
+# 
+# L'initcpio est un petit système de fichiers racine initial qui est chargé en mémoire pendant le processus de démarrage de Linux.
+# Il initialise le matériel et monte le système de fichiers racine, entre autres tâches.
+# Lorsque vous utilisez des pilotes NVIDIA, en particulier ceux construits pour des versions de noyau spécifiques (dkms signifie 
+# Dynamic Kernel Module Support), il est essentiel de s'assurer que les pilotes sont correctement incorporés dans l'initcpio.
+######################################################
+
 [Trigger]
 Operation=Install
 Operation=Upgrade

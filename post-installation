@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# ====================================== Définitions & Configurations ======================================
+# ====================================== Définitions des couleurs ======================================
 
 # Définition des couleurs
 GREEN='\e[38;2;11;249;163m'     # Couleur verte
@@ -8,7 +8,7 @@ RED='\e[31m'                    # Couleur rouge
 PURPLE='\033[38;2;180;130;255m' # Couleur violette
 RESET='\e[0m'                   # Réinitialisation de la couleur
 
-# ============================================= Vérifications ==============================================
+# ============================================= Vérifications sudo ==============================================
 
 # Vérification des droits root
 if sudo -v; then
@@ -30,7 +30,7 @@ source src/setup/software.sh
 source src/setup/system_setup.sh
 source src/setup/reboot_timer.sh
 
-# ============================================= Fonctions =============================================
+# ============================================= Fonction bienvenue =============================================
 
 # Fonction d'affichage du message de bienvenue
 function welcome_msg() {
@@ -58,7 +58,7 @@ function welcome_msg() {
     fi
 }
 
-# ============================================ Exécution ============================================
+# ============================================ Fonction principale ============================================
 
 # Fonction principale
 function main() {

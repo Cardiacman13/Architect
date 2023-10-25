@@ -268,8 +268,9 @@ yay -S xdg-desktop-portal-kde okular print-manager kdenlive gwenview spectacle p
 
 ### Pare-feu
 ```bash
-sudo pacman -S ufw
-sudo systemctl enable --now ufw.service
+sudo pacman -S --needed --noconfirm firewalld python-pyqt5 python-capng
+sudo systemctl enable --now firewalld.service
+firewall-applet &
 ```
 
 ### Reflector pour update les miroirs automatiquement
