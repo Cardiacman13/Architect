@@ -11,9 +11,7 @@ function hook() {
 
     # Copie du fichier de hook
     if sudo cp "${hook_src}" "${hook_folder}${hook_file}"; then
-        echo -e "${GREEN}Hook Nvidia configuré avec succès.${RESET}"
     else
-        echo -e "${RED}Erreur lors de la configuration du hook Nvidia.${RESET}"
         exit 1
     fi
 }
@@ -25,9 +23,7 @@ function mkinitcpio() {
     local mkinitcpio_src="/etc/mkinitcpio.conf"
     # Ajout des modules NVIDIA à mkinitcpio
     if sudo sed -i '/MODULES=/ s/)/ nvidia nvidia_modeset nvidia_uvm nvidia_drm)/' "${mkinitcpio_src}"; then
-        echo -e "${GREEN}Configuration de mkinitcpio réussie.${RESET}"
     else
-        echo -e "${RED}Erreur lors de la configuration de mkinitcpio.${RESET}"
         exit 1
     fi
 }
