@@ -74,7 +74,7 @@ function install_firewalld() {
     echo "Considération de l'installation de firewalld."
 
     # Demander à l'utilisateur s'il souhaite installer firewalld
-    if read_user "|- Souhaitez-vous installer et activer firewalld ? Une configuration inappropriée pourrait entraîner le blocage de l'accès aux imprimantes et à d'autres appareils sur votre réseau local."; then
+    if read_user "|- Installer et activer firewalld ? La configuration par défaut peut entraîner le blocage de l'accès aux imprimantes et à d'autres appareils sur votre réseau local."; then
         # Installer firewalld
         $AUR_HELPER -S --needed --noconfirm firewalld python-pyqt5 python-capng >> /dev/null 2>&1
 
