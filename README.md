@@ -273,6 +273,8 @@ yay -S xdg-desktop-portal-kde okular print-manager kdenlive gwenview spectacle p
 ```
 
 ### Pare-feu
+La configuration par défaut peut entraîner le blocage de l'accès aux imprimantes et à d'autres appareils sur votre réseau local.
+Donc voici un petit lien pour vous aider : https://www.dsfc.net/infra/securite/configurer-firewalld/
 ```bash
 sudo pacman -S --needed --noconfirm firewalld python-pyqt5 python-capng
 sudo systemctl enable --now firewalld.service
