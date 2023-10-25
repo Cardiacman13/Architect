@@ -204,6 +204,12 @@ N'hésitez pas à faire remonter les bugs, merci :)
     Exec=/bin/sh -c 'while read -r trg; do case $trg in linux) exit 0; esac; done; /usr/bin/mkinitcpio -P'
     ```
 
+6. **reconstruction de l'initramfs** :
+
+   ```bash
+    mkinitcpio -P
+    ```
+
 ### AMD (ne pas faire si Nvidia)
 Installer les composants core :
 ```bash
