@@ -98,7 +98,7 @@ function nvidia_drivers() {
             $AUR_HELPER -S --needed --noconfirm cuda >> /dev/null 2>&1
             
             echo "|- Activation des services Nvidia pour hibernation, reprise et suspension."
-            sudo systemctl enable nvidia-{hibernate,resume,suspend} >> /dev/null 2>&1; then
+            sudo systemctl enable nvidia-{hibernate,resume,suspend} >> /dev/null 2>&1
             ;;
 
         "NVIDIA-ALL")
@@ -113,7 +113,7 @@ function nvidia_drivers() {
             $AUR_HELPER -S --needed --noconfirm cuda >> /dev/null 2>&1
 
             echo "|- Activation des services Nvidia pour hibernation, reprise et suspension."
-            sudo systemctl enable nvidia-{hibernate,resume,suspend} >> /dev/null 2>&1; then
+            sudo systemctl enable nvidia-{hibernate,resume,suspend} >> /dev/null 2>&1
             ;;
 
         *)
