@@ -1,7 +1,7 @@
 ######################################################
 # HOOK GRUB POUR PACMAN
 # 
-# Ce hook est destiné au gestionnaire de paquets pacman utilisé par Arch Linux et d'autres distributions associées.
+# Ce hook est destiné au gestionnaire de paquets pacman utilisé par Arch Linux.
 # Son rôle est de mettre à jour la configuration de GRUB chaque fois qu'un fichier vmlinuz est installé, mis à jour ou supprimé 
 # dans le répertoire des modules.
 # 
