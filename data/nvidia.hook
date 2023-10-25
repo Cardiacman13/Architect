@@ -1,7 +1,7 @@
 ######################################################
 # HOOK NVIDIA POUR PACMAN
 # 
-# Ce hook est destiné au gestionnaire de paquets pacman utilisé par Arch Linux et d'autres distributions associées.
+# Ce hook est destiné au gestionnaire de paquets pacman utilisé par Arch Linux.
 # L'objectif principal de ce hook est de mettre à jour le module NVIDIA dans l'initcpio chaque fois que certains 
 # paquets NVIDIA sont installés, mis à niveau ou supprimés.
 # 
