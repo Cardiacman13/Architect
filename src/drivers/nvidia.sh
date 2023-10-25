@@ -72,6 +72,10 @@ function bootloaders() {
 function nvidia_drivers() {
     echo "|- Installation des pilotes Nvidia."
 
+    echo "|- Préconfiguration pour Nvidia et Wayland."
+    local nvidia_wayland_conf="/etc/modprobe.d/nvidia-wayland.conf"
+    echo "options nvidia NVreg_PreserveVideoMemoryAllocations=1" | sudo tee "${nvidia_wayland_conf}"
+
     bootloaders
     mkinitcpio
     hook
@@ -92,18 +96,24 @@ function nvidia_drivers() {
             $AUR_HELPER -S --needed --noconfirm nvidia-dkms nvidia-utils lib32-nvidia-utils nvidia-settings vulkan-icd-loader lib32-vulkan-icd-loader >> /dev/null 2>&1
             echo -e "|- Installation de CUDA. ${RED}(très long)${RESET}"
             $AUR_HELPER -S --needed --noconfirm cuda >> /dev/null 2>&1
+            
+            echo "|- Activation des services Nvidia pour hibernation, reprise et suspension."
+            sudo systemctl enable nvidia-{hibernate,resume,suspend}
             ;;
 
         "NVIDIA-ALL")
             $AUR_HELPER -Rdd --noconfirm egl-wayland >> /dev/null 2>&1
             echo -e "|- Installation de nvidia-all. ${RED}(long)${RESET}"
             git clone https://github.com/Frogging-Family/nvidia-all.git >> /dev/null 2>&1
-            cd nvidia-all  || exit
+            cd nvidia-all || exit
             makepkg -si
             cd .. || exit
             rm -rf nvidia-all >> /dev/null 2>&1
             echo -e "|- Installation de CUDA. ${RED}(très long)${RESET}"
             $AUR_HELPER -S --needed --noconfirm cuda >> /dev/null 2>&1
+
+            echo "|- Activation des services Nvidia pour hibernation, reprise et suspension."
+            sudo systemctl enable nvidia-{hibernate,resume,suspend}
             ;;
 
         *)
