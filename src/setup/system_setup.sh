@@ -76,7 +76,7 @@ function installer_firewalld() {
     # Demander à l'utilisateur s'il souhaite installer firewalld
     if read_user "|- Voulez-vous installer et activer firewalld ? Note : Il peut bloquer des imprimantes ou votre réseau local sans configuration supplémentaire appropriée."; then
         # Installer firewalld
-        $AUR_HELPER -S --needed --noconfirm firewalld >> /dev/null 2>&1
+        $AUR_HELPER -S --needed --noconfirm firewalld python-pyqt5 python-capng >> /dev/null 2>&1
 
         # Activer firewalld s'il n'est pas déjà activé
         if ! sudo systemctl is-active firewalld.service &> /dev/null; then
