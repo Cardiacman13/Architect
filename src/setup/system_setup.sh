@@ -69,17 +69,22 @@ function install_server_sound() {
     echo "--------------------------------------------------"
 }
 
-# Installe et active le pare-feu ufw.
-function install_firewall() {
-    echo "Installation du pare-feu."
+# Installer et éventuellement activer le pare-feu firewalld.
+function installer_firewalld() {
+    echo "Considération de l'installation de firewalld."
 
-    # Installation de ufw
-    $AUR_HELPER -S --needed --noconfirm ufw >> /dev/null 2>&1
+    # Demander à l'utilisateur s'il souhaite installer firewalld
+    if read_user "|- Voulez-vous installer et activer firewalld ? Note : Il peut bloquer des imprimantes ou votre réseau local sans configuration supplémentaire appropriée."; then
+        # Installer firewalld
+        $AUR_HELPER -S --needed --noconfirm firewalld >> /dev/null 2>&1
 
-    # Activation de ufw si ce n'est pas déjà fait
-    if ! sudo systemctl is-active ufw.service &> /dev/null; then
-        echo "|- Activation du pare-feu."
-        sudo systemctl enable --now ufw.service >> /dev/null 2>&1
+        # Activer firewalld s'il n'est pas déjà activé
+        if ! sudo systemctl is-active firewalld.service &> /dev/null; then
+            echo "|- Activation de firewalld."
+            sudo systemctl enable --now firewalld.service >> /dev/null 2>&1
+        fi
+    else
+        echo "|- Passage de l'installation et de l'activation de firewalld."
     fi
     echo "--------------------------------------------------"
 }
