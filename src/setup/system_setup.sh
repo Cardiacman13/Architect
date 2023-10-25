@@ -82,7 +82,7 @@ function installer_firewalld() {
         if ! sudo systemctl is-active firewalld.service &> /dev/null; then
             echo "|- Activation de firewalld."
             sudo systemctl enable --now firewalld.service >> /dev/null 2>&1
-            firewall-applet
+            firewall-applet &
         fi
     else
         echo "|- Passage de l'installation et de l'activation de firewalld."
