@@ -70,7 +70,7 @@ function install_server_sound() {
 }
 
 # Installer et éventuellement activer le pare-feu firewalld.
-function installer_firewalld() {
+function install_firewalld() {
     echo "Considération de l'installation de firewalld."
 
     # Demander à l'utilisateur s'il souhaite installer firewalld
@@ -120,6 +120,6 @@ function system_setup() {
     install_kernel_headers
     increase_vm_max_map_count
     install_server_sound
-    installer_firewalld
+    install_firewalld
     setup_grub
 }
