@@ -36,6 +36,7 @@ function install_useful_software() {
     prompt_and_add "|- Voulez-vous installer OBS Studio (flatpak) ?" "flatpak" "com.obsproject.Studio"
     prompt_and_add "|- Voulez-vous installer LibreOffice ?" "package" "libreoffice-fresh" "libreoffice-fresh-fr"
     prompt_and_add "|- Voulez-vous installer Gimp ?" "package" "gimp"
+    prompt_and_add "|- Voulez-vous installer VLC ?" "package" "vlc"
     prompt_and_add "|- Voulez-vous installer Visual Studio Code ?" "package" "visual-studio-code-bin"
     prompt_and_add "|- Voulez-vous installer Open RGB ?" "package" "openrgb-bin"
 
