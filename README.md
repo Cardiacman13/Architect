@@ -92,12 +92,14 @@ N'hésitez pas à faire remonter les bugs, merci :)
 ### Optimiser pacman
 
 1. Cette [modification](https://wiki.archlinux.org/title/Pacman#Enabling_parallel_downloads) permet la parallélisation du téléchargement des packages. (PS: avec kate, quand vous sauvegardez, il est possible qu'on vous demande d'entrer un mot de passe. Entrez votre mot de passe root/sudo.)
-    ```
+
+   ```
     kate /etc/pacman.conf
     ```
 
 Décommenter (enlevez les **#** des lignes suivantes):
-    ```bash
+    
+```bash
     #Misc options
     #UseSyslog
     Color <-
@@ -105,7 +107,7 @@ Décommenter (enlevez les **#** des lignes suivantes):
     #CheckSpace
     VerbosePkgLists <- 
     ParallelDownloads = 5 <-
-    ```
+```
 2. Installation de yay
 
    [Yay](https://github.com/Jguer/yay) est un outil pratique pour gérer l'installation et la mise à jour de logiciels sur les systèmes basés sur Arch Linux.
@@ -164,29 +166,29 @@ Ce paramètre permet de lancer le module Nvidia lors du démarrage.
 
    - **Si systemd boot**
 
-    Dans le dossier :
+Dans le dossier :
 
-   ```bash
+```bash
    /boot/loader/entries/
-   ```
+```
    Il y a plusieurs fichiers .conf, il faut ajouter nvidia-drm.modeset=1 à la ligne “options” de chaque fichier,
    exemple : options                 root=PARTUUID=fb680c54-466d-4708-a1ac-fcc338ed57f1 rw rootfstype=ext4 nvidia-drm.modeset=1
 
-    - **Si grub**
+- **Si grub**
 
-    ```bash
+```bash
    kate /etc/default/grub
-   ```
+```
 
    Ligne "grub_cmdline_linux_default=" ajouter **nvidia-drm.modeset=1**
 
    exemple : GRUB_CMDLINE_LINUX_DEFAULT="loglevel=3 quiet nvidia-drm.modeset=1"
 
-    puis :
+puis :
 
-    ```bash
+```bash
    sudo grub-mkconfig -o /boot/grub/grub.cfg
-   ```
+```
    
 3. **Charger les modules Nvidia en priorité au lancement de Arch :**
     Cette étape est parfois nécessaire pour certains environnements de bureau ou gestionnaires de fenêtres.
@@ -334,9 +336,9 @@ yay -S steam
 Lutris est un gestionnaire de jeux FOSS (libre, gratuit et open source) pour les systèmes d'exploitation basés sur Linux.
 Lutris permet de rechercher un jeu ou une plateforme (Ubisoft Connect, EA Store, GOG, Battlenet, etc.) et de proposer un script d'installation qui paramètrera ce qu'il faut pour que votre choix fonctionne avec Wine ou Proton.
 
-    ```bash
-    sudo pacman -S --needed lutris wine-staging
-    ```
+```bash
+sudo pacman -S --needed lutris wine-staging
+```
 
 Vidéo complémentaire :
     <img src="assets/images/Cardiac-icon.png" width="30" height="30"> [Paramétrer Lutris pour PC portable Intel/Nvidia ](https://www.youtube.com/watch?v=Am3pgTXiUAA)
@@ -368,11 +370,11 @@ yay -S goverlay --needed
 
 Nous augmentons la valeur par défaut de cette variable, permettant de stocker davantage de "memory map areas". La valeur par défaut est très basse. L'objectif est d'améliorer la compatibilité avec les jeux Windows via Wine ou Steam (Voir [ProtonDB](https://www.protondb.com/)), sachant que certains jeux mal optimisés nécessitent ce changement afin de ne plus subir de crash.
     
-    <img src="assets/images/Cardiac-icon.png" width="30" height="30"> [Gaming LINUX supprimer les crashs / augmenter la compatibilité](https://youtu.be/sr4RgshrUYY)
+<img src="assets/images/Cardiac-icon.png" width="30" height="30"> [Gaming LINUX supprimer les crashs / augmenter la compatibilité](https://youtu.be/sr4RgshrUYY)
 
-    ```bash
+```bash
     kate /etc/sysctl.d/99-sysctl.conf
-    ```
+```
 - Ajouter la ligne suivante :
     ```bash
     vm.max_map_count=16777216
