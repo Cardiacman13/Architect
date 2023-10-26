@@ -47,28 +47,28 @@ Télécharger l’ISO : [**Arch Linux - Downloads**](https://archlinux.org/downl
 <img src="assets/images/Cardiac-icon.png" width="30" height="30"> [ Tuto Arch Linux Partie 1 : Archinstall ](https://www.youtube.com/watch?v=JE6VwNHLcyk)
 
 Pour toutes les étapes suivantes, lorsque vous aurez du texte dans ce type de présentation, cela indiquera une commande à taper dans votre terminal :
-```bash
+```
 echo "Hello world !"            # Exemple de commande
 ```
 
 1. **Mettre le clavier en FR**
     Attention ici : par défaut vous serez en QWERTY, le "a" sera donc, et uniquement pour cette commande, sur la touche "q" de votre clavier.
-    ```bash
+    ```
     loadkeys fr
     ```
 
 2. **Paramétrer votre Wi-Fi**
-    ```bash
+    ```
     iwctl
     ```
     Puis (remplacez NOM-DE-VOTRE-WIFI par le nom de votre wifi)
-    ```bash
+    ```
     station wlan0 connect NOM-DE-VOTRE-WIFI (SSID)
     ```
     Entrez le mot de passe de votre wifi puis `quit` pour quitter iwctl.
 
 3. **Archinstall**
-    ```bash
+    ```
     pacman -Sy archinstall      # mise à jour du script archinstall avant l’installation
     archinstall                 # pour lancer le script d'aide à l'installation de arch linux
     ```
@@ -83,7 +83,7 @@ Si Nvidia, s'assurer que sa carte est compatible avec les derniers drivers Nvidi
 
 **Script post installation :**
 
-   ```bash
+   ```
    sudo pacman -Sy git
    git clone https://github.com/Cardiacman13/Tuto-Arch.git
    cd Tuto-Arch
@@ -101,7 +101,7 @@ N'hésitez pas à faire remonter les bugs, merci :)
 
 Décommenter (enlevez les **#** des lignes suivantes):
     
-```bash
+```
     #Misc options
     #UseSyslog
     Color <-
@@ -116,7 +116,7 @@ Décommenter (enlevez les **#** des lignes suivantes):
    Yay permet notamment de faciliter l'usage du dépôt AUR, dépôt géré par la communauté et agrandissant considérablement la bibliothèque de logiciels disponibles. Cela passe par la compilation de ces logiciels depuis leur source, à part s'il est spécifié "-bin" à la fin de leur nom.
    **/!\ Attention cependant /!\ Les paquets dans AUR étant fournis par la communauté, n'installez pas n'importe quoi !**
    
-    ```bash
+    ```
     sudo pacman -S --needed git base-devel
     git clone https://aur.archlinux.org/yay-bin.git
     cd yay-bin
@@ -124,7 +124,7 @@ Décommenter (enlevez les **#** des lignes suivantes):
     ```
 
    Ajout du support pour les updates des paquets git. (Normalement à de faire q'une seule fois)
-    ```bash
+    ```
     yay -Y --gendb
     yay -Y --devel --save
     ```
@@ -135,17 +135,17 @@ Décommenter (enlevez les **#** des lignes suivantes):
 
    Cette modification permet de n’avoir à taper que “update-arch” dans un terminal afin de mettre à jour le système, “clean-arch” pour le nettoyer ou “fix-key” en cas d'erreur avec les clés gpg.
 
-    ```bash
+    ```
     kate ~/.bashrc
     ```
     Ajouter chacune de ces lignes à la fin du fichier :
-    ```bash
+    ```
     alias update-arch='yay -Syyu && flatpak update'
     ```
-    ```bash
+    ```
     alias clean-arch='yay -Sc && yay -Yc && flatpak remove --unused'
     ```
-    ```bash
+    ```
     alias fix-key='sudo rm /var/lib/pacman/sync/* && sudo rm -rf /etc/pacman.d/gnupg/* && sudo pacman-key --init && sudo pacman-key --populate && sudo pacman -Sy --noconfirm archlinux-keyring'
     ```
     
@@ -158,7 +158,7 @@ Vidéo complémentaire expliquant comment à nouveau avoir accès à Wayland dep
 <img src="assets/images/Cardiac-icon.png" width="30" height="30"> [Debian et Arch Linux Gnome Wayland avec Nvidia (Debian dans le doc)](https://www.youtube.com/watch?v=DVkWLvwtQ18)
 
 1. **Installer les composants core :**
-    ```bash
+    ```
     yay -S --needed nvidia-dkms nvidia-utils lib32-nvidia-utils nvidia-settings vulkan-icd-loader lib32-vulkan-icd-loader cuda
     ```
 
@@ -170,7 +170,7 @@ Ce paramètre permet de lancer le module Nvidia lors du démarrage.
 
 Dans le dossier :
 
-```bash
+```
    /boot/loader/entries/
 ```
    Il y a plusieurs fichiers .conf, il faut ajouter nvidia-drm.modeset=1 à la ligne “options” de chaque fichier,
@@ -178,7 +178,7 @@ Dans le dossier :
 
 - **Si grub**
 
-```bash
+```
    kate /etc/default/grub
 ```
 
@@ -188,31 +188,31 @@ Dans le dossier :
 
 puis :
 
-```bash
+```
    sudo grub-mkconfig -o /boot/grub/grub.cfg
 ```
    
 3. **Charger les modules Nvidia en priorité au lancement de Arch :**
     Cette étape est parfois nécessaire pour certains environnements de bureau ou gestionnaires de fenêtres.
-    ```bash
+    ```
     kate /etc/mkinitcpio.conf
     ```
     Modifier la ligne MODULES=() en :
-    ```bash
+    ```
     MODULES=(nvidia nvidia_modeset nvidia_uvm nvidia_drm)
     ```
     si btrfs :
-    ```bash
+    ```
     MODULES=(btrfs nvidia nvidia_modeset nvidia_uvm nvidia_drm)
     ```
 4. **Hook mkinitcpio** :
     Le hook permet d'automatiser la reconstruction de l'initramfs (le fichier permettant le boot de base) à chaque modification du driver Nvidia.
-    ```bash
+    ```
     sudo mkdir /etc/pacman.d/hooks/
     kate /etc/pacman.d/hooks/nvidia.hook
     ```
     Ajouter :
-    ```bash
+    ```
     [Trigger]
     Operation=Install
     Operation=Upgrade
@@ -232,52 +232,52 @@ puis :
 
 5. **Reconstruction de l'initramfs** :
 Comme nous avons déjà installé les drivers à l'étape 1, donc avant la mise en place du hook, nous allons lancer manuellement la reconstruction de l'initramfs :
-   ```bash
+   ```
     mkinitcpio -P
     ```
 
 ### AMD (ne pas faire si Nvidia)
 Installer les composants core :
-```bash
+```
 yay -S --needed mesa lib32-mesa vulkan-radeon lib32-vulkan-radeon vulkan-icd-loader lib32-vulkan-icd-loader vulkan-mesa-layers lib32-vulkan-mesa-layers
 ```
 
 ### INTEL (ne pas faire si Nvidia)
 Installer les composants core :
-```bash
+```
 yay -S --needed mesa lib32-mesa vulkan-intel lib32-vulkan-intel vulkan-icd-loader lib32-vulkan-icd-loader intel-media-driver
 ```
 
 ### Imprimantes
 - Les indispensables
-    ```bash
+    ```
     yay -S ghostscript gsfonts cups cups-filters cups-pdf system-config-printer
     avahi  --needed
     sudo systemctl enable --now avahi-daemon
     sudo systemctl enable --now cups
     ```
 - Drivers
-    ```bash
+    ```
     yay -S foomatic-db-engine foomatic-db foomatic-db-ppds foomatic-db-nonfree foomatic-db-nonfree-ppds gutenprint foomatic-db-gutenprint-ppds --needed
     ```
 - Imprimantes HP
-    ```bash
+    ```
     yay -S python-pyqt5 hplip --needed
     ```
 - Imprimantes Epson
-  ```bash
+  ```
   yay -S --needed epson-inkjet-printer-escpr  epson-inkjet-printer-escpr2  epson-inkjet-printer-201601w  epson-inkjet-printer-n10-nx127
   ```
 
 ### Bluetooth
 La deuxième commande ci-dessous demande à systemd de démarrer immédiatement le service bluetooth, et aussi de l'activer pour chaque démarrage.
-```bash
+```
 yay -S --needed bluez bluez-utils bluez-plugins
 sudo systemctl enable --now  bluetooth.service
 ```
 ### [PipeWire](https://pipewire.org/) (son)
 Pour avoir du son **/!\ Dire oui à tout pour bien tout écraser avec les nouveaux paquets. /!\\**
-```bash
+```
 sudo pacman -S --needed pipewire lib32-pipewire pipewire-pulse pipewire-alsa pipewire-jack wireplumber alsa-utils alsa-firmware alsa-tools
 ```
 
@@ -285,19 +285,19 @@ sudo pacman -S --needed pipewire lib32-pipewire pipewire-pulse pipewire-alsa pip
 
 ### Composants de base
 Vous y trouverez des codecs, des utilitaires, des polices, des drivers :
-```bash
+```
 yay -S gst-plugins-bad gst-plugins-base gst-plugins-ugly gst-plugin-pipewire gstreamer-vaapi gst-plugins-good gst-libav gstreamer reflector-simple downgrade rebuild-detector mkinitcpio-firmware xdg-desktop-portal-gtk xdg-desktop-portal neofetch power-profiles-daemon lib32-pipewire hunspell hunspell-fr p7zip unrar ttf-liberation noto-fonts noto-fonts-emoji adobe-source-code-pro-fonts otf-font-awesome ttf-droid ntfs-3g fuse2fs exfat-utils fuse2 fuse3 bash-completion --needed
 ```
  
 ### Logiciels divers
-```bash
+```
 yay -S libreoffice-fresh libreoffice-fresh-fr vlc discord gimp obs-studio gnome-disk-utility visual-studio-code-bin
 ```
 
 ### Logiciels KDE
 
 Vous avez ici différents logiciels pour le graphisme, la vidéo (montage, prise en compte des codecs), des utilitaires avec interface graphique, etc.
-```bash
+```
 yay -S xdg-desktop-portal-kde okular print-manager kdenlive gwenview spectacle partitionmanager ffmpegthumbs qt6-wayland kdeplasma-addons powerdevil kcalc plasma-systemmonitor qt6-multimedia qt6-multimedia-gstreamer qt6-multimedia-ffmpeg kwalletmanager
 ```
 
@@ -307,7 +307,7 @@ Vidéo complémentaire :
 ### Pare-feu
 La configuration par défaut peut entraîner le blocage de l'accès aux imprimantes et à d'autres appareils sur votre réseau local.
 Voici donc un petit lien pour vous aider : https://www.dsfc.net/infra/securite/configurer-firewalld/
-```bash
+```
 sudo pacman -S --needed --noconfirm firewalld python-pyqt5 python-capng
 sudo systemctl enable --now firewalld.service
 firewall-applet &
@@ -315,13 +315,13 @@ firewall-applet &
 
 ### Reflector pour update les miroirs automatiquement
 
-```bash
+```
 yay -S reflector-simple
 ```
 
 Une commande pour générer une liste de miroirs, à faire 1 fois après la première installation et à réitérer si vous voyagez, ou changez de pays, ou si vous voyez que le téléchargement des paquets est trop long, ou encore si vous avez une erreur qui vous dit que un miroir est down :
 
-```bash
+```
 sudo reflector --score 20 --fastest 5 --sort rate --save /etc/pacman.d/mirrorlist
 ```
 
@@ -329,7 +329,7 @@ sudo reflector --score 20 --fastest 5 --sort rate --save /etc/pacman.d/mirrorlis
 
 ### Steam
 A noter que les drivers AMD ou Nvidia doivent être installés précédemment comme mentionné dans la section [SUPPORT MATÉRIEL](#SUPPORT-MATÉRIEL)
-```bash
+```
 yay -S steam
 ```
 
@@ -338,7 +338,7 @@ yay -S steam
 Lutris est un gestionnaire de jeux FOSS (libre, gratuit et open source) pour les systèmes d'exploitation basés sur Linux.
 Lutris permet de rechercher un jeu ou une plateforme (Ubisoft Connect, EA Store, GOG, Battlenet, etc.) et de proposer un script d'installation qui paramètrera ce qu'il faut pour que votre choix fonctionne avec Wine ou Proton.
 
-```bash
+```
 sudo pacman -S --needed lutris wine-staging
 ```
 
@@ -350,11 +350,11 @@ Vidéo complémentaire :
 Pilote Linux avancé pour les manettes sans fil Xbox 360|One|S|X (livrée avec la Xbox One S) et tout un tas d’autres manettes comme la 8bitdo ([xpadneo](https://github.com/atar-axis/xpadneo)) ([xone](https://github.com/medusalix/xone))
 
 
-```bash
+```
 yay -S --needed xpadneo-dkms 
 ```
 Pilote Linux avancé pour les manettes PS4/PS5
-```bash
+```
 yay -S --needed bluez-utils-compat ds4drv dualsencectl
 ```
 
@@ -364,7 +364,7 @@ yay -S --needed bluez-utils-compat ds4drv dualsencectl
 C'est l'outil qu'il vous faut si vous voulez voir en jeu vos FPS, la charge de votre processeur ou carte graphique, etc. Ou même enregistrer ces résultats dans un fichier.
 Ici, nous installons GOverlay qui est une interface graphique pour paramétrer MangoHud.
 
-```bash
+```
 yay -S goverlay --needed
 ```
 
@@ -374,11 +374,11 @@ Nous augmentons la valeur par défaut de cette variable, permettant de stocker d
     
 <img src="assets/images/Cardiac-icon.png" width="30" height="30"> [Gaming LINUX supprimer les crashs / augmenter la compatibilité](https://youtu.be/sr4RgshrUYY)
 
-```bash
+```
     kate /etc/sysctl.d/99-sysctl.conf
 ```
 - Ajouter la ligne suivante :
-    ```bash
+    ```
     vm.max_map_count=16777216
     ```
 
@@ -401,7 +401,7 @@ yay -S timeshift
 
 - Pour bénéficier des sauvegardes automatiques, vous aurez besoin de cronie. (facultatif) 
 
-  ```bash
+  ```
   yay -S cronie
   sudo systemctl enable --now cronie
   ```
@@ -411,7 +411,7 @@ yay -S timeshift
 [Fish](https://fishshell.com/) est un shell de ligne de commande conçu pour être interactif et convivial. Voir également [ArchWiki](https://wiki.archlinux.org/title/fish) sur le sujet. Il remplace le shell par défut qui est bash.
 
 - Installer fish.
-    ```bash
+    ```
     yay -S fish man-db man-pages      # 1. Installer Fish
     chsh -s /usr/bin/fish             # 2. Le mettre par défaut.
     fish                              # 3. Lancer fish ou reboot et il sera par défaut.
@@ -420,13 +420,13 @@ yay -S timeshift
     kate ~/.config/fish/config.fish   # 6. Créer un alias comme pour bash en début de tuto.
     ```
 - Puis rajouter les alias suivants entre if et end :
-    ```bash
+    ```
     alias update-arch='yay -Syyu && flatpak update'
     ```
-    ```bash
+    ```
     alias clean-arch='yay -Sc && yay -Yc && flatpak remove --unused'
     ```
-    ```bash
+    ```
     alias fix-key='sudo rm /var/lib/pacman/sync/* && sudo rm -rf /etc/pacman.d/gnupg/* && sudo pacman-key --init && sudo pacman-key --populate && sudo pacman -Sy --noconfirm archlinux-keyring'
     ```
 - ***Reboot sauf si ça a été fait à l’étape 3***, les alias quels qu’ils soient ne fonctionnent qu’après avoir relancé le terminal.
@@ -437,7 +437,7 @@ yay -S timeshift
 
 Vidéo complémentaire :
 <img src="assets/images/Cardiac-icon.png" width="30" height="30"> [Kernel TKG sur Arch + Booster ses perfs](https://youtu.be/43yYIWMnDJA)
-```bash
+```
 git clone https://github.com/Frogging-Family/linux-tkg.git
 cd linux-tkg
 makepkg -si
@@ -447,7 +447,7 @@ makepkg -si
 
 Tout comme pour le kernel TkG, mais pour Mesa, une version patchée afin d'ajouter quelques correctifs et optimisations.
 Très utile pour les joueurs AMD, n'a pas d'intérêt pour les joueurs Nvidia.
-```bash
+```
 git clone https://github.com/Frogging-Family/mesa-git.git
 cd mesa-git
 makepkg -si
@@ -459,7 +459,7 @@ Dire oui à tout pour bien tout écraser avec les nouveaux paquets.
 Nvidia-all est une intégration du driver nvidia par TkG. Il comporte des patchs de support pour les nouveaux kernels. Il permet de sélectionner la version du driver que l'on souhaite installer, que ce soit le dernier officiel, une version beta, la version Vulkan, etc.
 
 <img src="assets/images/Cardiac-icon.png" width="30" height="30"> [Vous utilisez Arch et Nvidia regardez ça !](https://youtu.be/T0laE8gPtfY)
-```bash
+```
 git clone https://github.com/Frogging-Family/nvidia-all.git
 cd nvidia-all
 makepkg -si
@@ -473,21 +473,21 @@ Dire oui à tout pour bien tout écraser avec les nouveaux paquets.
 Anciennement connu sous le nom de xdg-app, c'est un utilitaire de déploiement de logiciels et de gestion de paquets pour Linux. Il est présenté comme offrant un environnement "bac à sable" dans lequel les utilisateurs peuvent exécuter des logiciels de manière isolée du reste du système.
 
 <img src="assets/images/Cardiac-icon.png" width="30" height="30"> [MangoHUD, Goverlay, Steam, Lutris FLATPAK !](https://www.youtube.com/watch?v=1dha2UDSF4M)
-```bash
+```
 yay -S flatpak flatpak-kcm
 flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 ```
 
 ### [Chaotic AUR](https://aur.chaotic.cx/)
 - Le chaotic AUR est un dépôt AUR qui contient des paquets binaires précompilés pour Arch Linux et ses dérivés.
-    ```bash
+    ```
     pacman-key --recv-key 3056513887B78AEB --keyserver keyserver.ubuntu.com
     pacman-key --lsign-key 3056513887B78AEB
     pacman -U 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-keyring.pkg.tar.zst' 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-mirrorlist.pkg.tar.zst'
     kate /etc/pacman.conf
     ```
 - Puis ajouter ceci à la fin du fichier :
-    ```bash
+    ```
     [chaotic-aur]
     Include = /etc/pacman.d/chaotic-mirrorlist
     ```
@@ -501,7 +501,7 @@ flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.f
  <img src="assets/images/Cardiac-icon.png" width="30" height="30"> [Arch Linux Partie 5 Arch-Chroot](https://youtu.be/iandJSjePiA?si=7uI8JZ-VxAVOsPTh)
 
 - Si vous n’avez pas de son, tentez :
-    ```bash
+    ```
     yay -S sof-firmware
     ```
 
