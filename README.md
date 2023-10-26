@@ -171,9 +171,10 @@ Ce paramètre permet de lancer le module Nvidia lors du démarrage.
 
 Dans le dossier :
 
-    ```
-   /boot/loader/entries/
-    ```
+```
+/boot/loader/entries/
+```
+
    Il y a plusieurs fichiers .conf, il faut ajouter nvidia-drm.modeset=1 à la ligne “options” de chaque fichier,
    exemple : options                 root=PARTUUID=fb680c54-466d-4708-a1ac-fcc338ed57f1 rw rootfstype=ext4 nvidia-drm.modeset=1
 
