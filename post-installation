@@ -3,22 +3,22 @@
 # ====================================== Définitions des couleurs ======================================
 
 # Définition des couleurs
-GREEN='\e[38;2;11;249;163m'     # Couleur verte
-RED='\e[31m'                    # Couleur rouge
-PURPLE='\033[38;2;180;130;255m' # Couleur violette
-RESET='\e[0m'                   # Réinitialisation de la couleur
+GREEN=$(tput setaf 2)  # Vert
+PURPLE=$(tput setaf 5) # Violet
+RED=$(tput setaf 1)    # Rouge
+RESET=$(tput sgr0)     # Réinitialiser
 
 # ============================================= Vérifications sudo ==============================================
 
-# Vérification des droits root
+# Vérification des privilèges root
 if sudo -v; then
     echo -e "${GREEN}Authentification réussie.${RESET}"
 else
-    echo -e "${RED}L'authentification a échoué. Le script nécessite des privilèges root pour s'exécuter.${RESET}"
+    echo -e "${RED}Échec de l'authentification. Le script nécessite des privilèges root pour s'exécuter.${RESET}"
     exit 1
 fi
 
-# =========================================== Importations ===========================================
+# =========================================== Imports ===========================================
 
 # Importation des scripts de configuration
 source src/setup/aur_helper.sh
@@ -30,17 +30,17 @@ source src/setup/software.sh
 source src/setup/system_setup.sh
 source src/setup/reboot_timer.sh
 
-# ============================================= Fonction bienvenue =============================================
+# ============================================= Fonction message de bienvenue =============================================
 
-# Fonction d'affichage du message de bienvenue
+# Fonction pour afficher le message de bienvenue
 function welcome_msg() {
     clear
-    echo -e "${GREEN}Bienvenue dans le script post-installation d'Arch Linux !${RESET}"
+    echo -e "${GREEN}Bienvenue dans le script de post-installation Arch Linux !${RESET}"
     echo -e "-----------------------------------------------------------------------------------------------------------
 
        ${PURPLE}%%%%%%%%%%${RESET}  ${GREEN}*********${RESET}            
        ${PURPLE}%%%${RESET}                 ${GREEN}******${RESET}       
-       ${PURPLE}%%%${RESET}                     ${GREEN}***${RESET}      Script post-installation Arch Linux
+       ${PURPLE}%%%${RESET}                     ${GREEN}***${RESET}      Script de post-installation Arch Linux
        ${PURPLE}%%%${RESET}                     ${GREEN}***${RESET}      
        ${PURPLE}%%%${RESET}                     ${GREEN}***${RESET}      GitHub : https://github.com/Cardiacman13/Tuto-Arch
        ${PURPLE}%%%${RESET}                     ${GREEN}***${RESET}      
@@ -50,8 +50,8 @@ function welcome_msg() {
 
 -----------------------------------------------------------------------------------------------------------\n"
     sleep 1
-    echo -e "${RED}Ce script va effectuer des modifications sur votre système.${RESET}"
-    echo -e "Certaines étapes peuvent prendre du temps en fonction de votre connexion internet et de votre CPU.\nAppuyez sur ${GREEN}Entrée${RESET} pour continuer ou ${GREEN}Ctrl+C${RESET} pour annuler."
+    echo -e "${RED}Ce script va apporter des modifications à votre système.${RESET}"
+    echo -e "Certaines étapes peuvent prendre du temps en fonction de votre connexion Internet et de votre CPU.\nAppuyez sur ${GREEN}Entrée${RESET} pour continuer ou sur ${GREEN}Ctrl+C${RESET} pour annuler."
     read -p "" choice
     if [[ $choice != "" ]]; then
         exit 0
@@ -69,10 +69,10 @@ function main() {
     if sudo pacman -Syyu --noconfirm; then
         echo -e "${GREEN}Mise à jour réussie.${RESET}"
     else
-        echo -e "${RED}La mise à jour a échoué.${RESET}"
+        echo -e "${RED}Échec de la mise à jour.${RESET}"
         exit 1
     fi
-    
+
     welcome_msg
 
     # Activation du dépôt multilib si nécessaire
@@ -82,14 +82,14 @@ function main() {
     fi
 
     # Mise à jour des miroirs
-    echo -e "|- Mise à jour des miroirs. ${RED}(peut être long)${RESET}"
+    echo -e "|- Mise à jour des miroirs. ${RED}(cela peut prendre un certain temps)${RESET}"
     sudo pacman -S --needed --noconfirm reflector >> /dev/null 2>&1
     if sudo reflector --score 20 --fastest 5 --sort rate --save /etc/pacman.d/mirrorlist >> /dev/null 2>&1; then
-        echo -e "${GREEN}Miroirs mis à jour avec succès!${RESET}"
+        echo -e "${GREEN}Miroirs mis à jour avec succès !${RESET}"
     else
-        echo -e "${RED}La mise à jour des miroirs a échoué.${RESET}"
+        echo -e "${RED}Mise à jour des miroirs échouée.${RESET}"
     fi
-    
+
     sudo pacman -Syy >> /dev/null 2>&1
 
     # Exécution des scripts de configuration
@@ -105,7 +105,7 @@ function main() {
     local duration=$((end_time - start_time))
 
     # Affichage de la durée d'exécution du script
-    echo -e "${GREEN}Le script a mis ${duration} secondes à s'exécuter.${RESET}"
+    echo -e "${GREEN}Le script a pris ${duration} secondes à s'exécuter.${RESET}"
     reboot_timer 10
 }
 
