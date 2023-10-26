@@ -114,6 +114,8 @@ function setup_grub() {
         # Configuration pour systemd-boot
         echo "Configuration de Systemd-boot."
         $AUR_HELPER -S --noconfirm kernel-install-mkinitcpio >> /dev/null 2>&1
+        sudo rm /boot/loader/entries/*linux* >> /dev/null 2>&1
+        $AUR_HELPER -S --noconfirm mkinitcpio >> /dev/null 2>&1
     fi
 }
 
