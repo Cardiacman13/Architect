@@ -1,16 +1,15 @@
-# Déclare la variable globale de l'AUR helper
+# Déclarer la variable globale pour l'assistant AUR
 AUR_HELPER=""
 
 install_aur_helper() {
     local git_repo
 
-    # Assurer un choix valide de l'AUR helper
+    # Assurer un choix valide de l'assistant AUR
     while true; do
-        echo "Choisissez un AUR helper (yay/paru):"
-        read -p "Entrez votre choix: " AUR_HELPER 
-        AUR_HELPER=$(echo "$AUR_HELPER" | tr '[:upper:]' '[:lower:]')  # Convertir la saisie en minuscules
+        read -p "Choisissez un assistant AUR (yay/paru) : " AUR_HELPER
+        AUR_HELPER="${AUR_HELPER,,}"  # Convertir l'entrée en minuscules en utilisant l'expansion de paramètre
 
-        if [[ "yay" == "$AUR_HELPER" || "paru" == "$AUR_HELPER" ]]; then
+        if [[ "$AUR_HELPER" =~ ^(yay|paru)$ ]]; then
             break
         else
             echo "Choix invalide."
@@ -27,7 +26,7 @@ install_aur_helper() {
             ;;
     esac
 
-    # Installer l'AUR helper sélectionné
+    # Installer l'assistant AUR sélectionné
     echo "Installation de $AUR_HELPER."
     sudo pacman -S --noconfirm git >> /dev/null 2>&1
     git clone $git_repo >> /dev/null 2>&1
