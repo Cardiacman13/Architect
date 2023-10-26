@@ -63,7 +63,7 @@ function bootloaders() {
     else
         local boot_loader_src="/boot/loader/entries/*.conf"
         echo "|- Ajout de nvidia-drm.modeset=1 aux options de démarrage pour systemd-boot."
-        if ! sudo sed -i '/^options root/ s/$/ nvidia-drm.modeset=1/' ${boot_loader_src}; then
+        if ! sudo sed -i '/^options/ s/$/ nvidia-drm.modeset=1/' ${boot_loader_src}; then
             echo -e "${RED}Erreur lors de l'ajout de l'option de démarrage pour systemd-boot.${RESET}"
             exit 1
         fi
