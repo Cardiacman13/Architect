@@ -4,21 +4,23 @@
 
 **Dernière modification du tuto le : 22/10/2023**
 
-## Fonctionnement du tuto
+## PREAMBULE
+### IMPORTANT !! ###
+**Ce tutoriel est à suivre absolument dans l'ordre indiqué !**
 
-**À FAIRE DANS L'ORDRE !**
+### Présentation
 
-Le but de ce tuto est d’installer une Arch stock avec un minimum de paquets, selon nos besoins pour de la bureautique et/ou du gaming. 
+Le but de ce tutoriel est d’installer une Arch stock avec un minimum de paquets, selon nos besoins pour de la bureautique et/ou du gaming. 
 
 <img src="assets/images/Cardiac-icon.png" width="30" height="30"> Cette icône vous redirige vers mes vidéos sur certaines parties de ce tuto.
 
 <img src="assets/images/Cardiac-icon.png" width="30" height="30"> [ Tuto Arch Linux Playlist ](https://www.youtube.com/watch?v=JE6VwNHLcyk&list=PLuIP_-MWRwtWEX0tyDpZPdwU6zCE1O1cY)
 
-## Conditions
+### Conditions
 
 Le script que vous retrouverez plus loin fonctionne quelques soient vos choix DE / BOOT LOADER / FS.
 
-Le tuto est optimisé pour les choix suivants : 
+Le tutoriel est optimisé pour les choix suivants : 
 
 - systemd-boot
 - Ext4
@@ -29,19 +31,31 @@ Néanmoins, si vous savez ce que vous faites, les modifications pour d’autres 
 
 Télécharger l’ISO : [**Arch Linux - Downloads**](https://archlinux.org/download/)
 
-## INSTALLATION
+### Table des matières
+1. [Installation](#section-1)
+2. [Post installation](#section-2)
+3. [Support matériel](#section-3)
+4. [Logiciels de base](#section-4)
+5. [Gaming](#section-5)
+6. [Bonus](#section-6)
+
+## INSTALLATION    <a name="section-1"></a>
 
 **Suivre scrupuleusement cette video :** 
 <img src="assets/images/Cardiac-icon.png" width="30" height="30"> [ Tuto Arch Linux Partie 1 : Archinstall ](https://www.youtube.com/watch?v=JE6VwNHLcyk)
 
+Pour toutes les étapes suivantes, lorsque vous aurez du texte dans ce type de présentation, cela indiquera une commande à taper dans votre terminal :
+```bash
+echo "Hello world !"            # Exemple de commande
+```
 
 1. **Mettre le clavier en FR**
+    Attention ici : par défaut vous serez en QWERTY, le "a" sera donc, et uniquement pour cette commande, sur la touche "q" de votre clavier.
     ```bash
     loadkeys fr
     ```
 
 2. **Paramétrer votre Wi-Fi**
-    Tapez
     ```bash
     iwctl
     ```
@@ -51,17 +65,17 @@ Télécharger l’ISO : [**Arch Linux - Downloads**](https://archlinux.org/downl
     ```
     Entrez le mot de passe de votre wifi puis `quit` pour quitter iwctl.
 
-2. **Archinstall**
+3. **Archinstall**
     ```bash
     pacman -Sy archinstall      # mise à jour du script archinstall avant l’installation
     archinstall                 # pour lancer le script d'aide à l'installation de arch linux
     ```
     **/!\ Le menu d’archinstall est susceptible de changer au fil des mises à jour du script /!\\**
     
-## POST INSTALLATION
+## POST INSTALLATION    <a name="section-2"></a>
 <img src="assets/images/Cardiac-icon.png" width="30" height="30"> [ Tuto Arch Linux Partie 2 : Post installation ](https://youtu.be/FEFhC46BkXo?si=Gi-6BOhqENLoh5Ak)
 
-Script à exécuter sur une installation propre, **fraîchement installée avec archinstall**, il réalise le tuto pour vous quelques soient vos choix de DE, bootloader et file system.
+Script à exécuter sur une installation propre, **fraîchement installée avec archinstall**, il réalise le tutoriel pour vous quelques soient vos choix de DE, bootloader et file system.
 
 Si Nvidia, s'assurer que sa carte est compatible avec les derniers drivers Nvidia en date, de manière générale ce script/tuto n'est pas pensé pour les ordinosaures.
 
@@ -81,7 +95,8 @@ N'hésitez pas à faire remonter les bugs, merci :)
     ```
     kate /etc/pacman.conf
     ```
-2. Décommenter (enlevez les **#** des lignes suivantes):
+
+Décommenter (enlevez les **#** des lignes suivantes):
     ```bash
     #Misc options
     #UseSyslog
@@ -91,9 +106,12 @@ N'hésitez pas à faire remonter les bugs, merci :)
     VerbosePkgLists <- 
     ParallelDownloads = 5 <-
     ```
-3. Installation de yay,
+2. Installation de yay
 
    [Yay](https://github.com/Jguer/yay) est un outil pratique pour gérer l'installation et la mise à jour de logiciels sur les systèmes basés sur Arch Linux.
+   Yay permet notamment de faciliter l'usage du dépôt AUR, dépôt géré par la communauté et agrandissant considérablement la bibliothèque de logiciels disponibles. Cela passe par la compilation de ces logiciels depuis leur source, à part s'il est spécifié "-bin" à la fin de leur nom.
+   **/!\ Attention cependant /!\ Les paquets dans AUR étant fournis par la communauté, n'installez pas n'importe quoi !**
+   
     ```bash
     sudo pacman -S --needed git base-devel
     git clone https://aur.archlinux.org/yay-bin.git
@@ -107,16 +125,16 @@ N'hésitez pas à faire remonter les bugs, merci :)
     yay -Y --devel --save
     ```
 
-5. Alias maintenance,
+3. Alias de maintenance :
 
    <img src="assets/images/Cardiac-icon.png" width="30" height="30"> [ Tuto Arch Linux Partie 4 : Maintenance ](https://www.youtube.com/watch?v=Z7POSK2jnII)
 
-   cette modification permet de n’avoir à taper que “update-arch” dans un terminal afin de mettre à jour le système, “clean-arch” pour le néttoyer ou “fix-key” en cas d'erreur avec les clés gpg.
+   Cette modification permet de n’avoir à taper que “update-arch” dans un terminal afin de mettre à jour le système, “clean-arch” pour le nettoyer ou “fix-key” en cas d'erreur avec les clés gpg.
 
     ```bash
     kate ~/.bashrc
     ```
-    Ajouter ceci à la fin du fichier :
+    Ajouter chacune de ces lignes à la fin du fichier :
     ```bash
     alias update-arch='yay -Syyu && flatpak update'
     ```
@@ -129,10 +147,10 @@ N'hésitez pas à faire remonter les bugs, merci :)
     
    Relancer le terminal.
 
-## SUPPORT MATÉRIEL
+## SUPPORT MATÉRIEL    <a name="section-3"></a>
 
 ### NVIDIA (restez en X11 au moins jusqu’à la sortie de KDE 6)
-
+Vidéo complémentaire expliquant comment à nouveau avoir accès à Wayland depuis GDM :
 <img src="assets/images/Cardiac-icon.png" width="30" height="30"> [Debian et Arch Linux Gnome Wayland avec Nvidia (Debian dans le doc)](https://www.youtube.com/watch?v=DVkWLvwtQ18)
 
 1. **Installer les composants core :**
@@ -141,6 +159,8 @@ N'hésitez pas à faire remonter les bugs, merci :)
     ```
 
 2. **Activer nvidia-drm.modeset=1 :**
+
+Ce paramètre permet de lancer le module Nvidia lors du démarrage.
 
    - **Si systemd boot**
 
@@ -168,11 +188,12 @@ N'hésitez pas à faire remonter les bugs, merci :)
    sudo grub-mkconfig -o /boot/grub/grub.cfg
    ```
    
-4. **Charger les modules Nvidia en priorité au lancement de Arch :**
+3. **Charger les modules Nvidia en priorité au lancement de Arch :**
+    Cette étape est parfois nécessaire pour certains environnements de bureau ou gestionnaires de fenêtres.
     ```bash
     kate /etc/mkinitcpio.conf
     ```
-    Modifiez la ligne MODULES=() en :
+    Modifier la ligne MODULES=() en :
     ```bash
     MODULES=(nvidia nvidia_modeset nvidia_uvm nvidia_drm)
     ```
@@ -180,7 +201,8 @@ N'hésitez pas à faire remonter les bugs, merci :)
     ```bash
     MODULES=(btrfs nvidia nvidia_modeset nvidia_uvm nvidia_drm)
     ```
-5. **hook mkinitcpio** :
+4. **Hook mkinitcpio** :
+    Le hook permet d'automatiser la reconstruction de l'initramfs (le fichier permettant le boot de base) à chaque modification du driver Nvidia.
     ```bash
     sudo mkdir /etc/pacman.d/hooks/
     kate /etc/pacman.d/hooks/nvidia.hook
@@ -204,8 +226,8 @@ N'hésitez pas à faire remonter les bugs, merci :)
     Exec=/bin/sh -c 'while read -r trg; do case $trg in linux) exit 0; esac; done; /usr/bin/mkinitcpio -P'
     ```
 
-6. **reconstruction de l'initramfs** :
-
+5. **Reconstruction de l'initramfs** :
+Comme nous avons déjà installé les drivers à l'étape 1, donc avant la mise en place du hook, nous allons lancer manuellement la reconstruction de l'initramfs :
    ```bash
     mkinitcpio -P
     ```
@@ -244,19 +266,21 @@ yay -S --needed mesa lib32-mesa vulkan-intel lib32-vulkan-intel vulkan-icd-loade
   ```
 
 ### Bluetooth
+La deuxième commande ci-dessous demande à systemd de démarrer immédiatement le service bluetooth, et aussi de l'activer pour chaque démarrage.
 ```bash
 yay -S --needed bluez bluez-utils bluez-plugins
 sudo systemctl enable --now  bluetooth.service
 ```
-### [PipeWire](https://pipewire.org/)
+### [PipeWire](https://pipewire.org/) (son)
 Pour avoir du son **/!\ Dire oui à tout pour bien tout écraser avec les nouveaux paquets. /!\\**
 ```bash
 sudo pacman -S --needed pipewire lib32-pipewire pipewire-pulse pipewire-alsa pipewire-jack wireplumber alsa-utils alsa-firmware alsa-tools
 ```
 
-## SOFTWARE CORE
+## LOGICIELS DE BASE    <a name="section-4"></a>
 
 ### Composants de base
+Vous y trouverez des codecs, des utilitaires, des polices, des drivers :
 ```bash
 yay -S gst-plugins-bad gst-plugins-base gst-plugins-ugly gst-plugin-pipewire gstreamer-vaapi gst-plugins-good gst-libav gstreamer reflector-simple downgrade rebuild-detector mkinitcpio-firmware xdg-desktop-portal-gtk xdg-desktop-portal neofetch power-profiles-daemon lib32-pipewire hunspell hunspell-fr p7zip unrar ttf-liberation noto-fonts noto-fonts-emoji adobe-source-code-pro-fonts otf-font-awesome ttf-droid ntfs-3g fuse2fs exfat-utils fuse2 fuse3 bash-completion --needed
 ```
@@ -267,14 +291,18 @@ yay -S libreoffice-fresh libreoffice-fresh-fr vlc discord gimp obs-studio gnome-
 ```
 
 ### Logiciels KDE
-<img src="assets/images/Cardiac-icon.png" width="30" height="30"> [Customiser KDE Partie 1 Layout, Thème, Kvantum, bonnes pratiques !](https://www.youtube.com/watch?v=vdlj83sb84s&t=1240s)
+
+Vous avez ici différents logiciels pour le graphisme, la vidéo (montage, prise en compte des codecs), des utilitaires avec interface graphique, etc.
 ```bash
 yay -S xdg-desktop-portal-kde okular print-manager kdenlive gwenview spectacle partitionmanager ffmpegthumbs qt6-wayland kdeplasma-addons powerdevil kcalc plasma-systemmonitor qt6-multimedia qt6-multimedia-gstreamer qt6-multimedia-ffmpeg kwalletmanager
 ```
 
+Vidéo complémentaire :
+<img src="assets/images/Cardiac-icon.png" width="30" height="30"> [Customiser KDE Partie 1 Layout, Thème, Kvantum, bonnes pratiques !](https://www.youtube.com/watch?v=vdlj83sb84s&t=1240s)
+
 ### Pare-feu
 La configuration par défaut peut entraîner le blocage de l'accès aux imprimantes et à d'autres appareils sur votre réseau local.
-Donc voici un petit lien pour vous aider : https://www.dsfc.net/infra/securite/configurer-firewalld/
+Voici donc un petit lien pour vous aider : https://www.dsfc.net/infra/securite/configurer-firewalld/
 ```bash
 sudo pacman -S --needed --noconfirm firewalld python-pyqt5 python-capng
 sudo systemctl enable --now firewalld.service
@@ -293,7 +321,7 @@ Une commande pour générer une liste de miroirs, à faire 1 fois après la prem
 sudo reflector --score 20 --fastest 5 --sort rate --save /etc/pacman.d/mirrorlist
 ```
 
-## GAMING
+## GAMING    <a name="section-5"></a>
 
 ### Steam
 A noter que les drivers AMD ou Nvidia doivent être installés précédemment comme mentionné dans la section [SUPPORT MATÉRIEL](#SUPPORT-MATÉRIEL)
@@ -303,18 +331,19 @@ yay -S steam
 
 ### Lutris
 
-- Lutris est un gestionnaire de jeux FOSS (libre, gratuit et open source) pour les systèmes d'exploitation basés sur Linux.
-
-    <img src="assets/images/Cardiac-icon.png" width="30" height="30"> [Paramétrer Lutris pour PC portable Intel/Nvidia ](https://www.youtube.com/watch?v=Am3pgTXiUAA)
-
+Lutris est un gestionnaire de jeux FOSS (libre, gratuit et open source) pour les systèmes d'exploitation basés sur Linux.
+Lutris permet de rechercher un jeu ou une plateforme (Ubisoft Connect, EA Store, GOG, Battlenet, etc.) et de proposer un script d'installation qui paramètrera ce qu'il faut pour que votre choix fonctionne avec Wine ou Proton.
 
     ```bash
     sudo pacman -S --needed lutris wine-staging
     ```
 
+Vidéo complémentaire :
+    <img src="assets/images/Cardiac-icon.png" width="30" height="30"> [Paramétrer Lutris pour PC portable Intel/Nvidia ](https://www.youtube.com/watch?v=Am3pgTXiUAA)
+
 ### Support manettes avancé 
 
-Pilote Linux avancé pour la manette sans fil Xbox 360|One|S|X (livrée avec la Xbox One S) Et tout un tas d’autres manettes comme la 8bitdo ([xpadneo](https://github.com/atar-axis/xpadneo)) ([xone](https://github.com/medusalix/xone))
+Pilote Linux avancé pour les manettes sans fil Xbox 360|One|S|X (livrée avec la Xbox One S) et tout un tas d’autres manettes comme la 8bitdo ([xpadneo](https://github.com/atar-axis/xpadneo)) ([xone](https://github.com/medusalix/xone))
 
 
 ```bash
@@ -327,7 +356,9 @@ yay -S --needed bluez-utils-compat ds4drv dualsencectl
 
 ### Afficher les performances en jeu
 
-[MangoHub](https://wiki.archlinux.org/title/MangoHud) est une surcouche Vulkan et OpenGL permettant de surveiller les performances du système à l'intérieur des applications et d'enregistrer des métriques pour l'analyse comparative.
+[MangoHud](https://wiki.archlinux.org/title/MangoHud) est une surcouche Vulkan et OpenGL permettant de surveiller les performances du système à l'intérieur des applications et d'enregistrer des métriques pour l'analyse comparative.
+C'est l'outil qu'il vous faut si vous voulez voir en jeu vos FPS, la charge de votre processeur ou carte graphique, etc. Ou même enregistrer ces résultats dans un fichier.
+Ici, nous installons GOverlay qui est une interface graphique pour paramétrer MangoHud.
 
 ```bash
 yay -S goverlay --needed
@@ -335,7 +366,7 @@ yay -S goverlay --needed
 
 ### Augmenter la compatibilité des jeux Windows
 
-- L'objectif est d'améliorer la compatibilité avec les jeux Windows via Wine ou Steam. (Voir [ProtonDB](https://www.protondb.com/))
+Nous augmentons la valeur par défaut de cette variable, permettant de stocker davantage de "memory map areas". La valeur par défaut est très basse. L'objectif est d'améliorer la compatibilité avec les jeux Windows via Wine ou Steam (Voir [ProtonDB](https://www.protondb.com/)), sachant que certains jeux mal optimisés nécessitent ce changement afin de ne plus subir de crash.
     
     <img src="assets/images/Cardiac-icon.png" width="30" height="30"> [Gaming LINUX supprimer les crashs / augmenter la compatibilité](https://youtu.be/sr4RgshrUYY)
 
@@ -347,17 +378,18 @@ yay -S goverlay --needed
     vm.max_map_count=16777216
     ```
 
-## BONUS
+## BONUS    <a name="section-6"></a>
 
 ### Timeshift
 
-- [Timeshift](https://github.com/linuxmint/timeshift) est un utilitaire Linux open source pour créer des sauvegardes système.
+- [Timeshift](https://github.com/linuxmint/timeshift) est un utilitaire Linux open source pour créer des sauvegardes de tout votre système.
+**/!\ ATTENTION : par défaut, c'est uniquement le système qui est sauvegardé, pas votre dossier utilisateur (le /home/) ! /!\\**
     ```bash
     yay -S timeshift
     ```
 - Évitez timeshift et btrfs sur Arch, J’ai déjà eu de la [casse](https://github.com/linuxmint/timeshift).
 
-    “BTRFS snapshots are supported only on BTRFS systems having an Ubuntu-type subvolume layout ”
+    *“BTRFS snapshots are supported only on BTRFS systems having an Ubuntu-type subvolume layout ”*
 
 - Pour bénéficier des sauvegardes automatiques, vous aurez besoin de cronie. (facultatif) 
 
@@ -368,8 +400,9 @@ yay -S goverlay --needed
   
 ### Fish
 
-- [Fish](https://fishshell.com/) est un shell de ligne de commande conçu pour être interactif et convivial. Voir également [ArchWiki](https://wiki.archlinux.org/title/fish) sur le sujet.
-Installer fish.
+[Fish](https://fishshell.com/) est un shell de ligne de commande conçu pour être interactif et convivial. Voir également [ArchWiki](https://wiki.archlinux.org/title/fish) sur le sujet. Il remplace le shell par défut qui est bash.
+
+- Installer fish.
     ```bash
     yay -S fish man-db man-pages      # 1. Installer Fish
     chsh -s /usr/bin/fish             # 2. Le mettre par défaut.
@@ -394,6 +427,7 @@ Installer fish.
 
 [TKG](https://github.com/Frogging-Family) propose un build de kernel hautement personnalisable qui fournit une sélection de corrections et d'ajustements visant à améliorer les performances des ordinateurs de bureau et des jeux.
 
+Vidéo complémentaire :
 <img src="assets/images/Cardiac-icon.png" width="30" height="30"> [Kernel TKG sur Arch + Booster ses perfs](https://youtu.be/43yYIWMnDJA)
 ```bash
 git clone https://github.com/Frogging-Family/linux-tkg.git
@@ -403,7 +437,8 @@ makepkg -si
 
 ### [MESA-TKG](https://github.com/Frogging-Family/mesa-git) (WARNING utilisateurs avancés)
 
-Très utile pour les joueurs AMD.
+Tout comme pour le kernel TkG, mais pour Mesa, une version patchée afin d'ajouter quelques correctifs et optimisations.
+Très utile pour les joueurs AMD, n'a pas d'intérêt pour les joueurs Nvidia.
 ```bash
 git clone https://github.com/Frogging-Family/mesa-git.git
 cd mesa-git
@@ -413,7 +448,7 @@ Dire oui à tout pour bien tout écraser avec les nouveaux paquets.
 
 ### [NVIDIA-ALL](https://github.com/Frogging-Family/nvidia-all) (WARNING utilisateurs avancés)
 
-Nvidia-all est une intégration du driver nvidia par TkG. Il comporte des patchs de support pour les nouveaux kernels ainsi que les drivers vulkan-dev.
+Nvidia-all est une intégration du driver nvidia par TkG. Il comporte des patchs de support pour les nouveaux kernels. Il permet de sélectionner la version du driver que l'on souhaite installer, que ce soit le dernier officiel, une version beta, la version Vulkan, etc.
 
 <img src="assets/images/Cardiac-icon.png" width="30" height="30"> [Vous utilisez Arch et Nvidia regardez ça !](https://youtu.be/T0laE8gPtfY)
 ```bash
@@ -443,7 +478,7 @@ flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.f
     pacman -U 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-keyring.pkg.tar.zst' 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-mirrorlist.pkg.tar.zst'
     kate /etc/pacman.conf
     ```
-- Puis ajouter ceci a la fin du fichier :
+- Puis ajouter ceci à la fin du fichier :
     ```bash
     [chaotic-aur]
     Include = /etc/pacman.d/chaotic-mirrorlist
