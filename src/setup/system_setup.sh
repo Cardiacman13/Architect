@@ -99,7 +99,6 @@ function setup_grub() {
         local boot_loader="grub"
     fi
 
-
     if [[ "${boot_loader}" == "grub" ]]; then
         # Configuration pour GRUB
         echo "Configuration de grub."
@@ -111,6 +110,10 @@ function setup_grub() {
         sudo mkdir -p "${hook_folder}"
         sudo cp "${hook_src}" "${hook_folder}${hook_file}"
         $AUR_HELPER -S --noconfirm update-grub >> /dev/null 2>&1
+    else
+        # Configuration pour systemd-boot
+        echo "Configuration de Systemd-boot."
+        $AUR_HELPER -S --noconfirm kernel-install-mkinitcpio >> /dev/null 2>&1
     fi
 }
 
