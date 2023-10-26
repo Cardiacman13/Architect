@@ -112,6 +112,12 @@ function setup_grub() {
         sudo cp "${hook_src}" "${hook_folder}${hook_file}"
         $AUR_HELPER -S --noconfirm update-grub >> /dev/null 2>&1
     fi
+
+    if [[ "${boot_loader}" == "systemd-boot" ]]; then
+        # Configuration pour GRUB
+        echo "Configuration de systemd-boot."
+        $AUR_HELPER -S --noconfirm kernel-install-mkinitcpio >> /dev/null 2>&1
+    fi
 }
 
 # Fonction principale pour la configuration du système.
