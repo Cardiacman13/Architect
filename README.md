@@ -387,6 +387,7 @@ Nous augmentons la valeur par défaut de cette variable, permettant de stocker d
 ### Timeshift
 
 - [Timeshift](https://github.com/linuxmint/timeshift) est un utilitaire Linux open source pour créer des sauvegardes de tout votre système.
+
 **/!\ ATTENTION : par défaut, c'est uniquement le système qui est sauvegardé, pas votre dossier utilisateur (le /home/) ! /!\\**
     ```bash
     yay -S timeshift
