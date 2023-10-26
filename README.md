@@ -389,9 +389,12 @@ Nous augmentons la valeur par défaut de cette variable, permettant de stocker d
 - [Timeshift](https://github.com/linuxmint/timeshift) est un utilitaire Linux open source pour créer des sauvegardes de tout votre système.
 
 **/!\ ATTENTION : par défaut, c'est uniquement le système qui est sauvegardé, pas votre dossier utilisateur (le /home/) ! /!\\**
-    ```bash
-    yay -S timeshift
-    ```
+
+
+```
+yay -S timeshift
+```
+
 - Évitez timeshift et btrfs sur Arch, J’ai déjà eu de la [casse](https://github.com/linuxmint/timeshift).
 
     *“BTRFS snapshots are supported only on BTRFS systems having an Ubuntu-type subvolume layout ”*
