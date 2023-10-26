@@ -2,13 +2,15 @@
 
 [ **English version** ](https://github.com/Cardiacman13/post-install-arch)
 
-**Dernière modification du tuto le : 22/10/2023**
+**Dernière modification du tuto le : 26/10/2023**
 
 ## PREAMBULE
 ### IMPORTANT !! ###
 **Ce tutoriel est à suivre absolument dans l'ordre indiqué !**
 
 ### Présentation
+
+Arch est une distribution technique destinée à un public plus averti, composée de "blocs de construction". Pensez-y comme à un ensemble de Lego vierge, avec une base que vous devrez construire et façonner à votre guise, et si vous le faites mal, les choses peuvent se casser.
 
 Le but de ce tutoriel est d’installer une Arch stock avec un minimum de paquets, selon nos besoins pour de la bureautique et/ou du gaming. 
 
