@@ -99,9 +99,9 @@ N'hésitez pas à faire remonter les bugs, merci :)
     kate /etc/pacman.conf
     ```
 
-Décommenter (enlevez les **#** des lignes suivantes):
-    
-```
+    Décommenter (enlevez les **#** des lignes suivantes):
+        
+    ```
     #Misc options
     #UseSyslog
     Color <-
@@ -109,7 +109,8 @@ Décommenter (enlevez les **#** des lignes suivantes):
     #CheckSpace
     VerbosePkgLists <- 
     ParallelDownloads = 5 <-
-```
+    ```
+
 2. Installation de yay
 
    [Yay](https://github.com/Jguer/yay) est un outil pratique pour gérer l'installation et la mise à jour de logiciels sur les systèmes basés sur Arch Linux.
@@ -170,17 +171,17 @@ Ce paramètre permet de lancer le module Nvidia lors du démarrage.
 
 Dans le dossier :
 
-```
+    ```
    /boot/loader/entries/
-```
+    ```
    Il y a plusieurs fichiers .conf, il faut ajouter nvidia-drm.modeset=1 à la ligne “options” de chaque fichier,
    exemple : options                 root=PARTUUID=fb680c54-466d-4708-a1ac-fcc338ed57f1 rw rootfstype=ext4 nvidia-drm.modeset=1
 
 - **Si grub**
 
-```
-   kate /etc/default/grub
-```
+    ```
+    kate /etc/default/grub
+    ```
 
    Ligne "grub_cmdline_linux_default=" ajouter **nvidia-drm.modeset=1**
 
@@ -188,9 +189,9 @@ Dans le dossier :
 
 puis :
 
-```
-   sudo grub-mkconfig -o /boot/grub/grub.cfg
-```
+    ```
+    sudo grub-mkconfig -o /boot/grub/grub.cfg
+    ```
    
 3. **Charger les modules Nvidia en priorité au lancement de Arch :**
     Cette étape est parfois nécessaire pour certains environnements de bureau ou gestionnaires de fenêtres.
@@ -231,8 +232,8 @@ puis :
     ```
 
 5. **Reconstruction de l'initramfs** :
-Comme nous avons déjà installé les drivers à l'étape 1, donc avant la mise en place du hook, nous allons lancer manuellement la reconstruction de l'initramfs :
-   ```
+    Comme nous avons déjà installé les drivers à l'étape 1, donc avant la mise en place du hook, nous allons lancer manuellement la reconstruction de l'initramfs :
+    ```
     mkinitcpio -P
     ```
 
@@ -265,9 +266,9 @@ yay -S --needed mesa lib32-mesa vulkan-intel lib32-vulkan-intel vulkan-icd-loade
     yay -S python-pyqt5 hplip --needed
     ```
 - Imprimantes Epson
-  ```
-  yay -S --needed epson-inkjet-printer-escpr  epson-inkjet-printer-escpr2  epson-inkjet-printer-201601w  epson-inkjet-printer-n10-nx127
-  ```
+    ```
+    yay -S --needed epson-inkjet-printer-escpr  epson-inkjet-printer-escpr2  epson-inkjet-printer-201601w  epson-inkjet-printer-n10-nx127
+    ```
 
 ### Bluetooth
 La deuxième commande ci-dessous demande à systemd de démarrer immédiatement le service bluetooth, et aussi de l'activer pour chaque démarrage.
@@ -374,10 +375,10 @@ Nous augmentons la valeur par défaut de cette variable, permettant de stocker d
     
 <img src="assets/images/Cardiac-icon.png" width="30" height="30"> [Gaming LINUX supprimer les crashs / augmenter la compatibilité](https://youtu.be/sr4RgshrUYY)
 
-```
+    ```
     kate /etc/sysctl.d/99-sysctl.conf
-```
-- Ajouter la ligne suivante :
+    ```
+    - Ajouter la ligne suivante :
     ```
     vm.max_map_count=16777216
     ```
