@@ -492,6 +492,11 @@ flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.f
     Include = /etc/pacman.d/chaotic-mirrorlist
     ```
 
+- Enfin mettez à jour la liste des repo sur votre machine:
+    ```
+    sudo pacman -Syy
+    ```
+
 ### Problèmes récurrents :
 
  <img src="assets/images/Cardiac-icon.png" width="30" height="30"> [Arch Linux Partie 3 les problèmes les plus courants.](https://youtu.be/vbOOQsYyPfc?si=wA2W8bOG1gtpfmnZ)
