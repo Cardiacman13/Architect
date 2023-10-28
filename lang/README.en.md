@@ -514,7 +514,7 @@ The purpose of this script is to configure a **stock Arch** system with a **mini
 5. [Miscellaneous Enhancements](#section-12)
 6. [Installation of Various Software](#section-13)
 
-## 1. Optimizing Pacman:  <a name="section-1"></a>
+## 1. Optimizing Pacman:  <a name="section-8"></a>
 Enhance Pacman's functionality and user experience by making the following improvements:
 
 - Enabling colored output.
@@ -522,7 +522,7 @@ Enhance Pacman's functionality and user experience by making the following impro
 - Enabling parallel downloads.
 - Enabling multilib support.
 
-## 2. Adding Useful Aliases:  <a name="section-2"></a>
+## 2. Adding Useful Aliases:  <a name="section-9"></a>
 Simplify your command-line tasks with these helpful aliases:
 
 - update-arch: Updates your system apps with a single command.
@@ -530,7 +530,7 @@ Simplify your command-line tasks with these helpful aliases:
 - fix-key: Fixes key-related issues, ensuring a smooth update process.
 
 
-## 3. Assisting with AMD, NVIDIA, or Intel GPU Installation for Gaming:  <a name="section-3"></a>
+## 3. Assisting with AMD, NVIDIA, or Intel GPU Installation for Gaming:  <a name="section-10"></a>
 Get your gaming-ready with GPU setup, which includes:
 
 - Installing drivers.
@@ -544,7 +544,7 @@ Get your gaming-ready with GPU setup, which includes:
     - Cloning and installing from the `Frogging-Family/nvidia-all` repository.
     - Installing CUDA.
 
-## 4. Install Some Base Packages:  <a name="section-4"></a>
+## 4. Install Some Base Packages:  <a name="section-11"></a>
 Install fundamental packages for a complete experience:
 
 - [yay](https://github.com/Jguer/yay) or [paru](https://github.com/Morganamilo/paru) AUR helper.
@@ -553,7 +553,7 @@ Install fundamental packages for a complete experience:
 - Codecs.
 - Other essential packages.
 
-## 5. Miscellaneous Enhancements:  <a name="section-5"></a>
+## 5. Miscellaneous Enhancements:  <a name="section-12"></a>
 Fine-tune your system for an enhanced experience:
 
 - Boostin `vm.max_map_count` to improve compatibility with Windows games. [Arch wiki about vm-max-map-count](https://wiki.archlinux.org/title/gaming#Increase_vm.max_map_count)
@@ -562,7 +562,7 @@ Fine-tune your system for an enhanced experience:
 - Advanced support for Xbox, PS4/PS5, 8bitdo controllers
 - Propose to configure Fish as a command-line shell.
 
-## 6. Assisting with the Installation of Various Software:  <a name="section-6"></a>
+## 6. Assisting with the Installation of Various Software:  <a name="section-13"></a>
 You have the freedom to choose which additional software to install based on your specific needs:
 
 - `Discord`
