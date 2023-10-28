@@ -30,6 +30,7 @@ However, if you know what you are doing, the modifications for other choices are
 Download the ISO: [**Arch Linux - Downloads**](https://archlinux.org/download/)
 
 ### Table of Contents
+0. [Script-post-installation](#section-7)
 1. [Installation](#section-1)
 2. [Post installation](#section-2)
 3. [Hardware Support](#section-3)
@@ -71,20 +72,6 @@ echo "Hello world !"            # Example command
     
 ## POST INSTALLATION    <a name="section-2"></a>
 <img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/Cardiac-icon.png" width="30" height="30"> [ Arch Linux Tutorial Part 2: Post Installation ](https://youtu.be/FEFhC46BkXo?si=Gi-6BOhqENLoh5Ak)
-
-This script is to be executed on a clean installation, **freshly installed with archinstall**; it will perform the tutorial for you regardless of your choices of DE, bootloader, and file system.
-
-If Nvidia, ensure that your card is compatible with the latest Nvidia drivers. In general, this script/tutorial is not intended for very old computers.
-
-**Post-installation script:**
-
-   ```
-   sudo pacman -Syu git
-   git clone https://github.com/Cardiacman13/Tuto-Arch.git
-   cd Tuto-Arch
-   ./post-installation
-   ```
-Feel free to report any bugs, thank you :)
 
 ### Optimize pacman
 
@@ -488,6 +475,109 @@ flatpak install com.bitwarden.desktop com.discordapp.Discord com.github.tchx84.F
     ```
 
 - For help, visit the GLF Discord (fr/en): [Discord GLF](http://discord.gg/EP3Jm8YMvj)
+
+# Arch Linux Post-Install Script <a name="section-7"></a>
+
+[Version française](https://github.com/Cardiacman13/post-install-arch/blob/main/lang/README.fr.md)  [Versión española](https://github.com/Cardiacman13/post-install-arch/blob/main/lang/README.es.md)
+
+```
+Arch is a Technical Distro targeted towards more knowledgeable folk made of "Building Blocks",
+think of it as a blank Lego set, with a base that you will have to build and shape to your liking,
+and if you do it wrong things will break.
+```
+
+![Example Image](assets/images/Welcome.png)
+
+
+The purpose of this script is to configure a **stock Arch** system with a **minimal set of packages** tailored to your needs right after using archinstall. This script is **oriented towards gaming**.
+
+**Before You Begin:**
+
+- This script is based on a tutorial that describes all the steps : [Tuto-Arch](https://github.com/Cardiacman13/Tuto-Arch/blob/main/lang/README.en.md)
+- This script is intended for use on a clean installation that has just been set up with `archinstall`.
+- Before running this script, make sure you have booted into a Desktop Environment.
+- It is not suitable for outdated computers. Ensure your hardware meets the requirements for the latest Nvidia drivers.
+
+   ```bash
+   sudo pacman -Sy git
+   git clone https://github.com/Cardiacman13/post-install-arch.git
+   cd post-install-arch
+   chmod +x ./post-installation
+   ./post-installation
+   ```
+## Table of Contents
+
+1. [Optimizing Pacman](#section-8)
+2. [Adding Useful Aliases](#section-9)
+3. [Assisting with GPU Installation for Gaming](#section-10)
+4. [Install Some Base Packages](#section-11)
+5. [Miscellaneous Enhancements](#section-12)
+6. [Installation of Various Software](#section-13)
+
+## 1. Optimizing Pacman:  <a name="section-1"></a>
+Enhance Pacman's functionality and user experience by making the following improvements:
+
+- Enabling colored output.
+- Enabling detailed package lists.
+- Enabling parallel downloads.
+- Enabling multilib support.
+
+## 2. Adding Useful Aliases:  <a name="section-2"></a>
+Simplify your command-line tasks with these helpful aliases:
+
+- update-arch: Updates your system apps with a single command.
+- clean-arch: Cleans up your system by removing unused packages.
+- fix-key: Fixes key-related issues, ensuring a smooth update process.
+
+
+## 3. Assisting with AMD, NVIDIA, or Intel GPU Installation for Gaming:  <a name="section-3"></a>
+Get your gaming-ready with GPU setup, which includes:
+
+- Installing drivers.
+- Installing Vulkan libraries.
+- Installing 32-bit libraries.
+- Choosing between standard Nvidia drivers or the `nvidia-all` variant:
+  - **Nvidia**: This is the recommended choice for most users. It involves:
+    - Installing Nvidia packages.
+    - Installing CUDA.
+  - **Nvidia-all**: This is for advanced users who know how to maintain it. It involves:
+    - Cloning and installing from the `Frogging-Family/nvidia-all` repository.
+    - Installing CUDA.
+
+## 4. Install Some Base Packages:  <a name="section-4"></a>
+Install fundamental packages for a complete experience:
+
+- [yay](https://github.com/Jguer/yay) or [paru](https://github.com/Morganamilo/paru) AUR helper.
+- Fonts.
+- Desktop utilities.
+- Codecs.
+- Other essential packages.
+
+## 5. Miscellaneous Enhancements:  <a name="section-5"></a>
+Fine-tune your system for an enhanced experience:
+
+- Boostin `vm.max_map_count` to improve compatibility with Windows games. [Arch wiki about vm-max-map-count](https://wiki.archlinux.org/title/gaming#Increase_vm.max_map_count)
+- Ask you for Print support configuration.
+- Ask you for Buetooth configuration.
+- Advanced support for Xbox, PS4/PS5, 8bitdo controllers
+- Propose to configure Fish as a command-line shell.
+
+## 6. Assisting with the Installation of Various Software:  <a name="section-6"></a>
+You have the freedom to choose which additional software to install based on your specific needs:
+
+- `Discord`
+- `Steam`
+- `Lutris`
+- `Heroic Games Launcher`
+- `protonup-qt`
+- `Spotify`
+- `OBS Studio`
+- `LibreOffice`
+- `Gimp`
+- `Visual Studio Code`
+- `Open RGB`
+
+This post-installation script is your one-stop solution for configuring and optimizing your Arch Linux system, ensuring a smooth and enjoyable gaming experience. Enjoy your newly enhanced Arch Linux setup!
 
 ## Sources
 
