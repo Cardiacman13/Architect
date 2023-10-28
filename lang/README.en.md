@@ -271,14 +271,12 @@ yay -S --needed mesa lib32-mesa vulkan-intel lib32-vulkan-intel vulkan-icd-loade
 The second command below asks systemd to immediately start the bluetooth service, and also to activate it on every boot.
 ```
 yay -S --needed bluez bluez-utils bluez-plugins
-sudo systemctl enable
-
-## BASIC SOFTWARE <a name="section-4"></a>
-
-### Basic Components
-Here you will find codecs, utilities, fonts, drivers:
+sudo systemctl enable --now  bluetooth.service
 ```
-yay -S gst-plugins-bad gst-plugins-base gst-plugins-ugly gst-plugin-pipewire gstreamer-vaapi gst-plugins-good gst-libav gstreamer reflector-simple downgrade rebuild-detector mkinitcpio-firmware xdg-desktop-portal-gtk xdg-desktop-portal neofetch power-profiles-daemon lib32-pipewire hunspell hunspell-fr p7zip unrar ttf-liberation noto-fonts noto-fonts-emoji adobe-source-code-pro-fonts otf-font-awesome ttf-droid ntfs-3g fuse2fs exfat-utils fuse2 fuse3 bash-completion man-db man-pages --needed
+### [PipeWire](https://pipewire.org/) (son)
+To have sound **/!\ Say yes to everything to crush everything with the new packages. /!\**
+```
+sudo pacman -S --needed pipewire lib32-pipewire pipewire-pulse pipewire-alsa pipewire-jack wireplumber alsa-utils alsa-firmware alsa-tools
 ```
 
 ## BASIC SOFTWARE <a name="section-4"></a>
@@ -370,67 +368,137 @@ yay -S goverlay --needed
 
 ### Improving compatibility of Windows games
 
-We increase the default value of this variable, allowing for the storage of more "memory map areas". The default value is very low. The goal is to improve compatibility with Windows games via Wine or Steam (See [ProtonDB](https://www.protondb.com/)), knowing that some poorly
+We increase the default value of this variable, allowing for the storage of more "memory map areas". The default value is very low. The goal is to improve compatibility with Windows games via Wine or Steam (See [ProtonDB](https://www.protondb.com/)), knowing that some poorly optimized games tend to reach this limit quickly, which can result in a crash.
 
- optimized games tend to reach this limit quickly, which can result in a crash.
+<img src="assets/images/Cardiac-icon.png" width="30" height="30"> [Gaming LINUX supprimer les crashs / augmenter la compatibilité](https://youtu.be/sr4RgshrUYY)
 
-**Warning**: This operation is to be done after the installation of a Kernel, whether it is the stock kernel or a TKG (see section [KERNEL](#section-7)). It will have to be done again at each kernel change.
+    ```
+    kate /etc/sysctl.d/99-sysctl.conf
+    ```
+    - Ajouter la ligne suivante :
+    ```
+    vm.max_map_count=16777216
+    ```
 
-Here is a small script to automate this operation:
+## BONUS <a name="section-6"></a>
 
-```bash
-sudo bash -c 'echo "vm.max_map_count=262144" >> /etc/sysctl.d/99-sysctl.conf'
-sudo sysctl -p /etc/sysctl.d/99-sysctl.conf
-```
+### Timeshift
 
-## SYSTEM PERFORMANCE & TWEAKING <a name="section-6"></a>
+- [Timeshift](https://github.com/linuxmint/timeshift) est un utilitaire Linux open source pour créer des sauvegardes de tout votre système.
 
-### System backup with Timeshift
+**/!\ ATTENTION : par défaut, c'est uniquement le système qui est sauvegardé, pas votre dossier utilisateur (le /home/) ! /!\\**
 
-Timeshift is primarily designed to protect system files and settings. User data such as documents, pictures, music, and videos are not backed up.
 
 ```
 yay -S timeshift
 ```
 
-### Kernel (Including TKG PDS & BMQ versions)
+- Évitez timeshift et btrfs sur Arch, J’ai déjà eu de la [casse](https://github.com/linuxmint/timeshift).
 
+    *“BTRFS snapshots are supported only on BTRFS systems having an Ubuntu-type subvolume layout ”*
+
+- Pour bénéficier des sauvegardes automatiques, vous aurez besoin de démarrer cronie. (facultatif) 
+
+  ```
+  sudo systemctl enable --now cronie
+  ```
+  
+  ### Fish
+
+[Fish](https://fishshell.com/) is a command-line shell designed to be interactive and user-friendly. See also [ArchWiki](https://wiki.archlinux.org/title/fish) on the subject. It replaces the default shell, bash.
+
+- Install fish.
+    ```
+    yay -S fish # 1. install fish
+    chsh -s /usr/bin/fish # 2. Set it as default.
+    fish # 3. Run fish or reboot and it will default.
+    fish_update_completions # 4. Update completions.
+    set -U fish_greeting # 5. Remove welcome message.
+    kate ~/.config/fish/config.fish # 6. Create an alias as for bash at the beginning of this tutorial.
+    ```
+- Then add the following aliases between if and end:
+    ```
+    alias update-arch='yay -Syu && flatpak update'
+    ```
+    ```
+    alias clean-arch='yay -Sc && yay -Yc && flatpak remove --unused'
+    ```
+    ```
+    alias fix-key='sudo rm /var/lib/pacman/sync/* && sudo rm -rf /etc/pacman.d/gnupg/* && sudo pacman-key --init && sudo pacman-key --populate && sudo pacman -Sy --noconfirm archlinux-keyring && sudo pacman --noconfirm -Su'
+    ```
+- ***Reboot unless done in step 3***, aliases of any kind only work after restarting the terminal.
+
+### [Kernel TKG](https://github.com/Frogging-Family/linux-tkg) (WARNING advanced users)
+
+[TKG](https://github.com/Frogging-Family) is a highly customizable kernel build that provides a selection of fixes and tweaks to improve desktop and gaming performance.
+
+Related video:
+<img src="assets/images/Cardiac-icon.png" width="30" height="30"> [Kernel TKG on Arch + Boost its perfs](https://youtu.be/43yYIWMnDJA)
 ```
-yay -S linux-tkg-pds-zen linux-tkg-pds-zen-headers linux-tkg-muqss-zen linux-tkg-muqss-zen-headers linux-tkg-bmq-zen linux-tkg-bmq-zen-headers
+git clone https://github.com/Frogging-Family/linux-tkg.git
+cd linux-tkg
+makepkg -si
 ```
 
-### Mesa-tkg-git
+### MESA-TKG](https://github.com/Frogging-Family/mesa-git) (WARNING advanced users)
 
-Mesa-tkg-git is a version of Mesa optimized for performance.
-This can be useful, especially if you are playing games using Vulkan or OpenGL.
-For AMD GPUs only:
-
+Just like the TkG kernel, but for Mesa, a patched version to add a few fixes and optimizations.
+Very useful for AMD players, of no interest to Nvidia players.
 ```
-yay -S mesa-tkg-git
+git clone https://github.com/Frogging-Family/mesa-git.git
+cd mesa-git
+makepkg -si
+```
+Say yes to everything to overwrite everything with new packages.
+
+### [NVIDIA-ALL](https://github.com/Frogging-Family/nvidia-all) (WARNING advanced users)
+
+Nvidia-all is an integration of the nvidia driver by TkG. It includes support patches for new kernels. It lets you select the driver version you want to install, whether it's the latest official version, a beta version, the Vulkan version, etc.
+
+<img src="assets/images/Cardiac-icon.png" width="30" height="30"> [You're using Arch and Nvidia check this out!](https://youtu.be/T0laE8gPtfY)
+```
+git clone https://github.com/Frogging-Family/nvidia-all.git
+cd nvidia-all
+makepkg -si
 ```
 
-### Optimizing system performance
+Say yes to everything to overwrite everything with new packages.
 
-When it comes to system performance, not only the hardware but also the configuration matters. Here are some tricks and tools to optimize your Arch Linux installation.
 
-#### Feral Interactive's Gamemode
+### Installation [Flatpak](https://wiki.archlinux.org/title/Flatpak)
 
-[GameMode](https://github.com/FeralInteractive/gamemode) is an open-source daemon/lib combo for Linux that allows games to request a set of optimizations be temporarily applied to the host OS and/or a game process.
-GameMode improves gaming performance by applying various optimizations, such as optimizing CPU governor or GPU performance mode, when a compatible game is running.
+Formerly known as xdg-app, this is a software deployment and package management utility for Linux. It is promoted as offering a "sandbox" environment in which users can run software in isolation from the rest of the system.
 
+<img src="assets/images/Cardiac-icon.png" width="30" height="30"> [MangoHUD, Goverlay, Steam, Lutris FLATPAK!](https://www.youtube.com/watch?v=1dha2UDSF4M)
 ```
-yay -S gamemode
+yay -S flatpak flatpak-kcm
+flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+flatpak install com.bitwarden.desktop com.discordapp.Discord com.github.tchx84.Flatseal com.gitlab.davem.ClamTk com.heroicgameslauncher.hgl com.microsoft.Edge com. moonlight_stream.Moonlight com.rtosta.zapzap com.spotify.Client com.sweethome3d.Sweethome3d com.tutanota.Tutanota com.valvesoftware.Steam com.visualstudio.code info.febvre. Komikku io.github.anirbandey1.ChatbotClient io.github.koromelodev.mindmate net.davidotek.pupgui2 net.lutris.Lutris one.flipperzero.qFlipper org.bleachbit.BleachBit org. gnome.Boxes org.gnome.OCRFeeder org.kde.gcompris org.kde.kdenlive org.libreoffice.LibreOffice org.videolan.VLC org.yuzu_emu.yuzu us.zoom.Zoom xyz.ketok.Speedtest
 ```
 
-## SYSTEM MAINTENANCE & PROBLEM-SOLVING <a name="section-7"></a>
+### Recurring problems:
 
-### Useful video links for troubleshooting Arch Linux
-- [Troubleshooting Arch Linux Common Problems](https://www.youtube.com/watch?v=hmZrJyFPc10)
-- [Fixing Common Arch Linux Installation Errors](https://www.youtube.com/watch?v=ZrMNkrC3vYg)
+ <img src="assets/images/Cardiac-icon.png" width="30" height="30"> [Arch Linux Part 3 the most common problems.](https://youtu.be/vbOOQsYyPfc?si=wA2W8bOG1gtpfmnZ)
 
-Sources et liens utiles :
+ <img src="assets/images/Cardiac-icon.png" width="30" height="30"> [Arch Linux Part 4 Maintenance / updating](https://youtu.be/Z7POSK2jnII?si=SNwagGGJXRVkYPdc)
+ 
+ <img src="assets/images/Cardiac-icon.png" width="30" height="30"> [Arch Linux Part 5 Arch-Chroot](https://youtu.be/iandJSjePiA?si=7uI8JZ-VxAVOsPTh)
+
+- If you have no sound, try :
+    ```
+    yay -S sof-firmware
+    ```
+
+- For help, visit the GLF Discord (fr/en): [Discord GLF](http://discord.gg/EP3Jm8YMvj)
+
+## Sources
+
+Sources and useful links :
 - [ArchWiki](https://wiki.archlinux.org/)
+
 <img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/Cardiac-icon.png" width="30" height="30"> [Fonctionnement du WIKI d'Arch.](https://www.youtube.com/watch?v=TQ3A9l2N5lI)
+
+
 - [Site GLF](https://www.gaminglinux.fr/)
-- [Discord GLF](http://discord.gg/EP3Jm8YMvj)
-- [Ma chaine Youtube](https://www.youtube.com/@Cardiacman)
+- GLF Discord](http://discord.gg/EP3Jm8YMvj)
+- My Youtube channel](https://www.youtube.com/@Cardiacman)
