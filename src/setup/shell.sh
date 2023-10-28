@@ -20,7 +20,7 @@ function add_alias_u() {
     fi
 
     # Alias pour résoudre les problèmes de clé sur Arch Linux
-    local alias_key="alias fix-key='sudo rm /var/lib/pacman/sync/* && sudo rm -rf /etc/pacman.d/gnupg/* && sudo pacman-key --init && sudo pacman-key --populate && sudo pacman -Sy --noconfirm archlinux-keyring'"
+    local alias_key="alias fix-key='sudo rm /var/lib/pacman/sync/* && sudo rm -rf /etc/pacman.d/gnupg/* && sudo pacman-key --init && sudo pacman-key --populate && sudo pacman -Sy --noconfirm archlinux-keyring && sudo pacman --noconfirm -Su'"
 
     # Vérifie si le fichier existe et si l'alias n'est pas déjà présent
     if [[ -f "${file}" ]]; then
