@@ -10,9 +10,9 @@ Arch es una distribución técnica diseñada para un público más avanzado, for
 
 El objetivo de este tutorial es instalar un Arch stock con un mínimo de paquetes, en función de nuestras necesidades ofimáticas y/o de juego. 
 
-<img src="assets/images/Cardiac-icon.png" width="30" height="30"> Este icono te redirige a mis vídeos sobre ciertas partes de este tutorial.
+<img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/Cardiac-icon.png" width="30" height="30"> Este icono te redirige a mis vídeos sobre ciertas partes de este tutorial.
 
-<img src="assets/images/Cardiac-icon.png" width="30" height="30"> [ Tuto Arch Linux Playlist ](https://www.youtube.com/watch?v=JE6VwNHLcyk&list=PLuIP_-MWRwtWEX0tyDpZPdwU6zCE1O1cY)
+<img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/Cardiac-icon.png" width="30" height="30"> [ Tuto Arch Linux Playlist ](https://www.youtube.com/watch?v=JE6VwNHLcyk&list=PLuIP_-MWRwtWEX0tyDpZPdwU6zCE1O1cY)
 
 ### Condiciones
 
@@ -40,11 +40,10 @@ Descarga la ISO: [**Arch Linux - Descargas**](https://archlinux.org/download/)
 ## INSTALACIÓN <a name="section-1"></a>
 
 **Sigue escrupulosamente este vídeo:** 
-<img src="assets/images/Cardiac-icon.png" width="30" height="30"> [ Tutorial Arch Linux Parte 1 : Archinstall ](https://www.youtube.com/watch?v=JE6VwNHLcyk)
+<img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/Cardiac-icon.png" width="30" height="30"> [ Tutorial Arch Linux Parte 1 : Archinstall ](https://www.youtube.com/watch?v=JE6VwNHLcyk)
 
 Para todos los pasos siguientes, cuando tengas texto en este tipo de presentación, te indicará un comando a escribir en tu terminal:```echo "¡Hola mundo !"            # Ejemplo de comando
-1. **Ponga el teclado en FR**.
-    Nota aquí: por defecto estarás en QWERTY, así que la "a" estará en la tecla "q" de tu teclado sólo para este comando.
+1. **Ponga el teclado en ES**.
     ```
     loadkeys es
     ```
@@ -64,10 +63,10 @@ Para todos los pasos siguientes, cuando tengas texto en este tipo de presentaci�
     pacman -Syu archinstall # actualizar el script archinstall antes de la instalación
     archinstall # para ejecutar el script de ayuda para la instalación de arch linux
     ```
-    **/El menú de archinstall puede cambiar a medida que se actualiza el script.
+    /!\ El menú de archinstall puede cambiar a medida que se actualiza el script.
 
 ## POST INSTALACIÓN <a name="section-2"></a>
-<img src="assets/images/Cardiac-icon.png" width="30" height="30"> [ Tuto Arch Linux Parte 2 : Post instalación ](https://youtu.be/FEFhC46BkXo?si=Gi-6BOhqENLoh5Ak)
+<img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/Cardiac-icon.png" width="30" height="30"> [ Tuto Arch Linux Parte 2 : Post instalación ](https://youtu.be/FEFhC46BkXo?si=Gi-6BOhqENLoh5Ak)
 
 Script para ser ejecutado en una instalación limpia, **recién instalada con archinstall**, realiza el tutorial por ti sea cual sea tu elección de DE, gestor de arranque y sistema de archivos.
 
@@ -75,12 +74,12 @@ Si es Nvidia, asegúrese de que su tarjeta es compatible con los últimos driver
 
 **Script de post-instalación :**
 
-   ```
-   sudo pacman -Syu git
-   git clone https://github.com/Cardiacman13/Tuto-Arch.git
-   cd Tuto-Arch
-   ./post-instalación
-   ```
+```
+sudo pacman -Syu git
+git clone https://github.com/Cardiacman13/Tuto-Arch.git
+cd Tuto-Arch
+./post-instalación
+```
 No dude en informar de errores, gracias :) 
 
 ### Optimizar pacman
@@ -124,7 +123,7 @@ No dude en informar de errores, gracias :)
 
 3. Alias de mantenimiento:
 
-   <img src="assets/images/Cardiac-icon.png" width="30" height="30"> [ Tutorial Arch Linux Parte 4: Mantenimiento ](https://www.youtube.com/watch?v=Z7POSK2jnII)
+<img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/Cardiac-icon.png" width="30" height="30"> [ Tutorial Arch Linux Parte 4: Mantenimiento ](https://www.youtube.com/watch?v=Z7POSK2jnII)
 
    Esta modificación significa que sólo hay que teclear "update-arch" en un terminal para actualizar el sistema, "clean-arch" para limpiarlo o "fix-key" en caso de error con las claves gpg.
 
@@ -148,7 +147,7 @@ No dude en informar de errores, gracias :)
 
 ### NVIDIA (permanece en X11 al menos hasta que salga KDE 6).
 Vídeo adicional explicando cómo acceder de nuevo a Wayland desde GDM:
-<img src="assets/images/Cardiac-icon.png" width="30" height="30"> [Debian y Arch Linux Gnome Wayland con Nvidia (Debian en doc)](https://www.youtube.com/watch?v=DVkWLvwtQ18)
+<img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/Cardiac-icon.png" width="30" height="30"> [Debian y Arch Linux Gnome Wayland con Nvidia (Debian en doc)](https://www.youtube.com/watch?v=DVkWLvwtQ18)
 
 1. **Instala los componentes principales:**
     ```
@@ -167,21 +166,18 @@ En el :
 /boot/loader/entradas/
 ```
 
-
-Il y a plusieurs fichiers .conf, il faut ajouter nvidia-drm.modeset=1 à la ligne “options” de chaque fichier,
-exemple : options                 root=PARTUUID=fb680c54-466d-4708-a1ac-fcc338ed57f1 rw rootfstype=ext4 nvidia-drm.modeset=1
+Hay varios archivos .conf, debes agregar nvidia-drm.modeset=1 a la línea "opciones" de cada archivo, por ejemplo: opciones root=PARTUUID=fb680c54-466d-4708-a1ac-fcc338ed57f1 rw rootfstype=ext4 nvidia-drm.modeset=1
 
 - **Si grub**
 
     ```
     kate /etc/default/grub
     ```
+    Línea "grub_cmdline_linux_default=" agregar nvidia-drm.modeset=1
 
-    Ligne "grub_cmdline_linux_default=" ajouter **nvidia-drm.modeset=1**
+    Ejemplo: GRUB_CMDLINE_LINUX_DEFAULT="loglevel=3 quiet nvidia-drm.mod eset=1"
 
-    exemple : GRUB_CMDLINE_LINUX_DEFAULT="loglevel=3 quiet nvidia-drm.modeset=1"
-
-    puis :
+    Luego:
 
     ```
     sudo grub-mkconfig -o /boot/grub/grub.cfg
@@ -202,12 +198,12 @@ exemple : options                 root=PARTUUID=fb680c54-466d-4708-a1ac-fcc338ed
     ```
     
 4. **Hook mkinitcpio** :
-    Le hook permet d'automatiser la reconstruction de l'initramfs (le fichier permettant le boot de base) à chaque modification du driver Nvidia.
+El hook permite automatizar la reconstrucción del initramfs (el archivo que permite el arranque básico) cada vez que se realiza una modificación en el controlador de Nvidia.
     ```
     sudo mkdir /etc/pacman.d/hooks/
     kate /etc/pacman.d/hooks/nvidia.hook
     ```
-    Ajouter :
+    Anadir :
     ```
     [Trigger]
     Operation=Install
@@ -254,11 +250,11 @@ yay -S --needed mesa lib32-mesa vulkan-intel lib32-vulkan-intel vulkan-icd-loade
     ```
     yay -S foomatic-db-engine foomatic-db foomatic-db-ppds foomatic-db-nonfree foomatic-db-nonfree-ppds gutenprint foomatic-db-gutenprint-ppds --needed
     ```
-- Imprimantes HP
+- Impresoras HP
     ```
     yay -S python-pyqt5 hplip --needed
     ```
-- Imprimantes Epson
+- Impresoras Epson
     ```
     yay -S --needed epson-inkjet-printer-escpr epson-inkjet-printer-escpr2 epson-inkjet-printer-201601w epson-inkjet-printer-n10-nx127
     ```
@@ -269,13 +265,13 @@ El segundo comando a continuación le dice a systemd que inicie el servicio blue
 yay -S --needed bluez bluez-utils bluez-plugins
 sudo systemctl enable --now bluetooth.service
 ```
-### PipeWire](https://pipewire.org/) (sonido)
+### [PipeWire](https://pipewire.org/) (sonido)
 Para obtener sonido **/!\** Diga sí a todo para sobrescribir todo con los nuevos paquetes. /!\**
 ```
 sudo pacman -S --needed pipewire lib32-pipewire pipewire-pulse pipewire-alsa pipewire-jack wireplumber alsa-utils alsa-firmware alsa-tools
 ```
 
-## LOGICIELS DE BASE <a name="section-4"></a>
+## SOFTWARE BÁSICO <a name="section-4"></a>
 
 ### Componentes de base
 Encontrarás códecs, utilidades, políticas, controladores..:
@@ -283,20 +279,20 @@ Encontrarás códecs, utilidades, políticas, controladores..:
 yay -S gst-plugins-bad gst-plugins-base gst-plugins-ugly gst-plugin-pipewire gstreamer-vaapi gst-plugins-good gst-libav gstreamer reflector-simple downgrade rebuild-detector mkinitcpio-firmware xdg-desktop-portal-gtk xdg-desktop-portal neofetch power- profiles-daemon lib32-pipewire hunspell hunspell-fr p7zip unrar ttf-liberation noto-fonts noto-fonts-emoji adobe-source-code-pro-fonts otf-font-awesome ttf-droid ntfs-3g fuse2fs exfat-utils fuse2 fuse3 bash-completion man-db man-pages --neededed
 ```
  
-### Logiciels divers
+### Software misceláneo
 ```
 yay -S libreoffice-fresh libreoffice-fresh-fr vlc discord gimp obs-studio gnome-disk-utility visual-studio-code-bin
 ```
 
-### Logiciels KDE
+### Software KDE
 
 Dispones de diferentes programas para gráficos, vídeo (montaje, gestión de códecs), utilidades con interfaz gráfica, etc.
 ```
 yay -S xdg-desktop-portal-kde okular print-manager kdenlive gwenview spectacle partitionmanager ffmpegthumbs qt6-wayland kdeplasma-addons powerdevil kcalc plasma-systemmonitor qt6-multimedia qt6-multimedia-gstreamer qt6-multimedia-ffmpeg kwalletmanager
 ```
 
-Vidéo complémentaire :
-<img src="assets/images/Cardiac-icon.png" width="30" height="30"> [Customiser KDE Partie 1 Layout, Thème, Kvantum, bonnes pratiques !](https://www.youtube.com/watch?v=vdlj83sb84s&t=1240s)
+Video complementario:
+<img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/Cardiac-icon.png" width="30" height="30"> [¡Personaliza el diseño, el tema, Kvantum, las mejores prácticas de KDE Parte 1!](https://www.youtube.com/watch?v=vdlj83sb84s&t=1240s)
 
 ### Cortafuegos
 La configuración por defecto puede bloquear el acceso a impresoras y otros dispositivos de tu red local.
@@ -337,7 +333,7 @@ sudo pacman -S --needed lutris wine-staging
 ```
 
 Vídeo relacionado:
-    <img src="assets/images/Cardiac-icon.png" width="30" height="30"> [Configuración de Lutris para portátiles Intel/Nvidia ](https://www.youtube.com/watch?v=Am3pgTXiUAA)
+<img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/Cardiac-icon.png" width="30" height="30"> [Configuración de Lutris para portátiles Intel/Nvidia ](https://www.youtube.com/watch?v=Am3pgTXiUAA)
 
 
 ### Soporte avanzado para mandos 
@@ -362,9 +358,129 @@ Aquí instalamos GOverlay, que es una interfaz gráfica para configurar MangoHud
 ```
 yay -S goverlay --needed
 ```
+### Aumentar la compatibilidad de juegos de Windows Aumentamos el valor predeterminado de esta variable, lo que nos permite almacenar más áreas de mapa de memoria. El valor predeterminado es muy bajo. El objetivo es mejorar la compatibilidad con los juegos de Windows a través de Wine o Steam (ver [ProtonDB](https://www.protondb.com/)), sabiendo que algunos juegos mal optimizados requieren este cambio para evitar que se bloqueen de nuevo.
 
+<img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/Cardiac-icon.png" width="30" height="30">[LINUX Gaming Eliminar bloqueos / Aumentar compatibilidad](https://youtu.be/sr4RgshrUYY)
+ 
+    ```
+    kate /etc/sysctl.d/99-sysctl.conf
+    ```
+    - Ajouter la ligne suivante :
+    ```
+    vm.max_map_count=16777216
+    ```
+## BONUS
 
+### Timeshift 
 
+- [Timeshift](https://github.com/linuxmint/timeshift) es una utilidad de Linux de código abierto para crear copias de seguridad de todo el sistema.
 
-   
+**/!\ ADVERTENCIA: de forma predeterminada, solo se realiza una copia de seguridad del sistema, no de su carpeta de usuario (la /home/). /!\\**
 
+```
+yay -S timeshift
+```
+- Evite timeshift y btrfs en Arch, ya he tenido [case](https://github.com/linuxmint/timeshift).
+
+  *"Las instantáneas BTRFS solo se admiten en sistemas BTRFS que tienen un diseño de subvolumen de tipo Ubuntu"*
+
+- Para beneficiarse de las copias de seguridad automáticas, deberá iniciar cronie. (Opcional)
+  ```
+  sudo systemctl enable --now cronie
+  ```
+
+### Fish
+
+[Fish] (https://fishshell.com/) es un shell de línea de comandos diseñado para ser interactivo y fácil de usar. Véase también [ArchWiki](https://wiki.archlinux.org/title/fish) sobre el tema. Reemplaza el shell con dum, que es bash.
+
+- Instala fish.
+    ```
+    yay -S fish                       # 1. Installer Fish
+    chsh -s /usr/bin/fish             # 2. Le mettre par défaut.
+    fish                              # 3. Lancer fish ou reboot et il sera par défaut.
+    fish_update_completions           # 4. Mettre à jour les complétions.
+    set -U fish_greeting              # 5. Enlever le message de bienvenue.
+    kate ~/.config/fish/config.fish   # 6. Créer un alias comme pour bash en début de tuto.
+    ```
+
+- A continuación, añade los siguientes alias entre if y end:
+    ```
+    alias update-arch='yay -Syu && flatpak update'
+    ```
+    ```
+    alias clean-arch='yay -Sc && yay -Yc && flatpak remove --unused'
+    ```
+    ```
+    alias fix-key='sudo rm /var/lib/pacman/sync/* && sudo rm -rf /etc/pacman.d/gnupg/* && sudo pacman-key --init && sudo pacman-key --populate && sudo pacman -Sy --noconfirm archlinux-keyring && sudo pacman --noconfirm -Su'
+    ```
+    
+- ***Reinicie a menos que se haya hecho en el paso 3***, los alias de cualquier tipo solo funcionan después de reiniciar la terminal.
+
+### [TKG Kernel](https://github.com/Frogging-Family/linux-tkg) (ADVERTENCIA usuarios avanzados) 
+
+[TKG] (https://github.com/Frogging-Family) ofrece una compilación de kernel altamente personalizable que proporciona una selección de correcciones y ajustes para mejorar el rendimiento de los juegos y las computadoras de escritorio. 
+
+Video complementario: [Kernel TKG en Arch + Boost Perfs](https://youtu.be/43yYIWMnDJA)
+```
+git clone https://github.com/Frogging-Family/linux-tkg.git
+cd linux-tkg
+makepkg -si
+```
+
+### [MESA-TKG](https://github.com/Frogging-Family/mesa-git) (ADVERTENCIA para usuarios avanzados)
+
+Al igual que para el kernel de TkG, pero para Mesa, una versión parcheada para agregar algunas correcciones y optimizaciones. Muy útil para los jugadores de AMD, no tiene interés para los jugadores de Nvidia.
+```
+git clone https://github.com/Frogging-Family/mesa-git.git
+cd mesa-git
+makepkg -si
+```
+Di sí a todo para aplastarlo todo con los nuevos paquetes.
+
+### [NVIDIA-ALL](https://github.com/Frogging-Family/nvidia-all) (ADVERTENCIA usuarios avanzados)
+
+Nvidia-all es una integración del controlador nvidia de TkG. Incluye parches de soporte para nuevos kernels. Le permite seleccionar la versión del controlador que desea instalar, ya sea la última versión oficial, una versión beta, la versión Vulkan, etc.
+
+<img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/Cardiac-icon.png" width="30" height="30">  [Estás usando Arch y Nvidia, ¡mira esto!](https://youtu.be/T0laE8gPtfY)
+```
+git clone https://github.com/Frogging-Family/nvidia-all.git
+cd nvidia-all
+makepkg -si
+```
+
+Di sí a todo para aplastarlo todo con los nuevos paquetes.
+
+### Instalación [Flatpak](https://wiki.archlinux.org/title/Flatpak)
+
+Anteriormente conocida como xdg-app, es una utilidad de implementación de software y administración de paquetes para Linux. Se promociona como una oferta de un entorno "sandbox" en el que los usuarios pueden ejecutar software de forma aislada del resto del sistema.
+
+[MangoHUD, Goverlay, Steam, Lutris FLATPAK !] (https://www.youtube.com/watch?v=1dha2UDSF4M)
+```
+yay -S flatpak flatpak-kcm
+flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+flatpak install com.bitwarden.desktop com.discordapp.Discord com.github.tchx84.Flatseal com.gitlab.davem.ClamTk com.heroicgameslauncher.hgl com.microsoft.Edge com.moonlight_stream.Moonlight com.rtosta.zapzap com.spotify.Client com.sweethome3d.Sweethome3d com.tutanota.Tutanota com.valvesoftware.Steam com.visualstudio.code info.febvre.Komikku io.github.anirbandey1.ChatbotClient io.github.koromelodev.mindmate net.davidotek.pupgui2 net.lutris.Lutris one.flipperzero.qFlipper org.bleachbit.BleachBit org.gnome.Boxes org.gnome.OCRFeeder org.kde.gcompris org.kde.kdenlive org.libreoffice.LibreOffice org.videolan.VLC org.yuzu_emu.yuzu us.zoom.Zoom xyz.ketok.Speedtest
+```
+
+### Problemas recurrentes: 
+
+[Arch Linux Parte 3: los problemas más comunes.] (https://youtu.be/vbOOQsYyPfc?si=wA2W8bOG1gtpfmnZ)
+
+[Mantenimiento/Actualización de Arch Linux Parte 4](https://youtu.be/Z7POSK2jnII?si=SNwagGGJXRVkYPdc)
+
+[Arch Linux Part 5 Arch-Chroot](https://youtu.be/iandJSjePiA?si=7uI8JZ-VxAVOsPTh)
+
+- Si no tienes sonido, prueba lo siguiente:
+    ```
+    yay -S sof-firmware
+    ```
+    
+- Para obtener ayuda, vaya al Discord de GLF (fr/en): [Discord GLF](http://discord.gg/EP3Jm8YMvj)
+
+## Fuentes
+
+Fuentes y enlaces de interés:
+- [ArchWiki](https://wiki.archlinux.org/)
+- [Cómo funciona Arch. WIKI] (https://www.youtube.com/watch?v=TQ3A9l2N5lI)
+- [Sitio GLF](https://www.gaminglinux.fr/)
+- [Discordia GLF](http://discord.gg/EP3Jm8YMvj)
+- [Mi canal de Youtube](https://www.youtube.com/@Cardiacman)
