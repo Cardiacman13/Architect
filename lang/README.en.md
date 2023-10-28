@@ -31,12 +31,13 @@ Download the ISO: [**Arch Linux - Downloads**](https://archlinux.org/download/)
 
 ### Table of Contents
 0. [Script-post-installation](#section-7)
-1. [Installation](#section-1)
-2. [Post installation](#section-2)
-3. [Hardware Support](#section-3)
-4. [Basic Software](#section-4)
-5. [Gaming](#section-5)
-6. [Bonus](#section-6)
+1. [Manual Installation]
+- [Installation](#section-1)
+- [Post installation](#section-2)
+- [Hardware Support](#section-3)
+- [Basic Software](#section-4)
+- [Gaming](#section-5)
+2. [Bonus](#section-6)
 
 ## INSTALLATION    <a name="section-1"></a>
 
