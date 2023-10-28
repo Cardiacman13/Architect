@@ -47,10 +47,9 @@ For all the following steps, when you have text presented in this way, it will i
 echo "Hello world !"            # Example command
 ```
 
-1. **Set the keyboard to French**
-    Be careful here: by default, you will be in QWERTY, so the "a" will be, and only for this command, on the "q" key of your keyboard.
+1. **Set the keyboard to English**
     ```
-    loadkeys fr
+    loadkeys en
     ```
 
 2. **Set up your Wi-Fi**
@@ -409,12 +408,12 @@ yay -S timeshift
 
 - Install fish.
     ```
-    yay -S fish # 1. install fish
-    chsh -s /usr/bin/fish # 2. Set it as default.
-    fish # 3. Run fish or reboot and it will default.
-    fish_update_completions # 4. Update completions.
-    set -U fish_greeting # 5. Remove welcome message.
-    kate ~/.config/fish/config.fish # 6. Create an alias as for bash at the beginning of this tutorial.
+    yay -S fish                       # 1. install fish
+    chsh -s /usr/bin/fish             # 2. Set it as default.
+    fish                              # 3. Run fish or reboot and it will default.
+    fish_update_completions           # 4. Update completions.
+    set -U fish_greeting              # 5. Remove welcome message.
+    kate ~/.config/fish/config.fish   # 6. Create an alias as for bash at the beginning of this tutorial.
     ```
 - Then add the following aliases between if and end:
     ```
@@ -495,10 +494,7 @@ flatpak install com.bitwarden.desktop com.discordapp.Discord com.github.tchx84.F
 
 Sources and useful links :
 - [ArchWiki](https://wiki.archlinux.org/)
-
 <img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/Cardiac-icon.png" width="30" height="30"> [Fonctionnement du WIKI d'Arch.](https://www.youtube.com/watch?v=TQ3A9l2N5lI)
-
-
 - [Site GLF](https://www.gaminglinux.fr/)
 - GLF Discord](http://discord.gg/EP3Jm8YMvj)
 - My Youtube channel](https://www.youtube.com/@Cardiacman)
