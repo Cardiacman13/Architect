@@ -147,7 +147,7 @@ N'hésitez pas à faire remonter les bugs, merci :)
     alias clean-arch='yay -Sc && yay -Yc && flatpak remove --unused'
     ```
     ```
-    alias fix-key='sudo rm /var/lib/pacman/sync/* && sudo rm -rf /etc/pacman.d/gnupg/* && sudo pacman-key --init && sudo pacman-key --populate && sudo pacman -Sy --noconfirm archlinux-keyring'
+    alias fix-key='sudo rm /var/lib/pacman/sync/* && sudo rm -rf /etc/pacman.d/gnupg/* && sudo pacman-key --init && sudo pacman-key --populate && sudo pacman -Sy --noconfirm archlinux-keyring && sudo pacman --noconfirm -Su'
     ```
     
    Relancer le terminal.
@@ -428,7 +428,7 @@ yay -S timeshift
     alias clean-arch='yay -Sc && yay -Yc && flatpak remove --unused'
     ```
     ```
-    alias fix-key='sudo rm /var/lib/pacman/sync/* && sudo rm -rf /etc/pacman.d/gnupg/* && sudo pacman-key --init && sudo pacman-key --populate && sudo pacman -Sy --noconfirm archlinux-keyring'
+    alias fix-key='sudo rm /var/lib/pacman/sync/* && sudo rm -rf /etc/pacman.d/gnupg/* && sudo pacman-key --init && sudo pacman-key --populate && sudo pacman -Sy --noconfirm archlinux-keyring && sudo pacman --noconfirm -Su'
     ```
 - ***Reboot sauf si ça a été fait à l’étape 3***, les alias quels qu’ils soient ne fonctionnent qu’après avoir relancé le terminal.
 
