@@ -48,7 +48,7 @@ function install_useful_packages() {
         rebuild-detector mkinitcpio-firmware xdg-desktop-portal xdg-desktop-portal-gtk neofetch 
         power-profiles-daemon hunspell hunspell-fr p7zip unrar ttf-liberation noto-fonts-emoji 
         adobe-source-code-pro-fonts otf-font-awesome ttf-droid ntfs-3g fuse2 fuse2fs fuse3 exfat-utils 
-        bash-completion xdg-desktop-portal-gtk ffmpegthumbs
+        bash-completion xdg-desktop-portal-gtk ffmpegthumbs man-db man-pages
     )
 
     # Installe les paquets utiles listés ci-dessus.
