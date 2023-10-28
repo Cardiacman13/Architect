@@ -401,10 +401,9 @@ yay -S timeshift
 
     *“BTRFS snapshots are supported only on BTRFS systems having an Ubuntu-type subvolume layout ”*
 
-- Pour bénéficier des sauvegardes automatiques, vous aurez besoin de cronie. (facultatif) 
+- Pour bénéficier des sauvegardes automatiques, vous aurez besoin de démarrer cronie. (facultatif) 
 
   ```
-  yay -S cronie
   sudo systemctl enable --now cronie
   ```
   
