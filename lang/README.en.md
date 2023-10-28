@@ -439,7 +439,7 @@ cd linux-tkg
 makepkg -si
 ```
 
-### MESA-TKG](https://github.com/Frogging-Family/mesa-git) (WARNING advanced users)
+### [MESA-TKG](https://github.com/Frogging-Family/mesa-git) (WARNING advanced users)
 
 Just like the TkG kernel, but for Mesa, a patched version to add a few fixes and optimizations.
 Very useful for AMD players, of no interest to Nvidia players.
@@ -495,5 +495,5 @@ Sources and useful links :
 - [ArchWiki](https://wiki.archlinux.org/)
 <img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/Cardiac-icon.png" width="30" height="30"> [Fonctionnement du WIKI d'Arch.](https://www.youtube.com/watch?v=TQ3A9l2N5lI)
 - [Site GLF](https://www.gaminglinux.fr/)
-- GLF Discord](http://discord.gg/EP3Jm8YMvj)
-- My Youtube channel](https://www.youtube.com/@Cardiacman)
+- [GLF Discord](http://discord.gg/EP3Jm8YMvj)
+- [My Youtube channel](https://www.youtube.com/@Cardiacman)
