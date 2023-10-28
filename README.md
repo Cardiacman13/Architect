@@ -84,7 +84,7 @@ Si Nvidia, s'assurer que sa carte est compatible avec les derniers drivers Nvidi
 **Script post installation :**
 
    ```
-   sudo pacman -Sy git
+   sudo pacman -Syu git
    git clone https://github.com/Cardiacman13/Tuto-Arch.git
    cd Tuto-Arch
    ./post-installation
