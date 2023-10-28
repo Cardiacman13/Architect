@@ -66,7 +66,7 @@ function main() {
 
     # Mise à jour des paquets
     echo -e "|- Mise à jour des paquets."
-    if sudo pacman -Syyu --noconfirm; then
+    if sudo pacman -Syu --noconfirm; then
         echo -e "${GREEN}Mise à jour réussie.${RESET}"
     else
         echo -e "${RED}Échec de la mise à jour.${RESET}"
