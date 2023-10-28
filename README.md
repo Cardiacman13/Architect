@@ -2,7 +2,7 @@
 
 [ **English version** ](https://github.com/Cardiacman13/post-install-arch)
 
-**Dernière modification du tuto le : 26/10/2023**
+**Dernière modification du tuto le : 28/10/2023**
 
 ## PREAMBULE
 ### IMPORTANT !! ###
@@ -69,7 +69,7 @@ echo "Hello world !"            # Exemple de commande
 
 3. **Archinstall**
     ```
-    pacman -Sy archinstall      # mise à jour du script archinstall avant l’installation
+    pacman -Syu archinstall      # mise à jour du script archinstall avant l’installation
     archinstall                 # pour lancer le script d'aide à l'installation de arch linux
     ```
     **/!\ Le menu d’archinstall est susceptible de changer au fil des mises à jour du script /!\\**
@@ -84,7 +84,7 @@ Si Nvidia, s'assurer que sa carte est compatible avec les derniers drivers Nvidi
 **Script post installation :**
 
    ```
-   sudo pacman -Sy git
+   sudo pacman -Syu git
    git clone https://github.com/Cardiacman13/Tuto-Arch.git
    cd Tuto-Arch
    ./post-installation
@@ -141,13 +141,13 @@ N'hésitez pas à faire remonter les bugs, merci :)
     ```
     Ajouter chacune de ces lignes à la fin du fichier :
     ```
-    alias update-arch='yay -Syyu && flatpak update'
+    alias update-arch='yay -Syu && flatpak update'
     ```
     ```
     alias clean-arch='yay -Sc && yay -Yc && flatpak remove --unused'
     ```
     ```
-    alias fix-key='sudo rm /var/lib/pacman/sync/* && sudo rm -rf /etc/pacman.d/gnupg/* && sudo pacman-key --init && sudo pacman-key --populate && sudo pacman -Sy --noconfirm archlinux-keyring'
+    alias fix-key='sudo rm /var/lib/pacman/sync/* && sudo rm -rf /etc/pacman.d/gnupg/* && sudo pacman-key --init && sudo pacman-key --populate && sudo pacman -Sy --noconfirm archlinux-keyring && sudo pacman --noconfirm -Su'
     ```
     
    Relancer le terminal.
@@ -255,8 +255,7 @@ yay -S --needed mesa lib32-mesa vulkan-intel lib32-vulkan-intel vulkan-icd-loade
     ```
     yay -S ghostscript gsfonts cups cups-filters cups-pdf system-config-printer
     avahi  --needed
-    sudo systemctl enable --now avahi-daemon
-    sudo systemctl enable --now cups
+    sudo systemctl enable --now avahi-daemon cups
     ```
 - Drivers
     ```
@@ -288,7 +287,7 @@ sudo pacman -S --needed pipewire lib32-pipewire pipewire-pulse pipewire-alsa pip
 ### Composants de base
 Vous y trouverez des codecs, des utilitaires, des polices, des drivers :
 ```
-yay -S gst-plugins-bad gst-plugins-base gst-plugins-ugly gst-plugin-pipewire gstreamer-vaapi gst-plugins-good gst-libav gstreamer reflector-simple downgrade rebuild-detector mkinitcpio-firmware xdg-desktop-portal-gtk xdg-desktop-portal neofetch power-profiles-daemon lib32-pipewire hunspell hunspell-fr p7zip unrar ttf-liberation noto-fonts noto-fonts-emoji adobe-source-code-pro-fonts otf-font-awesome ttf-droid ntfs-3g fuse2fs exfat-utils fuse2 fuse3 bash-completion --needed
+yay -S gst-plugins-bad gst-plugins-base gst-plugins-ugly gst-plugin-pipewire gstreamer-vaapi gst-plugins-good gst-libav gstreamer reflector-simple downgrade rebuild-detector mkinitcpio-firmware xdg-desktop-portal-gtk xdg-desktop-portal neofetch power-profiles-daemon lib32-pipewire hunspell hunspell-fr p7zip unrar ttf-liberation noto-fonts noto-fonts-emoji adobe-source-code-pro-fonts otf-font-awesome ttf-droid ntfs-3g fuse2fs exfat-utils fuse2 fuse3 bash-completion man-db man-pages --needed
 ```
  
 ### Logiciels divers
@@ -401,10 +400,9 @@ yay -S timeshift
 
     *“BTRFS snapshots are supported only on BTRFS systems having an Ubuntu-type subvolume layout ”*
 
-- Pour bénéficier des sauvegardes automatiques, vous aurez besoin de cronie. (facultatif) 
+- Pour bénéficier des sauvegardes automatiques, vous aurez besoin de démarrer cronie. (facultatif) 
 
   ```
-  yay -S cronie
   sudo systemctl enable --now cronie
   ```
   
@@ -414,7 +412,7 @@ yay -S timeshift
 
 - Installer fish.
     ```
-    yay -S fish man-db man-pages      # 1. Installer Fish
+    yay -S fish                       # 1. Installer Fish
     chsh -s /usr/bin/fish             # 2. Le mettre par défaut.
     fish                              # 3. Lancer fish ou reboot et il sera par défaut.
     fish_update_completions           # 4. Mettre à jour les complétions.
@@ -423,13 +421,13 @@ yay -S timeshift
     ```
 - Puis rajouter les alias suivants entre if et end :
     ```
-    alias update-arch='yay -Syyu && flatpak update'
+    alias update-arch='yay -Syu && flatpak update'
     ```
     ```
     alias clean-arch='yay -Sc && yay -Yc && flatpak remove --unused'
     ```
     ```
-    alias fix-key='sudo rm /var/lib/pacman/sync/* && sudo rm -rf /etc/pacman.d/gnupg/* && sudo pacman-key --init && sudo pacman-key --populate && sudo pacman -Sy --noconfirm archlinux-keyring'
+    alias fix-key='sudo rm /var/lib/pacman/sync/* && sudo rm -rf /etc/pacman.d/gnupg/* && sudo pacman-key --init && sudo pacman-key --populate && sudo pacman -Sy --noconfirm archlinux-keyring && sudo pacman --noconfirm -Su'
     ```
 - ***Reboot sauf si ça a été fait à l’étape 3***, les alias quels qu’ils soient ne fonctionnent qu’après avoir relancé le terminal.
 
@@ -493,6 +491,11 @@ flatpak install com.bitwarden.desktop com.discordapp.Discord com.github.tchx84.F
     ```
     [chaotic-aur]
     Include = /etc/pacman.d/chaotic-mirrorlist
+    ```
+
+- Enfin mettez à jour la liste des repo sur votre machine:
+    ```
+    sudo pacman -Syy
     ```
 
 ### Problèmes récurrents :
