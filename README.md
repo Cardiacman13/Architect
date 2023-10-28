@@ -1,7 +1,5 @@
 # TUTO ET SCRIPT POST-INSTALLATION ARCH LINUX
 
-[ **English version** ](https://github.com/Cardiacman13/post-install-arch)
-
 **Dernière modification du tuto le : 28/10/2023**
 
 ## PREAMBULE
@@ -476,26 +474,8 @@ Anciennement connu sous le nom de xdg-app, c'est un utilitaire de déploiement d
 ```
 yay -S flatpak flatpak-kcm
 flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+flatpak install com.bitwarden.desktop com.discordapp.Discord com.github.tchx84.Flatseal com.gitlab.davem.ClamTk com.heroicgameslauncher.hgl com.microsoft.Edge com.moonlight_stream.Moonlight com.rtosta.zapzap com.spotify.Client com.sweethome3d.Sweethome3d com.tutanota.Tutanota com.valvesoftware.Steam com.visualstudio.code info.febvre.Komikku io.github.anirbandey1.ChatbotClient io.github.koromelodev.mindmate net.davidotek.pupgui2 net.lutris.Lutris one.flipperzero.qFlipper org.bleachbit.BleachBit org.gnome.Boxes org.gnome.OCRFeeder org.kde.gcompris org.kde.kdenlive org.libreoffice.LibreOffice org.videolan.VLC org.yuzu_emu.yuzu us.zoom.Zoom xyz.ketok.Speedtest
 ```
-
-### [Chaotic AUR](https://aur.chaotic.cx/)
-- Le chaotic AUR est un dépôt AUR qui contient des paquets binaires précompilés pour Arch Linux et ses dérivés.
-    ```
-    pacman-key --recv-key 3056513887B78AEB --keyserver keyserver.ubuntu.com
-    pacman-key --lsign-key 3056513887B78AEB
-    pacman -U 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-keyring.pkg.tar.zst' 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-mirrorlist.pkg.tar.zst'
-    kate /etc/pacman.conf
-    ```
-- Puis ajouter ceci à la fin du fichier :
-    ```
-    [chaotic-aur]
-    Include = /etc/pacman.d/chaotic-mirrorlist
-    ```
-
-- Enfin mettez à jour la liste des repo sur votre machine:
-    ```
-    sudo pacman -Syy
-    ```
 
 ### Problèmes récurrents :
 
