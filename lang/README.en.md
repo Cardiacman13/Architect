@@ -10,7 +10,7 @@ Arch is a technical distribution aimed at a more advanced audience, consisting o
 
 The purpose of this tutorial is to install a stock Arch with a minimum of packages, according to our needs for office work and/or gaming.
 
-<img src="assets/images/Cardiac-icon.png" width="30" height="30"> This icon redirects you to my videos on certain parts of this tutorial.
+<img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/Cardiac-icon.png" width="30" height="30"> This icon redirects you to my videos on certain parts of this tutorial.
 
 <img src="assets/images/Cardiac-icon.png" width="30" height="30"> [ Arch Linux Tutorial Playlist ](https://www.youtube.com/watch?v=JE6VwNHLcyk&list=PLuIP_-MWRwtWEX0tyDpZPdwU6zCE1O1cY)
 
