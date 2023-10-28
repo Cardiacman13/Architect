@@ -371,13 +371,14 @@ Nous augmentons la valeur par défaut de cette variable, permettant de stocker d
     
 <img src="assets/images/Cardiac-icon.png" width="30" height="30"> [Gaming LINUX supprimer les crashs / augmenter la compatibilité](https://youtu.be/sr4RgshrUYY)
 
-    ```
-    kate /etc/sysctl.d/99-sysctl.conf
-    ```
-    - Ajouter la ligne suivante :
-    ```
-    vm.max_map_count=16777216
-    ```
+```
+kate /etc/sysctl.d/99-sysctl.conf
+```
+- Ajouter la ligne suivante :
+
+```
+vm.max_map_count=16777216
+```
 
 ## BONUS    <a name="section-6"></a>
 
