@@ -287,7 +287,7 @@ sudo pacman -S --needed pipewire lib32-pipewire pipewire-pulse pipewire-alsa pip
 ### Composants de base
 Vous y trouverez des codecs, des utilitaires, des polices, des drivers :
 ```
-yay -S gst-plugins-bad gst-plugins-base gst-plugins-ugly gst-plugin-pipewire gstreamer-vaapi gst-plugins-good gst-libav gstreamer reflector-simple downgrade rebuild-detector mkinitcpio-firmware xdg-desktop-portal-gtk xdg-desktop-portal neofetch power-profiles-daemon lib32-pipewire hunspell hunspell-fr p7zip unrar ttf-liberation noto-fonts noto-fonts-emoji adobe-source-code-pro-fonts otf-font-awesome ttf-droid ntfs-3g fuse2fs exfat-utils fuse2 fuse3 bash-completion --needed
+yay -S gst-plugins-bad gst-plugins-base gst-plugins-ugly gst-plugin-pipewire gstreamer-vaapi gst-plugins-good gst-libav gstreamer reflector-simple downgrade rebuild-detector mkinitcpio-firmware xdg-desktop-portal-gtk xdg-desktop-portal neofetch power-profiles-daemon lib32-pipewire hunspell hunspell-fr p7zip unrar ttf-liberation noto-fonts noto-fonts-emoji adobe-source-code-pro-fonts otf-font-awesome ttf-droid ntfs-3g fuse2fs exfat-utils fuse2 fuse3 bash-completion man-db man-pages --needed
 ```
  
 ### Logiciels divers
@@ -412,7 +412,7 @@ yay -S timeshift
 
 - Installer fish.
     ```
-    yay -S fish man-db man-pages      # 1. Installer Fish
+    yay -S fish                       # 1. Installer Fish
     chsh -s /usr/bin/fish             # 2. Le mettre par défaut.
     fish                              # 3. Lancer fish ou reboot et il sera par défaut.
     fish_update_completions           # 4. Mettre à jour les complétions.
