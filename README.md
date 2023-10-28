@@ -141,7 +141,7 @@ N'hésitez pas à faire remonter les bugs, merci :)
     ```
     Ajouter chacune de ces lignes à la fin du fichier :
     ```
-    alias update-arch='yay -Syyu && flatpak update'
+    alias update-arch='yay -Syu && flatpak update'
     ```
     ```
     alias clean-arch='yay -Sc && yay -Yc && flatpak remove --unused'
@@ -422,7 +422,7 @@ yay -S timeshift
     ```
 - Puis rajouter les alias suivants entre if et end :
     ```
-    alias update-arch='yay -Syyu && flatpak update'
+    alias update-arch='yay -Syu && flatpak update'
     ```
     ```
     alias clean-arch='yay -Sc && yay -Yc && flatpak remove --unused'
