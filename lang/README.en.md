@@ -299,7 +299,7 @@ yay -S xdg-desktop-portal-kde okular print-manager kdenlive gwenview spectacle p
 ```
 
 Additional Video:
-<img src="assets/images/Cardiac-icon.png" width="30" height="30"> [Customizing KDE Part 1 Layout, Theme, Kvantum, best practices!](https://www.youtube.com/watch?v=vdlj83sb84s&t=1240s)
+<img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/Cardiac-icon.png" width="30" height="30"> [Customizing KDE Part 1 Layout, Theme, Kvantum, best practices!](https://www.youtube.com/watch?v=vdlj83sb84s&t=1240s)
 
 ### Firewall
 The default configuration may block access to printers and other devices on your local network.
@@ -340,7 +340,7 @@ sudo pacman -S --needed lutris wine-staging
 ```
 
 Additional Video:
-    <img src="assets/images/Cardiac-icon.png" width="30" height="30"> [Setting up Lutris for Intel/Nvidia laptop ](https://www.youtube.com/watch?v=Am3pgTXiUAA)
+<img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/Cardiac-icon.png" width="30" height="30"> [Setting up Lutris for Intel/Nvidia laptop ](https://www.youtube.com/watch?v=Am3pgTXiUAA)
 
 ### Advanced controller support
 
@@ -369,7 +369,7 @@ yay -S goverlay --needed
 
 We increase the default value of this variable, allowing for the storage of more "memory map areas". The default value is very low. The goal is to improve compatibility with Windows games via Wine or Steam (See [ProtonDB](https://www.protondb.com/)), knowing that some poorly optimized games tend to reach this limit quickly, which can result in a crash.
 
-<img src="assets/images/Cardiac-icon.png" width="30" height="30"> [Gaming LINUX supprimer les crashs / augmenter la compatibilité](https://youtu.be/sr4RgshrUYY)
+<img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/Cardiac-icon.png" width="30" height="30"> [Gaming LINUX supprimer les crashs / augmenter la compatibilité](https://youtu.be/sr4RgshrUYY)
 
     ```
     kate /etc/sysctl.d/99-sysctl.conf
@@ -402,7 +402,7 @@ yay -S timeshift
   sudo systemctl enable --now cronie
   ```
   
-  ### Fish
+### Fish
 
 [Fish](https://fishshell.com/) is a command-line shell designed to be interactive and user-friendly. See also [ArchWiki](https://wiki.archlinux.org/title/fish) on the subject. It replaces the default shell, bash.
 
@@ -432,7 +432,7 @@ yay -S timeshift
 [TKG](https://github.com/Frogging-Family) is a highly customizable kernel build that provides a selection of fixes and tweaks to improve desktop and gaming performance.
 
 Related video:
-<img src="assets/images/Cardiac-icon.png" width="30" height="30"> [Kernel TKG on Arch + Boost its perfs](https://youtu.be/43yYIWMnDJA)
+<img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/Cardiac-icon.png" width="30" height="30"> [Kernel TKG on Arch + Boost its perfs](https://youtu.be/43yYIWMnDJA)
 ```
 git clone https://github.com/Frogging-Family/linux-tkg.git
 cd linux-tkg
@@ -454,7 +454,7 @@ Say yes to everything to overwrite everything with new packages.
 
 Nvidia-all is an integration of the nvidia driver by TkG. It includes support patches for new kernels. It lets you select the driver version you want to install, whether it's the latest official version, a beta version, the Vulkan version, etc.
 
-<img src="assets/images/Cardiac-icon.png" width="30" height="30"> [You're using Arch and Nvidia check this out!](https://youtu.be/T0laE8gPtfY)
+<img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/Cardiac-icon.png" width="30" height="30"> [You're using Arch and Nvidia check this out!](https://youtu.be/T0laE8gPtfY)
 ```
 git clone https://github.com/Frogging-Family/nvidia-all.git
 cd nvidia-all
@@ -468,7 +468,7 @@ Say yes to everything to overwrite everything with new packages.
 
 Formerly known as xdg-app, this is a software deployment and package management utility for Linux. It is promoted as offering a "sandbox" environment in which users can run software in isolation from the rest of the system.
 
-<img src="assets/images/Cardiac-icon.png" width="30" height="30"> [MangoHUD, Goverlay, Steam, Lutris FLATPAK!](https://www.youtube.com/watch?v=1dha2UDSF4M)
+<img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/Cardiac-icon.png" width="30" height="30"> [MangoHUD, Goverlay, Steam, Lutris FLATPAK!](https://www.youtube.com/watch?v=1dha2UDSF4M)
 ```
 yay -S flatpak flatpak-kcm
 flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
@@ -476,12 +476,11 @@ flatpak install com.bitwarden.desktop com.discordapp.Discord com.github.tchx84.F
 ```
 
 ### Recurring problems:
+<img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/Cardiac-icon.png" width="30" height="30"> [Arch Linux Part 3 the most common problems.](https://youtu.be/vbOOQsYyPfc?si=wA2W8bOG1gtpfmnZ)
 
- <img src="assets/images/Cardiac-icon.png" width="30" height="30"> [Arch Linux Part 3 the most common problems.](https://youtu.be/vbOOQsYyPfc?si=wA2W8bOG1gtpfmnZ)
-
- <img src="assets/images/Cardiac-icon.png" width="30" height="30"> [Arch Linux Part 4 Maintenance / updating](https://youtu.be/Z7POSK2jnII?si=SNwagGGJXRVkYPdc)
+<img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/Cardiac-icon.png" width="30" height="30"> [Arch Linux Part 4 Maintenance / updating](https://youtu.be/Z7POSK2jnII?si=SNwagGGJXRVkYPdc)
  
- <img src="assets/images/Cardiac-icon.png" width="30" height="30"> [Arch Linux Part 5 Arch-Chroot](https://youtu.be/iandJSjePiA?si=7uI8JZ-VxAVOsPTh)
+<img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/Cardiac-icon.png" width="30" height="30"> [Arch Linux Part 5 Arch-Chroot](https://youtu.be/iandJSjePiA?si=7uI8JZ-VxAVOsPTh)
 
 - If you have no sound, try :
     ```
