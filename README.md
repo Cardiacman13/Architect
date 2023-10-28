@@ -1,7 +1,5 @@
 # TUTO ET SCRIPT POST-INSTALLATION ARCH LINUX
 
-**Dernière modification du tuto le : 28/10/2023**
-
 ## PREAMBULE
 ### IMPORTANT !! ###
 **Ce tutoriel est à suivre absolument dans l'ordre indiqué !**
