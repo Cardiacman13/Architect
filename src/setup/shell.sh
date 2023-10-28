@@ -48,7 +48,7 @@ function chose_shell() {
             # Configure fish comme shell par défaut
             echo "Configuration du shell."
             echo "|- Installation de fish."
-            sudo pacman -S --noconfirm fish man-db man-pages >> /dev/null 2>&1
+            sudo pacman -S --noconfirm fish >> /dev/null 2>&1
             echo "|- Changement du shell par défaut."
             chsh -s /usr/bin/fish
             fish -c "fish_update_completions" >> /dev/null 2>&1
