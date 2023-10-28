@@ -12,15 +12,15 @@ function add_alias_u() {
 
     # Configuration des alias en fonction de l'outil AUR choisi
     if [[ "$AUR_HELPER" == "yay" ]]; then
-        alias_update="alias update-arch='yay -Syyu && flatpak update'"
+        alias_update="alias update-arch='yay -Syu && flatpak update'"
         alias_clean="alias clean-arch='yay -Sc && yay -Yc && flatpak remove --unused'"
     elif [[ "$AUR_HELPER" == "paru" ]]; then
-        alias_update="alias update-arch='paru -Syyu && flatpak update'"
+        alias_update="alias update-arch='paru -Syu && flatpak update'"
         alias_clean="alias clean-arch='paru -Sc && paru -c && flatpak remove --unused'"
     fi
 
     # Alias pour résoudre les problèmes de clé sur Arch Linux
-    local alias_key="alias fix-key='sudo rm /var/lib/pacman/sync/* && sudo rm -rf /etc/pacman.d/gnupg/* && sudo pacman-key --init && sudo pacman-key --populate && sudo pacman -Sy --noconfirm archlinux-keyring'"
+    local alias_key="alias fix-key='sudo rm /var/lib/pacman/sync/* && sudo rm -rf /etc/pacman.d/gnupg/* && sudo pacman-key --init && sudo pacman-key --populate && sudo pacman -Sy --noconfirm archlinux-keyring && sudo pacman --noconfirm -Su'"
 
     # Vérifie si le fichier existe et si l'alias n'est pas déjà présent
     if [[ -f "${file}" ]]; then

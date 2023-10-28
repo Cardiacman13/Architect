@@ -2,7 +2,7 @@
 
 [ **English version** ](https://github.com/Cardiacman13/post-install-arch)
 
-**Dernière modification du tuto le : 26/10/2023**
+**Dernière modification du tuto le : 28/10/2023**
 
 ## PREAMBULE
 ### IMPORTANT !! ###
@@ -69,7 +69,7 @@ echo "Hello world !"            # Exemple de commande
 
 3. **Archinstall**
     ```
-    pacman -Sy archinstall      # mise à jour du script archinstall avant l’installation
+    pacman -Syu archinstall      # mise à jour du script archinstall avant l’installation
     archinstall                 # pour lancer le script d'aide à l'installation de arch linux
     ```
     **/!\ Le menu d’archinstall est susceptible de changer au fil des mises à jour du script /!\\**
@@ -84,7 +84,7 @@ Si Nvidia, s'assurer que sa carte est compatible avec les derniers drivers Nvidi
 **Script post installation :**
 
    ```
-   sudo pacman -Sy git
+   sudo pacman -Syu git
    git clone https://github.com/Cardiacman13/Tuto-Arch.git
    cd Tuto-Arch
    ./post-installation
@@ -141,13 +141,13 @@ N'hésitez pas à faire remonter les bugs, merci :)
     ```
     Ajouter chacune de ces lignes à la fin du fichier :
     ```
-    alias update-arch='yay -Syyu && flatpak update'
+    alias update-arch='yay -Syu && flatpak update'
     ```
     ```
     alias clean-arch='yay -Sc && yay -Yc && flatpak remove --unused'
     ```
     ```
-    alias fix-key='sudo rm /var/lib/pacman/sync/* && sudo rm -rf /etc/pacman.d/gnupg/* && sudo pacman-key --init && sudo pacman-key --populate && sudo pacman -Sy --noconfirm archlinux-keyring'
+    alias fix-key='sudo rm /var/lib/pacman/sync/* && sudo rm -rf /etc/pacman.d/gnupg/* && sudo pacman-key --init && sudo pacman-key --populate && sudo pacman -Sy --noconfirm archlinux-keyring && sudo pacman --noconfirm -Su'
     ```
     
    Relancer le terminal.
@@ -255,8 +255,7 @@ yay -S --needed mesa lib32-mesa vulkan-intel lib32-vulkan-intel vulkan-icd-loade
     ```
     yay -S ghostscript gsfonts cups cups-filters cups-pdf system-config-printer
     avahi  --needed
-    sudo systemctl enable --now avahi-daemon
-    sudo systemctl enable --now cups
+    sudo systemctl enable --now avahi-daemon cups
     ```
 - Drivers
     ```
@@ -422,13 +421,13 @@ yay -S timeshift
     ```
 - Puis rajouter les alias suivants entre if et end :
     ```
-    alias update-arch='yay -Syyu && flatpak update'
+    alias update-arch='yay -Syu && flatpak update'
     ```
     ```
     alias clean-arch='yay -Sc && yay -Yc && flatpak remove --unused'
     ```
     ```
-    alias fix-key='sudo rm /var/lib/pacman/sync/* && sudo rm -rf /etc/pacman.d/gnupg/* && sudo pacman-key --init && sudo pacman-key --populate && sudo pacman -Sy --noconfirm archlinux-keyring'
+    alias fix-key='sudo rm /var/lib/pacman/sync/* && sudo rm -rf /etc/pacman.d/gnupg/* && sudo pacman-key --init && sudo pacman-key --populate && sudo pacman -Sy --noconfirm archlinux-keyring && sudo pacman --noconfirm -Su'
     ```
 - ***Reboot sauf si ça a été fait à l’étape 3***, les alias quels qu’ils soient ne fonctionnent qu’après avoir relancé le terminal.
 
@@ -491,6 +490,11 @@ flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.f
     ```
     [chaotic-aur]
     Include = /etc/pacman.d/chaotic-mirrorlist
+    ```
+
+- Enfin mettez à jour la liste des repo sur votre machine:
+    ```
+    sudo pacman -Syy
     ```
 
 ### Problèmes récurrents :
