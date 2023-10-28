@@ -2,7 +2,7 @@
 
 [ **English version** ](https://github.com/Cardiacman13/post-install-arch)
 
-**Dernière modification du tuto le : 26/10/2023**
+**Dernière modification du tuto le : 28/10/2023**
 
 ## PREAMBULE
 ### IMPORTANT !! ###
@@ -69,7 +69,7 @@ echo "Hello world !"            # Exemple de commande
 
 3. **Archinstall**
     ```
-    pacman -Sy archinstall      # mise à jour du script archinstall avant l’installation
+    pacman -Syu archinstall      # mise à jour du script archinstall avant l’installation
     archinstall                 # pour lancer le script d'aide à l'installation de arch linux
     ```
     **/!\ Le menu d’archinstall est susceptible de changer au fil des mises à jour du script /!\\**
