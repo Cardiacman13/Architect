@@ -12,7 +12,7 @@ The purpose of this tutorial is to install a stock Arch with a minimum of packag
 
 <img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/Cardiac-icon.png" width="30" height="30"> This icon redirects you to my videos on certain parts of this tutorial.
 
-<img src="assets/images/Cardiac-icon.png" width="30" height="30"> [ Arch Linux Tutorial Playlist ](https://www.youtube.com/watch?v=JE6VwNHLcyk&list=PLuIP_-MWRwtWEX0tyDpZPdwU6zCE1O1cY)
+<img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/Cardiac-icon.png" width="30" height="30"> [ Arch Linux Tutorial Playlist ](https://www.youtube.com/watch?v=JE6VwNHLcyk&list=PLuIP_-MWRwtWEX0tyDpZPdwU6zCE1O1cY)
 
 ### Conditions
 
@@ -40,7 +40,7 @@ Download the ISO: [**Arch Linux - Downloads**](https://archlinux.org/download/)
 ## INSTALLATION    <a name="section-1"></a>
 
 **Follow this video meticulously:**
-<img src="assets/images/Cardiac-icon.png" width="30" height="30"> [ Arch Linux Tutorial Part 1: Archinstall ](https://www.youtube.com/watch?v=JE6VwNHLcyk)
+<img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/Cardiac-icon.png" width="30" height="30"> [ Arch Linux Tutorial Part 1: Archinstall ](https://www.youtube.com/watch?v=JE6VwNHLcyk)
 
 For all the following steps, when you have text presented in this way, it will indicate a command to type in your terminal:
 ```
@@ -71,7 +71,7 @@ echo "Hello world !"            # Example command
     **/!\ The archinstall menu is subject to change with updates to the script /!\\**
     
 ## POST INSTALLATION    <a name="section-2"></a>
-<img src="assets/images/Cardiac-icon.png" width="30" height="30"> [ Arch Linux Tutorial Part 2: Post Installation ](https://youtu.be/FEFhC46BkXo?si=Gi-6BOhqENLoh5Ak)
+<img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/Cardiac-icon.png" width="30" height="30"> [ Arch Linux Tutorial Part 2: Post Installation ](https://youtu.be/FEFhC46BkXo?si=Gi-6BOhqENLoh5Ak)
 
 This script is to be executed on a clean installation, **freshly installed with archinstall**; it will perform the tutorial for you regardless of your choices of DE, bootloader, and file system.
 
@@ -128,7 +128,7 @@ Feel free to report any bugs, thank you :)
 
 3. Maintenance aliases:
 
-   <img src="assets/images/Cardiac-icon.png" width="30" height="30"> [ Arch Linux Tutorial Part 4: Maintenance ](https://www.youtube.com/watch?v=Z7POSK2jnII)
+  <img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/Cardiac-icon.png" width="30" height="30"> [ Arch Linux Tutorial Part 4: Maintenance ](https://www.youtube.com/watch?v=Z7POSK2jnII)
 
    This modification allows you to simply type “update-arch” in a terminal to update the system, “clean-arch” to clean it, or “fix-key” in case of an error with the gpg keys.
 
@@ -152,7 +152,7 @@ Feel free to report any bugs, thank you :)
 
 ### NVIDIA (stay on X11 at least until the release of KDE 6)
 Supplementary video explaining how to regain access to Wayland from GDM:
-<img src="assets/images/Cardiac-icon.png" width="30" height="30"> [Debian and Arch Linux Gnome Wayland with Nvidia (Debian in the doc)](https://www.youtube.com/watch?v=DVkWLvwtQ18)
+<img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/Cardiac-icon.png" width="30" height="30"> [Debian and Arch Linux Gnome Wayland with Nvidia (Debian in the doc)](https://www.youtube.com/watch?v=DVkWLvwtQ18)
 
 1. **Install the core components:**
     ```
@@ -430,7 +430,7 @@ yay -S gamemode
 
 Sources et liens utiles :
 - [ArchWiki](https://wiki.archlinux.org/)
-<img src="assets/images/Cardiac-icon.png" width="30" height="30"> [Fonctionnement du WIKI d'Arch.](https://www.youtube.com/watch?v=TQ3A9l2N5lI)
+<img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/Cardiac-icon.png" width="30" height="30"> [Fonctionnement du WIKI d'Arch.](https://www.youtube.com/watch?v=TQ3A9l2N5lI)
 - [Site GLF](https://www.gaminglinux.fr/)
 - [Discord GLF](http://discord.gg/EP3Jm8YMvj)
 - [Ma chaine Youtube](https://www.youtube.com/@Cardiacman)
