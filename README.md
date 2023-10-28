@@ -255,8 +255,7 @@ yay -S --needed mesa lib32-mesa vulkan-intel lib32-vulkan-intel vulkan-icd-loade
     ```
     yay -S ghostscript gsfonts cups cups-filters cups-pdf system-config-printer
     avahi  --needed
-    sudo systemctl enable --now avahi-daemon
-    sudo systemctl enable --now cups
+    sudo systemctl enable --now avahi-daemon cups
     ```
 - Drivers
     ```
