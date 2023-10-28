@@ -29,13 +29,13 @@ Sin embargo, si sabes lo que estás haciendo, las modificaciones para otras opci
 
 Descarga la ISO: [**Arch Linux - Descargas**](https://archlinux.org/download/)
 
-### Table des matières
-1. [Installation](#section-1)
-2. [Post installation](#section-2)
-3. [Support matériel](#section-3)
-4. [Logiciels de base](#section-4)
-5. [Gaming](#section-5)
-6. [Bonus](#section-6)
+### Tabla de contenidos
+1. [Instalación](#section-1)
+2. [Instalación posterior] (#section-2)
+3. [Soporte de hardware](#section-3)
+4. [Software básico](#section-4)
+5. [Juegos](#section-5)
+6. [Bonificación](#section-6)
 
 ## INSTALACIÓN <a name="section-1"></a>
 
@@ -227,19 +227,19 @@ El hook permite automatizar la reconstrucción del initramfs (el archivo que per
     ```
     mkinitcpio -P
     ```
-### AMD (ne pas faire si Nvidia)
+### AMD (no lo hagas si es Nvidia)
 Instalar los componentes core :
 ```
 yay -S --needed mesa lib32-mesa vulkan-radeon lib32-vulkan-radeon vulkan-icd-loader lib32-vulkan-icd-loader vulkan-mesa-layers lib32-vulkan-mesa-layers
 ```
 
-### INTEL (ne pas faire si Nvidia)
+### INTEL (no lo hagas si es Nvidia)
 Instalar los componentes core :
 ```
 yay -S --needed mesa lib32-mesa vulkan-intel lib32-vulkan-intel vulkan-icd-loader lib32-vulkan-icd-loader intel-media-driver
 ```
 
-### Imprimantes
+### Impresoras
 - Los indispensables
     ```
     yay -S ghostscript gsfonts cups cups-filters cups-pdf system-config-printer
@@ -339,7 +339,6 @@ Vídeo relacionado:
 ### Soporte avanzado para mandos 
 
 Controlador Linux avanzado para mandos inalámbricos Xbox 360|One|S|X (incluido con Xbox One S) y otros mandos como 8bitdo ([xpadneo](https://github.com/atar-axis/xpadneo)) ([xone](https://github.com/medusalix/xone))
-
 
 ```
 yay -S --needed xpadneo-dkms 
