@@ -8,7 +8,7 @@
 
 ## Presentation
 
-![Screenshot of a comment on a GitHub issue showing an image, added in the Markdown, of an Octocat smiling and raising a tentacle.](https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/archlinux-logo-dark-scalable.518881f04ca9.svg)
+<img src="https://github.com/Cardiacman13/Architect/blob/main/assets/images/desktop.png" width="1000" height="250">
 
 Arch is a technical distribution aimed at a more advanced audience, consisting of "building blocks". Think of it like a set of blank Lego, with a base that you need to build and shape as you wish, and if you do it wrong, things can break.
 
