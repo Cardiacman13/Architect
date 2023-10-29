@@ -25,6 +25,9 @@ Stay on the bleeding edge of gaming with Steam and Lutris, plus comprehensive dr
 <img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/speed.png" width="30" height="30"> **Precision Optimization**:
 Benefit from community-driven tweaks for unparalleled performance and stability.
 
+<img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/programming.png" width="30" height="30"> **All-in-One Desktop Wizard**:
+Simplify your experience with our all-in-one script, which prepares your desktop for work, gaming, multimedia, and bleeding-edge optimization.
+
 <img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/group.png" width="30" height="30"> **Community-Driven Excellence**:
 Join a thriving community backed by Gaming Linux FR reviewers and Arch Linux experts for ongoing support and updates.
 
