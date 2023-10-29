@@ -1,6 +1,7 @@
 # ARCH LINUX POST-INSTALLATION TUTORIAL AND SCRIPT
 
-[**Version Française**](https://github.com/Cardiacman13/Tuto-Arch/blob/main/lang/README.fr.md)
+[**Version Française**](https://github.com/Cardiacman13/Tuto-Arch/blob/main/lang/README.fr.md) / [**Versión Española**](https://github.com/Cardiacman13/Tuto-Arch/blob/main/lang/README.es.md)
+
 
 ## Presentation
 
