@@ -88,25 +88,25 @@ echo "Hello world !"            # Example command
 
 #### Optimize pacman
 
-1. This [modification](https://wiki.archlinux.org/title/Pacman#Enabling_parallel_downloads) allows for parallelization of package downloads. (PS: with kate, when you save, you might be asked to enter a password. Enter your root/sudo password.)
+This [modification](https://wiki.archlinux.org/title/Pacman#Enabling_parallel_downloads) allows for parallelization of package downloads. (PS: with kate, when you save, you might be asked to enter a password. Enter your root/sudo password.)
 
-   ```
-   kate /etc/pacman.conf
-   ```
+```
+kate /etc/pacman.conf
+```
 
-   Uncomment (remove the **#** from the following lines):
+Uncomment (remove the **#** from the following lines):
    
-   ```
-   #Misc options
-   #UseSyslog
-   Color <-
-   #NoProgressBar
-   #CheckSpace
-   VerbosePkgLists <- 
-   ParallelDownloads = 5 <-
-   ```
+```
+#Misc options
+#UseSyslog
+Color <-
+#NoProgressBar
+#CheckSpace
+VerbosePkgLists <- 
+ParallelDownloads = 5 <-
+```
 
-2. Installing yay
+#### Installing yay
 
    [Yay](https://github.com/Jguer/yay) is a handy tool for managing the installation and updating of software on Arch Linux-based systems.
    Yay especially makes it easier to use the AUR repository, a community-managed repository that significantly expands the available software library. This includes compiling these programs from their source, unless "-bin" is specified at the end of their name.
@@ -125,7 +125,7 @@ echo "Hello world !"            # Example command
    yay -Y --devel --save
    ```
 
-3. Maintenance aliases:
+#### Maintenance aliases:
 
   <img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/Cardiac-icon.png" width="30" height="30"> [ Arch Linux Tutorial Part 4: Maintenance ](https://www.youtube.com/watch?v=Z7POSK2jnII)
 
