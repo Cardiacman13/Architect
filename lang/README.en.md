@@ -1,9 +1,5 @@
 # ARCH LINUX POST-INSTALLATION TUTORIAL AND SCRIPT
 
-## PREAMBLE
-### IMPORTANT !! ###
-**This tutorial must be followed exactly in the order given!**
-
 ## Presentation
 
 ![Screenshot of a comment on a GitHub issue showing an image, added in the Markdown, of an Octocat smiling and raising a tentacle.](https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/archlinux-logo-dark-scalable.518881f04ca9.svg)
