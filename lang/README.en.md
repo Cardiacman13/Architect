@@ -507,31 +507,24 @@ flatpak install com.bitwarden.desktop com.discordapp.Discord com.github.tchx84.F
 
 [Version française](https://github.com/Cardiacman13/post-install-arch/blob/main/lang/README.fr.md)  [Versión española](https://github.com/Cardiacman13/post-install-arch/blob/main/lang/README.es.md)
 
-```
-Arch is a Technical Distro targeted towards more knowledgeable folk made of "Building Blocks",
-think of it as a blank Lego set, with a base that you will have to build and shape to your liking,
-and if you do it wrong things will break.
-```
-
-![Example Image](assets/images/Welcome.png)
-
+<img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/Welcome.png">
 
 The purpose of this script is to configure a **stock Arch** system with a **minimal set of packages** tailored to your needs right after using archinstall. This script is **oriented towards gaming**.
 
-**Before You Begin:**
+> [!NOTE]
+> **Before You Begin:**
+> This script is based on a tutorial that describes all the steps : [Tuto-Arch](https://github.com/Cardiacman13/Tuto-Arch/blob/main/lang/README.en.md)
+> This script is intended for use on a clean installation that has just been set up with `archinstall`.
+> Before running this script, make sure you have booted into a Desktop Environment.
+> It is not suitable for outdated computers. Ensure your hardware meets the requirements for the latest Nvidia drivers.
 
-- This script is based on a tutorial that describes all the steps : [Tuto-Arch](https://github.com/Cardiacman13/Tuto-Arch/blob/main/lang/README.en.md)
-- This script is intended for use on a clean installation that has just been set up with `archinstall`.
-- Before running this script, make sure you have booted into a Desktop Environment.
-- It is not suitable for outdated computers. Ensure your hardware meets the requirements for the latest Nvidia drivers.
-
-   ```bash
-   sudo pacman -Sy git
-   git clone https://github.com/Cardiacman13/post-install-arch.git
-   cd post-install-arch
-   chmod +x ./post-installation
-   ./post-installation
-   ```
+```bash
+sudo pacman -Sy git
+git clone https://github.com/Cardiacman13/post-install-arch.git
+cd post-install-arch
+chmod +x ./post-installation
+./post-installation
+```
 
 ### 1. Optimizing Pacman
 Enhance Pacman's functionality and user experience by making the following improvements:
