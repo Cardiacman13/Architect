@@ -1,7 +1,5 @@
 # DIDACTICIEL ET SCRIPT POST-INSTALLATION D'ARCH LINUX
 
-[**Version Française**](https://github.com/Cardiacman13/Tuto-Arch/blob/main/lang/README.fr.md)
-
 ## Présentation
 
 <img src="https://github.com/Cardiacman13/Architect/blob/main/assets/images/desktop.png" width="1000" height="250">
