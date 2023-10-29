@@ -1,8 +1,5 @@
 # ARCH LINUX POST-INSTALLATION TUTORIAL AND SCRIPT
 
-
-
-
 ## PREAMBLE
 ### IMPORTANT !! ###
 **This tutorial must be followed exactly in the order given!**
@@ -11,15 +8,11 @@
 
 ![Screenshot of a comment on a GitHub issue showing an image, added in the Markdown, of an Octocat smiling and raising a tentacle.](https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/archlinux-logo-dark-scalable.518881f04ca9.svg)
 
-Desktop environment
-
 Arch is a technical distribution aimed at a more advanced audience, consisting of "building blocks". Think of it like a set of blank Lego, with a base that you need to build and shape as you wish, and if you do it wrong, things can break.
 
 The purpose of this tutorial is to install a stock Arch with a minimum of packages, according to our needs for office work and/or gaming.
 
-> **Note**
-> <img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/Cardiac-icon.png" width="30" height="30"> This icon redirects you to my videos on certain parts of this tutorial.
-> <img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/Cardiac-icon.png" width="30" height="30"> [ Arch Linux Tutorial Playlist ](https://www.youtube.com/watch?v=JE6VwNHLcyk&list=PLuIP_-MWRwtWEX0tyDpZPdwU6zCE1O1cY)
+<img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/Cardiac-icon.png" width="30" height="30"> This icon redirects you to my videos on certain parts of this tutorial [**Arch Linux Tutorial Playlist**](https://www.youtube.com/watch?v=JE6VwNHLcyk&list=PLuIP_-MWRwtWEX0tyDpZPdwU6zCE1O1cY)
 
 ## Main Features
 
@@ -37,31 +30,28 @@ Join a thriving community backed by Gaming Linux FR reviewers and Arch Linux exp
 
 ### Conditions
 
-The script you will find later works regardless of your choices of DE / BOOT LOADER / FS.
-
-The tutorial is optimized for the following choices:
-- systemd-boot
-- Ext4
-- KDE
-- A pure Arch (incompatible with Garuda, EndeavourOS, Manjaro…) 
-
-However, if you know what you are doing, the modifications for other choices are minimal.
+> **Note**
+> The script you will find later works regardless of your choices of DE / BOOT LOADER / FS.
+> Tutorial and script aimed to be used with a pure Arch (incompatible with Garuda, EndeavourOS, Manjaro…)
+> However, if you know what you are doing, the modifications for other choices are minimal.
 
 Download the ISO: [**Arch Linux - Downloads**](https://archlinux.org/download/)
 
 ## Table of Contents
-0. [Script-post-installation](#section-7)
-1. [Manual Installation]
-- [Installation](#section-1)
-- [Post installation](#section-2)
-- [Hardware Support](#section-3)
-- [Basic Software](#section-4)
-- [Gaming](#section-5)
-2. [Bonus](#section-6)
+[Elevate your desktop](#Elevate)
+[Elevate your desktop](https://github.com/Cardiacman13/Tuto-Arch/edit/main/lang/README.en.md#-elevate-your-desktop)
+[Elevate your desktop](https://github.com/Cardiacman13/Tuto-Arch/edit/main/lang/README.en.md#-elevate-your-desktop)
+[Elevate your desktop](https://github.com/Cardiacman13/Tuto-Arch/edit/main/lang/README.en.md#-elevate-your-desktop)
 
-## INSTALLATION    <a name="section-1"></a>
 
-**Follow this video meticulously:**
+
+## <img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/pc.png" width="30" height="30"> **Elevate Your Desktop** <a name="Elevate"></a>
+
+### Installation
+
+> [!IMPORTANT]
+> Follow the steps meticulously
+
 <img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/Cardiac-icon.png" width="30" height="30"> [ Arch Linux Tutorial Part 1: Archinstall ](https://www.youtube.com/watch?v=JE6VwNHLcyk)
 
 For all the following steps, when you have text presented in this way, it will indicate a command to type in your terminal:
@@ -91,10 +81,10 @@ echo "Hello world !"            # Example command
     ```
     **/!\ The archinstall menu is subject to change with updates to the script /!\\**
     
-## POST INSTALLATION    <a name="section-2"></a>
+### Post-installation    <a name="section-2"></a>
 <img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/Cardiac-icon.png" width="30" height="30"> [ Arch Linux Tutorial Part 2: Post Installation ](https://youtu.be/FEFhC46BkXo?si=Gi-6BOhqENLoh5Ak)
 
-### Optimize pacman
+#### Optimize pacman
 
 1. This [modification](https://wiki.archlinux.org/title/Pacman#Enabling_parallel_downloads) allows for parallelization of package downloads. (PS: with kate, when you save, you might be asked to enter a password. Enter your root/sudo password.)
 
@@ -155,14 +145,14 @@ echo "Hello world !"            # Example command
    
    Restart the terminal.
 
-## HARDWARE SUPPORT    <a name="section-3"></a>
+### HARDWARE SUPPORT    <a name="section-3"></a>
 
-### NVIDIA (stay on X11 at least until the release of KDE 6)
+#### NVIDIA (stay on X11 at least until the release of KDE 6)
 Supplementary video explaining how to regain access to Wayland from GDM:
 <img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/Cardiac-icon.png" width="30" height="30"> [Debian and Arch Linux Gnome Wayland with Nvidia (Debian in the doc)](https://www.youtube.com/watch?v=DVkWLvwtQ18)
 
 1. **Install the core components:**
-    ```
+    "```
     yay -S --needed nvidia-dkms nvidia-utils lib32-nvidia-utils nvidia-settings vulkan-icd-loader lib32-vulkan-icd-loader cuda
     ```
 
@@ -242,19 +232,19 @@ In the folder:
     mkinitcpio -P
     ```
 
-### AMD (do not do if Nvidia)
+#### AMD (do not do if Nvidia)
 Install the core components:
 ```
 yay -S --needed mesa lib32-mesa vulkan-radeon lib32-vulkan-radeon vulkan-icd-loader lib32-vulkan-icd-loader vulkan-mesa-layers lib32-vulkan-mesa-layers
 ```
 
-### INTEL (do not do if Nvidia)
+#### INTEL (do not do if Nvidia)
 Install the core components:
 ```
 yay -S --needed mesa lib32-mesa vulkan-intel lib32-vulkan-intel vulkan-icd-loader lib32-vulkan-icd-loader intel-media-driver
 ```
 
-### Printers
+#### Printers
 - Essentials
     ```
     yay -S ghostscript gsfonts cups cups-filters cups-pdf system-config-printer
@@ -274,32 +264,32 @@ yay -S --needed mesa lib32-mesa vulkan-intel lib32-vulkan-intel vulkan-icd-loade
     yay -S --needed epson-inkjet-printer-escpr epson-inkjet-printer-escpr2 epson-inkjet-printer-201601w epson-inkjet-printer-n10-nx127
     ```
 
-### Bluetooth
+#### Bluetooth
 The second command below asks systemd to immediately start the bluetooth service, and also to activate it on every boot.
 ```
 yay -S --needed bluez bluez-utils bluez-plugins
 sudo systemctl enable --now  bluetooth.service
 ```
-### [PipeWire](https://pipewire.org/) (son)
+#### [PipeWire](https://pipewire.org/) (son)
 To have sound **/!\ Say yes to everything to crush everything with the new packages. /!\**
 ```
 sudo pacman -S --needed pipewire lib32-pipewire pipewire-pulse pipewire-alsa pipewire-jack wireplumber alsa-utils alsa-firmware alsa-tools
 ```
 
-## BASIC SOFTWARE <a name="section-4"></a>
+### BASIC SOFTWARE <a name="section-4"></a>
 
-### Basic Components
+#### Basic Components
 Here you will find codecs, utilities, fonts, drivers:
 ```
 yay -S gst-plugins-bad gst-plugins-base gst-plugins-ugly gst-plugin-pipewire gstreamer-vaapi gst-plugins-good gst-libav gstreamer reflector-simple downgrade rebuild-detector mkinitcpio-firmware xdg-desktop-portal-gtk xdg-desktop-portal neofetch power-profiles-daemon lib32-pipewire hunspell hunspell-fr p7zip unrar ttf-liberation noto-fonts noto-fonts-emoji adobe-source-code-pro-fonts otf-font-awesome ttf-droid ntfs-3g fuse2fs exfat-utils fuse2 fuse3 bash-completion man-db man-pages --needed
 ```
 
-### Miscellaneous Software
+#### Miscellaneous Software
 ```
 yay -S libreoffice-fresh libreoffice-fresh-fr vlc discord gimp obs-studio gnome-disk-utility visual-studio-code-bin
 ```
 
-### KDE Software
+#### KDE Software
 
 Here are various software for graphics, video (editing, codec support), graphical interface utilities, etc.
 ```
@@ -309,7 +299,7 @@ yay -S xdg-desktop-portal-kde okular print-manager kdenlive gwenview spectacle p
 Additional Video:
 <img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/Cardiac-icon.png" width="30" height="30"> [Customizing KDE Part 1 Layout, Theme, Kvantum, best practices!](https://www.youtube.com/watch?v=vdlj83sb84s&t=1240s)
 
-### Firewall
+#### Firewall
 The default configuration may block access to printers and other devices on your local network.
 Here is a little link to help you: https://www.dsfc.net/infra/securite/configurer-firewalld/
 ```
@@ -318,7 +308,7 @@ sudo systemctl enable --now firewalld.service
 firewall-applet &
 ```
 
-### Reflector for automatic mirror updates
+#### Reflector for automatic mirror updates
 
 ```
 yay -S reflector-simple
@@ -330,7 +320,55 @@ A command to generate a list of mirrors, to be done once after the first install
 sudo reflector --score 20 --fastest 5 --sort rate --save /etc/pacman.d/mirrorlist
 ```
 
-## GAMING <a name="section-5"></a>
+#### Timeshift
+
+- [Timeshift](https://github.com/linuxmint/timeshift) est un utilitaire Linux open source pour créer des sauvegardes de tout votre système.
+
+**/!\ ATTENTION : par défaut, c'est uniquement le système qui est sauvegardé, pas votre dossier utilisateur (le /home/) ! /!\\**
+
+
+```
+yay -S timeshift
+```
+
+- Évitez timeshift et btrfs sur Arch, J’ai déjà eu de la [casse](https://github.com/linuxmint/timeshift).
+
+    *“BTRFS snapshots are supported only on BTRFS systems having an Ubuntu-type subvolume layout ”*
+
+- Pour bénéficier des sauvegardes automatiques, vous aurez besoin de démarrer cronie. (facultatif) 
+
+  ```
+  sudo systemctl enable --now cronie
+  ```
+  
+#### Fish
+
+[Fish](https://fishshell.com/) is a command-line shell designed to be interactive and user-friendly. See also [ArchWiki](https://wiki.archlinux.org/title/fish) on the subject. It replaces the default shell, bash.
+
+- Install fish.
+    ```
+    yay -S fish                       # 1. install fish
+    chsh -s /usr/bin/fish             # 2. Set it as default.
+    fish                              # 3. Run fish or reboot and it will default.
+    fish_update_completions           # 4. Update completions.
+    set -U fish_greeting              # 5. Remove welcome message.
+    kate ~/.config/fish/config.fish   # 6. Create an alias as for bash at the beginning of this tutorial.
+    ```
+- Then add the following aliases between if and end:
+    ```
+    alias update-arch='yay -Syu && flatpak update'
+    ```
+    ```
+    alias clean-arch='yay -Sc && yay -Yc && flatpak remove --unused'
+    ```
+    ```
+    alias fix-key='sudo rm /var/lib/pacman/sync/* && sudo rm -rf /etc/pacman.d/gnupg/* && sudo pacman-key --init && sudo pacman-key --populate && sudo pacman -Sy --noconfirm archlinux-keyring && sudo pacman --noconfirm -Su'
+    ```
+- ***Reboot unless done in step 3***, aliases of any kind only work after restarting the terminal.
+
+
+
+## <img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/game-console.png" width="30" height="30"> **Level Up Your Gaming** <a name="section-5"></a>
 
 ### Steam
 Note that AMD or Nvidia drivers must be installed beforehand as mentioned in the [HARDWARE SUPPORT](#HARDWARE-SUPPORT) section.
@@ -387,55 +425,12 @@ We increase the default value of this variable, allowing for the storage of more
     vm.max_map_count=16777216
     ```
 
-## BONUS <a name="section-6"></a>
+## <img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/speed.png" width="30" height="30"> **Precision Optimization**:
 
-### Timeshift
+### [Kernel TKG](https://github.com/Frogging-Family/linux-tkg)
 
-- [Timeshift](https://github.com/linuxmint/timeshift) est un utilitaire Linux open source pour créer des sauvegardes de tout votre système.
-
-**/!\ ATTENTION : par défaut, c'est uniquement le système qui est sauvegardé, pas votre dossier utilisateur (le /home/) ! /!\\**
-
-
-```
-yay -S timeshift
-```
-
-- Évitez timeshift et btrfs sur Arch, J’ai déjà eu de la [casse](https://github.com/linuxmint/timeshift).
-
-    *“BTRFS snapshots are supported only on BTRFS systems having an Ubuntu-type subvolume layout ”*
-
-- Pour bénéficier des sauvegardes automatiques, vous aurez besoin de démarrer cronie. (facultatif) 
-
-  ```
-  sudo systemctl enable --now cronie
-  ```
-  
-### Fish
-
-[Fish](https://fishshell.com/) is a command-line shell designed to be interactive and user-friendly. See also [ArchWiki](https://wiki.archlinux.org/title/fish) on the subject. It replaces the default shell, bash.
-
-- Install fish.
-    ```
-    yay -S fish                       # 1. install fish
-    chsh -s /usr/bin/fish             # 2. Set it as default.
-    fish                              # 3. Run fish or reboot and it will default.
-    fish_update_completions           # 4. Update completions.
-    set -U fish_greeting              # 5. Remove welcome message.
-    kate ~/.config/fish/config.fish   # 6. Create an alias as for bash at the beginning of this tutorial.
-    ```
-- Then add the following aliases between if and end:
-    ```
-    alias update-arch='yay -Syu && flatpak update'
-    ```
-    ```
-    alias clean-arch='yay -Sc && yay -Yc && flatpak remove --unused'
-    ```
-    ```
-    alias fix-key='sudo rm /var/lib/pacman/sync/* && sudo rm -rf /etc/pacman.d/gnupg/* && sudo pacman-key --init && sudo pacman-key --populate && sudo pacman -Sy --noconfirm archlinux-keyring && sudo pacman --noconfirm -Su'
-    ```
-- ***Reboot unless done in step 3***, aliases of any kind only work after restarting the terminal.
-
-### [Kernel TKG](https://github.com/Frogging-Family/linux-tkg) (WARNING advanced users)
+> [!WARNING]
+> This step is intended for advanced users :star:
 
 [TKG](https://github.com/Frogging-Family) is a highly customizable kernel build that provides a selection of fixes and tweaks to improve desktop and gaming performance.
 
@@ -447,7 +442,10 @@ cd linux-tkg
 makepkg -si
 ```
 
-### [MESA-TKG](https://github.com/Frogging-Family/mesa-git) (WARNING advanced users)
+### [MESA-TKG](https://github.com/Frogging-Family/mesa-git)
+
+> [!WARNING]
+> This step is intended for advanced users :star:
 
 Just like the TkG kernel, but for Mesa, a patched version to add a few fixes and optimizations.
 Very useful for AMD players, of no interest to Nvidia players.
@@ -458,7 +456,10 @@ makepkg -si
 ```
 Say yes to everything to overwrite everything with new packages.
 
-### [NVIDIA-ALL](https://github.com/Frogging-Family/nvidia-all) (WARNING advanced users)
+### [NVIDIA-ALL](https://github.com/Frogging-Family/nvidia-all)
+
+> [!WARNING]
+> This step is intended for advanced users :star:
 
 Nvidia-all is an integration of the nvidia driver by TkG. It includes support patches for new kernels. It lets you select the driver version you want to install, whether it's the latest official version, a beta version, the Vulkan version, etc.
 
@@ -483,7 +484,7 @@ flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.f
 flatpak install com.bitwarden.desktop com.discordapp.Discord com.github.tchx84.Flatseal com.gitlab.davem.ClamTk com.heroicgameslauncher.hgl com.microsoft.Edge com. moonlight_stream.Moonlight com.rtosta.zapzap com.spotify.Client com.sweethome3d.Sweethome3d com.tutanota.Tutanota com.valvesoftware.Steam com.visualstudio.code info.febvre. Komikku io.github.anirbandey1.ChatbotClient io.github.koromelodev.mindmate net.davidotek.pupgui2 net.lutris.Lutris one.flipperzero.qFlipper org.bleachbit.BleachBit org. gnome.Boxes org.gnome.OCRFeeder org.kde.gcompris org.kde.kdenlive org.libreoffice.LibreOffice org.videolan.VLC org.yuzu_emu.yuzu us.zoom.Zoom xyz.ketok.Speedtest
 ```
 
-### Recurring problems:
+## Troubleshooting
 <img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/Cardiac-icon.png" width="30" height="30"> [Arch Linux Part 3 the most common problems.](https://youtu.be/vbOOQsYyPfc?si=wA2W8bOG1gtpfmnZ)
 
 <img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/Cardiac-icon.png" width="30" height="30"> [Arch Linux Part 4 Maintenance / updating](https://youtu.be/Z7POSK2jnII?si=SNwagGGJXRVkYPdc)
