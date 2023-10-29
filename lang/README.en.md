@@ -38,14 +38,16 @@ Join a thriving community backed by Gaming Linux FR reviewers and Arch Linux exp
 Download the ISO: [**Arch Linux - Downloads**](https://archlinux.org/download/)
 
 ## Table of Contents
-[Elevate your desktop](#Elevate)
-[Elevate your desktop](https://github.com/Cardiacman13/Tuto-Arch/edit/main/lang/README.en.md#-elevate-your-desktop)
-[Elevate your desktop](https://github.com/Cardiacman13/Tuto-Arch/edit/main/lang/README.en.md#-elevate-your-desktop)
-[Elevate your desktop](https://github.com/Cardiacman13/Tuto-Arch/edit/main/lang/README.en.md#-elevate-your-desktop)
+1. [Elevate your desktop](#elevate)
+2. [Level Up Your Gaming](#gaming)
+3. [Precision Optimization](#optimization)
+4. [Troubleshooting](#troubleshooting)
+5. [All-in-one script](#script)
+6. [Community stuff](#community)
 
 
 
-## <img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/pc.png" width="30" height="30"> **Elevate Your Desktop** <a name="Elevate"></a>
+## <img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/pc.png" width="30" height="30"> **Elevate Your Desktop** <a name="elevate"/>
 
 ### Installation
 
@@ -81,7 +83,7 @@ echo "Hello world !"            # Example command
     ```
     **/!\ The archinstall menu is subject to change with updates to the script /!\\**
     
-### Post-installation    <a name="section-2"></a>
+### Post-installation
 <img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/Cardiac-icon.png" width="30" height="30"> [ Arch Linux Tutorial Part 2: Post Installation ](https://youtu.be/FEFhC46BkXo?si=Gi-6BOhqENLoh5Ak)
 
 #### Optimize pacman
@@ -145,7 +147,7 @@ echo "Hello world !"            # Example command
    
    Restart the terminal.
 
-### HARDWARE SUPPORT    <a name="section-3"></a>
+### HARDWARE SUPPORT
 
 #### NVIDIA (stay on X11 at least until the release of KDE 6)
 Supplementary video explaining how to regain access to Wayland from GDM:
@@ -276,7 +278,7 @@ To have sound **/!\ Say yes to everything to crush everything with the new packa
 sudo pacman -S --needed pipewire lib32-pipewire pipewire-pulse pipewire-alsa pipewire-jack wireplumber alsa-utils alsa-firmware alsa-tools
 ```
 
-### BASIC SOFTWARE <a name="section-4"></a>
+### BASIC SOFTWARE
 
 #### Basic Components
 Here you will find codecs, utilities, fonts, drivers:
@@ -368,7 +370,7 @@ yay -S timeshift
 
 
 
-## <img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/game-console.png" width="30" height="30"> **Level Up Your Gaming** <a name="section-5"></a>
+## <img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/game-console.png" width="30" height="30"> **Level Up Your Gaming** <a name="gaming"/>
 
 ### Steam
 Note that AMD or Nvidia drivers must be installed beforehand as mentioned in the [HARDWARE SUPPORT](#HARDWARE-SUPPORT) section.
@@ -425,7 +427,7 @@ We increase the default value of this variable, allowing for the storage of more
     vm.max_map_count=16777216
     ```
 
-## <img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/speed.png" width="30" height="30"> **Precision Optimization**:
+## <img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/speed.png" width="30" height="30"> **Precision Optimization**: <a name="optimization"/>
 
 ### [Kernel TKG](https://github.com/Frogging-Family/linux-tkg)
 
@@ -484,7 +486,7 @@ flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.f
 flatpak install com.bitwarden.desktop com.discordapp.Discord com.github.tchx84.Flatseal com.gitlab.davem.ClamTk com.heroicgameslauncher.hgl com.microsoft.Edge com. moonlight_stream.Moonlight com.rtosta.zapzap com.spotify.Client com.sweethome3d.Sweethome3d com.tutanota.Tutanota com.valvesoftware.Steam com.visualstudio.code info.febvre. Komikku io.github.anirbandey1.ChatbotClient io.github.koromelodev.mindmate net.davidotek.pupgui2 net.lutris.Lutris one.flipperzero.qFlipper org.bleachbit.BleachBit org. gnome.Boxes org.gnome.OCRFeeder org.kde.gcompris org.kde.kdenlive org.libreoffice.LibreOffice org.videolan.VLC org.yuzu_emu.yuzu us.zoom.Zoom xyz.ketok.Speedtest
 ```
 
-## Troubleshooting
+## Troubleshooting <a name="troubleshooting"/>
 <img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/Cardiac-icon.png" width="30" height="30"> [Arch Linux Part 3 the most common problems.](https://youtu.be/vbOOQsYyPfc?si=wA2W8bOG1gtpfmnZ)
 
 <img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/Cardiac-icon.png" width="30" height="30"> [Arch Linux Part 4 Maintenance / updating](https://youtu.be/Z7POSK2jnII?si=SNwagGGJXRVkYPdc)
@@ -498,7 +500,7 @@ flatpak install com.bitwarden.desktop com.discordapp.Discord com.github.tchx84.F
 
 - For help, visit the GLF Discord (fr/en): [Discord GLF](http://discord.gg/EP3Jm8YMvj)
 
-# Arch Linux Post-Install Script <a name="section-7"></a>
+# Arch Linux Post-Install Script <a name="script"/>
 
 [Version française](https://github.com/Cardiacman13/post-install-arch/blob/main/lang/README.fr.md)  [Versión española](https://github.com/Cardiacman13/post-install-arch/blob/main/lang/README.es.md)
 
@@ -527,16 +529,8 @@ The purpose of this script is to configure a **stock Arch** system with a **mini
    chmod +x ./post-installation
    ./post-installation
    ```
-## Table of Contents
 
-1. [Optimizing Pacman](#section-8)
-2. [Adding Useful Aliases](#section-9)
-3. [Assisting with GPU Installation for Gaming](#section-10)
-4. [Install Some Base Packages](#section-11)
-5. [Miscellaneous Enhancements](#section-12)
-6. [Installation of Various Software](#section-13)
-
-## 1. Optimizing Pacman:  <a name="section-8"></a>
+## 1. Optimizing Pacman
 Enhance Pacman's functionality and user experience by making the following improvements:
 
 - Enabling colored output.
@@ -544,7 +538,7 @@ Enhance Pacman's functionality and user experience by making the following impro
 - Enabling parallel downloads.
 - Enabling multilib support.
 
-## 2. Adding Useful Aliases:  <a name="section-9"></a>
+## 2. Adding Useful Aliases
 Simplify your command-line tasks with these helpful aliases:
 
 - update-arch: Updates your system apps with a single command.
@@ -552,7 +546,7 @@ Simplify your command-line tasks with these helpful aliases:
 - fix-key: Fixes key-related issues, ensuring a smooth update process.
 
 
-## 3. Assisting with AMD, NVIDIA, or Intel GPU Installation for Gaming:  <a name="section-10"></a>
+## 3. Assisting with AMD, NVIDIA, or Intel GPU Installation for Gaming
 Get your gaming-ready with GPU setup, which includes:
 
 - Installing drivers.
@@ -566,7 +560,7 @@ Get your gaming-ready with GPU setup, which includes:
     - Cloning and installing from the `Frogging-Family/nvidia-all` repository.
     - Installing CUDA.
 
-## 4. Install Some Base Packages:  <a name="section-11"></a>
+## 4. Install Some Base Packages
 Install fundamental packages for a complete experience:
 
 - [yay](https://github.com/Jguer/yay) or [paru](https://github.com/Morganamilo/paru) AUR helper.
@@ -575,7 +569,7 @@ Install fundamental packages for a complete experience:
 - Codecs.
 - Other essential packages.
 
-## 5. Miscellaneous Enhancements:  <a name="section-12"></a>
+## 5. Miscellaneous Enhancements
 Fine-tune your system for an enhanced experience:
 
 - Boostin `vm.max_map_count` to improve compatibility with Windows games. [Arch wiki about vm-max-map-count](https://wiki.archlinux.org/title/gaming#Increase_vm.max_map_count)
@@ -584,7 +578,7 @@ Fine-tune your system for an enhanced experience:
 - Advanced support for Xbox, PS4/PS5, 8bitdo controllers
 - Propose to configure Fish as a command-line shell.
 
-## 6. Assisting with the Installation of Various Software:  <a name="section-13"></a>
+## 6. Assisting with the Installation of Various Software
 You have the freedom to choose which additional software to install based on your specific needs:
 
 - `Discord`
@@ -601,7 +595,7 @@ You have the freedom to choose which additional software to install based on you
 
 This post-installation script is your one-stop solution for configuring and optimizing your Arch Linux system, ensuring a smooth and enjoyable gaming experience. Enjoy your newly enhanced Arch Linux setup!
 
-## Sources
+## Sources <a name="community"/>
 
 Sources and useful links :
 - [ArchWiki](https://wiki.archlinux.org/)
