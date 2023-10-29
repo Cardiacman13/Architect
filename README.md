@@ -156,7 +156,7 @@ Supplementary video explaining how to regain access to Wayland from GDM:
 <img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/Cardiac-icon.png" width="30" height="30"> [Debian and Arch Linux Gnome Wayland with Nvidia (Debian in the doc)](https://www.youtube.com/watch?v=DVkWLvwtQ18)
 
 1. **Install the core components:**
-    "```
+    ```
     yay -S --needed nvidia-dkms nvidia-utils lib32-nvidia-utils nvidia-settings vulkan-icd-loader lib32-vulkan-icd-loader cuda
     ```
 
@@ -421,13 +421,16 @@ We increase the default value of this variable, allowing for the storage of more
 
 <img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/Cardiac-icon.png" width="30" height="30"> [Gaming LINUX supprimer les crashs / augmenter la compatibilité](https://youtu.be/sr4RgshrUYY)
 
-    ```
-    kate /etc/sysctl.d/99-sysctl.conf
-    ```
-    - Ajouter la ligne suivante :
-    ```
-    vm.max_map_count=16777216
-    ```
+- Ajouter dans :
+
+  ```
+  kate /etc/sysctl.d/99-sysctl.conf
+  ``` 
+    la ligne suivante:
+      ` 
+      vm.max_map_count=16777216
+      `
+
 
 ## <img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/speed.png" width="30" height="30"> **Precision Optimization**: <a name="optimization"/>
 
