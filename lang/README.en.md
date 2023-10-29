@@ -2,7 +2,7 @@
 
 ## Presentation
 
-<img src="https://github.com/Cardiacman13/Architect/blob/main/assets/images/desktop.png" width="30" height="30">
+<img src="https://github.com/Cardiacman13/Architect/blob/main/assets/images/desktop.png" width="1000" height="250">
 
 Arch is a technical distribution aimed at a more advanced audience, consisting of "building blocks". Think of it like a set of blank Lego, with a base that you need to build and shape as you wish, and if you do it wrong, things can break.
 
