@@ -1,9 +1,5 @@
 # ARCH LINUX POST-INSTALLATION TUTORIAL AND SCRIPT
 
-## PREAMBLE
-### IMPORTANT !! ###
-**This tutorial must be followed exactly in the order given!**
-
 ## Presentation
 
 <img src="https://github.com/Cardiacman13/Architect/blob/main/assets/images/desktop.png" width="30" height="30">
