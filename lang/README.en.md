@@ -502,15 +502,13 @@ flatpak install com.bitwarden.desktop com.discordapp.Discord com.github.tchx84.F
 
 ## Arch Linux Post-Install Script <a name="script"/>
 
-[Version française](https://github.com/Cardiacman13/post-install-arch/blob/main/lang/README.fr.md)  [Versión española](https://github.com/Cardiacman13/post-install-arch/blob/main/lang/README.es.md)
-
 <img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/Welcome.png">
 
 The purpose of this script is to configure a **stock Arch** system with a **minimal set of packages** tailored to your needs right after using archinstall. This script is **oriented towards gaming**.
 
 > [!NOTE]
 > **Before You Begin:**
-> This script is based on a tutorial that describes all the steps : [Tuto-Arch](https://github.com/Cardiacman13/Tuto-Arch/blob/main/lang/README.en.md)
+> This script is based on a tutorial that describes all the steps : [Tuto-Arch](https://github.com/Cardiacman13/Architect/edit/main/lang/README.en.md)
 > This script is intended for use on a clean installation that has just been set up with `archinstall`.
 > Before running this script, make sure you have booted into a Desktop Environment.
 > It is not suitable for outdated computers. Ensure your hardware meets the requirements for the latest Nvidia drivers.
