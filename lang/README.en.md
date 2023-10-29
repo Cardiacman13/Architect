@@ -4,7 +4,11 @@
 ### IMPORTANT !! ###
 **This tutorial must be followed exactly in the order given!**
 
-### Presentation
+## Presentation
+
+![Screenshot of a comment on a GitHub issue showing an image, added in the Markdown, of an Octocat smiling and raising a tentacle.](https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/archlinux-logo-dark-scalable.518881f04ca9.svg)
+
+Desktop environment
 
 Arch is a technical distribution aimed at a more advanced audience, consisting of "building blocks". Think of it like a set of blank Lego, with a base that you need to build and shape as you wish, and if you do it wrong, things can break.
 
@@ -14,12 +18,25 @@ The purpose of this tutorial is to install a stock Arch with a minimum of packag
 
 <img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/Cardiac-icon.png" width="30" height="30"> [ Arch Linux Tutorial Playlist ](https://www.youtube.com/watch?v=JE6VwNHLcyk&list=PLuIP_-MWRwtWEX0tyDpZPdwU6zCE1O1cY)
 
+## Main Features
+
+<img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/pc.png" width="30" height="30"> **Elevate Your Desktop**:
+Experience peak desktop performance with pre-installed multimedia codecs, printer support, and backup solutions.
+
+<img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/game-console.png" width="30" height="30"> **Level Up Your Gaming**:
+Stay on the bleeding edge of gaming with Steam and Lutris, plus comprehensive drivers for AMD, Intel, and Nvidia hardware.
+
+<img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/speed.png" width="30" height="30"> **Precision Optimization**:
+Benefit from community-driven tweaks for unparalleled performance and stability.
+
+<img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/group.png" width="30" height="30"> **Community-Driven Excellence**:
+Join a thriving community backed by Gaming Linux FR reviewers and Arch Linux experts for ongoing support and updates.
+
 ### Conditions
 
 The script you will find later works regardless of your choices of DE / BOOT LOADER / FS.
 
 The tutorial is optimized for the following choices:
-
 - systemd-boot
 - Ext4
 - KDE
@@ -29,7 +46,7 @@ However, if you know what you are doing, the modifications for other choices are
 
 Download the ISO: [**Arch Linux - Downloads**](https://archlinux.org/download/)
 
-### Table of Contents
+## Table of Contents
 0. [Script-post-installation](#section-7)
 1. [Manual Installation]
 - [Installation](#section-1)
