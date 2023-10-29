@@ -1,4 +1,4 @@
-# ARCH LINUX POST-INSTALLATION TUTORIAL AND SCRIPT
+# Architect - Arch Linux Post installation
 
 ## Presentation
 
