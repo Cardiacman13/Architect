@@ -25,8 +25,9 @@ Stay on the bleeding edge of gaming with Steam and Lutris, plus comprehensive dr
 <img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/speed.png" width="30" height="30"> **Precision Optimization**:
 Benefit from community-driven tweaks for unparalleled performance and stability.
 
-<img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/programming.png" width="30" height="30"> **All-in-One Desktop Wizard**:
-Simplify your experience with our all-in-one script, which prepares your desktop for work, gaming, multimedia, and bleeding-edge optimization.
+
+<img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/programming.png" width="30" height="30"> **All-in-One Desktop Wizard** :
+Simplify your experience with our all-in-one script, which prepares your desktop for work, gaming, multimedia, and bleeding-edge optimization. 
 
 <img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/group.png" width="30" height="30"> **Community-Driven Excellence**:
 Join a thriving community backed by Gaming Linux FR reviewers and Arch Linux experts for ongoing support and updates.
@@ -503,7 +504,7 @@ flatpak install com.bitwarden.desktop com.discordapp.Discord com.github.tchx84.F
 
 - For help, visit the GLF Discord (fr/en): [Discord GLF](http://discord.gg/EP3Jm8YMvj)
 
-# Arch Linux Post-Install Script <a name="script"/>
+## Arch Linux Post-Install Script <a name="script"/>
 
 [Version française](https://github.com/Cardiacman13/post-install-arch/blob/main/lang/README.fr.md)  [Versión española](https://github.com/Cardiacman13/post-install-arch/blob/main/lang/README.es.md)
 
@@ -533,7 +534,7 @@ The purpose of this script is to configure a **stock Arch** system with a **mini
    ./post-installation
    ```
 
-## 1. Optimizing Pacman
+### 1. Optimizing Pacman
 Enhance Pacman's functionality and user experience by making the following improvements:
 
 - Enabling colored output.
@@ -541,7 +542,7 @@ Enhance Pacman's functionality and user experience by making the following impro
 - Enabling parallel downloads.
 - Enabling multilib support.
 
-## 2. Adding Useful Aliases
+### 2. Adding Useful Aliases
 Simplify your command-line tasks with these helpful aliases:
 
 - update-arch: Updates your system apps with a single command.
@@ -549,7 +550,7 @@ Simplify your command-line tasks with these helpful aliases:
 - fix-key: Fixes key-related issues, ensuring a smooth update process.
 
 
-## 3. Assisting with AMD, NVIDIA, or Intel GPU Installation for Gaming
+### 3. Assisting with AMD, NVIDIA, or Intel GPU Installation for Gaming
 Get your gaming-ready with GPU setup, which includes:
 
 - Installing drivers.
@@ -563,7 +564,7 @@ Get your gaming-ready with GPU setup, which includes:
     - Cloning and installing from the `Frogging-Family/nvidia-all` repository.
     - Installing CUDA.
 
-## 4. Install Some Base Packages
+### 4. Install Some Base Packages
 Install fundamental packages for a complete experience:
 
 - [yay](https://github.com/Jguer/yay) or [paru](https://github.com/Morganamilo/paru) AUR helper.
@@ -572,7 +573,7 @@ Install fundamental packages for a complete experience:
 - Codecs.
 - Other essential packages.
 
-## 5. Miscellaneous Enhancements
+### 5. Miscellaneous Enhancements
 Fine-tune your system for an enhanced experience:
 
 - Boostin `vm.max_map_count` to improve compatibility with Windows games. [Arch wiki about vm-max-map-count](https://wiki.archlinux.org/title/gaming#Increase_vm.max_map_count)
@@ -581,7 +582,7 @@ Fine-tune your system for an enhanced experience:
 - Advanced support for Xbox, PS4/PS5, 8bitdo controllers
 - Propose to configure Fish as a command-line shell.
 
-## 6. Assisting with the Installation of Various Software
+### 6. Assisting with the Installation of Various Software
 You have the freedom to choose which additional software to install based on your specific needs:
 
 - `Discord`
