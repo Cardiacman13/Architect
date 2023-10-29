@@ -277,7 +277,7 @@ sudo systemctl enable --now bluetooth.service
 Para tener sonido **/!\ Decir sí a todo para reemplazar todo con los nuevos paquetes. /!\**
 ```
 sudo pacman -S --needed pipewire lib32-pipewire pipewire-pulse pipewire-alsa pipewire-jack wireplumber alsa-utils alsa-firmware alsa
-
+```
 #### Software Variado
 ```
 yay -S libreoffice-fresh libreoffice-fresh-fr vlc discord gimp obs-studio gnome-disk-utility visual-studio-code-bin
