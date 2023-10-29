@@ -1,5 +1,8 @@
 # ARCH LINUX POST-INSTALLATION TUTORIAL AND SCRIPT
 
+
+
+
 ## PREAMBLE
 ### IMPORTANT !! ###
 **This tutorial must be followed exactly in the order given!**
@@ -14,9 +17,9 @@ Arch is a technical distribution aimed at a more advanced audience, consisting o
 
 The purpose of this tutorial is to install a stock Arch with a minimum of packages, according to our needs for office work and/or gaming.
 
-<img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/Cardiac-icon.png" width="30" height="30"> This icon redirects you to my videos on certain parts of this tutorial.
-
-<img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/Cardiac-icon.png" width="30" height="30"> [ Arch Linux Tutorial Playlist ](https://www.youtube.com/watch?v=JE6VwNHLcyk&list=PLuIP_-MWRwtWEX0tyDpZPdwU6zCE1O1cY)
+> **Note**
+> <img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/Cardiac-icon.png" width="30" height="30"> This icon redirects you to my videos on certain parts of this tutorial.
+> <img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/Cardiac-icon.png" width="30" height="30"> [ Arch Linux Tutorial Playlist ](https://www.youtube.com/watch?v=JE6VwNHLcyk&list=PLuIP_-MWRwtWEX0tyDpZPdwU6zCE1O1cY)
 
 ## Main Features
 
@@ -605,3 +608,10 @@ Sources and useful links :
 - [Site GLF](https://www.gaminglinux.fr/)
 - [GLF Discord](http://discord.gg/EP3Jm8YMvj)
 - [My Youtube channel](https://www.youtube.com/@Cardiacman)
+
+
+## Contribution
+
+Contributions to this project are welcome! If you have suggestions, bug reports, or contributions, please open an issue or a pull request in the repository.
+
+As you can see this project is available in French, English and Spanish. Translators are more than welcome ! :people_holding_hands:
