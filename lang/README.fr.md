@@ -1,4 +1,4 @@
-# DIDACTICIEL ET SCRIPT APRÈS INSTALLATION D'ARCH LINUX
+# DIDACTICIEL ET SCRIPT POST-INSTALLATION D'ARCH LINUX
 
 [**Version Française**](https://github.com/Cardiacman13/Tuto-Arch/blob/main/lang/README.fr.md)
 
