@@ -4,10 +4,11 @@ source src/de/xfce.sh
 
 function detect_de() {
     local -r valid_des="GNOME KDE XFCE"
-    local choice=""
 
-    while [[ ! ${valid_des} =~ ${choice} ]]; do
-        read -rp "What desktop environment do you want to install ? (GNOME/KDE/XFCE) : " choice
+    read -rp "What is your graphics card type ? (${valid_des}) : " choice
+    choice="${choice^^}"
+    while [[ ! ${valid_des} =~ (^|[[:space:]])"${choice}"($|[[:space:]]) ]]; do
+        read -rp "What is your graphics card type ? (${valid_des}) : " choice
         choice="${choice^^}"
     done
 

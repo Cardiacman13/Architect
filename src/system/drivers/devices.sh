@@ -60,6 +60,9 @@ function printer() {
         fi
 
         install_lst "${inlst}"
+
+        exec_log "sudo systemctl enable --now avahi-daemon" "enabling avahi-daemon service"
+        exec_log "sudo systemctl enable --now cups" "enabling cups service"
     fi
 }
 

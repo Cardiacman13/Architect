@@ -7,9 +7,10 @@ source src/system/drivers/vm.sh
 function video_drivers() {
     local -r valid_gpus="INTEL AMD NVIDIA VM"
 
-    local choice=""
-    while [[ ! ${valid_gpus} =~ ${choice} ]]; do
-        read -rp "What is your graphics card type ? (INTEL/AMD/NVIDIA/VM) : " choice
+    read -rp "What is your graphics card type ? (${valid_gpus}) : " choice
+    choice="${choice^^}"
+    while [[ ! ${valid_gpus} =~ (^|[[:space:]])"${choice}"($|[[:space:]]) ]]; do
+        read -rp "What is your graphics card type ? (${valid_gpus}) : " choice
         choice="${choice^^}"
     done
 

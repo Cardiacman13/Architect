@@ -12,7 +12,7 @@ function ask_to_add() {
         if [[ $type == "package" ]]; then
             exec_log "${AUR} -S --noconfirm ${package}" "Installing ${package}"
         elif [[ $type == "flatpak" ]]; then
-            exec_log "flatpak install flathub ${package}" "Installing ${package}"
+            exec_log "flatpak install flathub -y ${package}" "Installing ${package}"
         fi
     fi
 }
