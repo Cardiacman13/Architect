@@ -30,10 +30,16 @@ function exec_log() {
 }
 
 function install_lst() {
+    local -r warning="
+        cuda
+    "
     local -r lst=$1
     local -r lst_split=(${lst// / })
 
     for package in ${lst_split[@]}; do
+        if [[ ${warning} =~ (^|[[:space:]])${package}($|[[:space:]]) ]]; then
+            log_msg "${RED}::${RESET} [!] ${package} ${RED}it will take a long time${RESET}"
+        fi
         exec_log "${AUR} -S --noconfirm --needed ${package}" "${BLUE}::${RESET} [+] ${package}"
     done
 }

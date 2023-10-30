@@ -20,7 +20,7 @@ function sound_server() {
         alsa-tools
     "
 
-    uninstall_lst "${unlst}" "Uninstalling pulseaudio and jack2"
+    uninstall_lst "${unlst}" "Clean old sound server dependencies"
     install_lst "${inlst}"
 }
 

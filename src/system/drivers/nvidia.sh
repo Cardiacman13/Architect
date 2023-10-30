@@ -44,7 +44,7 @@ function nvidia_drivers() {
         opencl-nvidia-dev-tkg
     "
 
-    uninstall_lst "${unlst}" "Uninstalling nvidia drivers"
+    uninstall_lst "${unlst}" "Clean old nvidia drivers dependencies"
 
     read -rp "Do you want to use NVIDIA-ALL ${RED}/!\ caution: if you choose nvidia-all, you'll need to know how to maintain it.${RESET} ? (y/N) : " user_nvidia_all
     user_nvidia_all="${user_nvidia_all^^}"
