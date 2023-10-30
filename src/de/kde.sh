@@ -22,7 +22,7 @@ function install_kde() {
     )
 
     for package in "${install_lst[@]}"; do
-        exec_log "${AUR} -S --noconfirm --needed ${package}" "installation of ${package}"
+        exec_log "${AUR} -S --noconfirm --needed ${package}" "installing of ${package}"
     done
 
     exec_log "sudo echo "Numlock=on" >> /etc/sddm.conf" "Enabling numlock on startup"

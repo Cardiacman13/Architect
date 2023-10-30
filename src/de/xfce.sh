@@ -44,7 +44,7 @@ function install_kde() {
     )
 
     for package in "${install_lst[@]}"; do
-        exec_log "${AUR} -S --noconfirm --needed ${package}" "installation of ${package}"
+        exec_log "${AUR} -S --noconfirm --needed ${package}" "installing of ${package}"
     done
 
     exec_log "xdg-user-dirs-update" "Updating user directories"

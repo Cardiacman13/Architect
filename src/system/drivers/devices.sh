@@ -5,7 +5,7 @@ function gamepad() {
     choice="${choice^^}"
 
     if [[ $choice == "Y" ]]; then
-        exec_log "${AUR} -S --noconfirm --needed xpadneo-dkms" "installation of xpadneo-dkms"
+        exec_log "${AUR} -S --noconfirm --needed xpadneo-dkms" "installing xpadneo-dkms"
     fi
 
     read -rp "Do you want to use PS4 or PS5 controllers ? (y/N) : " choice
@@ -13,7 +13,7 @@ function gamepad() {
 
     if [[ $choice == "Y" ]]; then
         exec_log "${AUR} -Rdd --noconfirm bluez-utils" "removing of bluez-utils"
-        exec_log "${AUR} -S --noconfirm --needed bluez-utils-compat ds4drv dualsensectl" "installation of playstation controllers support"
+        exec_log "${AUR} -S --noconfirm --needed bluez-utils-compat ds4drv dualsensectl" "installing playstation controllers support"
     fi
 }
 
@@ -69,7 +69,7 @@ function bluetooth() {
             bluez-plugins
         )
         for package in "${install_lst[@]}"; do
-            exec_log "${AUR} -S --noconfirm --needed ${package}" "installation of ${package}"
+            exec_log "${AUR} -S --noconfirm --needed ${package}" "installing ${package}"
         done
 
         exec_log "sudo systemctl enable --now bluetooth" "enabling bluetooth service"

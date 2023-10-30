@@ -11,8 +11,6 @@ if [[ $1 == "-v" ]]; then
 else
     export VERBOSE=false
 fi
-export EXEC_LOG_COUNT=0
-export ERROR_COUNT=0
 # ================================================================================================ #
 export LOG_FILE="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/logfile_$(date "+%Y%m%d-%H%M%S").log"
 if [[ -f "/usr/bin/paru" ]]; then
@@ -46,6 +44,7 @@ source src/software/install.sh
 source src/system/config/aur.sh
 source src/system/config/pacman.sh
 source src/system/drivers/devices.sh
+source src/system/drivers/gpu.sh
 source src/system/kernel.sh
 source src/system/other.sh
 source src/system/packages.sh

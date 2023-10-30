@@ -5,27 +5,21 @@ source src/system/drivers/intel.sh
 source src/system/drivers/vm.sh
 
 function video_drivers() {
-    local user_gpu
     local -r valid_gpus="INTEL AMD NVIDIA VM"
     local packages=()
+    local choice=""
 
-    while :; do
-        read -rp "What type of graphics card do you use ? (INTEL/AMD/NVIDIA/VM) : " user_gpu
-        user_gpu="${user_gpu^^}"
-
-        if [[ " ${valid_gpus} " =~ " ${user_gpu} " ]]; then
-            break
-        else
-            echo "Invalid graphics card type. Please enter INTEL, AMD, NVIDIA, or VM."
-        fi
+    while [[ ! ${valid_gpus} =~ ${choice} ]]; do
+        read -rp "What is your graphics card type ? (INTEL/AMD/NVIDIA/VM) : " choice
+        choice="${choice^^}"
     done
 
-    case "$user_gpu" in
+    case "${choice}" in
     "NVIDIA") packages=nvidia_drivers ;;
     "AMD") packages=amd_drivers ;;
     "INTEL") packages=intel_drivers ;;
     "VM") packages=vm_drivers ;;
-    *) echo "Invalid graphics card type : ${user_gpu}" ;;
+    *) echo "Invalid graphics card type : ${choice}" ;;
     esac
 
     if [[ -z "${packages[*]}" ]]; then
@@ -33,6 +27,6 @@ function video_drivers() {
     fi
 
     for package in "${packages[@]}"; do
-        exec_log "${AUR} -S --noconfirm --needed ${package}" "installation of ${package}"
+        exec_log "${AUR} -S --noconfirm --needed ${package}" "installing ${package}"
     done
 }

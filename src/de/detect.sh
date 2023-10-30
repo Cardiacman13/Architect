@@ -4,24 +4,18 @@ source src/de/xfce.sh
 
 function detect_de() {
     local -r valid_des="GNOME KDE XFCE"
-    local user_de=""
+    local choice=""
 
-    while :; do
-        read -rp "What desktop environment do you use ? (GNOME/KDE/XFCE) : " user_de
-        user_de="${user_de^^}"
-
-        if [[ " ${valid_des} " =~ " ${user_de} " ]]; then
-            break
-        else
-            echo "Invalid desktop environment. Please enter GNOME, KDE, or XFCE."
-        fi
+    while [[ ! ${valid_des} =~ ${choice} ]]; do
+        read -rp "What desktop environment do you want to install ? (GNOME/KDE/XFCE) : " choice
+        choice="${choice^^}"
     done
 
-    case "$user_de" in
+    case "${choice}" in
     "GNOME") install_gnome ;;
     "KDE") install_kde ;;
     "XFCE") install_xfce ;;
-    *) echo "Invalid desktop environment : ${user_de}" ;;
+    *) echo "Invalid desktop environment : ${choice}" ;;
     esac
 
 }

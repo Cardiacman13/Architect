@@ -8,7 +8,7 @@ function config_pacman() {
 }
 
 function mirrorlist() {
-    exec_log "sudo pacman -S --noconfirm --needed reflector" "installation of reflector"
+    exec_log "sudo pacman -S --noconfirm --needed reflector" "installing reflector"
     exec_log "sudo reflector --verbose --score 20 --fastest 5 --sort rate --save /etc/pacman.d/mirrorlist" "update of mirrorlist"
     exec_log "sudo pacman -Syy" "update of pacman database"
 }

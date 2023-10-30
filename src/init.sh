@@ -29,5 +29,6 @@ function init_log() {
         touch $log_file_name
     fi
 
+    echo "Commit hash: $(git rev-parse HEAD)" >>$log_file_name
     echo "[$(date "+%Y-%m-%d %H:%M:%S")] $1" >>$log_file_name
 }

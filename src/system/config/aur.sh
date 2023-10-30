@@ -12,30 +12,17 @@ function install_aur() {
         "paru-bin"
     )
     local id=-1
+    local choice=""
 
-    echo "Which AUR helper do you want to install (yay or paru)?"
-    while true; do
-        read -r -p "" choice
-        case "$choice" in
-        "yay")
-            AUR="yay"
-            id=0
-            break
-            ;;
-        "paru")
-            AUR="paru"
-            id=1
-            break
-            ;;
-        *)
-            echo "Please enter a valid choice (yay or paru)"
-            ;;
-        esac
+    while [[ $choice != "yay" && $choice != "paru" ]]; do
+        read -rp "What aur helper do you want to install ? (yay/paru) : " choice
+        choice="${choice,,}"
     done
 
-    if [[ $id -eq -1 ]]; then
-        echo "Error: Invalid choice"
-        return 1
+    if [[ $choice == "yay" ]]; then
+        id=0
+    elif [[ $choice == "paru" ]]; then
+        id=1
     fi
 
     exec_log "git clone ${git_url[$id]}" "Cloning of ${aur_name[$id]}"

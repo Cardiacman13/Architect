@@ -24,8 +24,12 @@ function shell_config() {
     done
 
     local index=0
-    read -rp "What is your default shell ? (bash/fish) : " choice
-    choice="${choice,,}"
+    local choice=""
+
+    while [[ $choice != "bash" && $choice != "fish" ]]; do
+        read -rp "What is your default shell ? (bash/fish) : " choice
+        choice="${choice,,}"
+    done
 
     case $choice in
     bash)
