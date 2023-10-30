@@ -523,8 +523,7 @@ The purpose of this script is to configure a **stock Arch** system with a **mini
 ```bash
 sudo pacman -Sy git
 git clone https://github.com/Cardiacman13/Architect.git
-cd post-install-arch
-chmod +x ./post-installation
+cd Architect
 ./post-installation
 ```
 
