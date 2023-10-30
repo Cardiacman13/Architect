@@ -34,7 +34,7 @@ function install_lst() {
     local -r lst_split=(${lst// / })
 
     for package in ${lst_split[@]}; do
-        exec_log "${AUR} -S --noconfirm --needed ${package}" "|- installation of ${package}"
+        exec_log "${AUR} -S --noconfirm --needed ${package}" "${BLUE}::${RESET} [+] ${package}"
     done
 }
 
@@ -43,6 +43,6 @@ function uninstall_lst() {
     local -r lst_split=(${lst// / })
 
     for package in ${lst_split[@]}; do
-        exec_log "sudo pacman -Rdd --noconfirm ${package}" "|- uninstallation of ${package}"
+        exec_log "sudo pacman -Rdd --noconfirm ${package}" "${YELLOW}::${RESET} [-] ${package}"
     done
 }

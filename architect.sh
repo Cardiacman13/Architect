@@ -1,10 +1,12 @@
 #!/usr/bin/env bash
 
 # ================================================================================================ #
-export GREEN=$(tput setaf 2)
-export PURPLE=$(tput setaf 5)
-export RED=$(tput setaf 1)
 export RESET=$(tput sgr0)
+export RED=$(tput setaf 1)
+export GREEN=$(tput setaf 2)
+export YELLOW=$(tput setaf 3)
+export BLUE=$(tput setaf 4)
+export PURPLE=$(tput setaf 5)
 # ================================================================================================ #
 if sudo -v; then
     echo -e "\n${GREEN}Root privileges granted${RESET}"
