@@ -49,6 +49,7 @@ function nvidia_drivers() {
     read -rp "Do you want to use NVIDIA-ALL ${RED}/!\ caution: if you choose nvidia-all, you'll need to know how to maintain it.${RESET} ? (y/N) : " user_nvidia_all
     user_nvidia_all="${user_nvidia_all^^}"
 
+    nvidia_config
     if [[ ${user_nvidia_all} == "Y" ]]; then
         exec_log "git clone https://github.com/Frogging-Family/nvidia-all.git" "cloning of nvidia-all repository"
         cd nvidia-all || exit
@@ -68,7 +69,6 @@ function nvidia_drivers() {
             cuda
         "
         install_lst "${inlst}"
-        nvidia_config
     fi
 
     # systemctl
