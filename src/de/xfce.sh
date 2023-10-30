@@ -1,6 +1,6 @@
 source src/cmd.sh
 
-function install_kde() {
+function install_xfce() {
     local -r inlst="
         xdg-desktop-portal-xapp
         xdg-desktop-portal-gtk

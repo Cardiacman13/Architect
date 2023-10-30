@@ -1,6 +1,6 @@
 source src/cmd.sh
 
-function config_gnome() {
+function install_gnome() {
     local -r inlst="
         adwaita-icon-theme
         eog
