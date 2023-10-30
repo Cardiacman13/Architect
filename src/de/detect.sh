@@ -18,5 +18,4 @@ function detect_de() {
     "XFCE") install_xfce ;;
     *) echo "Invalid desktop environment : ${choice}" ;;
     esac
-
 }

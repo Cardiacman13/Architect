@@ -20,13 +20,6 @@ else
 fi
 # ================================================================================================ #
 export LOG_FILE="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/logfile_$(date "+%Y%m%d-%H%M%S").log"
-if [[ -f "/usr/bin/paru" ]]; then
-    export AUR_HELPER="paru"
-elif [[ -f "/usr/bin/yay" ]]; then
-    export AUR_HELPER="yay"
-else
-    export AUR_HELPER=""
-fi
 if [[ -d "/boot/loader/entries" ]]; then
     export BOOT_LOADER="systemd-boot"
 else
@@ -61,9 +54,7 @@ function main() {
     # system
     config_pacman
     mirrorlist
-    if [[ -z ${AUR_HELPER} ]]; then
-        install_aur
-    fi
+    install_aur
     install_headers
     max_map_count
     sound_server

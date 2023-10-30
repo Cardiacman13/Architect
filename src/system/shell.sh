@@ -37,7 +37,15 @@ function shell_config() {
         ;;
     fish)
         exec_log "${AUR} -S --noconfirm fish" "Installing fish"
-        chsh -s $(which fish)
+
+        local current_shell=$(getent passwd $USER | cut -d: -f7)
+
+        while [ "$current_shell" != "/usr/bin/fish" ]; do
+            echo "Changement du shell par défaut en fish..."
+            chsh -s "/usr/bin/fish"
+            current_shell=$(getent passwd $USER | cut -d: -f7)
+        done
+
         fish -c 'fish_update_completions'
         fish -c 'set -U fish_greeting'
         mkdir -p "${HOME}/.config/fish"
