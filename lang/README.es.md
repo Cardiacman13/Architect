@@ -492,10 +492,9 @@ El propósito de este script es configurar un sistema **Arch estándar** con un 
 
 ```bash
 sudo pacman -Sy git
-git clone https://github.com/Cardiacman13/post-install-arch.git
-cd post-install-arch
-chmod +x ./post-instalacion
-./post-instalacion
+git clone https://github.com/Cardiacman13/Architect.git
+cd Architect
+./post-installation
 ```
 
 ### 1. Optimizando Pacman
