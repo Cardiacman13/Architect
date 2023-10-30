@@ -38,8 +38,8 @@ function shell_config() {
     fish)
         exec_log "${AUR} -S --noconfirm fish" "Installing fish"
         chsh -s $(which fish)
-        exec_log "fish -c 'fish_update_completions'" "Updating completions"
-        exec_log "fish -c 'set -U fish_greeting'" "Updating completions"
+        fish -c 'fish_update_completions'
+        fish -c 'set -U fish_greeting'
         mkdir -p "${HOME}/.config/fish"
         touch "${HOME}/.config/fish/config.fish"
         index=2

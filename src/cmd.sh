@@ -1,3 +1,15 @@
+function log_msg() {
+    if [[ $# -ne 1 ]]; then
+        echo -e "${RED}Usage: log_msg <message>${RESET}"
+        exit 1
+    fi
+
+    local -r comment="$1"
+
+    echo "${comment}"
+    echo "[$(date "+%Y-%m-%d %H:%M:%S")] ${comment}" >>"${LOG_FILE}"
+}
+
 function exec_log() {
     if [[ $# -ne 2 ]]; then
         echo -e "${RED}Usage: exec_log <command> <message>${RESET}"
@@ -7,8 +19,7 @@ function exec_log() {
     local -r command="$1"
     local -r comment="$2"
 
-    echo "${comment}"
-    echo "[$(date "+%Y-%m-%d %H:%M:%S")] ${comment}" >>"${LOG_FILE}"
+    log_msg "${comment}"
     echo "${command}" >>"${LOG_FILE}"
 
     if [[ ${VERBOSE} == true ]]; then

@@ -52,7 +52,7 @@ function nvidia_drivers() {
     if [[ ${user_nvidia_all} == "Y" ]]; then
         exec_log "git clone https://github.com/Frogging-Family/nvidia-all.git" "cloning of nvidia-all repository"
         cd nvidia-all || exit
-        exec_log "makepkg -si --noconfirm" "installing nvidia-all"
+        makepkg -si --noconfirm
         cd .. || exit
         exec_log "rm -rf nvidia-all" "removal of nvidia-all repository"
         exec_log "${AUR} -S --noconfirm --needed cuda" "installing cuda"
