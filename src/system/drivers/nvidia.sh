@@ -60,7 +60,7 @@ function nvidia_drivers() {
         exec_log "${AUR} -S --noconfirm --needed cuda" "installing cuda"
 
     else
-        local -r install_lst=(
+        local -r install_lst="
             nvidia-dkms
             nvidia-utils
             lib32-nvidia-utils
@@ -68,11 +68,14 @@ function nvidia_drivers() {
             vulkan-icd-loader
             lib32-vulkan-icd-loader
             cuda
-        )
+        "
         nvidia_config
     fi
 
     # systemctl
     exec_log "sudo systemctl enable nvidia-{hibernate,resume,suspend}" "activation of nvidia-{hibernate,resume,suspend}"
-    echo ${install_lst[@]}
+
+    if [[ -n ${install_lst} ]]; then
+        install_lst "${install_lst}"
+    fi
 }

@@ -17,3 +17,12 @@ function exec_log() {
         eval "${command}" >>"${LOG_FILE}" 2>&1
     fi
 }
+
+function install_lst() {
+    local -r lst=$1
+    local -r lst_split=(${lst// / })
+
+    for package in ${lst_split[@]}; do
+        exec_log "yay -S --noconfirm --needed ${package}" "installation of ${package}"
+    done
+}

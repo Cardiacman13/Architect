@@ -8,7 +8,7 @@ function sound_server() {
         jack2
         pipewire-media-session
     )
-    local -r install_lst=(
+    local -r install_lst="
         pipewire
         lib32-pipewire
         pipewire-pulse
@@ -18,15 +18,13 @@ function sound_server() {
         alsa-utils
         alsa-firmware
         alsa-tools
-    )
+    "
 
     for pkg in "${uninstall_lst[@]}"; do
         exec_log "sudo pacman -Rdd --noconfirm ${pkg}" "Uninstalling ${pkg}"
     done
 
-    for pkg in "${install_lst[@]}"; do
-        exec_log "sudo pacman -S --noconfirm --needed ${pkg}" "Installing ${pkg}"
-    done
+    install_lst "$install_lst"
 }
 
 function setup_system_loaders() {

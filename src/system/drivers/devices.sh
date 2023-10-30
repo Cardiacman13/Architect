@@ -22,7 +22,7 @@ function printer() {
     choice="${choice^^}"
 
     if [[ $choice == "Y" ]]; then
-        local install_lst=(
+        local install_lst="
             ghostscript
             gsfonts
             cups
@@ -37,17 +37,17 @@ function printer() {
             foomatic-db-nonfree-ppds
             gutenprint
             foomatic-db-gutenprint-ppds
-        )
+        "
         read -rp "Do you want to use a EPSON printer ? (y/N) : " choice
         choice="${choice^^}"
 
         if [[ $choice == "Y" ]]; then
-            install_lst+=(
+            install_lst+="
                 epson-inkjet-printer-escpr
                 epson-inkjet-printer-escpr2
                 epson-inkjet-printer-201601w
                 epson-inkjet-printer-n10-nx127
-            )
+            "
         fi
         read -rp "Do you want to use a HP printer ? (y/N) : " choice
         choice="${choice^^}"
@@ -63,11 +63,11 @@ function bluetooth() {
     choice="${choice^^}"
 
     if [[ $choice == "Y" ]]; then
-        local -r install_lst=(
+        local -r install_lst="
             bluez
             bluez-utils
             bluez-plugins
-        )
+        "
         for package in "${install_lst[@]}"; do
             exec_log "${AUR} -S --noconfirm --needed ${package}" "installing ${package}"
         done
