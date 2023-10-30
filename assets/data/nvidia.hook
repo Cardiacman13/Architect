@@ -1,0 +1,31 @@
+######################################################
+# NVIDIA HOOK FOR PACMAN
+# 
+# This hook is intended for the pacman package manager used by Arch Linux.
+# The main purpose of this hook is to update the NVIDIA module in initcpio whenever certain # NVIDIA packages are installed, upgraded or removed. 
+# NVIDIA packages are installed, upgraded or removed.
+# 
+# The initcpio is a small initial root file system that is loaded into memory during the Linux boot process.
+# It initializes the hardware and mounts the root file system, among other tasks.
+# When using NVIDIA drivers, especially those built for specific kernel versions (dkms stands for 
+# Dynamic Kernel Module Support), it is essential to ensure that the drivers are correctly incorporated into initcpio.
+######################################################
+
+[Trigger]
+Operation=Install
+Operation=Upgrade
+Operation=Remove
+Type=Package
+Target=nvidia-dkms
+Target=nvidia
+Target=nvidia-lts
+Target=nvidia-beta
+Target=nvidia-470xx-dkms
+Target=usr/lib/modules/*/vmlinuz
+
+[Action]
+Description=Update NVIDIA module in initcpio
+Depends=mkinitcpio
+When=PostTransaction
+NeedsTargets
+Exec=/bin/sh -c 'while read -r trg; do case \$trg in linux) exit 0; esac; done; /usr/bin/mkinitcpio -P'
