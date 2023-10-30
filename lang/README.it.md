@@ -1,7 +1,5 @@
 # TUTORIAL E SCRIPT POST-INSTALLAZIONE DI ARCH LINUX
 
-[**Versione Francese**](https://github.com/Cardiacman13/Tuto-Arch/blob/main/lang/README.fr.md) / [**Versione Spagnola**](https://github.com/Cardiacman13/Tuto-Arch/blob/main/lang/README.es.md)
-
 ## Presentazione
 
 <img src="https://github.com/Cardiacman13/Architect/blob/main/assets/images/desktop.png" width="1000" height="250">
