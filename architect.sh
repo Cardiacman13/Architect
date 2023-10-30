@@ -11,6 +11,8 @@ if [[ $1 == "-v" ]]; then
 else
     export VERBOSE=false
 fi
+export EXEC_LOG_COUNT=0
+export ERROR_COUNT=0
 # ================================================================================================ #
 export LOG_FILE="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/logfile_$(date "+%Y%m%d-%H%M%S").log"
 if [[ -f "/usr/bin/paru" ]]; then
@@ -35,6 +37,7 @@ export RED=$(tput setaf 1)
 export RESET=$(tput sgr0)
 # ================================================================================================ #
 source src/init.sh
+source src/end.sh
 source src/de/detect.sh
 source src/software/flatpak.sh
 source src/software/install.sh
@@ -75,16 +78,9 @@ function main() {
     # software
     support_flatpak
     install_software
-    local -r end_time="$(date +%s)"
-    local -r duration="$(($end_time - $start_time))"
-    echo -e "${GREEN}Done in ${duration} seconds.${RESET}"
 
-    read -rp "${GREEN}The script is finished, the system must restart${RESET}: Press ${GREEN}Enter${RESET} to restart or ${GREEN}Ctrl+C${RESET} to cancel."
-    for i in {5..1}; do
-        echo -ne "${GREEN}Restarting in ${i} seconds...${RESET}\r"
-        sleep 1
-    done
-    reboot
+    # end
+    endscript
 }
 # ================================================================================================ #
 main

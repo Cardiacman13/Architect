@@ -5,6 +5,8 @@ function exec_log() {
         exit 1
     fi
 
+    ((EXEC_LOG_COUNT++))
+
     local -r indent_level="$1"
     local -r command="$2"
     local -r comment="$3"
@@ -14,7 +16,13 @@ function exec_log() {
 
     if [[ ${VERBOSE} == true ]]; then
         # print command output with the error output in red, and put in to log file
-        { eval "$(command)" 2>&1 1>&3 | while read line; do echo -e "${RED}${line}${RESET}"; done; } 3>&1 1>&2 | tee -a "${LOG_FILE}"
+        { 
+            eval "$(command)" 2>&1 1>&3 | 
+            while read -r line; do 
+                ((ERROR_COUNT++))
+                echo -e "${RED}${line}${RESET}"
+            done
+        } 3>&1 1>&2 | tee -a "${LOG_FILE}"
     else
         eval "$(command)" >>"${LOG_FILE}" 2>&1 >/dev/null
     fi
