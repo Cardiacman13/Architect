@@ -1,6 +1,11 @@
 #!/usr/bin/env bash
 
 # ================================================================================================ #
+export GREEN=$(tput setaf 2)
+export PURPLE=$(tput setaf 5)
+export RED=$(tput setaf 1)
+export RESET=$(tput sgr0)
+# ================================================================================================ #
 if sudo -v; then
     echo -e "\n${GREEN}Root privileges granted${RESET}"
 else
@@ -32,11 +37,6 @@ if [[ $(lsblk -o FSTYPE | grep -c btrfs) -gt 0 ]]; then
 else
     export BTRFS=false
 fi
-# ================================================================================================ #
-export GREEN=$(tput setaf 2)
-export PURPLE=$(tput setaf 5)
-export RED=$(tput setaf 1)
-export RESET=$(tput sgr0)
 # ================================================================================================ #
 source src/init.sh
 source src/end.sh
