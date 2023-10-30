@@ -9,7 +9,7 @@ function detect_de() {
     while :; do
         read -rp "What desktop environment do you use ? (GNOME/KDE/XFCE) : " user_de
         user_de="${user_de^^}"
-        
+
         if [[ " ${valid_des} " =~ " ${user_de} " ]]; then
             break
         else
@@ -18,10 +18,10 @@ function detect_de() {
     done
 
     case "$user_de" in
-        "GNOME") install_gnome ;;
-        "KDE")   install_kde ;;
-        "XFCE")  install_xfce ;;
-        *)       echo "Invalid desktop environment : ${user_de}" ;;
+    "GNOME") install_gnome ;;
+    "KDE") install_kde ;;
+    "XFCE") install_xfce ;;
+    *) echo "Invalid desktop environment : ${user_de}" ;;
     esac
-    
+
 }

@@ -10,7 +10,7 @@ function install_kde() {
         spectacle
         partitionmanager
         ffmpegthumbs
-        qt6-multimedia 
+        qt6-multimedia
         qt6-multimedia-gstreamer
         qt6-multimedia-ffmpeg
         qt6-wayland

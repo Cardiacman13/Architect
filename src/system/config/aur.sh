@@ -8,32 +8,39 @@ function install_aur() {
         "https://aur.archlinux.org/paru-bin.git"
     )
     local -r aur_name=(
-        yay-bin
-        paru-bin
+        "yay-bin"
+        "paru-bin"
     )
-    local id=0
+    local id=-1
 
     echo "Which AUR helper do you want to install (yay or paru)?"
     while true; do
         read -r -p "" choice
-        if [[ $choice == "yay" ]]; then
+        case "$choice" in
+        "yay")
             AUR="yay"
+            id=0
             break
-        elif [[ $choice == "paru" ]]; then
+            ;;
+        "paru")
             AUR="paru"
+            id=1
             break
-        else
+            ;;
+        *)
             echo "Please enter a valid choice (yay or paru)"
-        fi
+            ;;
+        esac
     done
 
-    if [[ $AUR == "paru" ]]; then
-        id=1
+    if [[ $id -eq -1 ]]; then
+        echo "Error: Invalid choice"
+        return 1
     fi
 
-    exec_log "git clone $(git_url[$id])" "cloning of $(aur_name[$id])"
-    cd "$(aur_name[$id])"
-    exec_log "makepkg -si --noconfirm" "installation of $(aur_name[$id])"
-    cd ..
-    exec_log "rm -rf $(aur_name[$id])" "removing $(aur_name[$id])"
+    exec_log "git clone ${git_url[$id]}" "Cloning of ${aur_name[$id]}"
+    cd "${aur_name[$id]}" || return 1
+    exec_log "makepkg -si --noconfirm" "Installation of ${aur_name[$id]}"
+    cd .. || return 1
+    exec_log "rm -rf ${aur_name[$id]}" "Removing ${aur_name[$id]}"
 }

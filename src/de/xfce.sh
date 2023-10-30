@@ -5,7 +5,7 @@ function install_kde() {
         xdg-desktop-portal-xapp
         xdg-desktop-portal-gtk
         xfce4-goodies
-        network-manager-applet 
+        network-manager-applet
         xfce4-notifyd
         gnome-keyring
         xdg-user-dirs
@@ -13,7 +13,7 @@ function install_kde() {
         file-roller
         galculator
         gvfs
-        gvfs-afc 
+        gvfs-afc
         gvfs-gphoto2
         gvfs-mtp
         gvfs-nfs
@@ -26,7 +26,7 @@ function install_kde() {
         thunar-archive-plugin
         thunar-media-tags-plugin
         xdg-user-dirs-gtk
-        xed 
+        xed
         xfce4
         xfce4-battery-plugin
         xfce4-datetime-plugin
@@ -36,7 +36,7 @@ function install_kde() {
         xfce4-pulseaudio-plugin
         xfce4-screensaver
         xfce4-screenshooter
-        xfce4-taskmanager 
+        xfce4-taskmanager
         xfce4-wavelan-plugin
         xfce4-weather-plugin
         xfce4-whiskermenu-plugin

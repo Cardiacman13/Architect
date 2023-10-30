@@ -42,7 +42,12 @@ function printer() {
         choice="${choice^^}"
 
         if [[ $choice == "Y" ]]; then
-            install_lst+=(epson-inkjet-printer-escpr  epson-inkjet-printer-escpr2  epson-inkjet-printer-201601w  epson-inkjet-printer-n10-nx127)
+            install_lst+=(
+                epson-inkjet-printer-escpr
+                epson-inkjet-printer-escpr2
+                epson-inkjet-printer-201601w
+                epson-inkjet-printer-n10-nx127
+            )
         fi
         read -rp "Do you want to use a HP printer ? (y/N) : " choice
         choice="${choice^^}"

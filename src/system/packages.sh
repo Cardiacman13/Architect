@@ -45,7 +45,7 @@ function usefull_package() {
     for package in ${install_lst[@]}; do
         exec_log "${AUR} -S --noconfirm --needed ${package}" "installation of ${package}"
     done
-    
+
     if [[ ${BTRFS} == true ]]; then
         exec_log "${AUR} -S --noconfirm --needed btrfs-progs btrfs-assistant" "installation of btrfs support"
     fi

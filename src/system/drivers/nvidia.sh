@@ -71,7 +71,7 @@ function nvidia_drivers() {
         )
         nvidia_config
     fi
-    
+
     # systemctl
     exec_log "sudo systemctl enable nvidia-{hibernate,resume,suspend}" "activation of nvidia-{hibernate,resume,suspend}"
     echo ${install_lst[@]}

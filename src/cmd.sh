@@ -1,6 +1,6 @@
 function exec_log() {
     if [[ $# -ne 2 ]]; then
-        echo "Usage: exec_log <message> <command>"
+        echo -e "${RED}Usage: exec_log <command> <message>${RESET}"
         exit 1
     fi
 
@@ -10,17 +10,12 @@ function exec_log() {
     local -r comment="$2"
 
     echo -e "${comment}"
-    echo "[$(date "+%Y-%m-%d %H:%M:%S")] ${comment}" >>"${LOG_FILE}"
+    echo "[$(date "+%Y-%m-%d %H:%M:%S")] ${comment}" >> ${LOG_FILE}
+    echo "${command}" >> ${LOG_FILE}
 
     if [[ ${VERBOSE} == true ]]; then
-        {
-            eval "$(command)" 2>&1 1>&3 |
-                while read -r line; do
-                    ((ERROR_COUNT++))
-                    echo -e "${RED}${line}${RESET}"
-                done
-        } 3>&1 1>&2 | tee -a "${LOG_FILE}"
+        eval "${command}" |& tee -a ${LOG_FILE}
     else
-        eval "$(command)" >>"${LOG_FILE}" 2>&1 >/dev/null
+        eval "${command}" >> ${LOG_FILE} 2>&1
     fi
 }

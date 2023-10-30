@@ -12,7 +12,7 @@ function video_drivers() {
     while :; do
         read -rp "What type of graphics card do you use ? (INTEL/AMD/NVIDIA/VM) : " user_gpu
         user_gpu="${user_gpu^^}"
-        
+
         if [[ " ${valid_gpus} " =~ " ${user_gpu} " ]]; then
             break
         else
@@ -21,11 +21,11 @@ function video_drivers() {
     done
 
     case "$user_gpu" in
-        "NVIDIA") packages=nvidia_drivers ;;
-        "AMD")    packages=amd_drivers ;;
-        "INTEL")  packages=intel_drivers ;;
-        "VM")     packages=vm_drivers ;;
-        *)        echo "Invalid graphics card type : ${user_gpu}" ;;
+    "NVIDIA") packages=nvidia_drivers ;;
+    "AMD") packages=amd_drivers ;;
+    "INTEL") packages=intel_drivers ;;
+    "VM") packages=vm_drivers ;;
+    *) echo "Invalid graphics card type : ${user_gpu}" ;;
     esac
 
     if [[ -z "${packages[*]}" ]]; then

@@ -2,22 +2,22 @@ source src/cmd.sh
 
 function sound_server() {
     local -r uninstall_lst=(
-        "pulseaudio"
-        "pulseaudio-bluetooth"
-        "pulseaudio-alsa"
-        "jack2"
-        "pipewire-media-session"
+        pulseaudio
+        pulseaudio-bluetooth
+        pulseaudio-alsa
+        jack2
+        pipewire-media-session
     )
     local -r install_lst=(
-        "pipewire"
-        "lib32-pipewire"
-        "pipewire-pulse"
-        "pipewire-alsa"
-        "pipewire-jack"
-        "wireplumber"
-        "alsa-utils"
-        "alsa-firmware"
-        "alsa-tools"
+        pipewire
+        lib32-pipewire
+        pipewire-pulse
+        pipewire-alsa
+        pipewire-jack
+        wireplumber
+        alsa-utils
+        alsa-firmware
+        alsa-tools
     )
 
     for pkg in "${uninstall_lst[@]}"; do
@@ -33,7 +33,7 @@ function setup_system_loaders() {
     if [[ $BOOT_LOADER != "GRUB" ]]; then
         return
     fi
-    
+
     exec_log "sudo mkdir -p '/etc/pacman.d/hooks/'" "Creating /etc/pacman.d/hooks/"
     exec_log "sudo cp 'assets/data/grub.hook' '/etc/pacman.d/hooks/'" "Copying grub.hook to /etc/pacman.d/hooks/"
     exec_log "${AUR} -S --noconfirm --needed update-grub" "Installing update-grub"
@@ -48,4 +48,3 @@ function firewall() {
         exec_log "sudo systemctl enable --now firewalld.service" "Enabling firewalld"
     fi
 }
-

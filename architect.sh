@@ -19,6 +19,8 @@ if [[ -f "/usr/bin/paru" ]]; then
     export AUR_HELPER="paru"
 elif [[ -f "/usr/bin/yay" ]]; then
     export AUR_HELPER="yay"
+else
+    export AUR_HELPER=""
 fi
 if [[ -d "/boot/loader/entries" ]]; then
     export BOOT_LOADER="systemd-boot"
@@ -58,7 +60,9 @@ function main() {
     # system
     config_pacman
     mirrorlist
-    install_aur
+    if [[ -z ${AUR_HELPER} ]]; then
+        install_aur
+    fi
     install_headers
     max_map_count
     sound_server
