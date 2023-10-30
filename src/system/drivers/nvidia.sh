@@ -13,7 +13,7 @@ function nvidia_config() {
         exec_log "sudo sed -i 's/GRUB_CMDLINE_LINUX_DEFAULT='\''nowatchdog nvme_load=YES loglevel=3'\''/GRUB_CMDLINE_LINUX_DEFAULT='\''nowatchdog nvme_load=YES loglevel=3 nvidia-drm.modeset=1'\''/' /etc/default/grub" "grub configuration"
         exec_log "sudo grub-mkconfig -o /boot/grub/grub.cfg" "GRUB update"
     else
-        exec_log "sudo sed -i '/^options/ s/$/ nvidia-drm.modeset=1/' \"/boot/loader/entries/*.conf\"" "systemd-boot configuration"
+        exec_log "sudo sed -i '/^options/ s/$/ nvidia-drm.modeset=1/' /boot/loader/entries/*.conf" "systemd-boot configuration"
     fi
 }
 
@@ -46,7 +46,7 @@ function nvidia_drivers() {
 
     uninstall_lst "${unlst}"
 
-    read -rp "Do you want to use NVIDIA-ALL ${RED}/!\ not recommended${RESET} ? (y/N) : " user_nvidia_all
+    read -rp "Do you want to use NVIDIA-ALL ${RED}/!\ caution: if you choose nvidia-all, you'll need to know how to maintain it.${RESET} ? (y/N) : " user_nvidia_all
     user_nvidia_all="${user_nvidia_all^^}"
 
     if [[ ${user_nvidia_all} == "Y" ]]; then

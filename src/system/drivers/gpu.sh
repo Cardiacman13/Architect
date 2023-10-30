@@ -14,6 +14,7 @@ function video_drivers() {
         choice="${choice^^}"
     done
 
+    echo -e "${GREEN}You chose ${choice}${RESET}"
     case "${choice}" in
     "NVIDIA") nvidia_drivers ;;
     "AMD") amd_drivers ;;
