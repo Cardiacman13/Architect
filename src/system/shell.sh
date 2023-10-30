@@ -37,7 +37,7 @@ function shell_config() {
         ;;
     fish)
         exec_log "${AUR} -S --noconfirm fish" "Installing fish"
-        exec_log "chsh -s /usr/bin/fish" "Changing default shell to fish"
+        chsh -s $(which fish)
         exec_log "fish -c 'fish_update_completions'" "Updating completions"
         exec_log "fish -c 'set -U fish_greeting'" "Updating completions"
         mkdir -p "${HOME}/.config/fish"

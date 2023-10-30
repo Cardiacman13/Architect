@@ -1,7 +1,5 @@
 source src/cmd.sh
 
-export AUR="yay"
-
 function install_aur() {
     local -r git_url=(
         "https://aur.archlinux.org/yay-bin.git"
@@ -21,8 +19,10 @@ function install_aur() {
 
     if [[ $choice == "yay" ]]; then
         id=0
+        export AUR="yay"
     elif [[ $choice == "paru" ]]; then
         id=1
+        export AUR="paru"
     fi
 
     exec_log "git clone ${git_url[$id]}" "Cloning of ${aur_name[$id]}"
