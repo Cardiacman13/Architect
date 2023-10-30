@@ -2,7 +2,8 @@ function endscript() {
     local -r end_time="$(date +%s)"
     local -r duration="$(($end_time - $start_time))"
 
-    echo -e "${GREEN}Done in ${duration} seconds.${RESET}" | tee -a "${LOG_FILE}"
+    echo -e "${GREEN}Done in ${duration} seconds.${RESET}"
+    echo -e "Done in ${duration} seconds." >>"${LOG_FILE}"
 
     read -rp "${GREEN}Do you want to upload the log file to a pastebin?${RESET} (y/N) " response
     response=${response,,}
