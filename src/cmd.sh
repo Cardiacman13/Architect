@@ -38,7 +38,7 @@ function install_lst() {
 
     for package in ${lst_split[@]}; do
         if [[ ${warning} =~ (^|[[:space:]])${package}($|[[:space:]]) ]]; then
-            log_msg "${RED}::${RESET} ${RED}it may take some time${RESET}"
+            log_msg "${RED}::${RESET} [!] ${package} is not installed"
         fi
         exec_log "${AUR} -S --noconfirm --needed ${package}" "${BLUE}::${RESET} [+] ${package}"
     done
