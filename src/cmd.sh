@@ -42,6 +42,7 @@ function uninstall_lst() {
     local -r lst=$1
     local -r lst_split=(${lst// / })
 
+    log_msg "$2"
     for package in ${lst_split[@]}; do
         exec_log "sudo pacman -Rdd --noconfirm ${package}" "${YELLOW}::${RESET} [-] ${package}"
     done
