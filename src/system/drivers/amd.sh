@@ -1,7 +1,7 @@
 source src/cmd.sh
 
 function amd_drivers() {
-    local -r install_lst="
+    local -r inlst="
         mesa
         lib32-mesa
         vulkan-radeon
@@ -9,7 +9,8 @@ function amd_drivers() {
         vulkan-icd-loader
         lib32-vulkan-icd-loader
         vulkan-mesa-layers
-        lib32-vulkan-mesa-layers"
+        lib32-vulkan-mesa-layers
+    "
 
-    install_lst "$install_lst"
+    install_lst "${inlst}"
 }

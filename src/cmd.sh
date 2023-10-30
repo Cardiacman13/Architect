@@ -23,6 +23,15 @@ function install_lst() {
     local -r lst_split=(${lst// / })
 
     for package in ${lst_split[@]}; do
-        exec_log "yay -S --noconfirm --needed ${package}" "installation of ${package}"
+        exec_log "${AUR} -S --noconfirm --needed ${package}" "installation of ${package}"
+    done
+}
+
+function uninstall_lst() {
+    local -r lst=$1
+    local -r lst_split=(${lst// / })
+
+    for package in ${lst_split[@]}; do
+        exec_log "sudo pacman -Rdd --noconfirm ${package}" "uninstallation of ${package}"
     done
 }

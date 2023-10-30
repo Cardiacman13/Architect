@@ -1,7 +1,7 @@
 source src/cmd.sh
 
 function install_kde() {
-    local -r install_lst=(
+    local -r inlst="
         powerdevil
         xdg-desktop-portal-kde
         okular
@@ -19,11 +19,8 @@ function install_kde() {
         kcalc
         plasma-systemmonitor
         kwalletmanager
-    )
+    "
 
-    for package in "${install_lst[@]}"; do
-        exec_log "${AUR} -S --noconfirm --needed ${package}" "installing of ${package}"
-    done
-
+    install_lst "${inlst}"
     exec_log "sudo echo "Numlock=on" >> /etc/sddm.conf" "Enabling numlock on startup"
 }

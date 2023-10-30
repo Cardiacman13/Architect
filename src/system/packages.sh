@@ -1,7 +1,7 @@
 source src/cmd.sh
 
 function usefull_package() {
-    local -r install_lst="
+    local -r inlst="
         gstreamer
         gst-plugins-bad
         gst-plugins-base
@@ -42,7 +42,7 @@ function usefull_package() {
         man-pages
     "
 
-    install_lst "$install_lst"
+    install_lst "${inlst}"
     
     if [[ ${BTRFS} == true ]]; then
         exec_log "${AUR} -S --noconfirm --needed btrfs-progs btrfs-assistant" "installing btrfs support"

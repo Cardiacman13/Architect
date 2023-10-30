@@ -1,7 +1,7 @@
 source src/cmd.sh
 
 function install_kde() {
-    local -r install_lst=(
+    local -r inlst="
         xdg-desktop-portal-xapp
         xdg-desktop-portal-gtk
         xfce4-goodies
@@ -41,11 +41,8 @@ function install_kde() {
         xfce4-weather-plugin
         xfce4-whiskermenu-plugin
         xfce4-xkb-plugin
-    )
+    "
 
-    for package in "${install_lst[@]}"; do
-        exec_log "${AUR} -S --noconfirm --needed ${package}" "installing of ${package}"
-    done
-
+    install_lst "${inlst}"
     exec_log "xdg-user-dirs-update" "Updating user directories"
 }

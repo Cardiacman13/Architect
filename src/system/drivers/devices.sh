@@ -22,7 +22,7 @@ function printer() {
     choice="${choice^^}"
 
     if [[ $choice == "Y" ]]; then
-        local install_lst="
+        local inlst="
             ghostscript
             gsfonts
             cups
@@ -42,7 +42,7 @@ function printer() {
         choice="${choice^^}"
 
         if [[ $choice == "Y" ]]; then
-            install_lst+="
+            inlst+="
                 epson-inkjet-printer-escpr
                 epson-inkjet-printer-escpr2
                 epson-inkjet-printer-201601w
@@ -53,8 +53,13 @@ function printer() {
         choice="${choice^^}"
 
         if [[ $choice == "Y" ]]; then
-            install_lst+=(hplip python-pyqt5)
+            inlst+="
+                hplip
+                python-pyqt5
+            "
         fi
+
+        install_lst "${inlst}"
     fi
 }
 
@@ -63,15 +68,13 @@ function bluetooth() {
     choice="${choice^^}"
 
     if [[ $choice == "Y" ]]; then
-        local -r install_lst="
+        local -r inlst="
             bluez
             bluez-utils
             bluez-plugins
         "
-        for package in "${install_lst[@]}"; do
-            exec_log "${AUR} -S --noconfirm --needed ${package}" "installing ${package}"
-        done
 
+        install_lst "${inlst}"
         exec_log "sudo systemctl enable --now bluetooth" "enabling bluetooth service"
     fi
 }

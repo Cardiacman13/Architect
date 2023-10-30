@@ -1,14 +1,14 @@
 source src/cmd.sh
 
 function sound_server() {
-    local -r uninstall_lst=(
+    local -r unlst="
         pulseaudio
         pulseaudio-bluetooth
         pulseaudio-alsa
         jack2
         pipewire-media-session
-    )
-    local -r install_lst="
+    "
+    local -r inlst="
         pipewire
         lib32-pipewire
         pipewire-pulse
@@ -20,11 +20,8 @@ function sound_server() {
         alsa-tools
     "
 
-    for pkg in "${uninstall_lst[@]}"; do
-        exec_log "sudo pacman -Rdd --noconfirm ${pkg}" "Uninstalling ${pkg}"
-    done
-
-    install_lst "$install_lst"
+    uninstall_lst "${unlst}"
+    install_lst "${inlst}"
 }
 
 function setup_system_loaders() {

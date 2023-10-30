@@ -1,7 +1,7 @@
 source src/cmd.sh
 
 function intel_drivers() {
-    local -r install_lst="
+    local -r inlst="
         mesa
         lib32-mesa
         vulkan-intel
@@ -11,5 +11,5 @@ function intel_drivers() {
         intel-media-driver
     "
 
-    install_lst "$install_lst"
+    install_lst "${inlst}"
 }

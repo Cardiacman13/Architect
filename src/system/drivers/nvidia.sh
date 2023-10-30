@@ -18,7 +18,7 @@ function nvidia_config() {
 }
 
 function nvidia_drivers() {
-    local -r remove_lst=(
+    local -r unlst="
         nvidia-dkms
         nvidia-settings
         nvidia-utils
@@ -42,16 +42,14 @@ function nvidia_drivers() {
         nvidia-dev-settings-tkg
         nvidia-dev-utils-tkg
         opencl-nvidia-dev-tkg
-    )
+    "
 
-    for package in ${remove_lst[@]}; do
-        exec_log "sudo pacman -Rdd --noconfirm ${package}" "removal of ${package}"
-    done
+    uninstall_lst "${unlst}"
 
     read -rp "Do you want to use NVIDIA-ALL ? (y/N) : " user_nvidia_all
-    user_nvidia_all="${user_nvidia_all,,}"
+    user_nvidia_all="${user_nvidia_all^^}"
 
-    if [[ ${user_nvidia_all} == "y" ]]; then
+    if [[ ${user_nvidia_all} == "Y" ]]; then
         exec_log "git clone https://github.com/Frogging-Family/nvidia-all.git" "cloning of nvidia-all repository"
         cd nvidia-all || exit
         exec_log "makepkg -si --noconfirm" "installing nvidia-all"
@@ -60,7 +58,7 @@ function nvidia_drivers() {
         exec_log "${AUR} -S --noconfirm --needed cuda" "installing cuda"
 
     else
-        local -r install_lst="
+        local -r inlst="
             nvidia-dkms
             nvidia-utils
             lib32-nvidia-utils
@@ -69,13 +67,10 @@ function nvidia_drivers() {
             lib32-vulkan-icd-loader
             cuda
         "
+        install_lst "${inlst}"
         nvidia_config
     fi
 
     # systemctl
     exec_log "sudo systemctl enable nvidia-{hibernate,resume,suspend}" "activation of nvidia-{hibernate,resume,suspend}"
-
-    if [[ -n ${install_lst} ]]; then
-        install_lst "${install_lst}"
-    fi
 }
