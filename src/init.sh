@@ -25,10 +25,11 @@ EOF
 }
 
 function init_log() {
-    if [ ! -d $log_file_name ]; then
-        touch $log_file_name
+    if [[ -f "${LOG_FILE}" ]]; then
+        rm -f "${LOG_FILE}"
     fi
 
-    echo "Commit hash: $(git rev-parse HEAD)" >>$log_file_name
-    echo "[$(date "+%Y-%m-%d %H:%M:%S")] $1" >>$log_file_name
+    touch "${LOG_FILE}"
+    echo -e "Commit hash: $(git rev-parse HEAD)" >>"${LOG_FILE}"
+    echo -e "Log file: ${log_file_name}\n" >>"${LOG_FILE}"
 }
