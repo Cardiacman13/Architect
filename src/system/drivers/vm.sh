@@ -27,7 +27,7 @@ function vm_drivers() {
         "
 
         install_lst "${inlst}"
-    fi 
+    fi
 
     exec_log "sudo pacman -Rdd --noconfirm virt-what" "uninstallation of virt-what"
 }

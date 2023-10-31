@@ -4,7 +4,7 @@ function ask_to_add() {
     local -r name=$1
     local -r package=$2
     local answer
-    
+
     read -rp "Do you want to install ${name} ? (y/N) " answer
     if [[ ${answer} =~ ^[Yy]$ ]]; then
         echo ${package}
@@ -49,7 +49,7 @@ function install_software() {
     packages+=" $(ask_to_add "VLC" "vlc")"
     packages+=" $(ask_to_add "Visual Studio Code" "visual-studio-code-bin")"
     packages+=" $(ask_to_add "Open RGB" "openrgb-bin")"
-    
+
     install_lst "${flatpak}" "flatpak"
     install_lst "${packages}"
 }
