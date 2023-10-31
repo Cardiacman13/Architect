@@ -34,13 +34,18 @@ function install_lst() {
         cuda
     "
     local -r lst=$1
+    local -r type=$2
     local -r lst_split=(${lst// / })
 
     for package in ${lst_split[@]}; do
         if [[ ${warning} =~ (^|[[:space:]])${package}($|[[:space:]]) ]]; then
-            log_msg "${RED}::${RESET} [!] ${package} is not installed"
+            log_msg "${RED}::${RESET} [!] ${package} ${YELLOW}(may be long)${RESET}"
         fi
-        exec_log "${AUR} -S --noconfirm --needed ${package}" "${BLUE}::${RESET} [+] ${package}"
+        if [[ ${type} == "flatpak" ]]; then
+            exec_log "flatpak install -y flathub ${package}" "${BLUE}::${RESET} [+] ${package}"
+        else
+            exec_log "${AUR} -S --noconfirm --needed ${package}" "${BLUE}::${RESET} [+] ${package}"
+        fi
     done
 }
 

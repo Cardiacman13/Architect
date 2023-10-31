@@ -1,43 +1,55 @@
 source src/cmd.sh
 
 function ask_to_add() {
-    local prompt="$1"
-    local type="$2"
-
-    read -rp "Do you want to add ${prompt} (${type}) (y/N) : " choice
-    choice="${choice,,}"
-
-    echo "${choice}"
+    local -r name=$1
+    local -r package=$2
+    local answer
+    
+    read -rp "Do you want to install ${name} ? (y/N) " answer
+    if [[ ${answer} =~ ^[Yy]$ ]]; then
+        echo ${package}
+    fi
 }
 
+# Asking to user if he want to install some software
+# | type    | name                    | package                                 |
+# |---------|-------------------------|-----------------------------------------|
+# | package | Firefox                 | firefox firefox-i18n-fr                 |
+# | package | Brave                   | brave-bin                               |
+# | package | Chromium                | chromium                                |
+# | package | Discord                 | discord                                 |
+# | package | Steam                   | steam                                   |
+# | package | Lutris                  | lutris wine-staging                     |
+# | package | Heroic Games Launcher   | heroic-games-launcher-bin               |
+# | package | protonup-qt             | protonup-qt-bin                         |
+# | package | Spotify                 | spotify                                 |
+# | flatpak | OBS Studio              | com.obsproject.Studio                   |
+# | package | Kdenlive                | kdenlive                                |
+# | package | LibreOffice             | libreoffice-fresh libreoffice-fresh-fr  |
+# | package | Gimp                    | gimp                                    |
+# | package | VLC                     | vlc                                     |
+# | package | Visual Studio Code      | visual-studio-code-bin                  |
+# | package | Open RGB                | openrgb-bin                             |
+# |-----------------------------------------------------------------------------|
 function install_software() {
-    local -a packages_lst
-    local -a flatpak_lst
+    local flatpak=$(ask_to_add "OBS Studio (flatpak)" "com.obsproject.Studio")
+    local packages=$(ask_to_add "Firefox" "firefox firefox-i18n-fr")
 
-    [[ $(ask_to_add "Firefox" "package") == "y" ]] && packages_lst+=("firefox" "firefox-i18n-fr")
-    [[ $(ask_to_add "Brave" "package") == "y" ]] && packages_lst+=("brave-bin")
-    [[ $(ask_to_add "Chromium" "package") == "y" ]] && packages_lst+=("chromium")
-    [[ $(ask_to_add "Discord" "package") == "y" ]] && packages_lst+=("discord")
-    [[ $(ask_to_add "Steam" "package") == "y" ]] && packages_lst+=("steam")
-    [[ $(ask_to_add "Lutris" "package") == "y" ]] && packages_lst+=("lutris" "wine-staging")
-    [[ $(ask_to_add "Heroic Games Launcher" "package") == "y" ]] && packages_lst+=("heroic-games-launcher-bin")
-    [[ $(ask_to_add "protonup-qt" "package") == "y" ]] && packages_lst+=("protonup-qt-bin")
-    [[ $(ask_to_add "Spotify" "package") == "y" ]] && packages_lst+=("spotify")
-    [[ $(ask_to_add "OBS Studio" "flatpak") == "y" ]] && flatpak_lst+=("com.obsproject.Studio")
-    [[ $(ask_to_add "Kdenlive" "package") == "y" ]] && packages_lst+=("kdenlive")
-    [[ $(ask_to_add "LibreOffice" "package") == "y" ]] && packages_lst+=("libreoffice-fresh" "libreoffice-fresh-fr")
-    [[ $(ask_to_add "Gimp" "package") == "y" ]] && packages_lst+=("gimp")
-    [[ $(ask_to_add "VLC" "package") == "y" ]] && packages_lst+=("vlc")
-    [[ $(ask_to_add "Visual Studio Code" "package") == "y" ]] && packages_lst+=("visual-studio-code-bin")
-    [[ $(ask_to_add "Open RGB" "package") == "y" ]] && packages_lst+=("openrgb-bin")
-
-    if [[ ${#packages_lst[@]} -gt 0 ]]; then
-        install_lst "${packages_lst[@]}"
-    fi
-
-    if [[ ${#flatpak_lst[@]} -gt 0 ]]; then
-        for package in "${flatpak_lst[@]}"; do
-            exec_log "flatpak install -y flathub ${package}" "${BLUE}::${RESET} [+] Installing ${package}"
-        done
-    fi
+    packages+=" $(ask_to_add "Brave" "brave-bin")"
+    packages+=" $(ask_to_add "Chromium" "chromium")"
+    packages+=" $(ask_to_add "Discord" "discord")"
+    packages+=" $(ask_to_add "Steam" "steam")"
+    packages+=" $(ask_to_add "Lutris" "lutris wine-staging")"
+    packages+=" $(ask_to_add "Heroic Games Launcher" "heroic-games-launcher-bin")"
+    packages+=" $(ask_to_add "protonup-qt" "protonup-qt-bin")"
+    packages+=" $(ask_to_add "Spotify" "spotify")"
+    packages+=" $(ask_to_add "Kdenlive" "kdenlive")"
+    packages+=" $(ask_to_add "LibreOffice" "libreoffice-fresh libreoffice-fresh-fr")"
+    packages+=" $(ask_to_add "Gimp" "gimp")"
+    packages+=" $(ask_to_add "VLC" "vlc")"
+    packages+=" $(ask_to_add "Visual Studio Code" "visual-studio-code-bin")"
+    packages+=" $(ask_to_add "Open RGB" "openrgb-bin")"
+    
+    install_lst "$packages"
+    install_lst "$flatpak" "flatpak"
 }
