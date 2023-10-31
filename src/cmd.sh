@@ -53,7 +53,7 @@ function install_lst() {
             exec "${AUR} -S --noconfirm --needed ${package}"
         fi
 
-        local -r exit_status=$?
+        local exit_status=$?
 
         echo "Exit status: ${exit_status}" >>"${LOG_FILE}"
         if [[ ${exit_status} -ne 0 ]]; then
