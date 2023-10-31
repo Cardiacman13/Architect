@@ -74,15 +74,15 @@ echo "Hello world !"            # Example command
     ```
     iwctl
     ```
-    Then (replace YOUR-WIFI-NAME with the name of your wifi)
+    Then, replace `YOUR-WIFI-NAME` with the name of your wifi `(SSID)`
     ```
-    station wlan0 connect YOUR-WIFI-NAME (SSID)
+    station wlan0 connect YOUR-WIFI-NAME
     ```
     Enter your wifi password then `quit` to exit iwctl.
 
 3. **Archinstall**
     ```
-    pacman -Syu archinstall      # update the archinstall script before installation
+    pacman -Syu archinstall     # update the archinstall script before installation
     archinstall                 # to launch the installation help script for arch linux
     ```
     **/!\ The archinstall menu is subject to change with updates to the script /!\\**
@@ -95,7 +95,7 @@ echo "Hello world !"            # Example command
 1. This [modification](https://wiki.archlinux.org/title/Pacman#Enabling_parallel_downloads) allows for parallelization of package downloads. (PS: with kate, when you save, you might be asked to enter a password. Enter your root/sudo password.)
 
    ```
-   kate /etc/pacman.conf
+   sudo nano /etc/pacman.conf
    ```
 
    Uncomment (remove the **#** from the following lines):
@@ -136,7 +136,7 @@ echo "Hello world !"            # Example command
    This modification allows you to simply type “update-arch” in a terminal to update the system, “clean-arch” to clean it, or “fix-key” in case of an error with the gpg keys.
 
    ```
-   kate ~/.bashrc
+   nano ~/.bashrc
    ```
    Add each of these lines to the end of the file:
    ```
@@ -180,7 +180,7 @@ In the folder:
 - **If using GRUB**
 
     ```
-    kate /etc/default/grub
+    sudo nano /etc/default/grub
     ```
 
     Add **nvidia-drm.modeset=1** to the "grub_cmdline_linux_default=" line
@@ -196,7 +196,7 @@ In the folder:
 3. **Load Nvidia modules as a priority at Arch launch:**
     This step is sometimes necessary for certain desktop environments or window managers.
     ```
-    kate /etc/mkinitcpio.conf
+    sudo nano /etc/mkinitcpio.conf
     ```
     Modify the MODULES=() line to:
     ```
@@ -211,7 +211,7 @@ In the folder:
     This hook automates the rebuilding of initramfs (the basic boot file) with every Nvidia driver modification.
     ```
     sudo mkdir /etc/pacman.d/hooks/
-    kate /etc/pacman.d/hooks/nvidia.hook
+    sudo nano /etc/pacman.d/hooks/nvidia.hook
     ```
     Add:
     ```
@@ -358,7 +358,7 @@ yay -S timeshift
     fish                              # 3. Run fish or reboot and it will default.
     fish_update_completions           # 4. Update completions.
     set -U fish_greeting              # 5. Remove welcome message.
-    kate ~/.config/fish/config.fish   # 6. Create an alias as for bash at the beginning of this tutorial.
+    nano ~/.config/fish/config.fish   # 6. Create an alias as for bash at the beginning of this tutorial.
     ```
 - Then add the following aliases between if and end:
     ```
@@ -423,15 +423,14 @@ We increase the default value of this variable, allowing for the storage of more
 
 <img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/Cardiac-icon.png" width="30" height="30"> [Gaming LINUX supprimer les crashs / augmenter la compatibilité](https://youtu.be/sr4RgshrUYY)
 
-- Ajouter dans :
-
-  ```
-  kate /etc/sysctl.d/99-sysctl.conf
-  ``` 
-    la ligne suivante:
-      ` 
-      vm.max_map_count=16777216
-      `
+Ajouter dans :
+```
+sudo nano /etc/sysctl.d/99-sysctl.conf
+``` 
+la ligne suivante:
+` 
+vm.max_map_count=16777216
+`
 
 
 ## <img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/speed.png" width="30" height="30"> **Precision Optimization**: <a name="optimization"/>
