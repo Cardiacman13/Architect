@@ -36,7 +36,6 @@ function usefull_package() {
         fuse3
         exfat-utils
         bash-completion
-        xdg-desktop-portal-gtk
         ffmpegthumbs
         man-db
         man-pages
