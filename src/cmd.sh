@@ -10,6 +10,16 @@ function log_msg() {
     echo "[$(date "+%Y-%m-%d %H:%M:%S")] ${comment}" >>"${LOG_FILE}"
 }
 
+function exec() {
+    local -r command="$1"
+
+    if [[ ${VERBOSE} == true ]]; then
+        eval "${command}" 2>&1 | tee -a "${LOG_FILE}"
+    else
+        eval "${command}" >>"${LOG_FILE}" 2>&1
+    fi
+}
+
 function exec_log() {
     if [[ $# -ne 2 ]]; then
         echo -e "${RED}Usage: exec_log <command> <message>${RESET}"
@@ -20,21 +30,7 @@ function exec_log() {
     local -r comment="$2"
 
     log_msg "${comment}"
-    echo "${command}" >>"${LOG_FILE}"
-
-    if [[ ${VERBOSE} == true ]]; then
-        eval "${command}" 2>&1 | tee -a "${LOG_FILE}"
-    else
-        eval "${command}" >>"${LOG_FILE}" 2>&1
-    fi
-    
-    local -r exit_status=$?
-
-    echo "Exit status: ${exit_status}" >>"${LOG_FILE}"
-    if [[ ${exit_status} -ne 0 ]]; then
-        echo -e "${RED}Error executing command: ${command}${RESET}"
-        exit ${exit_status}
-    fi
+    exec "${command}"
 }
 
 function install_lst() {
@@ -49,10 +45,19 @@ function install_lst() {
         if [[ ${warning} =~ (^|[[:space:]])${package}($|[[:space:]]) ]]; then
             log_msg "${RED}::${RESET} [!] ${package} ${YELLOW}(may be long)${RESET}"
         fi
+
+        log_msg "${BLUE}::${RESET} [+] ${package}"
         if [[ ${type} == "flatpak" ]]; then
-            exec_log "flatpak install -y flathub ${package}" "${BLUE}::${RESET} [+] ${package}"
+            exec "flatpak install -y flathub ${package}"
         else
-            exec_log "${AUR} -S --noconfirm --needed ${package}" "${BLUE}::${RESET} [+] ${package}"
+            exec "${AUR} -S --noconfirm --needed ${package}"
+        fi
+
+        local -r exit_status=$?
+
+        echo "Exit status: ${exit_status}" >>"${LOG_FILE}"
+        if [[ ${exit_status} -ne 0 ]]; then
+            echo -e "${RED}Error executing command: ${command}${RESET}"
         fi
     done
 }
