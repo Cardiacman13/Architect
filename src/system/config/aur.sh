@@ -27,7 +27,7 @@ function install_aur() {
 
     exec_log "git clone ${git_url[$id]}" "Cloning of ${aur_name[$id]}"
     cd "${aur_name[$id]}" || return 1
-    exec_log "makepkg -si --noconfirm" "Installation of ${aur_name[$id]}"
+    exec_log "makepkg -si --noconfirm" "Installation of ${AUR}"
     cd .. || return 1
-    exec_log "rm -rf ${aur_name[$id]}" "Removing ${aur_name[$id]}"
+    exec_log "rm -rf ${aur_name[$id]}" "Directory deletion ${aur_name[$id]}"
 }

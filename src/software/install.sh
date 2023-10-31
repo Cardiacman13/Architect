@@ -50,6 +50,6 @@ function install_software() {
     packages+=" $(ask_to_add "Visual Studio Code" "visual-studio-code-bin")"
     packages+=" $(ask_to_add "Open RGB" "openrgb-bin")"
     
-    install_lst "$packages"
-    install_lst "$flatpak" "flatpak"
+    install_lst "${flatpak}" "flatpak"
+    install_lst "${packages}"
 }

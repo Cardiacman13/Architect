@@ -1,6 +1,6 @@
 function endscript() {
     local -r end_time="$(date +%s)"
-    local -r duration="$(($end_time - $start_time))"
+    local -r duration="$((${end_time} - ${1}))"
 
     echo -e "Done in ${GREEN}${duration}${RESET} seconds."
     echo -e "Done in ${duration} seconds." >>"${LOG_FILE}"

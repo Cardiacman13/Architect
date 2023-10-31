@@ -47,13 +47,21 @@ source src/system/other.sh
 source src/system/packages.sh
 source src/system/shell.sh
 # ================================================================================================ #
+function stepmsg() {
+    echo "---------------------------------------------------------------------------------------------------------"
+    echo -e "|                                               $1                                                      |"
+    echo "---------------------------------------------------------------------------------------------------------"
+}
+# ================================================================================================ #
 function main() {
     local -r start_time="$(date +%s)"
     # init
+    stepmsg "Initialization"
     init_log
     header
 
     # system
+    stepmsg "System preparation"
     config_pacman
     mirrorlist
     install_aur
@@ -65,20 +73,23 @@ function main() {
     shell_config
 
     # drivers
+    stepmsg "System configuration"
     video_drivers
     gamepad
     printer
     bluetooth
 
     # desktop environment
+    stepmsg "Environment configuration"
     detect_de
 
+    stepmsg "Software installation"
     # software
     support_flatpak
     install_software
 
     # end
-    endscript
+    endscript "${start_time}"
 }
 # ================================================================================================ #
 main
