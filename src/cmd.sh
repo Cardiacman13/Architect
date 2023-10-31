@@ -57,7 +57,7 @@ function install_lst() {
 
         echo "Exit status: ${exit_status}" >>"${LOG_FILE}"
         if [[ ${exit_status} -ne 0 ]]; then
-            echo -e "${RED}Error executing command: ${command}${RESET}"
+            echo -e "${RED}Error executing command: ${package}${RESET}"
         fi
     done
 }

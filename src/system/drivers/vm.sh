@@ -10,6 +10,8 @@ function vm_drivers() {
         lib32-vulkan-swrast
     "
 
+    install_lst "${inlst_all}"
+
     if [[ ${vm} =~ (^|[[:space:]])virtualbox($|[[:space:]]) ]]; then
         local -r inlst="
             virtualbox-guest-utils
