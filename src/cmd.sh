@@ -27,6 +27,14 @@ function exec_log() {
     else
         eval "${command}" >>"${LOG_FILE}" 2>&1
     fi
+    
+    local -r exit_status=$?
+
+    echo "Exit status: ${exit_status}" >>"${LOG_FILE}"
+    if [[ ${exit_status} -ne 0 ]]; then
+        echo -e "${RED}Error executing command: ${command}${RESET}"
+        exit ${exit_status}
+    fi
 }
 
 function install_lst() {
