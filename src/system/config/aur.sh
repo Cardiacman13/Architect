@@ -25,9 +25,9 @@ function install_aur() {
         export AUR="paru"
     fi
 
-    execute_command "git clone ${git_url[$id]}" "Cloning of ${aur_name[$id]}"
+    exec_log "git clone ${git_url[$id]}" "Cloning of ${aur_name[$id]}"
     cd "${aur_name[$id]}" || return 1
-    execute_command "makepkg -si --noconfirm" "Build and install ${AUR}"
+    exec_log "makepkg -si --noconfirm" "Build and install ${AUR}"
     cd .. || return 1
-    execute_command "rm -rf ${aur_name[$id]}" "Directory deletion ${aur_name[$id]}"
+    exec_log "rm -rf ${aur_name[$id]}" "Directory deletion ${aur_name[$id]}"
 }

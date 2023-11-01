@@ -1,7 +1,7 @@
 function log_msg() {
     local -r comment="$1"
 
-    echo "${comment}"
+    printf "$s" "${comment}"
     echo "[$(date "+%Y-%m-%d %H:%M:%S")] ${comment}" >>"${LOG_FILE}"
 }
 
@@ -65,7 +65,6 @@ function install_lst() {
             printf "${BLUE}::${RESET} [${GREEN}✔${RESET}] 📦 %s\n" "$package"
         else
             printf "${BLUE}::${RESET} [${RED}✘${RESET}] 📦 %s\n" "$package"
-            printf "${RED}Error executing command: %s${RESET}\n" "$package"
         fi
     done
 }
