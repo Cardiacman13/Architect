@@ -6,12 +6,12 @@ function log_msg() {
 }
 
 function execute_command() {
-    local -r command=("$@")
+    local -r command="$1"
 
     if [[ ${VERBOSE} == true ]]; then
-        "${command[@]}" 2>&1 | tee -a "${LOG_FILE}" &
+        eval "${command}" 2>&1 | tee -a "${LOG_FILE}" &
     else
-        "${command[@]}" >>"${LOG_FILE}" 2>&1 &
+        eval "${command}" >>"${LOG_FILE}" 2>&1 &
     fi
 }
 
@@ -19,7 +19,7 @@ function spinner() {
     local -r pid=$1
     local -r package_name=$2
     local -r delay=0.1
-    local -r spinners=("⠋" "⠙" "⠹" "⠸" "⠼" "⠴" "⠦" "⠧" "⠇" "⠏")
+    local -r spinners=("|" "/" "-" "\\")
     local i=0
 
     while kill -0 "$pid" 2>/dev/null; do
@@ -42,9 +42,9 @@ function install_sp() {
 
     log_msg "${BLUE}::${RESET} [+] installing ${package_name}"
     if [[ $flatpak == true ]]; then
-        execute_command flatpak install -y flathub "$package_name"
+        execute_command "flatpak install -y flathub $package_name"
     else
-        execute_command "$AUR" -S --noconfirm --needed "$package_name"
+        execute_command "$AUR -S --noconfirm --needed $package_name"
     fi
 
     spinner "$!" "$package_name"
