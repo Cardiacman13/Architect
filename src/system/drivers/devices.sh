@@ -12,8 +12,7 @@ function gamepad() {
     choice="${choice^^}"
 
     if [[ $choice == "Y" ]]; then
-        exec_log "${AUR} -Rdd --noconfirm bluez-utils" "removing of bluez-utils"
-        exec_log "${AUR} -S --noconfirm --needed bluez-utils-compat ds4drv dualsensectl" "installing playstation controllers support"
+        exec_log "${AUR} -S --noconfirm --needed bluez-utils ds4drv dualsensectl" "installing playstation controllers support"
     fi
 }
 
