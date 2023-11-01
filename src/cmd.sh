@@ -1,72 +1,80 @@
 function log_msg() {
-    if [[ $# -ne 1 ]]; then
-        echo -e "${RED}Usage: log_msg <message>${RESET}"
-        exit 1
-    fi
-
     local -r comment="$1"
 
     echo "${comment}"
     echo "[$(date "+%Y-%m-%d %H:%M:%S")] ${comment}" >>"${LOG_FILE}"
 }
 
-function exec() {
-    local -r command="$1"
+function execute_command() {
+    local -r command=("$@")
 
     if [[ ${VERBOSE} == true ]]; then
-        eval "${command}" 2>&1 | tee -a "${LOG_FILE}"
+        "${command[@]}" 2>&1 | tee -a "${LOG_FILE}" &
     else
-        eval "${command}" >>"${LOG_FILE}" 2>&1
+        "${command[@]}" >>"${LOG_FILE}" 2>&1 &
     fi
+}
+
+function spinner() {
+    local -r pid=$1
+    local -r package_name=$2
+    local -r delay=0.1
+    local -r spinners=("⠋" "⠙" "⠹" "⠸" "⠼" "⠴" "⠦" "⠧" "⠇" "⠏")
+    local i=0
+
+    while kill -0 "$pid" 2>/dev/null; do
+        printf "\r${BLUE}::${RESET} [%s] 📦 installing %s" "${spinners[$i]}" "$package_name"
+        i=$(((i + 1) % ${#spinners[@]}))
+        sleep "$delay"
+    done
+
+    printf "\r\033[K"
 }
 
 function exec_log() {
-    if [[ $# -ne 2 ]]; then
-        echo -e "${RED}Usage: exec_log <command> <message>${RESET}"
-        exit 1
+    log_msg "$2"
+    execute_command "$1"
+}
+
+function install_sp() {
+    local -r package_name=$1
+    local -r flatpak=$2
+
+    log_msg "${BLUE}::${RESET} [+] installing ${package_name}"
+    if [[ $flatpak == true ]]; then
+        execute_command flatpak install -y flathub "$package_name"
+    else
+        execute_command "$AUR" -S --noconfirm --needed "$package_name"
     fi
 
-    local -r command="$1"
-    local -r comment="$2"
+    spinner "$!" "$package_name"
+    wait "$!"
 
-    log_msg "${comment}"
-    exec "${command}"
+    return $?
 }
 
 function install_lst() {
-    local -r warning="
-        cuda
-    "
-    local -r lst=$1
+    local -a lst_split=($1)
     local -r type=$2
-    local -r lst_split=(${lst// / })
 
-    for package in ${lst_split[@]}; do
-        if [[ ${warning} =~ (^|[[:space:]])${package}($|[[:space:]]) ]]; then
-            log_msg "${RED}::${RESET} [!] ${package} ${YELLOW}(may be long)${RESET}"
-        fi
-
-        log_msg "${BLUE}::${RESET} [+] ${package}"
-        if [[ ${type} == "flatpak" ]]; then
-            exec "flatpak install -y flathub ${package}"
-        else
-            exec "${AUR} -S --noconfirm --needed ${package}"
-        fi
-
+    for package in "${lst_split[@]}"; do
+        install_sp "$package" [[ $type == "flatpak" ]]
         local exit_status=$?
-
-        echo "Exit status: ${exit_status}" >>"${LOG_FILE}"
-        if [[ ${exit_status} -ne 0 ]]; then
-            echo -e "${RED}Error executing command: ${package}${RESET}"
+        printf "\r\033[K"
+        if ((exit_status == 0)); then
+            printf "${BLUE}::${RESET} [${GREEN}✔${RESET}] 📦 %s\n" "$package"
+        else
+            printf "${BLUE}::${RESET} [${RED}✘${RESET}] 📦 %s\n" "$package"
+            printf "${RED}Error executing command: %s${RESET}\n" "$package"
         fi
     done
 }
 
 function uninstall_lst() {
-    local -r lst=$1
-    local -r lst_split=(${lst// / })
+    local -a lst_split=($1)
+    local -r message=$2
 
-    log_msg "$2"
+    log_msg "${message}"
     for package in ${lst_split[@]}; do
         exec_log "sudo pacman -Rdd --noconfirm ${package}" "${YELLOW}::${RESET} [-] ${package}"
     done

@@ -36,7 +36,7 @@ function shell_config() {
         touch "${HOME}/.bashrc"
         ;;
     fish)
-        exec_log "${AUR} -S --noconfirm fish" "Installing fish"
+        install_sp "fish"
 
         local current_shell=$(getent passwd $USER | cut -d: -f7)
 

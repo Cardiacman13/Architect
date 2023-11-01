@@ -31,7 +31,7 @@ function setup_system_loaders() {
 
     exec_log "sudo mkdir -p '/etc/pacman.d/hooks/'" "Creating /etc/pacman.d/hooks/"
     exec_log "sudo cp 'assets/data/grub.hook' '/etc/pacman.d/hooks/'" "Copying grub.hook to /etc/pacman.d/hooks/"
-    exec_log "${AUR} -S --noconfirm --needed update-grub" "Installing update-grub"
+    install_sp "update-grub" 
 }
 
 function firewall() {
@@ -39,7 +39,7 @@ function firewall() {
     choice="${choice,,}"
 
     if [[ $choice =~ ^(yes|y)$ ]]; then
-        exec_log "sudo pacman -S --noconfirm --needed firewalld python-pyqt5 python-capng" "Installing firewalld"
+        install_lst "firewalld python-pyqt5 python-capng"
         exec_log "sudo systemctl enable --now firewalld.service" "Enabling firewalld"
     fi
 }

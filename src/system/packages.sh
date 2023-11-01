@@ -44,6 +44,6 @@ function usefull_package() {
     install_lst "${inlst}"
 
     if [[ ${BTRFS} == true ]]; then
-        exec_log "${AUR} -S --noconfirm --needed btrfs-progs btrfs-assistant" "installing btrfs support"
+        install_lst "btrfs-progs btrfs-assistant"
     fi
 }

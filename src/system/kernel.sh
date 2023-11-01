@@ -9,7 +9,7 @@ function install_headers() {
     done
 
     for header in "${kernel_headers[@]}"; do
-        exec_log "sudo pacman -S --noconfirm ${header}" "Installing ${header}"
+        install_sp "${header}"
     done
 }
 
