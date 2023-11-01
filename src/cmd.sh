@@ -13,6 +13,8 @@ function execute_command() {
     else
         eval "${command}" >>"${LOG_FILE}" 2>&1 &
     fi
+
+    wait "$!"
 }
 
 function spinner() {
