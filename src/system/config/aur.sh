@@ -26,7 +26,6 @@ function install_aur() {
         export AUR="paru"
     fi
 
-
     exec_log "git clone ${git_url[$id]}" "Cloning of ${aur_name[$id]}"
     cd "${aur_name[$id]}" || return 1
     exec_log "makepkg -si --noconfirm" "Installation of ${AUR}"

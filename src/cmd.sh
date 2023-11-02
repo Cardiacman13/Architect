@@ -1,4 +1,3 @@
-
 function log() {
     local -r comment="$1"
 
