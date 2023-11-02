@@ -42,11 +42,12 @@ function install_lst() {
     local -r lst_split=(${lst// / })
 
     for package in ${lst_split[@]}; do
-        if [[ ${warning} =~ (^|[[:space:]])${package}($|[[:space:]]) ]]; then
-            log_msg "${RED}::${RESET} [!] ${package} ${YELLOW}(may be long)${RESET}"
+        local warning_msg=""
+        if [[ ${warning} =~ ${package} ]]; then
+            warning_msg=" ${RED}might be long${RESET}"
         fi
 
-        log_msg "${BLUE}::${RESET} [+] ${package}"
+        log_msg "${BLUE}::${RESET} [+] ${package}${warning_msg}"
         if [[ ${type} == "flatpak" ]]; then
             exec "flatpak install -y flathub ${package}"
         else
