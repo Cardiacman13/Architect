@@ -16,6 +16,7 @@ function install_aur() {
         read -rp "What aur helper do you want to install ? (yay/paru) : " choice
         choice="${choice,,}"
     done
+    echo -e "${GREEN}You chose ${choice}${RESET}"
 
     if [[ $choice == "yay" ]]; then
         id=0
@@ -24,6 +25,7 @@ function install_aur() {
         id=1
         export AUR="paru"
     fi
+
 
     exec_log "git clone ${git_url[$id]}" "Cloning of ${aur_name[$id]}"
     cd "${aur_name[$id]}" || return 1
