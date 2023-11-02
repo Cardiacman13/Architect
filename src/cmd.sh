@@ -39,6 +39,7 @@ function install_one() {
     local -r warning="
         cuda
         mkinitcpio-firmware
+        nvidia-dkms
     "
     local -r package=$1
     local -r type=$2
