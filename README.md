@@ -2,8 +2,6 @@
 
 [**Version Française**](https://github.com/Cardiacman13/Tuto-Arch/blob/main/lang/README.fr.md) / [**Versión Española**](https://github.com/Cardiacman13/Tuto-Arch/blob/main/lang/README.es.md) / [**Versione italiana**](https://github.com/Cardiacman13/Tuto-Arch/blob/main/lang/README.it.md) / [**deutsche Version**](https://github.com/Cardiacman13/Tuto-Arch/blob/main/lang/README.ger.md)
 
-
-
 ## Presentation
 
 <img src="https://github.com/Cardiacman13/Architect/blob/main/assets/images/desktop.png" width="1000" height="250">
@@ -11,8 +9,6 @@
 Arch is a technical distribution aimed at a more advanced audience, consisting of "building blocks". Think of it like a set of blank Lego, with a base that you need to build and shape as you wish, and if you do it wrong, things can break.
 
 The purpose of this tutorial is to install a stock Arch with a minimum of packages, according to our needs for office work and/or gaming.
-
-<img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/Cardiac-icon.png" width="30" height="30"> This icon redirects you to my videos on certain parts of this tutorial [**Arch Linux Tutorial Playlist**](https://www.youtube.com/watch?v=JE6VwNHLcyk&list=PLuIP_-MWRwtWEX0tyDpZPdwU6zCE1O1cY)
 
 ## Main Features
 
@@ -42,15 +38,36 @@ Join a thriving community backed by Gaming Linux FR reviewers and Arch Linux exp
 Download the ISO: [**Arch Linux - Downloads**](https://archlinux.org/download/)
 
 ## Table of Contents
-1. [Elevate your desktop](#elevate)
-2. [Level Up Your Gaming](#gaming)
-3. [Precision Optimization](#optimization)
-4. [Troubleshooting](#troubleshooting)
-5. [All-in-one script](#script)
+1. [All-in-one script](#script)
+2. [Elevate your desktop](#elevate)
+3. [Level Up Your Gaming](#gaming)
+4. [Precision Optimization](#optimization)
+5. [Troubleshooting](#troubleshooting)
 6. [Community stuff](#community)
 
+## Arch Linux Post-Install Script <a name="script"/>
 
+<img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/Welcome.png">
 
+The purpose of this script is to configure a **stock Arch** system with a **minimal set of packages** tailored to your needs right after using archinstall. This script is **oriented towards gaming**.
+
+> [!NOTE]
+> **Before You Begin:**
+> This script is based on a tutorial that describes all the steps : [Tuto-Arch](https://github.com/Cardiacman13/Tuto-Arch/blob/main/lang/README.en.md)
+> This script is intended for use on a clean installation that has just been set up with `archinstall`.
+> Before running this script, make sure you have booted into a Desktop Environment.
+> It is not suitable for outdated computers. Ensure your hardware meets the requirements for the latest Nvidia drivers.
+
+```bash
+sudo pacman -Sy git
+git clone https://github.com/Cardiacman13/Architect.git
+cd Architect
+chmod +x ./architect.sh
+./architect.sh
+```
+
+<details>
+<summary>Tuto</summary>
 ## <img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/pc.png" width="30" height="30"> **Elevate Your Desktop** <a name="elevate"/>
 
 ### Installation
@@ -506,30 +523,7 @@ flatpak install com.bitwarden.desktop com.discordapp.Discord com.github.tchx84.F
 
 - For help, visit the GLF Discord (fr/en): [Discord GLF](http://discord.gg/EP3Jm8YMvj)
 
-## Arch Linux Post-Install Script <a name="script"/>
-
-<img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/Welcome.png">
-
-The purpose of this script is to configure a **stock Arch** system with a **minimal set of packages** tailored to your needs right after using archinstall. This script is **oriented towards gaming**.
-
-> [!NOTE]
-> **Before You Begin:**
-> This script is based on a tutorial that describes all the steps : [Tuto-Arch](https://github.com/Cardiacman13/Tuto-Arch/blob/main/lang/README.en.md)
-> This script is intended for use on a clean installation that has just been set up with `archinstall`.
-> Before running this script, make sure you have booted into a Desktop Environment.
-> It is not suitable for outdated computers. Ensure your hardware meets the requirements for the latest Nvidia drivers.
-
-```bash
-sudo pacman -Sy git
-git clone https://github.com/Cardiacman13/Architect.git
-cd Architect
-<<<<<<< HEAD
-chmod +x ./architect.sh
-./architect.sh
-=======
-./post-installation
->>>>>>> main
-```
+</details>
 
 ### 1. Optimizing Pacman
 Enhance Pacman's functionality and user experience by making the following improvements:
