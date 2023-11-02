@@ -38,6 +38,7 @@ function exec_log() {
 function install_lst() {
     local -r warning="
         cuda
+        mkinitcpio-firmware
     "
     local -r lst=$1
     local -r type=$2
@@ -64,7 +65,6 @@ function install_lst() {
             echo -e "${RED}Error: ${package} installation failed${RESET}"
         fi
     done
-    echo -e "${BLUE}::----- Installation completed -----::${RESET}"
 }
 
 function uninstall_lst() {
@@ -76,5 +76,4 @@ function uninstall_lst() {
     for package in ${lst_split[@]}; do
         exec_log "sudo pacman -Rdd --noconfirm ${package}" "${YELLOW}::${RESET} [-] ${package}"
     done
-    echo -e "${BLUE}::--- Uninstallations completed ----::${RESET}"
 }
