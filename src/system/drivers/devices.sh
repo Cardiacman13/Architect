@@ -12,7 +12,8 @@ function gamepad() {
     choice="${choice^^}"
 
     if [[ $choice == "Y" ]]; then
-        install_lst "bluez-utils ds4drv dualsensectl"
+        uninstall_one "bluez-utils"
+        install_lst "ds4drv dualsensectl"
     fi
 }
 

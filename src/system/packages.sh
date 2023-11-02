@@ -45,5 +45,4 @@ function usefull_package() {
     fi
 
     install_lst "${inlst}"
-
 }
