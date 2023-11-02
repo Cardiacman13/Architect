@@ -52,7 +52,7 @@ The purpose of this script is to configure a **stock Arch** system with a **mini
 
 > [!NOTE]
 > **Before You Begin:**
-> This script is based on a tutorial that describes all the steps : [Tuto-Arch](https://github.com/Cardiacman13/Tuto-Arch/blob/main/lang/README.en.md)
+> This script is based on a tutorial that describes all the steps.
 > This script is intended for use on a clean installation that has just been set up with `archinstall`.
 > Before running this script, make sure you have booted into a Desktop Environment.
 > It is not suitable for outdated computers. Ensure your hardware meets the requirements for the latest Nvidia drivers.
@@ -61,7 +61,6 @@ The purpose of this script is to configure a **stock Arch** system with a **mini
 sudo pacman -Sy git
 git clone https://github.com/Cardiacman13/Architect.git
 cd Architect
-chmod +x ./architect.sh
 ./architect.sh
 ```
 
