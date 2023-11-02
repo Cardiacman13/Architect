@@ -79,7 +79,7 @@ function bluetooth() {
         install_lst "${inlst}"
 
         exec_log "pacman -Qi bluez-utils-compat" "checking if bluez-utils-compat is installed"
-        if [[ $? -eq 0 ]]; then
+        if [[ $? -eq 1 ]]; then
             install_one "bluez-utils"
         fi
 
