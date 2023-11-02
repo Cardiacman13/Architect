@@ -8,9 +8,7 @@ function install_headers() {
         kernel_headers+=("$(basename "${kernel}" | sed -e 's/vmlinuz-//')-headers")
     done
 
-    for header in "${kernel_headers[@]}"; do
-        exec_log "sudo pacman -S --noconfirm ${header}" "Installing ${header}"
-    done
+    install_lst "${kernel_headers[*]}"
 }
 
 function max_map_count() {
