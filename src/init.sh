@@ -20,7 +20,7 @@ EOF
     printf "%b" "${RED}This script will make changes to your system.${RESET}\n"
     printf "%b" "Some steps may take longer, depending on your Internet connection and CPU.\nPress ${GREEN}Entrée${RESET} to continue, or ${GREEN}Ctrl+C${RESET} to cancel.\n"
 
-    read -r -p "" choice
+    read -rp "" choice
     [[ -n $choice ]] && exit 0
 }
 

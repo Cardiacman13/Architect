@@ -31,6 +31,7 @@ function shell_config() {
         choice="${choice,,}"
     done
 
+    echo -e "${GREEN}You chose ${choice}${RESET}"
     case $choice in
     bash)
         touch "${HOME}/.bashrc"

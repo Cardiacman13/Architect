@@ -48,9 +48,18 @@ source src/system/packages.sh
 source src/system/shell.sh
 # ================================================================================================ #
 function stepmsg() {
-    echo "---------------------------------------------------------------------------------------------------------"
-    printf "%*s\n" $(((${#1}+78)/2)) "${1}"
-    echo "---------------------------------------------------------------------------------------------------------"
+    echo "-----------------------------------------------------------------------------------------------------------"
+    printf "%*s\n" $(((${#1} + 78) / 2)) "${1}"
+    echo "-----------------------------------------------------------------------------------------------------------"
+}
+
+function little_step() {
+    local -r function_name=$1
+    local -r message=$2
+
+    echo -e "${BLUE}---- ${message} ----${RESET}"
+
+    (${function_name})
 }
 # ================================================================================================ #
 function main() {
@@ -62,31 +71,31 @@ function main() {
 
     # system
     stepmsg "System preparation"
-    config_pacman
-    mirrorlist
-    install_aur
-    install_headers
-    max_map_count
-    sound_server
-    setup_system_loaders
-    usefull_package
-    shell_config
+    little_step config_pacman           "Pacman configuration"
+    little_step mirrorlist              "Mirrorlist configuration"
+    little_step install_aur             "AUR helper installation"
+    little_step install_headers         "Kernel headers installation"
+    little_step max_map_count           "Max map count configuration"
+    little_step sound_server            "Sound server configuration"
+    little_step setup_system_loaders    "System loaders configuration"
+    little_step usefull_package         "Usefull package installation"
+    little_step shell_config            "Shell configuration"
 
     # drivers
     stepmsg "System configuration"
-    video_drivers
-    gamepad
-    printer
-    bluetooth
+    little_step video_drivers           "Video drivers installation"
+    little_step gamepad                 "Gamepad configuration"
+    little_step printer                 "Printer configuration"
+    little_step bluetooth               "Bluetooth configuration"
 
     # desktop environment
     stepmsg "Environment configuration"
-    detect_de
+    little_step detect_de               "Desktop environment detection"
 
-    stepmsg "Software installation"
     # software
-    support_flatpak
-    install_software
+    stepmsg "Software installation"
+    little_step support_flatpak         "Flatpak support installation"
+    little_step install_software        "Software installation"
 
     # end
     endscript "${start_time}"

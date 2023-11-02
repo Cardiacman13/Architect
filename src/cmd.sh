@@ -41,6 +41,7 @@ function install_lst() {
     local -r type=$2
     local -r lst_split=(${lst// / })
 
+    echo -e "${BLUE}::--- Installation of packages ---::${RESET}"
     for package in ${lst_split[@]}; do
         local warning_msg=""
         if [[ ${warning} =~ ${package} ]]; then
@@ -68,6 +69,7 @@ function uninstall_lst() {
     local -r lst_split=(${lst// / })
 
     log_msg "$2"
+    echo -e "${BLUE}::--- Uninstallation of packages ---::${RESET}"
     for package in ${lst_split[@]}; do
         exec_log "sudo pacman -Rdd --noconfirm ${package}" "${YELLOW}::${RESET} [-] ${package}"
     done
