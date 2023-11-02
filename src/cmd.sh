@@ -35,35 +35,43 @@ function exec_log() {
     exec "${command}"
 }
 
-function install_lst() {
+function install_one() {
     local -r warning="
         cuda
         mkinitcpio-firmware
     "
+    local -r package=$1
+    local -r type=$2
+
+    local warning_msg=""
+    if [[ ${warning} =~ ${package} ]]; then
+        warning_msg=" ${RED}might be long${RESET}"
+    fi
+
+    log_msg "${BLUE}::${RESET} [+] ${package}${warning_msg}"
+    if [[ ${type} == "flatpak" ]]; then
+        exec "flatpak install -y flathub ${package}"
+    else
+        exec "${AUR} -S --noconfirm --needed ${package}"
+    fi
+
+    local exit_status=$?
+
+    echo "[INFO]: Exit status: ${exit_status}" >>"${LOG_FILE}"
+    if [[ ${exit_status} -ne 0 ]]; then
+        echo -e "${RED}Error: ${package} installation failed${RESET}"
+    fi
+}
+
+function install_lst() {
+
     local -r lst=$1
     local -r type=$2
     local -r lst_split=(${lst// / })
 
     echo -e "${BLUE}::---- Installation of packages ----::${RESET}"
     for package in ${lst_split[@]}; do
-        local warning_msg=""
-        if [[ ${warning} =~ ${package} ]]; then
-            warning_msg=" ${RED}might be long${RESET}"
-        fi
-
-        log_msg "${BLUE}::${RESET} [+] ${package}${warning_msg}"
-        if [[ ${type} == "flatpak" ]]; then
-            exec "flatpak install -y flathub ${package}"
-        else
-            exec "${AUR} -S --noconfirm --needed ${package}"
-        fi
-
-        local exit_status=$?
-
-        echo "[INFO]: Exit status: ${exit_status}" >>"${LOG_FILE}"
-        if [[ ${exit_status} -ne 0 ]]; then
-            echo -e "${RED}Error: ${package} installation failed${RESET}"
-        fi
+        install_one "${package}" "${type}"
     done
 }
 

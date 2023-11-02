@@ -56,7 +56,7 @@ function nvidia_drivers() {
         makepkg -si --noconfirm
         cd .. || exit
         exec_log "rm -rf nvidia-all" "removal of nvidia-all repository"
-        exec_log "${AUR} -S --noconfirm --needed cuda" "installing cuda"
+        install_one "cuda"
 
     else
         local -r inlst="

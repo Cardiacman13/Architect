@@ -5,14 +5,14 @@ function gamepad() {
     choice="${choice^^}"
 
     if [[ $choice == "Y" ]]; then
-        exec_log "${AUR} -S --noconfirm --needed xpadneo-dkms" "installing xpadneo-dkms"
+        install_one "xpadneo-dkms"
     fi
 
     read -rp "Do you want to use PS4 or PS5 controllers ? (y/N) : " choice
     choice="${choice^^}"
 
     if [[ $choice == "Y" ]]; then
-        exec_log "${AUR} -S --noconfirm --needed bluez-utils ds4drv dualsensectl" "installing playstation controllers support"
+        install_lst "bluez-utils ds4drv dualsensectl"
     fi
 }
 
