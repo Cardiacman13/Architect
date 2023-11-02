@@ -73,11 +73,16 @@ function bluetooth() {
     if [[ $choice == "Y" ]]; then
         local -r inlst="
             bluez
-            bluez-utils
             bluez-plugins
         "
 
         install_lst "${inlst}"
+
+        exec_log "pacman -Qi bluez-utils-compat" "checking if bluez-utils-compat is installed"
+        if [[ $? -eq 1 ]]; then
+            install_one "bluez-utils"
+        fi
+
         exec_log "sudo systemctl enable --now bluetooth" "enabling bluetooth service"
     fi
 }
