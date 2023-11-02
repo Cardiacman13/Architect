@@ -43,7 +43,7 @@ function install_lst() {
     local -r type=$2
     local -r lst_split=(${lst// / })
 
-    echo -e "${BLUE}::--- Installation of packages ---::${RESET}"
+    echo -e "${BLUE}::---- Installation of packages ----::${RESET}"
     for package in ${lst_split[@]}; do
         local warning_msg=""
         if [[ ${warning} =~ ${package} ]]; then
@@ -64,7 +64,7 @@ function install_lst() {
             echo -e "${RED}Error: ${package} installation failed${RESET}"
         fi
     done
-    echo -e "${BLUE}::---- Installation completed ----::${RESET}"
+    echo -e "${BLUE}::----- Installation completed -----::${RESET}"
 }
 
 function uninstall_lst() {
