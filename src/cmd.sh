@@ -64,6 +64,7 @@ function install_lst() {
             echo -e "${RED}Error: ${package} installation failed${RESET}"
         fi
     done
+    echo -e "${BLUE}::---- Installation completed ----::${RESET}"
 }
 
 function uninstall_lst() {
@@ -75,4 +76,5 @@ function uninstall_lst() {
     for package in ${lst_split[@]}; do
         exec_log "sudo pacman -Rdd --noconfirm ${package}" "${YELLOW}::${RESET} [-] ${package}"
     done
+    echo -e "${BLUE}::--- Uninstallations completed ----::${RESET}"
 }
