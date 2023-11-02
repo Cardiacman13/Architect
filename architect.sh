@@ -56,11 +56,18 @@ function stepmsg() {
 function little_step() {
     local -r function_name=$1
     local -r message=$2
+    local -r line_length=127
+    local -r message_length=${#message}
+    local -r total_pad_length=$((line_length - message_length))
+    local -r pad_side_length=$((total_pad_length / 2))
 
-    echo -e "${BLUE}---- ${message} ----${RESET}"
+    printf '%*s' $((pad_side_length + message_length)) "$message"
+    printf '%*s\n' $((line_length - pad_side_length - message_length)) | tr ' ' '-'
 
+    # Appelle la fonction fournie
     (${function_name})
 }
+
 # ================================================================================================ #
 function main() {
     local -r start_time="$(date +%s)"
