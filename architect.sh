@@ -54,19 +54,28 @@ function stepmsg() {
 }
 
 function little_step() {
-    local -r function_name=$1
-    local -r message=$2
-    local -r line_length=127
+    local -r function="$1"
+    local -r message="$2"
+    local -r line="-----------------------------------------------------------------------------------------------------------"
+    local -r line_length=${#line}
     local -r message_length=${#message}
-    local -r total_pad_length=$((line_length - message_length))
-    local -r pad_side_length=$((total_pad_length / 2))
+    
+    local -r total_padding=$((line_length - message_length))
+    local -r padding_side=$((total_padding / 2))
+    local -r padding_right=$padding_side
 
-    printf '%*s' $((pad_side_length + message_length)) "$message"
-    printf '%*s\n' $((line_length - pad_side_length - message_length)) | tr ' ' '-'
+    if [ $((total_padding % 2)) -ne 0 ]; then
+        ((padding_right++))
+    fi
 
-    # Appelle la fonction fournie
-    (${function_name})
+    printf "%s%b%s%b%s\n" \
+        "${line:0:padding_side}" \
+        "${BLUE}" "$message" "${RESET}" \
+        "${line:0:padding_right}"
+
+    ${function}
 }
+
 
 # ================================================================================================ #
 function main() {
