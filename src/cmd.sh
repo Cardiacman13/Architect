@@ -1,13 +1,15 @@
-function log_msg() {
-    if [[ $# -ne 1 ]]; then
-        echo -e "${RED}Usage: log_msg <message>${RESET}"
-        exit 1
-    fi
 
+function log() {
+    local -r comment="$1"
+
+    echo "[$(date "+%Y-%m-%d %H:%M:%S")] ${comment}" >>"${LOG_FILE}"
+}
+
+function log_msg() {
     local -r comment="$1"
 
     echo "${comment}"
-    echo "[$(date "+%Y-%m-%d %H:%M:%S")] ${comment}" >>"${LOG_FILE}"
+    log "${comment}"
 }
 
 function exec() {
@@ -59,7 +61,7 @@ function install_lst() {
 
         echo "Exit status: ${exit_status}" >>"${LOG_FILE}"
         if [[ ${exit_status} -ne 0 ]]; then
-            echo -e "${RED}Error executing command: ${package}${RESET}"
+            echo -e "${RED}Error: ${package} installation failed${RESET}"
         fi
     done
 }
