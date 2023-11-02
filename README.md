@@ -39,9 +39,9 @@ Download the ISO: [**Arch Linux - Downloads**](https://archlinux.org/download/)
 
 ## Table of Contents
 1. [All-in-one script](#script)
-2. [Elevate your desktop](#elevate)
-3. [Level Up Your Gaming](#gaming)
-4. [Precision Optimization](#optimization)
+2. [Precision Optimization](#optimization)
+3. [Elevate your desktop](#elevate)
+4. [Level Up Your Gaming](#gaming)
 5. [Troubleshooting](#troubleshooting)
 6. [Community stuff](#community)
 
@@ -66,8 +66,76 @@ chmod +x ./architect.sh
 ./architect.sh
 ```
 
+
+### 1. Optimizing Pacman
+Enhance Pacman's functionality and user experience by making the following improvements:
+
+- Enabling colored output.
+- Enabling detailed package lists.
+- Enabling parallel downloads.
+- Enabling multilib support.
+
+### 2. Adding Useful Aliases
+Simplify your command-line tasks with these helpful aliases:
+
+- update-arch: Updates your system apps with a single command.
+- clean-arch: Cleans up your system by removing unused packages.
+- fix-key: Fixes key-related issues, ensuring a smooth update process.
+
+
+### 3. Assisting with AMD, NVIDIA, or Intel GPU Installation for Gaming
+Get your gaming-ready with GPU setup, which includes:
+
+- Installing drivers.
+- Installing Vulkan libraries.
+- Installing 32-bit libraries.
+- Choosing between standard Nvidia drivers or the `nvidia-all` variant:
+  - **Nvidia**: This is the recommended choice for most users. It involves:
+    - Installing Nvidia packages.
+    - Installing CUDA.
+  - **Nvidia-all**: This is for advanced users who know how to maintain it. It involves:
+    - Cloning and installing from the `Frogging-Family/nvidia-all` repository.
+    - Installing CUDA.
+
+### 4. Install Some Base Packages
+Install fundamental packages for a complete experience:
+
+- [yay](https://github.com/Jguer/yay) or [paru](https://github.com/Morganamilo/paru) AUR helper.
+- Fonts.
+- Desktop utilities.
+- Codecs.
+- Other essential packages.
+
+### 5. Miscellaneous Enhancements
+Fine-tune your system for an enhanced experience:
+
+- Boostin `vm.max_map_count` to improve compatibility with Windows games. [Arch wiki about vm-max-map-count](https://wiki.archlinux.org/title/gaming#Increase_vm.max_map_count)
+- Ask you for Print support configuration.
+- Ask you for Buetooth configuration.
+- Advanced support for Xbox, PS4/PS5, 8bitdo controllers
+- Propose to configure Fish as a command-line shell.
+
+### 6. Assisting with the Installation of Various Software
+You have the freedom to choose which additional software to install based on your specific needs:
+
+- `Discord`
+- `Steam`
+- `Lutris`
+- `Heroic Games Launcher`
+- `protonup-qt`
+- `Spotify`
+- `OBS Studio`
+- `LibreOffice`
+- `Gimp`
+- `Visual Studio Code`
+- `Open RGB`
+
+This post-installation script is your one-stop solution for configuring and optimizing your Arch Linux system, ensuring a smooth and enjoyable gaming experience. Enjoy your newly enhanced Arch Linux setup!
+
+
 <details>
 <summary>Tuto</summary>
+
 ## <img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/pc.png" width="30" height="30"> **Elevate Your Desktop** <a name="elevate"/>
 
 ### Installation
@@ -525,71 +593,6 @@ flatpak install com.bitwarden.desktop com.discordapp.Discord com.github.tchx84.F
 
 </details>
 
-### 1. Optimizing Pacman
-Enhance Pacman's functionality and user experience by making the following improvements:
-
-- Enabling colored output.
-- Enabling detailed package lists.
-- Enabling parallel downloads.
-- Enabling multilib support.
-
-### 2. Adding Useful Aliases
-Simplify your command-line tasks with these helpful aliases:
-
-- update-arch: Updates your system apps with a single command.
-- clean-arch: Cleans up your system by removing unused packages.
-- fix-key: Fixes key-related issues, ensuring a smooth update process.
-
-
-### 3. Assisting with AMD, NVIDIA, or Intel GPU Installation for Gaming
-Get your gaming-ready with GPU setup, which includes:
-
-- Installing drivers.
-- Installing Vulkan libraries.
-- Installing 32-bit libraries.
-- Choosing between standard Nvidia drivers or the `nvidia-all` variant:
-  - **Nvidia**: This is the recommended choice for most users. It involves:
-    - Installing Nvidia packages.
-    - Installing CUDA.
-  - **Nvidia-all**: This is for advanced users who know how to maintain it. It involves:
-    - Cloning and installing from the `Frogging-Family/nvidia-all` repository.
-    - Installing CUDA.
-
-### 4. Install Some Base Packages
-Install fundamental packages for a complete experience:
-
-- [yay](https://github.com/Jguer/yay) or [paru](https://github.com/Morganamilo/paru) AUR helper.
-- Fonts.
-- Desktop utilities.
-- Codecs.
-- Other essential packages.
-
-### 5. Miscellaneous Enhancements
-Fine-tune your system for an enhanced experience:
-
-- Boostin `vm.max_map_count` to improve compatibility with Windows games. [Arch wiki about vm-max-map-count](https://wiki.archlinux.org/title/gaming#Increase_vm.max_map_count)
-- Ask you for Print support configuration.
-- Ask you for Buetooth configuration.
-- Advanced support for Xbox, PS4/PS5, 8bitdo controllers
-- Propose to configure Fish as a command-line shell.
-
-### 6. Assisting with the Installation of Various Software
-You have the freedom to choose which additional software to install based on your specific needs:
-
-- `Discord`
-- `Steam`
-- `Lutris`
-- `Heroic Games Launcher`
-- `protonup-qt`
-- `Spotify`
-- `OBS Studio`
-- `LibreOffice`
-- `Gimp`
-- `Visual Studio Code`
-- `Open RGB`
-
-This post-installation script is your one-stop solution for configuring and optimizing your Arch Linux system, ensuring a smooth and enjoyable gaming experience. Enjoy your newly enhanced Arch Linux setup!
-
 ## Sources <a name="community"/>
 
 Sources and useful links :
@@ -605,6 +608,3 @@ Sources and useful links :
 Contributions to this project are welcome! If you have suggestions, bug reports, or contributions, please open an issue or a pull request in the repository.
 
 As you can see this project is available in French, English and Spanish. Translators are more than welcome ! :people_holding_hands:
-
-<!-- readme: contributors -start -->
-<!-- readme: contributors -end -->
