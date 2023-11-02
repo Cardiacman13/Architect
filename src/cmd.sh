@@ -71,7 +71,6 @@ function uninstall_one() {
 }
 
 function install_lst() {
-
     local -r lst=$1
     local -r type=$2
     local -r lst_split=(${lst// / })
