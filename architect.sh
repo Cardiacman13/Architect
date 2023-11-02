@@ -48,9 +48,25 @@ source src/system/packages.sh
 source src/system/shell.sh
 # ================================================================================================ #
 function stepmsg() {
-    echo "-----------------------------------------------------------------------------------------------------------"
-    printf "%*s\n" $(((${#1} + 78) / 2)) "${1}"
-    echo "-----------------------------------------------------------------------------------------------------------"
+    local -r message="$1"
+    local -r line="==========================================================================================================="
+    local -r line_length=${#line}
+    local -r message_length=${#message}
+    
+    local -r total_padding=$((line_length - message_length))
+    local -r padding_side=$((total_padding / 2))
+    local padding_right=$padding_side
+
+    if [ $((total_padding % 2)) -ne 0 ]; then
+        ((padding_right++))
+    fi
+
+    echo -e "==========================================================================================================="
+    printf "%s%b%s%b%s\n" \
+        "${line:0:padding_side}" \
+        "${PURPLE}" "$message" "${RESET}" \
+        "${line:0:padding_right}"
+    echo -e "==========================================================================================================="
 }
 
 function little_step() {
