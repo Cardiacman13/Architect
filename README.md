@@ -132,10 +132,6 @@ You have the freedom to choose which additional software to install based on you
 
 This post-installation script is your one-stop solution for configuring and optimizing your Arch Linux system, ensuring a smooth and enjoyable gaming experience. Enjoy your newly enhanced Arch Linux setup!
 
-
-<details>
-<summary>Tuto</summary>
-
 ## <img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/pc.png" width="30" height="30"> **Elevate Your Desktop** <a name="elevate"/>
 
 ### Installation
@@ -590,8 +586,6 @@ flatpak install com.bitwarden.desktop com.discordapp.Discord com.github.tchx84.F
     ```
 
 - For help, visit the GLF Discord (fr/en): [Discord GLF](http://discord.gg/EP3Jm8YMvj)
-
-</details>
 
 ## Sources <a name="community"/>
 
