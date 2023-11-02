@@ -32,18 +32,102 @@ Rejoignez une communauté florissante soutenue par les critiques de Gaming Linux
 
 > **Note**
 > Le script que vous trouverez plus loin fonctionne quel que soit votre choix de DE / CHARGEUR DE DÉMARRAGE / FS.
-> Didacticiel et script destinés à être utilisés avec un Arch pur (incompatible avec Garuda, EndeavourOS, Manjaro…)
-> Cependant, si vous savez ce que vous faites, les modifications pour d'autres choix sont minimes.
+> Didacticiel et script destinés à être utilisés avec une Arch pur (incompatible avec Garuda, EndeavourOS, Manjaro…)
 
 Téléchargez l'ISO : [**Arch Linux - Téléchargements**](https://archlinux.org/download/)
 
 ## Table des Matières
-1. [Améliorez votre bureau](#elevate)
-2. [Montez en Niveau dans Votre Jeu](#gaming)
-3. [Optimisation de Précision](#optimization)
-4. [Dépannage](#troubleshooting)
-5. [Script tout-en-un](#script)
+1. [Script tout-en-un](#script)
+2. [Améliorez votre bureau](#elevate)
+3. [Montez en Niveau dans Votre Jeu](#gaming)
+4. [Optimisation de Précision](#optimization)
+5. [Dépannage](#troubleshooting)
 6. [Communauté](#community)
+
+## Script de Post-Installation pour Arch Linux <a name="script"/>
+
+[Version française](https://github.com/Cardiacman13/post-install-arch/blob/main/lang/README.fr.md)  [Versión española](https://github.com/Cardiacman13/post-install-arch/blob/main/lang/README.es.md)
+
+<img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/Welcome.png">
+
+L'objectif de ce script est de configurer un système **Arch de base** avec un **ensemble minimal de paquets** adaptés à vos besoins juste après l'utilisation d'archinstall. Ce script est **orienté vers le jeu**.
+
+> [!NOTE]
+> **Avant de commencer :**
+> Ce script est basé sur un tutoriel qui décrit toutes les étapes : [Tuto-Arch](https://github.com/Cardiacman13/Tuto-Arch/blob/main/lang/README.en.md)
+> Ce script est destiné à être utilisé sur une installation propre qui vient d'être configurée avec `archinstall`.
+> Avant d'exécuter ce script, assurez-vous d'avoir démarré dans un environnement de bureau.
+> Il n'est pas adapté aux ordinateurs obsolètes. Assurez-vous que votre matériel répond aux exigences pour les derniers pilotes Nvidia.
+
+```bash
+sudo pacman -Sy git
+git clone https://github.com/Cardiacman13/post-install-arch.git
+cd post-install-arch
+chmod +x ./post-installation
+./post-installation
+```
+
+### 1. Optimisation de Pacman
+Améliorez la fonctionnalité et l'expérience utilisateur de Pacman en effectuant les améliorations suivantes :
+
+- Activation de la sortie colorée.
+- Activation des listes détaillées de paquets.
+- Activation des téléchargements parallèles.
+- Activation du support multilib.
+
+### 2. Ajout d'Alias Utiles
+Simplifiez vos tâches en ligne de commande avec ces alias utiles :
+
+- update-arch : Met à jour les applications de votre système avec une seule commande.
+- clean-arch : Nettoie votre système en supprimant les paquets inutilisés.
+- fix-key : Résout les problèmes liés aux clés, assurant un processus de mise à jour fluide.
+
+### 3. Aide à l'Installation des GPU AMD, NVIDIA ou Intel pour le Jeu
+Préparez votre jeu avec la configuration GPU, qui comprend :
+
+- Installation de pilotes.
+- Installation de bibliothèques Vulkan.
+- Installation de bibliothèques 32 bits.
+- Choix entre les pilotes Nvidia standard ou la variante `nvidia-all` :
+  - **Nvidia** : C'est le choix recommandé pour la plupart des utilisateurs. Cela implique :
+    - Installation des paquets Nvidia.
+    - Installation de CUDA.
+  - **Nvidia-all** : Pour les utilisateurs avancés qui savent comment le maintenir. Cela implique :
+    - Clonage et installation à partir du dépôt `Frogging-Family/nvidia-all`.
+    - Installation de CUDA.
+
+### 4. Installation de Certains Paquets de Base
+Installez des paquets fondamentaux pour une expérience complète :
+
+- [yay](https://github.com/Jguer/yay) ou [paru](https://github.com/Morganamilo/paru) assistant AUR.
+- Polices.
+- Utilitaires de bureau.
+- Codecs.
+- Autres paquets essentiels.
+
+### 5. Améliorations Diverses
+Affinez votre système pour une expérience améliorée :
+
+- Augmentation de `vm.max_map_count` pour améliorer la compatibilité avec les jeux Windows. [Arch wiki à propos de vm-max-map-count](https://wiki.archlinux.org/title/gaming#Increase_vm.max_map_count)
+- Demande de configuration du support d'impression.
+- Demande de configuration Bluetooth.
+- Support avancé pour les manettes Xbox, PS4/PS5, 8bitdo
+- Proposition de configurer Fish comme shell de ligne de commande.
+
+### 6. Aide à l'Installation de Divers Logiciels
+Vous avez la liberté de choisir quels logiciels supplémentaires installer en fonction de vos besoins spécifiques :
+
+- `Discord`
+- `Steam`
+- `Lutris`
+- `Heroic Games Launcher`
+- `protonup-qt`
+- `Spotify`
+- `OBS Studio`
+- `LibreOffice`
+- `Gimp`
+- `Visual Studio Code`
+- `Open RGB`
 
 
 
@@ -499,93 +583,6 @@ flatpak install com.bitwarden.desktop com.discordapp.Discord com.github.tchx84.F
     yay -S sof-firmware
     ```
 - Pour de l'aide, visitez le Discord GLF (fr/en) : [Discord GLF](http://discord.gg/EP3Jm8YMvj)
-
-## Script de Post-Installation pour Arch Linux <a name="script"/>
-
-[Version française](https://github.com/Cardiacman13/post-install-arch/blob/main/lang/README.fr.md)  [Versión española](https://github.com/Cardiacman13/post-install-arch/blob/main/lang/README.es.md)
-
-<img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/Welcome.png">
-
-L'objectif de ce script est de configurer un système **Arch de base** avec un **ensemble minimal de paquets** adaptés à vos besoins juste après l'utilisation d'archinstall. Ce script est **orienté vers le jeu**.
-
-> [!NOTE]
-> **Avant de commencer :**
-> Ce script est basé sur un tutoriel qui décrit toutes les étapes : [Tuto-Arch](https://github.com/Cardiacman13/Tuto-Arch/blob/main/lang/README.en.md)
-> Ce script est destiné à être utilisé sur une installation propre qui vient d'être configurée avec `archinstall`.
-> Avant d'exécuter ce script, assurez-vous d'avoir démarré dans un environnement de bureau.
-> Il n'est pas adapté aux ordinateurs obsolètes. Assurez-vous que votre matériel répond aux exigences pour les derniers pilotes Nvidia.
-
-```bash
-sudo pacman -Sy git
-git clone https://github.com/Cardiacman13/post-install-arch.git
-cd post-install-arch
-chmod +x ./post-installation
-./post-installation
-```
-
-### 1. Optimisation de Pacman
-Améliorez la fonctionnalité et l'expérience utilisateur de Pacman en effectuant les améliorations suivantes :
-
-- Activation de la sortie colorée.
-- Activation des listes détaillées de paquets.
-- Activation des téléchargements parallèles.
-- Activation du support multilib.
-
-### 2. Ajout d'Alias Utiles
-Simplifiez vos tâches en ligne de commande avec ces alias utiles :
-
-- update-arch : Met à jour les applications de votre système avec une seule commande.
-- clean-arch : Nettoie votre système en supprimant les paquets inutilisés.
-- fix-key : Résout les problèmes liés aux clés, assurant un processus de mise à jour fluide.
-
-### 3. Aide à l'Installation des GPU AMD, NVIDIA ou Intel pour le Jeu
-Préparez votre jeu avec la configuration GPU, qui comprend :
-
-- Installation de pilotes.
-- Installation de bibliothèques Vulkan.
-- Installation de bibliothèques 32 bits.
-- Choix entre les pilotes Nvidia standard ou la variante `nvidia-all` :
-  - **Nvidia** : C'est le choix recommandé pour la plupart des utilisateurs. Cela implique :
-    - Installation des paquets Nvidia.
-    - Installation de CUDA.
-  - **Nvidia-all** : Pour les utilisateurs avancés qui savent comment le maintenir. Cela implique :
-    - Clonage et installation à partir du dépôt `Frogging-Family/nvidia-all`.
-    - Installation de CUDA.
-
-### 4. Installation de Certains Paquets de Base
-Installez des paquets fondamentaux pour une expérience complète :
-
-- [yay](https://github.com/Jguer/yay) ou [paru](https://github.com/Morganamilo/paru) assistant AUR.
-- Polices.
-- Utilitaires de bureau.
-- Codecs.
-- Autres paquets essentiels.
-
-### 5. Améliorations Diverses
-Affinez votre système pour une expérience améliorée :
-
-- Augmentation de `vm.max_map_count` pour améliorer la compatibilité avec les jeux Windows. [Arch wiki à propos de vm-max-map-count](https://wiki.archlinux.org/title/gaming#Increase_vm.max_map_count)
-- Demande de configuration du support d'impression.
-- Demande de configuration Bluetooth.
-- Support avancé pour les manettes Xbox, PS4/PS5, 8bitdo
-- Proposition de configurer Fish comme shell de ligne de commande.
-
-### 6. Aide à l'Installation de Divers Logiciels
-Vous avez la liberté de choisir quels logiciels supplémentaires installer en fonction de vos besoins spécifiques :
-
-- `Discord`
-- `Steam`
-- `Lutris`
-- `Heroic Games Launcher`
-- `protonup-qt`
-- `Spotify`
-- `OBS Studio`
-- `LibreOffice`
-- `Gimp`
-- `Visual Studio Code`
-- `Open RGB`
-
-Ce script de post-installation est votre solution unique pour configurer et optimiser votre système Arch Linux, assurant une expérience de jeu fluide et agréable. Profitez de votre configuration Arch Linux nouvellement améliorée !
 
 ## Sources <a name="community"/>
 
