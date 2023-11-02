@@ -47,31 +47,9 @@ source src/system/other.sh
 source src/system/packages.sh
 source src/system/shell.sh
 # ================================================================================================ #
-function stepmsg() {
+function print_center() {
     local -r message="$1"
-    local -r line="==========================================================================================================="
-    local -r line_length=${#line}
-    local -r message_length=${#message}
-    
-    local -r total_padding=$((line_length - message_length))
-    local -r padding_side=$((total_padding / 2))
-    local padding_right=$padding_side
-
-    if [ $((total_padding % 2)) -ne 0 ]; then
-        ((padding_right++))
-    fi
-
-    echo -e "==========================================================================================================="
-    printf "%s%b%s%b%s\n" \
-        "${line:0:padding_side}" \
-        "${PURPLE}" "$message" "${RESET}" \
-        "${line:0:padding_right}"
-    echo -e "==========================================================================================================="
-}
-
-function little_step() {
-    local -r function="$1"
-    local -r message="$2"
+    local -r color="$2"
     local -r line="-----------------------------------------------------------------------------------------------------------"
     local -r line_length=${#line}
     local -r message_length=${#message}
@@ -86,23 +64,27 @@ function little_step() {
 
     printf "%s%b%s%b%s\n" \
         "${line:0:padding_side}" \
-        "${BLUE}" "$message" "${RESET}" \
+        "${color}" "$message" "${RESET}" \
         "${line:0:padding_right}"
-
-    ${function}
 }
 
+function little_step() {
+    local -r function=$1
+    local -r message=$2
 
+    print_center "${message}" "${YELLOW}"
+    ${function}
+}
 # ================================================================================================ #
 function main() {
     local -r start_time="$(date +%s)"
     # init
-    stepmsg "Initialization"
+    print_center "Initialization" "${GREEN}"
     init_log
     header
 
     # system
-    stepmsg "System preparation"
+    print_center "System preparation" "${GREEN}"
     little_step config_pacman           "Pacman configuration"
     little_step install_aur             "AUR helper installation"
     little_step mirrorlist              "Mirrorlist configuration"
@@ -114,18 +96,18 @@ function main() {
     little_step shell_config            "Shell configuration"
 
     # drivers
-    stepmsg "System configuration"
+    print_center "System configuration" "${GREEN}"
     little_step video_drivers           "Video drivers installation"
     little_step gamepad                 "Gamepad configuration"
     little_step printer                 "Printer configuration"
     little_step bluetooth               "Bluetooth configuration"
 
     # desktop environment
-    stepmsg "Environment configuration"
+    print_center "Environment configuration" "${GREEN}"
     little_step detect_de               "Desktop environment detection"
 
     # software
-    stepmsg "Software installation"
+    print_center "Software installation" "${GREEN}"
     little_step support_flatpak         "Flatpak support installation"
     little_step install_software        "Software installation"
 
