@@ -18,7 +18,7 @@ Expérimentez les performances optimales du bureau avec des codecs multimédia p
 <img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/game-console.png" width="30" height="30"> **Montez en Niveau dans Votre Jeu** :
 Restez à la pointe du jeu avec Steam et Lutris, ainsi qu'avec des pilotes complets pour le matériel AMD, Intel et Nvidia.
 
-<img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/speed.png" width="30" height="30"> **Optimisation de Précision** :
+<img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/speed.png" width="30" height="30"> **Optimisation aux petits oignons** :
 Profitez des ajustements menés par la communauté pour des performances et une stabilité inégalées.
 
 
