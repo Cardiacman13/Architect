@@ -59,7 +59,7 @@ function install_lst() {
 
         local exit_status=$?
 
-        echo "Exit status: ${exit_status}" >>"${LOG_FILE}"
+        echo "[INFO]: Exit status: ${exit_status}" >>"${LOG_FILE}"
         if [[ ${exit_status} -ne 0 ]]; then
             echo -e "${RED}Error: ${package} installation failed${RESET}"
         fi
