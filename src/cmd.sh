@@ -63,6 +63,13 @@ function install_one() {
     fi
 }
 
+function uninstall_one() {
+    local -r package=$1
+
+    log_msg "${YELLOW}::${RESET} [-] ${package}"
+    exec "sudo pacman -Rdd --noconfirm ${package}"
+}
+
 function install_lst() {
 
     local -r lst=$1
@@ -82,6 +89,6 @@ function uninstall_lst() {
     log_msg "$2"
     echo -e "${BLUE}::--- Uninstallation of packages ---::${RESET}"
     for package in ${lst_split[@]}; do
-        exec_log "sudo pacman -Rdd --noconfirm ${package}" "${YELLOW}::${RESET} [-] ${package}"
+        uninstall_one "${package}"
     done
 }

@@ -104,8 +104,8 @@ function main() {
     # system
     stepmsg "System preparation"
     little_step config_pacman           "Pacman configuration"
-    little_step mirrorlist              "Mirrorlist configuration"
     little_step install_aur             "AUR helper installation"
+    little_step mirrorlist              "Mirrorlist configuration"
     little_step install_headers         "Kernel headers installation"
     little_step max_map_count           "Max map count configuration"
     little_step sound_server            "Sound server configuration"

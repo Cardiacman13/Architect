@@ -1,7 +1,7 @@
 source src/cmd.sh
 
 function vm_drivers() {
-    exec_log "sudo pacman -S --noconfirm --needed virt-what" "installation of virt-what"
+    install_one "virt-what"
 
     local -r vm="$(sudo virt-what)"
 
@@ -29,5 +29,5 @@ function vm_drivers() {
         install_lst "${inlst}"
     fi
 
-    exec_log "sudo pacman -Rdd --noconfirm virt-what" "uninstallation of virt-what"
+    uninstall_one "virt-what"
 }
