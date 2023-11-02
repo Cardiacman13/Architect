@@ -523,8 +523,12 @@ The purpose of this script is to configure a **stock Arch** system with a **mini
 sudo pacman -Sy git
 git clone https://github.com/Cardiacman13/Architect.git
 cd Architect
+<<<<<<< HEAD
 chmod +x ./architect.sh
 ./architect.sh
+=======
+./post-installation
+>>>>>>> main
 ```
 
 ### 1. Optimizing Pacman

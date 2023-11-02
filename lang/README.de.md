@@ -515,9 +515,8 @@ Der Zweck dieses Skripts ist es, ein **Standard-Arch**-System mit einem **minima
 
 ```bash
 sudo pacman -Sy git
-git clone https://github.com/Cardiacman13/post-install-arch.git
-cd post-install-arch
-chmod +x ./post-installation
+git clone https://github.com/Cardiacman13/Architect.git
+cd Architect
 ./post-installation
 ```
 

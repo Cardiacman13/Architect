@@ -516,10 +516,9 @@ Lo scopo di questo script è configurare un sistema **Arch standard** con un **s
 
 ```bash
 sudo pacman -Sy git
-git clone https://github.com/Cardiacman13/post-install-arch.git
-cd post-install-arch
-chmod +x ./post-installazione
-./post-installazione
+git clone https://github.com/Cardiacman13/Architect.git
+cd Architect
+./post-installation
 ```
 
 ### 1. Ottimizzazione di Pacman
