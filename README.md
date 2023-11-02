@@ -33,7 +33,6 @@ Join a thriving community backed by Gaming Linux FR reviewers and Arch Linux exp
 > **Note**
 > The script you will find later works regardless of your choices of DE / BOOT LOADER / FS.
 > Tutorial and script aimed to be used with a pure Arch (incompatible with Garuda, EndeavourOS, Manjaro…)
-> However, if you know what you are doing, the modifications for other choices are minimal.
 
 Download the ISO: [**Arch Linux - Downloads**](https://archlinux.org/download/)
 
@@ -129,8 +128,6 @@ You have the freedom to choose which additional software to install based on you
 - `Gimp`
 - `Visual Studio Code`
 - `Open RGB`
-
-This post-installation script is your one-stop solution for configuring and optimizing your Arch Linux system, ensuring a smooth and enjoyable gaming experience. Enjoy your newly enhanced Arch Linux setup!
 
 ## <img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/pc.png" width="30" height="30"> **Elevate Your Desktop** <a name="elevate"/>
 
