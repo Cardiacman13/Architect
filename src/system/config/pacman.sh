@@ -9,6 +9,6 @@ function config_pacman() {
 
 function mirrorlist() {
     install_one "reflector"
-    exec_log "sudo reflector --verbose --score 20 --fastest 5 --sort rate --save /etc/pacman.d/mirrorlist" "update of mirrorlist"
-    exec_log "sudo pacman -Syy" "update of pacman database"
+    exec_log "sudo reflector --verbose --score 20 --fastest 5 --sort rate --save /etc/pacman.d/mirrorlist" "updating mirrorlist"
+    exec_log "sudo pacman -Syy" "updating pacman database"
 }
