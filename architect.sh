@@ -62,7 +62,7 @@ function little_step() {
     
     local -r total_padding=$((line_length - message_length))
     local -r padding_side=$((total_padding / 2))
-    local -r padding_right=$padding_side
+    local padding_right=$padding_side
 
     if [ $((total_padding % 2)) -ne 0 ]; then
         ((padding_right++))
