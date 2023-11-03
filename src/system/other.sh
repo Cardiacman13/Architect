@@ -26,7 +26,7 @@ function sound_server() {
 
 function setup_system_loaders() {
     log_msg "Checking if GRUB is installed"
-    if [[ $BOOT_LOADER != "GRUB" ]]; then
+    if [[ $BOOT_LOADER != "grub" ]]; then
         return
     fi
 
