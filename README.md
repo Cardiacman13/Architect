@@ -28,7 +28,7 @@ Download the ISO: [**Arch Linux - Downloads**](https://archlinux.org/download/)
 
 ## Arch Linux Post-Install Script <a name="script"/>
 
-<img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/Welcome2.png">
+<img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/Welcome.png">
 
 The purpose of this script is to configure a **stock Arch** system with a **minimal set of packages** tailored to your needs right after using archinstall. This script is **oriented towards gaming**.
 
@@ -45,7 +45,6 @@ git clone https://github.com/Cardiacman13/Architect.git
 cd Architect
 ./architect.sh
 ```
-
 
 ### 1. Optimizing Pacman
 Enhance Pacman's functionality and user experience by making the following improvements:
