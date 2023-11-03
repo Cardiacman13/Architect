@@ -10,24 +10,6 @@ Le but de ce didacticiel est d'installer un Arch standard avec un minimum de paq
 
 <img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/Cardiac-icon.png" width="30" height="30"> Cette icône vous redirige vers mes vidéos sur certaines parties de ce didacticiel [**Playlist Tutoriel Arch Linux**](https://www.youtube.com/watch?v=JE6VwNHLcyk&list=PLuIP_-MWRwtWEX0tyDpZPdwU6zCE1O1cY)
 
-## Principales Caractéristiques
-
-<img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/pc.png" width="30" height="30"> **Améliorez Votre Bureau** :
-Expérimentez les performances optimales du bureau avec des codecs multimédia pré-installés, le support des imprimantes et des solutions de sauvegarde.
-
-<img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/game-console.png" width="30" height="30"> **Montez en Niveau dans Votre Jeu** :
-Restez à la pointe du jeu avec Steam et Lutris, ainsi qu'avec des pilotes complets pour le matériel AMD, Intel et Nvidia.
-
-<img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/speed.png" width="30" height="30"> **Optimisation aux petits oignons** :
-Profitez des ajustements menés par la communauté pour des performances et une stabilité inégalées.
-
-
-<img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/programming.png" width="30" height="30"> **Assistant de Bureau Tout-en-Un** :
-Simplifiez votre expérience avec notre script tout-en-un, qui prépare votre bureau pour le travail, le jeu, le multimédia et l'optimisation de pointe.
-
-<img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/group.png" width="30" height="30"> **Excellence Pilotée par la Communauté** :
-Rejoignez une communauté florissante soutenue par les critiques de Gaming Linux FR et les experts d'Arch Linux pour un soutien et des mises à jour continus.
-
 ### Conditions
 
 > **Note**
@@ -48,7 +30,7 @@ Téléchargez l'ISO : [**Arch Linux - Téléchargements**](https://archlinux.org
 
 [Version française](https://github.com/Cardiacman13/post-install-arch/blob/main/lang/README.fr.md)  [Versión española](https://github.com/Cardiacman13/post-install-arch/blob/main/lang/README.es.md)
 
-<img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/Welcome.png">
+<img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/Welcome2.png">
 
 L'objectif de ce script est de configurer un système **Arch de base** avec un **ensemble minimal de paquets** adaptés à vos besoins juste après l'utilisation d'archinstall. Ce script est **orienté vers le jeu**.
 
