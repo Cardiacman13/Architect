@@ -44,7 +44,7 @@ Der Zweck dieses Skripts ist es, ein **Standard-Arch**-System mit einem **minima
 sudo pacman -Sy git
 git clone https://github.com/Cardiacman13/Architect.git
 cd Architect
-./post-installation
+./architect.sh
 ```
 
 ### 1. Optimierung von Pacman
