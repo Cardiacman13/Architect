@@ -481,7 +481,7 @@ yay -S --needed xpadneo-dkms
 ```
 Pilote Linux avancé pour manettes PS4/PS5
 ```
-yay -S --needed bluez-utils-compat ds4drv dualsencectl
+yay -S --needed ds4drv dualsencectl
 ```
 
 ### Affichage des performances en jeu
