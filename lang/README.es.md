@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 # TUTORIAL Y SCRIPT POST-INSTALACIÓN DE ARCH LINUX
 
 ## Presentación
@@ -38,15 +36,95 @@ Simplifica tu experiencia con nuestro script todo-en-uno, que prepara tu escrito
 
 Descarga el ISO: [**Arch Linux - Descargas**](https://archlinux.org/download/)
 
+## Script de Post-Instalación de Arch Linux <a name="script"/>
+
+<img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/Welcome.png">
+
+El propósito de este script es configurar un sistema **Arch estándar** con un **conjunto mínimo de paquetes** adaptados a tus necesidades justo después de usar archinstall. Este script está **orientado hacia el gaming**.
+
+> [!NOTA]
+> **Antes de empezar:**
+> Este script se basa en un tutorial que describe todos los pasos: [Tuto-Arch](https://github.com/Cardiacman13/Tuto-Arch/blob/main/lang/README.en.md)
+> Este script está destinado para usarse en una instalación limpia que acaba de ser configurada con `archinstall`.
+> Antes de ejecutar este script, asegúrate de haber iniciado sesión en un Entorno de Escritorio.
+> No es adecuado para computadoras obsoletas. Asegúrate de que tu hardware cumpla con los requisitos para los últimos controladores de Nvidia.
+
+```bash
+sudo pacman -Sy git
+git clone https://github.com/Cardiacman13/Architect.git
+cd Architect
+./post-installation
+```
+
+### 1. Optimizando Pacman
+Mejora la funcionalidad y experiencia de usuario de Pacman haciendo las siguientes mejoras:
+
+- Habilitando la salida de color.
+- Habilitando listas detalladas de paquetes.
+- Habilitando descargas paralelas.
+- Habilitando soporte multilib.
+
+### 2. Añadiendo Alias Útiles
+Simplifica tus tareas de línea de comandos con estos alias útiles:
+
+- update-arch: Actualiza las aplicaciones de tu sistema con un solo comando.
+- clean-arch: Limpia tu sistema eliminando paquetes no utilizados.
+- fix-key: Soluciona problemas relacionados con claves, asegurando un proceso de actualización sin problemas.
+
+### 3. Asistencia con la Instalación de GPU para Gaming de AMD, NVIDIA o Intel
+Prepara tu sistema para el gaming con la configuración de GPU, que incluye:
+
+- Instalación de controladores.
+- Instalación de bibliotecas Vulkan.
+- Instalación de bibliotecas de 32 bits.
+- Elegir entre los controladores estándar de Nvidia o la variante `nvidia-all`:
+  - **Nvidia**: Esta es la opción recomendada para la mayoría de los usuarios. Involucra:
+    - Instalación de paquetes de Nvidia.
+    - Instalación de CUDA.
+  - **Nvidia-all**: Esto es para usuarios avanzados que saben cómo mantenerlo. Involucra:
+    - Clonar e instalar desde el repositorio `Frogging-Family/nvidia-all`.
+    - Instalación de CUDA.
+
+### 4. Instalar Algunos Paquetes Básicos
+Instala paquetes fundamentales para una experiencia completa:
+
+- [yay](https://github.com/Jguer/yay) o [paru](https://github.com/Morganamilo/paru) ayudante AUR.
+- Fuentes.
+- Utilidades de escritorio.
+- Códecs.
+- Otros paquetes esenciales.
+
+### 5. Mejoras Varias
+Ajusta tu sistema para una experiencia mejorada:
+
+- Aumentando `vm.max_map_count` para mejorar la compatibilidad con juegos de Windows. [Wiki de Arch sobre vm-max-map-count](https://wiki.archlinux.org/title/gaming#Increase_vm.max_map_count)
+- Preguntándote sobre la configuración de soporte de impresión.
+- Preguntándote sobre la configuración de Bluetooth.
+- Soporte avanzado para controladores de Xbox, PS4/PS5, 8bitdo
+- Propone configurar Fish como una shell de línea de comandos.
+
+### 6. Asistencia con la Instalación de Varios Softwares
+Tienes la libertad de elegir qué software adicional instalar según tus necesidades específicas:
+
+- `Discord`
+- `Steam`
+- `Lutris`
+- `Heroic Games Launcher`
+- `protonup-qt`
+- `Spotify`
+- `OBS Studio`
+- `LibreOffice`
+- `Gimp`
+- `Visual Studio Code`
+- `Open RGB`
+
 ## Índice
-1. [Potencia tu escritorio](#elevate)
-2. [Lleva tus Juegos a Otro Nivel](#gaming)
-3. [Optimización de Precisión](#optimization)
-4. [Solución de Problemas](#troubleshooting)
-5. [Script Todo-en-Uno](#script)
+1. [Script Todo-en-Uno](#script)
+2. [Potencia tu escritorio](#elevate)
+3. [Lleva tus Juegos a Otro Nivel](#gaming)
+4. [Optimización de Precisión](#optimization)
+5. [Solución de Problemas](#troubleshooting)
 6. [Cosas de la Comunidad](#community)
-
-
 
 ## <img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/pc.png" width="30" height="30"> **Potencia tu Escritorio** <a name="elevate"/>
 
@@ -391,7 +469,7 @@ yay -S --needed xpadneo-dkms
 ```
 Controlador avanzado de Linux para controladores PS4/PS5
 ```
-yay -S --needed bluez-utils-compat ds4drv dualsencectl
+yay -S --needed ds4drv dualsencectl
 ```
 
 ### Mostrando el rendimiento en juegos
@@ -478,90 +556,6 @@ Anteriormente conocido como xdg-app, es una utilidad de despliegue de software y
 yay -S flatpak flatpak-kcm
 flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 flatpak install com.bitwarden.desktop com.discordapp.Discord com.github.tchx84.Flatseal com.gitlab.davem.ClamTk com.heroicgames
-
-## Script de Post-Instalación de Arch Linux <a name="script"/>
-
-<img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/Welcome.png">
-
-El propósito de este script es configurar un sistema **Arch estándar** con un **conjunto mínimo de paquetes** adaptados a tus necesidades justo después de usar archinstall. Este script está **orientado hacia el gaming**.
-
-> [!NOTA]
-> **Antes de empezar:**
-> Este script se basa en un tutorial que describe todos los pasos: [Tuto-Arch](https://github.com/Cardiacman13/Tuto-Arch/blob/main/lang/README.en.md)
-> Este script está destinado para usarse en una instalación limpia que acaba de ser configurada con `archinstall`.
-> Antes de ejecutar este script, asegúrate de haber iniciado sesión en un Entorno de Escritorio.
-> No es adecuado para computadoras obsoletas. Asegúrate de que tu hardware cumpla con los requisitos para los últimos controladores de Nvidia.
-
-```bash
-sudo pacman -Sy git
-git clone https://github.com/Cardiacman13/Architect.git
-cd Architect
-./post-installation
-```
-
-### 1. Optimizando Pacman
-Mejora la funcionalidad y experiencia de usuario de Pacman haciendo las siguientes mejoras:
-
-- Habilitando la salida de color.
-- Habilitando listas detalladas de paquetes.
-- Habilitando descargas paralelas.
-- Habilitando soporte multilib.
-
-### 2. Añadiendo Alias Útiles
-Simplifica tus tareas de línea de comandos con estos alias útiles:
-
-- update-arch: Actualiza las aplicaciones de tu sistema con un solo comando.
-- clean-arch: Limpia tu sistema eliminando paquetes no utilizados.
-- fix-key: Soluciona problemas relacionados con claves, asegurando un proceso de actualización sin problemas.
-
-### 3. Asistencia con la Instalación de GPU para Gaming de AMD, NVIDIA o Intel
-Prepara tu sistema para el gaming con la configuración de GPU, que incluye:
-
-- Instalación de controladores.
-- Instalación de bibliotecas Vulkan.
-- Instalación de bibliotecas de 32 bits.
-- Elegir entre los controladores estándar de Nvidia o la variante `nvidia-all`:
-  - **Nvidia**: Esta es la opción recomendada para la mayoría de los usuarios. Involucra:
-    - Instalación de paquetes de Nvidia.
-    - Instalación de CUDA.
-  - **Nvidia-all**: Esto es para usuarios avanzados que saben cómo mantenerlo. Involucra:
-    - Clonar e instalar desde el repositorio `Frogging-Family/nvidia-all`.
-    - Instalación de CUDA.
-
-### 4. Instalar Algunos Paquetes Básicos
-Instala paquetes fundamentales para una experiencia completa:
-
-- [yay](https://github.com/Jguer/yay) o [paru](https://github.com/Morganamilo/paru) ayudante AUR.
-- Fuentes.
-- Utilidades de escritorio.
-- Códecs.
-- Otros paquetes esenciales.
-
-### 5. Mejoras Varias
-Ajusta tu sistema para una experiencia mejorada:
-
-- Aumentando `vm.max_map_count` para mejorar la compatibilidad con juegos de Windows. [Wiki de Arch sobre vm-max-map-count](https://wiki.archlinux.org/title/gaming#Increase_vm.max_map_count)
-- Preguntándote sobre la configuración de soporte de impresión.
-- Preguntándote sobre la configuración de Bluetooth.
-- Soporte avanzado para controladores de Xbox, PS4/PS5, 8bitdo
-- Propone configurar Fish como una shell de línea de comandos.
-
-### 6. Asistencia con la Instalación de Varios Softwares
-Tienes la libertad de elegir qué software adicional instalar según tus necesidades específicas:
-
-- `Discord`
-- `Steam`
-- `Lutris`
-- `Heroic Games Launcher`
-- `protonup-qt`
-- `Spotify`
-- `OBS Studio`
-- `LibreOffice`
-- `Gimp`
-- `Visual Studio Code`
-- `Open RGB`
-
-¡Este script de post-instalación es tu solución integral para configurar y optimizar tu sistema Arch Linux, asegurando una experiencia de juego suave y agradable! Disfruta de tu configuración de Arch Linux recién mejorada.
 
 ## Fuentes <a name="community"/>
 
