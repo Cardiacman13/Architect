@@ -10,23 +10,6 @@ Lo scopo di questo tutorial è installare un Arch standard con un minimo di pacc
 
 <img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/Cardiac-icon.png" width="30" height="30"> Questa icona vi reindirizza ai miei video su alcune parti di questo tutorial [**Playlist Tutorial Arch Linux**](https://www.youtube.com/watch?v=JE6VwNHLcyk&list=PLuIP_-MWRwtWEX0tyDpZPdwU6zCE1O1cY)
 
-## Caratteristiche Principali
-
-<img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/pc.png" width="30" height="30"> **Eleva il Tuo Desktop**:
-Vivi un'esperienza di massime prestazioni desktop con codec multimediali preinstallati, supporto per stampanti e soluzioni di backup.
-
-<img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/game-console.png" width="30" height="30"> **Porta il Tuo Gioco a un Nuovo Livello**:
-Rimani all'avanguardia nel gaming con Steam e Lutris, oltre a driver completi per hardware AMD, Intel e Nvidia.
-
-<img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/speed.png" width="30" height="30"> **Ottimizzazione di Precisione**:
-Beneficia di modifiche guidate dalla comunità per prestazioni e stabilità senza pari.
-
-<img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/programming.png" width="30" height="30"> **Mago Desktop Tutto-in-Uno** :
-Semplifica la tua esperienza con il nostro script tutto-in-uno, che prepara il tuo desktop per il lavoro, il gioco, i multimedia e l'ottimizzazione all'avanguardia.
-
-<img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/group.png" width="30" height="30"> **Eccellenza Guidata dalla Comunità**:
-Unisciti a una comunità fiorente supportata dai recensori di Gaming Linux FR e dagli esperti di Arch Linux per un supporto e aggiornamenti continui.
-
 ### Condizioni
 
 > **Nota**
@@ -37,14 +20,96 @@ Unisciti a una comunità fiorente supportata dai recensori di Gaming Linux FR e 
 Scarica l'ISO: [**Arch Linux - Download**](https://archlinux.org/download/)
 
 ## Indice dei Contenuti
-1. [Eleva il Tuo Desktop](#elevate)
-2. [Porta il Tuo Gioco a un Nuovo Livello](#gaming)
-3. [Ottimizzazione di Precisione](#optimization)
-4. [Risoluzione dei Problemi](#troubleshooting)
-5. [Script Tutto-in-Uno](#script)
+1. [Script Tutto-in-Uno](#script)
+2. [Eleva il Tuo Desktop](#elevate)
+3. [Porta il Tuo Gioco a un Nuovo Livello](#gaming)
+4. [Ottimizzazione di Precisione](#optimization)
+5. [Risoluzione dei Problemi](#troubleshooting)
 6. [Materiale della Comunità](#community)
 
+## Script Post-Installazione Arch Linux <a name="script"/>
 
+<img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/Welcome.png">
+
+Lo scopo di questo script è configurare un sistema **Arch standard** con un **set minimo di pacchetti** personalizzati per le tue esigenze subito dopo aver utilizzato archinstall. Questo script è **orientato al gaming**.
+
+> [!NOTA]
+> **Prima di Iniziare:**
+> Questo script si basa su un tutorial che descrive tutti i passaggi: [Tuto-Arch](https://github.com/Cardiacman13/Tuto-Arch/blob/main/lang/README.en.md)
+> Questo script è destinato all'uso su un'installazione pulita che è stata appena configurata con `archinstall`.
+> Prima di eseguire questo script, assicurati di aver avviato in un Ambiente Desktop.
+> Non è adatto a computer datati. Assicurati che il tuo hardware soddisfi i requisiti per gli ultimi driver Nvidia.
+
+```bash
+sudo pacman -Sy git
+git clone https://github.com/Cardiacman13/Architect.git
+cd Architect
+./post-installation
+```
+
+### 1. Ottimizzazione di Pacman
+Migliora la funzionalità e l'esperienza utente di Pacman apportando i seguenti miglioramenti:
+
+- Abilitazione dell'output colorato.
+- Abilitazione elenchi dettagliati dei pacchetti.
+- Abilitazione download paralleli.
+- Abilitazione supporto multilib.
+
+### 2. Aggiunta di Alias Utili
+Semplifica i tuoi compiti in linea di comando con questi utili alias:
+
+- update-arch: Aggiorna le app del tuo sistema con un singolo comando.
+- clean-arch: Pulisce il tuo sistema rimuovendo pacchetti inutilizzati.
+- fix-key: Risolve problemi relativi alle chiavi, garantendo un processo di aggiornamento fluido.
+
+### 3. Assistenza nell'installazione di GPU AMD, NVIDIA o Intel per il Gaming
+Prepara il tuo PC per il gaming con la configurazione GPU, che include:
+
+- Installazione driver.
+- Installazione librerie Vulkan.
+- Installazione librerie a 32 bit.
+- Scelta tra driver Nvidia standard o la variante `nvidia-all
+
+`:
+  - **Nvidia**: Questa è la scelta consigliata per la maggior parte degli utenti. Comprende:
+    - Installazione dei pacchetti Nvidia.
+    - Installazione di CUDA.
+  - **Nvidia-all**: Questa è per utenti avanzati che sanno come mantenerla. Comprende:
+    - Clonazione e installazione dal repository `Frogging-Family/nvidia-all`.
+    - Installazione di CUDA.
+
+### 4. Installa Alcuni Pacchetti Base
+Installa pacchetti fondamentali per un'esperienza completa:
+
+- [yay](https://github.com/Jguer/yay) o [paru](https://github.com/Morganamilo/paru) helper AUR.
+- Font.
+- Utility desktop.
+- Codec.
+- Altri pacchetti essenziali.
+
+### 5. Miglioramenti Vari
+Regola il tuo sistema per un'esperienza migliorata:
+
+- Aumento di `vm.max_map_count` per migliorare la compatibilità con i giochi Windows. [Wiki di Arch su vm-max-map-count](https://wiki.archlinux.org/title/gaming#Increase_vm.max_map_count)
+- Richiesta di configurazione del supporto stampa.
+- Richiesta di configurazione del Bluetooth.
+- Supporto avanzato per controller Xbox, PS4/PS5, 8bitdo
+- Proposta di configurare Fish come shell di comando.
+
+### 6. Assistenza nell'installazione di Vari Software
+Hai la libertà di scegliere quali software aggiuntivi installare in base alle tue esigenze specifiche:
+
+- `Discord`
+- `Steam`
+- `Lutris`
+- `Heroic Games Launcher`
+- `protonup-qt`
+- `Spotify`
+- `OBS Studio`
+- `LibreOffice`
+- `Gimp`
+- `Visual Studio Code`
+- `Open RGB`
 
 ## <img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/pc.png" width="30" height="30"> **Eleva il Tuo Desktop** <a name="elevate"/>
 
@@ -501,92 +566,6 @@ flatpak install com.bitwarden.desktop com.discordapp.Discord com.github.tchx84.F
 
 - Per aiuto, visita il Discord di GLF (fr/en): [Discord GLF](http://discord.gg/EP3Jm8YMvj)
 
-## Script Post-Installazione Arch Linux <a name="script"/>
-
-<img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/Welcome.png">
-
-Lo scopo di questo script è configurare un sistema **Arch standard** con un **set minimo di pacchetti** personalizzati per le tue esigenze subito dopo aver utilizzato archinstall. Questo script è **orientato al gaming**.
-
-> [!NOTA]
-> **Prima di Iniziare:**
-> Questo script si basa su un tutorial che descrive tutti i passaggi: [Tuto-Arch](https://github.com/Cardiacman13/Tuto-Arch/blob/main/lang/README.en.md)
-> Questo script è destinato all'uso su un'installazione pulita che è stata appena configurata con `archinstall`.
-> Prima di eseguire questo script, assicurati di aver avviato in un Ambiente Desktop.
-> Non è adatto a computer datati. Assicurati che il tuo hardware soddisfi i requisiti per gli ultimi driver Nvidia.
-
-```bash
-sudo pacman -Sy git
-git clone https://github.com/Cardiacman13/Architect.git
-cd Architect
-./post-installation
-```
-
-### 1. Ottimizzazione di Pacman
-Migliora la funzionalità e l'esperienza utente di Pacman apportando i seguenti miglioramenti:
-
-- Abilitazione dell'output colorato.
-- Abilitazione elenchi dettagliati dei pacchetti.
-- Abilitazione download paralleli.
-- Abilitazione supporto multilib.
-
-### 2. Aggiunta di Alias Utili
-Semplifica i tuoi compiti in linea di comando con questi utili alias:
-
-- update-arch: Aggiorna le app del tuo sistema con un singolo comando.
-- clean-arch: Pulisce il tuo sistema rimuovendo pacchetti inutilizzati.
-- fix-key: Risolve problemi relativi alle chiavi, garantendo un processo di aggiornamento fluido.
-
-### 3. Assistenza nell'installazione di GPU AMD, NVIDIA o Intel per il Gaming
-Prepara il tuo PC per il gaming con la configurazione GPU, che include:
-
-- Installazione driver.
-- Installazione librerie Vulkan.
-- Installazione librerie a 32 bit.
-- Scelta tra driver Nvidia standard o la variante `nvidia-all
-
-`:
-  - **Nvidia**: Questa è la scelta consigliata per la maggior parte degli utenti. Comprende:
-    - Installazione dei pacchetti Nvidia.
-    - Installazione di CUDA.
-  - **Nvidia-all**: Questa è per utenti avanzati che sanno come mantenerla. Comprende:
-    - Clonazione e installazione dal repository `Frogging-Family/nvidia-all`.
-    - Installazione di CUDA.
-
-### 4. Installa Alcuni Pacchetti Base
-Installa pacchetti fondamentali per un'esperienza completa:
-
-- [yay](https://github.com/Jguer/yay) o [paru](https://github.com/Morganamilo/paru) helper AUR.
-- Font.
-- Utility desktop.
-- Codec.
-- Altri pacchetti essenziali.
-
-### 5. Miglioramenti Vari
-Regola il tuo sistema per un'esperienza migliorata:
-
-- Aumento di `vm.max_map_count` per migliorare la compatibilità con i giochi Windows. [Wiki di Arch su vm-max-map-count](https://wiki.archlinux.org/title/gaming#Increase_vm.max_map_count)
-- Richiesta di configurazione del supporto stampa.
-- Richiesta di configurazione del Bluetooth.
-- Supporto avanzato per controller Xbox, PS4/PS5, 8bitdo
-- Proposta di configurare Fish come shell di comando.
-
-### 6. Assistenza nell'installazione di Vari Software
-Hai la libertà di scegliere quali software aggiuntivi installare in base alle tue esigenze specifiche:
-
-- `Discord`
-- `Steam`
-- `Lutris`
-- `Heroic Games Launcher`
-- `protonup-qt`
-- `Spotify`
-- `OBS Studio`
-- `LibreOffice`
-- `Gimp`
-- `Visual Studio Code`
-- `Open RGB`
-
-Questo script di post-installazione è la tua soluzione completa per configurare e ottimizzare il tuo sistema Arch Linux, garantendo un'esperienza di gaming fluida e piacevole. Goditi la tua nuova configurazione migliorata di Arch Linux!
-
 ## Fonti <a name="community"/>
 
 Fonti e link utili :
@@ -599,7 +578,7 @@ Fonti e link utili :
 
 ## Contributo
 
-I contributi a questo progetto sono benvenuti! Se hai suggerimenti, segnalazioni di bug o contributi, si prega di aprire un problema o una richiesta di pull nel repository.
+I contributi a questo progetto sono benvenuti! Se hai suggerimenti, segnalazioni di bug o contributi, si prega di aprire un issue o una pull request nel repository.
 
 Come puoi vedere questo progetto è disponibile in francese, inglese e spagnolo. I traduttori sono più che benvenuti! :people_holding_hands:
 

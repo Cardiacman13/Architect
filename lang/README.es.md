@@ -10,23 +10,6 @@ El propósito de este tutorial es instalar un Arch estándar con un mínimo de p
 
 <img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/Cardiac-icon.png" width="30" height="30"> Este icono te redirige a mis videos sobre ciertas partes de este tutorial [**Lista de Reproducción del Tutorial de Arch Linux**](https://www.youtube.com/watch?v=JE6VwNHLcyk&list=PLuIP_-MWRwtWEX0tyDpZPdwU6zCE1O1cY)
 
-## Características Principales
-
-<img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/pc.png" width="30" height="30"> **Potencia tu Escritorio**:
-Experimenta un rendimiento máximo del escritorio con códecs multimedia preinstalados, soporte para impresoras y soluciones de respaldo.
-
-<img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/game-console.png" width="30" height="30"> **Lleva tus Juegos a Otro Nivel**:
-Mantente a la vanguardia en juegos con Steam y Lutris, además de controladores completos para hardware AMD, Intel y Nvidia.
-
-<img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/speed.png" width="30" height="30"> **Optimización de Precisión**:
-Benefíciate de ajustes impulsados por la comunidad para un rendimiento y estabilidad sin paralelo.
-
-<img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/programming.png" width="30" height="30"> **Asistente de Escritorio Todo-en-Uno** :
-Simplifica tu experiencia con nuestro script todo-en-uno, que prepara tu escritorio para trabajo, juegos, multimedia y optimización de vanguardia.
-
-<img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/group.png" width="30" height="30"> **Excelencia Impulsada por la Comunidad**:
-Únete a una comunidad próspera respaldada por revisores de Gaming Linux FR y expertos de Arch Linux para soporte y actualizaciones continuas.
-
 ### Condiciones
 
 > **Nota**
@@ -35,6 +18,14 @@ Simplifica tu experiencia con nuestro script todo-en-uno, que prepara tu escrito
 > Sin embargo, si sabes lo que estás haciendo, las modificaciones para otras opciones son mínimas.
 
 Descarga el ISO: [**Arch Linux - Descargas**](https://archlinux.org/download/)
+
+## Índice
+1. [Script Todo-en-Uno](#script)
+2. [Potencia tu escritorio](#elevate)
+3. [Lleva tus Juegos a Otro Nivel](#gaming)
+4. [Optimización de Precisión](#optimization)
+5. [Solución de Problemas](#troubleshooting)
+6. [Cosas de la Comunidad](#community)
 
 ## Script de Post-Instalación de Arch Linux <a name="script"/>
 
@@ -117,14 +108,6 @@ Tienes la libertad de elegir qué software adicional instalar según tus necesid
 - `Gimp`
 - `Visual Studio Code`
 - `Open RGB`
-
-## Índice
-1. [Script Todo-en-Uno](#script)
-2. [Potencia tu escritorio](#elevate)
-3. [Lleva tus Juegos a Otro Nivel](#gaming)
-4. [Optimización de Precisión](#optimization)
-5. [Solución de Problemas](#troubleshooting)
-6. [Cosas de la Comunidad](#community)
 
 ## <img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/pc.png" width="30" height="30"> **Potencia tu Escritorio** <a name="elevate"/>
 
@@ -569,7 +552,7 @@ Fuentes y enlaces útiles :
 
 ## Contribución
 
-¡Las contribuciones a este proyecto son bienvenidas! Si tienes sugerencias, informes de errores o contribuciones, por favor abre un problema o una solicitud de extracción en el repositorio.
+¡Las contribuciones a este proyecto son bienvenidas! Si tienes sugerencias, informes de errores o contribuciones, por favor abre una issue o una pull request.
 
 Como puedes ver, este proyecto está disponible en francés, inglés y español. ¡Los traductores son más que bienvenidos! :people_holding_hands:
 
