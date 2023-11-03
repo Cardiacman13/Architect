@@ -28,15 +28,13 @@ Téléchargez l'ISO : [**Arch Linux - Téléchargements**](https://archlinux.org
 
 ## Script de Post-Installation pour Arch Linux <a name="script"/>
 
-[Version française](https://github.com/Cardiacman13/post-install-arch/blob/main/lang/README.fr.md)  [Versión española](https://github.com/Cardiacman13/post-install-arch/blob/main/lang/README.es.md)
-
-<img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/Welcome2.png">
+<img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/Welcome.png">
 
 L'objectif de ce script est de configurer un système **Arch de base** avec un **ensemble minimal de paquets** adaptés à vos besoins juste après l'utilisation d'archinstall. Ce script est **orienté vers le jeu**.
 
 > [!NOTE]
 > **Avant de commencer :**
-> Ce script est basé sur un tutoriel qui décrit toutes les étapes : [Tuto-Arch](https://github.com/Cardiacman13/Tuto-Arch/blob/main/lang/README.en.md)
+> Ce script est basé sur un tutoriel qui en décrit toutes les étapes.
 > Ce script est destiné à être utilisé sur une installation propre qui vient d'être configurée avec `archinstall`.
 > Avant d'exécuter ce script, assurez-vous d'avoir démarré dans un environnement de bureau.
 > Il n'est pas adapté aux ordinateurs obsolètes. Assurez-vous que votre matériel répond aux exigences pour les derniers pilotes Nvidia.
