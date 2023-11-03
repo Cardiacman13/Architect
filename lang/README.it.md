@@ -10,23 +10,6 @@ Lo scopo di questo tutorial è installare un Arch standard con un minimo di pacc
 
 <img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/Cardiac-icon.png" width="30" height="30"> Questa icona vi reindirizza ai miei video su alcune parti di questo tutorial [**Playlist Tutorial Arch Linux**](https://www.youtube.com/watch?v=JE6VwNHLcyk&list=PLuIP_-MWRwtWEX0tyDpZPdwU6zCE1O1cY)
 
-## Caratteristiche Principali
-
-<img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/pc.png" width="30" height="30"> **Eleva il Tuo Desktop**:
-Vivi un'esperienza di massime prestazioni desktop con codec multimediali preinstallati, supporto per stampanti e soluzioni di backup.
-
-<img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/game-console.png" width="30" height="30"> **Porta il Tuo Gioco a un Nuovo Livello**:
-Rimani all'avanguardia nel gaming con Steam e Lutris, oltre a driver completi per hardware AMD, Intel e Nvidia.
-
-<img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/speed.png" width="30" height="30"> **Ottimizzazione di Precisione**:
-Beneficia di modifiche guidate dalla comunità per prestazioni e stabilità senza pari.
-
-<img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/programming.png" width="30" height="30"> **Mago Desktop Tutto-in-Uno** :
-Semplifica la tua esperienza con il nostro script tutto-in-uno, che prepara il tuo desktop per il lavoro, il gioco, i multimedia e l'ottimizzazione all'avanguardia.
-
-<img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/group.png" width="30" height="30"> **Eccellenza Guidata dalla Comunità**:
-Unisciti a una comunità fiorente supportata dai recensori di Gaming Linux FR e dagli esperti di Arch Linux per un supporto e aggiornamenti continui.
-
 ### Condizioni
 
 > **Nota**
@@ -599,7 +582,7 @@ Fonti e link utili :
 
 ## Contributo
 
-I contributi a questo progetto sono benvenuti! Se hai suggerimenti, segnalazioni di bug o contributi, si prega di aprire un problema o una richiesta di pull nel repository.
+I contributi a questo progetto sono benvenuti! Se hai suggerimenti, segnalazioni di bug o contributi, si prega di aprire un issue o una pull request nel repository.
 
 Come puoi vedere questo progetto è disponibile in francese, inglese e spagnolo. I traduttori sono più che benvenuti! :people_holding_hands:
 
