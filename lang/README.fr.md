@@ -41,10 +41,9 @@ L'objectif de ce script est de configurer un système **Arch de base** avec un *
 
 ```bash
 sudo pacman -Sy git
-git clone https://github.com/Cardiacman13/post-install-arch.git
-cd post-install-arch
-chmod +x ./post-installation
-./post-installation
+git clone https://github.com/Cardiacman13/Architect.git
+cd Architect
+./architect.sh
 ```
 
 ### 1. Optimisation de Pacman
