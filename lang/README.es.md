@@ -452,7 +452,7 @@ yay -S --needed xpadneo-dkms
 ```
 Controlador avanzado de Linux para controladores PS4/PS5
 ```
-yay -S --needed ds4drv dualsencectl
+yay -S --needed ds4drv dualsensectl
 ```
 
 ### Mostrando el rendimiento en juegos
