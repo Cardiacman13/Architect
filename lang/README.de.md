@@ -10,24 +10,6 @@ Der Zweck dieses Tutorials ist es, ein Standard-Arch mit einer Mindestanzahl von
 
 <img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/Cardiac-icon.png" width="30" height="30"> Dieses Icon leitet dich zu meinen Videos über bestimmte Teile dieses Tutorials weiter [**Arch Linux Tutorial Playlist**](https://www.youtube.com/watch?v=JE6VwNHLcyk&list=PLuIP_-MWRwtWEX0tyDpZPdwU6zCE1O1cY)
 
-## Hauptmerkmale
-
-<img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/pc.png" width="30" height="30"> **Erweitere Deinen Desktop**:
-Erlebe Spitzenleistung auf deinem Desktop mit vorinstallierten Multimedia-Codecs, Druckerunterstützung und Backup-Lösungen.
-
-<img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/game-console.png" width="30" height="30"> **Verbessere Dein Gaming**:
-Bleibe mit Steam und Lutris sowie umfassenden Treibern für AMD-, Intel- und Nvidia-Hardware auf dem neuesten Stand der Gaming-Technologie.
-
-<img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/speed.png" width="30" height="30"> **Präzise Optimierung**:
-Profitiere von von der Community getriebenen Anpassungen für unübertroffene Leistung und Stabilität.
-
-
-<img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/programming.png" width="30" height="30"> **All-in-One Desktop-Assistent**:
-Vereinfache deine Erfahrung mit unserem All-in-One-Skript, das deinen Desktop für Arbeit, Gaming, Multimedia und modernste Optimierung vorbereitet.
-
-<img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/group.png" width="30" height="30"> **Von der Community Getriebene Exzellenz**:
-Werde Teil einer florierenden Gemeinschaft, unterstützt von Gaming Linux FR-Rezensenten und Arch Linux-Experten für fortlaufende Unterstützung und Aktualisierungen.
-
 ### Bedingungen
 
 > **Hinweis**
@@ -36,6 +18,14 @@ Werde Teil einer florierenden Gemeinschaft, unterstützt von Gaming Linux FR-Rez
 > Wenn du jedoch weißt, was du tust, sind die Änderungen für andere Optionen minimal.
 
 Lade das ISO herunter: [**Arch Linux - Downloads**](https://archlinux.org/download/)
+
+## Inhaltsverzeichnis
+1. [All-in-One-Skript](#script)
+2. [Erweitere deinen Desktop](#elevate)
+3. [Verbessere dein Gaming](#gaming)
+4. [Präzise Optimierung](#optimization)
+5. [Fehlerbehebung](#troubleshooting)
+6. [Community-Dinge](#community)
 
 ## Arch Linux Nachinstallationsskript <a name="script"/>
 
@@ -118,14 +108,6 @@ Sie haben die Freiheit, zusätzliche Software basierend auf Ihren spezifischen B
 - `Gimp`
 - `Visual Studio Code`
 - `Open RGB`
-
-## Inhaltsverzeichnis
-1. [All-in-One-Skript](#script)
-2. [Erweitere deinen Desktop](#elevate)
-3. [Verbessere dein Gaming](#gaming)
-4. [Präzise Optimierung](#optimization)
-5. [Fehlerbehebung](#troubleshooting)
-6. [Community-Dinge](#community)
 
 ## <img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/pc.png" width="30" height="30"> **Erweitere Deinen Desktop** <a name="elevate"/>
 
