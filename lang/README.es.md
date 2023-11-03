@@ -556,6 +556,7 @@ Anteriormente conocido como xdg-app, es una utilidad de despliegue de software y
 yay -S flatpak flatpak-kcm
 flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 flatpak install com.bitwarden.desktop com.discordapp.Discord com.github.tchx84.Flatseal com.gitlab.davem.ClamTk com.heroicgames
+```
 
 ## Fuentes <a name="community"/>
 
