@@ -44,7 +44,7 @@ Lo scopo di questo script è configurare un sistema **Arch standard** con un **s
 sudo pacman -Sy git
 git clone https://github.com/Cardiacman13/Architect.git
 cd Architect
-./post-installation
+./architect.sh
 ```
 
 ### 1. Ottimizzazione di Pacman
