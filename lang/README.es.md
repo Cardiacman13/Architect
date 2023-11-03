@@ -575,4 +575,3 @@ Como puedes ver, este proyecto está disponible en francés, inglés y español.
 
 <!-- readme: contributors -start -->
 <!-- readme: contributors -end -->
->>>>>>> main
