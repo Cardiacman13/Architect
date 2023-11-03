@@ -19,6 +19,14 @@ El propósito de este tutorial es instalar un Arch estándar con un mínimo de p
 
 Descarga el ISO: [**Arch Linux - Descargas**](https://archlinux.org/download/)
 
+## Índice
+1. [Script Todo-en-Uno](#script)
+2. [Potencia tu escritorio](#elevate)
+3. [Lleva tus Juegos a Otro Nivel](#gaming)
+4. [Optimización de Precisión](#optimization)
+5. [Solución de Problemas](#troubleshooting)
+6. [Cosas de la Comunidad](#community)
+
 ## Script de Post-Instalación de Arch Linux <a name="script"/>
 
 <img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/Welcome.png">
@@ -100,14 +108,6 @@ Tienes la libertad de elegir qué software adicional instalar según tus necesid
 - `Gimp`
 - `Visual Studio Code`
 - `Open RGB`
-
-## Índice
-1. [Script Todo-en-Uno](#script)
-2. [Potencia tu escritorio](#elevate)
-3. [Lleva tus Juegos a Otro Nivel](#gaming)
-4. [Optimización de Precisión](#optimization)
-5. [Solución de Problemas](#troubleshooting)
-6. [Cosas de la Comunidad](#community)
 
 ## <img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/pc.png" width="30" height="30"> **Potencia tu Escritorio** <a name="elevate"/>
 
