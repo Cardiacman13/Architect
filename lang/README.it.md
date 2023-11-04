@@ -15,14 +15,14 @@ Lo scopo di questo tutorial è installare un Arch standard con un minimo di pacc
 > **Nota**
 > Lo script che troverete in seguito funziona indipendentemente dalle vostre scelte di DE / BOOT LOADER / FS.
 > Tutorial e script mirati all'uso con un Arch puro (incompatibile con Garuda, EndeavourOS, Manjaro…)
-> Tuttavia, se sapete cosa state facendo, le modifiche per altre scelte sono minime.
+> Tuttavia, se sapete cosa state facendo, le modifiche per altre scelte saranno minime.
 
 Scarica l'ISO: [**Arch Linux - Download**](https://archlinux.org/download/)
 
 ## Indice dei Contenuti
 1. [Script Tutto-in-Uno](#script)
-2. [Eleva il Tuo Desktop](#elevate)
-3. [Porta il Tuo Gioco a un Nuovo Livello](#gaming)
+2. [Migliora il Tuo Desktop(#elevate)
+3. [Migliora la prestazione dei Tuoi Giochi](#gaming)
 4. [Ottimizzazione di Precisione](#optimization)
 5. [Risoluzione dei Problemi](#troubleshooting)
 6. [Materiale della Comunità](#community)
@@ -31,7 +31,7 @@ Scarica l'ISO: [**Arch Linux - Download**](https://archlinux.org/download/)
 
 <img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/Welcome.png">
 
-Lo scopo di questo script è configurare un sistema **Arch standard** con un **set minimo di pacchetti** personalizzati per le tue esigenze subito dopo aver utilizzato archinstall. Questo script è **orientato al gaming**.
+Lo scopo di questo script è configurare un sistema **Arch standard** con un **numero minimo di pacchetti** personalizzati per le tue esigenze subito dopo aver utilizzato archinstall. Questo script è **orientato al gaming**.
 
 > [!NOTA]
 > **Prima di Iniziare:**
@@ -88,12 +88,12 @@ Installa pacchetti fondamentali per un'esperienza completa:
 - Altri pacchetti essenziali.
 
 ### 5. Miglioramenti Vari
-Regola il tuo sistema per un'esperienza migliorata:
+Regola il tuo sistema per un'esperienza completa:
 
 - Aumento di `vm.max_map_count` per migliorare la compatibilità con i giochi Windows. [Wiki di Arch su vm-max-map-count](https://wiki.archlinux.org/title/gaming#Increase_vm.max_map_count)
-- Richiesta di configurazione del supporto stampa.
+- Richiesta di configurazione della stampante.
 - Richiesta di configurazione del Bluetooth.
-- Supporto avanzato per controller Xbox, PS4/PS5, 8bitdo
+- Supporto avanzato per joystick Xbox, PS4/PS5, 8bitdo
 - Proposta di configurare Fish come shell di comando.
 
 ### 6. Assistenza nell'installazione di Vari Software
@@ -120,7 +120,7 @@ Hai la libertà di scegliere quali software aggiuntivi installare in base alle t
 
 <img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/Cardiac-icon.png" width="30" height="30"> [ Tutorial Arch Linux Parte 1: Archinstall ](https://www.youtube.com/watch?v=JE6VwNHLcyk)
 
-Per tutti i passaggi seguenti, quando avete un testo presentato in questo modo, indicherà un comando da digitare nel vostro terminale:
+Per tutti i passaggi seguenti, quando avete un testo presentato in questo modo, questo indicherà un comando da digitare nel vostro terminale:
 ```
 echo "Ciao mondo!"            # Esempio di comando
 ```
@@ -173,7 +173,7 @@ echo "Ciao mondo!"            # Esempio di comando
 2. Installare yay
 
    [Yay](https://github.com/Jguer/yay) è uno strumento utile per gestire l'installazione e l'aggiornamento del software sui sistemi basati su Arch Linux.
-   Yay facilita specialmente l'uso del repository AUR, un repository gestito dalla comunità che espande notevolmente la libreria software disponibile. Questo include la compilazione di questi programmi dal loro codice sorgente, a meno che non sia specificato "-bin" alla fine del loro nome.
+   Yay facilita in particolare l'uso del repository AUR, un repository gestito dalla comunità che espande notevolmente la libreria software disponibile. Questo include la compilazione di questi programmi dal loro codice sorgente, a meno che non sia specificato "-bin" alla fine del loro nome.
    **/!\ Siate cauti /!\ Poiché i pacchetti in AUR sono forniti dalla comunità, non installate nulla a caso!**
    
    ```
@@ -183,7 +183,7 @@ echo "Ciao mondo!"            # Esempio di comando
    makepkg -si
    ```
 
-   Aggiungendo il supporto per gli aggiornamenti dei pacchetti git. (Normalmente deve essere fatto solo una volta)
+   Aggiunta del supporto per gli aggiornamenti dei pacchetti git. (Normalmente deve essere fatto solo una volta)
    ```
    yay -Y --gendb
    yay -Y --devel --save
@@ -213,7 +213,7 @@ echo "Ciao mondo!"            # Esempio di comando
 
    ### SUPPORTO HARDWARE
 
-#### NVIDIA (rimani su X11 almeno fino al rilascio di KDE 6)
+#### NVIDIA (rimanere su X11 almeno fino al rilascio di KDE 6)
 Video supplementare che spiega come riaccedere a Wayland da GDM:
 <img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/Cardiac-icon.png" width="30" height="30"> [Debian e Arch Linux Gnome Wayland con Nvidia (Debian nel documento)](https://www.youtube.com/watch?v=DVkWLvwtQ18)
 
@@ -253,7 +253,7 @@ Nella cartella:
     sudo grub-mkconfig -o /boot/grub/grub.cfg
     ```
    
-3. **Carica i moduli Nvidia come priorità all'avvio di Arch:**
+3. **Carica i moduli Nvidia in priorità all'avvio di Arch:**
     Questo passaggio è talvolta necessario per certi ambienti desktop o window manager.
     ```
     kate /etc/mkinitcpio.conf
@@ -293,7 +293,7 @@ Nella cartella:
     ```
 
 5. **Ricostruzione di initramfs:**
-    Poiché abbiamo già installato i driver al passaggio 1, quindi prima di configurare l'hook, dobbiamo innescare manualmente la ricostruzione di initramfs:
+    Poiché abbiamo già installato i driver al passaggio 1, prima di configurare l'hook, dobbiamo innescare manualmente la ricostruzione di initramfs:
     ```
     mkinitcpio -P
     ```
@@ -357,7 +357,7 @@ yay -S libreoffice-fresh libreoffice-fresh-fr vlc discord gimp obs-studio gnome-
 
 #### Software KDE
 
-Ecco vari software per grafica, video (editing, supporto codec), utilità dell'interfaccia grafica, ecc.
+Ecco vari software per grafica, video (editing, supporto di codec), utilità dell'interfaccia grafica, ecc.
 ```
 yay -S xdg-desktop-portal-kde okular print-manager kdenlive gwenview spectacle partitionmanager ffmpegthumbs qt6-wayland kdeplasma-addons powerdevil kcalc plasma-systemmonitor qt6-multimedia qt6-multimedia-gstreamer qt6-multimedia-ffmpeg kwalletmanager
 ```
