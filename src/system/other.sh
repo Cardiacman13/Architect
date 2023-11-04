@@ -31,7 +31,7 @@ function setup_system_loaders() {
     fi
 
     exec_log "sudo mkdir -p '/etc/pacman.d/hooks/'" "Creating /etc/pacman.d/hooks/"
-    copy_bak "assets/data/grub.hook" "/etc/pacman.d/hooks/grub.hook"
+    copy_bak "assets/data" "grub.hook" "/etc/pacman.d/hooks"
     install_one "update-grub"
 }
 

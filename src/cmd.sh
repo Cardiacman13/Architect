@@ -93,15 +93,16 @@ function uninstall_lst() {
 }
 
 function copy_bak() {
-    local -r file=$1
-    local -r dest=$2
+    local -r file_path=$1
+    local -r file_name=$2
+    local -r dest=$3
     local sudo_str=""
 
     if [[ $3 == true ]]; then
         sudo_str="sudo "
     fi
-    if [[ -f "${dest}/${file}" ]]; then
-        exec_log "${sudo_str}cp -f ${dest}/${file} ${dest}/${file}.bak" "Backup of ${file}"
+    if [[ -f "${dest}/${file_name}" ]]; then
+        exec_log "${sudo_str}cp -f ${dest}/${file_name} ${dest}/${file_name}.bak" "Backup of ${file_name}"
     fi
-    exec_log "${sudo_str}cp -f ${file} ${dest}" "Copy ${file} to ${dest}"
+    exec_log "${sudo_str}cp -f ${file_path}/${file_name} ${dest}/${file_name}" "Copy of ${file_name}"
 }
