@@ -101,6 +101,7 @@ function copy_bak() {
     if [[ $3 == true ]]; then
         sudo_str="sudo "
     fi
+    exec_log "${sudo_str}mkdir -p ${dest}" "Creating ${dest}"
     if [[ -f "${dest}/${file_name}" ]]; then
         exec_log "${sudo_str}cp -f ${dest}/${file_name} ${dest}/${file_name}.bak" "Backup of ${file_name}"
     fi
