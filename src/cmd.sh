@@ -98,7 +98,7 @@ function copy_bak() {
     local -r dest=$3
     local sudo_str=""
 
-    if [[ $3 == true ]]; then
+    if [[ $4 == true ]]; then
         sudo_str="sudo "
     fi
     exec_log "${sudo_str}mkdir -p ${dest}" "Creating ${dest}"
