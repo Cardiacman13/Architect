@@ -91,3 +91,17 @@ function uninstall_lst() {
         uninstall_one "${package}"
     done
 }
+
+function copy_bak() {
+    local -r file=$1
+    local -r dest=$2
+    local sudo_str=""
+
+    if [[ $3 == true ]]; then
+        sudo_str="sudo "
+    fi
+    if [[ -f "${dest}/${file}" ]]; then
+        exec_log "${sudo_str}cp -f ${dest}/${file} ${dest}/${file}.bak" "Backup of ${file}"
+    fi
+    exec_log "${sudo_str}cp -f ${file} ${dest}" "Copy ${file} to ${dest}"
+}

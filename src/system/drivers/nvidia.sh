@@ -3,7 +3,7 @@ source src/cmd.sh
 function nvidia_config() {
     # hook
     exec_log "sudo mkdir -p /etc/pacman.d/hooks/" "Hook folder creation"
-    exec_log "sudo cp assets/data/nvidia.hook /etc/pacman.d/hooks/nvidia.hook" "Hook file copy"
+    copy_bak "assets/data/nvidia.hook" "/etc/pacman.d/hooks/nvidia.hook"
 
     # mkinitcpio
     exec_log "sudo sed -i '/MODULES=/ s/)/ nvidia nvidia_modeset nvidia_uvm nvidia_drm)/' '/etc/mkinitcpio.conf'" "mkinitcpio configuration"
