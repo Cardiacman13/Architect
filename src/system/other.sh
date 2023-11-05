@@ -11,7 +11,6 @@ function sound_server() {
     local -r inlst="
         pipewire
         lib32-pipewire
-        pipewire-pulse
         pipewire-alsa
         pipewire-jack
         wireplumber
