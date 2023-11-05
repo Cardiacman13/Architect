@@ -206,7 +206,7 @@ limine
    alias clean-arch='yay -Sc && yay -Yc && flatpak remove --unused'
    ```
    ```
-   alias update-mirros=sudo reflector --score 10 --fastest 5 --sort rate --save /etc/pacman.d/mirrorlist
+   alias update-mirros=sudo reflector --verbose --score 20 --fastest 5 --sort rate --save /etc/pacman.d/mirrorlist
    ```
    ```
    alias fix-key='sudo rm /var/lib/pacman/sync/* && sudo rm -rf /etc/pacman.d/gnupg/* && sudo pacman-key --init && sudo pacman-key --populate && sudo pacman -Sy --noconfirm archlinux-keyring && sudo pacman --noconfirm -Su'
@@ -386,7 +386,7 @@ yay -S reflector-simple
 Une commande pour générer une liste de miroirs, à faire une fois après la première installation et à répéter si vous voyagez, ou changez de pays, ou si vous trouvez le téléchargement des paquets trop lent, ou si vous rencontrez une erreur vous indiquant qu'un miroir est hors service :
 
 ```
-sudo reflector --score 10 --fastest 5 --sort rate --save /etc/pacman.d/mirrorlist
+sudo reflector --verbose --score 20 --fastest 5 --sort rate --save /etc/pacman.d/mirrorlist
 ```
 
 #### Timeshift
