@@ -7,7 +7,7 @@ function sound_server() {
         pulseaudio-alsa
         pulseaudio-jack
         jack2
-        pipewire-media-session     
+        pipewire-media-session 
     "
     local -r inlst="
         pipewire-pulse
@@ -19,7 +19,8 @@ function sound_server() {
         alsa-utils
         alsa-plugins
         alsa-firmware
-        alsa-ucm-conf 
+        alsa-ucm-conf
+        sof-firmware
     "
 
     uninstall_lst "${unlst}" "Clean old sound server dependencies"
