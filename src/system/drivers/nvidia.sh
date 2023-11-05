@@ -10,7 +10,7 @@ function nvidia_config() {
 
     # bootloader
     if [[ ${BOOT_LOADER} == "grub" ]]; then
-        exec_log "sudo sed -i 's/GRUB_CMDLINE_LINUX_DEFAULT='\''nowatchdog nvme_load=YES loglevel=3'\''/GRUB_CMDLINE_LINUX_DEFAULT='\''nowatchdog nvme_load=YES loglevel=3 nvidia-drm.modeset=1'\''/' /etc/default/grub" "grub configuration"
+        exec_log sed -i "s/\(GRUB_CMDLINE_LINUX_DEFAULT='[^']*\)'/\1 nvidia_drm.modeset=1'/" '/etc/default/grub' "grub configuration"
         exec_log "sudo grub-mkconfig -o /boot/grub/grub.cfg" "GRUB update"
     else
         exec_log "sudo sed -i '/^options/ s/$/ nvidia-drm.modeset=1/' /boot/loader/entries/*.conf" "systemd-boot configuration"
