@@ -12,7 +12,6 @@ function usefull_package() {
         gst-libav
         fwupd
         xdg-utils
-        reflector-simple
         downgrade
         rebuild-detector
         mkinitcpio-firmware
@@ -22,6 +21,7 @@ function usefull_package() {
         power-profiles-daemon
         hunspell
         hunspell-fr
+        hunspell-en
         p7zip
         unrar
         ttf-liberation
