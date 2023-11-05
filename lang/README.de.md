@@ -61,6 +61,7 @@ Vereinfachen Sie Ihre Befehlszeilenaufgaben mit diesen hilfreichen Aliasen:
 - update-arch: Aktualisieren Sie Ihre System-Apps mit einem einzigen Befehl.
 - clean-arch: Reinigen Sie Ihr System, indem Sie ungenutzte Pakete entfernen.
 - fix-key: Behebt schlüsselbezogene Probleme und gewährleistet einen reibungslosen Aktualisierungsprozess.
+- update-mirrors: Aktualisiert Ihre Liste von Download-Spiegeln
 
 ### 3. Unterstützung bei der Installation von AMD-, NVIDIA- oder Intel-GPUs für Gaming
 Machen Sie Ihr System mit der GPU-Einrichtung spielbereit, dazu gehören:
@@ -204,6 +205,9 @@ echo "Hello world !"            # Beispielbefehl
    alias clean-arch='yay -Sc && yay -Yc && flatpak remove --unused'
    ```
    ```
+   alias update-mirros='sudo reflector --verbose --score 20 --fastest 5 --sort rate --save /etc/pacman.d/mirrorlist'
+   ```
+   ```
    alias fix-key='sudo rm /var/lib/pacman/sync/* && sudo rm -rf /etc/pacman.d/gnupg/* && sudo pacman-key --init && sudo pacman-key --populate && sudo pacman -Sy --noconfirm archlinux-keyring und sudo pacman --noconfirm -Su'
    ```
    
@@ -345,7 +349,7 @@ sudo pacman -S --needed pipewire lib32-pipewire pipewire-pulse pipewire-alsa pip
 #### Basis-Komponenten
 Hier finden Sie Codecs, Dienstprogramme, Schriftarten, Treiber:
 ```
-yay -S gst-plugins-bad gst-plugins-base gst-plugins-ugly gst-plugin-pipewire gstreamer-vaapi gst-plugins-good gst-libav gstreamer reflector-simple downgrade rebuild-detector mkinitcpio-firmware xdg-desktop-portal-gtk xdg-desktop-portal neofetch power-profiles-daemon lib32-pipewire hunspell hunspell-fr p7zip unrar ttf-liberation noto-fonts noto-fonts-emoji adobe-source-code-pro-fonts otf-font-awesome ttf-droid ntfs-3g fuse2fs exfat-utils fuse2 fuse3 bash-completion man-db man-pages --needed
+yay -S gst-plugins-bad gst-plugins-base gst-plugins-ugly gst-plugin-pipewire gstreamer-vaapi gst-plugins-good gst-libav gstreamer downgrade rebuild-detector mkinitcpio-firmware xdg-desktop-portal-gtk xdg-desktop-portal neofetch power-profiles-daemon lib32-pipewire hunspell hunspell-fr p7zip unrar ttf-liberation noto-fonts noto-fonts-emoji adobe-source-code-pro-fonts otf-font-awesome ttf-droid ntfs-3g fuse2fs exfat-utils fuse2 fuse3 bash-completion man-db man-pages --needed
 ```
 
 #### Verschiedene Software
@@ -381,7 +385,7 @@ yay -S reflector-simple
 Ein Befehl zur Generierung einer Liste von Spiegeln, einmal nach der ersten Installation und wiederholt bei Reisen, Länderwechseln, zu langsamen Paket-Downloads oder bei einer Meldung, dass ein Spiegel nicht erreichbar ist:
 
 ```
-sudo reflector --score 20 --fastest 5 --sort rate --save /etc/pacman.d/mirrorlist
+sudo reflector --verbose --score 20 --fastest 5 --sort rate --save /etc/pacman.d/mirrorlist
 ```
 
 #### Timeshift
