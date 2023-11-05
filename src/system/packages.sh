@@ -21,7 +21,6 @@ function usefull_package() {
         power-profiles-daemon
         hunspell
         hunspell-fr
-        hunspell-en
         p7zip
         unrar
         ttf-liberation
