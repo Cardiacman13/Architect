@@ -9,14 +9,12 @@ function sound_server() {
         pipewire-media-session
     "
     local -r inlst="
+        pipewire-pulse
         pipewire
         lib32-pipewire
         pipewire-alsa
         pipewire-jack
         wireplumber
-        alsa-utils
-        alsa-firmware
-        alsa-tools
     "
 
     uninstall_lst "${unlst}" "Clean old sound server dependencies"
