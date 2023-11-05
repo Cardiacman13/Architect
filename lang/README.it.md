@@ -61,6 +61,7 @@ Semplifica i tuoi compiti in linea di comando con questi utili alias:
 - update-arch: Aggiorna le app del tuo sistema con un singolo comando.
 - clean-arch: Pulisce il tuo sistema rimuovendo pacchetti inutilizzati.
 - fix-key: Risolve problemi relativi alle chiavi, garantendo un processo di aggiornamento fluido.
+- update-mirrors: Aggiorna l'elenco dei tuoi mirror di download
 
 ### 3. Assistenza nell'installazione di GPU AMD, NVIDIA o Intel per il Gaming
 Prepara il tuo PC per il gaming con la configurazione GPU, che include:
@@ -206,6 +207,9 @@ echo "Ciao mondo!"            # Esempio di comando
    alias clean-arch='yay -Sc && yay -Yc && flatpak remove --unused'
    ```
    ```
+   alias update-mirros=sudo reflector --verbose --score 20 --fastest 5 --sort rate --save /etc/pacman.d/mirrorlist
+   ```
+   ```
    alias fix-key='sudo rm /var/lib/pacman/sync/* && sudo rm -rf /etc/pacman.d/gnupg/* && sudo pacman-key --init && sudo pacman-key --populate && sudo pacman -Sy --noconfirm archlinux-keyring && sudo pacman --noconfirm -Su'
    ```
    
@@ -347,7 +351,7 @@ sudo pacman -S --needed pipewire lib32-pipewire pipewire-pulse pipewire-alsa pip
 #### Componenti Base
 Qui troverai codec, utility, font, driver:
 ```
-yay -S gst-plugins-bad gst-plugins-base gst-plugins-ugly gst-plugin-pipewire gstreamer-vaapi gst-plugins-good gst-libav gstreamer reflector-simple downgrade rebuild-detector mkinitcpio-firmware xdg-desktop-portal-gtk xdg-desktop-portal neofetch power-profiles-daemon lib32-pipewire hunspell hunspell-fr p7zip unrar ttf-liberation noto-fonts noto-fonts-emoji adobe-source-code-pro-fonts otf-font-awesome ttf-droid ntfs-3g fuse2fs exfat-utils fuse2 fuse3 bash-completion man-db man-pages --needed
+yay -S gst-plugins-bad gst-plugins-base gst-plugins-ugly gst-plugin-pipewire gstreamer-vaapi gst-plugins-good gst-libav gstreamer downgrade rebuild-detector mkinitcpio-firmware xdg-desktop-portal-gtk xdg-desktop-portal neofetch power-profiles-daemon lib32-pipewire hunspell hunspell-fr p7zip unrar ttf-liberation noto-fonts noto-fonts-emoji adobe-source-code-pro-fonts otf-font-awesome ttf-droid ntfs-3g fuse2fs exfat-utils fuse2 fuse3 bash-completion man-db man-pages --needed
 ```
 
 #### Software Vari
@@ -383,7 +387,7 @@ yay -S reflector-simple
 Un comando per generare una lista di mirror, da eseguire una volta dopo la prima installazione e da ripetere se viaggi, o cambi paese, o se trovi lento il download dei pacchetti, o se incontri un errore che ti dice che un mirror è offline:
 
 ```
-sudo reflector --score 20 --fastest 5 --sort rate --save /etc/pacman.d/mirrorlist
+sudo reflector --verbose --score 20 --fastest 5 --sort rate --save /etc/pacman.d/mirrorlist
 ```
 
 #### Timeshift
