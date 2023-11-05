@@ -24,8 +24,7 @@ Descarga el ISO: [**Arch Linux - Descargas**](https://archlinux.org/download/)
 2. [Potencia tu escritorio](#elevate)
 3. [Lleva tus Juegos a Otro Nivel](#gaming)
 4. [Optimización de Precisión](#optimization)
-5. [Solución de Problemas](#troubleshooting)
-6. [Cosas de la Comunidad](#community)
+5. [Cosas de la Comunidad](#community)
 
 ## Script de Post-Instalación de Arch Linux <a name="script"/>
 

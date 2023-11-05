@@ -341,7 +341,7 @@ sudo systemctl enable --now  bluetooth.service
 #### [PipeWire](https://pipewire.org/) (Sound)
 Um Sound zu haben **/!\ Sagen Sie zu allem Ja, um alles mit den neuen Paketen zu überschreiben. /!\**
 ```
-sudo pacman -S --needed pipewire lib32-pipewire pipewire-pulse pipewire-alsa pipewire-jack wireplumber alsa-utils alsa-firmware alsa-tools
+sudo pacman -S --needed pipewire lib32-pipewire pipewire-pulse pipewire-alsa pipewire-jack wireplumber alsa-utils alsa-firmware alsa-tools sof-firmware
 ```
 
 ### GRUNDLEGENDE SOFTWARE
@@ -558,11 +558,6 @@ flatpak install com.bitwarden.desktop com.discordapp.Discord com.github.tchx84.F
 <img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/Cardiac-icon.png" width="30" height="30"> [Arch Linux Teil 4 - Wartung / Aktualisierung](https://youtu.be/Z7POSK2jnII?si=SNwagGGJXRVkYPdc)
 
 <img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/Cardiac-icon.png" width="30" height="30"> [Arch Linux Teil 5 - Arch-Chroot](https://youtu.be/iandJSjePiA?si=7uI8JZ-VxAVOsPTh)
-
-- Wenn Sie keinen Ton haben, versuchen Sie:
-    ```
-    yay -S sof-firmware
-    ```
 
 - Für Hilfe besuchen Sie das GLF Discord (fr/en): [Discord GLF](http://discord.gg/EP3Jm8YMvj)
 
