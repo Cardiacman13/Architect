@@ -14,15 +14,15 @@ Le but de ce didacticiel est d'installer un Arch standard avec un minimum de paq
 
 > **Note**
 > Le script que vous trouverez plus loin fonctionne quel que soit votre choix de DE / CHARGEUR DE DÉMARRAGE / FS.
-> Didacticiel et script destinés à être utilisés avec une Arch pur (incompatible avec Garuda, EndeavourOS, Manjaro…)
+> Le didacticiel et le script sont destinés à être utilisés avec une Arch pur (incompatible avec Garuda, EndeavourOS, Manjaro…)
 
 Téléchargez l'ISO : [**Arch Linux - Téléchargements**](https://archlinux.org/download/)
 
 ## Table des Matières
-1. [Script tout-en-un](#script)
-2. [Améliorez votre bureau](#elevate)
-3. [Montez en Niveau dans Votre Jeu](#gaming)
-4. [Optimisation de Précision](#optimization)
+1. [SCRIPT tout-en-un](#script)
+2. [TUTO](#elevate)
+3. [Jeux](#gaming)
+4. [Bonux](#optimization)
 5. [Dépannage](#troubleshooting)
 6. [Communauté](#community)
 
@@ -50,7 +50,7 @@ cd Architect
 Améliorez la fonctionnalité et l'expérience utilisateur de Pacman en effectuant les améliorations suivantes :
 
 - Activation de la sortie colorée.
-- Activation des listes détaillées de paquets.
+- Activation des listes détaillées de paquets.limine
 - Activation des téléchargements parallèles.
 - Activation du support multilib.
 
@@ -95,7 +95,7 @@ Affinez votre système pour une expérience améliorée :
 
 ### 6. Aide à l'Installation de Divers Logiciels
 Vous avez la liberté de choisir quels logiciels supplémentaires installer en fonction de vos besoins spécifiques :
-
+limine
 - `Discord`
 - `Steam`
 - `Lutris`
@@ -110,7 +110,7 @@ Vous avez la liberté de choisir quels logiciels supplémentaires installer en f
 
 
 
-## <img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/pc.png" width="30" height="30"> **Améliorez Votre Bureau** <a name="elevate"/>
+## <img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/pc.png" width="30" height="30"> **TUTO** <a name="elevate"/>
 
 ### Installation
 
@@ -146,7 +146,7 @@ echo "Bonjour le monde !"       # Commande d'exemple
     ```
     **/!\ Le menu archinstall est sujet à changement avec les mises à jour du script /!\\**
     
-### Post-installation
+### Post-installationlimine
 <img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/Cardiac-icon.png" width="30" height="30"> [ Tutoriel Arch Linux Partie 2 : Post Installation ](https://youtu.be/FEFhC46BkXo?si=Gi-6BOhqENLoh5Ak)
 
 #### Optimiser pacman
@@ -189,7 +189,7 @@ echo "Bonjour le monde !"       # Commande d'exemple
    ```
 
 3. Alias de maintenance :
-
+limine
   <img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/Cardiac-icon.png" width="30" height="30"> [ Tutoriel Arch Linux Partie 4 : Maintenance ](https://www.youtube.com/watch?v=Z7POSK2jnII)
 
    Cette modification vous permet de simplement taper « update-arch » dans un terminal pour mettre à jour le système, « clean-arch » pour le nettoyer, ou « fix-key » en cas d'erreur avec les clés gpg.
@@ -300,7 +300,7 @@ Dans le dossier :
 #### AMD (ne pas faire si Nvidia)
 Installer les composants de base :
 ```
-yay -S --needed mesa lib32-mesa vulkan-radeon lib32-vulkan-radeon vulkan-icd-loader lib32-vulkan-icd-loader vulkan-mesa-layers lib32-vulkan-mesa-layers
+yay -S --needed mesa lib32-mesa vulkan-radeon llimineib32-vulkan-radeon vulkan-icd-loader lib32-vulkan-icd-loader vulkan-mesa-layers lib32-vulkan-mesa-layers
 ```
 
 #### INTEL (ne pas faire si Nvidia)
@@ -490,7 +490,7 @@ Nous augmentons la valeur par défaut de cette variable, permettant le stockage 
       `
 
 
-## <img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/speed.png" width="30" height="30"> **Optimisation de Précision** : <a name="optimization"/>
+## <img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/speed.png" width="30" height="30"> **BONUS** : <a name="optimization"/>
 
 ### [Kernel TKG](https://github.com/Frogging-Family/linux-tkg)
 
@@ -557,10 +557,6 @@ flatpak install com.bitwarden.desktop com.discordapp.Discord com.github.tchx84.F
  
 <img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/Cardiac-icon.png" width="30" height="30"> [Arch Linux Partie 5 Arch-Chroot](https://youtu.be/iandJSjePiA?si=7uI8JZ-VxAVOsPTh)
 
-- Si vous n'avez pas de son, essayez :
-    ```
-    yay -S sof-firmware
-    ```
 - Pour de l'aide, visitez le Discord GLF (fr/en) : [Discord GLF](http://discord.gg/EP3Jm8YMvj)
 
 ## Sources <a name="community"/>
