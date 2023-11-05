@@ -22,7 +22,7 @@ Téléchargez l'ISO : [**Arch Linux - Téléchargements**](https://archlinux.org
 1. [SCRIPT tout-en-un](#script)
 2. [TUTO](#elevate)
 3. [Jeux](#gaming)
-4. [Bonux](#optimization)
+4. [Bonus](#optimization)
 5. [Dépannage](#troubleshooting)
 6. [Communauté](#community)
 
