@@ -3,14 +3,14 @@ source src/cmd.sh
 function nvidia_config() {
     # hook
     exec_log "sudo mkdir -p /etc/pacman.d/hooks/" "Hook folder creation"
-    exec_log "sudo cp assets/data/nvidia.hook /etc/pacman.d/hooks/nvidia.hook" "Hook file copy"
+    copy_bak "assets/data" "nvidia.hook" "/etc/pacman.d/hooks" true
 
     # mkinitcpio
     exec_log "sudo sed -i '/MODULES=/ s/)/ nvidia nvidia_modeset nvidia_uvm nvidia_drm)/' '/etc/mkinitcpio.conf'" "mkinitcpio configuration"
 
     # bootloader
     if [[ ${BOOT_LOADER} == "grub" ]]; then
-        exec_log "sudo sed -i 's/GRUB_CMDLINE_LINUX_DEFAULT='\''nowatchdog nvme_load=YES loglevel=3'\''/GRUB_CMDLINE_LINUX_DEFAULT='\''nowatchdog nvme_load=YES loglevel=3 nvidia-drm.modeset=1'\''/' /etc/default/grub" "grub configuration"
+        sudo sed -i '/^GRUB_CMDLINE_LINUX_DEFAULT=/ s/"$/ nvidia-drm.modeset=1"/' /etc/default/grub
         exec_log "sudo grub-mkconfig -o /boot/grub/grub.cfg" "GRUB update"
     else
         exec_log "sudo sed -i '/^options/ s/$/ nvidia-drm.modeset=1/' /boot/loader/entries/*.conf" "systemd-boot configuration"
