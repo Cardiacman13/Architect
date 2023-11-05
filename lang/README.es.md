@@ -204,6 +204,9 @@ echo "¡Hola mundo!"            # Comando de ejemplo
    alias clean-arch='yay -Sc && yay -Yc && flatpak remove --unused'
    ```
    ```
+   alias update-mirros='sudo reflector --verbose --score 20 --fastest 5 --sort rate --save /etc/pacman.d/mirrorlist'
+   ```
+   ```
    alias fix-key='sudo rm /var/lib/pacman/sync/* && sudo rm -rf /etc/pacman.d/gnupg/* && sudo pacman-key --init && sudo pacman-key --populate y sudo pacman -Sy --noconfirm archlinux-keyring y sudo pacman --noconfirm -Su'
    ```
    
@@ -339,6 +342,12 @@ Para tener sonido **/!\ Decir sí a todo para reemplazar todo con los nuevos paq
 ```
 sudo pacman -S --needed pipewire lib32-pipewire pipewire-pulse pipewire-alsa pipewire-jack wireplumber alsa-utils alsa-firmware alsa
 ```
+#### Componentes Básicos
+Aquí encontrarás códecs, utilidades, fuentes, controladores:
+```
+yay -S gst-plugins-bad gst-plugins-base gst-plugins-ugly gst-plugin-pipewire gstreamer-vaapi gst-plugins-good gst-libav gstreamer downgrade rebuild-detector mkinitcpio-firmware xdg-desktop-portal-gtk xdg-desktop-portal neofetch power-profiles-daemon lib32-pipewire hunspell hunspell-es hunspell-en p7zip unrar ttf-liberation noto-fonts noto-fonts-emoji adobe-source-code-pro-fonts otf-font-awesome ttf-droid ntfs-3g fuse2fs exfat-utils fuse2 fuse3 bash-completion man-db man-pages --needed
+```
+
 #### Software Variado
 ```
 yay -S libreoffice-fresh libreoffice-fresh-fr vlc discord gimp obs-studio gnome-disk-utility visual-studio-code-bin
@@ -372,7 +381,7 @@ yay -S reflector-simple
 Un comando para generar una lista de espejos, se debe realizar una vez después de la primera instalación y repetirse si viajas, cambias de país, si encuentras la descarga de paquetes lenta, o si encuentras un error que te dice que un espejo está caído:
 
 ```
-sudo reflector --score 20 --fastest 5 --sort rate --save /etc/pacman.d/mirrorlist
+sudo reflector --verbose --score 20 --fastest 5 --sort rate --save /etc/pacman.d/mirrorlist
 ```
 
 #### Timeshift

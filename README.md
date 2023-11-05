@@ -205,7 +205,7 @@ echo "Hello world !"            # Example command
    alias clean-arch='yay -Sc && yay -Yc && flatpak remove --unused'
    ```
    ```
-   alias update-mirros=sudo reflector --score 10 --fastest 5 --sort rate --save /etc/pacman.d/mirrorlist
+   alias update-mirros='sudo reflector --verbose --score 20 --fastest 5 --sort rate --save /etc/pacman.d/mirrorlist'
    ```
    ```
    alias fix-key='sudo rm /var/lib/pacman/sync/* && sudo rm -rf /etc/pacman.d/gnupg/* && sudo pacman-key --init && sudo pacman-key --populate && sudo pacman -Sy --noconfirm archlinux-keyring && sudo pacman --noconfirm -Su'
@@ -385,7 +385,7 @@ yay -S reflector-simple
 A command to generate a list of mirrors, to be done once after the first installation and repeated if you travel, or change countries, or if you find package downloading too slow, or if you encounter an error telling you that a mirror is down:
 
 ```
-sudo reflector --score 10 --fastest 5 --sort rate --save /etc/pacman.d/mirrorlist
+sudo reflector --verbose --score 20 --fastest 5 --sort rate --save /etc/pacman.d/mirrorlist
 ```
 
 #### Timeshift
