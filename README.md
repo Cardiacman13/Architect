@@ -20,9 +20,9 @@ Download the ISO: [**Arch Linux - Downloads**](https://archlinux.org/download/)
 
 ## Table of Contents
 1. [All-in-one script](#script)
-2. [Precision Optimization](#optimization)
-3. [Elevate your desktop](#elevate)
-4. [Level Up Your Gaming](#gaming)
+2. [Tutorial](#elevate)
+3. [Gaming](#gaming)
+4. [Optimization](#optimization)
 5. [Troubleshooting](#troubleshooting)
 6. [Community stuff](#community)
 
@@ -436,7 +436,7 @@ yay -S timeshift
 
 ### Steam
 Note that AMD or Nvidia drivers must be installed beforehand as mentioned in the [HARDWARE SUPPORT](#HARDWARE-SUPPORT) section.
-```
+```limine
 yay -S steam
 ```
 
@@ -491,7 +491,7 @@ vm.max_map_count=16777216
 `
 
 
-## <img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/speed.png" width="30" height="30"> **Precision Optimization**: <a name="optimization"/>
+## <img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/speed.png" width="30" height="30"> **Optimization**: <a name="optimization"/>
 
 ### [Kernel TKG](https://github.com/Frogging-Family/linux-tkg)
 
