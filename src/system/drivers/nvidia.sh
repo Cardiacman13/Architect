@@ -10,7 +10,7 @@ function nvidia_config() {
 
     # bootloader
     if [[ ${BOOT_LOADER} == "grub" ]]; then
-        sudo sed -i '/^GRUB_CMDLINE_LINUX_DEFAULT=/ s/"$/ nvidia-drm.modeset=1"/' /etc/default/grub
+        exec_log "sudo sed -i '/^GRUB_CMDLINE_LINUX_DEFAULT=/ s/\"$/ nvidia-drm.modeset=1\"/' /etc/default/grub" "GRUB cmdline configuration"
         exec_log "sudo grub-mkconfig -o /boot/grub/grub.cfg" "GRUB update"
     else
         exec_log "sudo sed -i '/^options/ s/$/ nvidia-drm.modeset=1/' /boot/loader/entries/*.conf" "systemd-boot configuration"
