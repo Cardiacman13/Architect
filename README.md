@@ -60,6 +60,7 @@ Simplify your command-line tasks with these helpful aliases:
 - update-arch: Updates your system apps with a single command.
 - clean-arch: Cleans up your system by removing unused packages.
 - fix-key: Fixes key-related issues, ensuring a smooth update process.
+- update-mirrors: Updates your system's mirror list.
 
 
 ### 3. Assisting with AMD, NVIDIA, or Intel GPU Installation for Gaming
@@ -204,9 +205,12 @@ echo "Hello world !"            # Example command
    alias clean-arch='yay -Sc && yay -Yc && flatpak remove --unused'
    ```
    ```
+   alias update-mirros=sudo reflector --score 10 --fastest 5 --sort rate --save /etc/pacman.d/mirrorlist
+   ```
+   ```
    alias fix-key='sudo rm /var/lib/pacman/sync/* && sudo rm -rf /etc/pacman.d/gnupg/* && sudo pacman-key --init && sudo pacman-key --populate && sudo pacman -Sy --noconfirm archlinux-keyring && sudo pacman --noconfirm -Su'
    ```
-   
+
    Restart the terminal.
 
 ### HARDWARE SUPPORT
@@ -345,7 +349,7 @@ sudo pacman -S --needed pipewire lib32-pipewire pipewire-pulse pipewire-alsa pip
 #### Basic Components
 Here you will find codecs, utilities, fonts, drivers:
 ```
-yay -S gst-plugins-bad gst-plugins-base gst-plugins-ugly gst-plugin-pipewire gstreamer-vaapi gst-plugins-good gst-libav gstreamer reflector-simple downgrade rebuild-detector mkinitcpio-firmware xdg-desktop-portal-gtk xdg-desktop-portal neofetch power-profiles-daemon lib32-pipewire hunspell hunspell-fr p7zip unrar ttf-liberation noto-fonts noto-fonts-emoji adobe-source-code-pro-fonts otf-font-awesome ttf-droid ntfs-3g fuse2fs exfat-utils fuse2 fuse3 bash-completion man-db man-pages --needed
+yay -S gst-plugins-bad gst-plugins-base gst-plugins-ugly gst-plugin-pipewire gstreamer-vaapi gst-plugins-good gst-libav gstreamer downgrade rebuild-detector mkinitcpio-firmware xdg-desktop-portal-gtk xdg-desktop-portal neofetch power-profiles-daemon lib32-pipewire hunspell hunspell-fr hunspell-en p7zip unrar ttf-liberation noto-fonts noto-fonts-emoji adobe-source-code-pro-fonts otf-font-awesome ttf-droid ntfs-3g fuse2fs exfat-utils fuse2 fuse3 bash-completion man-db man-pages --needed
 ```
 
 #### Miscellaneous Software
@@ -381,7 +385,7 @@ yay -S reflector-simple
 A command to generate a list of mirrors, to be done once after the first installation and repeated if you travel, or change countries, or if you find package downloading too slow, or if you encounter an error telling you that a mirror is down:
 
 ```
-sudo reflector --score 20 --fastest 5 --sort rate --save /etc/pacman.d/mirrorlist
+sudo reflector --score 10 --fastest 5 --sort rate --save /etc/pacman.d/mirrorlist
 ```
 
 #### Timeshift
@@ -424,6 +428,9 @@ yay -S timeshift
     ```
     ```
     alias clean-arch='yay -Sc && yay -Yc && flatpak remove --unused'
+    ```
+    ```
+    alias update-mirrors=
     ```
     ```
     alias fix-key='sudo rm /var/lib/pacman/sync/* && sudo rm -rf /etc/pacman.d/gnupg/* && sudo pacman-key --init && sudo pacman-key --populate && sudo pacman -Sy --noconfirm archlinux-keyring && sudo pacman --noconfirm -Su'
