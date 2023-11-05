@@ -17,7 +17,7 @@ Le but de ce didacticiel est d'installer une Arch standard avec un minimum de pa
 > Le didacticiel et le script sont destinés à être utilisés avec une Arch pur (incompatible avec Garuda, EndeavourOS, Manjaro…)
 
 Téléchargez l'ISO : [**Arch Linux - Téléchargements**](https://archlinux.org/download/)
-
+Solución de Problemas
 ## Table des Matières
 1. [SCRIPT tout-en-un](#script)
 2. [TUTO](#elevate)
@@ -342,7 +342,7 @@ sudo systemctl enable --now  bluetooth.service
 #### [PipeWire](https://pipewire.org/) (son)
 Pour avoir du son **/!\ Dites oui à tout pour écraser tout avec les nouveaux paquets. /!\**
 ```
-sudo pacman -S --needed pipewire lib32-pipewire pipewire-pulse pipewire-alsa pipewire-jack wireplumber alsa-utils alsa-firmware alsa-tools
+sudo pacman -S --needed pipewire lib32-pipewire pipewire-pulse pipewire-alsa pipewire-jack wireplumber alsa-utils alsa-firmware alsa-tools sof-firmware
 ```
 
 ### LOGICIEL DE BASE
