@@ -6,7 +6,7 @@
 
 Arch est une distribution technique destinée à un public plus avancé, composée de "blocs de construction". Pensez-y comme à un ensemble de Lego vierges, avec une base que vous devez construire et façonner à votre guise, et si vous le faites mal, les choses peuvent se casser.
 
-Le but de ce didacticiel est d'installer un Arch standard avec un minimum de paquets, selon nos besoins pour le travail de bureau et/ou le jeu.
+Le but de ce didacticiel est d'installer une Arch standard avec un minimum de paquets, selon nos besoins pour le travail de bureau et/ou le jeu.
 
 <img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/Cardiac-icon.png" width="30" height="30"> Cette icône vous redirige vers mes vidéos sur certaines parties de ce didacticiel [**Playlist Tutoriel Arch Linux**](https://www.youtube.com/watch?v=JE6VwNHLcyk&list=PLuIP_-MWRwtWEX0tyDpZPdwU6zCE1O1cY)
 
