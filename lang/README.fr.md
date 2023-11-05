@@ -14,15 +14,15 @@ Le but de ce didacticiel est d'installer un Arch standard avec un minimum de paq
 
 > **Note**
 > Le script que vous trouverez plus loin fonctionne quel que soit votre choix de DE / CHARGEUR DE DÉMARRAGE / FS.
-> Didacticiel et script destinés à être utilisés avec une Arch pur (incompatible avec Garuda, EndeavourOS, Manjaro…)
+> Le didacticiel et le script sont destinés à être utilisés avec une Arch pur (incompatible avec Garuda, EndeavourOS, Manjaro…)
 
 Téléchargez l'ISO : [**Arch Linux - Téléchargements**](https://archlinux.org/download/)
 
 ## Table des Matières
-1. [Script tout-en-un](#script)
-2. [Améliorez votre bureau](#elevate)
-3. [Montez en Niveau dans Votre Jeu](#gaming)
-4. [Optimisation de Précision](#optimization)
+1. [SCRIPT tout-en-un](#script)
+2. [TUTO](#elevate)
+3. [Jeux](#gaming)
+4. [Bonux](#optimization)
 5. [Dépannage](#troubleshooting)
 6. [Communauté](#community)
 
@@ -110,7 +110,7 @@ Vous avez la liberté de choisir quels logiciels supplémentaires installer en f
 
 
 
-## <img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/pc.png" width="30" height="30"> **Améliorez Votre Bureau** <a name="elevate"/>
+## <img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/pc.png" width="30" height="30"> **TUTO** <a name="elevate"/>
 
 ### Installation
 
@@ -490,7 +490,7 @@ Nous augmentons la valeur par défaut de cette variable, permettant le stockage 
       `
 
 
-## <img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/speed.png" width="30" height="30"> **Optimisation de Précision** : <a name="optimization"/>
+## <img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/speed.png" width="30" height="30"> **BONUS** : <a name="optimization"/>
 
 ### [Kernel TKG](https://github.com/Frogging-Family/linux-tkg)
 
