@@ -10,12 +10,12 @@ function sound_server() {
         pipewire-media-session 
     "
     local -r inlst="
-        pipewire-pulse
         pipewire
+        wireplumber
         lib32-pipewire
         pipewire-alsa
         pipewire-jack
-        wireplumber
+        pipewire-pulse
         alsa-utils
         alsa-plugins
         alsa-firmware
