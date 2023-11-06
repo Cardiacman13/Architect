@@ -221,7 +221,7 @@ Ergänzendes Video, das erklärt, wie man von GDM aus wieder Zugang zu Wayland e
 
 1. **Installieren Sie die Kernkomponenten:**
     ```
-    yay -S --needed nvidia-dkms nvidia-utils lib32-nvidia-utils nvidia-settings vulkan-icd-loader lib32-vulkan-icd-loader cuda
+    yay -S --needed nvidia-dkms nvidia-utils lib32-nvidia-utils nvidia-settings vulkan-icd-loader lib32-vulkan-icd-loader
     ```
 
 2. **Aktivieren von nvidia-drm.modeset=1:**
