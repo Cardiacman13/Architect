@@ -6,7 +6,7 @@
 
 Arch est une distribution technique destinée à un public plus avancé, composée de "blocs de construction". Pensez-y comme à un ensemble de Lego vierges, avec une base que vous devez construire et façonner à votre guise, et si vous le faites mal, les choses peuvent se casser.
 
-Le but de ce didacticiel est d'installer une Arch standard avec un minimum de paquets, selon nos besoins pour le travail de bureau et/ou le jeu.
+Le but de ce didacticiel est d'installer une Arch standard avec un minimum de paquets, selon nos besoins pour la bureautique et/ou le jeu.
 
 <img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/Cardiac-icon.png" width="30" height="30"> Cette icône vous redirige vers mes vidéos sur certaines parties de ce didacticiel [**Playlist Tutoriel Arch Linux**](https://www.youtube.com/watch?v=JE6VwNHLcyk&list=PLuIP_-MWRwtWEX0tyDpZPdwU6zCE1O1cY)
 
@@ -14,10 +14,10 @@ Le but de ce didacticiel est d'installer une Arch standard avec un minimum de pa
 
 > **Note**
 > Le script que vous trouverez plus loin fonctionne quel que soit votre choix de DE / CHARGEUR DE DÉMARRAGE / FS.
-> Le didacticiel et le script sont destinés à être utilisés avec une Arch pur (incompatible avec Garuda, EndeavourOS, Manjaro…)
+> Le didacticiel et le script sont destinés à être utilisés avec une Arch pure (incompatible avec Garuda, EndeavourOS, Manjaro…)
 
 Téléchargez l'ISO : [**Arch Linux - Téléchargements**](https://archlinux.org/download/)
-Solución de Problemas
+
 ## Table des Matières
 1. [SCRIPT tout-en-un](#script)
 2. [TUTO](#elevate)
@@ -60,7 +60,7 @@ Simplifiez vos tâches en ligne de commande avec ces alias utiles :
 - update-arch : Met à jour les applications de votre système avec une seule commande.
 - clean-arch : Nettoie votre système en supprimant les paquets inutilisés.
 - fix-key : Résout les problèmes liés aux clés, assurant un processus de mise à jour fluide.
-- update-mirrors : Met à jour la liste de vos miroirs de téléchargement
+- update-mirrors : Met à jour la liste de vos miroirs de téléchargement.
 
 ### 3. Aide à l'Installation des GPU AMD, NVIDIA ou Intel pour le Jeu
 Préparez votre jeu avec la configuration GPU, qui comprend :
@@ -147,7 +147,8 @@ echo "Bonjour le monde !"       # Commande d'exemple
     ```
     **/!\ Le menu archinstall est sujet à changement avec les mises à jour du script /!\\**
     
-### Post-installationlimine
+### Post-installation
+
 <img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/Cardiac-icon.png" width="30" height="30"> [ Tutoriel Arch Linux Partie 2 : Post Installation ](https://youtu.be/FEFhC46BkXo?si=Gi-6BOhqENLoh5Ak)
 
 #### Optimiser pacman
@@ -355,7 +356,7 @@ yay -S gst-plugins-bad gst-plugins-base gst-plugins-ugly gst-plugin-pipewire gst
 
 #### Logiciels divers
 ```
-yay -S libreoffice-fresh libreoffice-fresh-fr vlc discord gimp obs-studio gnome-disk-utility visual-studio-code-bin
+yay -S libreoffice-fresh libreoffice-fresh-fr vlc discord gimp obs-studio gnome-disk-utility visual-studio-code-bin openrgb-bin spotify
 ```
 
 #### Logiciels KDE
@@ -416,12 +417,12 @@ yay -S timeshift
 
 - Installez fish.
     ```
-    yay -S fish                       # 1. installez fish
-    chsh -s /usr/bin/fish             # 2. Définissez-le par défaut.
-    fish                              # 3. Lancez fish ou redémarrez et il sera par défaut.
-    fish_update_completions           # 4. Mettez à jour les complétions.
-    set -U fish_greeting              # 5. Supprimez le message de bienvenue.
-    sudo nano ~/.config/fish/config.fish   # 6. Créez un alias comme pour bash au début de ce tutoriel.
+    yay -S fish                             # 1. installez fish
+    chsh -s /usr/bin/fish                   # 2. Définissez-le par défaut.
+    fish                                    # 3. Lancez fish ou redémarrez et il sera par défaut.
+    fish_update_completions                 # 4. Mettez à jour les complétions.
+    set -U fish_greeting                    # 5. Supprimez le message de bienvenue.
+    sudo nano ~/.config/fish/config.fish    # 6. Créez un alias comme pour bash au début de ce tutoriel.
     ```
 - Ajoutez ensuite les alias suivants entre if et end :
     ```
@@ -504,7 +505,7 @@ Nous augmentons la valeur par défaut de cette variable, permettant le stockage 
 > [!ATTENTION]
 > Cette étape est destinée aux utilisateurs avancés :star:
 
-[TKG](https://github.com/Frogging-Family) est une construction de noyau hautement personnalisable qui fournit une sélection de correctifs et d'ajustements pour améliorer les performances de bureau et de jeu.
+[KERNEL TKG](https://github.com/Frogging-Family) est un noyau hautement personnalisable qui fournit une sélection de correctifs et d'ajustements pour améliorer les performances de bureau et de jeu.
 
 Vidéo associée :
 <img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/Cardiac-icon.png" width="30" height="30"> [Kernel TKG sur Arch + Améliorer ses perfs](https://youtu.be/43yYIWMnDJA)
@@ -578,7 +579,7 @@ Sources et liens utiles :
 
 ## Contribution
 
-Les contributions à ce projet sont les bienvenues ! Si vous avez des suggestions, des rapports de bugs ou des contributions, veuillez ouvrir un problème ou une demande de tirage dans le dépôt.
+Les contributions à ce projet sont les bienvenues ! Si vous avez des suggestions, des rapports de bugs ou des contributions, veuillez ouvrir une [issue](https://github.com/Cardiacman13/Architect/issues) ou une demande Pull Request dans le dépôt.
 
 Comme vous pouvez le voir, ce projet est disponible en français, en anglais et en espagnol. Les traducteurs sont plus que bienvenus ! :people_holding_hands:
 
