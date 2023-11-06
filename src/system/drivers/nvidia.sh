@@ -56,7 +56,6 @@ function nvidia_drivers() {
         makepkg -si --noconfirm
         cd .. || exit
         exec_log "rm -rf nvidia-all" "removal of nvidia-all repository"
-        install_one "cuda"
 
     else
         local -r inlst="
@@ -66,7 +65,6 @@ function nvidia_drivers() {
             nvidia-settings
             vulkan-icd-loader
             lib32-vulkan-icd-loader
-            cuda
         "
         install_lst "${inlst}"
     fi
