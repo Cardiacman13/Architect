@@ -223,7 +223,7 @@ Video supplementare che spiega come riaccedere a Wayland da GDM:
 
 1. **Installa i componenti principali:**
     ```
-    yay -S --needed nvidia-dkms nvidia-utils lib32-nvidia-utils nvidia-settings vulkan-icd-loader lib32-vulkan-icd-loader cuda
+    yay -S --needed nvidia-dkms nvidia-utils lib32-nvidia-utils nvidia-settings vulkan-icd-loader lib32-vulkan-icd-loader
     ```
 
 2. **Abilita nvidia-drm.modeset=1:**

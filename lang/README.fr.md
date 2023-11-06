@@ -223,7 +223,7 @@ Vidéo supplémentaire expliquant comment retrouver l'accès à Wayland depuis G
 
 1. **Installer les composants de base :**
     ```
-    yay -S --needed nvidia-dkms nvidia-utils lib32-nvidia-utils nvidia-settings vulkan-icd-loader lib32-vulkan-icd-loader cuda
+    yay -S --needed nvidia-dkms nvidia-utils lib32-nvidia-utils nvidia-settings vulkan-icd-loader lib32-vulkan-icd-loader
     ```
 
 2. **Activer nvidia-drm.modeset=1 :**
