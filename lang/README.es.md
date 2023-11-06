@@ -219,7 +219,7 @@ Video adicional explicando cómo recuperar el acceso a Wayland desde GDM:
 
 1. **Instalar los componentes principales:**
     ```
-    yay -S --needed nvidia-dkms nvidia-utils lib32-nvidia-utils nvidia-settings vulkan-icd-loader lib32-vulkan-icd-loader cuda
+    yay -S --needed nvidia-dkms nvidia-utils lib32-nvidia-utils nvidia-settings vulkan-icd-loader lib32-vulkan-icd-loader
     ```
 
 2. **Habilitar nvidia-drm.modeset=1:**
