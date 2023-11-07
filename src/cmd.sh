@@ -75,7 +75,7 @@ function install_lst() {
     local -r type=$2
     local -r lst_split=(${lst// / })
 
-    echo -e "${BLUE}::---- Installation of packages ----::${RESET}"
+    echo -e "${BLUE}::---- Installing packages ----::${RESET}"
     for package in ${lst_split[@]}; do
         install_one "${package}" "${type}"
     done
@@ -86,7 +86,7 @@ function uninstall_lst() {
     local -r lst_split=(${lst// / })
 
     log_msg "$2"
-    echo -e "${BLUE}::--- Uninstallation of packages ---::${RESET}"
+    echo -e "${BLUE}::--- Removing packages ---::${RESET}"
     for package in ${lst_split[@]}; do
         uninstall_one "${package}"
     done
