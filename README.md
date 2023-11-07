@@ -388,20 +388,19 @@ sudo reflector --verbose --score 20 --fastest 5 --sort rate --save /etc/pacman.d
 
 #### Timeshift
 
-- [Timeshift](https://github.com/linuxmint/timeshift) est un utilitaire Linux open source pour créer des sauvegardes de tout votre système.
+- [Timeshift](https://github.com/linuxmint/timeshift) is an open-source Linux utility for creating backups of your entire system.
 
-**/!\ ATTENTION : par défaut, c'est uniquement le système qui est sauvegardé, pas votre dossier utilisateur (le /home/) ! /!\\**
-
+**/!\ WARNING: By default, only the system is backed up, not your user folder (/home/)! /!\\**
 
 ```
 yay -S timeshift
 ```
 
-- Évitez timeshift et btrfs sur Arch, J’ai déjà eu de la [casse](https://github.com/linuxmint/timeshift).
+- Avoid timeshift and Btrfs on Arch, I've had [issues](https://github.com/linuxmint/timeshift) before.
 
-    *“BTRFS snapshots are supported only on BTRFS systems having an Ubuntu-type subvolume layout ”*
+    *“BTRFS snapshots are supported only on BTRFS systems having an Ubuntu-type subvolume layout.”*
 
-- Pour bénéficier des sauvegardes automatiques, vous aurez besoin de démarrer cronie. (facultatif) 
+- To enable automatic backups, you will need to start cronie. (optional)
 
   ```
   sudo systemctl enable --now cronie
