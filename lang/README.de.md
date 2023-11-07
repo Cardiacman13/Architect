@@ -203,7 +203,7 @@ echo "Hello world !"            # Beispielbefehl
    alias clean-arch='yay -Sc && yay -Yc && flatpak remove --unused'
    ```
    ```
-   alias update-mirros='sudo reflector --verbose --score 20 --fastest 5 --sort rate --save /etc/pacman.d/mirrorlist'
+   alias update-mirrors='sudo reflector --verbose --score 20 --fastest 5 --sort rate --save /etc/pacman.d/mirrorlist'
    ```
    ```
    alias fix-key='sudo rm /var/lib/pacman/sync/* && sudo rm -rf /etc/pacman.d/gnupg/* && sudo pacman-key --init && sudo pacman-key --populate && sudo pacman -Sy --noconfirm archlinux-keyring und sudo pacman --noconfirm -Su'
