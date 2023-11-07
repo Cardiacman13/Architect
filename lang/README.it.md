@@ -70,14 +70,10 @@ Prepara il tuo PC per il gaming con la configurazione GPU, che include:
 - Installazione librerie Vulkan.
 - Installazione librerie a 32 bit.
 - Scelta tra driver Nvidia standard o la variante `nvidia-all
-
-`:
   - **Nvidia**: Questa è la scelta consigliata per la maggior parte degli utenti. Comprende:
     - Installazione dei pacchetti Nvidia.
-    - Installazione di CUDA.
   - **Nvidia-all**: Questa è per utenti avanzati che sanno come mantenerla. Comprende:
     - Clonazione e installazione dal repository `Frogging-Family/nvidia-all`.
-    - Installazione di CUDA.
 
 ### 4. Installa Alcuni Pacchetti Base
 Installa pacchetti fondamentali per un'esperienza completa:

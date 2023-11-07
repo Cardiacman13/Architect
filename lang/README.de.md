@@ -72,10 +72,8 @@ Machen Sie Ihr System mit der GPU-Einrichtung spielbereit, dazu gehören:
 - Auswahl zwischen Standard-Nvidia-Treibern oder der Variante `nvidia-all`:
   - **Nvidia**: Dies ist die empfohlene Wahl für die meisten Benutzer. Dazu gehört:
     - Installation von Nvidia-Paketen.
-    - Installation von CUDA.
   - **Nvidia-all**: Dies ist für fortgeschrittene Benutzer, die wissen, wie man es pflegt. Dazu gehört:
     - Klonen und Installieren aus dem `Frogging-Family/nvidia-all`-Repository.
-    - Installation von CUDA.
 
 ### 4. Installation einiger Basispakete
 Installieren Sie grundlegende Pakete für ein komplettes Erlebnis:
