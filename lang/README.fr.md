@@ -123,9 +123,9 @@ Pour toutes les étapes suivantes, lorsque vous avez un texte présenté de cett
 echo "Bonjour le monde !"       # Commande d'exemple
 ```
 
-1. **Configurer le clavier en anglais**
+1. **Configurer le clavier en français**
     ```
-    loadkeys en
+    loadkeys fr
     ```
 
 2. **Configurer votre Wi-Fi**
@@ -205,7 +205,7 @@ limine
    alias clean-arch='yay -Sc && yay -Yc && flatpak remove --unused'
    ```
    ```
-   alias update-mirros='sudo reflector --verbose --score 20 --fastest 5 --sort rate --save /etc/pacman.d/mirrorlist'
+   alias update-mirrors='sudo reflector --verbose --score 20 --fastest 5 --sort rate --save /etc/pacman.d/mirrorlist'
    ```
    ```
    alias fix-key='sudo rm /var/lib/pacman/sync/* && sudo rm -rf /etc/pacman.d/gnupg/* && sudo pacman-key --init && sudo pacman-key --populate && sudo pacman -Sy --noconfirm archlinux-keyring && sudo pacman --noconfirm -Su'
