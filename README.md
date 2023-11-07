@@ -451,7 +451,7 @@ Lutris is a FOSS (Free, Open Source) game manager for Linux-based operating syst
 Lutris allows searching for a game or a platform (Ubisoft Connect, EA Store, GOG, Battlenet, etc.) and proposes an installation script that will configure what's needed for your choice to work with Wine or Proton.
 
 ```
-sudo pacman -S --needed lutris wine-staging
+sudo pacman -S lutris wine-staging
 ```
 
 Additional Video:
@@ -463,11 +463,11 @@ Advanced Linux driver for Xbox 360|One|S|X wireless controllers (supplied with X
 
 
 ```
-yay -S --needed xpadneo-dkms 
+yay -S xpadneo-dkms 
 ```
 Advanced Linux driver for PS4/PS5 controllers
 ```
-yay -S --needed ds4drv dualsensectl
+yay -S ds4drv dualsensectl
 ```
 
 ### Displaying in-game performance
@@ -477,7 +477,7 @@ It's the tool you need if you want to see your in-game FPS, your CPU or GPU load
 Here, we install GOverlay which is a graphical interface to configure MangoHud.
 
 ```
-yay -S goverlay --needed
+yay -S goverlay
 ```
 
 ### Improving compatibility of Windows games
