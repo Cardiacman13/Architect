@@ -70,11 +70,9 @@ Préparez votre jeu avec la configuration GPU, qui comprend :
 - Installation de bibliothèques 32 bits.
 - Choix entre les pilotes Nvidia standard ou la variante `nvidia-all` :
   - **Nvidia** : C'est le choix recommandé pour la plupart des utilisateurs. Cela implique :
-    - Installation des paquets Nvidia.
-    - Installation de CUDA.
+    - Installation des paquets Nvidia et des libs 32b et vulkan.
   - **Nvidia-all** : Pour les utilisateurs avancés qui savent comment le maintenir. Cela implique :
     - Clonage et installation à partir du dépôt `Frogging-Family/nvidia-all`.
-    - Installation de CUDA.
 
 ### 4. Installation de Certains Paquets de Base
 Installez des paquets fondamentaux pour une expérience complète :
