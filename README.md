@@ -30,7 +30,7 @@ Download the ISO: [**Arch Linux - Downloads**](https://archlinux.org/download/)
 
 <img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/Welcome.png">
 
-The purpose of this script is to configure a **stock Arch** system with a **minimal set of packages** tailored to your s right after using archinstall. This script is **oriented towards gaming**.
+The purpose of this script is to configure a **stock Arch** system with a **minimal set of packages** tailored to your needs right after using archinstall. This script is **oriented towards gaming**.
 
 > [!NOTE]
 > **Before You Begin:**
@@ -180,7 +180,7 @@ echo "Hello world !"            # Example command
    makepkg -si
    ```
 
-   Adding support for updates of git packages. (Normally only s to be done once)
+   Adding support for updates of git packages. (Normally only needs to be done once)
    ```
    yay -Y --gendb
    yay -Y --devel --save
@@ -219,7 +219,7 @@ Supplementary video explaining how to regain access to Wayland from GDM:
 
 1. **Install the core components:**
     ```
-    yay -S --ed nvidia-dkms nvidia-utils lib32-nvidia-utils nvidia-settings vulkan-icd-loader lib32-vulkan-icd-loader
+    yay -S --needed nvidia-dkms nvidia-utils lib32-nvidia-utils nvidia-settings vulkan-icd-loader lib32-vulkan-icd-loader
     ```
 
 2. **Enable nvidia-drm.modeset=1:**
@@ -234,7 +234,7 @@ In the folder:
 /boot/loader/entries/
 ```
 
-   There are several .conf files, you  to add nvidia-drm.modeset=1 to the “options” line of each file.
+   There are several .conf files, you need to add nvidia-drm.modeset=1 to the “options” line of each file.
    Example: options root=PARTUUID=fb680c54-466d-4708-a1ac-fcc338ed57f1 rw rootfstype=ext4 nvidia-drm.modeset=1
 
 - **If using GRUB**
@@ -288,12 +288,12 @@ In the folder:
     Description=Update NVIDIA module in initcpio
     Depends=mkinitcpio
     When=PostTransaction
-    sTargets
+    NeedsTargets
     Exec=/bin/sh -c 'while read -r trg; do case $trg in linux) exit 0; esac; done; /usr/bin/mkinitcpio -P'
     ```
 
 5. **Rebuilding initramfs:**
-    Since we've already installed the drivers at step 1, thus before setting up the hook, we  to manually trigger the initramfs rebuilding:
+    Since we've already installed the drivers at step 1, thus before setting up the hook, we need to manually trigger the initramfs rebuilding:
     ```
     mkinitcpio -P
     ```
