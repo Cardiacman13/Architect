@@ -48,7 +48,7 @@ function install_one() {
         warning_msg=" ${RED}might be long${RESET}"
     fi
 
-    log_msg "${BLUE}::${RESET} [+] ${package}${warning_msg}"
+    log_msg "${GREEN}::${RESET} [+] ${package}${warning_msg}"
     if [[ ${type} == "flatpak" ]]; then
         exec "flatpak install -y flathub ${package}"
     else
@@ -66,7 +66,7 @@ function install_one() {
 function uninstall_one() {
     local -r package=$1
 
-    log_msg "${YELLOW}::${RESET} [-] ${package}"
+    log_msg "${GREEN}::${RESET} [-] ${package}"
     exec "sudo pacman -Rdd --noconfirm ${package}"
 }
 
