@@ -30,7 +30,7 @@ function install_aur() {
     cd "${aur_name[$id]}" || return 1
     exec_log "makepkg -si --noconfirm" "installing ${AUR}"
     cd .. || return 1
-    exec_log "rm -rf ${aur_name[$id]}" "Directory deletion ${aur_name[$id]}"
+    exec_log "rm -rf ${aur_name[$id]}" "deleting directory ${aur_name[$id]}"
 
     if [[ $choice == "yay" ]]; then
         exec "yay -Y --gendb" "configuration of ${AUR}"
