@@ -30,7 +30,7 @@ Download the ISO: [**Arch Linux - Downloads**](https://archlinux.org/download/)
 
 <img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/Welcome.png">
 
-The purpose of this script is to configure a **stock Arch** system with a **minimal set of packages** tailored to your needs right after using archinstall. This script is **oriented towards gaming**.
+The purpose of this script is to configure a **stock Arch** system with a **minimal set of packages** tailored to your s right after using archinstall. This script is **oriented towards gaming**.
 
 > [!NOTE]
 > **Before You Begin:**
@@ -180,7 +180,7 @@ echo "Hello world !"            # Example command
    makepkg -si
    ```
 
-   Adding support for updates of git packages. (Normally only needs to be done once)
+   Adding support for updates of git packages. (Normally only s to be done once)
    ```
    yay -Y --gendb
    yay -Y --devel --save
@@ -219,7 +219,7 @@ Supplementary video explaining how to regain access to Wayland from GDM:
 
 1. **Install the core components:**
     ```
-    yay -S --needed nvidia-dkms nvidia-utils lib32-nvidia-utils nvidia-settings vulkan-icd-loader lib32-vulkan-icd-loader
+    yay -S --ed nvidia-dkms nvidia-utils lib32-nvidia-utils nvidia-settings vulkan-icd-loader lib32-vulkan-icd-loader
     ```
 
 2. **Enable nvidia-drm.modeset=1:**
@@ -234,7 +234,7 @@ In the folder:
 /boot/loader/entries/
 ```
 
-   There are several .conf files, you need to add nvidia-drm.modeset=1 to the “options” line of each file.
+   There are several .conf files, you  to add nvidia-drm.modeset=1 to the “options” line of each file.
    Example: options root=PARTUUID=fb680c54-466d-4708-a1ac-fcc338ed57f1 rw rootfstype=ext4 nvidia-drm.modeset=1
 
 - **If using GRUB**
@@ -288,12 +288,12 @@ In the folder:
     Description=Update NVIDIA module in initcpio
     Depends=mkinitcpio
     When=PostTransaction
-    NeedsTargets
+    sTargets
     Exec=/bin/sh -c 'while read -r trg; do case $trg in linux) exit 0; esac; done; /usr/bin/mkinitcpio -P'
     ```
 
 5. **Rebuilding initramfs:**
-    Since we've already installed the drivers at step 1, thus before setting up the hook, we need to manually trigger the initramfs rebuilding:
+    Since we've already installed the drivers at step 1, thus before setting up the hook, we  to manually trigger the initramfs rebuilding:
     ```
     mkinitcpio -P
     ```
@@ -313,17 +313,17 @@ yay -S --needed mesa lib32-mesa vulkan-intel lib32-vulkan-intel vulkan-icd-loade
 #### Printers
 - Essentials
     ```
-    yay -S ghostscript gsfonts cups cups-filters cups-pdf system-config-printer
-    avahi --needed
+    yay -S --needed ghostscript gsfonts cups cups-filters cups-pdf system-config-printer
+    avahi
     sudo systemctl enable --now avahi-daemon cups
     ```
 - Drivers
     ```
-    yay -S foomatic-db-engine foomatic-db foomatic-db-ppds foomatic-db-nonfree foomatic-db-nonfree-ppds gutenprint foomatic-db-gutenprint-ppds --needed
+    yay -S --needed foomatic-db-engine foomatic-db foomatic-db-ppds foomatic-db-nonfree foomatic-db-nonfree-ppds gutenprint foomatic-db-gutenprint-ppds
     ```
 - HP Printers
     ```
-    yay -S python-pyqt5 hplip --needed
+    yay -S --needed python-pyqt5 hplip
     ```
 - Epson Printers
     ```
@@ -347,7 +347,7 @@ sudo pacman -S --needed pipewire lib32-pipewire pipewire-pulse pipewire-alsa pip
 #### Basic Components
 Here you will find codecs, utilities, fonts, drivers:
 ```
-yay -S gst-plugins-bad gst-plugins-base gst-plugins-ugly gst-plugin-pipewire gstreamer-vaapi gst-plugins-good gst-libav gstreamer downgrade rebuild-detector mkinitcpio-firmware xdg-desktop-portal-gtk xdg-desktop-portal neofetch power-profiles-daemon lib32-pipewire hunspell hunspell-fr hunspell-en p7zip unrar ttf-liberation noto-fonts noto-fonts-emoji adobe-source-code-pro-fonts otf-font-awesome ttf-droid ntfs-3g fuse2fs exfat-utils fuse2 fuse3 bash-completion man-db man-pages --needed
+yay -S --needed gst-plugins-bad gst-plugins-base gst-plugins-ugly gst-plugin-pipewire gstreamer-vaapi gst-plugins-good gst-libav gstreamer downgrade rebuild-detector mkinitcpio-firmware xdg-desktop-portal-gtk xdg-desktop-portal neofetch power-profiles-daemon lib32-pipewire hunspell hunspell-fr hunspell-en p7zip unrar ttf-liberation noto-fonts noto-fonts-emoji adobe-source-code-pro-fonts otf-font-awesome ttf-droid ntfs-3g fuse2fs exfat-utils fuse2 fuse3 bash-completion man-db man-pages
 ```
 
 #### Miscellaneous Software
@@ -359,7 +359,7 @@ yay -S libreoffice-fresh libreoffice-fresh-fr vlc discord gimp obs-studio gnome-
 
 Here are various software for graphics, video (editing, codec support), graphical interface utilities, etc.
 ```
-yay -S xdg-desktop-portal-kde okular print-manager kdenlive gwenview spectacle partitionmanager ffmpegthumbs qt6-wayland kdeplasma-addons powerdevil kcalc plasma-systemmonitor qt6-multimedia qt6-multimedia-gstreamer qt6-multimedia-ffmpeg kwalletmanager
+yay -S --needed xdg-desktop-portal-kde okular print-manager kdenlive gwenview spectacle partitionmanager ffmpegthumbs qt6-wayland kdeplasma-addons powerdevil kcalc plasma-systemmonitor qt6-multimedia qt6-multimedia-gstreamer qt6-multimedia-ffmpeg kwalletmanager
 ```
 
 Additional Video:
