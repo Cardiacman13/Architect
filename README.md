@@ -578,4 +578,4 @@ Sources and useful links :
 
 Contributions to this project are welcome! If you have suggestions, bug reports, or contributions, please open an issue or a pull request in the repository.
 
-As you can see this project is available in French, English and Spanish. Translators are more than welcome ! :people_holding_hands:
+As you can see this project is available in French, English, Spanish, Italian & German. Translators are more than welcome ! :people_holding_hands:
