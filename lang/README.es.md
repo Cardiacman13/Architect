@@ -70,10 +70,8 @@ Prepara tu sistema para el gaming con la configuración de GPU, que incluye:
 - Elegir entre los controladores estándar de Nvidia o la variante `nvidia-all`:
   - **Nvidia**: Esta es la opción recomendada para la mayoría de los usuarios. Involucra:
     - Instalación de paquetes de Nvidia.
-    - Instalación de CUDA.
   - **Nvidia-all**: Esto es para usuarios avanzados que saben cómo mantenerlo. Involucra:
     - Clonar e instalar desde el repositorio `Frogging-Family/nvidia-all`.
-    - Instalación de CUDA.
 
 ### 4. Instalar Algunos Paquetes Básicos
 Instala paquetes fundamentales para una experiencia completa:
