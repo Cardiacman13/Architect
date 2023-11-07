@@ -13,7 +13,7 @@ function install_aur() {
     local choice=""
 
     while [[ $choice != "yay" && $choice != "paru" ]]; do
-        read -rp "What aur helper do you want to install ? (yay/paru) : " choice
+        read -rp "which aur helper do you want to install ? (yay/paru) : " choice
         choice="${choice,,}"
     done
     echo -e "${GREEN}You chose ${choice}${RESET}"
