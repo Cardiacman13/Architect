@@ -23,7 +23,7 @@ function sound_server() {
         sof-firmware
     "
 
-    uninstall_lst "${unlst}" "Clean old sound server dependencies"
+    uninstall_lst "${unlst}" "Cleaning old sound server dependencies"
     install_lst "${inlst}"
 }
 
