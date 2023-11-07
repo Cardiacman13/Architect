@@ -33,9 +33,9 @@ function install_aur() {
     exec_log "rm -rf ${aur_name[$id]}" "Deleting directory ${aur_name[$id]}"
 
     if [[ $choice == "yay" ]]; then
-        exec "yay -Y --gendb" "Configuration of ${AUR}"
-        exec "yay -Y --devel --save" "Configuration of ${AUR}"
+        exec "yay -Y --gendb" "Configuring ${AUR}"
+        exec "yay -Y --devel --save" "Configuring ${AUR}"
     elif [[ $choice == "paru" ]]; then
-        exec "paru --gendb" "Configuration of ${AUR}"
+        exec "paru --gendb" "Configuring ${AUR}"
     fi
 }
