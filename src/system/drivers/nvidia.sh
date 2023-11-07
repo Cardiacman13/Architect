@@ -2,7 +2,7 @@ source src/cmd.sh
 
 function nvidia_config() {
     # hook
-    exec_log "sudo mkdir -p /etc/pacman.d/hooks/" "Hook folder creation"
+    exec_log "sudo mkdir -p /etc/pacman.d/hooks/" "Creating hook folder"
     copy_bak "assets/data" "nvidia.hook" "/etc/pacman.d/hooks" true
 
     # mkinitcpio

@@ -28,14 +28,14 @@ function install_aur() {
 
     exec_log "git clone ${git_url[$id]}" "Cloning of ${aur_name[$id]}"
     cd "${aur_name[$id]}" || return 1
-    exec_log "makepkg -si --noconfirm" "installing ${AUR}"
+    exec_log "makepkg -si --noconfirm" "Installing ${AUR}"
     cd .. || return 1
-    exec_log "rm -rf ${aur_name[$id]}" "deleting directory ${aur_name[$id]}"
+    exec_log "rm -rf ${aur_name[$id]}" "Deleting directory ${aur_name[$id]}"
 
     if [[ $choice == "yay" ]]; then
-        exec "yay -Y --gendb" "configuration of ${AUR}"
-        exec "yay -Y --devel --save" "configuration of ${AUR}"
+        exec "yay -Y --gendb" "Configuring ${AUR}"
+        exec "yay -Y --devel --save" "Configuring ${AUR}"
     elif [[ $choice == "paru" ]]; then
-        exec "paru --gendb" "configuration of ${AUR}"
+        exec "paru --gendb" "Configuring ${AUR}"
     fi
 }
