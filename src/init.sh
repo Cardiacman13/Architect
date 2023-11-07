@@ -9,8 +9,8 @@ function header() {
        ${PURPLE}%%%${RESET}                     ${GREEN}***${RESET}      
        ${PURPLE}%%%${RESET}                     ${GREEN}***${RESET}      GitHub : https://github.com/Cardiacman13/Architect
        ${PURPLE}%%%${RESET}                     ${GREEN}***${RESET}      
-       ${PURPLE}%%%${RESET}                     ${GREEN}***${RESET}      Par https://github.com/Cardiacman13
-        ${PURPLE}%%%%%%${RESET}                 ${GREEN}***${RESET}       et https://github.com/wmemcpy
+       ${PURPLE}%%%${RESET}                     ${GREEN}***${RESET} 
+        ${PURPLE}%%%%%%${RESET}                 ${GREEN}***${RESET} 
              ${PURPLE}%%%%%%%%${RESET}  ${GREEN}***********${RESET}     
 
 -----------------------------------------------------------------------------------------------------------
