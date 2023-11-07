@@ -71,11 +71,9 @@ Get your gaming-ready with GPU setup, which includes:
 - Installing 32-bit libraries.
 - Choosing between standard Nvidia drivers or the `nvidia-all` variant:
   - **Nvidia**: This is the recommended choice for most users. It involves:
-    - Installing Nvidia packages.
-    - Installing CUDA.
+    - Installing Nvidia DKMS and 32b libs packages.
   - **Nvidia-all**: This is for advanced users who know how to maintain it. It involves:
     - Cloning and installing from the `Frogging-Family/nvidia-all` repository.
-    - Installing CUDA.
 
 ### 4. Install Some Base Packages
 Install fundamental packages for a complete experience:
