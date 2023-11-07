@@ -319,11 +319,11 @@ yay -S --needed mesa lib32-mesa vulkan-intel lib32-vulkan-intel vulkan-icd-loade
     ```
 - Driver
     ```
-    yay -S foomatic-db-engine foomatic-db foomatic-db-ppds foomatic-db-nonfree foomatic-db-nonfree-ppds gutenprint foomatic-db-gutenprint-ppds --needed
+    yay -S --needed foomatic-db-engine foomatic-db foomatic-db-ppds foomatic-db-nonfree foomatic-db-nonfree-ppds gutenprint foomatic-db-gutenprint-ppds
     ```
 - Stampanti HP
     ```
-    yay -S python-pyqt5 hplip --needed
+    yay -S --needed python-pyqt5 hplip
     ```
 - Stampanti Epson
     ```
@@ -347,7 +347,7 @@ sudo pacman -S --needed pipewire lib32-pipewire pipewire-pulse pipewire-alsa pip
 #### Componenti Base
 Qui troverai codec, utility, font, driver:
 ```
-yay -S gst-plugins-bad gst-plugins-base gst-plugins-ugly gst-plugin-pipewire gstreamer-vaapi gst-plugins-good gst-libav gstreamer downgrade rebuild-detector mkinitcpio-firmware xdg-desktop-portal-gtk xdg-desktop-portal neofetch power-profiles-daemon lib32-pipewire hunspell hunspell-fr p7zip unrar ttf-liberation noto-fonts noto-fonts-emoji adobe-source-code-pro-fonts otf-font-awesome ttf-droid ntfs-3g fuse2fs exfat-utils fuse2 fuse3 bash-completion man-db man-pages --needed
+yay -S --needed gst-plugins-bad gst-plugins-base gst-plugins-ugly gst-plugin-pipewire gstreamer-vaapi gst-plugins-good gst-libav gstreamer downgrade rebuild-detector mkinitcpio-firmware xdg-desktop-portal-gtk xdg-desktop-portal neofetch power-profiles-daemon lib32-pipewire hunspell hunspell-fr p7zip unrar ttf-liberation noto-fonts noto-fonts-emoji adobe-source-code-pro-fonts otf-font-awesome ttf-droid ntfs-3g fuse2fs exfat-utils fuse2 fuse3 bash-completion man-db man-pages
 ```
 
 #### Software Vari
@@ -359,7 +359,7 @@ yay -S libreoffice-fresh libreoffice-fresh-fr vlc discord gimp obs-studio gnome-
 
 Ecco vari software per grafica, video (editing, supporto codec), utilità dell'interfaccia grafica, ecc.
 ```
-yay -S xdg-desktop-portal-kde okular print-manager kdenlive gwenview spectacle partitionmanager ffmpegthumbs qt6-wayland kdeplasma-addons powerdevil kcalc plasma-systemmonitor qt6-multimedia qt6-multimedia-gstreamer qt6-multimedia-ffmpeg kwalletmanager
+yay -S --needed xdg-desktop-portal-kde okular print-manager kdenlive gwenview spectacle partitionmanager ffmpegthumbs qt6-wayland kdeplasma-addons powerdevil kcalc plasma-systemmonitor qt6-multimedia qt6-multimedia-gstreamer qt6-multimedia-ffmpeg kwalletmanager
 ```
 
 Video Aggiuntivo:
@@ -448,7 +448,7 @@ Lutris è un gestore di giochi FOSS (Free, Open Source) per sistemi operativi ba
 Lutris consente di cercare un gioco o una piattaforma (Ubisoft Connect, EA Store, GOG, Battlenet, ecc.) e propone uno script di installazione che configurerà ciò che è necessario affinché la tua scelta funzioni con Wine o Proton.
 
 ```
-sudo pacman -S --needed lutris wine-staging
+sudo pacman -S lutris wine-staging
 ```
 
 Video aggiuntivo:
@@ -459,12 +459,12 @@ Video aggiuntivo:
 Driver Linux avanzato per controller wireless Xbox 360|One|S|X (incluso con Xbox One S) e molti altri controller come 8bitdo ([xpadneo](https://github.com/atar-axis/xpadneo)) ([xone](https://github.com/medusalix/xone))
 
 ```
-yay -S --needed xpadneo-dkms 
+yay -S xpadneo-dkms 
 ```
 
 Driver Linux avanzato per controller PS4/PS5
 ```
-yay -S --needed bluez-utils-compat ds4drv dualsensectl
+yay -S ds4drv dualsensectl
 ```
 
 ### Visualizzazione delle prestazioni di gioco
@@ -474,7 +474,7 @@ yay -S --needed bluez-utils-compat ds4drv dualsensectl
 Qui, installiamo GOverlay che è un'interfaccia grafica per configurare MangoHud.
 
 ```
-yay -S goverlay --needed
+yay -S goverlay
 ```
 
 ### Migliorare la compatibilità dei giochi Windows
