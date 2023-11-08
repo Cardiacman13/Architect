@@ -293,7 +293,7 @@ En la carpeta:
 5. **Reconstrucción del initramfs:**
     Ya que hemos instalado los controladores en el paso 1, así antes de configurar el hook, necesitamos activar manualmente la reconstrucción del initramfs:
     ```
-    mkinitcpio -P
+    sudo mkinitcpio -P
     ```
 
 #### AMD (no hacer si Nvidia)
@@ -484,7 +484,7 @@ Incrementamos el valor por defecto de esta variable, permitiendo almacenar más 
   ``` 
     la línea siguiente:
       ` 
-      vm.max_map_count=16777216
+      vm.max_map_count=2147483642
       `
 
 
@@ -544,7 +544,6 @@ Anteriormente conocido como xdg-app, es una utilidad de despliegue de software y
 ```
 yay -S flatpak flatpak-kcm
 flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
-flatpak install com.bitwarden.desktop com.discordapp.Discord com.github.tchx84.Flatseal com.gitlab.davem.ClamTk com.heroicgames
 ```
 
 ## Fuentes <a name="community"/>
