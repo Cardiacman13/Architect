@@ -252,7 +252,8 @@ En la carpeta:
     ```
    
 3. **Cargar los módulos de Nvidia como prioridad al inicio de Arch:**
-    Este paso a veces es necesario para ciertos entornos de escritorio o gestores de ventanas.
+    Este paso a veces es necesario para ciertos entornos de escritorio o gestores de ventanas. Opcional, para hacer solo si se detectan problemas durante el arranque.
+   
     ```
     kate /etc/mkinitcpio.conf
     ```
@@ -265,7 +266,7 @@ En la carpeta:
     MODULES=(btrfs nvidia nvidia_modeset nvidia_uvm nvidia_drm)
     ```
 
-4. **Hook de mkinitcpio:**
+5. **Hook de mkinitcpio:**
     Este hook automatiza la reconstrucción del initramfs (el archivo básico de arranque) con cada modificación del controlador Nvidia.
     ```
     sudo mkdir /etc/pacman.d/hooks/
@@ -290,7 +291,7 @@ En la carpeta:
     Exec=/bin/sh -c 'while read -r trg; do case $trg in linux) exit 0; esac; done; /usr/bin/mkinitcpio -P'
     ```
 
-5. **Reconstrucción del initramfs:**
+6. **Reconstrucción del initramfs:**
     Ya que hemos instalado los controladores en el paso 1, así antes de configurar el hook, necesitamos activar manualmente la reconstrucción del initramfs:
     ```
     sudo mkinitcpio -P
