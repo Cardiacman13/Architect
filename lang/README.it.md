@@ -150,7 +150,7 @@ echo "Ciao mondo!"            # Esempio di comando
 ### Post-installazione
 <img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/Cardiac-icon.png" width="30" height="30"> [ Tutorial Arch Linux Parte 2: Post Installazione ](https://youtu.be/FEFhC46BkXo?si=Gi-6BOhqENLoh5Ak)
 
-#### Ottimizzare pacman
+#### Ottimizzare pacman  
 
 1. Questa [modifica](https://wiki.archlinux.org/title/Pacman#Enabling_parallel_downloads) permette la parallelizzazione dei download dei pacchetti. (PS: con kate, quando salvate, potrebbe essere richiesto di inserire una password. Inserite la vostra password root/sudo.)
 
