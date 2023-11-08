@@ -298,7 +298,7 @@ Dans le dossier :
 6. **Reconstruction de l'initramfs :**
     Comme nous avons déjà installé les pilotes à l'étape 1, donc avant de configurer le hook, nous devons déclencher manuellement la reconstruction de l'initramfs :
     ```
-    mkinitcpio -P
+    sudo mkinitcpio -P
     ```
 
 #### AMD (ne pas faire si Nvidia)
@@ -493,7 +493,7 @@ Nous augmentons la valeur par défaut de cette variable, permettant le stockage 
   ``` 
     la ligne suivante:
       ` 
-      vm.max_map_count=16777216
+      vm.max_map_count=2147483642
       `
 
 
@@ -554,7 +554,6 @@ Anciennement connu sous le nom de xdg-app, il s'agit d'un utilitaire de déploie
 ```
 yay -S flatpak flatpak-kcm
 flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
-flatpak install com.bitwarden.desktop com.discordapp.Discord com.github.tchx84.Flatseal com.gitlab.davem.ClamTk com.heroicgameslauncher.hgl com.microsoft.Edge com. moonlight_stream.Moonlight com.rtosta.zapzap com.spotify.Client com.sweethome3d.Sweethome3d com.tutanota.Tutanota com.valvesoftware.Steam com.visualstudio.code info.febvre. Komikku io.github.anirbandey1.ChatbotClient io.github.koromelodev.mindmate net.davidotek.pupgui2 net.lutris.Lutris one.flipperzero.qFlipper org.bleachbit.BleachBit org. gnome.Boxes org.gnome.OCRFeeder org.kde.gcompris org.kde.kdenlive org.libreoffice.LibreOffice org.videolan.VLC org.yuzu_emu.yuzu us.zoom.Zoom xyz.ketok.Speedtest
 ```
 
 ## Dépannage <a name="troubleshooting"/>
