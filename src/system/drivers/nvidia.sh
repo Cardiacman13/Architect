@@ -5,9 +5,6 @@ function nvidia_config() {
     exec_log "sudo mkdir -p /etc/pacman.d/hooks/" "Creating hook folder"
     copy_bak "assets/data" "nvidia.hook" "/etc/pacman.d/hooks" true
 
-    # mkinitcpio
-    exec_log "sudo sed -i '/MODULES=/ s/)/ nvidia nvidia_modeset nvidia_uvm nvidia_drm)/' '/etc/mkinitcpio.conf'" "mkinitcpio configuration"
-
     # bootloader
     if [[ ${BOOT_LOADER} == "grub" ]]; then
         exec_log "sudo sed -i '/^GRUB_CMDLINE_LINUX_DEFAULT=/ s/\"$/ nvidia-drm.modeset=1\"/' /etc/default/grub" "GRUB cmdline configuration"
@@ -68,6 +65,4 @@ function nvidia_drivers() {
         "
         install_lst "${inlst}"
     fi
-
-    exec_log "sudo systemctl enable nvidia-{hibernate,resume,suspend}" "activation of nvidia-{hibernate,resume,suspend}"
 }
