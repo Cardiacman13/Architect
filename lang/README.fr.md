@@ -256,7 +256,8 @@ Dans le dossier :
     ```
    
 3. **Charger les modules Nvidia en priorité au lancement d'Arch :**
-    Cette étape est parfois nécessaire pour certains environnements de bureau ou gestionnaires de fenêtres.
+    Cette étape est parfois nécessaire pour certains environnements de bureau ou gestionnaires de fenêtres. Optionel, à ne faire que si on remarque des problèmes au boot.
+   
     ```
     sudo nano /etc/mkinitcpio.conf
     ```
@@ -269,7 +270,7 @@ Dans le dossier :
     MODULES=(btrfs nvidia nvidia_modeset nvidia_uvm nvidia_drm)
     ```
 
-4. **Hook mkinitcpio :**
+5. **Hook mkinitcpio :**
     Ce hook automatise la reconstruction d'initramfs (le fichier de base de démarrage) à chaque modification du pilote Nvidia.
     ```
     sudo mkdir /etc/pacman.d/hooks/
@@ -294,7 +295,7 @@ Dans le dossier :
     Exec=/bin/sh -c 'while read -r trg; do case $trg in linux) exit 0; esac; done; /usr/bin/mkinitcpio -P'
     ```
 
-5. **Reconstruction de l'initramfs :**
+6. **Reconstruction de l'initramfs :**
     Comme nous avons déjà installé les pilotes à l'étape 1, donc avant de configurer le hook, nous devons déclencher manuellement la reconstruction de l'initramfs :
     ```
     mkinitcpio -P
