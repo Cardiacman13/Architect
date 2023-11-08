@@ -295,7 +295,7 @@ In the folder:
 5. **Rebuilding initramfs:**
     Since we've already installed the drivers at step 1, thus before setting up the hook, we need to manually trigger the initramfs rebuilding:
     ```
-    mkinitcpio -P
+    sudo mkinitcpio -P
     ```
 
 #### AMD (do not do if Nvidia)
@@ -491,7 +491,7 @@ sudo nano /etc/sysctl.d/99-sysctl.conf
 ``` 
 la ligne suivante:
 ` 
-vm.max_map_count=16777216
+vm.max_map_count=2147483642
 `
 
 
@@ -551,7 +551,6 @@ Formerly known as xdg-app, this is a software deployment and package management 
 ```
 yay -S flatpak flatpak-kcm
 flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
-flatpak install com.bitwarden.desktop com.discordapp.Discord com.github.tchx84.Flatseal com.gitlab.davem.ClamTk com.heroicgameslauncher.hgl com.microsoft.Edge com. moonlight_stream.Moonlight com.rtosta.zapzap com.spotify.Client com.sweethome3d.Sweethome3d com.tutanota.Tutanota com.valvesoftware.Steam com.visualstudio.code info.febvre. Komikku io.github.anirbandey1.ChatbotClient io.github.koromelodev.mindmate net.davidotek.pupgui2 net.lutris.Lutris one.flipperzero.qFlipper org.bleachbit.BleachBit org. gnome.Boxes org.gnome.OCRFeeder org.kde.gcompris org.kde.kdenlive org.libreoffice.LibreOffice org.videolan.VLC org.yuzu_emu.yuzu us.zoom.Zoom xyz.ketok.Speedtest
 ```
 
 ## Troubleshooting <a name="troubleshooting"/>
