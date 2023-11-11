@@ -380,7 +380,7 @@ firewall-applet &
 yay -S reflector-simple
 ```
 
-Un comando per generare una lista di mirror, da eseguire una volta dopo la prima installazione e da ripetere se viaggiate,se cambiate paese, se trovate lento il download dei pacchetti o se trovate un errore che vi dice che un mirror è offline:
+Un comando per generare una lista di mirror, da eseguire una volta dopo la prima installazione e da ripetere se viaggiate, se cambiate paese, se trovate lento il download dei pacchetti o se trovate un errore che vi dice che un mirror è offline:
 
 ```
 sudo reflector --score 20 --fastest 5 --sort rate --save /etc/pacman.d/mirrorlist
