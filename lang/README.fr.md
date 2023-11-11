@@ -6,7 +6,7 @@
 
 Arch est une distribution technique destinée à un public plus avancé, composée de "blocs de construction". Pensez-y comme à un ensemble de Lego vierges, avec une base que vous devez construire et façonner à votre guise, et si vous le faites mal, les choses peuvent se casser.
 
-Le but de ce didacticiel est d'installer un Arch standard avec un minimum de paquets, selon nos besoins pour le travail de bureau et/ou le jeu.
+Le but de ce didacticiel est d'installer une Arch standard avec un minimum de paquets, selon nos besoins pour la bureautique et/ou le jeu.
 
 <img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/Cardiac-icon.png" width="30" height="30"> Cette icône vous redirige vers mes vidéos sur certaines parties de ce didacticiel [**Playlist Tutoriel Arch Linux**](https://www.youtube.com/watch?v=JE6VwNHLcyk&list=PLuIP_-MWRwtWEX0tyDpZPdwU6zCE1O1cY)
 
@@ -14,15 +14,15 @@ Le but de ce didacticiel est d'installer un Arch standard avec un minimum de paq
 
 > **Note**
 > Le script que vous trouverez plus loin fonctionne quel que soit votre choix de DE / CHARGEUR DE DÉMARRAGE / FS.
-> Didacticiel et script destinés à être utilisés avec une Arch pur (incompatible avec Garuda, EndeavourOS, Manjaro…)
+> Le didacticiel et le script sont destinés à être utilisés avec une Arch pure (incompatible avec Garuda, EndeavourOS, Manjaro…)
 
 Téléchargez l'ISO : [**Arch Linux - Téléchargements**](https://archlinux.org/download/)
 
 ## Table des Matières
-1. [Script tout-en-un](#script)
-2. [Améliorez votre bureau](#elevate)
-3. [Montez en Niveau dans Votre Jeu](#gaming)
-4. [Optimisation de Précision](#optimization)
+1. [SCRIPT tout-en-un](#script)
+2. [TUTO](#elevate)
+3. [Jeux](#gaming)
+4. [Bonus](#optimization)
 5. [Dépannage](#troubleshooting)
 6. [Communauté](#community)
 
@@ -50,7 +50,7 @@ cd Architect
 Améliorez la fonctionnalité et l'expérience utilisateur de Pacman en effectuant les améliorations suivantes :
 
 - Activation de la sortie colorée.
-- Activation des listes détaillées de paquets.
+- Activation des listes détaillées de paquets.limine
 - Activation des téléchargements parallèles.
 - Activation du support multilib.
 
@@ -60,6 +60,7 @@ Simplifiez vos tâches en ligne de commande avec ces alias utiles :
 - update-arch : Met à jour les applications de votre système avec une seule commande.
 - clean-arch : Nettoie votre système en supprimant les paquets inutilisés.
 - fix-key : Résout les problèmes liés aux clés, assurant un processus de mise à jour fluide.
+- update-mirrors : Met à jour la liste de vos miroirs de téléchargement.
 
 ### 3. Aide à l'Installation des GPU AMD, NVIDIA ou Intel pour le Jeu
 Préparez votre jeu avec la configuration GPU, qui comprend :
@@ -69,11 +70,9 @@ Préparez votre jeu avec la configuration GPU, qui comprend :
 - Installation de bibliothèques 32 bits.
 - Choix entre les pilotes Nvidia standard ou la variante `nvidia-all` :
   - **Nvidia** : C'est le choix recommandé pour la plupart des utilisateurs. Cela implique :
-    - Installation des paquets Nvidia.
-    - Installation de CUDA.
+    - Installation des paquets Nvidia et des libs 32b et vulkan.
   - **Nvidia-all** : Pour les utilisateurs avancés qui savent comment le maintenir. Cela implique :
     - Clonage et installation à partir du dépôt `Frogging-Family/nvidia-all`.
-    - Installation de CUDA.
 
 ### 4. Installation de Certains Paquets de Base
 Installez des paquets fondamentaux pour une expérience complète :
@@ -95,7 +94,7 @@ Affinez votre système pour une expérience améliorée :
 
 ### 6. Aide à l'Installation de Divers Logiciels
 Vous avez la liberté de choisir quels logiciels supplémentaires installer en fonction de vos besoins spécifiques :
-
+limine
 - `Discord`
 - `Steam`
 - `Lutris`
@@ -110,7 +109,7 @@ Vous avez la liberté de choisir quels logiciels supplémentaires installer en f
 
 
 
-## <img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/pc.png" width="30" height="30"> **Améliorez Votre Bureau** <a name="elevate"/>
+## <img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/pc.png" width="30" height="30"> **TUTO** <a name="elevate"/>
 
 ### Installation
 
@@ -124,9 +123,9 @@ Pour toutes les étapes suivantes, lorsque vous avez un texte présenté de cett
 echo "Bonjour le monde !"       # Commande d'exemple
 ```
 
-1. **Configurer le clavier en anglais**
+1. **Configurer le clavier en français**
     ```
-    loadkeys en
+    loadkeys fr
     ```
 
 2. **Configurer votre Wi-Fi**
@@ -147,6 +146,7 @@ echo "Bonjour le monde !"       # Commande d'exemple
     **/!\ Le menu archinstall est sujet à changement avec les mises à jour du script /!\\**
     
 ### Post-installation
+
 <img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/Cardiac-icon.png" width="30" height="30"> [ Tutoriel Arch Linux Partie 2 : Post Installation ](https://youtu.be/FEFhC46BkXo?si=Gi-6BOhqENLoh5Ak)
 
 #### Optimiser pacman
@@ -189,7 +189,7 @@ echo "Bonjour le monde !"       # Commande d'exemple
    ```
 
 3. Alias de maintenance :
-
+limine
   <img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/Cardiac-icon.png" width="30" height="30"> [ Tutoriel Arch Linux Partie 4 : Maintenance ](https://www.youtube.com/watch?v=Z7POSK2jnII)
 
    Cette modification vous permet de simplement taper « update-arch » dans un terminal pour mettre à jour le système, « clean-arch » pour le nettoyer, ou « fix-key » en cas d'erreur avec les clés gpg.
@@ -205,6 +205,9 @@ echo "Bonjour le monde !"       # Commande d'exemple
    alias clean-arch='yay -Sc && yay -Yc && flatpak remove --unused'
    ```
    ```
+   alias update-mirrors='sudo reflector --verbose --score 20 --fastest 5 --sort rate --save /etc/pacman.d/mirrorlist'
+   ```
+   ```
    alias fix-key='sudo rm /var/lib/pacman/sync/* && sudo rm -rf /etc/pacman.d/gnupg/* && sudo pacman-key --init && sudo pacman-key --populate && sudo pacman -Sy --noconfirm archlinux-keyring && sudo pacman --noconfirm -Su'
    ```
    
@@ -218,7 +221,7 @@ Vidéo supplémentaire expliquant comment retrouver l'accès à Wayland depuis G
 
 1. **Installer les composants de base :**
     ```
-    yay -S --needed nvidia-dkms nvidia-utils lib32-nvidia-utils nvidia-settings vulkan-icd-loader lib32-vulkan-icd-loader cuda
+    yay -S --needed nvidia-dkms nvidia-utils lib32-nvidia-utils nvidia-settings vulkan-icd-loader lib32-vulkan-icd-loader
     ```
 
 2. **Activer nvidia-drm.modeset=1 :**
@@ -253,7 +256,8 @@ Dans le dossier :
     ```
    
 3. **Charger les modules Nvidia en priorité au lancement d'Arch :**
-    Cette étape est parfois nécessaire pour certains environnements de bureau ou gestionnaires de fenêtres.
+    Cette étape est parfois nécessaire pour certains environnements de bureau ou gestionnaires de fenêtres. Optionel, à ne faire que si on remarque des problèmes au boot.
+   
     ```
     sudo nano /etc/mkinitcpio.conf
     ```
@@ -266,7 +270,7 @@ Dans le dossier :
     MODULES=(btrfs nvidia nvidia_modeset nvidia_uvm nvidia_drm)
     ```
 
-4. **Hook mkinitcpio :**
+5. **Hook mkinitcpio :**
     Ce hook automatise la reconstruction d'initramfs (le fichier de base de démarrage) à chaque modification du pilote Nvidia.
     ```
     sudo mkdir /etc/pacman.d/hooks/
@@ -291,16 +295,16 @@ Dans le dossier :
     Exec=/bin/sh -c 'while read -r trg; do case $trg in linux) exit 0; esac; done; /usr/bin/mkinitcpio -P'
     ```
 
-5. **Reconstruction de l'initramfs :**
+6. **Reconstruction de l'initramfs :**
     Comme nous avons déjà installé les pilotes à l'étape 1, donc avant de configurer le hook, nous devons déclencher manuellement la reconstruction de l'initramfs :
     ```
-    mkinitcpio -P
+    sudo mkinitcpio -P
     ```
 
 #### AMD (ne pas faire si Nvidia)
 Installer les composants de base :
 ```
-yay -S --needed mesa lib32-mesa vulkan-radeon lib32-vulkan-radeon vulkan-icd-loader lib32-vulkan-icd-loader vulkan-mesa-layers lib32-vulkan-mesa-layers
+yay -S --needed mesa lib32-mesa vulkan-radeon llimineib32-vulkan-radeon vulkan-icd-loader lib32-vulkan-icd-loader vulkan-mesa-layers lib32-vulkan-mesa-layers
 ```
 
 #### INTEL (ne pas faire si Nvidia)
@@ -312,8 +316,8 @@ yay -S --needed mesa lib32-mesa vulkan-intel lib32-vulkan-intel vulkan-icd-loade
 #### Imprimantes
 - Essentiels
     ```
-    yay -S ghostscript gsfonts cups cups-filters cups-pdf system-config-printer
-    avahi --needed
+    yay -S --needed ghostscript gsfonts cups cups-filters cups-pdf system-config-printer
+    avahi
     sudo systemctl enable --now avahi-daemon cups
     ```
 - Pilotes
@@ -322,7 +326,7 @@ yay -S --needed mesa lib32-mesa vulkan-intel lib32-vulkan-intel vulkan-icd-loade
     ```
 - Imprimantes HP
     ```
-    yay -S python-pyqt5 hplip --needed
+    yay -S --needed python-pyqt5 hplip
     ```
 - Imprimantes Epson
     ```
@@ -338,7 +342,7 @@ sudo systemctl enable --now  bluetooth.service
 #### [PipeWire](https://pipewire.org/) (son)
 Pour avoir du son **/!\ Dites oui à tout pour écraser tout avec les nouveaux paquets. /!\**
 ```
-sudo pacman -S --needed pipewire lib32-pipewire pipewire-pulse pipewire-alsa pipewire-jack wireplumber alsa-utils alsa-firmware alsa-tools
+sudo pacman -S --needed pipewire lib32-pipewire pipewire-pulse pipewire-alsa pipewire-jack wireplumber alsa-utils alsa-firmware alsa-tools sof-firmware
 ```
 
 ### LOGICIEL DE BASE
@@ -346,19 +350,19 @@ sudo pacman -S --needed pipewire lib32-pipewire pipewire-pulse pipewire-alsa pip
 #### Composants de base
 Ici, vous trouverez des codecs, utilitaires, polices, pilotes :
 ```
-yay -S gst-plugins-bad gst-plugins-base gst-plugins-ugly gst-plugin-pipewire gstreamer-vaapi gst-plugins-good gst-libav gstreamer reflector-simple downgrade rebuild-detector mkinitcpio-firmware xdg-desktop-portal-gtk xdg-desktop-portal neofetch power-profiles-daemon lib32-pipewire hunspell hunspell-fr p7zip unrar ttf-liberation noto-fonts noto-fonts-emoji adobe-source-code-pro-fonts otf-font-awesome ttf-droid ntfs-3g fuse2fs exfat-utils fuse2 fuse3 bash-completion man-db man-pages --needed
+yay -S --needed gst-plugins-bad gst-plugins-base gst-plugins-ugly gst-plugin-pipewire gstreamer-vaapi gst-plugins-good gst-libav gstreamer downgrade rebuild-detector mkinitcpio-firmware xdg-desktop-portal-gtk xdg-desktop-portal neofetch power-profiles-daemon lib32-pipewire hunspell hunspell-fr p7zip unrar ttf-liberation noto-fonts noto-fonts-emoji adobe-source-code-pro-fonts otf-font-awesome ttf-droid ntfs-3g fuse2fs exfat-utils fuse2 fuse3 bash-completion man-db man-pages
 ```
 
 #### Logiciels divers
 ```
-yay -S libreoffice-fresh libreoffice-fresh-fr vlc discord gimp obs-studio gnome-disk-utility visual-studio-code-bin
+yay -S libreoffice-fresh libreoffice-fresh-fr vlc discord gimp obs-studio gnome-disk-utility visual-studio-code-bin openrgb-bin spotify
 ```
 
 #### Logiciels KDE
 
 Voici divers logiciels pour graphisme, vidéo (édition, support de codec), utilitaires d'interface graphique, etc.
 ```
-yay -S xdg-desktop-portal-kde okular print-manager kdenlive gwenview spectacle partitionmanager ffmpegthumbs qt6-wayland kdeplasma-addons powerdevil kcalc plasma-systemmonitor qt6-multimedia qt6-multimedia-gstreamer qt6-multimedia-ffmpeg kwalletmanager
+yay -S --needed xdg-desktop-portal-kde okular print-manager kdenlive gwenview spectacle partitionmanager ffmpegthumbs qt6-wayland kdeplasma-addons powerdevil kcalc plasma-systemmonitor qt6-multimedia qt6-multimedia-gstreamer qt6-multimedia-ffmpeg kwalletmanager
 ```
 
 Vidéo supplémentaire :
@@ -382,7 +386,7 @@ yay -S reflector-simple
 Une commande pour générer une liste de miroirs, à faire une fois après la première installation et à répéter si vous voyagez, ou changez de pays, ou si vous trouvez le téléchargement des paquets trop lent, ou si vous rencontrez une erreur vous indiquant qu'un miroir est hors service :
 
 ```
-sudo reflector --score 20 --fastest 5 --sort rate --save /etc/pacman.d/mirrorlist
+sudo reflector --verbose --score 20 --fastest 5 --sort rate --save /etc/pacman.d/mirrorlist
 ```
 
 #### Timeshift
@@ -412,12 +416,12 @@ yay -S timeshift
 
 - Installez fish.
     ```
-    yay -S fish                       # 1. installez fish
-    chsh -s /usr/bin/fish             # 2. Définissez-le par défaut.
-    fish                              # 3. Lancez fish ou redémarrez et il sera par défaut.
-    fish_update_completions           # 4. Mettez à jour les complétions.
-    set -U fish_greeting              # 5. Supprimez le message de bienvenue.
-    sudo nano ~/.config/fish/config.fish   # 6. Créez un alias comme pour bash au début de ce tutoriel.
+    yay -S fish                             # 1. installez fish
+    chsh -s /usr/bin/fish                   # 2. Définissez-le par défaut.
+    fish                                    # 3. Lancez fish ou redémarrez et il sera par défaut.
+    fish_update_completions                 # 4. Mettez à jour les complétions.
+    set -U fish_greeting                    # 5. Supprimez le message de bienvenue.
+    sudo nano ~/.config/fish/config.fish    # 6. Créez un alias comme pour bash au début de ce tutoriel.
     ```
 - Ajoutez ensuite les alias suivants entre if et end :
     ```
@@ -425,6 +429,9 @@ yay -S timeshift
     ```
     ```
     alias clean-arch='yay -Sc && yay -Yc && flatpak remove --unused'
+    ```
+    ```
+    alias update-mirrors='sudo reflector --score 10 --fastest 5 --sort rate --save /etc/pacman.d/mirrorlist'
     ```
     ```
     alias fix-key='sudo rm /var/lib/pacman/sync/* && sudo rm -rf /etc/pacman.d/gnupg/* et sudo pacman-key --init && sudo pacman-key --populate && sudo pacman -Sy --noconfirm archlinux-keyring && sudo pacman --noconfirm -Su'
@@ -445,7 +452,7 @@ Lutris est un gestionnaire de jeux FOSS (Free, Open Source) pour les systèmes d
 Lutris permet de rechercher un jeu ou une plateforme (Ubisoft Connect, EA Store, GOG, Battlenet, etc.) et propose un script d'installation qui configurera ce qui est nécessaire pour que votre choix fonctionne avec Wine ou Proton.
 
 ```
-sudo pacman -S --needed lutris wine-staging
+sudo pacman -S lutris wine-staging
 ```
 
 Vidéo supplémentaire :
@@ -456,11 +463,11 @@ Vidéo supplémentaire :
 Pilote Linux avancé pour manettes sans fil Xbox 360|One|S|X (fournies avec Xbox One S) et beaucoup d'autres manettes comme 8bitdo ([xpadneo](https://github.com/atar-axis/xpadneo)) ([xone](https://github.com/medusalix/xone))
 
 ```
-yay -S --needed xpadneo-dkms 
+yay -S xpadneo-dkms 
 ```
 Pilote Linux avancé pour manettes PS4/PS5
 ```
-yay -S --needed ds4drv dualsensectl
+yay -S ds4drv dualsensectl
 ```
 
 ### Affichage des performances en jeu
@@ -470,7 +477,7 @@ C'est l'outil dont vous avez besoin si vous voulez voir vos FPS en jeu, votre ch
 Ici, nous installons GOverlay qui est une interface graphique pour configurer MangoHud.
 
 ```
-yay -S goverlay --needed
+yay -S goverlay
 ```
 
 ### Amélioration de la compatibilité des jeux Windows
@@ -486,18 +493,18 @@ Nous augmentons la valeur par défaut de cette variable, permettant le stockage 
   ``` 
     la ligne suivante:
       ` 
-      vm.max_map_count=16777216
+      vm.max_map_count=2147483642
       `
 
 
-## <img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/speed.png" width="30" height="30"> **Optimisation de Précision** : <a name="optimization"/>
+## <img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/speed.png" width="30" height="30"> **BONUS** : <a name="optimization"/>
 
 ### [Kernel TKG](https://github.com/Frogging-Family/linux-tkg)
 
 > [!ATTENTION]
 > Cette étape est destinée aux utilisateurs avancés :star:
 
-[TKG](https://github.com/Frogging-Family) est une construction de noyau hautement personnalisable qui fournit une sélection de correctifs et d'ajustements pour améliorer les performances de bureau et de jeu.
+[KERNEL TKG](https://github.com/Frogging-Family) est un noyau hautement personnalisable qui fournit une sélection de correctifs et d'ajustements pour améliorer les performances de bureau et de jeu.
 
 Vidéo associée :
 <img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/Cardiac-icon.png" width="30" height="30"> [Kernel TKG sur Arch + Améliorer ses perfs](https://youtu.be/43yYIWMnDJA)
@@ -547,7 +554,6 @@ Anciennement connu sous le nom de xdg-app, il s'agit d'un utilitaire de déploie
 ```
 yay -S flatpak flatpak-kcm
 flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
-flatpak install com.bitwarden.desktop com.discordapp.Discord com.github.tchx84.Flatseal com.gitlab.davem.ClamTk com.heroicgameslauncher.hgl com.microsoft.Edge com. moonlight_stream.Moonlight com.rtosta.zapzap com.spotify.Client com.sweethome3d.Sweethome3d com.tutanota.Tutanota com.valvesoftware.Steam com.visualstudio.code info.febvre. Komikku io.github.anirbandey1.ChatbotClient io.github.koromelodev.mindmate net.davidotek.pupgui2 net.lutris.Lutris one.flipperzero.qFlipper org.bleachbit.BleachBit org. gnome.Boxes org.gnome.OCRFeeder org.kde.gcompris org.kde.kdenlive org.libreoffice.LibreOffice org.videolan.VLC org.yuzu_emu.yuzu us.zoom.Zoom xyz.ketok.Speedtest
 ```
 
 ## Dépannage <a name="troubleshooting"/>
@@ -557,10 +563,6 @@ flatpak install com.bitwarden.desktop com.discordapp.Discord com.github.tchx84.F
  
 <img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/Cardiac-icon.png" width="30" height="30"> [Arch Linux Partie 5 Arch-Chroot](https://youtu.be/iandJSjePiA?si=7uI8JZ-VxAVOsPTh)
 
-- Si vous n'avez pas de son, essayez :
-    ```
-    yay -S sof-firmware
-    ```
 - Pour de l'aide, visitez le Discord GLF (fr/en) : [Discord GLF](http://discord.gg/EP3Jm8YMvj)
 
 ## Sources <a name="community"/>
@@ -575,7 +577,7 @@ Sources et liens utiles :
 
 ## Contribution
 
-Les contributions à ce projet sont les bienvenues ! Si vous avez des suggestions, des rapports de bugs ou des contributions, veuillez ouvrir un problème ou une demande de tirage dans le dépôt.
+Les contributions à ce projet sont les bienvenues ! Si vous avez des suggestions, des rapports de bugs ou des contributions, veuillez ouvrir une [issue](https://github.com/Cardiacman13/Architect/issues) ou une demande Pull Request dans le dépôt.
 
 Comme vous pouvez le voir, ce projet est disponible en français, en anglais et en espagnol. Les traducteurs sont plus que bienvenus ! :people_holding_hands:
 

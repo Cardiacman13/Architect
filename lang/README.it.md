@@ -61,6 +61,7 @@ Semplificate i vostri compiti in linea di comando con questi utili alias:
 - update-arch: Aggiornate le app del vostro sistema con un singolo comando.
 - clean-arch: Pulisce il vostro sistema rimuovendo pacchetti inutilizzati.
 - fix-key: Risolve problemi relativi alle chiavi, garantendo un processo di aggiornamento fluido.
+- update-mirrors: Aggiorna l'elenco dei tuoi mirror di download
 
 ### 3. Assistenza nell'installazione di GPU AMD, NVIDIA o Intel per il Gaming
 Preparate il vostro PC per il gaming con la configurazione GPU, che include:
@@ -69,14 +70,10 @@ Preparate il vostro PC per il gaming con la configurazione GPU, che include:
 - Installazione librerie Vulkan.
 - Installazione librerie a 32 bit.
 - Scelta tra driver Nvidia standard o la variante `nvidia-all
-
-`:
   - **Nvidia**: Questa è la scelta consigliata per la maggior parte degli utenti. Comprende:
     - Installazione dei pacchetti Nvidia.
-    - Installazione di CUDA.
   - **Nvidia-all**: Questa è per utenti avanzati che sanno come mantenerla. Comprende:
     - Clonazione e installazione dal repository `Frogging-Family/nvidia-all`.
-    - Installazione di CUDA.
 
 ### 4. Installate Alcuni Pacchetti Base
 Installate pacchetti fondamentali per un'esperienza completa:
@@ -206,6 +203,9 @@ echo "Ciao mondo!"            # Esempio di comando
    alias clean-arch='yay -Sc && yay -Yc && flatpak remove --unused'
    ```
    ```
+   alias update-mirrors='sudo reflector --verbose --score 20 --fastest 5 --sort rate --save /etc/pacman.d/mirrorlist'
+   ```
+   ```
    alias fix-key='sudo rm /var/lib/pacman/sync/* && sudo rm -rf /etc/pacman.d/gnupg/* && sudo pacman-key --init && sudo pacman-key --populate && sudo pacman -Sy --noconfirm archlinux-keyring && sudo pacman --noconfirm -Su'
    ```
    
@@ -219,7 +219,7 @@ Video supplementare che spiega come riaccedere a Wayland da GDM:
 
 1. **Installate i componenti principali:**
     ```
-    yay -S --needed nvidia-dkms nvidia-utils lib32-nvidia-utils nvidia-settings vulkan-icd-loader lib32-vulkan-icd-loader cuda
+    yay -S --needed nvidia-dkms nvidia-utils lib32-nvidia-utils nvidia-settings vulkan-icd-loader lib32-vulkan-icd-loader
     ```
 
 2. **Abilitate nvidia-drm.modeset=1:**
@@ -254,7 +254,9 @@ Nella cartella:
     ```
    
 3. **Caricate i moduli Nvidia in priorità all'avvio di Arch:**
-    Questo passaggio è talvolta necessario per certi ambienti desktop o window manager.
+    Questo passaggio è talvolta necessario per certi ambienti desktop o window manager. Opzionale, da fare solo se si notano problemi durante l'avvio.
+   
+
     ```
     kate /etc/mkinitcpio.conf
     ```
@@ -267,7 +269,7 @@ Nella cartella:
     MODULES=(btrfs nvidia nvidia_modeset nvidia_uvm nvidia_drm)
     ```
 
-4. **Hook mkinitcpio:**
+5. **Hook mkinitcpio:**
     Questo hook automatizza la ricostruzione di initramfs (il file base di avvio) ad ogni modifica del driver Nvidia.
     ```
     sudo mkdir /etc/pacman.d/hooks/
@@ -292,10 +294,12 @@ Nella cartella:
     Exec=/bin/sh -c 'while read -r trg; do case $trg in linux) exit 0; esac; done; /usr/bin/mkinitcpio -P'
     ```
 
-5. **Ricostruzione di initramfs:**
+
+6. **Ricostruzione di initramfs:**
     Poiché abbiamo già installato i driver al passaggio 1, prima di configurare l'hook, dobbiamo innescare manualmente la ricostruzione di initramfs:
+    
     ```
-    mkinitcpio -P
+    sudo mkinitcpio -P
     ```
 
 #### AMD (non fare se Nvidia)
@@ -319,11 +323,11 @@ yay -S --needed mesa lib32-mesa vulkan-intel lib32-vulkan-intel vulkan-icd-loade
     ```
 - Driver
     ```
-    yay -S foomatic-db-engine foomatic-db foomatic-db-ppds foomatic-db-nonfree foomatic-db-nonfree-ppds gutenprint foomatic-db-gutenprint-ppds --needed
+    yay -S --needed foomatic-db-engine foomatic-db foomatic-db-ppds foomatic-db-nonfree foomatic-db-nonfree-ppds gutenprint foomatic-db-gutenprint-ppds
     ```
 - Stampanti HP
     ```
-    yay -S python-pyqt5 hplip --needed
+    yay -S --needed python-pyqt5 hplip
     ```
 - Stampanti Epson
     ```
@@ -339,7 +343,7 @@ sudo systemctl enable --now bluetooth.service
 #### [PipeWire](https://pipewire.org/) (audio)
 Per avere il suono **/!\ Rispondete sì a tutto per sostituire tutto con i nuovi pacchetti. /!\**
 ```
-sudo pacman -S --needed pipewire lib32-pipewire pipewire-pulse pipewire-alsa pipewire-jack wireplumber alsa-utils alsa-firmware alsa-tools
+sudo pacman -S --needed pipewire lib32-pipewire pipewire-pulse pipewire-alsa pipewire-jack wireplumber alsa-utils alsa-firmware alsa-tools sof-firmware
 ```
 
 ### SOFTWARE DI BASE
@@ -347,7 +351,7 @@ sudo pacman -S --needed pipewire lib32-pipewire pipewire-pulse pipewire-alsa pip
 #### Componenti Base
 Qui troverete codec, utility, font, driver:
 ```
-yay -S gst-plugins-bad gst-plugins-base gst-plugins-ugly gst-plugin-pipewire gstreamer-vaapi gst-plugins-good gst-libav gstreamer reflector-simple downgrade rebuild-detector mkinitcpio-firmware xdg-desktop-portal-gtk xdg-desktop-portal neofetch power-profiles-daemon lib32-pipewire hunspell hunspell-fr p7zip unrar ttf-liberation noto-fonts noto-fonts-emoji adobe-source-code-pro-fonts otf-font-awesome ttf-droid ntfs-3g fuse2fs exfat-utils fuse2 fuse3 bash-completion man-db man-pages --needed
+yay -S --needed gst-plugins-bad gst-plugins-base gst-plugins-ugly gst-plugin-pipewire gstreamer-vaapi gst-plugins-good gst-libav gstreamer downgrade rebuild-detector mkinitcpio-firmware xdg-desktop-portal-gtk xdg-desktop-portal neofetch power-profiles-daemon lib32-pipewire hunspell hunspell-fr p7zip unrar ttf-liberation noto-fonts noto-fonts-emoji adobe-source-code-pro-fonts otf-font-awesome ttf-droid ntfs-3g fuse2fs exfat-utils fuse2 fuse3 bash-completion man-db man-pages
 ```
 
 #### Software Vari
@@ -359,7 +363,7 @@ yay -S libreoffice-fresh libreoffice-fresh-fr vlc discord gimp obs-studio gnome-
 
 Ecco vari software per grafica, video (editing, supporto di codec), utilità dell'interfaccia grafica, ecc.
 ```
-yay -S xdg-desktop-portal-kde okular print-manager kdenlive gwenview spectacle partitionmanager ffmpegthumbs qt6-wayland kdeplasma-addons powerdevil kcalc plasma-systemmonitor qt6-multimedia qt6-multimedia-gstreamer qt6-multimedia-ffmpeg kwalletmanager
+yay -S --needed xdg-desktop-portal-kde okular print-manager kdenlive gwenview spectacle partitionmanager ffmpegthumbs qt6-wayland kdeplasma-addons powerdevil kcalc plasma-systemmonitor qt6-multimedia qt6-multimedia-gstreamer qt6-multimedia-ffmpeg kwalletmanager
 ```
 
 Video Aggiuntivo:
@@ -383,7 +387,7 @@ yay -S reflector-simple
 Un comando per generare una lista di mirror, da eseguire una volta dopo la prima installazione e da ripetere se viaggiate, se cambiate paese, se trovate lento il download dei pacchetti o se trovate un errore che vi dice che un mirror è offline:
 
 ```
-sudo reflector --score 20 --fastest 5 --sort rate --save /etc/pacman.d/mirrorlist
+sudo reflector --verbose --score 20 --fastest 5 --sort rate --save /etc/pacman.d/mirrorlist
 ```
 
 #### Timeshift
@@ -448,7 +452,7 @@ Lutris è un gestore di giochi FOSS (Free, Open Source) per sistemi operativi ba
 Lutris consente di cercare un gioco o una piattaforma (Ubisoft Connect, EA Store, GOG, Battlenet, ecc.) e propone uno script di installazione che configurerà ciò che è necessario affinché la vostra scelta funzioni con Wine o Proton.
 
 ```
-sudo pacman -S --needed lutris wine-staging
+sudo pacman -S lutris wine-staging
 ```
 
 Video aggiuntivo:
@@ -459,12 +463,12 @@ Video aggiuntivo:
 Driver Linux avanzato per controller wireless Xbox 360|One|S|X (incluso con Xbox One S) e molti altri controller come 8bitdo ([xpadneo](https://github.com/atar-axis/xpadneo)) ([xone](https://github.com/medusalix/xone))
 
 ```
-yay -S --needed xpadneo-dkms 
+yay -S xpadneo-dkms 
 ```
 
 Driver Linux avanzato per controller PS4/PS5
 ```
-yay -S --needed bluez-utils-compat ds4drv dualsensectl
+yay -S ds4drv dualsensectl
 ```
 
 ### Visualizzazione delle prestazioni di gioco
@@ -474,7 +478,7 @@ yay -S --needed bluez-utils-compat ds4drv dualsensectl
 Qui, installiamo GOverlay che è un'interfaccia grafica per configurare MangoHud.
 
 ```
-yay -S goverlay --needed
+yay -S goverlay
 ```
 
 ### Migliorare la compatibilità dei giochi Windows
@@ -490,7 +494,7 @@ Aumentiamo il valore predefinito di questa variabile, permettendo lo stoccaggio 
   ```
     la linea seguente:
       `
-      vm.max_map_count=16777216
+      vm.max_map_count=2147483642
       `
 
 
@@ -549,7 +553,6 @@ In precedenza noto come xdg-app, si tratta di uno strumento di distribuzione sof
 ```
 yay -S flatpak flatpak-kcm
 flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
-flatpak install com.bitwarden.desktop com.discordapp.Discord com.github.tchx84.Flatseal com.gitlab.davem.ClamTk com.heroicgameslauncher.hgl com.microsoft.Edge com. moonlight_stream.Moonlight com.rtosta.zapzap com.spotify.Client com.sweethome3d.Sweethome3d com.tutanota.Tutanota com.valvesoftware.Steam com.visualstudio.code info.febvre. Komikku io.github.anirbandey1.ChatbotClient io.github.koromelodev.mindmate net.davidotek.pupgui2 net.lutris.Lutris one.flipperzero.qFlipper org.bleachbit.BleachBit org. gnome.Boxes org.gnome.OCRFeeder org.kde.gcompris org.kde.kdenlive org.libreoffice.LibreOffice org.videolan.VLC org.yuzu_emu.yuzu us.zoom.Zoom xyz.ketok.Speedtest
 ```
 
 ## Risoluzione dei problemi <a name="troubleshooting"/>
@@ -558,11 +561,6 @@ flatpak install com.bitwarden.desktop com.discordapp.Discord com.github.tchx84.F
 <img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/Cardiac-icon.png" width="30" height="30"> [Arch Linux Parte 4 Manutenzione / aggiornamento](https://youtu.be/Z7POSK2jnII?si=SNwagGGJXRVkYPdc)
  
 <img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/Cardiac-icon.png" width="30" height="30"> [Arch Linux Parte 5 Arch-Chroot](https://youtu.be/iandJSjePiA?si=7uI8JZ-VxAVOsPTh)
-
-- Se non avete audio, provate :
-    ```
-    yay -S sof-firmware
-    ```
 
 - Per aiuto, visita il Discord di GLF (fr/en): [Discord GLF](http://discord.gg/EP3Jm8YMvj)
 

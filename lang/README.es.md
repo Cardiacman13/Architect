@@ -24,8 +24,7 @@ Descarga el ISO: [**Arch Linux - Descargas**](https://archlinux.org/download/)
 2. [Potencia tu escritorio](#elevate)
 3. [Lleva tus Juegos a Otro Nivel](#gaming)
 4. [Optimización de Precisión](#optimization)
-5. [Solución de Problemas](#troubleshooting)
-6. [Cosas de la Comunidad](#community)
+5. [Cosas de la Comunidad](#community)
 
 ## Script de Post-Instalación de Arch Linux <a name="script"/>
 
@@ -71,10 +70,8 @@ Prepara tu sistema para el gaming con la configuración de GPU, que incluye:
 - Elegir entre los controladores estándar de Nvidia o la variante `nvidia-all`:
   - **Nvidia**: Esta es la opción recomendada para la mayoría de los usuarios. Involucra:
     - Instalación de paquetes de Nvidia.
-    - Instalación de CUDA.
   - **Nvidia-all**: Esto es para usuarios avanzados que saben cómo mantenerlo. Involucra:
     - Clonar e instalar desde el repositorio `Frogging-Family/nvidia-all`.
-    - Instalación de CUDA.
 
 ### 4. Instalar Algunos Paquetes Básicos
 Instala paquetes fundamentales para una experiencia completa:
@@ -204,6 +201,9 @@ echo "¡Hola mundo!"            # Comando de ejemplo
    alias clean-arch='yay -Sc && yay -Yc && flatpak remove --unused'
    ```
    ```
+   alias update-mirrors='sudo reflector --verbose --score 20 --fastest 5 --sort rate --save /etc/pacman.d/mirrorlist'
+   ```
+   ```
    alias fix-key='sudo rm /var/lib/pacman/sync/* && sudo rm -rf /etc/pacman.d/gnupg/* && sudo pacman-key --init && sudo pacman-key --populate y sudo pacman -Sy --noconfirm archlinux-keyring y sudo pacman --noconfirm -Su'
    ```
    
@@ -217,7 +217,7 @@ Video adicional explicando cómo recuperar el acceso a Wayland desde GDM:
 
 1. **Instalar los componentes principales:**
     ```
-    yay -S --needed nvidia-dkms nvidia-utils lib32-nvidia-utils nvidia-settings vulkan-icd-loader lib32-vulkan-icd-loader cuda
+    yay -S --needed nvidia-dkms nvidia-utils lib32-nvidia-utils nvidia-settings vulkan-icd-loader lib32-vulkan-icd-loader
     ```
 
 2. **Habilitar nvidia-drm.modeset=1:**
@@ -252,7 +252,8 @@ En la carpeta:
     ```
    
 3. **Cargar los módulos de Nvidia como prioridad al inicio de Arch:**
-    Este paso a veces es necesario para ciertos entornos de escritorio o gestores de ventanas.
+    Este paso a veces es necesario para ciertos entornos de escritorio o gestores de ventanas. Opcional, para hacer solo si se detectan problemas durante el arranque.
+   
     ```
     kate /etc/mkinitcpio.conf
     ```
@@ -265,7 +266,7 @@ En la carpeta:
     MODULES=(btrfs nvidia nvidia_modeset nvidia_uvm nvidia_drm)
     ```
 
-4. **Hook de mkinitcpio:**
+5. **Hook de mkinitcpio:**
     Este hook automatiza la reconstrucción del initramfs (el archivo básico de arranque) con cada modificación del controlador Nvidia.
     ```
     sudo mkdir /etc/pacman.d/hooks/
@@ -290,10 +291,10 @@ En la carpeta:
     Exec=/bin/sh -c 'while read -r trg; do case $trg in linux) exit 0; esac; done; /usr/bin/mkinitcpio -P'
     ```
 
-5. **Reconstrucción del initramfs:**
+6. **Reconstrucción del initramfs:**
     Ya que hemos instalado los controladores en el paso 1, así antes de configurar el hook, necesitamos activar manualmente la reconstrucción del initramfs:
     ```
-    mkinitcpio -P
+    sudo mkinitcpio -P
     ```
 
 #### AMD (no hacer si Nvidia)
@@ -311,17 +312,17 @@ yay -S --needed mesa lib32-mesa vulkan-intel lib32-vulkan-intel vulkan-icd-loade
 #### Impresoras
 - Esenciales
     ```
-    yay -S ghostscript gsfonts cups cups-filters cups-pdf system-config-printer
-    avahi --needed
+    yay -S --needed ghostscript gsfonts cups cups-filters cups-pdf system-config-printer
+    avahi
     sudo systemctl enable --now avahi-daemon cups
     ```
 - Controladores
     ```
-    yay -S foomatic-db-engine foomatic-db foomatic-db-ppds foomatic-db-nonfree foomatic-db-nonfree-ppds gutenprint foomatic-db-gutenprint-ppds --needed
+    yay -S --needed foomatic-db-engine foomatic-db foomatic-db-ppds foomatic-db-nonfree foomatic-db-nonfree-ppds gutenprint foomatic-db-gutenprint-ppds
     ```
 - Impresoras HP
     ```
-    yay -S python-pyqt5 hplip --needed
+    yay -S --needed python-pyqt5 hplip
     ```
 - Impresoras Epson
     ```
@@ -339,6 +340,12 @@ Para tener sonido **/!\ Decir sí a todo para reemplazar todo con los nuevos paq
 ```
 sudo pacman -S --needed pipewire lib32-pipewire pipewire-pulse pipewire-alsa pipewire-jack wireplumber alsa-utils alsa-firmware alsa
 ```
+#### Componentes Básicos
+Aquí encontrarás códecs, utilidades, fuentes, controladores:
+```
+yay -S --needed gst-plugins-bad gst-plugins-base gst-plugins-ugly gst-plugin-pipewire gstreamer-vaapi gst-plugins-good gst-libav gstreamer downgrade rebuild-detector mkinitcpio-firmware xdg-desktop-portal-gtk xdg-desktop-portal neofetch power-profiles-daemon lib32-pipewire hunspell hunspell-es hunspell-en p7zip unrar ttf-liberation noto-fonts noto-fonts-emoji adobe-source-code-pro-fonts otf-font-awesome ttf-droid ntfs-3g fuse2fs exfat-utils fuse2 fuse3 bash-completion man-db man-pages
+```
+
 #### Software Variado
 ```
 yay -S libreoffice-fresh libreoffice-fresh-fr vlc discord gimp obs-studio gnome-disk-utility visual-studio-code-bin
@@ -348,7 +355,7 @@ yay -S libreoffice-fresh libreoffice-fresh-fr vlc discord gimp obs-studio gnome-
 
 Aquí hay varios software para gráficos, video (edición, soporte de códec), utilidades de interfaz gráfica, etc.
 ```
-yay -S xdg-desktop-portal-kde okular print-manager kdenlive gwenview spectacle partitionmanager ffmpegthumbs qt6-wayland kdeplasma-addons powerdevil kcalc plasma-systemmonitor qt6-multimedia qt6-multimedia-gstreamer qt6-multimedia-ffmpeg kwalletmanager
+yay -S --needed xdg-desktop-portal-kde okular print-manager kdenlive gwenview spectacle partitionmanager ffmpegthumbs qt6-wayland kdeplasma-addons powerdevil kcalc plasma-systemmonitor qt6-multimedia qt6-multimedia-gstreamer qt6-multimedia-ffmpeg kwalletmanager
 ```
 
 Video Adicional:
@@ -372,7 +379,7 @@ yay -S reflector-simple
 Un comando para generar una lista de espejos, se debe realizar una vez después de la primera instalación y repetirse si viajas, cambias de país, si encuentras la descarga de paquetes lenta, o si encuentras un error que te dice que un espejo está caído:
 
 ```
-sudo reflector --score 20 --fastest 5 --sort rate --save /etc/pacman.d/mirrorlist
+sudo reflector --verbose --score 20 --fastest 5 --sort rate --save /etc/pacman.d/mirrorlist
 ```
 
 #### Timeshift
@@ -437,7 +444,7 @@ Lutris es un gestor de juegos FOSS (Free, Open Source) para sistemas operativos 
 Lutris permite buscar un juego o una plataforma (Ubisoft Connect, EA Store, GOG, Battlenet, etc.) y propone un guion de instalación que configurará lo necesario para que tu elección funcione con Wine o Proton.
 
 ```
-sudo pacman -S --needed lutris wine-staging
+sudo pacman -S lutris wine-staging
 ```
 
 Video Adicional:
@@ -448,11 +455,11 @@ Video Adicional:
 Controlador avanzado de Linux para controladores inalámbricos Xbox 360|One|S|X (incluidos con Xbox One S) y muchos otros controladores como 8bitdo ([xpadneo](https://github.com/atar-axis/xpadneo)) ([xone](https://github.com/medusalix/xone))
 
 ```
-yay -S --needed xpadneo-dkms 
+yay -S xpadneo-dkms 
 ```
 Controlador avanzado de Linux para controladores PS4/PS5
 ```
-yay -S --needed ds4drv dualsensectl
+yay -S ds4drv dualsensectl
 ```
 
 ### Mostrando el rendimiento en juegos
@@ -462,7 +469,7 @@ Es la herramienta que necesitas si quieres ver tus FPS en juegos, la carga de tu
 Aquí, instalamos GOverlay que es una interfaz gráfica para configurar MangoHud.
 
 ```
-yay -S goverlay --needed
+yay -S goverlay
 ```
 
 ### Mejorando la compatibilidad de juegos de Windows
@@ -478,7 +485,7 @@ Incrementamos el valor por defecto de esta variable, permitiendo almacenar más 
   ``` 
     la línea siguiente:
       ` 
-      vm.max_map_count=16777216
+      vm.max_map_count=2147483642
       `
 
 
@@ -538,7 +545,6 @@ Anteriormente conocido como xdg-app, es una utilidad de despliegue de software y
 ```
 yay -S flatpak flatpak-kcm
 flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
-flatpak install com.bitwarden.desktop com.discordapp.Discord com.github.tchx84.Flatseal com.gitlab.davem.ClamTk com.heroicgames
 ```
 
 ## Fuentes <a name="community"/>

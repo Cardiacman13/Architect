@@ -2,15 +2,12 @@ source src/cmd.sh
 
 function nvidia_config() {
     # hook
-    exec_log "sudo mkdir -p /etc/pacman.d/hooks/" "Hook folder creation"
-    exec_log "sudo cp assets/data/nvidia.hook /etc/pacman.d/hooks/nvidia.hook" "Hook file copy"
-
-    # mkinitcpio
-    exec_log "sudo sed -i '/MODULES=/ s/)/ nvidia nvidia_modeset nvidia_uvm nvidia_drm)/' '/etc/mkinitcpio.conf'" "mkinitcpio configuration"
+    exec_log "sudo mkdir -p /etc/pacman.d/hooks/" "Creating hook folder"
+    copy_bak "assets/data" "nvidia.hook" "/etc/pacman.d/hooks" true
 
     # bootloader
     if [[ ${BOOT_LOADER} == "grub" ]]; then
-        exec_log "sudo sed -i 's/GRUB_CMDLINE_LINUX_DEFAULT='\''nowatchdog nvme_load=YES loglevel=3'\''/GRUB_CMDLINE_LINUX_DEFAULT='\''nowatchdog nvme_load=YES loglevel=3 nvidia-drm.modeset=1'\''/' /etc/default/grub" "grub configuration"
+        exec_log "sudo sed -i '/^GRUB_CMDLINE_LINUX_DEFAULT=/ s/\"$/ nvidia-drm.modeset=1\"/' /etc/default/grub" "GRUB cmdline configuration"
         exec_log "sudo grub-mkconfig -o /boot/grub/grub.cfg" "GRUB update"
     else
         exec_log "sudo sed -i '/^options/ s/$/ nvidia-drm.modeset=1/' /boot/loader/entries/*.conf" "systemd-boot configuration"
@@ -51,12 +48,11 @@ function nvidia_drivers() {
 
     nvidia_config
     if [[ ${user_nvidia_all} == "Y" ]]; then
-        exec_log "git clone https://github.com/Frogging-Family/nvidia-all.git" "cloning of nvidia-all repository"
+        exec_log "git clone https://github.com/Frogging-Family/nvidia-all.git" "cloning nvidia-all repository"
         cd nvidia-all || exit
         makepkg -si --noconfirm
         cd .. || exit
         exec_log "rm -rf nvidia-all" "removal of nvidia-all repository"
-        install_one "cuda"
 
     else
         local -r inlst="
@@ -66,10 +62,7 @@ function nvidia_drivers() {
             nvidia-settings
             vulkan-icd-loader
             lib32-vulkan-icd-loader
-            cuda
         "
         install_lst "${inlst}"
     fi
-
-    exec_log "sudo systemctl enable nvidia-{hibernate,resume,suspend}" "activation of nvidia-{hibernate,resume,suspend}"
 }

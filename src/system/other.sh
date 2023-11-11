@@ -5,22 +5,25 @@ function sound_server() {
         pulseaudio
         pulseaudio-bluetooth
         pulseaudio-alsa
+        pulseaudio-jack
         jack2
-        pipewire-media-session
+        pipewire-media-session 
     "
     local -r inlst="
         pipewire
+        wireplumber
         lib32-pipewire
-        pipewire-pulse
         pipewire-alsa
         pipewire-jack
-        wireplumber
+        pipewire-pulse
         alsa-utils
+        alsa-plugins
         alsa-firmware
-        alsa-tools
+        alsa-ucm-conf
+        sof-firmware
     "
 
-    uninstall_lst "${unlst}" "Clean old sound server dependencies"
+    uninstall_lst "${unlst}" "Cleaning old sound server dependencies"
     install_lst "${inlst}"
 }
 
@@ -30,8 +33,7 @@ function setup_system_loaders() {
         return
     fi
 
-    exec_log "sudo mkdir -p '/etc/pacman.d/hooks/'" "Creating /etc/pacman.d/hooks/"
-    exec_log "sudo cp 'assets/data/grub.hook' '/etc/pacman.d/hooks/'" "Copying grub.hook to /etc/pacman.d/hooks/"
+    copy_bak "assets/data" "grub.hook" "/etc/pacman.d/hooks" true
     install_one "update-grub"
 }
 

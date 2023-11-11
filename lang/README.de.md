@@ -61,6 +61,7 @@ Vereinfachen Sie Ihre Befehlszeilenaufgaben mit diesen hilfreichen Aliasen:
 - update-arch: Aktualisieren Sie Ihre System-Apps mit einem einzigen Befehl.
 - clean-arch: Reinigen Sie Ihr System, indem Sie ungenutzte Pakete entfernen.
 - fix-key: Behebt schlüsselbezogene Probleme und gewährleistet einen reibungslosen Aktualisierungsprozess.
+- update-mirrors: Aktualisiert Ihre Liste von Download-Spiegeln
 
 ### 3. Unterstützung bei der Installation von AMD-, NVIDIA- oder Intel-GPUs für Gaming
 Machen Sie Ihr System mit der GPU-Einrichtung spielbereit, dazu gehören:
@@ -71,10 +72,8 @@ Machen Sie Ihr System mit der GPU-Einrichtung spielbereit, dazu gehören:
 - Auswahl zwischen Standard-Nvidia-Treibern oder der Variante `nvidia-all`:
   - **Nvidia**: Dies ist die empfohlene Wahl für die meisten Benutzer. Dazu gehört:
     - Installation von Nvidia-Paketen.
-    - Installation von CUDA.
   - **Nvidia-all**: Dies ist für fortgeschrittene Benutzer, die wissen, wie man es pflegt. Dazu gehört:
     - Klonen und Installieren aus dem `Frogging-Family/nvidia-all`-Repository.
-    - Installation von CUDA.
 
 ### 4. Installation einiger Basispakete
 Installieren Sie grundlegende Pakete für ein komplettes Erlebnis:
@@ -204,6 +203,9 @@ echo "Hello world !"            # Beispielbefehl
    alias clean-arch='yay -Sc && yay -Yc && flatpak remove --unused'
    ```
    ```
+   alias update-mirrors='sudo reflector --verbose --score 20 --fastest 5 --sort rate --save /etc/pacman.d/mirrorlist'
+   ```
+   ```
    alias fix-key='sudo rm /var/lib/pacman/sync/* && sudo rm -rf /etc/pacman.d/gnupg/* && sudo pacman-key --init && sudo pacman-key --populate && sudo pacman -Sy --noconfirm archlinux-keyring und sudo pacman --noconfirm -Su'
    ```
    
@@ -217,7 +219,7 @@ Ergänzendes Video, das erklärt, wie man von GDM aus wieder Zugang zu Wayland e
 
 1. **Installieren Sie die Kernkomponenten:**
     ```
-    yay -S --needed nvidia-dkms nvidia-utils lib32-nvidia-utils nvidia-settings vulkan-icd-loader lib32-vulkan-icd-loader cuda
+    yay -S --needed nvidia-dkms nvidia-utils lib32-nvidia-utils nvidia-settings vulkan-icd-loader lib32-vulkan-icd-loader
     ```
 
 2. **Aktivieren von nvidia-drm.modeset=1:**
@@ -252,7 +254,7 @@ Im Ordner:
     ```
    
 3. **Laden Sie Nvidia-Module als Priorität beim Arch-Start:**
-    Dieser Schritt ist manchmal notwendig für bestimmte Desktop-Umgebungen oder Fenstermanager.
+    Dieser Schritt ist manchmal notwendig für bestimmte Desktop-Umgebungen oder Fenstermanager. Optional, nur auszuführen, wenn Sie Probleme beim Starten bemerken."
     ```
     kate /etc/mkinitcpio.conf
     ```
@@ -293,7 +295,7 @@ Im Ordner:
 5. **Wiederaufbau von initramfs:**
     Da wir bereits in Schritt 1 die Treiber installiert haben, also bevor wir den Hook eingerichtet haben, müssen wir den Wiederaufbau von initramfs manuell auslösen:
     ```
-    mkinitcpio -P
+    sudo mkinitcpio -P
     ```
 
 #### AMD (nicht machen, wenn Nvidia)
@@ -317,11 +319,11 @@ yay -S --needed mesa lib32-mesa vulkan-intel lib32-vulkan-intel vulkan-icd-loade
     ```
 - Treiber
     ```
-    yay -S foomatic-db-engine foomatic-db foomatic-db-ppds foomatic-db-nonfree foomatic-db-nonfree-ppds gutenprint foomatic-db-gutenprint-ppds --needed
+    yay -S --needed foomatic-db-engine foomatic-db foomatic-db-ppds foomatic-db-nonfree foomatic-db-nonfree-ppds gutenprint foomatic-db-gutenprint-ppds
     ```
 - HP Drucker
     ```
-    yay -S python-pyqt5 hplip --needed
+    yay -S --needed python-pyqt5 hplip
     ```
 - Epson Drucker
     ```
@@ -337,7 +339,7 @@ sudo systemctl enable --now  bluetooth.service
 #### [PipeWire](https://pipewire.org/) (Sound)
 Um Sound zu haben **/!\ Sagen Sie zu allem Ja, um alles mit den neuen Paketen zu überschreiben. /!\**
 ```
-sudo pacman -S --needed pipewire lib32-pipewire pipewire-pulse pipewire-alsa pipewire-jack wireplumber alsa-utils alsa-firmware alsa-tools
+sudo pacman -S --needed pipewire lib32-pipewire pipewire-pulse pipewire-alsa pipewire-jack wireplumber alsa-utils alsa-firmware alsa-tools sof-firmware
 ```
 
 ### GRUNDLEGENDE SOFTWARE
@@ -345,7 +347,7 @@ sudo pacman -S --needed pipewire lib32-pipewire pipewire-pulse pipewire-alsa pip
 #### Basis-Komponenten
 Hier finden Sie Codecs, Dienstprogramme, Schriftarten, Treiber:
 ```
-yay -S gst-plugins-bad gst-plugins-base gst-plugins-ugly gst-plugin-pipewire gstreamer-vaapi gst-plugins-good gst-libav gstreamer reflector-simple downgrade rebuild-detector mkinitcpio-firmware xdg-desktop-portal-gtk xdg-desktop-portal neofetch power-profiles-daemon lib32-pipewire hunspell hunspell-fr p7zip unrar ttf-liberation noto-fonts noto-fonts-emoji adobe-source-code-pro-fonts otf-font-awesome ttf-droid ntfs-3g fuse2fs exfat-utils fuse2 fuse3 bash-completion man-db man-pages --needed
+yay -S --needed gst-plugins-bad gst-plugins-base gst-plugins-ugly gst-plugin-pipewire gstreamer-vaapi gst-plugins-good gst-libav gstreamer downgrade rebuild-detector mkinitcpio-firmware xdg-desktop-portal-gtk xdg-desktop-portal neofetch power-profiles-daemon lib32-pipewire hunspell hunspell-fr p7zip unrar ttf-liberation noto-fonts noto-fonts-emoji adobe-source-code-pro-fonts otf-font-awesome ttf-droid ntfs-3g fuse2fs exfat-utils fuse2 fuse3 bash-completion man-db man-pages
 ```
 
 #### Verschiedene Software
@@ -357,7 +359,7 @@ yay -S libreoffice-fresh libreoffice-fresh-fr vlc discord gimp obs-studio gnome-
 
 Hier finden Sie verschiedene Software für Grafik, Video (Bearbeitung, Codec-Unterstützung), grafische Schnittstellendienstprogramme usw.
 ```
-yay -S xdg-desktop-portal-kde okular print-manager kdenlive gwenview spectacle partitionmanager ffmpegthumbs qt6-wayland kdeplasma-addons powerdevil kcalc plasma-systemmonitor qt6-multimedia qt6-multimedia-gstreamer qt6-multimedia-ffmpeg kwalletmanager
+yay -S --needed xdg-desktop-portal-kde okular print-manager kdenlive gwenview spectacle partitionmanager ffmpegthumbs qt6-wayland kdeplasma-addons powerdevil kcalc plasma-systemmonitor qt6-multimedia qt6-multimedia-gstreamer qt6-multimedia-ffmpeg kwalletmanager
 ```
 
 Zusätzliches Video:
@@ -381,7 +383,7 @@ yay -S reflector-simple
 Ein Befehl zur Generierung einer Liste von Spiegeln, einmal nach der ersten Installation und wiederholt bei Reisen, Länderwechseln, zu langsamen Paket-Downloads oder bei einer Meldung, dass ein Spiegel nicht erreichbar ist:
 
 ```
-sudo reflector --score 20 --fastest 5 --sort rate --save /etc/pacman.d/mirrorlist
+sudo reflector --verbose --score 20 --fastest 5 --sort rate --save /etc/pacman.d/mirrorlist
 ```
 
 #### Timeshift
@@ -444,7 +446,7 @@ Lutris ist ein FOSS (Freie, Open Source) Spielmanager für auf Linux basierende 
 Lutris ermöglicht es, nach einem Spiel oder einer Plattform (Ubisoft Connect, EA Store, GOG, Battlenet usw.) zu suchen und schlägt ein Installationsskript vor, das konfiguriert, was für deine Wahl benötigt wird, um mit Wine oder Proton zu arbeiten.
 
 ```
-sudo pacman -S --needed lutris wine-staging
+sudo pacman -S lutris wine-staging
 ```
 
 Zusätzliches Video:
@@ -456,11 +458,11 @@ Fortgeschrittener Linux-Treiber für Xbox 360|One|S|X kabellose Controller (geli
 
 
 ```
-yay -S --needed xpadneo-dkms 
+yay -S xpadneo-dkms 
 ```
 Fortgeschrittener Linux-Treiber für PS4/PS5-Controller
 ```
-yay -S --needed ds4drv dualsensectl
+yay -S ds4drv dualsensectl
 ```
 
 ### Anzeige der In-Game-Leistung
@@ -470,7 +472,7 @@ Es ist das Werkzeug, das du benötigst, wenn du deine In-Game-FPS, deine CPU- od
 Hier installieren wir GOverlay, das eine grafische Oberfläche ist, um MangoHud zu konfigurieren.
 
 ```
-yay -S goverlay --needed
+yay -S goverlay
 ```
 
 ### Verbesserung der Kompatibilität von Windows-Spielen
@@ -486,7 +488,7 @@ Wir erhöhen den Standardwert dieser Variablen, um die Speicherung von mehr "Spe
   ``` 
     die folgende Zeile hinzu:
       ` 
-      vm.max_map_count=16777216
+      vm.max_map_count=2147483642
       `
 
 
@@ -545,7 +547,6 @@ Ehemals als xdg-app bekannt, ist dies ein Software-Bereitstellungs- und Paketver
 ```
 yay -S flatpak flatpak-kcm
 flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
-flatpak install com.bitwarden.desktop com.discordapp.Discord com.github.tchx84.Flatseal com.gitlab.davem.ClamTk com.heroicgameslauncher.hgl com.microsoft.Edge com.moonlight_stream.Moonlight com.rtosta.zapzap com.spotify.Client com.sweethome3d.Sweethome3d com.tutanota.Tutanota com.valvesoftware.Steam com.visualstudio.code info.febvre.Komikku io.github.anirbandey1.ChatbotClient io.github.koromelodev.mindmate net.davidotek.pupgui2 net.lutris.Lutris one.flipperzero.qFlipper org.bleachbit.BleachBit org.gnome.Boxes org.gnome.OCRFeeder org.kde.gcompris org.kde.kdenlive org.libreoffice.LibreOffice org.videolan.VLC org.yuzu_emu.yuzu us.zoom.Zoom xyz.ketok.Speedtest
 ```
 
 ## Fehlerbehebung <a name="troubleshooting"/>
@@ -554,11 +555,6 @@ flatpak install com.bitwarden.desktop com.discordapp.Discord com.github.tchx84.F
 <img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/Cardiac-icon.png" width="30" height="30"> [Arch Linux Teil 4 - Wartung / Aktualisierung](https://youtu.be/Z7POSK2jnII?si=SNwagGGJXRVkYPdc)
 
 <img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/Cardiac-icon.png" width="30" height="30"> [Arch Linux Teil 5 - Arch-Chroot](https://youtu.be/iandJSjePiA?si=7uI8JZ-VxAVOsPTh)
-
-- Wenn Sie keinen Ton haben, versuchen Sie:
-    ```
-    yay -S sof-firmware
-    ```
 
 - Für Hilfe besuchen Sie das GLF Discord (fr/en): [Discord GLF](http://discord.gg/EP3Jm8YMvj)
 

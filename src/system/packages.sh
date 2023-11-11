@@ -10,10 +10,8 @@ function usefull_package() {
         gstreamer-vaapi
         gst-plugins-good
         gst-libav
-        sof-firmware
         fwupd
         xdg-utils
-        reflector-simple
         downgrade
         rebuild-detector
         mkinitcpio-firmware

@@ -1,6 +1,6 @@
 # ARCH LINUX POST-INSTALLATION TUTORIAL AND SCRIPT
 
-[**Version Française**](https://github.com/Cardiacman13/Tuto-Arch/blob/main/lang/README.fr.md) / [**Versión Española**](https://github.com/Cardiacman13/Tuto-Arch/blob/main/lang/README.es.md) / [**Versione italiana**](https://github.com/Cardiacman13/Tuto-Arch/blob/main/lang/README.it.md) / [**deutsche Version**](https://github.com/Cardiacman13/Tuto-Arch/blob/main/lang/README.ger.md)
+[**Version Française**](https://github.com/Cardiacman13/Tuto-Arch/blob/main/lang/README.fr.md) / [**Versión Española**](https://github.com/Cardiacman13/Tuto-Arch/blob/main/lang/README.es.md) / [**Versione italiana**](https://github.com/Cardiacman13/Tuto-Arch/blob/main/lang/README.it.md) / [**deutsche Version**](https://github.com/Cardiacman13/Tuto-Arch/blob/main/lang/README.de.md)
 
 ## Presentation
 
@@ -20,9 +20,9 @@ Download the ISO: [**Arch Linux - Downloads**](https://archlinux.org/download/)
 
 ## Table of Contents
 1. [All-in-one script](#script)
-2. [Precision Optimization](#optimization)
-3. [Elevate your desktop](#elevate)
-4. [Level Up Your Gaming](#gaming)
+2. [Tutorial](#elevate)
+3. [Gaming](#gaming)
+4. [Optimization](#optimization)
 5. [Troubleshooting](#troubleshooting)
 6. [Community stuff](#community)
 
@@ -60,6 +60,7 @@ Simplify your command-line tasks with these helpful aliases:
 - update-arch: Updates your system apps with a single command.
 - clean-arch: Cleans up your system by removing unused packages.
 - fix-key: Fixes key-related issues, ensuring a smooth update process.
+- update-mirrors: Updates your system's mirror list.
 
 
 ### 3. Assisting with AMD, NVIDIA, or Intel GPU Installation for Gaming
@@ -70,11 +71,9 @@ Get your gaming-ready with GPU setup, which includes:
 - Installing 32-bit libraries.
 - Choosing between standard Nvidia drivers or the `nvidia-all` variant:
   - **Nvidia**: This is the recommended choice for most users. It involves:
-    - Installing Nvidia packages.
-    - Installing CUDA.
+    - Installing Nvidia DKMS and 32b libs packages.
   - **Nvidia-all**: This is for advanced users who know how to maintain it. It involves:
     - Cloning and installing from the `Frogging-Family/nvidia-all` repository.
-    - Installing CUDA.
 
 ### 4. Install Some Base Packages
 Install fundamental packages for a complete experience:
@@ -204,9 +203,12 @@ echo "Hello world !"            # Example command
    alias clean-arch='yay -Sc && yay -Yc && flatpak remove --unused'
    ```
    ```
+   alias update-mirrors='sudo reflector --verbose --score 20 --fastest 5 --sort rate --save /etc/pacman.d/mirrorlist'
+   ```
+   ```
    alias fix-key='sudo rm /var/lib/pacman/sync/* && sudo rm -rf /etc/pacman.d/gnupg/* && sudo pacman-key --init && sudo pacman-key --populate && sudo pacman -Sy --noconfirm archlinux-keyring && sudo pacman --noconfirm -Su'
    ```
-   
+
    Restart the terminal.
 
 ### HARDWARE SUPPORT
@@ -217,7 +219,7 @@ Supplementary video explaining how to regain access to Wayland from GDM:
 
 1. **Install the core components:**
     ```
-    yay -S --needed nvidia-dkms nvidia-utils lib32-nvidia-utils nvidia-settings vulkan-icd-loader lib32-vulkan-icd-loader cuda
+    yay -S --needed nvidia-dkms nvidia-utils lib32-nvidia-utils nvidia-settings vulkan-icd-loader lib32-vulkan-icd-loader
     ```
 
 2. **Enable nvidia-drm.modeset=1:**
@@ -252,7 +254,7 @@ In the folder:
     ```
    
 3. **Load Nvidia modules as a priority at Arch launch:**
-    This step is sometimes necessary for certain desktop environments or window managers.
+    This step is sometimes necessary for certain desktop environments or window managers. Optional, to be done only if you notice issues during boot.
     ```
     sudo nano /etc/mkinitcpio.conf
     ```
@@ -293,7 +295,7 @@ In the folder:
 5. **Rebuilding initramfs:**
     Since we've already installed the drivers at step 1, thus before setting up the hook, we need to manually trigger the initramfs rebuilding:
     ```
-    mkinitcpio -P
+    sudo mkinitcpio -P
     ```
 
 #### AMD (do not do if Nvidia)
@@ -311,17 +313,17 @@ yay -S --needed mesa lib32-mesa vulkan-intel lib32-vulkan-intel vulkan-icd-loade
 #### Printers
 - Essentials
     ```
-    yay -S ghostscript gsfonts cups cups-filters cups-pdf system-config-printer
-    avahi --needed
+    yay -S --needed ghostscript gsfonts cups cups-filters cups-pdf system-config-printer
+    avahi
     sudo systemctl enable --now avahi-daemon cups
     ```
 - Drivers
     ```
-    yay -S foomatic-db-engine foomatic-db foomatic-db-ppds foomatic-db-nonfree foomatic-db-nonfree-ppds gutenprint foomatic-db-gutenprint-ppds --needed
+    yay -S --needed foomatic-db-engine foomatic-db foomatic-db-ppds foomatic-db-nonfree foomatic-db-nonfree-ppds gutenprint foomatic-db-gutenprint-ppds
     ```
 - HP Printers
     ```
-    yay -S python-pyqt5 hplip --needed
+    yay -S --needed python-pyqt5 hplip
     ```
 - Epson Printers
     ```
@@ -337,7 +339,7 @@ sudo systemctl enable --now  bluetooth.service
 #### [PipeWire](https://pipewire.org/) (son)
 To have sound **/!\ Say yes to everything to crush everything with the new packages. /!\**
 ```
-sudo pacman -S --needed pipewire lib32-pipewire pipewire-pulse pipewire-alsa pipewire-jack wireplumber alsa-utils alsa-firmware alsa-tools
+sudo pacman -S --needed pipewire lib32-pipewire pipewire-pulse pipewire-alsa pipewire-jack wireplumber alsa-utils alsa-firmware alsa-tools sof-firmware
 ```
 
 ### BASIC SOFTWARE
@@ -345,7 +347,7 @@ sudo pacman -S --needed pipewire lib32-pipewire pipewire-pulse pipewire-alsa pip
 #### Basic Components
 Here you will find codecs, utilities, fonts, drivers:
 ```
-yay -S gst-plugins-bad gst-plugins-base gst-plugins-ugly gst-plugin-pipewire gstreamer-vaapi gst-plugins-good gst-libav gstreamer reflector-simple downgrade rebuild-detector mkinitcpio-firmware xdg-desktop-portal-gtk xdg-desktop-portal neofetch power-profiles-daemon lib32-pipewire hunspell hunspell-fr p7zip unrar ttf-liberation noto-fonts noto-fonts-emoji adobe-source-code-pro-fonts otf-font-awesome ttf-droid ntfs-3g fuse2fs exfat-utils fuse2 fuse3 bash-completion man-db man-pages --needed
+yay -S --needed gst-plugins-bad gst-plugins-base gst-plugins-ugly gst-plugin-pipewire gstreamer-vaapi gst-plugins-good gst-libav gstreamer downgrade rebuild-detector mkinitcpio-firmware xdg-desktop-portal-gtk xdg-desktop-portal neofetch power-profiles-daemon lib32-pipewire hunspell hunspell-fr hunspell-en p7zip unrar ttf-liberation noto-fonts noto-fonts-emoji adobe-source-code-pro-fonts otf-font-awesome ttf-droid ntfs-3g fuse2fs exfat-utils fuse2 fuse3 bash-completion man-db man-pages
 ```
 
 #### Miscellaneous Software
@@ -357,7 +359,7 @@ yay -S libreoffice-fresh libreoffice-fresh-fr vlc discord gimp obs-studio gnome-
 
 Here are various software for graphics, video (editing, codec support), graphical interface utilities, etc.
 ```
-yay -S xdg-desktop-portal-kde okular print-manager kdenlive gwenview spectacle partitionmanager ffmpegthumbs qt6-wayland kdeplasma-addons powerdevil kcalc plasma-systemmonitor qt6-multimedia qt6-multimedia-gstreamer qt6-multimedia-ffmpeg kwalletmanager
+yay -S --needed xdg-desktop-portal-kde okular print-manager kdenlive gwenview spectacle partitionmanager ffmpegthumbs qt6-wayland kdeplasma-addons powerdevil kcalc plasma-systemmonitor qt6-multimedia qt6-multimedia-gstreamer qt6-multimedia-ffmpeg kwalletmanager
 ```
 
 Additional Video:
@@ -381,25 +383,24 @@ yay -S reflector-simple
 A command to generate a list of mirrors, to be done once after the first installation and repeated if you travel, or change countries, or if you find package downloading too slow, or if you encounter an error telling you that a mirror is down:
 
 ```
-sudo reflector --score 20 --fastest 5 --sort rate --save /etc/pacman.d/mirrorlist
+sudo reflector --verbose --score 20 --fastest 5 --sort rate --save /etc/pacman.d/mirrorlist
 ```
 
 #### Timeshift
 
-- [Timeshift](https://github.com/linuxmint/timeshift) est un utilitaire Linux open source pour créer des sauvegardes de tout votre système.
+- [Timeshift](https://github.com/linuxmint/timeshift) is an open-source Linux utility for creating backups of your entire system.
 
-**/!\ ATTENTION : par défaut, c'est uniquement le système qui est sauvegardé, pas votre dossier utilisateur (le /home/) ! /!\\**
-
+**/!\ WARNING: By default, only the system is backed up, not your user folder (/home/)! /!\\**
 
 ```
 yay -S timeshift
 ```
 
-- Évitez timeshift et btrfs sur Arch, J’ai déjà eu de la [casse](https://github.com/linuxmint/timeshift).
+- Avoid timeshift and Btrfs on Arch, I've had [issues](https://github.com/linuxmint/timeshift) before.
 
-    *“BTRFS snapshots are supported only on BTRFS systems having an Ubuntu-type subvolume layout ”*
+    *“BTRFS snapshots are supported only on BTRFS systems having an Ubuntu-type subvolume layout.”*
 
-- Pour bénéficier des sauvegardes automatiques, vous aurez besoin de démarrer cronie. (facultatif) 
+- To enable automatic backups, you will need to start cronie. (optional)
 
   ```
   sudo systemctl enable --now cronie
@@ -426,6 +427,9 @@ yay -S timeshift
     alias clean-arch='yay -Sc && yay -Yc && flatpak remove --unused'
     ```
     ```
+    alias update-mirrors=
+    ```
+    ```
     alias fix-key='sudo rm /var/lib/pacman/sync/* && sudo rm -rf /etc/pacman.d/gnupg/* && sudo pacman-key --init && sudo pacman-key --populate && sudo pacman -Sy --noconfirm archlinux-keyring && sudo pacman --noconfirm -Su'
     ```
 - ***Reboot unless done in step 3***, aliases of any kind only work after restarting the terminal.
@@ -436,7 +440,7 @@ yay -S timeshift
 
 ### Steam
 Note that AMD or Nvidia drivers must be installed beforehand as mentioned in the [HARDWARE SUPPORT](#HARDWARE-SUPPORT) section.
-```
+```limine
 yay -S steam
 ```
 
@@ -446,7 +450,7 @@ Lutris is a FOSS (Free, Open Source) game manager for Linux-based operating syst
 Lutris allows searching for a game or a platform (Ubisoft Connect, EA Store, GOG, Battlenet, etc.) and proposes an installation script that will configure what's needed for your choice to work with Wine or Proton.
 
 ```
-sudo pacman -S --needed lutris wine-staging
+sudo pacman -S lutris wine-staging
 ```
 
 Additional Video:
@@ -458,11 +462,11 @@ Advanced Linux driver for Xbox 360|One|S|X wireless controllers (supplied with X
 
 
 ```
-yay -S --needed xpadneo-dkms 
+yay -S xpadneo-dkms 
 ```
 Advanced Linux driver for PS4/PS5 controllers
 ```
-yay -S --needed ds4drv dualsensectl
+yay -S ds4drv dualsensectl
 ```
 
 ### Displaying in-game performance
@@ -472,7 +476,7 @@ It's the tool you need if you want to see your in-game FPS, your CPU or GPU load
 Here, we install GOverlay which is a graphical interface to configure MangoHud.
 
 ```
-yay -S goverlay --needed
+yay -S goverlay
 ```
 
 ### Improving compatibility of Windows games
@@ -487,11 +491,11 @@ sudo nano /etc/sysctl.d/99-sysctl.conf
 ``` 
 la ligne suivante:
 ` 
-vm.max_map_count=16777216
+vm.max_map_count=2147483642
 `
 
 
-## <img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/speed.png" width="30" height="30"> **Precision Optimization**: <a name="optimization"/>
+## <img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/speed.png" width="30" height="30"> **Optimization**: <a name="optimization"/>
 
 ### [Kernel TKG](https://github.com/Frogging-Family/linux-tkg)
 
@@ -547,7 +551,6 @@ Formerly known as xdg-app, this is a software deployment and package management 
 ```
 yay -S flatpak flatpak-kcm
 flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
-flatpak install com.bitwarden.desktop com.discordapp.Discord com.github.tchx84.Flatseal com.gitlab.davem.ClamTk com.heroicgameslauncher.hgl com.microsoft.Edge com. moonlight_stream.Moonlight com.rtosta.zapzap com.spotify.Client com.sweethome3d.Sweethome3d com.tutanota.Tutanota com.valvesoftware.Steam com.visualstudio.code info.febvre. Komikku io.github.anirbandey1.ChatbotClient io.github.koromelodev.mindmate net.davidotek.pupgui2 net.lutris.Lutris one.flipperzero.qFlipper org.bleachbit.BleachBit org. gnome.Boxes org.gnome.OCRFeeder org.kde.gcompris org.kde.kdenlive org.libreoffice.LibreOffice org.videolan.VLC org.yuzu_emu.yuzu us.zoom.Zoom xyz.ketok.Speedtest
 ```
 
 ## Troubleshooting <a name="troubleshooting"/>
@@ -556,11 +559,6 @@ flatpak install com.bitwarden.desktop com.discordapp.Discord com.github.tchx84.F
 <img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/Cardiac-icon.png" width="30" height="30"> [Arch Linux Part 4 Maintenance / updating](https://youtu.be/Z7POSK2jnII?si=SNwagGGJXRVkYPdc)
  
 <img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/Cardiac-icon.png" width="30" height="30"> [Arch Linux Part 5 Arch-Chroot](https://youtu.be/iandJSjePiA?si=7uI8JZ-VxAVOsPTh)
-
-- If you have no sound, try :
-    ```
-    yay -S sof-firmware
-    ```
 
 - For help, visit the GLF Discord (fr/en): [Discord GLF](http://discord.gg/EP3Jm8YMvj)
 
@@ -578,4 +576,4 @@ Sources and useful links :
 
 Contributions to this project are welcome! If you have suggestions, bug reports, or contributions, please open an issue or a pull request in the repository.
 
-As you can see this project is available in French, English and Spanish. Translators are more than welcome ! :people_holding_hands:
+As you can see this project is available in French, English, Spanish, Italian & German. Translators are more than welcome ! :people_holding_hands:
