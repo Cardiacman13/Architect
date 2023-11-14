@@ -254,7 +254,7 @@ Im Ordner:
     ```
    
 3. **Laden Sie Nvidia-Module als Priorität beim Arch-Start:**
-    Dieser Schritt ist manchmal notwendig für bestimmte Desktop-Umgebungen oder Fenstermanager. Optional, nur auszuführen, wenn Sie Probleme beim Starten bemerken."
+    **Optional**, nur auszuführen, wenn Sie Probleme beim Starten bemerken."
     ```
     kate /etc/mkinitcpio.conf
     ```

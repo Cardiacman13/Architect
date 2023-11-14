@@ -256,7 +256,8 @@ Dans le dossier :
     ```
    
 3. **Charger les modules Nvidia en priorité au lancement d'Arch :**
-    Optionnel, à ne faire que si on remarque des problèmes au boot.
+
+   **Optionnel**, à ne faire que si on remarque des problèmes au boot.
    
     ```
     sudo nano /etc/mkinitcpio.conf
