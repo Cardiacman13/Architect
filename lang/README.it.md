@@ -254,7 +254,7 @@ Nella cartella:
     ```
    
 3. **Caricate i moduli Nvidia in priorità all'avvio di Arch:**
-    Questo passaggio è talvolta necessario per certi ambienti desktop o window manager. Opzionale, da fare solo se si notano problemi durante l'avvio.
+    **Opzionale**, da fare solo se si notano problemi durante l'avvio.
    
 
     ```
