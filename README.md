@@ -254,7 +254,8 @@ In the folder:
     ```
    
 3. **Load Nvidia modules as a priority at Arch launch:**
-    **Optional**, to be done only if you notice issues during boot.
+
+   **Optional**, to be done only if you notice issues during boot.
     ```
     sudo nano /etc/mkinitcpio.conf
     ```
@@ -267,7 +268,7 @@ In the folder:
     MODULES=(btrfs nvidia nvidia_modeset nvidia_uvm nvidia_drm)
     ```
 
-4. **mkinitcpio Hook:**
+5. **mkinitcpio Hook:**
     This hook automates the rebuilding of initramfs (the basic boot file) with every Nvidia driver modification.
     ```
     sudo mkdir /etc/pacman.d/hooks/
@@ -292,7 +293,7 @@ In the folder:
     Exec=/bin/sh -c 'while read -r trg; do case $trg in linux) exit 0; esac; done; /usr/bin/mkinitcpio -P'
     ```
 
-5. **Rebuilding initramfs:**
+6. **Rebuilding initramfs:**
     Since we've already installed the drivers at step 1, thus before setting up the hook, we need to manually trigger the initramfs rebuilding:
     ```
     sudo mkinitcpio -P
