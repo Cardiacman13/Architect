@@ -254,7 +254,7 @@ In the folder:
     ```
    
 3. **Load Nvidia modules as a priority at Arch launch:**
-    This step is sometimes necessary for certain desktop environments or window managers. Optional, to be done only if you notice issues during boot.
+    **Optional**, to be done only if you notice issues during boot.
     ```
     sudo nano /etc/mkinitcpio.conf
     ```
