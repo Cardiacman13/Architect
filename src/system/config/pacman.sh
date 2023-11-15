@@ -6,7 +6,7 @@ function config_pacman() {
     exec_log "sudo sed -i 's/^#\(ParallelDownloads.*\)/\1/' '/etc/pacman.conf'" "Enabling parallel downloads in pacman"
     exec_log "sudo sed -i '/^#\[multilib\]/,/^#Include = \/etc\/pacman.d\/mirrorlist/ s/^#//' '/etc/pacman.conf'" "Enabling multilib repository"
     exec_log "sudo sed -i 's/#MAKEFLAGS="-j2"/MAKEFLAGS=-j$(nproc)/' /etc/makepkg.conf"
-    exec_log "sudo pacman --noconfirm -Syu" "Updating full system"
+    exec_log "sudo pacman --noconfirm -Syu" "Updating full system" "Enabling multithread compilation"
 }
 
 function mirrorlist() {
