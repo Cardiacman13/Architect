@@ -38,7 +38,6 @@ source src/end.sh
 source src/de/detect.sh
 source src/software/flatpak.sh
 source src/software/install.sh
-source src/system/internet.sh
 source src/system/config/aur.sh
 source src/system/config/pacman.sh
 source src/system/drivers/devices.sh
@@ -78,8 +77,6 @@ function little_step() {
 }
 # ================================================================================================ #
 function main() {
-    check_internet || exit 1
-
     local -r start_time="$(date +%s)"
     # init
     print_center "Initialization" "${GREEN}"
