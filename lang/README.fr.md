@@ -213,6 +213,26 @@ limine
    
    Redémarrez le terminal.
 
+4. Compilation multicoeur des paquets AUR:
+   
+   ```
+   nano /etc/makepkg.conf
+   ```
+
+   Pour utiliser tous les coeurs, ajoutez :
+   
+   ```
+   MAKEFLAGS="-j$(nproc)"
+   ```
+  
+   Ou si par exemple vous voulez utiliser 6 coeurs :
+
+   ```
+   MAKEFLAGS="-j6"
+   ```
+   
+   Remplacer 6 par le nombre de coeur que vous voulez utiliser, il est conseillé d'avoir 2Go de ram par coeur utilisé.
+
    ### SUPPORT MATÉRIEL
 
 #### NVIDIA (rester sur X11 au moins jusqu'à la sortie de KDE 6)
