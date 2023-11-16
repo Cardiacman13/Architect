@@ -213,8 +213,6 @@ limine
    
    Redémarrez le terminal.
 
-Here is the translation of your text into French:
-
 4. Compilation multithread des paquets AUR :
 
    ```
