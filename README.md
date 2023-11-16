@@ -229,6 +229,26 @@ echo "Hello world !"            # Example command
    MAKEFLAGS="-j6"
    ```
 
+4. Compilazione multithread dei pacchetti AUR:
+
+   ```
+   nano /etc/makepkg.conf
+   ```
+
+   Per utilizzare tutti i thread, aggiungere:
+
+   ```
+   MAKEFLAGS="-j$(nproc)"
+   ```
+
+   Oppure, se ad esempio si desidera utilizzare 6 thread:
+
+   ```
+   MAKEFLAGS="-j6"
+   ```
+
+   Sostituire il 6 con il numero di thread che si desidera utilizzare, si consiglia di avere 2GB di RAM per ogni core utilizzato.
+
    Replace 6 with the number of thread you want to use, it is advisable to have 2GB of RAM per core used.
 
 ### HARDWARE SUPPORT
