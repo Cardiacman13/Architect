@@ -37,5 +37,6 @@ function install_aur() {
         exec "yay -Y --devel --save" "Configuring ${AUR}"
     elif [[ $choice == "paru" ]]; then
         exec "paru --gendb" "Configuring ${AUR}"
+        exec_log "sudo sed -i 's/#BottomUp/BottomUp/' /etc/paru.conf" "Enabling BottomUp option for paru"
     fi
 }
