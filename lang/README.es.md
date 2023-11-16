@@ -209,6 +209,26 @@ echo "¡Hola mundo!"            # Comando de ejemplo
    
    Reinicia el terminal.
 
+4. Compilación multihilo de paquetes AUR:
+
+   ```
+   nano /etc/makepkg.conf
+   ```
+
+   Para usar todos los hilos, añade:
+
+   ```
+   MAKEFLAGS="-j$(nproc)"
+   ```
+
+   O si, por ejemplo, quieres usar 6 hilos:
+
+   ```
+   MAKEFLAGS="-j6"
+   ```
+
+   Reemplaza el 6 con el número de hilos que desees usar, se aconseja tener 2GB de RAM por cada núcleo utilizado.
+
    ### SOPORTE DE HARDWARE
 
 #### NVIDIA (mantente en X11 al menos hasta el lanzamiento de KDE 6)
