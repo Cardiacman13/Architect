@@ -40,6 +40,6 @@ function install_aur() {
         exec "paru --gendb" "Configuring ${AUR}"
         exec_log "sudo sed -i 's/#BottomUp/BottomUp/' /etc/paru.conf" "Enabling BottomUp option for paru"
         exec_log "sudo sed -i 's/#SudoLoop/SudoLoop/' /etc/paru.conf" "Enabling SudoLoop option for paru"
-        exec_log "sudo sed -i '$a SkipReview' /etc/paru.conf" "Enabling SkipReview option for paru"
+        exec_log "sudo sh -c 'echo "SkipReview" >> /etc/paru.conf'" "Enabling SkipReview option for paru"
     fi
 }
