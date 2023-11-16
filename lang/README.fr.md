@@ -213,25 +213,27 @@ limine
    
    Redémarrez le terminal.
 
-4. Compilation multicoeur des paquets AUR:
-   
+Here is the translation of your text into French:
+
+4. Compilation multithread des paquets AUR :
+
    ```
    nano /etc/makepkg.conf
    ```
 
-   Pour utiliser tous les coeurs, ajoutez :
-   
+   Pour utiliser tous les threads, ajoutez :
+
    ```
    MAKEFLAGS="-j$(nproc)"
    ```
-  
-   Ou si par exemple vous voulez utiliser 6 coeurs :
+
+   Ou si, par exemple, vous souhaitez utiliser 6 threads :
 
    ```
    MAKEFLAGS="-j6"
    ```
-   
-   Remplacer 6 par le nombre de coeur que vous voulez utiliser, il est conseillé d'avoir 2Go de ram par coeur utilisé.
+
+   Remplacez le 6 par le nombre de threads que vous souhaitez utiliser. Il est conseillé d'avoir 2 Go de RAM par cœur utilisé.
 
    ### SUPPORT MATÉRIEL
 
