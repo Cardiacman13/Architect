@@ -211,6 +211,26 @@ echo "Hello world !"            # Example command
 
    Restart the terminal.
 
+4. multithread Compilation of AUR Packages:
+
+   ```
+   nano /etc/makepkg.conf
+   ```
+
+   To use all threads, add:
+
+   ```
+   MAKEFLAGS="-j$(nproc)"
+   ```
+
+   Or if, for example, you want to use 6 threads:
+
+   ```
+   MAKEFLAGS="-j6"
+   ```
+
+   Replace 6 with the number of thread you want to use, it is advisable to have 2GB of RAM per core used.
+
 ### HARDWARE SUPPORT
 
 #### NVIDIA (stay on X11 at least until the release of KDE 6)
