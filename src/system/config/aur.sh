@@ -35,8 +35,11 @@ function install_aur() {
     if [[ $choice == "yay" ]]; then
         exec "yay -Y --gendb" "Configuring ${AUR}"
         exec "yay -Y --devel --save" "Configuring ${AUR}"
+        exec_log "sed -i 's/"sudoloop": false,/"sudoloop": true,/' ~/.config/yay/config.json" "Enabling SudoLoop option for yay"
     elif [[ $choice == "paru" ]]; then
         exec "paru --gendb" "Configuring ${AUR}"
         exec_log "sudo sed -i 's/#BottomUp/BottomUp/' /etc/paru.conf" "Enabling BottomUp option for paru"
+        exec_log "sudo sed -i 's/#SudoLoop/SudoLoop/' /etc/paru.conf" "Enabling SudoLoop option for paru"
+        exec_log "sudo sed -i '$a SkipReview' /etc/paru.conf" "Enabling SkipReview option for paru"
     fi
 }
