@@ -2,6 +2,13 @@ source src/cmd.sh
 
 function install_kde() {
     local -r inlst="
+        plasma-meta
+        konsole
+        kwrite
+        dolphin
+        ark
+        plasma-wayland-session
+        egl-wayland
         powerdevil
         xdg-desktop-portal-kde
         okular

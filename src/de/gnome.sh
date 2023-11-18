@@ -2,11 +2,8 @@ source src/cmd.sh
 
 function install_gnome() {
     local -r inlst="
-        adwaita-icon-theme
-        eog
-        evince
-        file-roller
-        gdm
+        gnome
+        gnome-tweaks
         gnome-calculator
         gnome-console
         gnome-control-center
@@ -18,8 +15,13 @@ function install_gnome() {
         gnome-shell
         gnome-text-editor
         gnome-themes-extra
-        gnome-tweaks
         gnome-usage
+        gnome-browser-connector
+        adwaita-icon-theme
+        eog
+        evince
+        file-roller
+        gdm
         gvfs
         gvfs-afc
         gvfs-gphoto2
@@ -31,7 +33,6 @@ function install_gnome() {
         sushi
         totem
         xdg-user-dirs-gtk
-        gnome-browser-connector
         adw-gtk3
     "
 
