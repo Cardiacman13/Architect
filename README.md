@@ -90,7 +90,7 @@ Select additional software based on your needs:
 
 ## 👨‍🔧 For developers
 
-## 🏭 Project Structure Overview
+### 🏭 Project Structure Overview
 
 ```graphql
 .
@@ -133,7 +133,7 @@ Select additional software based on your needs:
         └── shell.sh            # Shell configuration script.
 ```
 
-## 📄 Philosophy
+### 📄 Philosophy
 
 This project must respect the [philosophical principles of Archlinux](https://wiki.archlinux.org/title/Arch_Linux#Principles). Please do your best to follow this guideline if you intend to make a pullrequest.
 
