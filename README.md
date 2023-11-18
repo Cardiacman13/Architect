@@ -47,7 +47,7 @@ Choose your DE:
 - 🖥️ `GNOME`.
 - 🖥️ `KDE Plasma`.
 - 🖥️ `XFCE`.
-- 🖥️ `i3wm` (custom config coming soon... 😏).
+- 🖥️ `i3wm` ([custom config](https://github.com/wmemcpy/i3-config) coming soon... 😏).
 
 ### 5. 📦 Install Base Packages
 Essential packages for a rounded experience:
