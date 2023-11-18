@@ -88,9 +88,9 @@ Select additional software based on your needs:
 | Visual Studio Code      | visual-studio-code-bin                  | package |
 | Open RGB                | openrgb-bin                             | package |
 
-## For developers
+## 👨‍🔧 For developers
 
-## Project Structure Overview
+## 🏭 Project Structure Overview
 
 ```graphql
 .
