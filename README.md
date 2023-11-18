@@ -20,7 +20,7 @@ sudo pacman -Sy git base-devel && git clone https://github.com/Cardiacman13/Arch
 
 ## 📝 Main Features
 
-### 1. 🚀 Configure Pacman/AUR
+### 1. 🚀 Configure Package Manager
 Boost Pacman's functionality:
 - 🎨 Enabling colored output.
 - 📝 Detailed package lists.
