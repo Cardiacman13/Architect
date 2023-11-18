@@ -79,7 +79,7 @@ function install_lst() {
     for package in ${lst_split[@]}; do
         install_one "${package}" "${type}"
     done
-    echo "\n"
+    echo -e "\n"
 }
 
 function uninstall_lst() {
@@ -89,7 +89,7 @@ function uninstall_lst() {
     for package in ${lst_split[@]}; do
         uninstall_one "${package}"
     done
-    echo "\n"
+    echo -e "\n"
 }
 
 function copy_bak() {
