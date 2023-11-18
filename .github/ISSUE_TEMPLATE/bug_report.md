@@ -13,8 +13,8 @@
 ## Actual Behavior
 [Explain what actually happened.]
 
-## Screenshots
-[If applicable, add screenshots to help illustrate the problem.]
+## Screenshots/Logs
+[If applicable, add screenshots to help illustrate the problem. You can also add logs from the script, located at the root of the script directory.]
 
 ## System Information
 - Operating System: [e.g., `Arch Linux`]
