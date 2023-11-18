@@ -97,8 +97,9 @@ Select additional software based on your needs:
 ├── architect.sh                # Main script file to kickstart the installation.
 ├── assets
 │   └── data
-│       ├── grub.hook           # GRUB configuration hook for system optimizations.
-│       └── nvidia.hook         # NVIDIA driver hook for custom configurations.
+│       └── hooks
+│           ├── grub.hook           # GRUB configuration hook for system optimizations.
+│           └── nvidia.hook         # NVIDIA driver hook for custom configurations.
 ├── LICENSE
 ├── README.md
 └── src
