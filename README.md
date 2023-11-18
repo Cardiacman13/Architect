@@ -144,4 +144,4 @@ This project is licensed under the GNU GPLv3 License - see the [LICENSE](LICENSE
 - developers of the packages** used in this project. Special mention to : 
   - [Frogging Family](https://github.com/Frogging-Family)
   - [OpenRGB](https://github.com/CalcProgrammer1/OpenRGB)
-- Thanks to [**endeavouros**](https://endeavouros.com/), [**garuda linux**](https://garudalinux.org/) for their inspiration.
+- Thanks to [endeavouros](https://endeavouros.com/), [garuda linux](https://garudalinux.org/), [cachyos](https://cachyos.org/) for their inspiration.
