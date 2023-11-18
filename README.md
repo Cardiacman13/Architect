@@ -92,11 +92,11 @@ Select additional software based on your needs:
 
 ```graphql
 .
-├── architect.sh          # Main script file to kickstart the installation.
+├── architect.sh                # Main script file to kickstart the installation.
 ├── assets
 │   └── data
-│       ├── grub.hook     # GRUB configuration hook for system optimizations.
-│       └── nvidia.hook   # NVIDIA driver hook for custom configurations.
+│       ├── grub.hook           # GRUB configuration hook for system optimizations.
+│       └── nvidia.hook         # NVIDIA driver hook for custom configurations.
 ├── LICENSE
 ├── README.md
 └── src
