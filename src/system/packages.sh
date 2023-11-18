@@ -37,6 +37,7 @@ function usefull_package() {
         ffmpegthumbs
         man-db
         man-pages
+        proton-ge-custom-bin
     "
     if [[ ${BTRFS} == true ]]; then
         inlst+=" btrfs-progs btrfs-assistant"
