@@ -143,7 +143,8 @@ This project is licensed under the GNU GPLv3 License - see the [LICENSE](LICENSE
 
 ## 🙏 Acknowledgments
 
-- Thanks to the [Arch Linux](https://archlinux.org/) team for their amazing work.
-- Thanks to the Arch Linux community for their amazing documentation.
-- Thanks to the AUR maintainers for their hard work.
-- Thanks to the developers of the packages used in this project.
+- Thanks to the [**Arch Linux**](https://archlinux.org/) team for their amazing work.
+- Thanks to the **Arch Linux community** for their amazing documentation.
+- Thanks to the **AUR maintainers** for their hard work.
+- Thanks to the **developers of the packages** used in this project.
+- Thanks to [**endeavouros**](https://endeavouros.com/), [**garuda linux**](https://garudalinux.org/) for their inspiration.
