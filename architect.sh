@@ -63,7 +63,7 @@ function little_step() {
     local -r function=$1
     local -r message=$2
 
-    display_step "${message}"
+    echo -e "\n${YELLOW}                        ${message}                        ${RESET}"
     ${function}
 }
 # ================================================================================================ #
