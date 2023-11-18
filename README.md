@@ -37,13 +37,13 @@ Ease your command-line tasks:
 
 ### 3. 🎮 GPU Setup for Gaming (AMD, NVIDIA, Intel)
 Prepare your system for gaming with :
-- 🎮 Proton-GE (via `GloriousEggroll/proton-ge-custom` repo).
+- 🎮 Proton-GE (via [`GloriousEggroll/proton-ge-custom`](https://github.com/GloriousEggroll/proton-ge-custom) repo).
 - 🎮 GPU drivers choises:
   - 📹 AMD and 32-bit library support.
   - 📹 Intel and 32-bit library support.
   - 🔄 NVIDIA choises:
     - **Nvidia**: Standard drivers (recommended for most) with custom hook based on startup system (GRUB or systemd-boot).
-    - **Nvidia-all**: For advanced users (via `Frogging-Family/nvidia-all` repo).
+    - **Nvidia-all**: For advanced users (via [`Frogging-Family/nvidia-all`](https://github.com/Frogging-Family/nvidia-all) repo).
 
 ### 4. 🖥️ Desktop Environment
 Choose your DE:
@@ -54,7 +54,7 @@ Choose your DE:
 
 ### 5. 📦 Install Base Packages
 Essential packages for a rounded experience:
-- AUR helpers: [yay](https://github.com/Jguer/yay) or [paru](https://github.com/Morganamilo/paru).
+- AUR helpers: [`yay`](https://github.com/Jguer/yay) or [`paru`](https://github.com/Morganamilo/paru).
 - 🖋️ Fonts, Emoji.
 - 🎬 Codecs.
 - ➕ Other crucial packages.
