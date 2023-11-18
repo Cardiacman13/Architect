@@ -18,7 +18,7 @@ function install_software() {
     packages+=" $(ask_to_add "Brave" "brave-bin")"
     packages+=" $(ask_to_add "Chromium" "chromium")"
     packages+=" $(ask_to_add "Discord" "discord")"
-    packages+=" $(ask_to_add "Steam" "steam")"
+    packages+=" $(ask_to_add "Steam" "steam proton-ge-custom-bin")"
     packages+=" $(ask_to_add "Lutris" "lutris wine-staging")"
     packages+=" $(ask_to_add "Heroic Games Launcher" "heroic-games-launcher-bin")"
     packages+=" $(ask_to_add "protonup-qt" "protonup-qt-bin")"
