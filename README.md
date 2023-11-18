@@ -1,4 +1,4 @@
-# 🐧 ARCH LINUX POST-INSTALLATION TUTORIAL AND SCRIPT 📜
+# 🐧 ARCHITECT SCRIPT 📜
 
 ## 🚀 Arch Linux Post-Install Script
 
