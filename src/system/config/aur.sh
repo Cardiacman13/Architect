@@ -42,6 +42,9 @@ function install_aur() {
         exec "paru --gendb" "Configuring ${AUR}"
         exec_log "sudo sed -i 's/#BottomUp/BottomUp/' /etc/paru.conf" "Enabling BottomUp option for paru"
         exec_log "sudo sed -i 's/#SudoLoop/SudoLoop/' /etc/paru.conf" "Enabling SudoLoop option for paru"
+        exec_log "sudo sed -i 's/#CombinedUpgrade/CombinedUpgrade/' /etc/paru.conf" "Enabling CombinedUpgrade option for paru"
+        exec_log "sudo sed -i 's/#UpgradeMenu/UpgradeMenu/' /etc/paru.conf" "Enabling UpgradeMenu option for paru"
+        exec_log "sudo sed -i 's/#NewsOnUpgrade/NewsOnUpgrade/' /etc/paru.conf" "Enabling NewsOnUpgrade option for paru"
         exec_log "sudo sh -c 'echo "SkipReview" >> /etc/paru.conf'" "Enabling SkipReview option for paru"
     fi
 }
