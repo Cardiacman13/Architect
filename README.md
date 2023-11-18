@@ -6,13 +6,11 @@ This script is perfect for configuring a **stock Arch** system with a **minimal 
 
 > **Warning** 
 > 
-> It's specifically designed for a pure Arch Linux experience (not tested on *Garuda*, *EndeavourOS*, *Manjaro*, etc.).
+> It's specifically designed for a pure Arch Linux experience (not tested on *Garuda*, *Manjaro*, etc.).
 > 
 > We make all our test based on a fresh install of Arch Linux with [`archinstall`](https://github.com/archlinux/archinstall).
 > 
-> Ensure you're not running as root and are in a "Desktop Environment" (GNOME, KDE Plasma, XFCE, i3wm, etc.).
-> 
-> Not suitable for outdated computers; **requires compatibility with the latest NVIDIA drivers** if you use NVIDIA card.
+> Ensure you're not running as root and are in a "Desktop Environment" (GNOME, KDE Plasma, i3wm, etc.).
 
 Execute the following in the terminal to run the script (**requires sudo access**):
 
