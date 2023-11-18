@@ -51,7 +51,7 @@ Choose your DE:
 
 ### 5. 📦 Install Base Packages
 Essential packages for a rounded experience:
-- AUR helpers: [`yay`](https://github.com/Jguer/yay) or [`paru`](https://github.com/Morganamilo/paru).
+- 📦 AUR helpers: [`yay`](https://github.com/Jguer/yay) or [`paru`](https://github.com/Morganamilo/paru).
 - 🖋️ Fonts, Emoji.
 - 🎬 Codecs.
 - ➕ Other crucial packages.
