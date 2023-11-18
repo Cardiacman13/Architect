@@ -50,7 +50,7 @@ Choose your DE:
 - 🖥️ `GNOME`.
 - 🖥️ `KDE Plasma`.
 - 🖥️ `XFCE`.
-- 🖥️ `i3wm` (custom config coming soon...).
+- 🖥️ `i3wm` (custom config coming soon... 😏).
 
 ### 5. 📦 Install Base Packages
 Essential packages for a rounded experience:
