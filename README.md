@@ -138,10 +138,10 @@ This project is licensed under the GNU GPLv3 License - see the [LICENSE](LICENSE
 
 ## 🙏 Acknowledgments
 
-- Thanks to the [**Arch Linux**](https://archlinux.org/) team for their amazing work.
-- Thanks to the **Arch Linux community** for their amazing documentation.
-- Thanks to the **AUR maintainers** for their hard work.
-- Thanks to the **developers of the packages** used in this project. Special mention to : 
+- [Arch Linux](https://archlinux.org/) team for their amazing work.
+- Arch Linux community for their amazing documentation.
+- AUR maintainers for their hard work.
+- developers of the packages** used in this project. Special mention to : 
   - [Frogging Family](https://github.com/Frogging-Family)
   - [OpenRGB](https://github.com/CalcProgrammer1/OpenRGB)
 - Thanks to [**endeavouros**](https://endeavouros.com/), [**garuda linux**](https://garudalinux.org/) for their inspiration.
