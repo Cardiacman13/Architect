@@ -1,16 +1,11 @@
 # 🐧 ARCH LINUX POST-INSTALLATION TUTORIAL AND SCRIPT 📜
 
-### Conditions
-
-> **Note** 📝
-> The script works regardless of your choices of DE (Desktop Environment) / BOOT LOADER / FS (File System).
-> It's specifically designed for a pure Arch Linux experience (not tested on Garuda, EndeavourOS, Manjaro…)
-
 ## 🚀 Arch Linux Post-Install Script
 
 This script is perfect for configuring a **stock Arch** system with a **minimal set of packages** tailored to your needs right after using `archinstall`. Specifically, it's **geared towards gaming**.
 
-> **Before You Begin:**
+> **Note:** 📝
+> It's specifically designed for a pure Arch Linux experience (not tested on Garuda, EndeavourOS, Manjaro…)
 > Intended for a fresh installation just set up with `archinstall`.
 > Ensure you're not running as root and are in a Desktop Environment.
 > Not suitable for outdated computers; requires compatibility with the latest NVIDIA drivers.
