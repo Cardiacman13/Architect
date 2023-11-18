@@ -75,7 +75,7 @@ Select additional software based on your needs:
 | Brave                   | brave-bin                               | package |
 | Chromium                | chromium                                | package |
 | Discord                 | discord                                 | package |
-| Steam                   | steam                                   | package |
+| Steam                   | steam proton-ge-custom-bin              | package |
 | Lutris                  | lutris wine-staging                     | package |
 | Heroic Games Launcher   | heroic-games-launcher-bin               | package |
 | protonup-qt             | protonup-qt-bin                         | package |
