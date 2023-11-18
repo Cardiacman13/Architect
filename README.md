@@ -5,12 +5,12 @@
 This script is perfect for configuring a **stock Arch** system with a **minimal set of packages** tailored to your needs right after using `archinstall`. Specifically, it's **geared towards gaming**.
 
 > **Note:** 📝
-> - It's specifically designed for a pure Arch Linux experience (not tested on Garuda, EndeavourOS, Manjaro…)
-> - Intended for a fresh installation just set up with `archinstall`.
-> - Ensure you're not running as root and are in a Desktop Environment.
-> - Not suitable for outdated computers; requires compatibility with the latest NVIDIA drivers.
+> - It's specifically designed for a pure Arch Linux experience (not tested on *Garuda*, *EndeavourOS*, *Manjaro*, etc.).
+> - We make all our test based on a fresh install of Arch Linux with [`archinstall`](https://github.com/archlinux/archinstall).
+> - Ensure you're not running as root and are in a "Desktop Environment" (GNOME, KDE Plasma, XFCE, i3wm, etc.).
+> - Not suitable for outdated computers; **requires compatibility with the latest NVIDIA drivers** if you use NVIDIA card.
 
-Execute the following in the terminal to run the script (*requires sudo access*):
+Execute the following in the terminal to run the script (**requires sudo access**):
 
 ```bash
 sudo pacman -Sy git base-devel && git clone https://github.com/Cardiacman13/Architect.git ~/Architect && cd ~/Architect && chmod +x ./architect.sh && ./architect.sh
