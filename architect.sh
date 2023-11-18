@@ -48,32 +48,22 @@ source src/system/other.sh
 source src/system/packages.sh
 source src/system/shell.sh
 # ================================================================================================ #
-function print_center() {
+function display_step() {
     local -r message="$1"
-    local -r color="$2"
-    local -r line="-----------------------------------------------------------------------------------------------------------"
-    local -r line_length=${#line}
-    local -r message_length=${#message}
-    
-    local -r total_padding=$((line_length - message_length))
-    local -r padding_side=$((total_padding / 2))
-    local padding_right=$padding_side
+    cat <<-EOF
+${BLUE}-----------------------------------------------------------------------------------------------------------
 
-    if [ $((total_padding % 2)) -ne 0 ]; then
-        ((padding_right++))
-    fi
+                                   ${message}                                                        
 
-    printf "%s%b%s%b%s\n" \
-        "${line:0:padding_side}" \
-        "${color}" "$message" "${RESET}" \
-        "${line:0:padding_right}"
+-----------------------------------------------------------------------------------------------------------${RESET}
+EOF
 }
 
 function little_step() {
     local -r function=$1
     local -r message=$2
 
-    print_center "${message}" "${YELLOW}"
+    display_step "${message}"
     ${function}
 }
 # ================================================================================================ #
@@ -82,12 +72,13 @@ function main() {
     
     local -r start_time="$(date +%s)"
     # init
-    print_center "Initialization" "${GREEN}"
+    display_step "Initialization"
     init_log
     header
 
     # system
-    print_center "System preparation" "${GREEN}"
+    clear
+    display_step "System preparation"
     little_step config_pacman           "Pacman configuration"
     little_step install_aur             "AUR helper installation"
     little_step mirrorlist              "Mirrorlist configuration"
@@ -99,22 +90,26 @@ function main() {
     little_step shell_config            "Shell configuration"
 
     # drivers
-    print_center "System configuration" "${GREEN}"
+    clear
+    display_step "System configuration"
     little_step video_drivers           "Video drivers installation"
     little_step gamepad                 "Gamepad configuration"
     little_step printer                 "Printer configuration"
     little_step bluetooth               "Bluetooth configuration"
 
     # desktop environment
-    print_center "Environment configuration" "${GREEN}"
+    clear
+    display_step "Environment configuration"
     little_step detect_de               "Desktop environment detection"
 
     # software
-    print_center "Software installation" "${GREEN}"
+    clear
+    display_step "Software installation"
     little_step support_flatpak         "Flatpak support installation"
     little_step install_software        "Software installation"
 
     # end
+    clear
     endscript "${start_time}"
 }
 # ================================================================================================ #
