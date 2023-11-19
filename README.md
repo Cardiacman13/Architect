@@ -29,7 +29,7 @@ This script is perfect for configuring a **stock Arch** system with a **minimal 
 Execute the following in the terminal to run the script (**requires sudo access**):
 
 ```bash
-sudo pacman -Sy git base-devel && git clone https://github.com/Cardiacman13/Architect.git ~/Architect && cd ~/Architect && chmod +x ./architect.sh && ./architect.sh
+sudo pacman -Sy git base-devel && git clone https://github.com/Cardiacman13/Architect.git ~/Architect && cd ~/Architect && ./architect.sh
 ```
 
 ## 📝 Main Features
