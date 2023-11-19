@@ -29,5 +29,10 @@ function install_kde() {
     "
 
     install_lst "${inlst}"
-    exec_log "sudo echo "Numlock=on" >> /etc/sddm.conf" "Enabling numlock on startup"
+
+    if [ ! -f /etc/sddm.conf ]; then
+        exec_log "sudo touch /etc/sddm.conf" "Creating /etc/sddm.conf"
+    fi
+    exec_log "echo -e '[Theme]\nCurrent=breeze' | sudo tee -a /etc/sddm.conf" "Setting Breeze theme for SDDM"
+    exec_log "echo -e '[General]\nNumlock=on' | sudo tee -a /etc/sddm.conf" "Setting Numlock=on for SDDM"
 }
