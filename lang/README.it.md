@@ -1,112 +1,173 @@
-# TUTORIAL E SCRIPT POST-INSTALLAZIONE DI ARCH LINUX
+Here's the translation of the provided text into Italian:
 
-## Presentazione
+---
+
+# 🐧 SCRIPT E TUTORIAL ARCHITECT 📜
+
+[**Versione Francese**](https://github.com/Cardiacman13/Tuto-Arch/blob/main/lang/README.fr.md) / [**Versione Spagnola**](https://github.com/Cardiacman13/Tuto-Arch/blob/main/lang/README.es.md) / [**Versione Italiana**](https://github.com/Cardiacman13/Tuto-Arch/blob/main/lang/README.it.md) / [**Versione Tedesca**](https://github.com/Cardiacman13/Tuto-Arch/blob/main/lang/README.de.md)
 
 <img src="https://github.com/Cardiacman13/Architect/blob/main/assets/images/desktop.png" width="1000" height="250">
 
-Arch è una distribuzione tecnica rivolta a un pubblico più avanzato, composta da "blocchi di costruzione". Pensatela come un set di Lego bianchi, con una base da costruire e modellare come desiderate, e se fate qualcosa di sbagliato, le cose possono rompersi.
-
-Lo scopo di questo tutorial è installare un Arch standard con un minimo di pacchetti, secondo le nostre esigenze per il lavoro d'ufficio e/o il gioco.
-
-<img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/Cardiac-icon.png" width="30" height="30"> Questa icona vi reindirizza ai miei video su alcune parti di questo tutorial [**Playlist Tutorial Arch Linux**](https://www.youtube.com/watch?v=JE6VwNHLcyk&list=PLuIP_-MWRwtWEX0tyDpZPdwU6zCE1O1cY)
-
-### Condizioni
-
-> **Nota**
-> Lo script che troverete in seguito funziona indipendentemente dalle vostre scelte di DE / BOOT LOADER / FS.
-> Tutorial e script sono mirati all'uso con un Arch puro (incompatibile con Garuda, EndeavourOS, Manjaro…)
-> Tuttavia, se sapete cosa state facendo, le modifiche per altre scelte saranno minime.
-
-Scaricate l'ISO: [**Arch Linux - Download**](https://archlinux.org/download/)
-
 ## Indice dei Contenuti
-1. [Script Tutto-in-Uno](#script)
-2. [Migliorate il vostro Desktop(#elevate)
-3. [Migliorate la prestazione dei vostri giochi](#gaming)
-4. [Ottimizzazione di Precisione](#optimization)
-5. [Risoluzione dei Problemi](#troubleshooting)
-6. [Materiale della Comunità](#community)
+1. [Script tutto-in-uno](#script)
+2. [Tutorial](#elevate)
+3. [Gaming](#gaming)
+4. [Ottimizzazione](#ottimizzazione)
+5. [Risoluzione dei Problemi](#risoluzione-dei-problemi)
+6. [Contenuti della Comunità](#comunità)
 
-## Script Post-Installazione Arch Linux <a name="script"/>
+## 🚀 Script Post-Installazione di Arch Linux <a name="script"/>
 
-<img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/Welcome.png">
+Questo script è perfetto per configurare un sistema **Arch stock** con un **set minimo di pacchetti** su misura per le tue esigenze subito dopo l'uso di `archinstall`. In particolare, è **orientato al gaming**.
 
-Lo scopo di questo script è configurare un sistema **Arch standard** con un **numero minimo di pacchetti** personalizzati per le vostre esigenze subito dopo aver utilizzato archinstall. Questo script è **orientato al gaming**.
+> **Attenzione** 
+> 
+> È specificatamente progettato per una pura esperienza Arch Linux (non testato su *Garuda*, *Manjaro*, ecc.).
+> 
+> Effettuiamo tutti i nostri test basandoci su una nuova installazione di Arch Linux con [`archinstall`](https://github.com/archlinux/archinstall).
+> 
+> Assicurati di non eseguire come root e di trovarti in un "Ambiente Desktop" (GNOME, KDE Plasma, i3wm, ecc.).
 
-> [!NOTA]
-> **Prima di Iniziare:**
-> Questo script si basa su un tutorial che descrive tutti i passaggi: [Tuto-Arch](https://github.com/Cardiacman13/Tuto-Arch/blob/main/lang/README.en.md)
-> Questo script è destinato all'uso su un'installazione pulita che è stata appena configurata con `archinstall`.
-> Prima di eseguire questo script, assicuratevi di aver avviato in un Ambiente Desktop.
-> Non è adatto a computer datati. Assicuratevi che il vostro hardware soddisfi i requisiti per gli ultimi driver Nvidia.
+Esegui il seguente comando nel terminale per eseguire lo script (**richiede l'accesso sudo**):
 
 ```bash
-sudo pacman -Sy git
-git clone https://github.com/Cardiacman13/Architect.git
-cd Architect
-./architect.sh
+sudo pacman -Sy git base-devel && git clone https://github.com/Cardiacman13/Architect.git ~/Architect && cd ~/Architect && ./architect.sh
 ```
 
-### 1. Ottimizzazione di Pacman
-Migliorate la funzionalità e l'esperienza utente di Pacman apportando i seguenti miglioramenti:
+## 📝 Caratteristiche Principali
 
-- Abilitazione dell'output colorato.
-- Abilitazione elenchi dettagliati dei pacchetti.
-- Abilitazione download paralleli.
-- Abilitazione supporto multilib.
+### 1. 🚀 Configurare il Gestore di Pacchetti
+Potenzia la funzionalità di Pacman:
+- 🎨 Abilitare l'output colorato.
+- 📝 Liste dettagliate dei pacchetti.
+- ⚡ Download paralleli.
+- 🔗 Supporto Multilib.
 
-### 2. Aggiunta di Alias Utili
-Semplificate i vostri compiti in linea di comando con questi utili alias:
+### 2. ⌨️ Aggiungere Alias Utili
+Facilita i tuoi compiti da linea di comando:
+- `update-arch`: Aggiorna tutte le app del tuo sistema in un solo comando.
+- `clean-arch`: Rimuove i pacchetti inutilizzati.
+- `fix-key`: Risolve problemi legati alle chiavi per gli aggiornamenti.
+- `update-mirrors`: Aggiorna la lista dei mirror del tuo sistema.
 
-- update-arch: Aggiornate le app del vostro sistema con un singolo comando.
-- clean-arch: Pulisce il vostro sistema rimuovendo pacchetti inutilizzati.
-- fix-key: Risolve problemi relativi alle chiavi, garantendo un processo di aggiornamento fluido.
-- update-mirrors: Aggiorna l'elenco dei tuoi mirror di download
+### 3. 🎮 Configurazione GPU per il Gaming (AMD, NVIDIA, Intel)
+Prepara il tuo sistema per il gaming con:
+- 🎮 Proton-GE (tramite il repo [`GloriousEggroll/proton-ge-custom`](https://github.com/GloriousEggroll/proton-ge-custom)).
+- 🎮 Scelte dei driver GPU:
+  - 📹 Supporto AMD e libreria a 32-bit.
+  - 📹 Supporto Intel e libreria a 32-bit.
+  - 🔄 Scelte NVIDIA:
+    - **Nvidia**: Driver standard (consigliati per la maggior parte) con hook personalizzato basato sul sistema di avvio (GRUB o systemd-boot).
+    - **Nvidia-all**: Per utenti avanzati (tramite il repo [`Frogging-Family/nvidia-all`](https://github.com/Frogging-Family/nvidia-all)).
 
-### 3. Assistenza nell'installazione di GPU AMD, NVIDIA o Intel per il Gaming
-Preparate il vostro PC per il gaming con la configurazione GPU, che include:
+### 4. 🖥️ Ambiente Desktop
+Scegli il tuo DE:
+- 🖥️ `GNOME`.
+- 🖥️ `KDE Plasma`.
+- 🖥️ `XFCE`.
+- 🖥️ `i3wm` ([configurazione personalizzata](https://github.com/wmemcpy/i3-config) in arrivo... 😏).
 
-- Installazione driver.
-- Installazione librerie Vulkan.
-- Installazione librerie a 32 bit.
-- Scelta tra driver Nvidia standard o la variante `nvidia-all
-  - **Nvidia**: Questa è la scelta consigliata per la maggior parte degli utenti. Comprende:
-    - Installazione dei pacchetti Nvidia.
-  - **Nvidia-all**: Questa è per utenti avanzati che sanno come mantenerla. Comprende:
-    - Clonazione e installazione dal repository `Frogging-Family/nvidia-all`.
+### 5. 📦 Installare Pacchetti Base
+Pacchetti essenziali per
 
-### 4. Installate Alcuni Pacchetti Base
-Installate pacchetti fondamentali per un'esperienza completa:
+ un'esperienza completa:
+- 📦 Aiutanti AUR: [`yay`](https://github.com/Jguer/yay) o [`paru`](https://github.com/Morganamilo/paru).
+- 🖋️ Font, Emoji.
+- 🎬 Codec.
+- ➕ Altri pacchetti cruciali.
 
-- [yay](https://github.com/Jguer/yay) o [paru](https://github.com/Morganamilo/paru) helper AUR.
-- Font.
-- Utility desktop.
-- Codec.
-- Altri pacchetti essenziali.
+### 6. 🛠️ Miglioramenti Vari
+Ottimizza il tuo sistema:
+- 🎲 Aumenta `vm.max_map_count` per una migliore compatibilità con i giochi Windows. [Wiki di Arch su vm-max-map-count](https://wiki.archlinux.org/title/gaming#Increase_vm.max_map_count)
+- 🖨️ Opzioni per il supporto alle stampanti.
+- 🎵 Configurazione Bluetooth.
+- 🎮 Supporto migliorato per i controller Xbox, PS4/PS5, 8bitdo.
+- 🐟 Suggerimento per la configurazione della shell Fish. (zsh in lavorazione)
 
-### 5. Miglioramenti Vari
-Regolate il vostro sistema per un'esperienza completa:
+### 7. 🔄 Chiedere di Installare Software Aggiuntivo
+Seleziona software aggiuntivo in base alle tue esigenze:
 
-- Aumento di `vm.max_map_count` per migliorare la compatibilità con i giochi Windows. [Wiki di Arch su vm-max-map-count](https://wiki.archlinux.org/title/gaming#Increase_vm.max_map_count)
-- Richiesta di configurazione della stampante.
-- Richiesta di configurazione del Bluetooth.
-- Supporto avanzato per joystick Xbox, PS4/PS5, 8bitdo
-- Proposta di configurare Fish come shell di comando.
+| Nome                    | Pacchetto                               | Tipo    |
+|-------------------------|-----------------------------------------|---------|
+| Firefox                 | firefox firefox-i18n-fr                 | pacchetto |
+| Brave                   | brave-bin                               | pacchetto |
+| Chromium                | chromium                                | pacchetto |
+| Discord                 | discord                                 | pacchetto |
+| Steam                   | steam proton-ge-custom-bin              | pacchetto |
+| Lutris                  | lutris wine-staging                     | pacchetto |
+| Heroic Games Launcher   | heroic-games-launcher-bin               | pacchetto |
+| protonup-qt             | protonup-qt-bin                         | pacchetto |
+| Spotify                 | spotify                                 | pacchetto |
+| OBS Studio              | com.obsproject.Studio                   | flatpak |
+| Kdenlive                | kdenlive                                | pacchetto |
+| LibreOffice             | libreoffice-fresh libreoffice-fresh-fr  | pacchetto |
+| Gimp                    | gimp                                    | pacchetto |
+| VLC                     | vlc                                     | pacchetto |
+| Visual Studio Code      | visual-studio-code-bin                  | pacchetto |
+| Open RGB                | openrgb-bin                             | pacchetto |
 
-### 6. Assistenza nell'installazione di Vari Software
-Avete la libertà di scegliere quali software aggiuntivi installare in base alle vostre esigenze specifiche:
+## 👨‍🔧 Per gli sviluppatori
 
-- `Discord`
-- `Steam`
-- `Lutris`
-- `Heroic Games Launcher`
-- `protonup-qt`
-- `Spotify`
-- `OBS Studio`
-- `LibreOffice`
-- `Gimp`
-- `Visual Studio Code`
-- `Open RGB`
+### 🏭 Panoramica della Struttura del Progetto
+
+```graphql
+.
+├── architect.sh                # File principale dello script per avviare l'installazione.
+├── assets
+│   └── data
+│       └── hooks
+│           ├── grub.hook       # Hook di configurazione GRUB per ottimizzazioni del sistema.
+│           └── nvidia.hook     # Hook del driver NVIDIA per configurazioni personalizzate.
+├── LICENSE
+├── README.md
+└── src
+    ├── cmd.sh                  # Script per eseguire comuni attività da riga di comando.
+    ├── de
+    │   ├── detect.sh           # Rileva l'ambiente desktop corrente.
+    │   ├── gnome.sh            # Script di configurazione GNOME.
+    │   ├── i3.sh               # Script di configurazione del gestore di finestre i3.
+    │   ├── kde.sh              # Script di configurazione KDE Plasma.
+    │   └── xfce4.sh            # Script di configurazione XFCE.
+    ├── end.sh                  # Script eseguito alla fine dell'installazione.
+    ├── init.sh                 # Script di configurazione iniziale.
+    ├── software
+    │   ├── flatpak.sh          # Script per l'installazione di pacchetti Flatpak.
+    │   └── install.sh          # Script generale per l'installazione del software.
+    └── system
+        ├── config
+        │   ├── aur.sh          # Script di configurazione per AUR (Arch User Repository).
+        │   └── pacman.sh       # Script di configurazione Pacman.
+        ├── drivers
+        │   ├── amd.sh          # Script di installazione dei driver GPU AMD.
+        │   ├── devices.sh      # Script per rilevare i dispositivi connessi.
+        │   ├── gpu.sh          # Script generale di configurazione GPU.
+        │   ├── intel.sh        # Script di installazione dei driver GPU Intel.
+        │   ├── nvidia.sh       # Script di installazione dei driver GPU NVIDIA.
+        │   └── vm.sh           # Configurazioni relative alle macchine virtuali.
+        ├── internet.sh         # Script di configurazione della connettività Internet.
+        ├── kernel.sh           # Script di ottimizzazione del kernel.
+        ├── other.sh            # Altri script vari.
+        ├── packages.sh         # Script per l'installazione dei pacchetti.
+        └── shell.sh            # Script di configurazione della shell.
+```
+
+### 📄 Filosofia
+
+Questo progetto deve rispettare i [principi filosofici di Archlinux](https://wiki.archlinux.org/title/Arch_Linux#Principles). Si prega di fare del proprio meglio per seguire questa linea guida se si intende fare una pull request.
+
+## 📝 Licenza
+
+Questo progetto è sotto la licenza GNU GPLv3 - vedi il file [LICENSE](LICENSE) per i dettagli.
+
+## 🙏 Ringraziamenti
+
+- Al team di [Arch Linux](https://archlinux.org/) per il loro incredibile lavoro.
+- Alla comunità di Arch Linux per la loro eccezionale documentazione.
+- Ai manutentori dell'AUR per il loro duro lavoro.
+- Agli sviluppatori dei pacchetti utilizzati in questo progetto. Una menzione speciale a:
+  - [Frogging Family](https://github.com/Frogging-Family)
+  - [OpenRGB](https://github.com/CalcProgrammer1/OpenRGB)
+- Grazie al [GLF Discord](https://discord.gg/6t4REDETJd) per i numerosi test e feedback.
 
 ## <img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/pc.png" width="30" height="30"> **Eleva il Tuo Desktop** <a name="elevate"/>
 
