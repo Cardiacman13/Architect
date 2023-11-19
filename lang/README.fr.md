@@ -1,7 +1,5 @@
 # 🐧 ARCHITECT SCRIPT ET TUTO 📜
 
-[**Version Française**](https://github.com/Cardiacman13/Tuto-Arch/blob/main/lang/README.fr.md) / [**Version Espagnole**](https://github.com/Cardiacman13/Tuto-Arch/blob/main/lang/README.es.md) / [**Version Italienne**](https://github.com/Cardiacman13/Tuto-Arch/blob/main/lang/README.it.md) / [**Version Allemande**](https://github.com/Cardiacman13/Tuto-Arch/blob/main/lang/README.de.md)
-
 <img src="https://github.com/Cardiacman13/Architect/blob/main/assets/images/desktop.png" width="1000" height="250">
 
 ## Table des Matières
