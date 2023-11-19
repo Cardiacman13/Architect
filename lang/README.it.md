@@ -1,10 +1,5 @@
-Here's the translation of the provided text into Italian:
-
----
-
 # 🐧 SCRIPT E TUTORIAL ARCHITECT 📜
 
-[**Versione Francese**](https://github.com/Cardiacman13/Tuto-Arch/blob/main/lang/README.fr.md) / [**Versione Spagnola**](https://github.com/Cardiacman13/Tuto-Arch/blob/main/lang/README.es.md) / [**Versione Italiana**](https://github.com/Cardiacman13/Tuto-Arch/blob/main/lang/README.it.md) / [**Versione Tedesca**](https://github.com/Cardiacman13/Tuto-Arch/blob/main/lang/README.de.md)
 
 <img src="https://github.com/Cardiacman13/Architect/blob/main/assets/images/desktop.png" width="1000" height="250">
 
