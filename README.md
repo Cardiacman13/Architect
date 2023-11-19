@@ -621,4 +621,4 @@ As you can see this project is available in French, English, Spanish, Italian & 
   - [Frogging Family](https://github.com/Frogging-Family)
   - [OpenRGB](https://github.com/CalcProgrammer1/OpenRGB)
 - Thanks to the [GLF Discord](https://discord.gg/6t4REDETJd) for the numerous tests and feedback.
-- Huge thanks to [wmemcpy](https://github.com/wmemcpy) for all his wotk on this project.
+- Huge thanks to [wmemcpy](https://github.com/wmemcpy) for all his work on this project.
