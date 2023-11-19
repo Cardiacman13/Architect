@@ -579,7 +579,7 @@ Nous augmentons la valeur par défaut de cette variable, permettant le stockage 
 
 ### [Kernel TKG](https://github.com/Frogging-Family/linux-tkg)
 
-> [!ATTENTION]
+> [!WARNING]
 > Cette étape est destinée aux utilisateurs avancés :star:
 
 [KERNEL TKG](https://github.com/Frogging-Family) est un noyau hautement personnalisable qui fournit une sélection de correctifs et d'ajustements pour améliorer les performances de bureau et de jeu.
@@ -594,7 +594,7 @@ makepkg -si
 
 ### [MESA-TKG](https://github.com/Frogging-Family/mesa-git)
 
-> [!ATTENTION]
+> [!WARNING]
 > Cette étape est destinée aux utilisateurs avancés :star:
 
 Comme le noyau TKG, mais pour Mesa, une version patchée pour ajouter quelques correctifs et optimisations.
@@ -609,7 +609,7 @@ Dites oui à tout pour tout écraser avec les nouveaux paquets.
 
 ### [NVIDIA-ALL](https://github.com/Frogging-Family/nvidia-all)
 
-> [!ATTENTION]
+> [!WARNING]
 > Cette étape est destinée aux utilisateurs avancés :star:
 
 Nvidia-all est une intégration du pilote nvidia par TkG. Il comprend des patchs de support pour les nouveaux noyaux. Il vous permet de sélectionner la version du pilote que vous souhaitez installer, qu'il s'agisse de la dernière version officielle, d'une version bêta, de la version Vulkan, etc.
