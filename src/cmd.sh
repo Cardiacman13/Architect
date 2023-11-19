@@ -40,7 +40,7 @@ function install_one() {
 
     local warning_msg=""
     if [[ ${warning} =~ ${package} ]]; then
-        warning_msg=" ${RED}might be long${RESET}"
+        warning_msg=" ${RED}(might be long)${RESET}"
     fi
 
     log_msg "${GREEN}[+]${RESET} ${package}${warning_msg}"
