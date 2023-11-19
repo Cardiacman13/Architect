@@ -117,12 +117,7 @@ For all the following steps, when you have text presented in this way, it will i
 echo "Hello world !"            # Example command
 ```
 
-1. **Set the keyboard to English**
-    ```
-    loadkeys en
-    ```
-
-2. **Set up your Wi-Fi**
+1. **Set up your Wi-Fi**
     ```
     iwctl
     ```
@@ -132,7 +127,7 @@ echo "Hello world !"            # Example command
     ```
     Enter your wifi password then `quit` to exit iwctl.
 
-3. **Archinstall**
+2. **Archinstall**
     ```
     pacman -Syu archinstall     # update the archinstall script before installation
     archinstall                 # to launch the installation help script for arch linux
