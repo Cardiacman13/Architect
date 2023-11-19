@@ -77,7 +77,7 @@ function main() {
 
     # system
     clear
-    display_step "System preparation"
+    display_step "System configuration"
     little_step config_pacman           "Pacman configuration"
     little_step install_aur             "AUR helper installation"
     little_step mirrorlist              "Mirrorlist configuration"
@@ -90,7 +90,7 @@ function main() {
 
     # drivers
     clear
-    display_step "System configuration"
+    display_step "Drivers installation"
     little_step video_drivers           "Video drivers installation"
     little_step gamepad                 "Gamepad configuration"
     little_step printer                 "Printer configuration"
@@ -104,7 +104,7 @@ function main() {
     # software
     clear
     display_step "Software installation"
-    little_step support_flatpak         "Flatpak support installation"
+    little_step support_flatpak         "Flatpak support"
     little_step install_software        "Software installation"
 
     # end
