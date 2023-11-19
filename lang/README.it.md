@@ -24,6 +24,8 @@ Questo script è perfetto per configurare un sistema **Arch stock** con un **set
 > Effettuiamo tutti i nostri test basandoci su una nuova installazione di Arch Linux con [`archinstall`](https://github.com/archlinux/archinstall).
 > 
 > Assicurati di non eseguire come root e di trovarti in un "Ambiente Desktop" (GNOME, KDE Plasma, i3wm, ecc.).
+>
+> Non è adatto a computer datati. Assicuratevi che il vostro hardware soddisfi i requisiti per gli ultimi driver Nvidia.
 
 Esegui il seguente comando nel terminale per eseguire lo script (**richiede l'accesso sudo**):
 
