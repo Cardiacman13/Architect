@@ -1,0 +1,25 @@
+######################################################
+# GRUB HOOK FOR PACMAN
+# 
+# This hook is intended for the pacman package manager used by Arch Linux.
+# Its role is to update GRUB's configuration whenever a vmlinuz file is installed, updated or deleted. 
+# in the modules directory.
+# 
+# GRUB (GRand Unified Bootloader) is the most commonly used bootloader on Linux systems. When the Linux kernel 
+# Linux kernel is updated (as indicated by changes to vmlinuz), GRUB's configuration must be updated to 
+# ensure that the system boots correctly with the new kernel version.
+# 
+# This hook automates the process of updating GRUB's configuration following these changes.
+######################################################
+
+[Trigger]
+Type = File
+Operation = Install
+Operation = Upgrade
+Operation = Remove
+Target = usr/lib/modules/*/vmlinuz
+
+[Action]
+Description = Updating grub configuration ...
+When = PostTransaction
+Exec = /usr/bin/grub-mkconfig -o /boot/grub/grub.cfg
