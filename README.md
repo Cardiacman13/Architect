@@ -27,6 +27,8 @@ This script is perfect for configuring a **stock Arch** system with a **minimal 
 > We make all our test based on a fresh install of Arch Linux with [`archinstall`](https://github.com/archlinux/archinstall).
 > 
 > Ensure you're not running as root and are in a "Desktop Environment" (GNOME, KDE Plasma, i3wm, etc.).
+>
+> It is not suitable for outdated computers. Ensure your hardware meets the requirements for the latest Nvidia drivers.
 
 Execute the following in the terminal to run the script (**requires sudo access**):
 
