@@ -24,6 +24,8 @@ Este script es perfecto para configurar un sistema **Arch puro** con un **conjun
 > Hacemos todas nuestras pruebas basándonos en una instalación fresca de Arch Linux con [`archinstall`](https://github.com/archlinux/archinstall).
 > 
 > Asegúrate de no estar ejecutándolo como root y de estar en un "Entorno de Escritorio" (GNOME, KDE Plasma, i3wm, etc.).
+>
+> No es adecuado para computadoras obsoletas. Asegúrate de que tu hardware cumpla con los requisitos para los últimos controladores de Nvidia.
 
 Ejecuta lo siguiente en el terminal para correr el script (**requiere acceso sudo**):
 

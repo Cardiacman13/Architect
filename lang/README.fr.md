@@ -23,6 +23,8 @@ Ce script est parfait pour configurer un système **Arch pur** avec un **ensembl
 > Nous réalisons tous nos tests sur une installation fraîche d'Arch Linux avec [`archinstall`](https://github.com/archlinux/archinstall).
 >
 > Assurez-vous de ne pas exécuter en tant que root et d'être dans un "Environnement de Bureau" (GNOME, KDE Plasma, i3wm, etc.).
+>
+> Il n'est pas adapté aux ordinateurs obsolètes. Assurez-vous que votre matériel répond aux exigences pour les derniers pilotes Nvidia.
 
 Exécutez ce qui suit dans le terminal pour lancer le script (**nécessite l'accès sudo**):
 
