@@ -117,7 +117,7 @@ echo "Hello world !"            # Beispielbefehl
 
 1. **Tastatur auf Englisch einstellen**
     ```
-    loadkeys en
+    loadkeys de
     ```
 
 2. **Dein WLAN einrichten**

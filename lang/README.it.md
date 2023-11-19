@@ -119,7 +119,7 @@ echo "Ciao mondo!"            # Esempio di comando
 
 1. **Impostate la tastiera in inglese**
     ```
-    loadkeys en
+    loadkeys it
     ```
 
 2. **Configurate il vostro Wi-Fi**
