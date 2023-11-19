@@ -104,69 +104,6 @@ Select additional software based on your needs:
 | Visual Studio Code      | visual-studio-code-bin                  | package |
 | Open RGB                | openrgb-bin                             | package |
 
-## 👨‍🔧 For developers
-
-### 🏭 Project Structure Overview
-
-```graphql
-.
-├── architect.sh                # Main script file to kickstart the installation.
-├── assets
-│   └── data
-│       └── hooks
-│           ├── grub.hook       # GRUB configuration hook for system optimizations.
-│           └── nvidia.hook     # NVIDIA driver hook for custom configurations.
-├── LICENSE
-├── README.md
-└── src
-    ├── cmd.sh                  # Script for executing common command-line tasks.
-    ├── de
-    │   ├── detect.sh           # Detects the current Desktop Environment.
-    │   ├── gnome.sh            # GNOME setup script.
-    │   ├── i3.sh               # i3 window manager setup script.
-    │   ├── kde.sh              # KDE Plasma setup script.
-    │   └── xfce4.sh            # XFCE setup script.
-    ├── end.sh                  # Script executed at the end of the installation.
-    ├── init.sh                 # Initial setup script.
-    ├── software
-    │   ├── flatpak.sh          # Script for installing Flatpak packages.
-    │   └── install.sh          # General software installation script.
-    └── system
-        ├── config
-        │   ├── aur.sh          # AUR (Arch User Repository) setup script.
-        │   └── pacman.sh       # Pacman configuration script.
-        ├── drivers
-        │   ├── amd.sh          # AMD GPU drivers installation script.
-        │   ├── devices.sh      # Script for detecting connected devices.
-        │   ├── gpu.sh          # General GPU setup script.
-        │   ├── intel.sh        # Intel GPU drivers installation script.
-        │   ├── nvidia.sh       # NVIDIA GPU drivers installation script.
-        │   └── vm.sh           # Virtual machine related configurations.
-        ├── internet.sh         # Internet connectivity setup script.
-        ├── kernel.sh           # Kernel optimization script.
-        ├── other.sh            # Other miscellaneous scripts.
-        ├── packages.sh         # Script for package installation.
-        └── shell.sh            # Shell configuration script.
-```
-
-### 📄 Philosophy
-
-This project must respect the [philosophical principles of Archlinux](https://wiki.archlinux.org/title/Arch_Linux#Principles). Please do your best to follow this guideline if you intend to make a pullrequest.
-
-## 📝 License
-
-This project is licensed under the GNU GPLv3 License - see the [LICENSE](LICENSE) file for details.
-
-## 🙏 Acknowledgments
-
-- [Arch Linux](https://archlinux.org/) team for their amazing work.
-- Arch Linux community for their amazing documentation.
-- AUR maintainers for their hard work.
-- developers of the packages used in this project. Special mention to : 
-  - [Frogging Family](https://github.com/Frogging-Family)
-  - [OpenRGB](https://github.com/CalcProgrammer1/OpenRGB)
-- Thanks to the [GLF Discord](https://discord.gg/6t4REDETJd) for the numerous tests and feedback.
-
 ## <img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/pc.png" width="30" height="30"> **Elevate Your Desktop** <a name="elevate"/>
 
 ### Installation
@@ -677,3 +614,13 @@ Sources and useful links :
 Contributions to this project are welcome! If you have suggestions, bug reports, or contributions, please open an issue or a pull request in the repository.
 
 As you can see this project is available in French, English, Spanish, Italian & German. Translators are more than welcome ! :people_holding_hands:
+
+## 🙏 Acknowledgments
+
+- [Arch Linux](https://archlinux.org/) team for their amazing work.
+- Arch Linux community for their amazing documentation.
+- AUR maintainers for their hard work.
+- developers of the packages used in this project. Special mention to : 
+  - [Frogging Family](https://github.com/Frogging-Family)
+  - [OpenRGB](https://github.com/CalcProgrammer1/OpenRGB)
+- Thanks to the [GLF Discord](https://discord.gg/6t4REDETJd) for the numerous tests and feedback.
