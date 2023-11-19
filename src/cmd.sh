@@ -22,10 +22,6 @@ function exec() {
 }
 
 function exec_log() {
-    if [[ $# -ne 2 ]]; then
-        echo -e "${RED}Usage: exec_log <command> <message>${RESET}"
-        exit 1
-    fi
 
     local -r command="$1"
     local -r comment="$2"
