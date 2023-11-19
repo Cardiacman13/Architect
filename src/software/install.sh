@@ -12,7 +12,7 @@ declare -A software_list=(
     ["9"]="protonup-qt|protonup-qt-bin"
     ["10"]="Spotify|spotify"
     ["11"]="Kdenlive|kdenlive"
-    ["12"]="LibreOffice|libreoffice-fresh libreoffice-fresh-fr"
+    ["12"]="LibreOffice|libreoffice-fresh"
     ["13"]="Gimp|gimp"
     ["14"]="VLC|vlc"
     ["15"]="Visual Studio Code|visual-studio-code-bin"
@@ -21,8 +21,9 @@ declare -A software_list=(
 
 function display_software_list() {
     echo -e "\n${GREEN}Software list${RESET}"
-    for key in "${!software_list[@]}"; do
-        IFS='|' read -ra software <<<"${software_list[$key]}"
+    local sorted_keys=($(echo "${!software_list[@]}" | tr ' ' '\n' | sort -n))
+    for key in "${sorted_keys[@]}"; do
+        IFS='|' read -ra software <<< "${software_list[$key]}"
         echo -e "${GREEN}${key})${RESET} ${software[0]}"
     done
 }
