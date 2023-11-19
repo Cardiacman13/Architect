@@ -87,9 +87,6 @@ Select additional software based on your needs:
 
 | Name                    | Package                                 | Type    |
 |-------------------------|-----------------------------------------|---------|
-| Firefox                 | firefox firefox-i18n-fr                 | package |
-| Brave                   | brave-bin                               | package |
-| Chromium                | chromium                                | package |
 | Discord                 | discord                                 | package |
 | Steam                   | steam proton-ge-custom-bin              | package |
 | Lutris                  | lutris wine-staging                     | package |
