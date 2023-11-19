@@ -20,10 +20,10 @@ declare -A software_list=(
 )
 
 function display_software_list() {
-    echo "Liste des logiciels disponibles à l'installation :"
+    echo -e "\n${GREEN}Software list${RESET}"
     for key in "${!software_list[@]}"; do
         IFS='|' read -ra software <<<"${software_list[$key]}"
-        echo "$key: ${software[0]}"
+        echo -e "${GREEN}${key})${RESET} ${software[0]}"
     done
 }
 
