@@ -33,7 +33,7 @@ function setup_system_loaders() {
         return
     fi
 
-    copy_bak "assets/data" "grub.hook" "/etc/pacman.d/hooks" true
+    copy_bak "assets/data/hooks" "grub.hook" "/etc/pacman.d/hooks" true
     install_one "update-grub"
 }
 

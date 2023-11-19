@@ -1,26 +1,25 @@
 #!/usr/bin/env bash
 
-# ================================================================================================ #
 export RESET=$(tput sgr0)
 export RED=$(tput setaf 1)
 export GREEN=$(tput setaf 2)
 export YELLOW=$(tput setaf 3)
 export BLUE=$(tput setaf 4)
 export PURPLE=$(tput setaf 5)
-# ================================================================================================ #
+
 if sudo -v; then
     echo -e "\n${GREEN}Root privileges granted${RESET}"
 else
     echo -e "\n${RED}Root privileges denied${RESET}"
     exit 1
 fi
-# ================================================================================================ #
+
 if [[ $1 == "-v" ]]; then
     export VERBOSE=true
 else
     export VERBOSE=false
 fi
-# ================================================================================================ #
+
 export LOG_FILE="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/logfile_$(date "+%Y%m%d-%H%M%S").log"
 if [[ -d "/boot/loader/entries" ]]; then
     export BOOT_LOADER="systemd-boot"
@@ -32,7 +31,7 @@ if [[ $(lsblk -o FSTYPE | grep -c btrfs) -gt 0 ]]; then
 else
     export BTRFS=false
 fi
-# ================================================================================================ #
+
 source src/init.sh
 source src/end.sh
 source src/de/detect.sh
@@ -47,47 +46,38 @@ source src/system/kernel.sh
 source src/system/other.sh
 source src/system/packages.sh
 source src/system/shell.sh
-# ================================================================================================ #
-function print_center() {
+
+function display_step() {
     local -r message="$1"
-    local -r color="$2"
-    local -r line="-----------------------------------------------------------------------------------------------------------"
-    local -r line_length=${#line}
-    local -r message_length=${#message}
-    
-    local -r total_padding=$((line_length - message_length))
-    local -r padding_side=$((total_padding / 2))
-    local padding_right=$padding_side
+    cat <<-EOF
+${BLUE}-----------------------------------------------------------------------------------------------------------
 
-    if [ $((total_padding % 2)) -ne 0 ]; then
-        ((padding_right++))
-    fi
+                                   ${message}                                                        
 
-    printf "%s%b%s%b%s\n" \
-        "${line:0:padding_side}" \
-        "${color}" "$message" "${RESET}" \
-        "${line:0:padding_right}"
+-----------------------------------------------------------------------------------------------------------${RESET}
+EOF
 }
 
 function little_step() {
     local -r function=$1
     local -r message=$2
 
-    print_center "${message}" "${YELLOW}"
+    echo -e "\n${YELLOW}${message}${RESET}\n"
     ${function}
 }
-# ================================================================================================ #
+
 function main() {
     check_internet || exit 1
     
     local -r start_time="$(date +%s)"
     # init
-    print_center "Initialization" "${GREEN}"
+    display_step "Initialization"
     init_log
     header
 
     # system
-    print_center "System preparation" "${GREEN}"
+    clear
+    display_step "System preparation"
     little_step config_pacman           "Pacman configuration"
     little_step install_aur             "AUR helper installation"
     little_step mirrorlist              "Mirrorlist configuration"
@@ -99,22 +89,26 @@ function main() {
     little_step shell_config            "Shell configuration"
 
     # drivers
-    print_center "System configuration" "${GREEN}"
+    clear
+    display_step "System configuration"
     little_step video_drivers           "Video drivers installation"
     little_step gamepad                 "Gamepad configuration"
     little_step printer                 "Printer configuration"
     little_step bluetooth               "Bluetooth configuration"
 
     # desktop environment
-    print_center "Environment configuration" "${GREEN}"
+    clear
+    display_step "Environment configuration"
     little_step detect_de               "Desktop environment detection"
 
     # software
-    print_center "Software installation" "${GREEN}"
+    clear
+    display_step "Software installation"
     little_step support_flatpak         "Flatpak support installation"
     little_step install_software        "Software installation"
 
     # end
+    clear
     endscript "${start_time}"
 }
 # ================================================================================================ #
