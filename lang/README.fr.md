@@ -1,4 +1,4 @@
-# 🐧 ARCHITECT SCRIPT ET TUTORIELS 📜
+# 🐧 ARCHITECT SCRIPT ET TUTO 📜
 
 [**Version Française**](https://github.com/Cardiacman13/Tuto-Arch/blob/main/lang/README.fr.md) / [**Version Espagnole**](https://github.com/Cardiacman13/Tuto-Arch/blob/main/lang/README.es.md) / [**Version Italienne**](https://github.com/Cardiacman13/Tuto-Arch/blob/main/lang/README.it.md) / [**Version Allemande**](https://github.com/Cardiacman13/Tuto-Arch/blob/main/lang/README.de.md)
 
@@ -165,9 +165,6 @@ Ce projet est sous licence GNU GPLv3 - voir le fichier [LICENSE](LICENSE) pour p
   - [OpenRGB](https://github.com/CalcProgrammer1/OpenRGB)
 - Merci au [Discord GLF](https://discord.gg/6t4REDETJd) pour les nombreux tests et retours.
 
----
-
-Ce projet
 
 ## <img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/pc.png" width="30" height="30"> **TUTO** <a name="elevate"/>
 
