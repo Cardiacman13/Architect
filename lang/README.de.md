@@ -12,6 +12,8 @@
 
 ## 🚀 Arch Linux Nachinstallations-Skript <a name="script"/>
 
+<img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/Welcome.png">
+
 Dieses Skript ist perfekt, um ein **reines Arch-System** mit einer **minimalen Menge an Paketen** anzupassen, die auf deine Bedürfnisse zugeschnitten sind, direkt nach der Verwendung von `archinstall`. Es ist speziell **auf Gaming ausgerichtet**.
 
 > **Warnung**
