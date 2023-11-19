@@ -23,6 +23,8 @@ Dieses Skript ist perfekt, um ein **reines Arch-System** mit einer **minimalen M
 > Wir führen alle unsere Tests auf einer frischen Arch Linux Installation mit [`archinstall`](https://github.com/archlinux/archinstall) durch.
 >
 > Stelle sicher, dass du es nicht als Root ausführst und in einer "Desktop-Umgebung" bist (GNOME, KDE Plasma, i3wm, etc.).
+>
+> Es ist nicht für veraltete Computer geeignet. Stellen Sie sicher, dass Ihre Hardware den Anforderungen für die neuesten Nvidia-Treiber entspricht.
 
 Führe Folgendes im Terminal aus, um das Skript zu starten (**sudo Zugriff erforderlich**):
 
