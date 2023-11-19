@@ -1,110 +1,105 @@
-# TUTORIAL Y SCRIPT POST-INSTALACIÓN DE ARCH LINUX
-
-## Presentación
+# 🐧 GUIÓN DEL ARQUITECTO Y TUTORIALES 📜
 
 <img src="https://github.com/Cardiacman13/Architect/blob/main/assets/images/desktop.png" width="1000" height="250">
 
-Arch es una distribución técnica dirigida a un público más avanzado, consistente en "bloques de construcción". Piénsalo como un conjunto de Lego en blanco, con una base que necesitas construir y moldear como desees, y si lo haces mal, las cosas pueden romperse.
 
-El propósito de este tutorial es instalar un Arch estándar con un mínimo de paquetes, según nuestras necesidades para trabajo de oficina y/o juegos.
+## Tabla de Contenidos
+1. [Script todo-en-uno](#script)
+2. [Tutorial](#elevate)
+3. [Gaming](#gaming)
+4. [Optimización](#optimization)
+5. [Resolución de problemas](#troubleshooting)
+6. [Cosas de la comunidad](#community)
 
-<img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/Cardiac-icon.png" width="30" height="30"> Este icono te redirige a mis videos sobre ciertas partes de este tutorial [**Lista de Reproducción del Tutorial de Arch Linux**](https://www.youtube.com/watch?v=JE6VwNHLcyk&list=PLuIP_-MWRwtWEX0tyDpZPdwU6zCE1O1cY)
-
-### Condiciones
-
-> **Nota**
-> El script que encontrarás más adelante funciona independientemente de tus elecciones de DE / BOOT LOADER / FS.
-> Tutorial y script destinados a ser utilizados con un Arch puro (incompatible con Garuda, EndeavourOS, Manjaro…)
-> Sin embargo, si sabes lo que estás haciendo, las modificaciones para otras opciones son mínimas.
-
-Descarga el ISO: [**Arch Linux - Descargas**](https://archlinux.org/download/)
-
-## Índice
-1. [Script Todo-en-Uno](#script)
-2. [Potencia tu escritorio](#elevate)
-3. [Lleva tus Juegos a Otro Nivel](#gaming)
-4. [Optimización de Precisión](#optimization)
-5. [Cosas de la Comunidad](#community)
-
-## Script de Post-Instalación de Arch Linux <a name="script"/>
+## 🚀 Script de Post-Instalación de Arch Linux <a name="script"/>
 
 <img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/Welcome.png">
 
-El propósito de este script es configurar un sistema **Arch estándar** con un **conjunto mínimo de paquetes** adaptados a tus necesidades justo después de usar archinstall. Este script está **orientado hacia el gaming**.
+Este script es perfecto para configurar un sistema **Arch puro** con un **conjunto mínimo de paquetes** adaptados a tus necesidades justo después de usar `archinstall`. Específicamente, está **orientado al gaming**.
 
-> [!NOTA]
-> **Antes de empezar:**
-> Este script se basa en un tutorial que describe todos los pasos: [Tuto-Arch](https://github.com/Cardiacman13/Tuto-Arch/blob/main/lang/README.en.md)
-> Este script está destinado para usarse en una instalación limpia que acaba de ser configurada con `archinstall`.
-> Antes de ejecutar este script, asegúrate de haber iniciado sesión en un Entorno de Escritorio.
-> No es adecuado para computadoras obsoletas. Asegúrate de que tu hardware cumpla con los requisitos para los últimos controladores de Nvidia.
+> **Advertencia** 
+> 
+> Está diseñado específicamente para una experiencia pura de Arch Linux (no probado en *Garuda*, *Manjaro*, etc.).
+> 
+> Hacemos todas nuestras pruebas basándonos en una instalación fresca de Arch Linux con [`archinstall`](https://github.com/archlinux/archinstall).
+> 
+> Asegúrate de no estar ejecutándolo como root y de estar en un "Entorno de Escritorio" (GNOME, KDE Plasma, i3wm, etc.).
+
+Ejecuta lo siguiente en el terminal para correr el script (**requiere acceso sudo**):
 
 ```bash
-sudo pacman -Sy git
-git clone https://github.com/Cardiacman13/Architect.git
-cd Architect
-./architect.sh
+sudo pacman -Sy git base-devel && git clone https://github.com/Cardiacman13/Architect.git ~/Architect && cd ~/Architect && ./architect.sh
 ```
 
-### 1. Optimizando Pacman
-Mejora la funcionalidad y experiencia de usuario de Pacman haciendo las siguientes mejoras:
+## 📝 Características Principales
 
-- Habilitando la salida de color.
-- Habilitando listas detalladas de paquetes.
-- Habilitando descargas paralelas.
-- Habilitando soporte multilib.
+### 1. 🚀 Configurar el Gestor de Paquetes
+Potenciar la funcionalidad de Pacman:
+- 🎨 Habilitar salida de colores.
+- 📝 Listas detalladas de paquetes.
+- ⚡ Descargas paralelas.
+- 🔗 Soporte Multilib.
 
-### 2. Añadiendo Alias Útiles
-Simplifica tus tareas de línea de comandos con estos alias útiles:
+### 2. ⌨️ Añadiendo Alias Útiles
+Facilitar tus tareas en la línea de comandos:
+- `update-arch`: Actualiza todas las aplicaciones de tu sistema de una vez.
+- `clean-arch`: Elimina paquetes no utilizados.
+- `fix-key`: Resuelve problemas relacionados con claves para actualizaciones.
+- `update-mirrors`: Refresca la lista de mirrors de tu sistema.
 
-- update-arch: Actualiza las aplicaciones de tu sistema con un solo comando.
-- clean-arch: Limpia tu sistema eliminando paquetes no utilizados.
-- fix-key: Soluciona problemas relacionados con claves, asegurando un proceso de actualización sin problemas.
+### 3. 🎮 Configuración de GPU para Gaming (AMD, NVIDIA, Intel)
+Prepara tu sistema para juegos con :
+- 🎮 Proton-GE (a través del repositorio [`GloriousEggroll/proton-ge-custom`](https://github.com/GloriousEggroll/proton-ge-custom)).
+- 🎮 Opciones de drivers de GPU:
+  - 📹 Soporte AMD y bibliotecas de 32 bits.
+  - 📹 Soporte Intel y bibliotecas de 32 bits.
+  - 🔄 Opciones NVIDIA:
+    - **Nvidia**: Drivers estándar (recomendado para la mayoría) con hook personalizado basado en el sistema de arranque (GRUB o systemd-boot).
+    - **Nvidia-all**: Para usuarios avanzados (a través del repositorio [`Frogging-Family/nvidia-all`](https://github.com/Frogging-Family/nvidia-all)).
 
-### 3. Asistencia con la Instalación de GPU para Gaming de AMD, NVIDIA o Intel
-Prepara tu sistema para el gaming con la configuración de GPU, que incluye:
+### 4. 🖥️ Entorno de Escritorio
+Elige tu DE:
+- 🖥️ `GNOME`.
+- 🖥️ `KDE Plasma`.
+- 🖥️ `XFCE`.
+- 🖥️ `i3wm` ([configuración personalizada](https://github.com/wmemcpy/i3-config) próximamente... 😏).
 
-- Instalación de controladores.
-- Instalación de bibliotecas Vulkan.
-- Instalación de bibliotecas de 32 bits.
-- Elegir entre los controladores estándar de Nvidia o la variante `nvidia-all`:
-  - **Nvidia**: Esta es la opción recomendada para la mayoría de los usuarios. Involucra:
-    - Instalación de paquetes de Nvidia.
-  - **Nvidia-all**: Esto es para usuarios avanzados que saben cómo mantenerlo. Involucra:
-    - Clonar e instalar desde el repositorio `Frogging-Family/nvidia-all`.
+### 5. 📦 Instalar Paquetes Base
+Paquetes esenciales para una experiencia completa:
+- 📦 Ayudantes de AUR: [`yay`](https://github.com/Jguer/yay) o [`paru`](https://github.com
 
-### 4. Instalar Algunos Paquetes Básicos
-Instala paquetes fundamentales para una experiencia completa:
+/Morganamilo/paru).
+- 🖋️ Fuentes, Emoji.
+- 🎬 Códecs.
+- ➕ Otros paquetes cruciales.
 
-- [yay](https://github.com/Jguer/yay) o [paru](https://github.com/Morganamilo/paru) ayudante AUR.
-- Fuentes.
-- Utilidades de escritorio.
-- Códecs.
-- Otros paquetes esenciales.
+### 6. 🛠️ Mejoras Varias
+Afinar tu sistema:
+- 🎲 Aumentar `vm.max_map_count` para mejor compatibilidad con juegos de Windows. [Wiki de Arch sobre vm-max-map-count](https://wiki.archlinux.org/title/gaming#Increase_vm.max_map_count)
+- 🖨️ Opciones para soporte de impresión.
+- 🎵 Configuración de Bluetooth.
+- 🎮 Soporte mejorado para controles de Xbox, PS4/PS5, 8bitdo.
+- 🐟 Sugerir configuración de shell Fish. (zsh en desarrollo)
 
-### 5. Mejoras Varias
-Ajusta tu sistema para una experiencia mejorada:
+### 7. 🔄 Preguntar para Instalar Software Adicional
+Selecciona software adicional basado en tus necesidades:
 
-- Aumentando `vm.max_map_count` para mejorar la compatibilidad con juegos de Windows. [Wiki de Arch sobre vm-max-map-count](https://wiki.archlinux.org/title/gaming#Increase_vm.max_map_count)
-- Preguntándote sobre la configuración de soporte de impresión.
-- Preguntándote sobre la configuración de Bluetooth.
-- Soporte avanzado para controladores de Xbox, PS4/PS5, 8bitdo
-- Propone configurar Fish como una shell de línea de comandos.
+| Nombre                    | Paquete                                 | Tipo    |
+|-------------------------|-----------------------------------------|---------|
+| Discord                 | discord                                 | paquete |
+| Steam                   | steam proton-ge-custom-bin              | paquete |
+| Lutris                  | lutris wine-staging                     | paquete |
+| Heroic Games Launcher   | heroic-games-launcher-bin               | paquete |
+| protonup-qt             | protonup-qt-bin                         | paquete |
+| Spotify                 | spotify                                 | paquete |
+| OBS Studio              | com.obsproject.Studio                   | flatpak |
+| Kdenlive                | kdenlive                                | paquete |
+| LibreOffice             | libreoffice-fresh libreoffice-fresh-fr  | paquete |
+| Gimp                    | gimp                                    | paquete |
+| VLC                     | vlc                                     | paquete |
+| Visual Studio Code      | visual-studio-code-bin                  | paquete |
+| Open RGB                | openrgb-bin                             | paquete |
 
-### 6. Asistencia con la Instalación de Varios Softwares
-Tienes la libertad de elegir qué software adicional instalar según tus necesidades específicas:
-
-- `Discord`
-- `Steam`
-- `Lutris`
-- `Heroic Games Launcher`
-- `protonup-qt`
-- `Spotify`
-- `OBS Studio`
-- `LibreOffice`
-- `Gimp`
-- `Visual Studio Code`
-- `Open RGB`
 
 ## <img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/pc.png" width="30" height="30"> **Potencia tu Escritorio** <a name="elevate"/>
 
@@ -513,7 +508,7 @@ Incrementamos el valor por defecto de esta variable, permitiendo almacenar más 
 
 ### [Kernel TKG](https://github.com/Frogging-Family/linux-tkg)
 
-> [!ADVERTENCIA]
+> [!WARNING]
 > Este paso está destinado a usuarios avanzados :star:
 
 [TKG](https://github.com/Frogging-Family) es una compilación de kernel altamente personalizable que proporciona una selección de arreglos y ajustes para mejorar el rendimiento en escritorio y juegos.
@@ -528,7 +523,7 @@ makepkg -si
 
 ### [MESA-TKG](https://github.com/Frogging-Family/mesa-git)
 
-> [!ADVERTENCIA]
+> [!WARNING]
 > Este paso está destinado a usuarios avanzados :star:
 
 Al igual que el kernel TKG, pero para Mesa, una versión parcheada para añadir algunos arreglos y optimizaciones.
@@ -542,7 +537,7 @@ Decir sí a todo para sobrescribir todo con nuevos paquetes.
 
 ### [NVIDIA-ALL](https://github.com/Frogging-Family/nvidia-all)
 
-> [!ADVERTENCIA]
+> [!WARNING]
 > Este paso está destinado a usuarios avanzados :star:
 
 Nvidia-all es una integración del controlador nvidia por TKG. Incluye parches de soporte para nuevos kernels. Te permite seleccionar la versión del controlador que deseas instalar, ya sea la última versión oficial, una versión beta, la versión Vulkan, etc.
@@ -581,6 +576,16 @@ Fuentes y enlaces útiles :
 ¡Las contribuciones a este proyecto son bienvenidas! Si tienes sugerencias, informes de errores o contribuciones, por favor abre una issue o una pull request.
 
 Como puedes ver, este proyecto está disponible en francés, inglés y español. ¡Los traductores son más que bienvenidos! :people_holding_hands:
+
+## 🙏 Agradecimientos
+
+- Al equipo de [Arch Linux](https://archlinux.org/) por su increíble trabajo.
+- A la comunidad de Arch Linux por su excepcional documentación.
+- A los mantenedores del AUR por su arduo trabajo.
+- A los desarrolladores de los paquetes utilizados en este proyecto. Una mención especial a:
+  - [Frogging Family](https://github.com/Frogging-Family)
+  - [OpenRGB](https://github.com/CalcProgrammer1/OpenRGB)
+- Gracias al [GLF Discord](https://discord.gg/6t4REDETJd) por las numerosas pruebas y comentarios.
 
 <!-- readme: contributors -start -->
 <!-- readme: contributors -end -->

@@ -1,22 +1,10 @@
-# ARCH LINUX POST-INSTALLATION TUTORIAL AND SCRIPT
+# 🐧 ARCHITECT SCRIPT AND TUTORIALS 📜
 
 [**Version Française**](https://github.com/Cardiacman13/Tuto-Arch/blob/main/lang/README.fr.md) / [**Versión Española**](https://github.com/Cardiacman13/Tuto-Arch/blob/main/lang/README.es.md) / [**Versione italiana**](https://github.com/Cardiacman13/Tuto-Arch/blob/main/lang/README.it.md) / [**deutsche Version**](https://github.com/Cardiacman13/Tuto-Arch/blob/main/lang/README.de.md)
 
-## Presentation
 
 <img src="https://github.com/Cardiacman13/Architect/blob/main/assets/images/desktop.png" width="1000" height="250">
 
-Arch is a technical distribution aimed at a more advanced audience, consisting of "building blocks". Think of it like a set of blank Lego, with a base that you need to build and shape as you wish, and if you do it wrong, things can break.
-
-The purpose of this tutorial is to install a stock Arch with a minimum of packages, according to our needs for office work and/or gaming.
-
-### Conditions
-
-> **Note**
-> The script you will find later works regardless of your choices of DE / BOOT LOADER / FS.
-> Tutorial and script aimed to be used with a pure Arch (incompatible with Garuda, EndeavourOS, Manjaro…)
-
-Download the ISO: [**Arch Linux - Downloads**](https://archlinux.org/download/)
 
 ## Table of Contents
 1. [All-in-one script](#script)
@@ -26,87 +14,92 @@ Download the ISO: [**Arch Linux - Downloads**](https://archlinux.org/download/)
 5. [Troubleshooting](#troubleshooting)
 6. [Community stuff](#community)
 
-## Arch Linux Post-Install Script <a name="script"/>
+## 🚀 Arch Linux Post-Install Script <a name="script"/>
 
 <img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/Welcome.png">
 
-The purpose of this script is to configure a **stock Arch** system with a **minimal set of packages** tailored to your needs right after using archinstall. This script is **oriented towards gaming**.
+This script is perfect for configuring a **stock Arch** system with a **minimal set of packages** tailored to your needs right after using `archinstall`. Specifically, it's **geared towards gaming**.
 
-> [!NOTE]
-> **Before You Begin:**
-> This script is based on a tutorial that describes all the steps.
-> This script is intended for use on a clean installation that has just been set up with `archinstall`.
-> Before running this script, make sure you have booted into a Desktop Environment.
-> It is not suitable for outdated computers. Ensure your hardware meets the requirements for the latest Nvidia drivers.
+> **Warning** 
+> 
+> It's specifically designed for a pure Arch Linux experience (not tested on *Garuda*, *Manjaro*, etc.).
+> 
+> We make all our test based on a fresh install of Arch Linux with [`archinstall`](https://github.com/archlinux/archinstall).
+> 
+> Ensure you're not running as root and are in a "Desktop Environment" (GNOME, KDE Plasma, i3wm, etc.).
+
+Execute the following in the terminal to run the script (**requires sudo access**):
 
 ```bash
-sudo pacman -Sy git
-git clone https://github.com/Cardiacman13/Architect.git
-cd Architect
-./architect.sh
+sudo pacman -Sy git base-devel && git clone https://github.com/Cardiacman13/Architect.git ~/Architect && cd ~/Architect && ./architect.sh
 ```
 
-### 1. Optimizing Pacman
-Enhance Pacman's functionality and user experience by making the following improvements:
+## 📝 Main Features
 
-- Enabling colored output.
-- Enabling detailed package lists.
-- Enabling parallel downloads.
-- Enabling multilib support.
+### 1. 🚀 Configure Package Manager
+Boost Pacman's functionality:
+- 🎨 Enabling colored output.
+- 📝 Detailed package lists.
+- ⚡ Parallel downloads.
+- 🔗 Multilib support.
 
-### 2. Adding Useful Aliases
-Simplify your command-line tasks with these helpful aliases:
+### 2. ⌨️ Adding Useful Aliases
+Ease your command-line tasks:
+- `update-arch`: Updates your system apps in one go.
+- `clean-arch`: Removes unused packages.
+- `fix-key`: Solves key-related issues for updates.
+- `update-mirrors`: Refreshes your system's mirror list.
 
-- update-arch: Updates your system apps with a single command.
-- clean-arch: Cleans up your system by removing unused packages.
-- fix-key: Fixes key-related issues, ensuring a smooth update process.
-- update-mirrors: Updates your system's mirror list.
+### 3. 🎮 GPU Setup for Gaming (AMD, NVIDIA, Intel)
+Prepare your system for gaming with :
+- 🎮 Proton-GE (via [`GloriousEggroll/proton-ge-custom`](https://github.com/GloriousEggroll/proton-ge-custom) repo).
+- 🎮 GPU drivers choises:
+  - 📹 AMD and 32-bit library support.
+  - 📹 Intel and 32-bit library support.
+  - 🔄 NVIDIA choises:
+    - **Nvidia**: Standard drivers (recommended for most) with custom hook based on startup system (GRUB or systemd-boot).
+    - **Nvidia-all**: For advanced users (via [`Frogging-Family/nvidia-all`](https://github.com/Frogging-Family/nvidia-all) repo).
 
+### 4. 🖥️ Desktop Environment
+Choose your DE:
+- 🖥️ `GNOME`.
+- 🖥️ `KDE Plasma`.
+- 🖥️ `XFCE`.
+- 🖥️ `i3wm` ([custom config](https://github.com/wmemcpy/i3-config) coming soon... 😏).
 
-### 3. Assisting with AMD, NVIDIA, or Intel GPU Installation for Gaming
-Get your gaming-ready with GPU setup, which includes:
+### 5. 📦 Install Base Packages
+Essential packages for a rounded experience:
+- 📦 AUR helpers: [`yay`](https://github.com/Jguer/yay) or [`paru`](https://github.com/Morganamilo/paru).
+- 🖋️ Fonts, Emoji.
+- 🎬 Codecs.
+- ➕ Other crucial packages.
 
-- Installing drivers.
-- Installing Vulkan libraries.
-- Installing 32-bit libraries.
-- Choosing between standard Nvidia drivers or the `nvidia-all` variant:
-  - **Nvidia**: This is the recommended choice for most users. It involves:
-    - Installing Nvidia DKMS and 32b libs packages.
-  - **Nvidia-all**: This is for advanced users who know how to maintain it. It involves:
-    - Cloning and installing from the `Frogging-Family/nvidia-all` repository.
+### 6. 🛠️ Miscellaneous Enhancements
+Tune-up your system:
+- 🎲 Boost `vm.max_map_count` for better Windows game compatibility. [Arch wiki about vm-max-map-count](https://wiki.archlinux.org/title/gaming#Increase_vm.max_map_count)
+- 🖨️ Options for Print support.
+- 🎵 Bluetooth configuration.
+- 🎮 Enhanced support for Xbox, PS4/PS5, 8bitdo controllers.
+- 🐟 Suggest Fish shell configuration. (zsh in WIP)
 
-### 4. Install Some Base Packages
-Install fundamental packages for a complete experience:
+### 7. 🔄 Ask to Install Additional Software
+Select additional software based on your needs:
 
-- [yay](https://github.com/Jguer/yay) or [paru](https://github.com/Morganamilo/paru) AUR helper.
-- Fonts.
-- Desktop utilities.
-- Codecs.
-- Other essential packages.
-
-### 5. Miscellaneous Enhancements
-Fine-tune your system for an enhanced experience:
-
-- Boostin `vm.max_map_count` to improve compatibility with Windows games. [Arch wiki about vm-max-map-count](https://wiki.archlinux.org/title/gaming#Increase_vm.max_map_count)
-- Ask you for Print support configuration.
-- Ask you for Buetooth configuration.
-- Advanced support for Xbox, PS4/PS5, 8bitdo controllers
-- Propose to configure Fish as a command-line shell.
-
-### 6. Assisting with the Installation of Various Software
-You have the freedom to choose which additional software to install based on your specific needs:
-
-- `Discord`
-- `Steam`
-- `Lutris`
-- `Heroic Games Launcher`
-- `protonup-qt`
-- `Spotify`
-- `OBS Studio`
-- `LibreOffice`
-- `Gimp`
-- `Visual Studio Code`
-- `Open RGB`
+| Name                    | Package                                 | Type    |
+|-------------------------|-----------------------------------------|---------|
+| Discord                 | discord                                 | package |
+| Steam                   | steam proton-ge-custom-bin              | package |
+| Lutris                  | lutris wine-staging                     | package |
+| Heroic Games Launcher   | heroic-games-launcher-bin               | package |
+| protonup-qt             | protonup-qt-bin                         | package |
+| Spotify                 | spotify                                 | package |
+| OBS Studio              | com.obsproject.Studio                   | flatpak |
+| Kdenlive                | kdenlive                                | package |
+| LibreOffice             | libreoffice-fresh libreoffice-fresh-fr  | package |
+| Gimp                    | gimp                                    | package |
+| VLC                     | vlc                                     | package |
+| Visual Studio Code      | visual-studio-code-bin                  | package |
+| Open RGB                | openrgb-bin                             | package |
 
 ## <img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/pc.png" width="30" height="30"> **Elevate Your Desktop** <a name="elevate"/>
 
@@ -618,3 +611,14 @@ Sources and useful links :
 Contributions to this project are welcome! If you have suggestions, bug reports, or contributions, please open an issue or a pull request in the repository.
 
 As you can see this project is available in French, English, Spanish, Italian & German. Translators are more than welcome ! :people_holding_hands:
+
+## 🙏 Acknowledgments
+
+- [Arch Linux](https://archlinux.org/) team for their amazing work.
+- Arch Linux community for their amazing documentation.
+- AUR maintainers for their hard work.
+- developers of the packages used in this project. Special mention to : 
+  - [Frogging Family](https://github.com/Frogging-Family)
+  - [OpenRGB](https://github.com/CalcProgrammer1/OpenRGB)
+- Thanks to the [GLF Discord](https://discord.gg/6t4REDETJd) for the numerous tests and feedback.
+- Huge thanks to [wmemcpy](https://github.com/wmemcpy) for all his work on this project.

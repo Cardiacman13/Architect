@@ -3,7 +3,7 @@ source src/cmd.sh
 function nvidia_config() {
     # hook
     exec_log "sudo mkdir -p /etc/pacman.d/hooks/" "Creating hook folder"
-    copy_bak "assets/data" "nvidia.hook" "/etc/pacman.d/hooks" true
+    copy_bak "assets/data/hooks" "nvidia.hook" "/etc/pacman.d/hooks" true
 
     # bootloader
     if [[ ${BOOT_LOADER} == "grub" ]]; then

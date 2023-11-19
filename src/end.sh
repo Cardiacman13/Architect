@@ -14,7 +14,7 @@ function endscript() {
         echo -e "Log file uploaded to ${url}"
     fi
 
-    read -rp "${GREEN}Script completed successfully, the system must restart${RESET}: Press ${GREEN}Enter${RESET} to restart or ${GREEN}Ctrl+C${RESET} to cancel."
+    read -rp "${GREEN}Script completed successfully, the system must restart${RESET}: Press ${GREEN}Enter${RESET} to restart or ${RED}Ctrl+C${RESET} to cancel."
     for i in {5..1}; do
         echo -ne "${GREEN}Restarting in ${i} seconds...${RESET}\r"
         sleep 1

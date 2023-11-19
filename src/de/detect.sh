@@ -1,9 +1,10 @@
 source src/de/gnome.sh
+source src/de/i3.sh
 source src/de/kde.sh
-source src/de/xfce.sh
+source src/de/xfce4.sh
 
 function detect_de() {
-    local -r valid_des="GNOME KDE XFCE NONE"
+    local -r valid_des="GNOME I3 KDE XFCE NONE"
 
     read -rp "What is your desktop environment (${valid_des}) : " choice
     choice="${choice^^}"
@@ -13,10 +14,11 @@ function detect_de() {
     done
 
     case "${choice}" in
-    "GNOME") install_gnome ;;
-    "KDE") install_kde ;;
-    "XFCE") install_xfce ;;
-    "NONE") ;;
+    GNOME) install_gnome ;;
+    I3) install_i3 ;;
+    KDE) install_kde ;;
+    XFCE) install_xfce ;;
+    NONE) ;;
     *) echo "Invalid desktop environment : ${choice}" ;;
     esac
 }

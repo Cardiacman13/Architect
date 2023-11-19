@@ -2,31 +2,11 @@ source src/cmd.sh
 
 function install_xfce() {
     local -r inlst="
-        xdg-desktop-portal-xapp
-        xfce4-goodies
-        network-manager-applet
-        xfce4-notifyd
-        gnome-keyring
-        xdg-user-dirs
-        blueman
-        file-roller
-        galculator
-        gvfs
-        gvfs-afc
-        gvfs-gphoto2
-        gvfs-mtp
-        gvfs-nfs
-        gvfs-smb
-        lightdm
-        lightdm-slick-greeter
-        network-manager-applet
-        parole
-        ristretto
-        thunar-archive-plugin
-        thunar-media-tags-plugin
-        xdg-user-dirs-gtk
-        xed
         xfce4
+        xfce4-goodies
+        pavucontrol
+        gvfs
+        xarchiver
         xfce4-battery-plugin
         xfce4-datetime-plugin
         xfce4-mount-plugin
@@ -40,6 +20,28 @@ function install_xfce() {
         xfce4-weather-plugin
         xfce4-whiskermenu-plugin
         xfce4-xkb-plugin
+        xdg-desktop-portal-xapp
+        xdg-user-dirs-gtk
+        network-manager-applet
+        xfce4-notifyd
+        gnome-keyring
+        xdg-user-dirs
+        blueman
+        file-roller
+        galculator
+        gvfs-afc
+        gvfs-gphoto2
+        gvfs-mtp
+        gvfs-nfs
+        gvfs-smb
+        lightdm
+        lightdm-slick-greeter
+        network-manager-applet
+        parole
+        ristretto
+        thunar-archive-plugin
+        thunar-media-tags-plugin
+        xed
     "
 
     install_lst "${inlst}"
