@@ -43,7 +43,7 @@ function install_one() {
         warning_msg=" ${RED}might be long${RESET}"
     fi
 
-    log_msg ":: ${GREEN}[+]${RESET} ${package}${warning_msg}"
+    log_msg "${GREEN}[+]${RESET} ${package}${warning_msg}"
     if [[ ${type} == "flatpak" ]]; then
         exec "flatpak install -y flathub ${package}"
     else
