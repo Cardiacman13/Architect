@@ -2,7 +2,7 @@ source src/cmd.sh
 
 declare -A software_list=(
     ["1"]="OBS Studio (flatpak)|com.obsproject.Studio"
-    ["2"]="Firefox|firefox firefox-i18n-fr"
+    ["2"]="Firefox|firefox"
     ["3"]="Brave|brave-bin"
     ["4"]="Chromium|chromium"
     ["5"]="Discord|discord"
