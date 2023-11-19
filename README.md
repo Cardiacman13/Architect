@@ -163,7 +163,7 @@ This project is licensed under the GNU GPLv3 License - see the [LICENSE](LICENSE
 - developers of the packages used in this project. Special mention to : 
   - [Frogging Family](https://github.com/Frogging-Family)
   - [OpenRGB](https://github.com/CalcProgrammer1/OpenRGB)
-- Thanks to [endeavouros](https://endeavouros.com/), [garuda linux](https://garudalinux.org/), [cachyos](https://cachyos.org/) for their inspiration.
+- Thanks to the [GLF Discord](https://discord.gg/6t4REDETJd) for the numerous tests and feedback.
 
 ## <img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/pc.png" width="30" height="30"> **Elevate Your Desktop** <a name="elevate"/>
 
