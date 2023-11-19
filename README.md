@@ -45,11 +45,11 @@ Prepare your system for gaming with :
     - **Nvidia-all**: For advanced users (via [`Frogging-Family/nvidia-all`](https://github.com/Frogging-Family/nvidia-all) repo).
 
 ### 4. 🖥️ Desktop Environment
-Choose your DE:
-- 🖥️ `GNOME`.
-- 🖥️ `KDE Plasma`.
-- 🖥️ `XFCE`.
-- 🖥️ `i3wm` ([custom config](https://github.com/wmemcpy/i3-config) coming soon... 😏).
+Choose your DE 🖥️:
+- `GNOME`.
+- `KDE Plasma`.
+- `XFCE`.
+- `i3wm` ([custom config](https://github.com/wmemcpy/i3-config) coming soon... 😏).
 
 ### 5. 📦 Install Base Packages
 Essential packages for a rounded experience:
