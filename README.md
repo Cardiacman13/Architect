@@ -20,7 +20,7 @@
 
 This script is perfect for configuring a **stock Arch** system with a **minimal set of packages** tailored to your needs right after using `archinstall`. Specifically, it's **geared towards gaming**.
 
-> **Warning** 
+> [!IMPORTANT]
 > 
 > It's specifically designed for a pure Arch Linux experience (not tested on *Garuda*, *Manjaro*, etc.).
 > 

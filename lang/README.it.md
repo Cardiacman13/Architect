@@ -17,7 +17,7 @@
 
 Questo script è perfetto per configurare un sistema **Arch stock** con un **set minimo di pacchetti** su misura per le tue esigenze subito dopo l'uso di `archinstall`. In particolare, è **orientato al gaming**.
 
-> **Attenzione** 
+>[!Attenzione]
 > 
 > È specificatamente progettato per una pura esperienza Arch Linux (non testato su *Garuda*, *Manjaro*, ecc.).
 > 

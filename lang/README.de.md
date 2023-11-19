@@ -1,4 +1,4 @@
-# 🐧 DREHBUCH DES ARCHITEKTEN UND TUTORIALS 📜
+# 🐧  ARCHITECT SKRIPT UND TUTORIALS 📜
 
 <img src="https://github.com/Cardiacman13/Architect/blob/main/assets/images/desktop.png" width="1000" height="250">
 
@@ -16,7 +16,7 @@
 
 Dieses Skript ist perfekt, um ein **reines Arch-System** mit einer **minimalen Menge an Paketen** anzupassen, die auf deine Bedürfnisse zugeschnitten sind, direkt nach der Verwendung von `archinstall`. Es ist speziell **auf Gaming ausgerichtet**.
 
-> **Warnung**
+> [!Warnung]
 >
 > Es ist speziell für eine reine Arch Linux Erfahrung entworfen (nicht getestet auf *Garuda*, *Manjaro*, usw.).
 >

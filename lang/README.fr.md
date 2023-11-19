@@ -16,7 +16,7 @@
 
 Ce script est parfait pour configurer un système **Arch pur** avec un **ensemble minimal de paquets** adaptés à vos besoins juste après l'utilisation de `archinstall`. il est **orienté gaming**.
 
-> **Avertissement**
+> [!Avertissement]
 >
 > Il est spécialement conçu pour une expérience pure d'Arch Linux (non testé sur *Garuda*, *Manjaro*, etc.).
 >

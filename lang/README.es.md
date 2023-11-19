@@ -1,4 +1,4 @@
-# 🐧 GUIÓN DEL ARQUITECTO Y TUTORIALES 📜
+# 🐧  ARCHITECT SCRIPT Y TUTORIALES 📜
 
 <img src="https://github.com/Cardiacman13/Architect/blob/main/assets/images/desktop.png" width="1000" height="250">
 
@@ -17,7 +17,7 @@
 
 Este script es perfecto para configurar un sistema **Arch puro** con un **conjunto mínimo de paquetes** adaptados a tus necesidades justo después de usar `archinstall`. Específicamente, está **orientado al gaming**.
 
-> **Advertencia** 
+> [!Advertencia]
 > 
 > Está diseñado específicamente para una experiencia pura de Arch Linux (no probado en *Garuda*, *Manjaro*, etc.).
 > 
