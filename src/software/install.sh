@@ -12,6 +12,7 @@ function ask_to_add() {
 }
 
 function install_software() {
+    local lang=$(echo $LANG | cut -d_ -f1)
     local flatpak=$(ask_to_add "OBS Studio (flatpak)" "com.obsproject.Studio")
     local packages=$(ask_to_add "Discord" "discord")
     
@@ -21,7 +22,7 @@ function install_software() {
     packages+=" $(ask_to_add "protonup-qt" "protonup-qt-bin")"
     packages+=" $(ask_to_add "Spotify" "spotify")"
     packages+=" $(ask_to_add "Kdenlive" "kdenlive")"
-    packages+=" $(ask_to_add "LibreOffice" "libreoffice-fresh libreoffice-fresh-fr")"
+    packages+=" $(ask_to_add "LibreOffice" "libreoffice-fresh libreoffice-fresh-${lang}")"
     packages+=" $(ask_to_add "Gimp" "gimp")"
     packages+=" $(ask_to_add "VLC" "vlc")"
     packages+=" $(ask_to_add "Visual Studio Code" "visual-studio-code-bin")"
