@@ -16,6 +16,8 @@
 
 ## 🚀 Arch Linux Post-Install Script <a name="script"/>
 
+<img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/Welcome.png">
+
 This script is perfect for configuring a **stock Arch** system with a **minimal set of packages** tailored to your needs right after using `archinstall`. Specifically, it's **geared towards gaming**.
 
 > **Warning** 
