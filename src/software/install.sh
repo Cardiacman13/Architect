@@ -13,8 +13,8 @@ function ask_to_add() {
 
 function install_software() {
     local flatpak=$(ask_to_add "OBS Studio (flatpak)" "com.obsproject.Studio")
+    local packages=$(ask_to_add "Discord" "discord")
     
-    packages+=" $(ask_to_add "Discord" "discord")"
     packages+=" $(ask_to_add "Steam" "steam proton-ge-custom-bin")"
     packages+=" $(ask_to_add "Lutris" "lutris wine-staging")"
     packages+=" $(ask_to_add "Heroic Games Launcher" "heroic-games-launcher-bin")"
