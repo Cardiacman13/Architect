@@ -86,9 +86,6 @@ Selecciona software adicional basado en tus necesidades:
 
 | Nombre                    | Paquete                                 | Tipo    |
 |-------------------------|-----------------------------------------|---------|
-| Firefox                 | firefox firefox-i18n-fr                 | paquete |
-| Brave                   | brave-bin                               | paquete |
-| Chromium                | chromium                                | paquete |
 | Discord                 | discord                                 | paquete |
 | Steam                   | steam proton-ge-custom-bin              | paquete |
 | Lutris                  | lutris wine-staging                     | paquete |
@@ -103,68 +100,6 @@ Selecciona software adicional basado en tus necesidades:
 | Visual Studio Code      | visual-studio-code-bin                  | paquete |
 | Open RGB                | openrgb-bin                             | paquete |
 
-## 👨‍🔧 Para desarrolladores
-
-### 🏭 Panorama de la Estructura del Proyecto
-
-```graphql
-.
-├── architect.sh                # Archivo principal del script para iniciar la instalación.
-├── assets
-│   └── data
-│       └── hooks
-│           ├── grub.hook       # Hook de configuración GRUB para optimizaciones del sistema.
-│           └── nvidia.hook     # Hook del controlador NVIDIA para configuraciones personalizadas.
-├── LICENSE
-├── README.md
-└── src
-    ├── cmd.sh                  # Script para ejecutar tareas comunes desde la línea de comandos.
-    ├── de
-    │   ├── detect.sh           # Detecta el entorno de escritorio actual.
-    │   ├── gnome.sh            # Script de configuración GNOME.
-    │   ├── i3.sh               # Script de configuración del gestor de ventanas i3.
-    │   ├── kde.sh              # Script de configuración KDE Plasma.
-    │   └── xfce4.sh            # Script de configuración XFCE.
-    ├── end.sh                  # Script ejecutado al final de la instalación.
-    ├── init.sh                 # Script de configuración inicial.
-    ├── software
-    │   ├── flatpak.sh          # Script para la instalación de paquetes Flatpak.
-    │   └── install.sh          # Script general para la instalación de software.
-    └── system
-        ├── config
-        │   ├── aur.sh          # Script de configuración para AUR (Arch User Repository).
-        │   └── pacman.sh       # Script de configuración Pacman.
-        ├── drivers
-        │   ├── amd.sh          # Script de instalación de los controladores GPU AMD.
-        │   ├── devices.sh      # Script para detectar dispositivos conectados.
-        │   ├── gpu.sh          # Script general de configuración de la GPU.
-        │   ├── intel.sh        # Script de instalación de los controladores GPU Intel.
-        │   ├── nvidia.sh       # Script de instalación de los controladores GPU NVIDIA.
-        │   └── vm.sh           # Configuraciones relacionadas con máquinas virtuales.
-        ├── internet.sh         # Script de configuración de conectividad a Internet.
-        ├── kernel.sh           # Script de optimización del kernel.
-        ├── other.sh            # Otros scripts varios.
-        ├── packages.sh         # Script para la instalación de paquetes.
-        └── shell.sh            # Script de configuración de la shell.
-```
-
-### 📄 Filosofía
-
-Este proyecto debe respetar los [principios filosóficos de Archlinux](https://wiki.archlinux.org/title/Arch_Linux#Principles). Por favor, haga todo lo posible por seguir esta guía si tiene la intención de hacer un pull request.
-
-## 📝 Licencia
-
-Este proyecto está bajo la licencia GNU GPLv3 - vea el archivo [LICENSE](LICENSE) para detalles.
-
-## 🙏 Agradecimientos
-
-- Al equipo de [Arch Linux](https://archlinux.org/) por su increíble trabajo.
-- A la comunidad de Arch Linux por su excepcional documentación.
-- A los mantenedores del AUR por su arduo trabajo.
-- A los desarrolladores de los paquetes utilizados en este proyecto. Una mención especial a:
-  - [Frogging Family](https://github.com/Frogging-Family)
-  - [OpenRGB](https://github.com/CalcProgrammer1/OpenRGB)
-- Gracias al [GLF Discord](https://discord.gg/6t4REDETJd) por las numerosas pruebas y comentarios.
 
 ## <img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/pc.png" width="30" height="30"> **Potencia tu Escritorio** <a name="elevate"/>
 
@@ -641,6 +576,16 @@ Fuentes y enlaces útiles :
 ¡Las contribuciones a este proyecto son bienvenidas! Si tienes sugerencias, informes de errores o contribuciones, por favor abre una issue o una pull request.
 
 Como puedes ver, este proyecto está disponible en francés, inglés y español. ¡Los traductores son más que bienvenidos! :people_holding_hands:
+
+## 🙏 Agradecimientos
+
+- Al equipo de [Arch Linux](https://archlinux.org/) por su increíble trabajo.
+- A la comunidad de Arch Linux por su excepcional documentación.
+- A los mantenedores del AUR por su arduo trabajo.
+- A los desarrolladores de los paquetes utilizados en este proyecto. Una mención especial a:
+  - [Frogging Family](https://github.com/Frogging-Family)
+  - [OpenRGB](https://github.com/CalcProgrammer1/OpenRGB)
+- Gracias al [GLF Discord](https://discord.gg/6t4REDETJd) por las numerosas pruebas y comentarios.
 
 <!-- readme: contributors -start -->
 <!-- readme: contributors -end -->
