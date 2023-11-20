@@ -56,7 +56,7 @@ Prepara tu sistema para juegos con :
   - 📹 Soporte AMD y bibliotecas de 32 bits.
   - 📹 Soporte Intel y bibliotecas de 32 bits.
   - 🔄 Opciones NVIDIA:
-    - **Nvidia**: Drivers estándar (recomendado para la mayoría) con hook personalizado basado en el sistema de arranque (GRUB o systemd-boot).
+    - **Nvidia**: Drivers estándar **recomendado para la mayoría**.
     - **Nvidia-all**: Para usuarios avanzados (a través del repositorio [`Frogging-Family/nvidia-all`](https://github.com/Frogging-Family/nvidia-all)).
 
 ### 4. 🖥️ Entorno de Escritorio
@@ -118,13 +118,13 @@ Para todos los siguientes pasos, cuando veas texto presentado de esta manera, in
 echo "¡Hola mundo!"            # Comando de ejemplo
 ```
 
-1. **Configura el teclado en inglés**
+#### 1. Configura el teclado en inglés
 
 ```
 loadkeys es
 ```
 
-2. **Configura tu Wi-Fi**
+#### 2. Configura tu Wi-Fi
 
 ```
 iwctl
@@ -138,7 +138,7 @@ station wlan0 connect TU-NOMBRE-WIFI (SSID)
     
 Ingresa tu contraseña wifi y luego `quit` para salir de iwctl.
 
-3. **Archinstall**
+#### 3. Archinstall
 
 ```
 pacman -Syu archinstall      # actualiza el script de archinstall antes de la instalación
@@ -178,7 +178,8 @@ The translation of your text from French to Spanish is:
 
 Los AUR helpers son herramientas prácticas para gestionar la instalación y actualización de software en sistemas basados en Arch Linux.
 Yay y Paru facilitan especialmente el uso del repositorio AUR, un repositorio gestionado por la comunidad que amplía considerablemente la biblioteca de software disponible. Esto incluye la compilación de estos programas a partir de su fuente, a menos que se especifique "-bin" al final de su nombre.
-**/!\ Ten cuidado /!\ Como los paquetes en el AUR son proporcionados por la comunidad, ¡no los instales de cualquier manera!**
+
+**/!\ Tengan cuidado /!\ Como los paquetes en AUR son proporcionados por la comunidad, ¡no instalen cualquier cosa!**
 
 Puedes elegir entre **YAY** o **Paru**
 
@@ -285,13 +286,13 @@ Video adicional explicando cómo recuperar el acceso a Wayland desde GDM:
 
 <img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/Cardiac-icon.png" width="30" height="30"> [Debian y Arch Linux Gnome Wayland con Nvidia (Debian en la documentación)](https://www.youtube.com/watch?v=DVkWLvwtQ18)
 
-1. **Instalar los componentes principales:**
+#### 1. Instalar los componentes principales:
 
 ```
 yay -S --needed nvidia-dkms nvidia-utils lib32-nvidia-utils nvidia-settings vulkan-icd-loader lib32-vulkan-icd-loader
 ```
 
-2. **Habilitar nvidia-drm.modeset=1:**
+#### 2. Habilitar nvidia-drm.modeset=1:
 
 Esta configuración permite que el módulo Nvidia se lance al inicio.
 
@@ -323,7 +324,7 @@ Luego:
 sudo grub-mkconfig -o /boot/grub/grub.cfg
 ```
    
-3. **Cargar los módulos de Nvidia como prioridad al inicio de Arch:**
+#### 3. Cargar los módulos de Nvidia como prioridad al inicio de Arch:
 
 Este paso a veces es necesario para ciertos entornos de escritorio o gestores de ventanas. Opcional, para hacer solo si se detectan problemas durante el arranque.
    
@@ -343,7 +344,7 @@ Si usas btrfs:
 MODULES=(btrfs nvidia nvidia_modeset nvidia_uvm nvidia_drm)
 ```
 
-5. **Hook de mkinitcpio:**
+#### 4. Hook de mkinitcpio:
 
 Este hook automatiza la reconstrucción del initramfs (el archivo básico de arranque) con cada modificación del controlador Nvidia.
     
@@ -372,7 +373,7 @@ NeedsTargets
 Exec=/bin/sh -c 'while read -r trg; do case $trg in linux) exit 0; esac; done; /usr/bin/mkinitcpio -P'
 ```
 
-6. **Reconstrucción del initramfs:**
+#### 5. Reconstrucción del initramfs:
 
 Ya que hemos instalado los controladores en el paso 1, así antes de configurar el hook, necesitamos activar manualmente la reconstrucción del initramfs:
 
@@ -432,7 +433,7 @@ sudo systemctl enable --now bluetooth.service
 
 #### [PipeWire](https://pipewire.org/) (sonido)
 
-Para tener sonido **/!\ Decir sí a todo para reemplazar todo con los nuevos paquetes. /!\**
+**/!\ Decir sí a todo para reemplazar todo con los nuevos paquetes. /!\**
 
 ```
 sudo pacman -S --needed pipewire lib32-pipewire pipewire-pulse pipewire-alsa pipewire-jack wireplumber alsa-utils alsa-firmware alsa

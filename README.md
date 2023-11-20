@@ -59,7 +59,7 @@ Prepare your system for gaming with :
   - 📹 AMD and 32-bit library support.
   - 📹 Intel and 32-bit library support.
   - 🔄 NVIDIA choises:
-    - **Nvidia**: Standard drivers (recommended for most) with custom hook based on startup system (GRUB or systemd-boot).
+    - **Nvidia**: Standard drivers **recommended for most**.
     - **Nvidia-all**: For advanced users (via [`Frogging-Family/nvidia-all`](https://github.com/Frogging-Family/nvidia-all) repo).
 
 ### 4. 🖥️ Desktop Environment
@@ -118,7 +118,7 @@ For all the following steps, when you have text presented in this way, it will i
 echo "Hello world !"            # Example command
 ```
 
-1. **Set up your Wi-Fi**
+#### 1. Set up your Wi-Fi
 
 ```
 iwctl
@@ -132,7 +132,7 @@ station wlan0 connect YOUR-WIFI-NAME
 
 Enter your wifi password then `quit` to exit iwctl.
 
-2. **Archinstall**
+#### 2. Archinstall
 
 ```
 pacman -Syu archinstall     # update the archinstall script before installation
@@ -275,13 +275,13 @@ Replace 6 with the number of thread you want to use, it is advisable to have 2GB
 Supplementary video explaining how to regain access to Wayland from GDM:
 <img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/Cardiac-icon.png" width="30" height="30"> [Debian and Arch Linux Gnome Wayland with Nvidia (Debian in the doc)](https://www.youtube.com/watch?v=DVkWLvwtQ18)
 
-1. **Install the core components:**
+#### 1. Install the core components:
 
 ```
 yay -S --needed nvidia-dkms nvidia-utils lib32-nvidia-utils nvidia-settings vulkan-icd-loader lib32-vulkan-icd-loader
 ```
 
-2. **Enable nvidia-drm.modeset=1:**
+#### 2. Enable nvidia-drm.modeset=1:
 
 This setting allows the Nvidia module to be launched at startup.
 
@@ -312,7 +312,7 @@ Then:
 sudo grub-mkconfig -o /boot/grub/grub.cfg
 ```
    
-3. **Load Nvidia modules as a priority at Arch launch:**
+#### 3. Load Nvidia modules as a priority at Arch launch:
 
 **Optional**, to be done only if you notice issues during boot.
 
@@ -332,7 +332,7 @@ If using btrfs:
 MODULES=(btrfs nvidia nvidia_modeset nvidia_uvm nvidia_drm)
 ```
 
-5. **mkinitcpio Hook:**
+#### 4. mkinitcpio Hook:
 This hook automates the rebuilding of initramfs (the basic boot file) with every Nvidia driver modification.
 
 ```
@@ -360,7 +360,7 @@ NeedsTargets
 Exec=/bin/sh -c 'while read -r trg; do case $trg in linux) exit 0; esac; done; /usr/bin/mkinitcpio -P'
 ```
 
-6. **Rebuilding initramfs:**
+#### 5. Rebuilding initramfs:
 
 Since we've already installed the drivers at step 1, thus before setting up the hook, we need to manually trigger the initramfs rebuilding:
 
@@ -421,7 +421,7 @@ sudo systemctl enable --now  bluetooth.service
 
 #### [PipeWire](https://pipewire.org/) (son)
 
-To have sound **/!\ Say yes to everything to crush everything with the new packages. /!\**
+**/!\ Say yes to everything to crush everything with the new packages. /!\**
 
 ```
 sudo pacman -S --needed pipewire lib32-pipewire pipewire-pulse pipewire-alsa pipewire-jack wireplumber alsa-utils alsa-firmware alsa-tools sof-firmware

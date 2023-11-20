@@ -55,7 +55,7 @@ Bereite dein System für Spiele vor mit:
   - 📹 AMD-Unterstützung und 32-Bit-Bibliotheken.
   - 📹 Intel-Unterstützung und 32-Bit-Bibliotheken.
   - 🔄 NVIDIA-Optionen:
-    - **Nvidia**: Standardtreiber (empfohlen für die meisten) mit benutzerdefiniertem Hook basierend auf dem Bootsystem (GRUB oder systemd-boot).
+    - **Nvidia**: Standardtreiber **empfohlen für die meisten**.
     - **Nvidia-all**: Für fortgeschrittene Benutzer (über das Repository [`Frogging-Family/nvidia-all`](https://github.com/Frogging-Family/nvidia-all)).
 
 ### 4. 🖥️ Desktop-Umgebung
@@ -116,13 +116,13 @@ Bei allen folgenden Schritten wird Text, der so präsentiert wird, einen Befehl 
 echo "Hello world !"            # Beispielbefehl
 ```
 
-1. **Tastatur auf Englisch einstellen**
+#### 1. Tastatur auf Englisch einstellen
 
 ```
 loadkeys de
 ```
 
-2. **Dein WLAN einrichten**
+#### 2. Dein WLAN einrichten
 
 ```
 iwctl
@@ -136,7 +136,7 @@ station wlan0 connect YOUR-WIFI-NAME (SSID)
     
 Gib dein WLAN-Passwort ein, dann `quit`, um iwctl zu verlassen.
 
-3. **Archinstall**
+#### 3. Archinstall
 
 ```
 pacman -Syu archinstall     # aktualisiere das Archinstall-Skript vor der Installation
@@ -173,7 +173,8 @@ ParallelDownloads = 5 <-
 
 AUR-Helfer sind praktische Werkzeuge zur Verwaltung der Installation und Aktualisierung von Software auf Arch Linux-basierten Systemen.
 Yay und Paru erleichtern insbesondere die Nutzung des AUR-Repositories, eines von der Community verwalteten Repositoriums, das die verfügbare Softwarebibliothek erheblich erweitert. Dies schließt die Kompilierung dieser Programme aus ihrer Quelle ein, es sei denn, "-bin" wird am Ende ihres Namens angegeben.
-**/!\ Sei vorsichtig /!\ Da die Pakete im AUR von der Community bereitgestellt werden, installiere sie nicht einfach so!**
+
+**/!\ Seien Sie vorsichtig /!\ Da die Pakete in AUR von der Gemeinschaft bereitgestellt werden, installieren Sie nicht irgendwas!**
 
 Du kannst zwischen **YAY** und **Paru** wählen
 
@@ -280,13 +281,13 @@ Ergänzendes Video, das erklärt, wie man von GDM aus wieder Zugang zu Wayland e
 
 <img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/Cardiac-icon.png" width="30" height="30"> [Debian und Arch Linux Gnome Wayland mit Nvidia (Debian im Dokument)](https://www.youtube.com/watch?v=DVkWLvwtQ18)
 
-1. **Installieren Sie die Kernkomponenten:**
+#### 1. Installieren Sie die Kernkomponenten:
 
 ```
 yay -S --needed nvidia-dkms nvidia-utils lib32-nvidia-utils nvidia-settings vulkan-icd-loader lib32-vulkan-icd-loader
 ```
 
-2. **Aktivieren von nvidia-drm.modeset=1:**
+#### 2. Aktivieren von nvidia-drm.modeset=1:
 
 Diese Einstellung ermöglicht es dem Nvidia-Modul, beim Start gestartet zu werden.
 
@@ -318,7 +319,7 @@ Dann:
 sudo grub-mkconfig -o /boot/grub/grub.cfg
 ```
    
-3. **Laden Sie Nvidia-Module als Priorität beim Arch-Start:**
+#### 3. Laden Sie Nvidia-Module als Priorität beim Arch-Start:
 
 **Optional**, nur auszuführen, wenn Sie Probleme beim Starten bemerken."
 
@@ -338,7 +339,7 @@ Bei Verwendung von btrfs:
 MODULES=(btrfs nvidia nvidia_modeset nvidia_uvm nvidia_drm)
 ```
 
-4. **mkinitcpio Hook:**
+#### 4. mkinitcpio Hook:
 
 Dieser Hook automatisiert den Wiederaufbau von initramfs (der grundlegenden Boot-Datei) bei jeder Änderung des Nvidia-Treibers.
 
@@ -367,7 +368,7 @@ NeedsTargets
 Exec=/bin/sh -c 'while read -r trg; do case $trg in linux) exit 0; esac; done; /usr/bin/mkinitcpio -P'
 ```
 
-5. **Wiederaufbau von initramfs:**
+#### 5. Wiederaufbau von initramfs:
 
 Da wir bereits in Schritt 1 die Treiber installiert haben, also bevor wir den Hook eingerichtet haben, müssen wir den Wiederaufbau von initramfs manuell auslösen:
 
@@ -428,7 +429,7 @@ sudo systemctl enable --now  bluetooth.service
 
 #### [PipeWire](https://pipewire.org/) (Sound)
 
-Um Sound zu haben **/!\ Sagen Sie zu allem Ja, um alles mit den neuen Paketen zu überschreiben. /!\**
+**/!\ Sagen Sie zu allem Ja, um alles mit den neuen Paketen zu überschreiben. /!\**
 
 ```
 sudo pacman -S --needed pipewire lib32-pipewire pipewire-pulse pipewire-alsa pipewire-jack wireplumber alsa-utils alsa-firmware alsa-tools sof-firmware

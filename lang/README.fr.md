@@ -55,7 +55,7 @@ Préparez votre système pour le gaming avec :
   - 📹 AMD et support de bibliothèque 32 bits.
   - 📹 Intel et support de bibliothèque 32 bits.
   - 🔄 Choix NVIDIA :
-    - **Nvidia** : Pilotes standards (recommandés pour la plupart) avec crochet personnalisé basé sur le système de démarrage (GRUB ou systemd-boot).
+    - **Nvidia** : Pilotes standards **recommandés pour la plupart**.
     - **Nvidia-all** : Pour utilisateurs avancés (via le dépôt [`Frogging-Family/nvidia-all`](https://github.com/Frogging-Family/nvidia-all)).
 
 ### 4. 🖥️ Environnement de Bureau
@@ -103,7 +103,7 @@ Sélectionnez des logiciels supplémentaires en fonction de vos besoins :
 
 ## <img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/pc.png" width="30" height="30"> **TUTO** <a name="elevate"/>
 
-### Installation
+#### Installation
 
 > [!IMPORTANT]
 > Suivez les étapes avec minutie
@@ -116,13 +116,13 @@ Pour toutes les étapes suivantes, lorsque vous avez un texte présenté de cett
 echo "Bonjour le monde !"       # Commande d'exemple
 ```
 
-1. **Configurer le clavier en français**
+#### 1. Configurer le clavier en français
 
 ```
 loadkeys fr
 ```
 
-2. **Configurer votre Wi-Fi**
+#### 2. Configurer votre Wi-Fi
 
 ```
 iwctl
@@ -136,7 +136,7 @@ station wlan0 connect VOTRE-NOM-WIFI (SSID)
 
 Entrez votre mot de passe wifi puis tapez `quit` pour quitter iwctl.
 
-3. **Archinstall**
+#### 3. Archinstall
 ```
 pacman -Syu archinstall      # mettre à jour le script archinstall avant l'installation
 archinstall                 # pour lancer le script d'aide à l'installation pour arch linux
@@ -171,7 +171,7 @@ ParallelDownloads = 5 <-
 
 Les AUR helpers sont des outils pratiques pour gérer l'installation et la mise à jour des logiciels sur les systèmes basés sur Arch Linux.
 Yay et paru facilitent particulièrement l'utilisation du dépôt AUR, un dépôt géré par la communauté qui étend considérablement la bibliothèque de logiciels disponible. Cela inclut la compilation de ces programmes à partir de leur source, à moins que "-bin" ne soit spécifié à la fin de leur nom.
-**/!\ Soyez prudent /!\ Comme les paquets dans l'AUR sont fournis par la communauté, ne les installez pas n'importe comment !**
+**/!\ Soyez prudent /!\ Comme les paquets dans l'AUR sont fournis par la communauté, n'installez pas tout et n'importe quoi !**
 
 Vous pouvez choisir entre **YAY** ou **Paru**
 
@@ -277,13 +277,13 @@ Vidéo supplémentaire expliquant comment retrouver l'accès à Wayland depuis G
 
 <img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/Cardiac-icon.png" width="30" height="30"> [Debian et Arch Linux Gnome Wayland avec Nvidia (Debian dans la doc)](https://www.youtube.com/watch?v=DVkWLvwtQ18)
 
-1. **Installer les composants de base :**
+#### 1. Installer les composants de base :
 
 ```
 sudo pacman -S --needed nvidia-dkms nvidia-utils lib32-nvidia-utils nvidia-settings vulkan-icd-loader lib32-vulkan-icd-loader
 ```
 
-2. **Activer nvidia-drm.modeset=1 :**
+#### 2. Activer nvidia-drm.modeset=1 :
 
 Ce paramètre permet de lancer le module Nvidia au démarrage.
 
@@ -314,7 +314,7 @@ Ensuite :
 sudo grub-mkconfig -o /boot/grub/grub.cfg
 ```
    
-3. **Charger les modules Nvidia en priorité au lancement d'Arch :**
+#### 3. Charger les modules Nvidia en priorité au lancement d'Arch :
 
 **Optionnel**, à ne faire que si on remarque des problèmes au boot.
    
@@ -334,7 +334,8 @@ Si utilisation de btrfs :
 MODULES=(btrfs nvidia nvidia_modeset nvidia_uvm nvidia_drm)
 ```
 
-5. **Hook mkinitcpio :**
+#### 4. Hook mkinitcpio :
+
 Ce hook automatise la reconstruction d'initramfs (le fichier de base de démarrage) à chaque modification du pilote Nvidia.
 
 ```
@@ -362,7 +363,7 @@ NeedsTargets
 Exec=/bin/sh -c 'while read -r trg; do case $trg in linux) exit 0; esac; done; /usr/bin/mkinitcpio -P'
 ```
 
-6. **Reconstruction de l'initramfs :**
+#### 5. Reconstruction de l'initramfs :
 
 Comme nous avons déjà installé les pilotes à l'étape 1, donc avant de configurer le hook, nous devons déclencher manuellement la reconstruction de l'initramfs :
 
@@ -423,7 +424,7 @@ sudo systemctl enable --now  bluetooth.service
 
 #### [PipeWire](https://pipewire.org/) (son)
 
-Pour avoir du son **/!\ Dites oui à tout pour écraser tout avec les nouveaux paquets. /!\**
+**/!\ Dites oui à tout pour écraser tout avec les nouveaux paquets. /!\**
 
 ```
 sudo pacman -S --needed pipewire lib32-pipewire pipewire-pulse pipewire-alsa pipewire-jack wireplumber alsa-utils alsa-firmware alsa-tools sof-firmware
