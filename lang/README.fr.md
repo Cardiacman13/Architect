@@ -273,10 +273,6 @@ Remplacez le 6 par le nombre de threads que vous souhaitez utiliser. Il est cons
 
 #### NVIDIA (rester sur X11 au moins jusqu'à la sortie de KDE 6)
 
-Vidéo supplémentaire expliquant comment retrouver l'accès à Wayland depuis GDM :
-
-<img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/Cardiac-icon.png" width="30" height="30"> [Debian et Arch Linux Gnome Wayland avec Nvidia (Debian dans la doc)](https://www.youtube.com/watch?v=DVkWLvwtQ18)
-
 #### 1. Installer les composants de base :
 
 ```
@@ -453,10 +449,6 @@ Voici divers logiciels pour graphisme, vidéo (édition, support de codec), util
 ```
 sudo pacman -S --needed xdg-desktop-portal-kde okular print-manager kdenlive gwenview spectacle partitionmanager ffmpegthumbs qt6-wayland kdeplasma-addons powerdevil kcalc plasma-systemmonitor qt6-multimedia qt6-multimedia-gstreamer qt6-multimedia-ffmpeg kwalletmanager
 ```
-
-Vidéo supplémentaire :
-
-<img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/Cardiac-icon.png" width="30" height="30"> [Personnaliser KDE Partie 1 Disposition, Thème, Kvantum, meilleures pratiques !](https://www.youtube.com/watch?v=vdlj83sb84s&t=1240s)
 
 #### Pare-feu
 La configuration par défaut peut bloquer l'accès aux imprimantes et autres appareils sur votre réseau local.

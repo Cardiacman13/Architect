@@ -110,8 +110,6 @@ Seleziona software aggiuntivo in base alle tue esigenze:
 > [!IMPORTANTE]
 > Seguite i passaggi meticolosamente
 
-<img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/Cardiac-icon.png" width="30" height="30"> [ Tutorial Arch Linux Parte 1: Archinstall ](https://www.youtube.com/watch?v=JE6VwNHLcyk)
-
 Per tutti i passaggi seguenti, quando avete un testo presentato in questo modo, questo indicherà un comando da digitare nel vostro terminale:
 
 ```
@@ -148,8 +146,6 @@ archinstall                 # per avviate lo script di aiuto all'installazione d
 **/!\ Il menu archinstall può cambiare con gli aggiornamenti dello script /!\\**
     
 ### Post-installazione
-
-<img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/Cardiac-icon.png" width="30" height="30"> [ Tutorial Arch Linux Parte 2: Post Installazione ](https://youtu.be/FEFhC46BkXo?si=Gi-6BOhqENLoh5Ak)
 
 #### 1. Ottimizzare pacman  
 
@@ -211,8 +207,6 @@ paru --gendb
 ```
 
 ### 3. Alias per la manutenzione:
-
-<img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/Cardiac-icon.png" width="30" height="30"> [ Tutorial Arch Linux Parte 4: Manutenzione ](https://www.youtube.com/watch?v=Z7POSK2jnII)
 
 Questa modifica permette di digitare semplicemente “update-arch” in un terminale per aggiornare il sistema, “clean-arch” per pulirlo, o “fix-key” in caso di errore con le chiavi gpg.
 
@@ -278,10 +272,6 @@ Sostituire il 6 con il numero di thread che si desidera utilizzare. Si consiglia
 ### SUPPORTO HARDWARE
 
 #### NVIDIA (rimanetr su X11 almeno fino al rilascio di KDE 6)
-
-Video supplementare che spiega come riaccedere a Wayland da GDM:
-
-<img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/Cardiac-icon.png" width="30" height="30"> [Debian e Arch Linux Gnome Wayland con Nvidia (Debian nel documento)](https://www.youtube.com/watch?v=DVkWLvwtQ18)
 
 #### 1. Installate i componenti principali:
 
@@ -460,10 +450,6 @@ Ecco vari software per grafica, video (editing, supporto di codec), utilità del
 yay -S --needed xdg-desktop-portal-kde okular print-manager kdenlive gwenview spectacle partitionmanager ffmpegthumbs qt6-wayland kdeplasma-addons powerdevil kcalc plasma-systemmonitor qt6-multimedia qt6-multimedia-gstreamer qt6-multimedia-ffmpeg kwalletmanager
 ```
 
-Video Aggiuntivo:
-
-<img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/Cardiac-icon.png" width="30" height="30"> [Personalizzazione di KDE Parte 1 Layout, Tema, Kvantum, migliori pratiche!](https://www.youtube.com/watch?v=vdlj83sb84s&t=1240s)
-
 #### Firewall
 
 La configurazione predefinita potrebbe bloccare l'accesso a stampanti e altri dispositivi nella vostra rete locale.
@@ -577,10 +563,6 @@ Lutris consente di cercare un gioco o una piattaforma (Ubisoft Connect, EA Store
 sudo pacman -S lutris wine-staging
 ```
 
-Video aggiuntivo:
-
-<img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/Cardiac-icon.png" width="30" height="30"> [Configurazione di Lutris per laptop Intel/Nvidia](https://www.youtube.com/watch?v=Am3pgTXiUAA)
-
 ### Supporto avanzato per controller
 
 Driver Linux avanzato per controller wireless Xbox 360|One|S|X (incluso con Xbox One S) e molti altri controller come 8bitdo ([xpadneo](https://github.com/atar-axis/xpadneo)) ([xone](https://github.com/medusalix/xone))
@@ -609,8 +591,6 @@ yay -S goverlay
 
 Aumentiamo il valore predefinito di questa variabile, permettendo lo stoccaggio di più "aree di mappa della memoria". Il valore predefinito è molto basso. L'obiettivo è migliorare la compatibilità con i giochi Windows tramite Wine o Steam (vedi [ProtonDB](https://www.protondb.com/)), sapendo che alcuni giochi scarsamente ottimizzati tendono a raggiungere rapidamente questo limite, che può causare un crash.
 
-<img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/Cardiac-icon.png" width="30" height="30"> [Gaming LINUX eliminare i crash / aumentare la compatibilità](https://youtu.be/sr4RgshrUYY)
-
 - Aggiungere in:
 
 ```
@@ -631,9 +611,6 @@ vm.max_map_count=2147483642
 > Questo passaggio è destinato a utenti avanzati :star:
 
 [TKG](https://github.com/Frogging-Family) è una build di kernel altamente personalizzabile che offre una selezione di correzioni e ottimizzazioni per migliorare le prestazioni desktop e di gioco.
-
-Video correlato:
-<img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/Cardiac-icon.png" width="30" height="30"> [Kernel TKG su Arch + Migliorare le sue prestazioni](https://youtu.be/43yYIWMnDJA)
 
 ```
 git clone https://github.com/Frogging-Family/linux-tkg.git
@@ -665,8 +642,6 @@ Dire sì a tutto per sovrascrivere tutto con nuovi pacchetti.
 
 Nvidia-all è un'integrazione del driver nvidia di TkG. Include patch di supporto per nuovi kernel. Vi consente di selezionare la versione del driver che volete installare, sia che si tratti dell'ultima versione ufficiale, di una versione beta, della versione Vulkan, ecc.
 
-<img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/Cardiac-icon.png" width="30" height="30"> [Se usi Arch e Nvidia, dai un'occhiata!](https://youtu.be/T0laE8gPtfY)
-
 ```
 git clone https://github.com/Frogging-Family/nvidia-all.git
 cd nvidia-all
@@ -679,8 +654,6 @@ Dire sì a tutto per sovrascrivere tutto con nuovi pacchetti.
 
 In precedenza noto come xdg-app, si tratta di uno strumento di distribuzione software e di gestione dei pacchetti per Linux. È promosso come soluzione che offre un ambiente "sandbox" in cui gli utenti possono eseguire software in isolamento dal resto del sistema.
 
-<img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/Cardiac-icon.png" width="30" height="30"> [MangoHUD, Goverlay, Steam, Lutris FLATPAK!](https://www.youtube.com/watch?v=1dha2UDSF4M)
-
 ```
 yay -S flatpak flatpak-kcm
 flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
@@ -688,19 +661,12 @@ flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.f
 
 ## Risoluzione dei problemi <a name="troubleshooting"/>
 
-<img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/Cardiac-icon.png" width="30" height="30"> [Arch Linux Parte 3 i problemi più comuni.](https://youtu.be/vbOOQsYyPfc?si=wA2W8bOG1gtpfmnZ)
-
-<img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/Cardiac-icon.png" width="30" height="30"> [Arch Linux Parte 4 Manutenzione / aggiornamento](https://youtu.be/Z7POSK2jnII?si=SNwagGGJXRVkYPdc)
- 
-<img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/Cardiac-icon.png" width="30" height="30"> [Arch Linux Parte 5 Arch-Chroot](https://youtu.be/iandJSjePiA?si=7uI8JZ-VxAVOsPTh)
-
 - Per aiuto, visita il Discord di GLF (fr/en): [Discord GLF](http://discord.gg/EP3Jm8YMvj)
 
 ## Fonti <a name="community"/>
 
 Fonti e link utili :
 - [ArchWiki](https://wiki.archlinux.org/)
-<img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/Cardiac-icon.png" width="30" height="30"> [Funzionamento del WIKI di Arch.](https://www.youtube.com/watch?v=TQ3A9l2N5lI)
 - [Sito GLF](https://www.gaminglinux.fr/)
 - [Discord GLF](http://discord.gg/EP3Jm8YMvj)
 - [Il mio canale Youtube](https://www.youtube.com/@Cardiacman)
