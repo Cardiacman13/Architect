@@ -125,7 +125,7 @@ loadkeys fr
 2. **Configurer votre Wi-Fi**
 
 ```
- iwctl
+iwctl
 ```
     
 Puis (remplacez VOTRE-NOM-WIFI par le nom de votre wifi)
@@ -137,11 +137,11 @@ station wlan0 connect VOTRE-NOM-WIFI (SSID)
 Entrez votre mot de passe wifi puis tapez `quit` pour quitter iwctl.
 
 3. **Archinstall**
-    ```
-    pacman -Syu archinstall      # mettre à jour le script archinstall avant l'installation
-    archinstall                 # pour lancer le script d'aide à l'installation pour arch linux
-    ```
-    **/!\ Le menu archinstall est sujet à changement avec les mises à jour du script /!\\**
+```
+pacman -Syu archinstall      # mettre à jour le script archinstall avant l'installation
+archinstall                 # pour lancer le script d'aide à l'installation pour arch linux
+```
+**/!\ Le menu archinstall est sujet à changement avec les mises à jour du script /!\\**
     
 ### Post-installation
 
@@ -151,21 +151,21 @@ Entrez votre mot de passe wifi puis tapez `quit` pour quitter iwctl.
 
 Cette [modification](https://wiki.archlinux.org/title/Pacman#Enabling_parallel_downloads) permet la parallélisation des téléchargements de paquets.
 
-   ```
-   sudo nano /etc/pacman.conf
-   ```
+```
+sudo nano /etc/pacman.conf
+```
 
-   Décommentez (retirez le **#** des lignes suivantes) :
+Décommentez (retirez le **#** des lignes suivantes) :
    
-   ```
-   #Options diverses
-   #UseSyslog
-   Color <-
-   #NoProgressBar
-   #CheckSpace
-   VerbosePkgLists <- 
-   ParallelDownloads = 5 <-
-   ```
+```
+#Options diverses
+#UseSyslog
+Color <-
+#NoProgressBar
+#CheckSpace
+VerbosePkgLists <- 
+ParallelDownloads = 5 <-
+```
 
 #### 2. **Installation d'un AUR helper**
 
@@ -217,6 +217,8 @@ nano ~/.bashrc
   
 Ajoutez chacune de ces lignes à la fin du fichier :
 
+pour yay :
+
 ```
 alias update-arch='yay -Syu && flatpak update'
 ```
@@ -224,6 +226,18 @@ alias update-arch='yay -Syu && flatpak update'
 ```
 alias clean-arch='yay -Sc && yay -Yc && flatpak remove --unused'
 ```
+
+pour Paru :
+
+```
+alias update-arch='paru -Syu && flatpak update'
+```
+
+```
+alias clean-arch='paru -Sc && paru -c && flatpak remove --unused'
+```
+
+Pour tous : 
 
 ```
 alias update-mirrors='sudo reflector --verbose --score 20 --fastest 5 --sort rate --save /etc/pacman.d/mirrorlist'
@@ -258,13 +272,15 @@ Remplacez le 6 par le nombre de threads que vous souhaitez utiliser. Il est cons
 ### SUPPORT MATÉRIEL
 
 #### NVIDIA (rester sur X11 au moins jusqu'à la sortie de KDE 6)
+
 Vidéo supplémentaire expliquant comment retrouver l'accès à Wayland depuis GDM :
+
 <img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/Cardiac-icon.png" width="30" height="30"> [Debian et Arch Linux Gnome Wayland avec Nvidia (Debian dans la doc)](https://www.youtube.com/watch?v=DVkWLvwtQ18)
 
 1. **Installer les composants de base :**
 
 ```
-yay -S --needed nvidia-dkms nvidia-utils lib32-nvidia-utils nvidia-settings vulkan-icd-loader lib32-vulkan-icd-loader
+sudo pacman -S --needed nvidia-dkms nvidia-utils lib32-nvidia-utils nvidia-settings vulkan-icd-loader lib32-vulkan-icd-loader
 ```
 
 2. **Activer nvidia-drm.modeset=1 :**
@@ -359,7 +375,7 @@ sudo mkinitcpio -P
 Installer les composants de base :
 
 ```
-yay -S --needed mesa lib32-mesa vulkan-radeon llimineib32-vulkan-radeon vulkan-icd-loader lib32-vulkan-icd-loader vulkan-mesa-layers lib32-vulkan-mesa-layers
+sudo pacman -S --needed mesa lib32-mesa vulkan-radeon llimineib32-vulkan-radeon vulkan-icd-loader lib32-vulkan-icd-loader vulkan-mesa-layers lib32-vulkan-mesa-layers
 ```
 
 #### INTEL (ne pas faire si Nvidia)
@@ -367,22 +383,21 @@ yay -S --needed mesa lib32-mesa vulkan-radeon llimineib32-vulkan-radeon vulkan-i
 Installer les composants de base :
 
 ```
-yay -S --needed mesa lib32-mesa vulkan-intel lib32-vulkan-intel vulkan-icd-loader lib32-vulkan-icd-loader intel-media-driver
+sudo pacman -S --needed mesa lib32-mesa vulkan-intel lib32-vulkan-intel vulkan-icd-loader lib32-vulkan-icd-loader intel-media-driver
 ```
 
 #### Imprimantes
 - Essentiels
 
 ```
-yay -S --needed ghostscript gsfonts cups cups-filters cups-pdf system-config-printer
-avahi
+sudo pacman -S --needed ghostscript gsfonts cups cups-filters cups-pdf system-config-printer avahi
 sudo systemctl enable --now avahi-daemon cups
 ```
 
 - Pilotes
 
 ```
-yay -S foomatic-db-engine foomatic-db foomatic-db-ppds foomatic-db-nonfree foomatic-db-nonfree-ppds gutenprint foomatic-db-gutenprint-ppds --needed
+sudo pacman -S --needed foomatic-db-engine foomatic-db foomatic-db-ppds foomatic-db-nonfree foomatic-db-nonfree-ppds gutenprint foomatic-db-gutenprint-ppds 
 ```
 
 - Imprimantes HP
@@ -435,7 +450,7 @@ yay -S libreoffice-fresh libreoffice-fresh-fr vlc discord gimp obs-studio gnome-
 Voici divers logiciels pour graphisme, vidéo (édition, support de codec), utilitaires d'interface graphique, etc.
 
 ```
-yay -S --needed xdg-desktop-portal-kde okular print-manager kdenlive gwenview spectacle partitionmanager ffmpegthumbs qt6-wayland kdeplasma-addons powerdevil kcalc plasma-systemmonitor qt6-multimedia qt6-multimedia-gstreamer qt6-multimedia-ffmpeg kwalletmanager
+sudo pacman -S --needed xdg-desktop-portal-kde okular print-manager kdenlive gwenview spectacle partitionmanager ffmpegthumbs qt6-wayland kdeplasma-addons powerdevil kcalc plasma-systemmonitor qt6-multimedia qt6-multimedia-gstreamer qt6-multimedia-ffmpeg kwalletmanager
 ```
 
 Vidéo supplémentaire :
@@ -471,7 +486,7 @@ sudo reflector --verbose --score 20 --fastest 5 --sort rate --save /etc/pacman.d
 **/!\ ATTENTION : par défaut, c'est uniquement le système qui est sauvegardé, pas votre dossier utilisateur (le /home/) ! /!\\**
 
 ```
-yay -S timeshift
+sudo pacman -S timeshift
 ```
 
 - Évitez timeshift et btrfs sur Arch, J’ai déjà eu de la [casse](https://github.com/linuxmint/timeshift).
@@ -491,7 +506,7 @@ sudo systemctl enable --now cronie
 - Installez fish.
     
 ```
-yay -S fish                             # 1. installez fish
+sudo pacman -S fish                             # 1. installez fish
 chsh -s /usr/bin/fish                   # 2. Définissez-le par défaut.
 fish                                    # 3. Lancez fish ou redémarrez et il sera par défaut.
 fish_update_completions                 # 4. Mettez à jour les complétions.
@@ -499,6 +514,8 @@ set -U fish_greeting                    # 5. Supprimez le message de bienvenue.
 sudo nano ~/.config/fish/config.fish    # 6. Créez un alias comme pour bash au début de ce tutoriel.
 ```
 - Ajoutez ensuite les alias suivants entre if et end :
+
+pour yay :
 
 ```
 alias update-arch='yay -Syu && flatpak update'
@@ -508,12 +525,24 @@ alias update-arch='yay -Syu && flatpak update'
 alias clean-arch='yay -Sc && yay -Yc && flatpak remove --unused'
 ```
 
+pour Paru :
+
 ```
-alias update-mirrors='sudo reflector --score 10 --fastest 5 --sort rate --save /etc/pacman.d/mirrorlist'
+alias update-arch='paru -Syu && flatpak update'
 ```
 
 ```
-alias fix-key='sudo rm /var/lib/pacman/sync/* && sudo rm -rf /etc/pacman.d/gnupg/* et sudo pacman-key --init && sudo pacman-key --populate && sudo pacman -Sy --noconfirm archlinux-keyring && sudo pacman --noconfirm -Su'
+alias clean-arch='paru -Sc && paru -c && flatpak remove --unused'
+```
+
+pour tous : 
+
+```
+alias update-mirrors='sudo reflector --verbose --score 20 --fastest 5 --sort rate --save /etc/pacman.d/mirrorlist'
+```
+
+```
+alias fix-key='sudo rm /var/lib/pacman/sync/* && sudo rm -rf /etc/pacman.d/gnupg/* && sudo pacman-key --init && sudo pacman-key --populate && sudo pacman -Sy --noconfirm archlinux-keyring && sudo pacman --noconfirm -Su'
 ```
 
 - ***Redémarrez sauf si fait à l'étape 3***, les alias de tout type ne fonctionnent qu'après le redémarrage du terminal.
@@ -524,7 +553,7 @@ alias fix-key='sudo rm /var/lib/pacman/sync/* && sudo rm -rf /etc/pacman.d/gnupg
 Notez que les pilotes AMD ou Nvidia doivent être installés au préalable comme mentionné dans la section [SUPPORT MATÉRIEL](#HARDWARE-SUPPORT).
 
 ```
-yay -S steam
+sudo pacman -S steam
 ```
 
 ### Lutris
@@ -560,7 +589,7 @@ C'est l'outil dont vous avez besoin si vous voulez voir vos FPS en jeu, votre ch
 Ici, nous installons GOverlay qui est une interface graphique pour configurer MangoHud.
 
 ```
-yay -S goverlay
+sudo pacman -S goverlay
 ```
 
 ### Amélioration de la compatibilité des jeux Windows
@@ -580,7 +609,6 @@ la ligne suivante:
 ` 
 vm.max_map_count=2147483642
 `
-
 
 ## <img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/speed.png" width="30" height="30"> **BONUS** : <a name="optimization"/>
 
@@ -633,7 +661,6 @@ makepkg -si
 
 Dites oui à tout pour tout écraser avec les nouveaux paquets.
 
-
 ### Installation [Flatpak](https://wiki.archlinux.org/title/Flatpak)
 
 Anciennement connu sous le nom de xdg-app, il s'agit d'un utilitaire de déploiement de logiciels et de gestion de paquets pour Linux. Il est promu comme offrant un environnement "sandbox" dans lequel les utilisateurs peuvent exécuter des logiciels isolément du reste du système.
@@ -641,7 +668,7 @@ Anciennement connu sous le nom de xdg-app, il s'agit d'un utilitaire de déploie
 <img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/Cardiac-icon.png" width="30" height="30"> [MangoHUD, Goverlay, Steam, Lutris FLATPAK!](https://www.youtube.com/watch?v=1dha2UDSF4M)
 
 ```
-yay -S flatpak flatpak-kcm
+sudo pacman -S flatpak flatpak-kcm
 flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 ```
 
@@ -662,7 +689,6 @@ Sources et liens utiles :
 - [Site GLF](https://www.gaminglinux.fr/)
 - [Discord GLF](http://discord.gg/EP3Jm8YMvj)
 - [Ma chaîne Youtube](https://www.youtube.com/@Cardiacman)
-
 
 ## Contribution
 

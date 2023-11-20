@@ -146,7 +146,7 @@ archinstall                 # to launch the installation help script for arch li
 
 #### 1. Optimize pacman
 
-This [modification](https://wiki.archlinux.org/title/Pacman#Enabling_parallel_downloads) allows for parallelization of package downloads. (PS: with kate, when you save, you might be asked to enter a password. Enter your root/sudo password.)
+This [modification](https://wiki.archlinux.org/title/Pacman#Enabling_parallel_downloads) allows for parallelization of package downloads.
 
 ```
 sudo nano /etc/pacman.conf
@@ -215,6 +215,8 @@ nano ~/.bashrc
 
 Add each of these lines to the end of the file:
 
+For yay :
+
 ```
 alias update-arch='yay -Syu && flatpak update'
 ```
@@ -222,6 +224,18 @@ alias update-arch='yay -Syu && flatpak update'
 ```
 alias clean-arch='yay -Sc && yay -Yc && flatpak remove --unused'
 ```
+
+For Paru :
+
+```
+alias update-arch='paru -Syu && flatpak update'
+```
+
+```
+alias clean-arch='paru -Sc && paru -c && flatpak remove --unused'
+```
+
+for everyone : 
 
 ```
 alias update-mirrors='sudo reflector --verbose --score 20 --fastest 5 --sort rate --save /etc/pacman.d/mirrorlist'
@@ -231,7 +245,7 @@ alias update-mirrors='sudo reflector --verbose --score 20 --fastest 5 --sort rat
 alias fix-key='sudo rm /var/lib/pacman/sync/* && sudo rm -rf /etc/pacman.d/gnupg/* && sudo pacman-key --init && sudo pacman-key --populate && sudo pacman -Sy --noconfirm archlinux-keyring && sudo pacman --noconfirm -Su'
 ```
 
-   Restart the terminal.
+ Restart the terminal.
 
 #### 4. multithread Compilation of AUR Packages:
 
@@ -246,24 +260,6 @@ MAKEFLAGS="-j$(nproc)"
 ```
 
 Or if, for example, you want to use 6 threads:
-
-```
-MAKEFLAGS="-j6"
-```
-
-#### 4. Compilazione multithread dei pacchetti AUR:
-
-```
-nano /etc/makepkg.conf
-```
-
-Per utilizzare tutti i thread, aggiungere:
-
-```
-MAKEFLAGS="-j$(nproc)"
-```
-
-Oppure, se ad esempio si desidera utilizzare 6 thread:
 
 ```
 MAKEFLAGS="-j6"
@@ -377,7 +373,7 @@ sudo mkinitcpio -P
 Install the core components:
 
 ```
-yay -S --needed mesa lib32-mesa vulkan-radeon lib32-vulkan-radeon vulkan-icd-loader lib32-vulkan-icd-loader vulkan-mesa-layers lib32-vulkan-mesa-layers
+sudo pacman -S --needed mesa lib32-mesa vulkan-radeon lib32-vulkan-radeon vulkan-icd-loader lib32-vulkan-icd-loader vulkan-mesa-layers lib32-vulkan-mesa-layers
 ```
 
 #### INTEL (do not do if Nvidia)
@@ -385,22 +381,21 @@ yay -S --needed mesa lib32-mesa vulkan-radeon lib32-vulkan-radeon vulkan-icd-loa
 Install the core components:
 
 ```
-yay -S --needed mesa lib32-mesa vulkan-intel lib32-vulkan-intel vulkan-icd-loader lib32-vulkan-icd-loader intel-media-driver
+sudo pacman -S --needed mesa lib32-mesa vulkan-intel lib32-vulkan-intel vulkan-icd-loader lib32-vulkan-icd-loader intel-media-driver
 ```
 
 #### Printers
 - Essentials
 
 ```
-yay -S --needed ghostscript gsfonts cups cups-filters cups-pdf system-config-printer
-avahi
+sudo pacman -S --needed ghostscript gsfonts cups cups-filters cups-pdf system-config-printer avahi
 sudo systemctl enable --now avahi-daemon cups
 ```
 
 - Drivers
 
 ```
-yay -S --needed foomatic-db-engine foomatic-db foomatic-db-ppds foomatic-db-nonfree foomatic-db-nonfree-ppds gutenprint foomatic-db-gutenprint-ppds
+sudo pacman -S --needed foomatic-db-engine foomatic-db foomatic-db-ppds foomatic-db-nonfree foomatic-db-nonfree-ppds gutenprint foomatic-db-gutenprint-ppds
 ```
 
 - HP Printers
@@ -420,7 +415,7 @@ yay -S --needed epson-inkjet-printer-escpr epson-inkjet-printer-escpr2 epson-ink
 The second command below asks systemd to immediately start the bluetooth service, and also to activate it on every boot.
 
 ```
-yay -S --needed bluez bluez-utils bluez-plugins
+sudo pacman -S --needed bluez bluez-utils bluez-plugins
 sudo systemctl enable --now  bluetooth.service
 ```
 
@@ -453,7 +448,7 @@ yay -S libreoffice-fresh libreoffice-fresh-fr vlc discord gimp obs-studio gnome-
 Here are various software for graphics, video (editing, codec support), graphical interface utilities, etc.
 
 ```
-yay -S --needed xdg-desktop-portal-kde okular print-manager kdenlive gwenview spectacle partitionmanager ffmpegthumbs qt6-wayland kdeplasma-addons powerdevil kcalc plasma-systemmonitor qt6-multimedia qt6-multimedia-gstreamer qt6-multimedia-ffmpeg kwalletmanager
+sudo pacman -S --needed xdg-desktop-portal-kde okular print-manager kdenlive gwenview spectacle partitionmanager ffmpegthumbs qt6-wayland kdeplasma-addons powerdevil kcalc plasma-systemmonitor qt6-multimedia qt6-multimedia-gstreamer qt6-multimedia-ffmpeg kwalletmanager
 ```
 
 Additional Video:
@@ -489,7 +484,7 @@ sudo reflector --verbose --score 20 --fastest 5 --sort rate --save /etc/pacman.d
 **/!\ WARNING: By default, only the system is backed up, not your user folder (/home/)! /!\\**
 
 ```
-yay -S timeshift
+sudo pacman -S timeshift
 ```
 
 - Avoid timeshift and Btrfs on Arch, I've had [issues](https://github.com/linuxmint/timeshift) before.
@@ -509,7 +504,7 @@ sudo systemctl enable --now cronie
 - Install fish.
 
 ```
-yay -S fish                       # 1. install fish
+sudo pacman -S fish               # 1. install fish
 chsh -s /usr/bin/fish             # 2. Set it as default.
 fish                              # 3. Run fish or reboot and it will default.
 fish_update_completions           # 4. Update completions.
@@ -519,6 +514,8 @@ nano ~/.config/fish/config.fish   # 6. Create an alias as for bash at the beginn
 
 - Then add the following aliases between if and end:
 
+For yay :
+
 ```
 alias update-arch='yay -Syu && flatpak update'
 ```
@@ -527,8 +524,20 @@ alias update-arch='yay -Syu && flatpak update'
 alias clean-arch='yay -Sc && yay -Yc && flatpak remove --unused'
 ```
 
+For paru :
+
 ```
-alias update-mirrors=
+alias update-arch='paru -Syu && flatpak update'
+```
+
+```
+alias clean-arch='paru -Sc && paru -c && flatpak remove --unused'
+```
+
+For everyone :
+
+```
+alias update-mirrors='sudo reflector --verbose --score 20 --fastest 5 --sort rate --save /etc/pacman.d/mirrorlist'
 ```
 
 ```
@@ -536,8 +545,6 @@ alias fix-key='sudo rm /var/lib/pacman/sync/* && sudo rm -rf /etc/pacman.d/gnupg
 ```
 
 - ***Reboot unless done in step 3***, aliases of any kind only work after restarting the terminal.
-
-
 
 ## <img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/game-console.png" width="30" height="30"> **Level Up Your Gaming** <a name="gaming"/>
 
@@ -566,7 +573,6 @@ Additional Video:
 
 Advanced Linux driver for Xbox 360|One|S|X wireless controllers (supplied with Xbox One S) and a lot of other controllers like 8bitdo ([xpadneo](https://github.com/atar-axis/xpadneo)) ([xone](https://github.com/medusalix/xone))
 
-
 ```
 yay -S xpadneo-dkms 
 ```
@@ -584,7 +590,7 @@ It's the tool you need if you want to see your in-game FPS, your CPU or GPU load
 Here, we install GOverlay which is a graphical interface to configure MangoHud.
 
 ```
-yay -S goverlay
+sudo pacman -S goverlay
 ```
 
 ### Improving compatibility of Windows games
@@ -604,7 +610,6 @@ la ligne suivante:
 ` 
 vm.max_map_count=2147483642
 `
-
 
 ## <img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/speed.png" width="30" height="30"> **Optimization**: <a name="optimization"/>
 
@@ -657,7 +662,6 @@ makepkg -si
 
 Say yes to everything to overwrite everything with new packages.
 
-
 ### Installation [Flatpak](https://wiki.archlinux.org/title/Flatpak)
 
 Formerly known as xdg-app, this is a software deployment and package management utility for Linux. It is promoted as offering a "sandbox" environment in which users can run software in isolation from the rest of the system.
@@ -665,7 +669,7 @@ Formerly known as xdg-app, this is a software deployment and package management 
 <img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/Cardiac-icon.png" width="30" height="30"> [MangoHUD, Goverlay, Steam, Lutris FLATPAK!](https://www.youtube.com/watch?v=1dha2UDSF4M)
 
 ```
-yay -S flatpak flatpak-kcm
+sudo pacman -S flatpak flatpak-kcm
 flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 ```
 
@@ -686,7 +690,6 @@ Sources and useful links :
 - [Site GLF](https://www.gaminglinux.fr/)
 - [GLF Discord](http://discord.gg/EP3Jm8YMvj)
 - [My Youtube channel](https://www.youtube.com/@Cardiacman)
-
 
 ## Contribution
 
