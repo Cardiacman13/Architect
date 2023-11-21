@@ -485,6 +485,20 @@ Une commande pour générer une liste de miroirs, à faire une fois après la pr
 sudo reflector --verbose --score 20 --fastest 5 --sort rate --save /etc/pacman.d/mirrorlist
 ```
 
+#### Arch Update
+
+<img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/Cardiac-icon.png" width="30" height="30"> [Arch-Update  : Notifie les updates de Arch et aide aux tâches importantes avant et après l'update.](https://youtu.be/QkOkX70SEmo?si=EwB-rSTV5dMNbv5D)
+
+- [arch-update](https://github.com/Antiz96/arch-update)
+
+Arch Update et un notificateur/aplicateur de mise à jour pour Arch Linux qui vous assiste avec dans les tâches importantes avant et après la mise à jour et qui inclut une icône cliquable (.desktop) pouvant être facilement intégrée à n'importe quel environnement de bureau/gestionnaire de fenêtres, dock, barre de statut/lançage ou menu d'application.
+Support optionnel pour les mises à jour des paquets AUR/Flatpak et les notifications de bureau.
+
+```
+yay -S arch-update
+systemctl --user enable --now arch-update.timer
+```
+
 #### Timeshift
 
 - [Timeshift](https://github.com/linuxmint/timeshift) est un utilitaire Linux open source pour créer des sauvegardes de tout votre système.
@@ -572,6 +586,7 @@ sudo pacman -S lutris wine-staging
 ```
 
 Vidéo supplémentaire :
+
 <img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/Cardiac-icon.png" width="30" height="30"> [Configuration de Lutris pour ordinateur portable Intel/Nvidia](https://www.youtube.com/watch?v=Am3pgTXiUAA)
 
 ### Support avancé de manettes

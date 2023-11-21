@@ -486,6 +486,18 @@ Un comando per generare una lista di mirror, da eseguire una volta dopo la prima
 sudo reflector --verbose --score 20 --fastest 5 --sort rate --save /etc/pacman.d/mirrorlist
 ```
 
+#### Update Arch
+
+- [arch-update](https://github.com/Antiz96/arch-update)
+
+Arch Update è un notificatore/applicatore di aggiornamenti per Arch Linux che ti assiste nelle importanti attività pre e post aggiornamento e include un'icona cliccabile (.desktop) che può essere facilmente integrata in qualsiasi ambiente desktop/gestore di finestre, dock, barra di stato/launcher o menu applicazioni.
+Supporto opzionale per gli aggiornamenti dei pacchetti AUR/Flatpak e le notifiche desktop.
+
+```
+yay -S arch-update
+systemctl --user enable --now arch-update.timer
+```
+
 #### Timeshift
 
 - [Timeshift](https://github.com/linuxmint/timeshift) è un'utilità Linux open source per creare backup di tutto il tuo sistema.

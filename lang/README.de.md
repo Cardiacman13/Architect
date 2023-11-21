@@ -505,7 +505,19 @@ yay -S timeshift
 ```
 sudo systemctl enable --now cronie
 ```
-  
+
+#### Arch-Update
+
+- [arch-update](https://github.com/Antiz96/arch-update)
+
+Arch Update ist ein Update-Benachrichtiger/-Anwender für Arch Linux, der Sie bei wichtigen Aufgaben vor und nach dem Update unterstützt und ein anklickbares Symbol (.desktop) enthält, das leicht in jede Desktop-Umgebung/Fenstermanager, Dock, Statusleiste/Launcher oder Anwendungsmenü integriert werden kann.
+Optionale Unterstützung für AUR/Flatpak-Paketaktualisierungen und Desktop-Benachrichtigungen.
+
+```
+yay -S arch-update
+systemctl --user enable --now arch-update.timer
+```
+
 #### Fish
 
 [Fish](https://fishshell.com/) ist eine Kommandozeilenschale, die interaktiv und benutzerfreundlich konzipiert ist. Siehe auch [ArchWiki](https://wiki.archlinux.org/title/fish) zum Thema. Es ersetzt die Standard-Shell, bash.

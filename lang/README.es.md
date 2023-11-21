@@ -487,6 +487,18 @@ Un comando para generar una lista de espejos, se debe realizar una vez después 
 sudo reflector --verbose --score 20 --fastest 5 --sort rate --save /etc/pacman.d/mirrorlist
 ```
 
+#### Update Arch
+
+- [arch-update](https://github.com/Antiz96/arch-update)
+
+Arch Update es un notificador/aplicador de actualizaciones para Arch Linux que te asiste en las tareas importantes antes y después de la actualización e incluye un icono clickeable (.desktop) que puede ser fácilmente integrado en cualquier entorno de escritorio/administrador de ventanas, dock, barra de estado/lanzador o menú de aplicaciones.
+Soporte opcional para actualizaciones de paquetes AUR/Flatpak y notificaciones de escritorio.
+
+```
+yay -S arch-update
+systemctl --user enable --now arch-update.timer
+```
+
 #### Timeshift
 
 - [Timeshift](https://github.com/linuxmint/timeshift) es una utilidad de Linux de código abierto para crear copias de seguridad de todo tu sistema.
