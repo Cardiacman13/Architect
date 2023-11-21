@@ -8,12 +8,11 @@ function gamepad() {
         install_one "xpadneo-dkms"
     fi
 
-    read -rp "Do you want to use PS4 or PS5 controllers ? (y/N) : " choice
+    read -rp "Do you want to use PS5 controllers ? (y/N) : " choice
     choice="${choice^^}"
 
     if [[ $choice == "Y" ]]; then
-        uninstall_one "bluez-utils"
-        install_lst "ds4drv dualsensectl"
+        install_one "dualsensectl"
     fi
 }
 
@@ -45,8 +44,6 @@ function printer() {
             inlst+="
                 epson-inkjet-printer-escpr
                 epson-inkjet-printer-escpr2
-                epson-inkjet-printer-201601w
-                epson-inkjet-printer-n10-nx127
             "
         fi
         read -rp "Do you want to use a HP printer ? (y/N) : " choice
@@ -74,14 +71,10 @@ function bluetooth() {
         local -r inlst="
             bluez
             bluez-plugins
+            bluez-utils
         "
 
         install_lst "${inlst}"
-
-        exec_log "pacman -Qi bluez-utils-compat" "checking if bluez-utils-compat is installed"
-        if [[ $? -eq 1 ]]; then
-            install_one "bluez-utils"
-        fi
 
         exec_log "sudo systemctl enable --now bluetooth" "enabling bluetooth service"
     fi
