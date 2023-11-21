@@ -105,6 +105,8 @@ Select additional software based on your needs:
 | protonup-qt             | protonup-qt-bin                             | package |
 | Spotify                 | spotify                                     | package |
 | Kdenlive                | kdenlive                                    | package |
+| Davinci Resolve         | davinci-resolve                             | package |
+| Davinci Resolve Studio  | davinci-resolve-studio                      | package |
 | LibreOffice             | libreoffice-fresh libreoffice-fresh-lang    | package |
 | OnlyOffice              | onlyoffice-bin                              | package |
 | Gimp                    | gimp                                        | package |

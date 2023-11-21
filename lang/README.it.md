@@ -104,6 +104,8 @@ Seleziona software aggiuntivo in base alle tue esigenze:
 | protonup-qt             | protonup-qt-bin                             | Pacchetto  |
 | Spotify                 | spotify                                     | Pacchetto  |
 | Kdenlive                | kdenlive                                    | Pacchetto  |
+| Davinci Resolve         | davinci-resolve                             | Pacchetto  |
+| Davinci Resolve Studio  | davinci-resolve-studio                      | Pacchetto  |
 | LibreOffice             | libreoffice-fresh libreoffice-fresh-lang    | Pacchetto  |
 | OnlyOffice              | onlyoffice-bin                              | Pacchetto  |
 | Gimp                    | gimp                                        | Pacchetto  |
