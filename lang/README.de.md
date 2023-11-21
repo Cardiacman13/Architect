@@ -79,27 +79,39 @@ Optimiere dein System:
 - 🎲 Erhöhe `vm.max_map_count` für eine bessere Kompatibilität mit Windows-Spielen. [Arch Wiki über vm-max-map-count](https://wiki.archlinux.org/title/gaming#Increase_vm.max_map_count)
 - 🖨️ Optionen für Druckerunterstützung.
 - 🎵 Bluetooth-Konfiguration.
-- 🎮 Verbesserte Unterstützung für Xbox, PS4/PS5, 8bitdo Controller.
+- 🎮 Verbesserte Unterstützung für Xbox, PS5, 8bitdo Controller.
 - 🐟 Vorschlag für Fish Shell-Konfiguration. (zsh in Entwicklung)
 
 ### 7. 🔄 Nachfragen, um Zusätzliche Software zu Installieren
 Wähle zusätzliche Software basierend auf deinen Bedürfnissen:
 
-| Name                    | Paket                                   | Typ     |
-|-------------------------|-----------------------------------------|---------|
-| Discord                 | discord                                 | Paket   |
-| Steam                   | steam proton-ge-custom-bin              | Paket   |
-| Lutris                  | lutris wine-staging                     | Paket   |
-| Heroic Games Launcher   | heroic-games-launcher-bin               | Paket   |
-| protonup-qt             | protonup-qt-bin                         | Paket   |
-| Spotify                 | spotify                                 | Paket   |
-| OBS Studio              | com.obsproject.Studio                   | flatpak |
-| Kdenlive                | kdenlive                                | Paket   |
-| LibreOffice             | libreoffice-fresh libreoffice-fresh-fr  | Paket   |
-| Gimp                    | gimp                                    | Paket   |
-| VLC                     | vlc                                     | Paket   |
-| Visual Studio Code      | visual-studio-code-bin                  | Paket   |
-| Open RGB                | openrgb-bin                             | Paket   |
+| Name                    | Paket                                       | Typ     |
+|-------------------------|---------------------------------------------|---------|
+| OBS Studio (flatpak)    | com.obsproject.Studio                       | flatpak |
+| OBS Studio (from repo)  | obs-studio                                  | Paket   |
+| Firefox                 | firefox firefox-i18n-lang                   | Paket   |
+| Brave                   | brave-bin                                   | Paket   |
+| Chromium                | chromium                                    | Paket   |
+| Vivaldi                 | vivaldi                                     | Paket   |
+| Google Chrome           | google-chrome                               | Paket   |
+| Microsoft Edge          | microsoft-edge-stable-bin                   | Paket   |
+| Discord                 | discord                                     | Paket   |
+| Steam                   | steam                                       | Paket   |
+| Lastest proton GE       | proton-ge-custom-bin                        | Paket   |
+| Lutris                  | lutris wine-staging                         | Paket   |
+| Heroic Games Launcher   | heroic-games-launcher-bin                   | Paket   |
+| protonup-qt             | protonup-qt-bin                             | Paket   |
+| Spotify                 | spotify                                     | Paket   |
+| Kdenlive                | kdenlive                                    | Paket   |
+| LibreOffice             | libreoffice-fresh libreoffice-fresh-lang    | Paket   |
+| OnlyOffice              | onlyoffice-bin                              | Paket   |
+| Gimp                    | gimp                                        | Paket   |
+| Inkscape                | inkscape                                    | Paket   |
+| Krita                   | krita                                       | Paket   |
+| VLC                     | vlc                                         | Paket   |
+| Visual Studio Code      | visual-studio-code-bin                      | Paket   |
+| Virtualbox              | virtualbox-host-dkms virtualbox-guest-iso   | Paket   |
+| Open RGB                | openrgb-bin                                 | Paket   |
 
 ## <img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/pc.png" width="30" height="30"> **Erweitere Deinen Desktop** <a name="elevate"/>
 
@@ -567,10 +579,10 @@ Fortgeschrittener Linux-Treiber für Xbox 360|One|S|X kabellose Controller (geli
 yay -S xpadneo-dkms 
 ```
 
-Fortgeschrittener Linux-Treiber für PS4/PS5-Controller
+Fortgeschrittener Linux-Treiber für PS5-Controller
 
 ```
-yay -S ds4drv dualsensectl
+yay -S dualsensectl
 ```
 
 ### Anzeige der In-Game-Leistung

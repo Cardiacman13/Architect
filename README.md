@@ -81,27 +81,39 @@ Tune-up your system:
 - 🎲 Boost `vm.max_map_count` for better Windows game compatibility. [Arch wiki about vm-max-map-count](https://wiki.archlinux.org/title/gaming#Increase_vm.max_map_count)
 - 🖨️ Options for Print support.
 - 🎵 Bluetooth configuration.
-- 🎮 Enhanced support for Xbox, PS4/PS5, 8bitdo controllers.
+- 🎮 Enhanced support for Xbox, PS5, 8bitdo controllers.
 - 🐟 Suggest Fish shell configuration. (zsh in WIP)
 
 ### 7. 🔄 Ask to Install Additional Software
 Select additional software based on your needs:
 
-| Name                    | Package                                 | Type    |
-|-------------------------|-----------------------------------------|---------|
-| Discord                 | discord                                 | package |
-| Steam                   | steam proton-ge-custom-bin              | package |
-| Lutris                  | lutris wine-staging                     | package |
-| Heroic Games Launcher   | heroic-games-launcher-bin               | package |
-| protonup-qt             | protonup-qt-bin                         | package |
-| Spotify                 | spotify                                 | package |
-| OBS Studio              | com.obsproject.Studio                   | flatpak |
-| Kdenlive                | kdenlive                                | package |
-| LibreOffice             | libreoffice-fresh libreoffice-fresh-fr  | package |
-| Gimp                    | gimp                                    | package |
-| VLC                     | vlc                                     | package |
-| Visual Studio Code      | visual-studio-code-bin                  | package |
-| Open RGB                | openrgb-bin                             | package |
+| Name                    | Package                                     | Type    |
+|-------------------------|---------------------------------------------|---------|
+| OBS Studio (flatpak)    | com.obsproject.Studio                       | flatpak |
+| OBS Studio (from repo)  | obs-studio                                  | package |
+| Firefox                 | firefox firefox-i18n-lang                   | package |
+| Brave                   | brave-bin                                   | package |
+| Chromium                | chromium                                    | package |
+| Vivaldi                 | vivaldi                                     | package |
+| Google Chrome           | google-chrome                               | package |
+| Microsoft Edge          | microsoft-edge-stable-bin                   | package |
+| Discord                 | discord                                     | package |
+| Steam                   | steam                                       | package |
+| Lastest proton GE       | proton-ge-custom-bin                        | package |
+| Lutris                  | lutris wine-staging                         | package |
+| Heroic Games Launcher   | heroic-games-launcher-bin                   | package |
+| protonup-qt             | protonup-qt-bin                             | package |
+| Spotify                 | spotify                                     | package |
+| Kdenlive                | kdenlive                                    | package |
+| LibreOffice             | libreoffice-fresh libreoffice-fresh-lang    | package |
+| OnlyOffice              | onlyoffice-bin                              | package |
+| Gimp                    | gimp                                        | package |
+| Inkscape                | inkscape                                    | package |
+| Krita                   | krita                                       | package |
+| VLC                     | vlc                                         | package |
+| Visual Studio Code      | visual-studio-code-bin                      | package |
+| Virtualbox              | virtualbox-host-dkms virtualbox-guest-iso   | package |
+| Open RGB                | openrgb-bin                                 | package |
 
 ## <img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/pc.png" width="30" height="30"> **Elevate Your Desktop** <a name="elevate"/>
 
@@ -563,10 +575,10 @@ Advanced Linux driver for Xbox 360|One|S|X wireless controllers (supplied with X
 yay -S xpadneo-dkms 
 ```
 
-Advanced Linux driver for PS4/PS5 controllers:
+Advanced Linux driver for PS5 controllers:
 
 ```
-yay -S ds4drv dualsensectl
+yay -S dualsensectl
 ```
 
 ### Displaying in-game performance

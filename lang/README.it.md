@@ -80,27 +80,39 @@ Ottimizza il tuo sistema:
 - 🎲 Aumenta `vm.max_map_count` per una migliore compatibilità con i giochi Windows. [Wiki di Arch su vm-max-map-count](https://wiki.archlinux.org/title/gaming#Increase_vm.max_map_count)
 - 🖨️ Opzioni per il supporto alle stampanti.
 - 🎵 Configurazione Bluetooth.
-- 🎮 Supporto migliorato per i controller Xbox, PS4/PS5, 8bitdo.
+- 🎮 Supporto migliorato per i controller Xbox, PS5, 8bitdo.
 - 🐟 Suggerimento per la configurazione della shell Fish. (zsh in lavorazione)
 
 ### 7. 🔄 Chiedere di Installare Software Aggiuntivo
 Seleziona software aggiuntivo in base alle tue esigenze:
 
-| Nome                    | Pacchetto                               | Tipo    |
-|-------------------------|-----------------------------------------|---------|
-| Discord                 | discord                                 | pacchetto |
-| Steam                   | steam proton-ge-custom-bin              | pacchetto |
-| Lutris                  | lutris wine-staging                     | pacchetto |
-| Heroic Games Launcher   | heroic-games-launcher-bin               | pacchetto |
-| protonup-qt             | protonup-qt-bin                         | pacchetto |
-| Spotify                 | spotify                                 | pacchetto |
-| OBS Studio              | com.obsproject.Studio                   | flatpak |
-| Kdenlive                | kdenlive                                | pacchetto |
-| LibreOffice             | libreoffice-fresh libreoffice-fresh-fr  | pacchetto |
-| Gimp                    | gimp                                    | pacchetto |
-| VLC                     | vlc                                     | pacchetto |
-| Visual Studio Code      | visual-studio-code-bin                  | pacchetto |
-| Open RGB                | openrgb-bin                             | pacchetto |
+| Nome                    | Pacchetto                                   | Tipo       |
+|-------------------------|---------------------------------------------|------------|
+| OBS Studio (flatpak)    | com.obsproject.Studio                       | flatpak    |
+| OBS Studio (from repo)  | obs-studio                                  | Pacchetto  |
+| Firefox                 | firefox firefox-i18n-lang                   | Pacchetto  |
+| Brave                   | brave-bin                                   | Pacchetto  |
+| Chromium                | chromium                                    | Pacchetto  |
+| Vivaldi                 | vivaldi                                     | Pacchetto  |
+| Google Chrome           | google-chrome                               | Pacchetto  |
+| Microsoft Edge          | microsoft-edge-stable-bin                   | Pacchetto  |
+| Discord                 | discord                                     | Pacchetto  |
+| Steam                   | steam                                       | Pacchetto  |
+| Lastest proton GE       | proton-ge-custom-bin                        | Pacchetto  |
+| Lutris                  | lutris wine-staging                         | Pacchetto  |
+| Heroic Games Launcher   | heroic-games-launcher-bin                   | Pacchetto  |
+| protonup-qt             | protonup-qt-bin                             | Pacchetto  |
+| Spotify                 | spotify                                     | Pacchetto  |
+| Kdenlive                | kdenlive                                    | Pacchetto  |
+| LibreOffice             | libreoffice-fresh libreoffice-fresh-lang    | Pacchetto  |
+| OnlyOffice              | onlyoffice-bin                              | Pacchetto  |
+| Gimp                    | gimp                                        | Pacchetto  |
+| Inkscape                | inkscape                                    | Pacchetto  |
+| Krita                   | krita                                       | Pacchetto  |
+| VLC                     | vlc                                         | Pacchetto  |
+| Visual Studio Code      | visual-studio-code-bin                      | Pacchetto  |
+| Virtualbox              | virtualbox-host-dkms virtualbox-guest-iso   | Pacchetto  |
+| Open RGB                | openrgb-bin                                 | Pacchetto  |
 
 
 ## <img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/pc.png" width="30" height="30"> **Eleva il Tuo Desktop** <a name="elevate"/>
@@ -571,10 +583,10 @@ Driver Linux avanzato per controller wireless Xbox 360|One|S|X (incluso con Xbox
 yay -S xpadneo-dkms 
 ```
 
-Driver Linux avanzato per controller PS4/PS5
+Driver Linux avanzato per controller PS5
 
 ```
-yay -S ds4drv dualsensectl
+yay -S dualsensectl
 ```
 
 ### Visualizzazione delle prestazioni di gioco

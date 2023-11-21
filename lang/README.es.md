@@ -80,27 +80,39 @@ Afinar tu sistema:
 - 🎲 Aumentar `vm.max_map_count` para mejor compatibilidad con juegos de Windows. [Wiki de Arch sobre vm-max-map-count](https://wiki.archlinux.org/title/gaming#Increase_vm.max_map_count)
 - 🖨️ Opciones para soporte de impresión.
 - 🎵 Configuración de Bluetooth.
-- 🎮 Soporte mejorado para controles de Xbox, PS4/PS5, 8bitdo.
+- 🎮 Soporte mejorado para controles de Xbox, PS5, 8bitdo.
 - 🐟 Sugerir configuración de shell Fish. (zsh en desarrollo)
 
 ### 7. 🔄 Preguntar para Instalar Software Adicional
 Selecciona software adicional basado en tus necesidades:
 
-| Nombre                    | Paquete                                 | Tipo    |
-|-------------------------|-----------------------------------------|---------|
-| Discord                 | discord                                 | paquete |
-| Steam                   | steam proton-ge-custom-bin              | paquete |
-| Lutris                  | lutris wine-staging                     | paquete |
-| Heroic Games Launcher   | heroic-games-launcher-bin               | paquete |
-| protonup-qt             | protonup-qt-bin                         | paquete |
-| Spotify                 | spotify                                 | paquete |
-| OBS Studio              | com.obsproject.Studio                   | flatpak |
-| Kdenlive                | kdenlive                                | paquete |
-| LibreOffice             | libreoffice-fresh libreoffice-fresh-fr  | paquete |
-| Gimp                    | gimp                                    | paquete |
-| VLC                     | vlc                                     | paquete |
-| Visual Studio Code      | visual-studio-code-bin                  | paquete |
-| Open RGB                | openrgb-bin                             | paquete |
+| Nombre                  | Paquete                                     | Tipo    |
+|-------------------------|---------------------------------------------|---------|
+| OBS Studio (flatpak)    | com.obsproject.Studio                       | flatpak |
+| OBS Studio (from repo)  | obs-studio                                  | paquete |
+| Firefox                 | firefox firefox-i18n-lang                   | paquete |
+| Brave                   | brave-bin                                   | paquete |
+| Chromium                | chromium                                    | paquete |
+| Vivaldi                 | vivaldi                                     | paquete |
+| Google Chrome           | google-chrome                               | paquete |
+| Microsoft Edge          | microsoft-edge-stable-bin                   | paquete |
+| Discord                 | discord                                     | paquete |
+| Steam                   | steam                                       | paquete |
+| Lastest proton GE       | proton-ge-custom-bin                        | paquete |
+| Lutris                  | lutris wine-staging                         | paquete |
+| Heroic Games Launcher   | heroic-games-launcher-bin                   | paquete |
+| protonup-qt             | protonup-qt-bin                             | paquete |
+| Spotify                 | spotify                                     | paquete |
+| Kdenlive                | kdenlive                                    | paquete |
+| LibreOffice             | libreoffice-fresh libreoffice-fresh-lang    | paquete |
+| OnlyOffice              | onlyoffice-bin                              | paquete |
+| Gimp                    | gimp                                        | paquete |
+| Inkscape                | inkscape                                    | paquete |
+| Krita                   | krita                                       | paquete |
+| VLC                     | vlc                                         | paquete |
+| Visual Studio Code      | visual-studio-code-bin                      | paquete |
+| Virtualbox              | virtualbox-host-dkms virtualbox-guest-iso   | paquete |
+| Open RGB                | openrgb-bin                                 | paquete |
 
 
 ## <img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/pc.png" width="30" height="30"> **Potencia tu Escritorio** <a name="elevate"/>
@@ -573,10 +585,10 @@ Controlador avanzado de Linux para controladores inalámbricos Xbox 360|One|S|X 
 yay -S xpadneo-dkms 
 ```
 
-Controlador avanzado de Linux para controladores PS4/PS5
+Controlador avanzado de Linux para controladores PS5
 
 ```
-yay -S ds4drv dualsensectl
+yay -S dualsensectl
 ```
 
 ### Mostrando el rendimiento en juegos

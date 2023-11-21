@@ -79,27 +79,39 @@ Optimisez votre système :
 - 🎲 Augmentez `vm.max_map_count` pour une meilleure compatibilité des jeux Windows. [Wiki Arch sur vm-max-map-count](https://wiki.archlinux.org/title/gaming#Increase_vm.max_map_count)
 - 🖨️ Options pour le support d'impression.
 - 🎵 Configuration Bluetooth.
-- 🎮 Support amélioré pour les manettes Xbox, PS4/PS5, 8bitdo.
+- 🎮 Support amélioré pour les manettes Xbox, PS5, 8bitdo.
 - 🐟 Configuration proposée pour le shell Fish. (zsh en cours de travail)
 
 ### 7. 🔄 Demander l'Installation de Logiciels Supplémentaires
 Sélectionnez des logiciels supplémentaires en fonction de vos besoins :
 
-| Nom                      | Paquet                                  | Type    |
-|--------------------------|-----------------------------------------|---------|
-| Discord                  | discord                                 | paquet |
-| Steam                    | steam proton-ge-custom-bin              | paquet |
-| Lutris                   | lutris wine-staging                     | paquet |
-| Heroic Games Launcher    | heroic-games-launcher-bin               | paquet |
-| protonup-qt              | protonup-qt-bin                         | paquet |
-| Spotify                  | spotify                                 | paquet |
-| OBS Studio               | com.obsproject.Studio                   | flatpak |
-| Kdenlive                 | kdenlive                                | paquet |
-| LibreOffice              | libreoffice-fresh libreoffice-fresh-fr  | paquet |
-| Gimp                     | gimp                                    | paquet |
-| VLC                      | vlc                                     | paquet |
-| Visual Studio Code       | visual-studio-code-bin                  | paquet |
-| Open RGB                 | openrgb-bin                             | paquet |
+| Nom                     | Paquet                                      | Type    |
+|-------------------------|---------------------------------------------|---------|
+| OBS Studio (flatpak)    | com.obsproject.Studio                       | flatpak |
+| OBS Studio (from repo)  | obs-studio                                  | paquet  |
+| Firefox                 | firefox firefox-i18n-lang                   | paquet  |
+| Brave                   | brave-bin                                   | paquet  |
+| Chromium                | chromium                                    | paquet  |
+| Vivaldi                 | vivaldi                                     | paquet  |
+| Google Chrome           | google-chrome                               | paquet  |
+| Microsoft Edge          | microsoft-edge-stable-bin                   | paquet  |
+| Discord                 | discord                                     | paquet  |
+| Steam                   | steam                                       | paquet  |
+| Lastest proton GE       | proton-ge-custom-bin                        | paquet  |
+| Lutris                  | lutris wine-staging                         | paquet  |
+| Heroic Games Launcher   | heroic-games-launcher-bin                   | paquet  |
+| protonup-qt             | protonup-qt-bin                             | paquet  |
+| Spotify                 | spotify                                     | paquet  |
+| Kdenlive                | kdenlive                                    | paquet  |
+| LibreOffice             | libreoffice-fresh libreoffice-fresh-lang    | paquet  |
+| OnlyOffice              | onlyoffice-bin                              | paquet  |
+| Gimp                    | gimp                                        | paquet  |
+| Inkscape                | inkscape                                    | paquet  |
+| Krita                   | krita                                       | paquet  |
+| VLC                     | vlc                                         | paquet  |
+| Visual Studio Code      | visual-studio-code-bin                      | paquet  |
+| Virtualbox              | virtualbox-host-dkms virtualbox-guest-iso   | paquet  |
+| Open RGB                | openrgb-bin                                 | paquet  |
 
 ## <img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/pc.png" width="30" height="30"> **TUTO** <a name="elevate"/>
 
@@ -569,10 +581,10 @@ Pilote Linux avancé pour manettes sans fil Xbox 360|One|S|X (fournies avec Xbox
 yay -S xpadneo-dkms 
 ```
 
-Pilote Linux avancé pour manettes PS4/PS5
+Pilote Linux avancé pour manettes PS5
 
 ```
-yay -S ds4drv dualsensectl
+yay -S dualsensectl
 ```
 
 ### Affichage des performances en jeu
