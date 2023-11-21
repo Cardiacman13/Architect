@@ -491,7 +491,7 @@ sudo reflector --verbose --score 20 --fastest 5 --sort rate --save /etc/pacman.d
 
 - [arch-update](https://github.com/Antiz96/arch-update)
 
-Arch Update et un notificateur/aplicateur de mise à jour pour Arch Linux qui vous assiste avec dans les tâches importantes avant et après la mise à jour et qui inclut une icône cliquable (.desktop) pouvant être facilement intégrée à n'importe quel environnement de bureau/gestionnaire de fenêtres, dock, barre de statut/lançage ou menu d'application.
+Arch Update est un notificateur/aplicateur de mise à jour pour Arch Linux qui vous assiste dans les tâches importantes avant et après la mise à jour et qui inclut une icône cliquable (.desktop) pouvant être facilement intégrée à n'importe quel environnement de bureau/gestionnaire de fenêtres, dock, barre de statut/lançage ou menu d'application.
 Support optionnel pour les mises à jour des paquets AUR/Flatpak et les notifications de bureau.
 
 ```
