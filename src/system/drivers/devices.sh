@@ -5,14 +5,14 @@ function gamepad() {
     choice="${choice^^}"
 
     if [[ $choice == "Y" ]]; then
-        install_one "xpadneo-dkms"
+        install_one "xpadneo-dkms-git"
     fi
 
     read -rp "Do you want to use PS5 controllers ? (y/N) : " choice
     choice="${choice^^}"
 
     if [[ $choice == "Y" ]]; then
-        install_one "dualsensectl"
+        install_one "dualsensectl-git"
     fi
 }
 

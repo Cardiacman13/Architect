@@ -576,13 +576,13 @@ Fortgeschrittener Linux-Treiber für Xbox 360|One|S|X kabellose Controller (geli
 
 
 ```
-yay -S xpadneo-dkms 
+yay -S xpadneo-dkms-git
 ```
 
 Fortgeschrittener Linux-Treiber für PS5-Controller
 
 ```
-yay -S dualsensectl
+yay -S dualsensectl-git
 ```
 
 ### Anzeige der In-Game-Leistung

@@ -582,13 +582,13 @@ sudo pacman -S lutris wine-staging
 Controlador avanzado de Linux para controladores inalámbricos Xbox 360|One|S|X (incluidos con Xbox One S) y muchos otros controladores como 8bitdo ([xpadneo](https://github.com/atar-axis/xpadneo)) ([xone](https://github.com/medusalix/xone))
 
 ```
-yay -S xpadneo-dkms 
+yay -S xpadneo-dkms-git
 ```
 
 Controlador avanzado de Linux para controladores PS5
 
 ```
-yay -S dualsensectl
+yay -S dualsensectl-git
 ```
 
 ### Mostrando el rendimiento en juegos

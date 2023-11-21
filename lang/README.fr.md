@@ -578,13 +578,13 @@ Vidéo supplémentaire :
 Pilote Linux avancé pour manettes sans fil Xbox 360|One|S|X (fournies avec Xbox One S) et beaucoup d'autres manettes comme 8bitdo ([xpadneo](https://github.com/atar-axis/xpadneo)) ([xone](https://github.com/medusalix/xone))
 
 ```
-yay -S xpadneo-dkms 
+yay -S xpadneo-dkms-git
 ```
 
 Pilote Linux avancé pour manettes PS5
 
 ```
-yay -S dualsensectl
+yay -S dualsensectl-git
 ```
 
 ### Affichage des performances en jeu

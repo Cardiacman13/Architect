@@ -580,13 +580,13 @@ sudo pacman -S lutris wine-staging
 Driver Linux avanzato per controller wireless Xbox 360|One|S|X (incluso con Xbox One S) e molti altri controller come 8bitdo ([xpadneo](https://github.com/atar-axis/xpadneo)) ([xone](https://github.com/medusalix/xone))
 
 ```
-yay -S xpadneo-dkms 
+yay -S xpadneo-dkms-git
 ```
 
 Driver Linux avanzato per controller PS5
 
 ```
-yay -S dualsensectl
+yay -S dualsensectl-git
 ```
 
 ### Visualizzazione delle prestazioni di gioco
