@@ -30,7 +30,7 @@ Este script es perfecto para configurar un sistema **Arch puro** con un **conjun
 Ejecuta lo siguiente en el terminal para correr el script (**requiere acceso sudo**):
 
 ```bash
-sudo pacman -Sy git base-devel && git clone https://github.com/Cardiacman13/Architect.git ~/Architect && cd ~/Architect && ./architect.sh
+sudo pacman -S git base-devel && git clone https://github.com/Cardiacman13/Architect.git ~/Architect && cd ~/Architect && ./architect.sh
 ```
 
 ## 📝 Características Principales

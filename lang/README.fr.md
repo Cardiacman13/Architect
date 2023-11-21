@@ -29,7 +29,7 @@ Ce script est parfait pour configurer un système **Arch pur** avec un **ensembl
 Exécutez ce qui suit dans le terminal pour lancer le script (**nécessite l'accès sudo**):
 
 ```bash
-sudo pacman -Sy git base-devel && git clone https://github.com/Cardiacman13/Architect.git ~/Architect && cd ~/Architect && ./architect.sh
+sudo pacman -S git base-devel && git clone https://github.com/Cardiacman13/Architect.git ~/Architect && cd ~/Architect && ./architect.sh
 ```
 
 ## 📝 Principales Caractéristiques

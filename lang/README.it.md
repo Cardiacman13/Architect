@@ -30,7 +30,7 @@ Questo script è perfetto per configurare un sistema **Arch stock** con un **set
 Esegui il seguente comando nel terminale per eseguire lo script (**richiede l'accesso sudo**):
 
 ```bash
-sudo pacman -Sy git base-devel && git clone https://github.com/Cardiacman13/Architect.git ~/Architect && cd ~/Architect && ./architect.sh
+sudo pacman -S git base-devel && git clone https://github.com/Cardiacman13/Architect.git ~/Architect && cd ~/Architect && ./architect.sh
 ```
 
 ## 📝 Caratteristiche Principali

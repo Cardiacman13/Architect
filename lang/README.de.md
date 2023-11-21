@@ -29,7 +29,7 @@ Dieses Skript ist perfekt, um ein **reines Arch-System** mit einer **minimalen M
 Führe Folgendes im Terminal aus, um das Skript zu starten (**sudo Zugriff erforderlich**):
 
 ```bash
-sudo pacman -Sy git base-devel && git clone https://github.com/Cardiacman13/Architect.git ~/Architect && cd ~/Architect && ./architect.sh
+sudo pacman -S git base-devel && git clone https://github.com/Cardiacman13/Architect.git ~/Architect && cd ~/Architect && ./architect.sh
 ```
 
 ## 📝 Hauptmerkmale
