@@ -112,6 +112,7 @@ Sélectionnez des logiciels supplémentaires en fonction de vos besoins :
 | Visual Studio Code      | visual-studio-code-bin                      | paquet  |
 | Virtualbox              | virtualbox-host-dkms virtualbox-guest-iso   | paquet  |
 | Open RGB                | openrgb-bin                                 | paquet  |
+| Arch Update             | arch-update                                 | paquet  |
 
 ## <img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/pc.png" width="30" height="30"> **TUTO** <a name="elevate"/>
 

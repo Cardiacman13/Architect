@@ -114,6 +114,7 @@ Select additional software based on your needs:
 | Visual Studio Code      | visual-studio-code-bin                      | package |
 | Virtualbox              | virtualbox-host-dkms virtualbox-guest-iso   | package |
 | Open RGB                | openrgb-bin                                 | package |
+| Arch Update             | arch-update                                 | package |
 
 ## <img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/pc.png" width="30" height="30"> **Elevate Your Desktop** <a name="elevate"/>
 

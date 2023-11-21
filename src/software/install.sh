@@ -31,6 +31,7 @@ function populate_software_list() {
     ["23"]="Visual Studio Code|visual-studio-code-bin"
     ["24"]="Virtualbox|virtualbox-host-dkms virtualbox-guest-iso"
     ["25"]="Open RGB|openrgb-bin"
+    ["26"]="Arch Update|arch-update"
 )
 }
 

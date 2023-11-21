@@ -113,7 +113,7 @@ Seleziona software aggiuntivo in base alle tue esigenze:
 | Visual Studio Code      | visual-studio-code-bin                      | Pacchetto  |
 | Virtualbox              | virtualbox-host-dkms virtualbox-guest-iso   | Pacchetto  |
 | Open RGB                | openrgb-bin                                 | Pacchetto  |
-
+| Arch Update             | arch-update                                 | Pacchetto  |
 
 ## <img src="https://github.com/Cardiacman13/Tuto-Arch/blob/main/assets/images/pc.png" width="30" height="30"> **Eleva il Tuo Desktop** <a name="elevate"/>
 
