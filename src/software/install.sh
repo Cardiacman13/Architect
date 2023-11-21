@@ -25,9 +25,12 @@ function populate_software_list() {
     ["17"]="LibreOffice|libreoffice-fresh libreoffice-fresh-${lang}"
     ["18"]="OnlyOffice|onlyoffice-bin"
     ["19"]="Gimp|gimp"
-    ["20"]="VLC|vlc"
-    ["21"]="Visual Studio Code|visual-studio-code-bin"
-    ["22"]="Open RGB|openrgb-bin"
+    ["20"]="Krita|krita"
+    ["21"]="Inkscape|inkscape"
+    ["22"]="VLC|vlc"
+    ["23"]="Visual Studio Code|visual-studio-code-bin"
+    ["24"]="Virtualbox|virtualbox-host-dkms virtualbox-guest-iso"
+    ["25"]="Open RGB|openrgb-bin"
 )
 }
 
