@@ -70,8 +70,6 @@ function install_lst() {
     local -r lst=$1
     local -r type=$2
     local -r lst_split=(${lst// / })
-
-    log_msg "$2"
     
     for package in ${lst_split[@]}; do
         install_one "${package}" "${type}"
