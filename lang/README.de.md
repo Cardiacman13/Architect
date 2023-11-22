@@ -372,8 +372,11 @@ When=PostTransaction
 NeedsTargets
 Exec=/bin/sh -c 'while read -r trg; do case $trg in linux) exit 0; esac; done; /usr/bin/mkinitcpio -P'
 ```
+#### 5. Wayland entsperren, wenn Sie Gnome verwenden:
 
-#### 5. Wiederaufbau von initramfs:
+sudo ln -s /dev/null /etc/udev/rules.d/61-gdm.rules
+
+#### 6. Wiederaufbau von initramfs:
 
 Da wir bereits in Schritt 1 die Treiber installiert haben, also bevor wir den Hook eingerichtet haben, müssen wir den Wiederaufbau von initramfs manuell auslösen:
 

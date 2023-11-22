@@ -376,8 +376,11 @@ When=PostTransaction
 NeedsTargets
 Exec=/bin/sh -c 'while read -r trg; do case $trg in linux) exit 0; esac; done; /usr/bin/mkinitcpio -P'
 ```
+#### 5. Desbloquear Wayland si estás en Gnome:
 
-#### 5. Reconstrucción del initramfs:
+sudo ln -s /dev/null /etc/udev/rules.d/61-gdm.rules
+
+#### 6. Reconstrucción del initramfs:
 
 Ya que hemos instalado los controladores en el paso 1, así antes de configurar el hook, necesitamos activar manualmente la reconstrucción del initramfs:
 

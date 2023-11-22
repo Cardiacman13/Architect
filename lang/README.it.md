@@ -372,8 +372,11 @@ NeedsTargets
 Exec=/bin/sh -c 'while read -r trg; do case $trg in linux) exit 0; esac; done; /usr/bin/mkinitcpio -P'
 ```
 
+#### 5. Sbloccare Wayland se si è su Gnome:
 
-#### 5. Ricostruzione di initramfs:
+sudo ln -s /dev/null /etc/udev/rules.d/61-gdm.rules
+
+#### 6. Ricostruzione di initramfs:
 
 Poiché abbiamo già installato i driver al passaggio 1, prima di configurare l'hook, dobbiamo innescare manualmente la ricostruzione di initramfs:
     

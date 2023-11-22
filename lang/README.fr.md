@@ -373,8 +373,11 @@ When=PostTransaction
 NeedsTargets
 Exec=/bin/sh -c 'while read -r trg; do case $trg in linux) exit 0; esac; done; /usr/bin/mkinitcpio -P'
 ```
+#### 5. Débloquer Wayland Si vous etes sur Gnome:
 
-#### 5. Reconstruction de l'initramfs :
+sudo ln -s /dev/null /etc/udev/rules.d/61-gdm.rules
+
+#### 6. Reconstruction de l'initramfs :
 
 Comme nous avons déjà installé les pilotes à l'étape 1, donc avant de configurer le hook, nous devons déclencher manuellement la reconstruction de l'initramfs :
 

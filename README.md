@@ -368,7 +368,11 @@ NeedsTargets
 Exec=/bin/sh -c 'while read -r trg; do case $trg in linux) exit 0; esac; done; /usr/bin/mkinitcpio -P'
 ```
 
-#### 5. Rebuilding initramfs:
+#### 5. Unlock Wayland if you are on Gnome:
+
+sudo ln -s /dev/null /etc/udev/rules.d/61-gdm.rules
+
+#### 6. Rebuilding initramfs:
 
 Since we've already installed the drivers at step 1, thus before setting up the hook, we need to manually trigger the initramfs rebuilding:
 
