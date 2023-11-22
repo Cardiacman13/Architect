@@ -39,4 +39,5 @@ function install_gnome() {
     install_lst "${inlst}"
     exec_log "gsettings set org.gnome.desktop.interface gtk-theme adw-gtk3" "Setting gtk theme to adw-gtk3"
     exec_log "gsettings set org.gnome.desktop.peripherals.keyboard numlock-state true" "Enabling numlock on startup"
+    exec_log "sudo ln -s /dev/null /etc/udev/rules.d/61-gdm.rules" "Disable GDM rules to unlock Wayland"
 }
