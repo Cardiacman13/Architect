@@ -34,6 +34,7 @@ function install_gnome() {
         totem
         xdg-user-dirs-gtk
         adw-gtk3
+        extension-manager-git
     "
 
     install_lst "${inlst}"
