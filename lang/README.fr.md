@@ -67,9 +67,7 @@ Choisissez votre DE :
 
 ### 5. 📦 Installer des Paquets de Base
 Paquets essentiels pour une expérience complète :
-- 📦 Aide à l'installation AUR : [`yay`](https://github.com/Jguer/yay) ou [`par
-
-u`](https://github.com/Morganamilo/paru).
+- 📦 Aide à l'installation AUR : [`yay`](https://github.com/Jguer/yay) ou [`paru`](https://github.com/Morganamilo/paru).
 - 🖋️ Polices, Emoji.
 - 🎬 Codecs.
 - ➕ Autres paquets cruciaux.
