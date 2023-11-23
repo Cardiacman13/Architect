@@ -102,6 +102,7 @@ Select additional software based on your needs:
 | Lastest proton GE       | proton-ge-custom-bin                        | package |
 | Lutris                  | lutris wine-staging                         | package |
 | Heroic Games Launcher   | heroic-games-launcher-bin                   | package |
+| Goverlay                | goverlay                                    | package |
 | protonup-qt             | protonup-qt-bin                             | package |
 | Spotify                 | spotify                                     | package |
 | Kdenlive                | kdenlive                                    | package |
