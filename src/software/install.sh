@@ -3,7 +3,8 @@ source src/cmd.sh
 declare -A software_list
 
 function populate_software_list() {
-    lang=$(echo $LANG | cut -d_ -f1)
+    
+    local -r lang=$(echo $LANG | cut -d_ -f1)
     
     software_list=(
     ["1"]=" OBS Studio (flatpak)|com.obsproject.Studio"
@@ -42,7 +43,7 @@ function display_software_list() {
     echo -e "\n${GREEN}Software list${RESET}"
     local sorted_keys=($(echo "${!software_list[@]}" | tr ' ' '\n' | sort -n))
     for key in "${sorted_keys[@]}"; do
-        IFS='|' read -ra software <<< "${software_list[$key]}"
+        IFS='|' read -ra software <<<"${software_list[$key]}"
         echo -e "${GREEN}${key})${RESET} ${software[0]}"
     done
 }

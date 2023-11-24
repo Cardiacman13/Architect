@@ -76,7 +76,7 @@ function main() {
     header
 
     # system
-    sleep 2
+    sleep 1
     display_step "System preparation"
     little_step config_pacman           "Pacman configuration"
     little_step install_aur             "AUR helper installation"
@@ -89,7 +89,7 @@ function main() {
     little_step shell_config            "Shell configuration"
 
     # drivers
-    sleep 2
+    sleep 1
     display_step "System configuration"
     little_step video_drivers           "Video drivers installation"
     little_step gamepad                 "Gamepad configuration"
@@ -97,19 +97,19 @@ function main() {
     little_step bluetooth               "Bluetooth configuration"
 
     # desktop environment
-    sleep 2
+    sleep 1
     display_step "Environment configuration"
     little_step detect_de               "Desktop environment detection"
 
     # software
-    sleep 2
+    sleep 1
     display_step "Software installation"
     little_step support_flatpak         "Flatpak support installation"
     little_step install_software        "Software installation"
 
     # end
-    sleep 2
+    sleep 1
     endscript "${start_time}"
 }
-# ================================================================================================ #
+
 main
