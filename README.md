@@ -276,8 +276,6 @@ Or if, for example, you want to use 6 threads:
 MAKEFLAGS="-j6"
 ```
 
-Sostituire il 6 con il numero di thread che si desidera utilizzare, si consiglia di avere 2GB di RAM per ogni core utilizzato.
-
 Replace 6 with the number of thread you want to use, it is advisable to have 2GB of RAM per core used.
 
 ### HARDWARE SUPPORT
