@@ -12,5 +12,5 @@ function config_pacman() {
 function mirrorlist() {
     install_one "reflector"
     exec_log "sudo reflector --verbose --score 20 --fastest 5 --sort rate --save /etc/pacman.d/mirrorlist" "Updating mirrorlist"
-    exec_log "sudo pacman -Syy" "Updating pacman database"
+    exec_log "sudo pacman -Syy" "Updating pacman database ${RED}(might be long)${RESET}"
 }
