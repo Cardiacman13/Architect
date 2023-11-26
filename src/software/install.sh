@@ -82,5 +82,5 @@ function install_software() {
     select_and_install desktop_list
     select_and_install gaming_list
 
-    install_lst "${packages}" "aur"
+    install_lst "${selected_packages}" "aur"
 }
