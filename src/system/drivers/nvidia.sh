@@ -1,10 +1,9 @@
 source src/cmd.sh
 
 function nvidia_config() {
-    if [ ! -f /etc/modprobe.d/nvidia.conf ]; then
-        exec_log "sudo touch /etc/modprobe.d/nvidia.conf" "Creating /etc/modprobe.d/nvidia.conf"
+    if ! grep -q "nvidia-drm.modeset=1" /etc/modprobe.d/nvidia.conf; then
         exec_log "echo -e 'nvidia-drm.modeset=1' | sudo tee -a /etc/modprobe.d/nvidia.conf" "Setting nvidia-drm.modeset=1 option"
-    fi     
+    fi
 }
 
 function nvidia_drivers() {
