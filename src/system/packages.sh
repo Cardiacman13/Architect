@@ -17,6 +17,7 @@ function usefull_package() {
         mkinitcpio-firmware
         xdg-desktop-portal
         xdg-desktop-portal-gtk
+        qt6-wayland
         neofetch
         power-profiles-daemon
         hunspell

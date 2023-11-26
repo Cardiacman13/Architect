@@ -7,8 +7,8 @@ function populate_software_list() {
     local -r lang=$(echo $LANG | cut -d_ -f1)
     
     software_list=(
-    ["1"]=" OBS Studio (flatpak)|com.obsproject.Studio qt6-wayland"
-    ["2"]=" OBS Studio (from Arch repository)|obs-studio qt6-wayland"
+    ["1"]=" OBS Studio (flatpak)|com.obsproject.Studio"
+    ["2"]=" OBS Studio (from Arch repository)|obs-studio"
     ["3"]=" Firefox|firefox firefox-i18n-${lang}"
     ["4"]=" Brave|brave-bin"
     ["5"]=" Chromium|chromium"
