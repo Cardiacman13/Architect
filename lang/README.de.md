@@ -345,39 +345,11 @@ Bei Verwendung von btrfs:
 MODULES=(btrfs nvidia nvidia_modeset nvidia_uvm nvidia_drm)
 ```
 
-#### 4. mkinitcpio Hook:
-
-Dieser Hook automatisiert den Wiederaufbau von initramfs (der grundlegenden Boot-Datei) bei jeder Änderung des Nvidia-Treibers.
-
-```
-sudo mkdir /etc/pacman.d/hooks/
-sudo nano /etc/pacman.d/hooks/nvidia.hook
-```
-    
-Hinzufügen:
-
-```
-[Trigger]
-Operation=Install
-Operation=Upgrade
-Operation=Remove
-Type=Package
-Target=nvidia-dkms
-Target=nvidia-470xx-dkms
-Target=usr/lib/modules/*/vmlinuz
-
-[Action]
-Description=Update NVIDIA module in initcpio
-Depends=mkinitcpio
-When=PostTransaction
-NeedsTargets
-Exec=/bin/sh -c 'while read -r trg; do case $trg in linux) exit 0; esac; done; /usr/bin/mkinitcpio -P'
-```
-#### 5. Wayland entsperren, wenn Sie Gnome verwenden:
+#### 4. Wayland entsperren, wenn Sie Gnome verwenden:
 
 sudo ln -s /dev/null /etc/udev/rules.d/61-gdm.rules
 
-#### 6. Wiederaufbau von initramfs:
+#### 5. Wiederaufbau von initramfs:
 
 Da wir bereits in Schritt 1 die Treiber installiert haben, also bevor wir den Hook eingerichtet haben, müssen wir den Wiederaufbau von initramfs manuell auslösen:
 

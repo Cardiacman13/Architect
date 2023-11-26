@@ -1,9 +1,6 @@
 source src/cmd.sh
 
 function nvidia_config() {
-    # hook
-    exec_log "sudo mkdir -p /etc/pacman.d/hooks/" "Creating hook folder"
-    copy_bak "assets/data/hooks" "nvidia.hook" "/etc/pacman.d/hooks" true
 
     # bootloader
     if [[ ${BOOT_LOADER} == "grub" ]]; then
@@ -62,6 +59,9 @@ function nvidia_drivers() {
             nvidia-settings
             vulkan-icd-loader
             lib32-vulkan-icd-loader
+            egl-wayland
+            opencl-nvidia
+            lib32-opencl-nvidia
         "
         install_lst "${inlst}"
     fi
