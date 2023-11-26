@@ -10,6 +10,7 @@ function nvidia_config() {
 function nvidia_drivers() {
     local -r unlst="
         nvidia
+        nvidia-lts
         nvidia-dkms
         nvidia-settings
         nvidia-utils
