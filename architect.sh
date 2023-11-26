@@ -76,8 +76,8 @@ function main() {
     header
 
     # system
-    sleep 1
     display_step "System preparation"
+    sleep 1
     little_step config_pacman           "Pacman configuration"
     little_step install_aur             "AUR helper installation"
     little_step mirrorlist              "Mirrorlist configuration"
@@ -89,16 +89,16 @@ function main() {
     little_step shell_config            "Shell configuration"
 
     # drivers
-    sleep 1
     display_step "System configuration"
+    sleep 1
     little_step video_drivers           "Video drivers installation"
     little_step gamepad                 "Gamepad configuration"
     little_step printer                 "Printer configuration"
     little_step bluetooth               "Bluetooth configuration"
 
     # desktop environment
-    sleep 1
     display_step "Environment configuration"
+    sleep 1
     little_step detect_de               "Desktop environment detection"
 
     # software
