@@ -49,6 +49,7 @@ source src/system/shell.sh
 
 function display_step() {
     local -r message="$1"
+    clear
     cat <<-EOF
 ${BLUE}-----------------------------------------------------------------------------------------------------------
 
