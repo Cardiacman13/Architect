@@ -3,12 +3,13 @@ source src/de/kde.sh
 source src/de/xfce4.sh
 
 function detect_de() {
+    local -r message="What is your desktop environment"
     local -r valid_des="GNOME KDE XFCE OTHER"
 
-    read -rp "What is your desktop environment (${valid_des}) : " choice
+    read -rp "${message} (${valid_des}) : " choice
     choice="${choice^^}"
     while [[ ! ${valid_des} =~ (^|[[:space:]])"${choice}"($|[[:space:]]) ]]; do
-        read -rp "What is your desktop environment ? (${valid_des}) : " choice
+        read -rp "${message} (${valid_des}) : " choice
         choice="${choice^^}"
     done
 
