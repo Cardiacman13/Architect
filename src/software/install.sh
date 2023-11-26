@@ -22,7 +22,7 @@ function set_software_list() {
         ["Open RGB"]="openrgb-bin"
     )
 
-    desktop_list=(
+    picture_list=(
         ["Gimp"]="gimp"
         ["Krita"]="krita"
         ["Inkscape"]="inkscape"
