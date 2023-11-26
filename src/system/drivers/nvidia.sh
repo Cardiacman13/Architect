@@ -1,14 +1,9 @@
 source src/cmd.sh
 
 function nvidia_config() {
-
-    # bootloader
-    if [[ ${BOOT_LOADER} == "grub" ]]; then
-        exec_log "sudo sed -i '/^GRUB_CMDLINE_LINUX_DEFAULT=/ s/\"$/ nvidia-drm.modeset=1\"/' /etc/default/grub" "GRUB cmdline configuration"
-        exec_log "sudo grub-mkconfig -o /boot/grub/grub.cfg" "GRUB update"
-    else
-        exec_log "sudo sed -i '/^options/ s/$/ nvidia-drm.modeset=1/' /boot/loader/entries/*.conf" "systemd-boot configuration"
-    fi
+    if [ ! -f /etc/modprobe.d/nvidia.conf ]; then
+    exec_log "sudo touch /etc/modprobe.d/nvidia.conf" "Creating /etc/modprobe.d/nvidia.conf"
+    exec_log "echo -e 'nvidia-drm.modeset=1' | sudo tee -a /etc/modprobe.d/nvidia.conf" "Setting nvidia-drm.modeset=1 option"
 }
 
 function nvidia_drivers() {

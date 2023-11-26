@@ -297,32 +297,15 @@ sudo pacman -S --needed nvidia-dkms nvidia-utils lib32-nvidia-utils nvidia-setti
 
 Ce paramètre permet de lancer le module Nvidia au démarrage.
 
-- **Si utilisation de systemd-boot**
-
-Dans le dossier :
-
 ```
-/boot/loader/entries/
+sudo nano /etc/modprobe.d/nvidia.conf
 ```
 
-Il y a plusieurs fichiers .conf, vous devez ajouter nvidia-drm.modeset=1 à la ligne “options” de chaque fichier.
-Exemple : options root=PARTUUID=fb680c54-466d-4708-a1ac-fcc338ed57f1 rw rootfstype=ext4 nvidia-drm.modeset=1
+Ajouter:
 
-- **Si utilisation de GRUB**
+`nvidia-drm.modeset=1`
 
-```
-sudo nano /etc/default/grub
-```
-
-Ajouter **nvidia-drm.modeset=1** à la ligne "grub_cmdline_linux_default="
-
-Exemple : GRUB_CMDLINE_LINUX_DEFAULT="loglevel=3 quiet nvidia-drm.modeset=1"
-
-Ensuite :
-
-```
-sudo grub-mkconfig -o /boot/grub/grub.cfg
-```
+Sauvegarder.
    
 #### 3. Charger les modules Nvidia en priorité au lancement d'Arch :
 

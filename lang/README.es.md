@@ -301,33 +301,13 @@ yay -S --needed nvidia-dkms nvidia-utils lib32-nvidia-utils nvidia-settings vulk
 
 Esta configuración permite que el módulo Nvidia se lance al inicio.
 
-- **Si usas systemd boot**
-
-En la carpeta:
-
 ```
-/boot/loader/entries/
+sudo nano /etc/modprobe.d/nvidia.conf
 ```
 
-Hay varios archivos .conf, debes agregar nvidia-drm.modeset=1 a la línea “options” de cada archivo.
+Agrega:
 
-Ejemplo: options root=PARTUUID=fb680c54-466d-4708-a1ac-fcc338ed57f1 rw rootfstype=ext4 nvidia-drm.modeset=1
-
-- **Si usas GRUB**
-
-```
-sudo nano /etc/default/grub
-```
-
-Agrega **nvidia-drm.modeset=1** a la línea "grub_cmdline_linux_default="
-
-Ejemplo: GRUB_CMDLINE_LINUX_DEFAULT="loglevel=3 quiet nvidia-drm.modeset=1"
-
-Luego:
-
-```
-sudo grub-mkconfig -o /boot/grub/grub.cfg
-```
+`nvidia-drm.modeset=1`
    
 #### 3. Cargar los módulos de Nvidia como prioridad al inicio de Arch:
 
