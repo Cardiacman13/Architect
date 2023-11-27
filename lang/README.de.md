@@ -441,7 +441,7 @@ yay -S reflector-simple
 Ein Befehl zur Generierung einer Liste von Spiegeln, einmal nach der ersten Installation und wiederholt bei Reisen, Länderwechseln, zu langsamen Paket-Downloads oder bei einer Meldung, dass ein Spiegel nicht erreichbar ist:
 
 ```
-sudo reflector --verbose --score 20 --fastest 5 --sort rate --save /etc/pacman.d/mirrorlist
+sudo reflector --verbose --score 100 --latest 20 --fastest 5 --sort rate --save /etc/pacman.d/mirrorlist
 ```
 
 #### Timeshift
@@ -515,7 +515,7 @@ alias clean-arch='paru -Sc && paru -c && flatpak remove --unused'
 Für alle:
 
 ```
-alias update-mirrors='sudo reflector --verbose --score 20 --fastest 5 --sort rate --save /etc/pacman.d/mirrorlist'
+alias update-mirrors='sudo reflector --verbose --score 100 --latest 20 --fastest 5 --sort rate --save /etc/pacman.d/mirrorlist'
 ```
 
 ```

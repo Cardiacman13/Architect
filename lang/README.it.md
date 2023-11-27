@@ -443,7 +443,7 @@ yay -S reflector-simple
 Un comando per generare una lista di mirror, da eseguire una volta dopo la prima installazione e da ripetere se viaggiate, se cambiate paese, se trovate lento il download dei pacchetti o se trovate un errore che vi dice che un mirror è offline:
 
 ```
-sudo reflector --verbose --score 20 --fastest 5 --sort rate --save /etc/pacman.d/mirrorlist
+sudo reflector --verbose --score 100 --latest 20 --fastest 5 --sort rate --save /etc/pacman.d/mirrorlist
 ```
 
 #### Update Arch
@@ -519,7 +519,7 @@ alias clean-arch='paru -Sc && paru -c && flatpak remove --unused'
 Per tutti: 
 
 ```
-alias update-mirrors='sudo reflector --verbose --score 20 --fastest 5 --sort rate --save /etc/pacman.d/mirrorlist'
+alias update-mirrors='sudo reflector --verbose --score 100 --latest 20 --fastest 5 --sort rate --save /etc/pacman.d/mirrorlist'
 ```
 
 ```
