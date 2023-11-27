@@ -41,7 +41,7 @@ function set_software_list() {
         ["Firefox"]="firefox firefox-i18n-${lang}"
         ["Brave"]="brave-bin"
         ["Chromium"]="chromium"
-        ["Vivaldi"]="vivaldi"
+        ["Vivaldi"]="vivaldi vivaldi-ffmpeg-codecs"
         ["Google Chrome"]="google-chrome"
         ["Microsoft Edge"]="microsoft-edge-stable-bin"
     )

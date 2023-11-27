@@ -249,7 +249,7 @@ alias clean-arch='paru -Sc && paru -c && flatpak remove --unused'
 for everyone : 
 
 ```
-alias update-mirrors='sudo reflector --verbose --score 20 --fastest 5 --sort rate --save /etc/pacman.d/mirrorlist'
+alias update-mirrors='sudo reflector --verbose --score 100 --latest 20 --fastest 5 --sort rate --save /etc/pacman.d/mirrorlist'
 ```
 
 ```
@@ -437,7 +437,7 @@ yay -S reflector-simple
 A command to generate a list of mirrors, to be done once after the first installation and repeated if you travel, or change countries, or if you find package downloading too slow, or if you encounter an error telling you that a mirror is down:
 
 ```
-sudo reflector --verbose --score 20 --fastest 5 --sort rate --save /etc/pacman.d/mirrorlist
+sudo reflector --verbose --score 100 --latest 20 --fastest 5 --sort rate --save /etc/pacman.d/mirrorlist
 ```
 
 #### Arch Update
@@ -512,7 +512,7 @@ alias clean-arch='paru -Sc && paru -c && flatpak remove --unused'
 For everyone :
 
 ```
-alias update-mirrors='sudo reflector --verbose --score 20 --fastest 5 --sort rate --save /etc/pacman.d/mirrorlist'
+alias update-mirrors='sudo reflector --verbose --score 100 --latest 20 --fastest 5 --sort rate --save /etc/pacman.d/mirrorlist'
 ```
 
 ```
