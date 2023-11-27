@@ -1,11 +1,12 @@
-source src/cmd.sh
-
 declare -A desktop_list
 declare -A browser_list
 declare -A video_list
 declare -A picture_list
 declare -A gaming_list
 selected_packages=""
+
+BLUE="\033[0;34m"
+RESET="\033[0m"
 
 function set_software_list() {
     local -r lang=$(echo $LANG | cut -d_ -f1)
@@ -81,7 +82,7 @@ function select_and_install() {
             done
             break
         elif [[ $item =~ ^[0-9]+$ ]]; then
-            selected_packages+="${software_list[${options[$item - 1]}]} "
+            selected_packages+=" ${software_list[${options[$item - 1]}]}"
         elif [[ $item =~ ^[0-9]+-[0-9]+$ ]]; then
             IFS='-' read -ra range <<<"$item"
             for ((j = ${range[0]}; j <= ${range[1]}; j++)); do
@@ -100,5 +101,7 @@ function install_software() {
     select_and_install picture_list "image"
     select_and_install gaming_list "gaming"
 
-    install_lst "${selected_packages}" "aur"
+    echo "${selected_packages}"
 }
+
+install_software
