@@ -249,7 +249,7 @@ alias clean-arch='paru -Sc && paru -c && flatpak remove --unused'
 for everyone : 
 
 ```
-alias update-mirrors='sudo reflector --verbose --score 20 --fastest 5 --sort rate --save /etc/pacman.d/mirrorlist'
+alias update-mirrors='sudo reflector --verbose --score 100 --latest 20 --fastest 5 --sort rate --save /etc/pacman.d/mirrorlist'
 ```
 
 ```
