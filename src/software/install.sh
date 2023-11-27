@@ -51,16 +51,20 @@ function set_software_list() {
         ["Lutris (LOL, etc.)"]="lutris wine-staging"
         ["Heroic Games Launcher (Epic Games, GOG, etc.)"]="heroic-games-launcher-bin"
         ["Prism Launcher (Minecraft)"]="prismlauncher-qt5 jdk8-openjdk"
+        ["ProtonUp QT"]="protonup-qt-bin"
+        ["Goverlay"]="goverlay"
+        ["ProtonGE"]="proton-ge-custom-bin"
     )
 }
 
 function select_and_install() {
     declare -n software_list=$1
+    local -r software_type=$2
     local i=1
     local options=()
     local input
 
-    echo "Available Software:"
+    echo "${GREEN}${software_type} softare${RESET} :"
     for software in "${!software_list[@]}"; do
         printf " ${PURPLE}%2d${RESET}) %s\n" "$i" "$software"
         options+=("$software")
@@ -68,7 +72,7 @@ function select_and_install() {
     done
 
     echo ":: Packages to install (e.g., 1 2 3, 1-3, all):"
-    read -ra input
+    read -r input
 
     for item in "${input[@]}"; do
         if [[ "$item" == "all" ]]; then
@@ -92,11 +96,11 @@ function select_and_install() {
 function install_software() {
     set_software_list
 
-    select_and_install browser_list
-    select_and_install desktop_list
-    select_and_install video_list
-    select_and_install picture_list
-    select_and_install gaming_list
+    select_and_install browser_list "browsers"
+    select_and_install desktop_list "desktop"
+    select_and_install video_list "video"
+    select_and_install picture_list "image"
+    select_and_install gaming_list "gaming"
 
     install_lst "${selected_packages}" "aur"
 }
