@@ -71,8 +71,8 @@ function select_and_install() {
         ((i++))
     done
 
-    echo ":: Packages to install (e.g., 1 2 3, 1-3, all):"
-    read -r input
+    echo -en "${BLUE}::${RESET} Packages to install (e.g., 1 2 3, 1-3, all): "
+    read -ra input
 
     for item in "${input[@]}"; do
         if [[ "$item" == "all" ]]; then
@@ -81,14 +81,12 @@ function select_and_install() {
             done
             break
         elif [[ $item =~ ^[0-9]+$ ]]; then
-            selected_packages+=" ${software_list[${options[$item - 1]}]}"
+            selected_packages+="${software_list[${options[$item - 1]}]} "
         elif [[ $item =~ ^[0-9]+-[0-9]+$ ]]; then
             IFS='-' read -ra range <<<"$item"
             for ((j = ${range[0]}; j <= ${range[1]}; j++)); do
                 selected_packages+=" ${software_list[${options[$j - 1]}]}"
             done
-        else
-            echo "Invalid option: $item"
         fi
     done
 }
