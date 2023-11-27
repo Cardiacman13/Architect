@@ -64,7 +64,7 @@ function select_and_install() {
     local options=()
     local input
 
-    echo "${GREEN}${software_type} softare${RESET} :"
+    echo "${GREEN}${software_type} software${RESET} :"
     for software in "${!software_list[@]}"; do
         printf " ${PURPLE}%2d${RESET}) %s\n" "$i" "$software"
         options+=("$software")
