@@ -13,12 +13,12 @@ function set_software_list() {
     desktop_list=(
         ["Discord"]="discord"
         ["Spotify"]="spotify"
-        ["LibreOffice"]="libreoffice-fresh libreoffice-fresh-${lang} "
+        ["LibreOffice"]="libreoffice-fresh libreoffice-fresh-${lang}"
         ["OnlyOffice"]="onlyoffice-bin"
         ["Audacity"]="audacity"
         ["Kazam"]="kazam"
         ["Visual Studio Code"]="visual-studio-code-bin"
-        ["Virtualbox"]="virtualbox virtualbox-host-dkms virtualbox-guest-iso "
+        ["Virtualbox"]="virtualbox virtualbox-host-dkms virtualbox-guest-iso"
         ["Open RGB"]="openrgb-bin"
     )
 
@@ -41,7 +41,7 @@ function set_software_list() {
         ["Firefox"]="firefox firefox-i18n-${lang}"
         ["Brave"]="brave-bin"
         ["Chromium"]="chromium"
-        ["Vivaldi"]="vivaldi vivaldi-ffmpeg-codecs "
+        ["Vivaldi"]="vivaldi vivaldi-ffmpeg-codecs"
         ["Google Chrome"]="google-chrome"
         ["Microsoft Edge"]="microsoft-edge-stable-bin"
     )
@@ -50,7 +50,7 @@ function set_software_list() {
         ["Steam"]="steam"
         ["Lutris (LOL, etc.)"]="lutris wine-staging "
         ["Heroic Games Launcher (Epic Games, GOG, etc.)"]="heroic-games-launcher-bin"
-        ["Prism Launcher (Minecraft)"]="prismlauncher-qt5 jdk8-openjdk "
+        ["Prism Launcher (Minecraft)"]="prismlauncher-qt5 jdk8-openjdk"
         ["ProtonUp QT"]="protonup-qt-bin"
         ["Goverlay"]="goverlay"
     )
@@ -76,15 +76,15 @@ function select_and_install() {
     for item in "${input[@]}"; do
         if [[ "$item" == "all" ]]; then
             for software in "${!software_list[@]}"; do
-                selected_packages+=" ${software_list[$software]}"
+                selected_packages+=" ${software_list[$software]} "
             done
             break
         elif [[ $item =~ ^[0-9]+$ ]]; then
-            selected_packages+="${software_list[${options[$item - 1]}]} "
+            selected_packages+=" ${software_list[${options[$item - 1]}]} "
         elif [[ $item =~ ^[0-9]+-[0-9]+$ ]]; then
             IFS='-' read -ra range <<<"$item"
             for ((j = ${range[0]}; j <= ${range[1]}; j++)); do
-                selected_packages+=" ${software_list[${options[$j - 1]}]}"
+                selected_packages+=" ${software_list[${options[$j - 1]}]} "
             done
         fi
     done
