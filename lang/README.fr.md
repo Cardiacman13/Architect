@@ -95,7 +95,6 @@ Sélectionnez des logiciels supplémentaires en fonction de vos besoins :
 | Microsoft Edge          | microsoft-edge-stable-bin                   | paquet  |
 | Discord                 | discord                                     | paquet  |
 | Steam                   | steam                                       | paquet  |
-| Lastest proton GE       | proton-ge-custom-bin                        | paquet  |
 | Lutris                  | lutris wine-staging                         | paquet  |
 | Heroic Games Launcher   | heroic-games-launcher-bin                   | paquet  |
 | Goverlay                | goverlay                                    | paquet  |
@@ -111,7 +110,7 @@ Sélectionnez des logiciels supplémentaires en fonction de vos besoins :
 | Krita                   | krita                                       | paquet  |
 | VLC                     | vlc                                         | paquet  |
 | Visual Studio Code      | visual-studio-code-bin                      | paquet  |
-| Virtualbox              | virtualbox-host-dkms virtualbox-guest-iso   | paquet  |
+| Virtualbox              | virtualbox virtualbox-host-dkms             | paquet  |
 | Open RGB                | openrgb-bin                                 | paquet  |
 | Arch Update             | arch-update                                 | paquet  |
 
@@ -550,7 +549,7 @@ Vidéo supplémentaire :
 
 ### Support avancé de manettes
 
-Pilote Linux avancé pour manettes sans fil Xbox 360|One|S|X (fournies avec Xbox One S) et beaucoup d'autres manettes comme 8bitdo ([xpadneo](https://github.com/atar-axis/xpadneo)) ([xone](https://github.com/medusalix/xone))
+Pilote Linux avancé pour manettes sans fil Xbox 360|One|S|X ([xpadneo](https://github.com/atar-axis/xpadneo))
 
 ```
 yay -S xpadneo-dkms-git

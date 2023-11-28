@@ -87,7 +87,6 @@ Wähle zusätzliche Software basierend auf deinen Bedürfnissen:
 
 | Name                    | Paket                                       | Typ     |
 |-------------------------|---------------------------------------------|---------|
-| OBS Studio (flatpak)    | com.obsproject.Studio                       | flatpak |
 | OBS Studio (from repo)  | obs-studio                                  | Paket   |
 | Firefox                 | firefox firefox-i18n-lang                   | Paket   |
 | Brave                   | brave-bin                                   | Paket   |
@@ -97,7 +96,6 @@ Wähle zusätzliche Software basierend auf deinen Bedürfnissen:
 | Microsoft Edge          | microsoft-edge-stable-bin                   | Paket   |
 | Discord                 | discord                                     | Paket   |
 | Steam                   | steam                                       | Paket   |
-| Lastest proton GE       | proton-ge-custom-bin                        | Paket   |
 | Lutris                  | lutris wine-staging                         | Paket   |
 | Heroic Games Launcher   | heroic-games-launcher-bin                   | Paket   |
 | Goverlay                | goverlay                                    | Paket   |
@@ -113,7 +111,7 @@ Wähle zusätzliche Software basierend auf deinen Bedürfnissen:
 | Krita                   | krita                                       | Paket   |
 | VLC                     | vlc                                         | Paket   |
 | Visual Studio Code      | visual-studio-code-bin                      | Paket   |
-| Virtualbox              | virtualbox-host-dkms virtualbox-guest-iso   | Paket   |
+| Virtualbox              | virtualbox virtualbox-host-dkms             | Paket   |
 | Open RGB                | openrgb-bin                                 | Paket   |
 | Arch Update             | arch-update                                 | Paket   |
 
@@ -543,7 +541,7 @@ sudo pacman -S lutris wine-staging
 
 ### Fortgeschrittene Controller-Unterstützung
 
-Fortgeschrittener Linux-Treiber für Xbox 360|One|S|X kabellose Controller (geliefert mit Xbox One S) und viele andere Controller wie 8bitdo ([xpadneo](https://github.com/atar-axis/xpadneo)) ([xone](https://github.com/medusalix/xone))
+Fortgeschrittener Linux-Treiber für Xbox 360|One|S|X kabellose Controller ([xpadneo](https://github.com/atar-axis/xpadneo))
 
 
 ```

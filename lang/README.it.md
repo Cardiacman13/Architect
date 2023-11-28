@@ -88,7 +88,6 @@ Seleziona software aggiuntivo in base alle tue esigenze:
 
 | Nome                    | Pacchetto                                   | Tipo       |
 |-------------------------|---------------------------------------------|------------|
-| OBS Studio (flatpak)    | com.obsproject.Studio                       | flatpak    |
 | OBS Studio (from repo)  | obs-studio                                  | Pacchetto  |
 | Firefox                 | firefox firefox-i18n-lang                   | Pacchetto  |
 | Brave                   | brave-bin                                   | Pacchetto  |
@@ -98,7 +97,6 @@ Seleziona software aggiuntivo in base alle tue esigenze:
 | Microsoft Edge          | microsoft-edge-stable-bin                   | Pacchetto  |
 | Discord                 | discord                                     | Pacchetto  |
 | Steam                   | steam                                       | Pacchetto  |
-| Lastest proton GE       | proton-ge-custom-bin                        | Pacchetto  |
 | Lutris                  | lutris wine-staging                         | Pacchetto  |
 | Heroic Games Launcher   | heroic-games-launcher-bin                   | Pacchetto  |
 | Goverlay                | goverlay                                    | Pacchetto  |
@@ -114,7 +112,7 @@ Seleziona software aggiuntivo in base alle tue esigenze:
 | Krita                   | krita                                       | Pacchetto  |
 | VLC                     | vlc                                         | Pacchetto  |
 | Visual Studio Code      | visual-studio-code-bin                      | Pacchetto  |
-| Virtualbox              | virtualbox-host-dkms virtualbox-guest-iso   | Pacchetto  |
+| Virtualbox              | virtualbox virtualbox-host-dkms             | Pacchetto  |
 | Open RGB                | openrgb-bin                                 | Pacchetto  |
 | Arch Update             | arch-update                                 | Pacchetto  |
 
@@ -549,7 +547,7 @@ sudo pacman -S lutris wine-staging
 
 ### Supporto avanzato per controller
 
-Driver Linux avanzato per controller wireless Xbox 360|One|S|X (incluso con Xbox One S) e molti altri controller come 8bitdo ([xpadneo](https://github.com/atar-axis/xpadneo)) ([xone](https://github.com/medusalix/xone))
+Driver Linux avanzato per controller wireless Xbox 360|One|S|X ([xpadneo](https://github.com/atar-axis/xpadneo))
 
 ```
 yay -S xpadneo-dkms-git

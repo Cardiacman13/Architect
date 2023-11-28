@@ -89,7 +89,6 @@ Select additional software based on your needs:
 
 | Name                    | Package                                     | Type    |
 |-------------------------|---------------------------------------------|---------|
-| OBS Studio (flatpak)    | com.obsproject.Studio                       | flatpak |
 | OBS Studio (from repo)  | obs-studio                                  | package |
 | Firefox                 | firefox firefox-i18n-lang                   | package |
 | Brave                   | brave-bin                                   | package |
@@ -99,7 +98,6 @@ Select additional software based on your needs:
 | Microsoft Edge          | microsoft-edge-stable-bin                   | package |
 | Discord                 | discord                                     | package |
 | Steam                   | steam                                       | package |
-| Lastest proton GE       | proton-ge-custom-bin                        | package |
 | Lutris                  | lutris wine-staging                         | package |
 | Heroic Games Launcher   | heroic-games-launcher-bin                   | package |
 | Goverlay                | goverlay                                    | package |
@@ -115,7 +113,7 @@ Select additional software based on your needs:
 | Krita                   | krita                                       | package |
 | VLC                     | vlc                                         | package |
 | Visual Studio Code      | visual-studio-code-bin                      | package |
-| Virtualbox              | virtualbox-host-dkms virtualbox-guest-iso   | package |
+| Virtualbox              | virtualbox virtualbox-host-dkms             | package |
 | Open RGB                | openrgb-bin                                 | package |
 | Arch Update             | arch-update                                 | package |
 
@@ -542,7 +540,7 @@ sudo pacman -S lutris wine-staging
 
 ### Advanced controller support
 
-Advanced Linux driver for Xbox 360|One|S|X wireless controllers (supplied with Xbox One S) and a lot of other controllers like 8bitdo ([xpadneo](https://github.com/atar-axis/xpadneo)) ([xone](https://github.com/medusalix/xone))
+Advanced Linux driver for Xbox 360|One|S|X wireless controllers ([xpadneo](https://github.com/atar-axis/xpadneo))
 
 ```
 yay -S xpadneo-dkms-git 
