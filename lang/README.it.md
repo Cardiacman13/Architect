@@ -302,7 +302,7 @@ sudo nano /etc/modprobe.d/nvidia.conf
 
 Aggiungete:
 
-`nvidia-drm.modeset=1`
+`options nvidia-drm.modeset=1`
    
 #### 3. Caricate i moduli Nvidia in priorità all'avvio di Arch:
 

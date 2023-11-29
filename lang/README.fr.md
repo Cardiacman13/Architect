@@ -302,7 +302,7 @@ sudo nano /etc/modprobe.d/nvidia.conf
 
 Ajouter:
 
-`nvidia-drm.modeset=1`
+`options nvidia-drm.modeset=1`
 
 Sauvegarder.
    
