@@ -1,7 +1,7 @@
 source src/cmd.sh
 
 function gamepad() {
-    read -rp "Do you want to use Xbox 360, Series X|S|Elite ? (y/N) : " choice
+    read -rp "Would you want to install xpadneo ? (Can improve xbox gamepad support, ${RED}say No if unsure${RESET}) (y/N) : " choice
     choice="${choice^^}"
 
     if [[ $choice == "Y" ]]; then
