@@ -1,8 +1,8 @@
 source src/cmd.sh
 
 function nvidia_config() {
-    if ! exec_log "grep -q "nvidia-drm.modeset=1" /etc/modprobe.d/nvidia.conf" "Checking nvidia-drm.modeset=1 option"; then
-        exec_log "echo -e 'nvidia-drm.modeset=1' | sudo tee -a /etc/modprobe.d/nvidia.conf" "Setting nvidia-drm.modeset=1 option"
+    if ! exec_log "grep -q "options nvidia-drm.modeset=1" /etc/modprobe.d/nvidia.conf" "Checking nvidia-drm.modeset=1 option"; then
+        exec_log "echo -e 'options nvidia-drm.modeset=1' | sudo tee -a /etc/modprobe.d/nvidia.conf" "Setting nvidia-drm.modeset=1 option"
     fi
 }
 
