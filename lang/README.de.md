@@ -50,7 +50,6 @@ Vereinfache deine Aufgaben in der Kommandozeile:
 
 ### 3. 🎮 GPU-Konfiguration für Gaming (AMD, NVIDIA, Intel)
 Bereite dein System für Spiele vor mit:
-- 🎮 Proton-GE (über das Repository [`GloriousEggroll/proton-ge-custom`](https://github.com/GloriousEggroll/proton-ge-custom)).
 - 🎮 GPU-Treiberoptionen:
   - 📹 AMD-Unterstützung und 32-Bit-Bibliotheken.
   - 📹 Intel-Unterstützung und 32-Bit-Bibliotheken.

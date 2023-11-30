@@ -54,7 +54,6 @@ Ease your command-line tasks:
 
 ### 3. 🎮 GPU Setup for Gaming (AMD, NVIDIA, Intel)
 Prepare your system for gaming with :
-- 🎮 Proton-GE (via [`GloriousEggroll/proton-ge-custom`](https://github.com/GloriousEggroll/proton-ge-custom) repo).
 - 🎮 GPU drivers choises:
   - 📹 AMD and 32-bit library support.
   - 📹 Intel and 32-bit library support.

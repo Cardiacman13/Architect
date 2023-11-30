@@ -50,7 +50,6 @@ Facilitez vos tâches en ligne de commande :
 
 ### 3. 🎮 Configuration GPU pour le Gaming (AMD, NVIDIA, Intel)
 Préparez votre système pour le gaming avec :
-- 🎮 Proton-GE (via le dépôt [`GloriousEggroll/proton-ge-custom`](https://github.com/GloriousEggroll/proton-ge-custom)).
 - 🎮 Choix de pilotes GPU :
   - 📹 AMD et support de bibliothèque 32 bits.
   - 📹 Intel et support de bibliothèque 32 bits.
