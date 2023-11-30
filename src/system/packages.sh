@@ -14,7 +14,6 @@ function usefull_package() {
         xdg-utils
         downgrade
         rebuild-detector
-        mkinitcpio-firmware
         xdg-desktop-portal
         xdg-desktop-portal-gtk
         qt6-wayland

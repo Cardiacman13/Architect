@@ -292,7 +292,7 @@ Sostituire il 6 con il numero di thread che si desidera utilizzare. Si consiglia
 yay -S --needed nvidia-dkms nvidia-utils lib32-nvidia-utils nvidia-settings vulkan-icd-loader lib32-vulkan-icd-loader
 ```
 
-#### 2. Abilitate nvidia-drm.modeset=1:
+#### 2. Abilitate nvidia-drm modeset=1:
 
 Questa impostazione permette al modulo Nvidia di essere lanciato all'avvio.
 
@@ -302,7 +302,7 @@ sudo nano /etc/modprobe.d/nvidia.conf
 
 Aggiungete:
 
-`options nvidia-drm.modeset=1`
+`options nvidia-drm modeset=1`
    
 #### 3. Caricate i moduli Nvidia in priorità all'avvio di Arch:
 
@@ -403,7 +403,7 @@ sudo pacman -S --needed pipewire lib32-pipewire pipewire-pulse pipewire-alsa pip
 Qui troverete codec, utility, font, driver:
 
 ```
-yay -S --needed gst-plugins-bad gst-plugins-base gst-plugins-ugly gst-plugin-pipewire gstreamer-vaapi gst-plugins-good gst-libav gstreamer downgrade rebuild-detector mkinitcpio-firmware xdg-desktop-portal-gtk xdg-desktop-portal neofetch power-profiles-daemon lib32-pipewire hunspell hunspell-fr p7zip unrar ttf-liberation noto-fonts noto-fonts-emoji adobe-source-code-pro-fonts otf-font-awesome ttf-droid ntfs-3g fuse2fs exfat-utils fuse2 fuse3 bash-completion man-db man-pages
+yay -S --needed gst-plugins-bad gst-plugins-base gst-plugins-ugly gst-plugin-pipewire gstreamer-vaapi gst-plugins-good gst-libav gstreamer downgrade rebuild-detector xdg-desktop-portal-gtk xdg-desktop-portal neofetch power-profiles-daemon lib32-pipewire hunspell hunspell-fr p7zip unrar ttf-liberation noto-fonts noto-fonts-emoji adobe-source-code-pro-fonts otf-font-awesome ttf-droid ntfs-3g fuse2fs exfat-utils fuse2 fuse3 bash-completion man-db man-pages
 ```
 
 #### Software Vari

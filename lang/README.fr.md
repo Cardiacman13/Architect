@@ -50,7 +50,6 @@ Facilitez vos tâches en ligne de commande :
 
 ### 3. 🎮 Configuration GPU pour le Gaming (AMD, NVIDIA, Intel)
 Préparez votre système pour le gaming avec :
-- 🎮 Proton-GE (via le dépôt [`GloriousEggroll/proton-ge-custom`](https://github.com/GloriousEggroll/proton-ge-custom)).
 - 🎮 Choix de pilotes GPU :
   - 📹 AMD et support de bibliothèque 32 bits.
   - 📹 Intel et support de bibliothèque 32 bits.
@@ -292,7 +291,7 @@ Remplacez le 6 par le nombre de threads que vous souhaitez utiliser. Il est cons
 sudo pacman -S --needed nvidia-dkms nvidia-utils lib32-nvidia-utils nvidia-settings vulkan-icd-loader lib32-vulkan-icd-loader
 ```
 
-#### 2. Activer nvidia-drm.modeset=1 :
+#### 2. Activer nvidia-drm modeset=1 :
 
 Ce paramètre permet de lancer le module Nvidia au démarrage.
 
@@ -302,7 +301,7 @@ sudo nano /etc/modprobe.d/nvidia.conf
 
 Ajouter:
 
-`options nvidia-drm.modeset=1`
+`options nvidia-drm modeset=1`
 
 Sauvegarder.
    
@@ -404,7 +403,7 @@ sudo pacman -S --needed pipewire lib32-pipewire pipewire-pulse pipewire-alsa pip
 Ici, vous trouverez des codecs, utilitaires, polices, pilotes :
 
 ```
-yay -S --needed gst-plugins-bad gst-plugins-base gst-plugins-ugly gst-plugin-pipewire gstreamer-vaapi gst-plugins-good gst-libav gstreamer downgrade rebuild-detector mkinitcpio-firmware xdg-desktop-portal-gtk xdg-desktop-portal neofetch power-profiles-daemon lib32-pipewire hunspell hunspell-fr p7zip unrar ttf-liberation noto-fonts noto-fonts-emoji adobe-source-code-pro-fonts otf-font-awesome ttf-droid ntfs-3g fuse2fs exfat-utils fuse2 fuse3 bash-completion man-db man-pages
+yay -S --needed gst-plugins-bad gst-plugins-base gst-plugins-ugly gst-plugin-pipewire gstreamer-vaapi gst-plugins-good gst-libav gstreamer downgrade rebuild-detector xdg-desktop-portal-gtk xdg-desktop-portal neofetch power-profiles-daemon lib32-pipewire hunspell hunspell-fr p7zip unrar ttf-liberation noto-fonts noto-fonts-emoji adobe-source-code-pro-fonts otf-font-awesome ttf-droid ntfs-3g fuse2fs exfat-utils fuse2 fuse3 bash-completion man-db man-pages
 ```
 
 #### Logiciels divers

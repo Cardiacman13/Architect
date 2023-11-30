@@ -50,7 +50,6 @@ Vereinfache deine Aufgaben in der Kommandozeile:
 
 ### 3. 🎮 GPU-Konfiguration für Gaming (AMD, NVIDIA, Intel)
 Bereite dein System für Spiele vor mit:
-- 🎮 Proton-GE (über das Repository [`GloriousEggroll/proton-ge-custom`](https://github.com/GloriousEggroll/proton-ge-custom)).
 - 🎮 GPU-Treiberoptionen:
   - 📹 AMD-Unterstützung und 32-Bit-Bibliotheken.
   - 📹 Intel-Unterstützung und 32-Bit-Bibliotheken.
@@ -291,7 +290,7 @@ Ersetzen Sie die 6 durch die Anzahl der Threads, die Sie nutzen möchten. Es wir
 yay -S --needed nvidia-dkms nvidia-utils lib32-nvidia-utils nvidia-settings vulkan-icd-loader lib32-vulkan-icd-loader
 ```
 
-#### 2. Aktivieren von nvidia-drm.modeset=1:
+#### 2. Aktivieren von nvidia-drm modeset=1:
 
 Diese Einstellung ermöglicht es dem Nvidia-Modul, beim Start gestartet zu werden.
 
@@ -301,7 +300,7 @@ sudo nano /etc/modprobe.d/nvidia.conf
 
 Add:
 
-`options nvidia-drm.modeset=1`
+`options nvidia-drm modeset=1`
    
 #### 3. Laden Sie Nvidia-Module als Priorität beim Arch-Start:
 
@@ -401,7 +400,7 @@ sudo pacman -S --needed pipewire lib32-pipewire pipewire-pulse pipewire-alsa pip
 Hier finden Sie Codecs, Dienstprogramme, Schriftarten, Treiber:
 
 ```
-yay -S --needed gst-plugins-bad gst-plugins-base gst-plugins-ugly gst-plugin-pipewire gstreamer-vaapi gst-plugins-good gst-libav gstreamer downgrade rebuild-detector mkinitcpio-firmware xdg-desktop-portal-gtk xdg-desktop-portal neofetch power-profiles-daemon lib32-pipewire hunspell hunspell-fr p7zip unrar ttf-liberation noto-fonts noto-fonts-emoji adobe-source-code-pro-fonts otf-font-awesome ttf-droid ntfs-3g fuse2fs exfat-utils fuse2 fuse3 bash-completion man-db man-pages
+yay -S --needed gst-plugins-bad gst-plugins-base gst-plugins-ugly gst-plugin-pipewire gstreamer-vaapi gst-plugins-good gst-libav gstreamer downgrade rebuild-detector xdg-desktop-portal-gtk xdg-desktop-portal neofetch power-profiles-daemon lib32-pipewire hunspell hunspell-fr p7zip unrar ttf-liberation noto-fonts noto-fonts-emoji adobe-source-code-pro-fonts otf-font-awesome ttf-droid ntfs-3g fuse2fs exfat-utils fuse2 fuse3 bash-completion man-db man-pages
 ```
 
 #### Verschiedene Software

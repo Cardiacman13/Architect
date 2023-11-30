@@ -54,7 +54,6 @@ Ease your command-line tasks:
 
 ### 3. 🎮 GPU Setup for Gaming (AMD, NVIDIA, Intel)
 Prepare your system for gaming with :
-- 🎮 Proton-GE (via [`GloriousEggroll/proton-ge-custom`](https://github.com/GloriousEggroll/proton-ge-custom) repo).
 - 🎮 GPU drivers choises:
   - 📹 AMD and 32-bit library support.
   - 📹 Intel and 32-bit library support.
@@ -286,7 +285,7 @@ Replace 6 with the number of thread you want to use, it is advisable to have 2GB
 yay -S --needed nvidia-dkms nvidia-utils lib32-nvidia-utils nvidia-settings vulkan-icd-loader lib32-vulkan-icd-loader
 ```
 
-#### 2. Enable nvidia-drm.modeset=1:
+#### 2. Enable nvidia-drm modeset=1:
 
 This setting allows the Nvidia module to be launched at startup.
 
@@ -296,7 +295,7 @@ sudo nano /etc/modprobe.d/nvidia.conf
 
 Add:
 
-`options nvidia-drm.modeset=1`
+`options nvidia-drm modeset=1`
 
 And save file.
 
@@ -398,7 +397,7 @@ sudo pacman -S --needed pipewire lib32-pipewire pipewire-pulse pipewire-alsa pip
 Here you will find codecs, utilities, fonts, drivers:
 
 ```
-yay -S --needed gst-plugins-bad gst-plugins-base gst-plugins-ugly gst-plugin-pipewire gstreamer-vaapi gst-plugins-good gst-libav gstreamer downgrade rebuild-detector mkinitcpio-firmware xdg-desktop-portal-gtk xdg-desktop-portal neofetch power-profiles-daemon lib32-pipewire hunspell hunspell-fr hunspell-en p7zip unrar ttf-liberation noto-fonts noto-fonts-emoji adobe-source-code-pro-fonts otf-font-awesome ttf-droid ntfs-3g fuse2fs exfat-utils fuse2 fuse3 bash-completion man-db man-pages
+yay -S --needed gst-plugins-bad gst-plugins-base gst-plugins-ugly gst-plugin-pipewire gstreamer-vaapi gst-plugins-good gst-libav gstreamer downgrade rebuild-detector xdg-desktop-portal-gtk xdg-desktop-portal neofetch power-profiles-daemon lib32-pipewire hunspell hunspell-fr hunspell-en p7zip unrar ttf-liberation noto-fonts noto-fonts-emoji adobe-source-code-pro-fonts otf-font-awesome ttf-droid ntfs-3g fuse2fs exfat-utils fuse2 fuse3 bash-completion man-db man-pages
 ```
 
 #### Miscellaneous Software
