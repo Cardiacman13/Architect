@@ -35,6 +35,8 @@ function nvidia_drivers() {
 
     uninstall_lst "${unlst}" "Clean old nvidia drivers dependencies"
 
+    read -rp "Do yu want to install CUDA (${RED}say No if unsure${RESET}) (y/N)" user_cuda
+
     read -rp "Do you want to use NVIDIA-ALL ${RED}/!\ caution: if you choose nvidia-all, you'll need to know how to maintain it.${RESET} ? (y/N) : " user_nvidia_all
     user_nvidia_all="${user_nvidia_all^^}"
 
@@ -60,4 +62,6 @@ function nvidia_drivers() {
         "
         install_lst "${inlst}"
     fi
+
+    install_one "cuda"
 }

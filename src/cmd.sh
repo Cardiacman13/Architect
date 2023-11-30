@@ -34,6 +34,8 @@ function install_one() {
     local -r warning="
         cuda
         nvidia-dkms
+        rocm-opencl-runtime
+        rocm-hip-runtime
     "
     local -r package=$1
     local -r type=$2
