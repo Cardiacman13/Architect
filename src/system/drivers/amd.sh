@@ -1,7 +1,7 @@
 source src/cmd.sh
 
 function amd_drivers() {
-    local -r inlst="
+    local inlst="
         mesa
         lib32-mesa
         vulkan-radeon
@@ -15,6 +15,17 @@ function amd_drivers() {
         mesa-vdpau
         lib32-mesa-vdpau
     "
+
+    local choice=""
+
+    while [[ ! $choice =~ ^(yes|y|no|n)$ ]]; do
+        read -rp "Would you like to install ROCM (${RED}say No if unsure${RESET}) (y/N)" choice
+        choice="${choice,,}"
+    done
+
+    if [[ $choice =~ ^(yes|y)$ ]]; then
+        inlst="${inlst} rocm-opencl-runtime rocm-hip-runtime"
+    fi
 
     install_lst "${inlst}"
 }
