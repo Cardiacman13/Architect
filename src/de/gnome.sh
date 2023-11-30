@@ -38,7 +38,7 @@ function install_gnome() {
 
     install_lst "${inlst}"
 
-    uninstall_one "gnome-software gnome-usage file-roller"
+    uninstall_lst "gnome-software gnome-usage file-roller"
 
     exec_log "gsettings set org.gnome.desktop.interface gtk-theme adw-gtk3" "Setting gtk theme to adw-gtk3"
     exec_log "gsettings set org.gnome.desktop.peripherals.keyboard numlock-state true" "Enabling numlock on startup"
