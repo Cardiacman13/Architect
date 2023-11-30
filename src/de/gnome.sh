@@ -32,11 +32,12 @@ function install_gnome() {
         xdg-user-dirs-gtk
         adw-gtk3
         extension-manager-git
+        snapshot
     "
 
     install_lst "${inlst}"
 
-    uninstall_lst "gnome-software"
+    uninstall_lst "gnome-software cheese"
 
     exec_log "gsettings set org.gnome.desktop.interface gtk-theme adw-gtk3" "Setting gtk theme to adw-gtk3"
     exec_log "gsettings set org.gnome.desktop.peripherals.keyboard numlock-state true" "Enabling numlock on startup"
