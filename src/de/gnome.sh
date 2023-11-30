@@ -11,7 +11,6 @@ function install_gnome() {
         gnome-keyring
         gnome-nettool
         gnome-power-manager
-        gnome-screenshot
         gnome-shell
         gnome-text-editor
         gnome-themes-extra
