@@ -1,7 +1,7 @@
 source src/cmd.sh
 
 function nvidia_config() {
-        exec_log "echo -e 'options nvidia-drm modeset=1' | sudo tee -a /etc/modprobe.d/nvidia.conf" "Setting nvidia-drm modeset=1 option"
+    exec_log "echo -e 'options nvidia-drm modeset=1' | sudo tee -a /etc/modprobe.d/nvidia.conf" "Setting nvidia-drm modeset=1 option"
 }
 
 function nvidia_drivers() {
@@ -59,5 +59,12 @@ function nvidia_drivers() {
             lib32-opencl-nvidia
         "
         install_lst "${inlst}"
+    fi
+
+    read -rp "Do yu want to install CUDA (${RED}say No if unsure${RESET}) (y/N)" user_cuda
+    user_cuda="${user_cuda,,}"
+
+    if [[ ${user_cuda} =~ ^(yes|y)$ ]]; then
+        install_one "cuda"
     fi
 }

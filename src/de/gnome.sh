@@ -11,16 +11,13 @@ function install_gnome() {
         gnome-keyring
         gnome-nettool
         gnome-power-manager
-        gnome-screenshot
         gnome-shell
         gnome-text-editor
         gnome-themes-extra
-        gnome-usage
         gnome-browser-connector
         adwaita-icon-theme
-        eog
+        loupe
         evince
-        file-roller
         gdm
         gvfs
         gvfs-afc
@@ -39,7 +36,7 @@ function install_gnome() {
 
     install_lst "${inlst}"
 
-    uninstall_one "gnome-software"
+    uninstall_lst "gnome-software"
 
     exec_log "gsettings set org.gnome.desktop.interface gtk-theme adw-gtk3" "Setting gtk theme to adw-gtk3"
     exec_log "gsettings set org.gnome.desktop.peripherals.keyboard numlock-state true" "Enabling numlock on startup"
