@@ -61,7 +61,7 @@ function nvidia_drivers() {
         install_lst "${inlst}"
     fi
 
-    read -rp "Do yu want to install CUDA (${RED}say No if unsure${RESET}) (y/N)" user_cuda
+    read -rp "Do yu want to install CUDA (${RED}say No if unsure${RESET}) (y/N) : " user_cuda
     user_cuda="${user_cuda,,}"
 
     if [[ ${user_cuda} =~ ^(yes|y)$ ]]; then
