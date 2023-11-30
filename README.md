@@ -286,7 +286,7 @@ Replace 6 with the number of thread you want to use, it is advisable to have 2GB
 yay -S --needed nvidia-dkms nvidia-utils lib32-nvidia-utils nvidia-settings vulkan-icd-loader lib32-vulkan-icd-loader
 ```
 
-#### 2. Enable nvidia-drm.modeset=1:
+#### 2. Enable nvidia-drm modeset=1:
 
 This setting allows the Nvidia module to be launched at startup.
 
@@ -296,7 +296,7 @@ sudo nano /etc/modprobe.d/nvidia.conf
 
 Add:
 
-`options nvidia-drm.modeset=1`
+`options nvidia-drm modeset=1`
 
 And save file.
 

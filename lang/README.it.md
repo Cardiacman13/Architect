@@ -292,7 +292,7 @@ Sostituire il 6 con il numero di thread che si desidera utilizzare. Si consiglia
 yay -S --needed nvidia-dkms nvidia-utils lib32-nvidia-utils nvidia-settings vulkan-icd-loader lib32-vulkan-icd-loader
 ```
 
-#### 2. Abilitate nvidia-drm.modeset=1:
+#### 2. Abilitate nvidia-drm modeset=1:
 
 Questa impostazione permette al modulo Nvidia di essere lanciato all'avvio.
 
@@ -302,7 +302,7 @@ sudo nano /etc/modprobe.d/nvidia.conf
 
 Aggiungete:
 
-`options nvidia-drm.modeset=1`
+`options nvidia-drm modeset=1`
    
 #### 3. Caricate i moduli Nvidia in priorità all'avvio di Arch:
 

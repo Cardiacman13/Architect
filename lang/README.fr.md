@@ -292,7 +292,7 @@ Remplacez le 6 par le nombre de threads que vous souhaitez utiliser. Il est cons
 sudo pacman -S --needed nvidia-dkms nvidia-utils lib32-nvidia-utils nvidia-settings vulkan-icd-loader lib32-vulkan-icd-loader
 ```
 
-#### 2. Activer nvidia-drm.modeset=1 :
+#### 2. Activer nvidia-drm modeset=1 :
 
 Ce paramètre permet de lancer le module Nvidia au démarrage.
 
@@ -302,7 +302,7 @@ sudo nano /etc/modprobe.d/nvidia.conf
 
 Ajouter:
 
-`options nvidia-drm.modeset=1`
+`options nvidia-drm modeset=1`
 
 Sauvegarder.
    
