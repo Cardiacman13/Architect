@@ -1,7 +1,7 @@
 source src/cmd.sh
 
 function amd_drivers() {
-    local -r inlst="
+    local inlst="
         mesa
         lib32-mesa
         vulkan-radeon
