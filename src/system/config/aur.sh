@@ -1,6 +1,9 @@
 source src/cmd.sh
 
 function install_aur() {
+    
+    exec_log "sudo pacman -S --noconfirm --needed git" "Installing git"
+    
     local -r git_url=(
         "https://aur.archlinux.org/yay-bin.git"
         "https://aur.archlinux.org/paru-bin.git"
