@@ -35,6 +35,7 @@ function set_software_list() {
         ["Davinci Resolve (paid version)"]="davinci-resolve-studio"
         ["OBS Studio"]="obs-studio"
         ["VLC"]="vlc"
+        ["MPV"]="mpv"
     )
 
     browser_list=(
