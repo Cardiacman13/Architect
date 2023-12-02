@@ -13,6 +13,7 @@ function nvidia_intel() {
             intel-media-driver
             intel-gmmlib
             onevpl-intel-gpu
+            nvidia-prime
     "
     install_lst "${inlst}"
     fi
@@ -72,6 +73,8 @@ function nvidia_drivers() {
             egl-wayland
             opencl-nvidia
             lib32-opencl-nvidia
+            libvdpau-va-gl
+            libvdpau
         "
         install_lst "${inlst}"
     fi
