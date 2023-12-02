@@ -4,6 +4,22 @@ function nvidia_config() {
     exec_log "echo -e 'options nvidia-drm modeset=1' | sudo tee -a /etc/modprobe.d/nvidia.conf" "Setting nvidia-drm modeset=1 option"
 }
 
+function nvidia_intel() {
+    read -rp "Do you have an Intel/Nvidia Laptop (y/N) : " user_intel
+    user_intel="${user_intel,,}"
+
+    if [[ ${user_intel} =~ ^(yes|y)$ ]]; then
+        local -r inlst="
+            intel-media-driver
+            intel-gmmlib
+            onevpl-intel-gpu
+            nvidia-prime
+    "
+    install_lst "${inlst}"
+    fi
+
+}
+
 function nvidia_drivers() {
     local -r unlst="
         nvidia
@@ -57,11 +73,14 @@ function nvidia_drivers() {
             egl-wayland
             opencl-nvidia
             lib32-opencl-nvidia
+            libvdpau-va-gl
+            libvdpau
         "
         install_lst "${inlst}"
     fi
 
-    read -rp "Do yu want to install CUDA (${RED}say No if unsure${RESET}) (y/N) : " user_cuda
+    nvidia_intel
+    read -rp "Do you want to install CUDA (${RED}say No if unsure${RESET}) (y/N) : " user_cuda
     user_cuda="${user_cuda,,}"
 
     if [[ ${user_cuda} =~ ^(yes|y)$ ]]; then
