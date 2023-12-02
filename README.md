@@ -282,7 +282,13 @@ Replace 6 with the number of thread you want to use, it is advisable to have 2GB
 #### 1. Install the core components:
 
 ```
-yay -S --needed nvidia-dkms nvidia-utils lib32-nvidia-utils nvidia-settings vulkan-icd-loader lib32-vulkan-icd-loader
+pacman -S --needed nvidia-dkms nvidia-utils lib32-nvidia-utils nvidia-settings vulkan-icd-loader lib32-vulkan-icd-loader
+```
+
+If you have an Intel / Nvidia Laptop :
+
+```
+pacman -S --needed intel-media-driver intel-gmmlib onevpl-intel-gpu
 ```
 
 #### 2. Enable nvidia-drm modeset=1:
@@ -397,7 +403,7 @@ sudo pacman -S --needed pipewire lib32-pipewire pipewire-pulse pipewire-alsa pip
 Here you will find codecs, utilities, fonts, drivers:
 
 ```
-yay -S --needed gstreamer-vaapi gst-plugins-bad gst-plugins-base gst-plugins-ugly gst-plugin-pipewire gstreamer-vaapi gst-plugins-good gst-libav gstreamer downgrade  libva-mesa-driver lib32-libva-mesa-driver mesa-vdpau lib32-mesa-vdpau rebuild-detector xdg-desktop-portal-gtk xdg-desktop-portal neofetch power-profiles-daemon lib32-pipewire hunspell hunspell-fr hunspell-en p7zip unrar ttf-liberation noto-fonts noto-fonts-emoji adobe-source-code-pro-fonts otf-font-awesome ttf-droid ntfs-3g fuse2fs exfat-utils fuse2 fuse3 bash-completion man-db man-pages
+yay -S --needed gstreamer-vaapi gst-plugins-bad gst-plugins-base gst-plugins-ugly gst-plugin-pipewire gstreamer-vaapi gst-plugins-good gst-libav gstreamer downgrade  libva-mesa-driver lib32-libva-mesa-driver mesa-vdpau lib32-mesa-vdpau rebuild-detector xdg-desktop-portal-gtk xdg-desktop-portal neofetch power-profiles-daemon lib32-pipewire hunspell p7zip unrar ttf-liberation noto-fonts noto-fonts-emoji adobe-source-code-pro-fonts otf-font-awesome ttf-droid ntfs-3g fuse2fs exfat-utils fuse2 fuse3 bash-completion man-db man-pages
 ```
 
 #### Miscellaneous Software
