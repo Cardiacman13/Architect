@@ -10,6 +10,11 @@ function usefull_package() {
         gstreamer-vaapi
         gst-plugins-good
         gst-libav
+        gstreamer-vaapi
+        libva-mesa-driver
+        lib32-libva-mesa-driver
+        mesa-vdpau
+        lib32-mesa-vdpau
         fwupd
         xdg-utils
         downgrade
