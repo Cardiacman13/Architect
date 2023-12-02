@@ -125,6 +125,6 @@ function install_software() {
 
     local -r flatpak_packages="${selected_packages}"
 
-    install_lst "aur_packages" "aur"
-    install_lst "flatpak_packages" "flatpak"
+    install_lst "${aur_packages}" "aur"
+    install_lst "${flatpak_packages}" "flatpak"
 }
