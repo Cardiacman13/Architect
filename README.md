@@ -115,7 +115,7 @@ Select additional software based on your needs:
 
 ## Troubleshooting
 
-- For help, visit the GLF Discord (fr/en): [Discord GLF](http://discord.gg/EP3Jm8YMvj)
+For help, open a chat open a conversation in the conversation section visit the GLF Discord (fr/en): [Discord GLF](http://discord.gg/EP3Jm8YMvj)
 
 ## Sources
 
@@ -124,12 +124,6 @@ Sources and useful links :
 - [Site GLF](https://www.gaminglinux.fr/)
 - [GLF Discord](http://discord.gg/EP3Jm8YMvj)
 - [My Youtube channel](https://www.youtube.com/@Cardiacman)
-
-## Contribution
-
-Contributions to this project are welcome! If you have suggestions, bug reports, or contributions, please open an issue or a pull request in the repository.
-
-As you can see this project is available in French, English, Spanish, Italian & German. Translators are more than welcome ! :people_holding_hands:
 
 ## 🙏 Acknowledgments
 
