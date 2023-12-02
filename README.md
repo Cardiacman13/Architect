@@ -15,19 +15,17 @@ A minimalist archlinux configuration script
 &ensp;[<kbd> <br> Wiki <br> </kbd>](https://github.com/Cardiacman13/Architect/wiki)&ensp;
 <br><br><br><br></div>
 
-## 🚀 Arch Linux Post-Install Script <a name="script"/>
+## 🚀 Arch Linux Script <a name="script"/>
 
 This script is perfect for configuring a **stock Arch** system with a **minimal set of packages** tailored to your needs right after using `archinstall`. Specifically, it's **geared towards gaming**.
 
 > [!IMPORTANT]
-> 
 > It's specifically designed for a pure Arch Linux experience (not tested on *Garuda*, *Manjaro*, etc.).
-> 
 > We make all our test based on a fresh install of Arch Linux with [`archinstall`](https://github.com/archlinux/archinstall).
-> 
-> Ensure you're not running as root and are in a "Desktop Environment" (GNOME, KDE Plasma, i3wm, etc.).
->
 > It is not suitable for outdated computers. Ensure your hardware meets the requirements for the latest Nvidia drivers.
+
+> [!CAUTION]
+> The script modifies your system configuration, see the wiki or comunity pannel for more informations.
 
 Execute the following in the terminal to run the script (**requires sudo access**):
 
