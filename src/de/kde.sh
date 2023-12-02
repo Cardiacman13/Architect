@@ -8,7 +8,6 @@ function install_kde() {
         dolphin
         ark
         plasma-wayland-session
-        egl-wayland
         powerdevil
         xdg-desktop-portal-kde
         okular
