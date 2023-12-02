@@ -282,13 +282,13 @@ Replace 6 with the number of thread you want to use, it is advisable to have 2GB
 #### 1. Install the core components:
 
 ```
-pacman -S --needed nvidia-dkms nvidia-utils lib32-nvidia-utils nvidia-settings vulkan-icd-loader lib32-vulkan-icd-loader
+sudo pacman -S --needed nvidia-dkms nvidia-utils lib32-nvidia-utils nvidia-settings vulkan-icd-loader lib32-vulkan-icd-loader
 ```
 
 If you have an Intel / Nvidia Laptop :
 
 ```
-pacman -S --needed intel-media-driver intel-gmmlib onevpl-intel-gpu
+sudo pacman -S --needed intel-media-driver intel-gmmlib onevpl-intel-gpu nvidia-prime
 ```
 
 #### 2. Enable nvidia-drm modeset=1:

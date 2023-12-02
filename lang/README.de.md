@@ -287,13 +287,13 @@ Ersetzen Sie die 6 durch die Anzahl der Threads, die Sie nutzen möchten. Es wir
 #### 1. Installieren Sie die Kernkomponenten:
 
 ```
-pacman -S --needed nvidia-dkms nvidia-utils lib32-nvidia-utils nvidia-settings vulkan-icd-loader lib32-vulkan-icd-loader
+sudo pacman -S --needed nvidia-dkms nvidia-utils lib32-nvidia-utils nvidia-settings vulkan-icd-loader lib32-vulkan-icd-loader
 ```
 
 Wenn du einen Laptop mit Intel/Nvidia hast:
 
 ```
-pacman -S --needed intel-media-driver intel-gmmlib onevpl-intel-gpu
+sudo pacman -S --needed intel-media-driver intel-gmmlib onevpl-intel-gpu nvidia-prime
 ```
 
 #### 2. Aktivieren von nvidia-drm modeset=1:

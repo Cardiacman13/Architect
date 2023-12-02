@@ -288,13 +288,12 @@ Remplacez le 6 par le nombre de threads que vous souhaitez utiliser. Il est cons
 #### 1. Installer les composants de base :
 
 ```
-pacman -S --needed nvidia-dkms nvidia-utils lib32-nvidia-utils nvidia-settings vulkan-icd-loader lib32-vulkan-icd-loader
+sudo pacman -S --needed nvidia-dkms nvidia-utils lib32-nvidia-utils nvidia-settings vulkan-icd-loader lib32-vulkan-icd-loader
 ```
 
-Si vous avez un pc portable Intel / Nvidia :
-
+Si vous avez un pc [portable Intel / Nvidia](https://youtu.be/GhsP6btpiiw?si=ibWw_dQdty8_Q0jm) :
 ```
-pacman -S --needed intel-media-driver intel-gmmlib onevpl-intel-gpu
+sudo pacman -S --needed intel-media-driver intel-gmmlib onevpl-intel-gpu nvidia-prime
 ```
 
 #### 2. Activer nvidia-drm modeset=1 :
