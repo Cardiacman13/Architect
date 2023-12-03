@@ -108,6 +108,19 @@ Select additional software based on your needs:
 | Virtualbox              | virtualbox virtualbox-host-dkms             | package |
 | Open RGB                | openrgb-bin                                 | package |
 | Arch Update             | arch-update                                 | package |
+| Firefox                 | org.mozilla.firefox                         | flatpak |
+| Google Chrome           | com.google.Chrome                           | flatpak |
+| RetroArch               | org.libretro.RetroArch                      | flatpak |
+| Discord                 | com.discordapp.Discord                      | flatpak |
+| Brave                   | com.brave.Browser                           | flatpak |
+| Spotify                 | com.spotify.Client                          | flatpak |
+| Deezer                  | dev.aunetx.deezer                           | flatpak |
+| Telegram                | org.telegram.desktop                        | flatpak |
+| ProtonUP                | net.davidotek.pupgui2                       | flatpak |
+| Lutris                  | net.lutris.Lutris                           | flatpak |
+| Steam                   | com.valvesoftware.Steam                     | flatpak |
+| OBS                     | com.obsproject.Studio                       | flatpak |
+
 
 ## Troubleshooting
 
