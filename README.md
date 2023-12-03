@@ -7,6 +7,7 @@ A minimalist archlinux configuration script
 <div align = center>
 
 &ensp;[<kbd> <br> All-in-one script <br> </kbd>](#script)&ensp;
+&ensp;[<kbd> <br> Community stuff <br> </kbd>](https://github.com/Cardiacman13/Architect/discussions)&ensp;
 &ensp;[<kbd> <br> Wiki <br> </kbd>](https://github.com/Cardiacman13/Architect/wiki)&ensp;
 <br><br><br><br></div>
 
