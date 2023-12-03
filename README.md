@@ -7,11 +7,6 @@ A minimalist archlinux configuration script
 <div align = center>
 
 &ensp;[<kbd> <br> All-in-one script <br> </kbd>](#script)&ensp;
-&ensp;[<kbd> <br> Tutorial <br> </kbd>](#elevate)&ensp;
-&ensp;[<kbd> <br> Gaming <br> </kbd>](#gaming)&ensp;
-&ensp;[<kbd> <br> Optimization <br> </kbd>](#optimization)&ensp;
-&ensp;[<kbd> <br> Troubleshooting <br> </kbd>](#troubleshooting)&ensp;
-&ensp;[<kbd> <br> Community stuff <br> </kbd>](#community)&ensp;
 &ensp;[<kbd> <br> Wiki <br> </kbd>](https://github.com/Cardiacman13/Architect/wiki)&ensp;
 <br><br><br><br></div>
 
