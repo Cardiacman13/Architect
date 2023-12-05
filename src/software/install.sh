@@ -22,6 +22,7 @@ function set_software_list() {
         ["Visual Studio Code"]="visual-studio-code-bin"
         ["Virtualbox"]="virtualbox virtualbox-host-dkms virtualbox-guest-iso"
         ["Open RGB"]="openrgb-bin"
+        ["Arch Update"]="arch-update"
     )
 
     picture_list=(
