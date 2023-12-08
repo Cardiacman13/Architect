@@ -81,51 +81,85 @@ Tune-up your system:
 - 🎮 Enhanced support for Xbox, PS5, 8bitdo controllers.
 - 🐟 Suggest Fish shell configuration. (zsh in WIP)
 
+Certainly! Here's an organized version based on subcategories:
+
+---
+
 ### 7. 🔄 Ask to Install Additional Software
+
 Select additional software based on your needs:
 
+#### **Web Browsers:**
 | Name                    | Package                                     | Type    |
 |-------------------------|---------------------------------------------|---------|
-| OBS Studio (from repo)  | obs-studio                                  | package |
-| Firefox                 | firefox firefox-i18n-lang                   | package |
+| Firefox                 | firefox                                     | package |
 | Brave                   | brave-bin                                   | package |
 | Chromium                | chromium                                    | package |
 | Vivaldi                 | vivaldi                                     | package |
 | Google Chrome           | google-chrome                               | package |
 | Microsoft Edge          | microsoft-edge-stable-bin                   | package |
+
+#### **System Utilities:**
+| Name                    | Package                                     | Type    |
+|-------------------------|---------------------------------------------|---------|
+| Arch Update             | arch-update                                   | package |
+| Open RGB                | openrgb                                     | package |
+
+
+#### **Communication:**
+| Name                    | Package                                     | Type    |
+|-------------------------|---------------------------------------------|---------|
 | Discord                 | discord                                     | package |
-| Steam                   | steam                                       | package |
-| Lutris                  | lutris wine-staging                         | package |
-| Heroic Games Launcher   | heroic-games-launcher-bin                   | package |
-| Goverlay                | goverlay                                    | package |
-| protonup-qt             | protonup-qt-bin                             | package |
-| Spotify                 | spotify                                     | package |
+| Telegram                | org.telegram.desktop                        | flatpak |
+
+#### **Media and Design:**
+| Name                    | Package                                     | Type    |
+|-------------------------|---------------------------------------------|---------|
+| OBS Studio              | obs-studio                                  | package |
 | Kdenlive                | kdenlive                                    | package |
 | Davinci Resolve         | davinci-resolve                             | package |
-| Davinci Resolve Studio  | davinci-resolve-studio                      | package |
-| LibreOffice             | libreoffice-fresh libreoffice-fresh-lang    | package |
-| OnlyOffice              | onlyoffice-bin                              | package |
 | Gimp                    | gimp                                        | package |
 | Inkscape                | inkscape                                    | package |
 | Krita                   | krita                                       | package |
 | VLC                     | vlc                                         | package |
-| Visual Studio Code      | visual-studio-code-bin                      | package |
-| Virtualbox              | virtualbox virtualbox-host-dkms             | package |
-| Open RGB                | openrgb-bin                                 | package |
-| Arch Update             | arch-update                                 | package |
-| Firefox                 | org.mozilla.firefox                         | flatpak |
-| Google Chrome           | com.google.Chrome                           | flatpak |
-| RetroArch               | org.libretro.RetroArch                      | flatpak |
-| Discord                 | com.discordapp.Discord                      | flatpak |
-| Brave                   | com.brave.Browser                           | flatpak |
-| Spotify                 | com.spotify.Client                          | flatpak |
-| Deezer                  | dev.aunetx.deezer                           | flatpak |
-| Telegram                | org.telegram.desktop                        | flatpak |
-| ProtonUP                | net.davidotek.pupgui2                       | flatpak |
-| Lutris                  | net.lutris.Lutris                           | flatpak |
-| Steam                   | com.valvesoftware.Steam                     | flatpak |
-| OBS                     | com.obsproject.Studio                       | flatpak |
+| MPV                     | mvp                                         | package |
+| Kazam                   | kazam                                       | package |
 
+#### **Productivity and Office:**
+| Name                    | Package                                     | Type    |
+|-------------------------|---------------------------------------------|---------|
+| LibreOffice             | libreoffice-fresh                           | package |
+| OnlyOffice              | onlyoffice-bin                              | package |
+| Visual Studio Code      | visual-studio-code-bin                      | package |
+
+#### **Entertainment and Gaming:**
+| Name                    | Package                                     | Type    |
+|-------------------------|---------------------------------------------|---------|
+| Steam                   | steam                                       | package |
+| Lutris                  | lutris wine-staging                         | package |
+| Heroic Games Launcher   | heroic-games-launcher-bin                   | package |
+| Spotify                 | spotify                                     | package |
+
+
+#### **Flatpak Versions:**
+| Name                    | ID                                          |
+|-------------------------|---------------------------------------------|
+| Firefox                 | org.mozilla.firefox                         |
+| Google Chrome           | com.google.Chrome                           |
+| RetroArch               | org.libretro.RetroArch                      |
+| Discord                 | com.discordapp.Discord                      |
+| Brave                   | com.brave.Browser                           |
+| Spotify                 | com.spotify.Client                          |
+| Deezer                  | dev.aunetx.deezer                           | 
+| Telegram                | org.telegram.desktop                        |
+| ProtonUP                | net.davidotek.pupgui2                       |
+| Lutris                  | net.lutris.Lutris                           |
+| Steam                   | com.valvesoftware.Steam                     |
+| OBS                     | com.obsproject.Studio                       |
+
+---
+
+Feel free to adjust the formatting or content as needed!
 
 ## Troubleshooting
 
