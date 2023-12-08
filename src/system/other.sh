@@ -33,7 +33,25 @@ function setup_system_loaders() {
         return
     fi
 
-    copy_bak "assets/data/hooks" "grub.hook" "/etc/pacman.d/hooks" true
+    # copy_bak "assets/data/hooks" "grub.hook" "/etc/pacman.d/hooks" true
+    
+    exec_log "sudo mkdir -p /etc/pacman.d/hooks" "Creating /etc/pacman.d/hooks"
+    if [ ! -f /etc/pacman.d/hooks/grub.hook ]; then
+        exec_log "sudo touch /etc/pacman.d/hooks/grub.hook" "Creating /etc/pacman.d/hooks/grub.hook"
+    fi
+    exec_log "echo -e '[Trigger]
+Type = File
+Operation = Install
+Operation = Upgrade
+Operation = Remove
+Target = usr/lib/modules/*/vmlinuz
+
+[Action]
+Description = Updating grub configuration ...
+When = PostTransaction
+Exec = /usr/bin/grub-mkconfig -o /boot/grub/grub.cfg
+' | sudo tee -a /etc/pacman.d/hooks/grub.hook" "Setting up GRUB hook"
+
     install_one "update-grub"
 }
 
