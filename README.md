@@ -12,7 +12,7 @@ A minimalist archlinux configuration script
 &ensp;[<kbd> <br> Wiki <br> </kbd>](https://github.com/Cardiacman13/Architect/wiki)&ensp;
 <br><br><br><br></div>
 
-## Before the script, here's a video from A13M4X to assist you with archinstall <a name="archinstall"/>
+## Before the script, here's a video from A1RM4X to assist you with archinstall <a name="archinstall"/>
 
 <img src="https://github.com/Cardiacman13/tuto-archlinux-fr/blob/main/assets/images/LOGO-A1RM4X-2K.png" width="30" height="30"> [ Install Arch like a boss: Archinstall script ](https://youtu.be/56u5tddLxCI?si=0DKyfDp7hQGTfLny)
 
