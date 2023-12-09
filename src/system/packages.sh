@@ -20,7 +20,6 @@ function usefull_package() {
         downgrade
         rebuild-detector
         xdg-desktop-portal
-        xdg-desktop-portal-gtk
         qt6-wayland
         neofetch
         power-profiles-daemon
