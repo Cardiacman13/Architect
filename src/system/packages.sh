@@ -20,11 +20,12 @@ function usefull_package() {
         downgrade
         rebuild-detector
         xdg-desktop-portal
-        qt6-wayland
         neofetch
         power-profiles-daemon
         hunspell
         hunspell-fr
+        btop
+        duf
         p7zip
         unrar
         ttf-liberation
@@ -43,7 +44,7 @@ function usefull_package() {
         man-pages
     "
     if [[ ${BTRFS} == true ]]; then
-        inlst+=" btrfs-progs btrfs-assistant"
+        inlst+=" btrfs-progs btrfs-assistant snapper snap-pac"
     fi
 
     install_lst "${inlst}"

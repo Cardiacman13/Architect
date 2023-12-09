@@ -19,6 +19,7 @@ function install_kde() {
         qt6-multimedia
         qt6-multimedia-gstreamer
         qt6-multimedia-ffmpeg
+        qt6-wayland
         kdeplasma-addons
         powerdevil
         kcalc

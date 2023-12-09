@@ -10,12 +10,11 @@ declare -A flatpak_list
 selected_packages=""
 
 function set_software_list() {
-    local -r lang=$(echo $LANG | cut -d_ -f1)
 
     desktop_list=(
         ["Discord"]="discord"
         ["Spotify"]="spotify"
-        ["LibreOffice"]="libreoffice-fresh libreoffice-fresh-${lang}"
+        ["LibreOffice"]="libreoffice-fresh"
         ["OnlyOffice"]="onlyoffice-bin"
         ["Audacity"]="audacity"
         ["Kazam"]="kazam"
@@ -42,7 +41,7 @@ function set_software_list() {
     )
 
     browser_list=(
-        ["Firefox"]="firefox firefox-i18n-${lang}"
+        ["Firefox"]="firefox"
         ["Brave"]="brave-bin"
         ["Chromium"]="chromium"
         ["Vivaldi"]="vivaldi vivaldi-ffmpeg-codecs"
@@ -57,6 +56,7 @@ function set_software_list() {
         ["Prism Launcher (Minecraft)"]="prismlauncher-qt5 jdk8-openjdk"
         ["ProtonUp QT"]="protonup-qt-bin"
         ["Goverlay"]="goverlay"
+        ["Gamemode"]="gamemode"
     )
 
     flatpak_list=(
