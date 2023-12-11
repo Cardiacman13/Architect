@@ -89,7 +89,7 @@ function select_and_install() {
         ((i++))
     done
 
-    echo -en "${BLUE}::${RESET} Packages to install (e.g., 1 2 3, 1-3, all): "
+    echo -en "${BLUE}::${RESET} Packages to install (e.g., 1 2 3, 1-3, all or press enter to skip): "
     read -ra input
 
     for item in "${input[@]}"; do
