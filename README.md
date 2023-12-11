@@ -138,6 +138,8 @@ Select additional software based on your needs:
 | Steam                   | steam                                       | package |
 | Lutris                  | lutris wine-staging                         | package |
 | Heroic Games Launcher   | heroic-games-launcher-bin                   | package |
+| Goverlay                | goverlay                                    | package |
+| Gamemode                | gamemode                                    | package |
 | Spotify                 | spotify                                     | package |
 
 
