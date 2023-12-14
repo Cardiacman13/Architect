@@ -82,8 +82,6 @@ Tune-up your system:
 - 🎮 Enhanced support for Xbox, PS5, 8bitdo controllers.
 - 🐟 Suggest Fish shell configuration. (zsh in WIP)
 
-Certainly! Here's an organized version based on subcategories:
-
 ---
 
 ### 7. 🔄 Ask to Install Additional Software
@@ -111,7 +109,7 @@ Select additional software based on your needs:
 | Name                    | Package                                     | Type    |
 |-------------------------|---------------------------------------------|---------|
 | Discord                 | discord                                     | package |
-| Telegram                | org.telegram.desktop                        | flatpak |
+| Telegram                | telegram-desktop                            | package |
 
 #### **Media and Design:**
 | Name                    | Package                                     | Type    |
