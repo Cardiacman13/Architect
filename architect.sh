@@ -87,6 +87,7 @@ function main() {
     little_step sound_server            "Sound server configuration"
     little_step setup_system_loaders    "System loaders configuration"
     little_step usefull_package         "Usefull package installation"
+    little_step firewall                "Firewall installation"
     little_step shell_config            "Shell configuration"
 
     # drivers
