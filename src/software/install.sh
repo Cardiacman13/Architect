@@ -13,6 +13,7 @@ function set_software_list() {
 
     desktop_list=(
         ["Discord"]="discord"
+        ["Telegram"]="telegram-desktop"
         ["Spotify"]="spotify"
         ["LibreOffice"]="libreoffice-fresh"
         ["OnlyOffice"]="onlyoffice-bin"
