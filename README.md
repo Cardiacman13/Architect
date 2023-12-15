@@ -60,6 +60,8 @@ Prepare your system for gaming with :
     - **Nvidia**: Standard drivers **recommended for most**.
     - **Nvidia-all**: For advanced users (via [`Frogging-Family/nvidia-all`](https://github.com/Frogging-Family/nvidia-all) repo).
 
+<img src="https://github.com/Cardiacman13/tuto-archlinux-fr/blob/main/assets/images/LOGO-A1RM4X-2K.png" width="30" height="30"> [ Never struggle again with Nvidia drivers on Linux! NVIDIA ALL by TkG on Arch / Arch based distros ](https://www.youtube.com/watch?v=QW2XGMAu6VE)
+
 ### 4. 🖥️ Desktop Environment
 Choose your DE:
 - 🖥️ `GNOME`.
