@@ -12,7 +12,6 @@ function intel_drivers() {
         intel-gmmlib
         intel-media-driver
         onevpl-intel-gpu
-        gstreamer-vaapi
         libva-mesa-driver
         lib32-libva-mesa-driver
         mesa-vdpau

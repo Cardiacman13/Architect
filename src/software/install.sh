@@ -1,6 +1,7 @@
 source src/cmd.sh
 
 declare -A desktop_list
+declare -A system_list
 declare -A browser_list
 declare -A video_list
 declare -A picture_list
@@ -21,6 +22,9 @@ function set_software_list() {
         ["Kazam"]="kazam"
         ["Visual Studio Code"]="visual-studio-code-bin"
         ["Virtualbox"]="virtualbox virtualbox-host-dkms virtualbox-guest-iso"
+    )
+
+    system_list=(
         ["Open RGB"]="openrgb-bin"
         ["Arch Update"]="arch-update"
         ["PAMAC ALL"]="pamac-all"
@@ -115,6 +119,7 @@ function install_software() {
     set_software_list
 
     select_and_install browser_list "browsers"
+    select_and_install system_list "system"
     select_and_install desktop_list "desktop"
     select_and_install video_list "video"
     select_and_install picture_list "image"

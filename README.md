@@ -103,7 +103,8 @@ Select additional software based on your needs:
 #### **System Utilities:**
 | Name                    | Package                                     | Type    |
 |-------------------------|---------------------------------------------|---------|
-| Arch Update             | arch-update                                   | package |
+| Arch Update             | arch-update                                 | package |
+| PAMAC                   | pamac-all                                   | package |
 | Open RGB                | openrgb                                     | package |
 
 
