@@ -27,7 +27,7 @@ This script is perfect for configuring a **stock Arch** system with a **minimal 
 > It is not suitable for outdated computers. Ensure your hardware meets the requirements for the latest Nvidia drivers.
 
 > [!CAUTION]
-> The script modifies your system configuration, see the wiki or comunity pannel for more informations.
+> The script modifies your system configuration, see the wiki or community panel for more informations.
 
 Execute the following in the terminal to run the script (**requires sudo access**):
 
