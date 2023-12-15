@@ -23,6 +23,7 @@ function set_software_list() {
         ["Virtualbox"]="virtualbox virtualbox-host-dkms virtualbox-guest-iso"
         ["Open RGB"]="openrgb-bin"
         ["Arch Update"]="arch-update"
+        ["PAMAC ALL"]="pamac-all"
     )
 
     picture_list=(
