@@ -28,6 +28,7 @@ function set_software_list() {
         ["Open RGB"]="openrgb-bin"
         ["Arch Update"]="arch-update"
         ["PAMAC ALL"]="pamac-all"
+        ["PAMAC tray icon for plasma"]="pamac-tray-icon-plasma"
     )
 
     picture_list=(
