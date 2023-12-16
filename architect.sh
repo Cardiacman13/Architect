@@ -45,6 +45,7 @@ source src/system/drivers/gpu.sh
 source src/system/kernel.sh
 source src/system/other.sh
 source src/system/packages.sh
+source src/system/grub-btrfs.sh
 source src/system/shell.sh
 
 function display_step() {
@@ -87,6 +88,7 @@ function main() {
     little_step sound_server            "Sound server configuration"
     little_step setup_system_loaders    "System loaders configuration"
     little_step usefull_package         "Usefull package installation"
+    little_step grub-btrfs              "grub-btrfs setup"
     little_step firewall                "Firewall installation"
     little_step shell_config            "Shell configuration"
 
