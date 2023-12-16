@@ -3,10 +3,10 @@ function grub-btrfs() {
     choice="${choice,,}"
 
     if [[ $choice =~ ^(yes|y)$ ]]; then
-        install_lst "snapper snapper-support snap-pac grub-btrfs "
-        exec_log "sudo umount /.snapshots"
-        exec_log "sudo rm -r /.snapshots"
-        exec_log "sudo snapper -c root create-config /"
-        exec_log "sudo systemctl enable --now grub-btrfsd"
+        install_lst "snapper snapper-support snap-pac grub-btrfs"
+        exec_log "sudo umount /.snapshots" "Umount /.snapshots"
+        exec_log "sudo rm -r /.snapshots" "Remove /.snapshots"
+        exec_log "sudo snapper -c root create-config /" "Snapper create-config for root in /.snapshots"
+        exec_log "sudo systemctl enable --now grub-btrfsd" "Enable and start grub-btrfsd service"
     fi
 }
