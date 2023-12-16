@@ -44,7 +44,7 @@ function usefull_package() {
         man-pages
     "
     if [[ ${BTRFS} == true ]]; then
-        inlst+=" btrfs-progs btrfs-assistant snapper snap-pac"
+        inlst+=" btrfs-progs btrfs-assistant"
     fi
 
     install_lst "${inlst}"
