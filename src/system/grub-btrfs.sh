@@ -8,5 +8,6 @@ function grub-btrfs() {
         exec_log "sudo rm -r /.snapshots" "Remove /.snapshots"
         exec_log "sudo snapper -c root create-config /" "Snapper create-config for root in /.snapshots"
         exec_log "sudo systemctl enable --now grub-btrfsd" "Enable and start grub-btrfsd service"
+        exec_log "sudo btrfs subvol set-default 256 /" "set-default subvolume 256"
     fi
 }
