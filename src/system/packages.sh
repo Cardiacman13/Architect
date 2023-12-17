@@ -29,6 +29,7 @@ function usefull_package() {
         p7zip
         unrar
         ttf-liberation
+        ttf-meslo-nerd
         noto-fonts-emoji
         adobe-source-code-pro-fonts
         otf-font-awesome
