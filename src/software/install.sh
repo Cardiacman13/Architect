@@ -136,4 +136,8 @@ function install_software() {
 
     install_lst "${aur_packages}" "aur"
     install_lst "${flatpak_packages}" "flatpak"
+
+    if [[ "${aur_packages}" =~ "arch-update" ]]; then
+        exec_log "systemctl --user enable --now arch-update.timer" "Enable arch-update.timer"
+    fi
 }
