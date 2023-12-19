@@ -17,9 +17,10 @@ A minimalist archlinux configuration script
 <img src="https://github.com/Cardiacman13/tuto-archlinux-fr/blob/main/assets/images/LOGO-A1RM4X-2K.png" width="30" height="30"> [ Install Arch like a boss: Archinstall script ](https://youtu.be/56u5tddLxCI?si=0DKyfDp7hQGTfLny)
 
 ## 🚀 Arch Linux Script <a name="script"/>
+
 <img src="https://github.com/Cardiacman13/tuto-archlinux-fr/blob/main/assets/images/LOGO-A1RM4X-2K.png" width="30" height="30"> [ Configure Arch the easy way: Architect project by Cardiac ](https://youtu.be/0MV3MxmO7ns?si=eOMc-e4wdSwv1Fbb)
 
-This script is perfect for configuring a **stock Arch** system with a **minimal set of packages** tailored to your needs right after using `archinstall`. Specifically, it's **geared towards gaming**.
+This script is perfect for configuring a **stock Arch** system with a **minimal set of packages** tailored to your needs right after using [`archinstall`](https://github.com/archlinux/archinstall). Specifically, it's **geared towards gaming**.
 
 > [!IMPORTANT]
 > It's specifically designed for a pure Arch Linux experience (not tested on *Garuda*, *Manjaro*, etc.).
@@ -27,7 +28,7 @@ This script is perfect for configuring a **stock Arch** system with a **minimal 
 > It is not suitable for outdated computers. Ensure your hardware meets the requirements for the latest Nvidia drivers.
 
 > [!CAUTION]
-> The script modifies your system configuration, see the wiki or community panel for more informations.
+> The script modifies your system configuration, see the [wiki](https://github.com/Cardiacman13/Architect/wiki) or [community panel](https://github.com/Cardiacman13/Architect/discussions) for more informations.
 
 Execute the following in the terminal to run the script (**requires sudo access**):
 
@@ -89,7 +90,7 @@ Tune-up your system:
 
 ### 7. 🔄 Ask to Install Additional Software
 
-Select additional software based on your needs:
+Select additional softwares based on your needs:
 
 #### **Web Browsers:**
 | Name                    | Package                                     | Type    |
@@ -107,7 +108,6 @@ Select additional software based on your needs:
 | Arch Update             | arch-update                                 | package |
 | PAMAC                   | pamac-all                                   | package |
 | Open RGB                | openrgb                                     | package |
-
 
 #### **Communication:**
 | Name                    | Package                                     | Type    |
@@ -145,7 +145,6 @@ Select additional software based on your needs:
 | Gamemode                | gamemode                                    | package |
 | Spotify                 | spotify                                     | package |
 
-
 #### **Flatpak Versions:**
 | Name                    | ID                                          |
 |-------------------------|---------------------------------------------|
@@ -155,7 +154,7 @@ Select additional software based on your needs:
 | Discord                 | com.discordapp.Discord                      |
 | Brave                   | com.brave.Browser                           |
 | Spotify                 | com.spotify.Client                          |
-| Deezer                  | dev.aunetx.deezer                           | 
+| Deezer                  | dev.aunetx.deezer                           |
 | Telegram                | org.telegram.desktop                        |
 | ProtonUP                | net.davidotek.pupgui2                       |
 | Lutris                  | net.lutris.Lutris                           |
@@ -181,7 +180,8 @@ Sources and useful links :
 - [Arch Linux](https://archlinux.org/) team for their amazing work.
 - Arch Linux community for their amazing documentation.
 - AUR maintainers for their hard work.
-- developers of the packages used in this project. Special mention to : 
+- All contributors.
+- Developers of the packages used in this project. Special mention to : 
 - [Frogging Family](https://github.com/Frogging-Family)
 - [OpenRGB](https://github.com/CalcProgrammer1/OpenRGB)
 - Thanks to the [GLF Discord](https://discord.gg/6t4REDETJd) for the numerous tests and feedback.
