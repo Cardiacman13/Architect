@@ -83,6 +83,7 @@ Tune-up your system:
 - 🎵 Bluetooth configuration.
 - 🎮 Enhanced support for Xbox, PS5, 8bitdo controllers.
 - 🐟 Suggest Fish shell configuration. (zsh in WIP)
+- 📂 Btrfs support in GRUB with grub-btrfs.
 
 ---
 
@@ -163,11 +164,9 @@ Select additional software based on your needs:
 
 ---
 
-Feel free to adjust the formatting or content as needed!
-
 ## Troubleshooting
 
-For help, open a chat open a conversation in the conversation section visit the GLF Discord (fr/en): [Discord GLF](http://discord.gg/EP3Jm8YMvj)
+For help, open a conversation in the [conversation section](https://github.com/Cardiacman13/Architect/discussions)
 
 ## Sources
 
