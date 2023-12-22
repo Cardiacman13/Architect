@@ -29,8 +29,6 @@ function install_kde() {
 
     install_lst "${inlst}"
 
-    uninstall_one "discover"
-
     if [ ! -f /etc/sddm.conf ]; then
         exec_log "sudo touch /etc/sddm.conf" "Creating /etc/sddm.conf"
     fi
