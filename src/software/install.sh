@@ -21,7 +21,7 @@ function set_software_list() {
         ["Audacity"]="audacity"
         ["Kazam"]="kazam"
         ["Visual Studio Code"]="visual-studio-code-bin"
-        ["Virtualbox"]="virtualbox virtualbox-host-dkms virtualbox-guest-iso"
+        ["Virtualbox"]="virtualbox virtualbox-host-dkms virtualbox-guest-iso virtualbox-ext-oracle"
     )
 
     system_list=(
@@ -139,5 +139,10 @@ function install_software() {
 
     if [[ "${aur_packages}" =~ "arch-update" ]]; then
         exec_log "systemctl --user enable --now arch-update.timer" "Enable arch-update.timer"
+    fi
+    
+    if [[ "${aur_packages}" =~ "virtualbox" ]]; then
+        exec_log "sudo gpasswd -a $USER vboxusers" "Add the current user to the vboxusers group"
+        exec_log "sudo systemctl enable vboxweb.service" "Enable vboxweb"
     fi
 }
