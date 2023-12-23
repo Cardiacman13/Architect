@@ -52,7 +52,10 @@ When = PostTransaction
 Exec = /usr/bin/grub-mkconfig -o /boot/grub/grub.cfg
 ' | sudo tee -a /etc/pacman.d/hooks/grub.hook" "Setting up GRUB hook"
 
-    install_one "update-grub"
+    install_lst "update-grub os-prober"
+    exec_log "sudo sed -i 's/#\s*GRUB_DISABLE_OS_PROBER=false/GRUB_DISABLE_OS_PROBER=false/' '/etc/default/grub'" "Enabling os-prober"
+    exec_log "sudo os-prober" "Running os-prober"
+    exec_log "sudo update-grub" "Updating GRUB"
 }
 
 function firewall() {
