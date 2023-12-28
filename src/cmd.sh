@@ -49,7 +49,7 @@ function install_one() {
 
     echo "[INFO]: Exit status: ${exit_status}" >>"${LOG_FILE}"
     if [[ ${exit_status} -ne 0 ]]; then
-        echo -e "${RED}Error: ${package} installation failed${RESET}"
+        eval_gettext "\${RED}Error: \${package} installation failed\${RESET}"; echo
     fi
 }
 

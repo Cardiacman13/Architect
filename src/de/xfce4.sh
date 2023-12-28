@@ -45,5 +45,5 @@ function install_xfce() {
     "
 
     install_lst "${inlst}"
-    exec_log "xdg-user-dirs-update" "Updating user directories"
+    exec_log "xdg-user-dirs-update" "$(eval_gettext "Updating user directories")"
 }

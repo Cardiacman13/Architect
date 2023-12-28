@@ -1,0 +1,615 @@
+# French translations for Architect package
+# Traductions françaises du paquet Architect.
+# Copyright (C) 2023 THE Architect'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the Architect package.
+# Maël <mael@mmb5.home>, 2023.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Architect V2.0.4\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-12-31 18:45+0100\n"
+"PO-Revision-Date: 2023-12-31 17:53+0100\n"
+"Last-Translator: Skythrew <mael.guerin@murena.io>\n"
+"Language-Team: French\n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: src/de/detect.sh:8 src/de/detect.sh:11
+#, sh-format
+msgid "What is your desktop environment"
+msgstr "Quel est votre environnement de bureau"
+
+#: src/de/gnome.sh:42
+#, sh-format
+msgid "Setting gtk theme to adw-gtk3"
+msgstr "Changement du thème vers adw-gtk3"
+
+#: src/de/gnome.sh:43
+#, sh-format
+msgid "Enabling numlock on startup"
+msgstr "Activation du verrouillage numérique au démarrage"
+
+#: src/de/gnome.sh:44
+#, sh-format
+msgid "Disable GDM rules to unlock Wayland"
+msgstr "Désactivation des règles GDM pour déverrouiller Wayland"
+
+#: src/de/kde.sh:33
+#, sh-format
+msgid "Creating /etc/sddm.conf"
+msgstr "Création de /etc/sddm.conf"
+
+#: src/de/kde.sh:35
+#, sh-format
+msgid "Setting Breeze theme for SDDM"
+msgstr "Mise en place du thème Breeze pour SDDM"
+
+#: src/de/kde.sh:36
+#, sh-format
+msgid "Setting Numlock=on for SDDM"
+msgstr "Mise en place de Numlock=on pour SDDM"
+
+#: src/de/kde.sh:37
+#, sh-format
+msgid "Setting GTK_USE_PORTAL=1"
+msgstr "Mise en place de GTK_USE_PORTAL=1"
+
+#: src/de/xfce4.sh:48
+#, sh-format
+msgid "Updating user directories"
+msgstr "Mise à jour des dossiers utilisateurs"
+
+#: src/software/install.sh:76
+#, sh-format
+msgid "${GREEN}${software_type} software${RESET} :"
+msgstr "${GREEN}Logiciels ${software_type}${RESET} :"
+
+#: src/software/install.sh:83
+#, sh-format
+msgid ""
+"${BLUE}::${RESET} Packages to install (e.g., 1 2 3, 1-3, all or press enter "
+"to skip): "
+msgstr ""
+"${BLUE}::${RESET} Paquets à installer (e.g., 1 2 3, 1-3, all ou appuyez sur "
+"Entrée pour passer): "
+
+#: src/software/install.sh:120
+#, sh-format
+msgid "Enable arch-update.timer"
+msgstr "Activation de arch-update.timer"
+
+#: src/software/install.sh:124
+#, sh-format
+msgid "Add the current user to the vboxusers group"
+msgstr "Ajout de l'utilisateur actuel au groupe vboxusers"
+
+#: src/software/install.sh:125
+#, sh-format
+msgid "Enable vboxweb"
+msgstr "Activation de vboxweb"
+
+#: src/system/config/pacman.sh:4
+#, sh-format
+msgid "Enabling color in pacman"
+msgstr "Activation de la couleur dans pacman"
+
+#: src/system/config/pacman.sh:5
+#, sh-format
+msgid "Enabling verbose package lists in pacman"
+msgstr "Activation des listes de paquets détaillées dans pacman"
+
+#: src/system/config/pacman.sh:6
+#, sh-format
+msgid "Enabling parallel downloads and ILoveCandy in pacman"
+msgstr ""
+"Activation des téléchargements en parallèle et du ILoveCandy dans pacman"
+
+#: src/system/config/pacman.sh:7
+#, sh-format
+msgid "Enabling multilib repository"
+msgstr "Activation du dépôt multilib"
+
+#: src/system/config/pacman.sh:8
+#, sh-format
+msgid "Enabling multithread compilation"
+msgstr "Activation de la compilation multithread"
+
+#: src/system/config/pacman.sh:9
+#, sh-format
+msgid "Installing pacman-contrib"
+msgstr "Installation de pacman-contrib"
+
+#: src/system/config/pacman.sh:10
+#, sh-format
+msgid "Enabling paccache timer"
+msgstr "Activation du timer paccache"
+
+#: src/system/config/pacman.sh:15
+#, sh-format
+msgid "Updating mirrorlist ${RED}(might be long)${RESET}"
+msgstr "Mise à jour de la liste des miroirs ${RED}(peut être long)${RESET}"
+
+#: src/system/config/pacman.sh:16
+#, sh-format
+msgid "Updating full system ${RED}(might be long)${RESET}"
+msgstr "Mise à jour du système complet ${RED}(peut être long)${RESET}"
+
+#: src/system/config/aur.sh:5
+#, sh-format
+msgid "Installing git"
+msgstr "Installation de git"
+
+#: src/system/config/aur.sh:19
+#, sh-format
+msgid "which aur helper do you want to install ? (yay/paru) : "
+msgstr "Quel gestionnaire AUR souhaitez-vous installer ? (yay/paru) : "
+
+#: src/system/config/aur.sh:22 src/system/drivers/gpu.sh:17
+#: src/system/shell.sh:35
+#, sh-format
+msgid "${GREEN}You chose ${choice}${RESET}"
+msgstr "${GREEN}Vous avez choisi ${choice}${RESET}"
+
+#: src/system/config/aur.sh:34
+#, sh-format
+msgid "Cloning $DIR"
+msgstr "Clonage de $DIR"
+
+#: src/system/config/aur.sh:36
+#, sh-format
+msgid "Installing ${AUR}"
+msgstr "Installation de ${AUR}"
+
+#: src/system/config/aur.sh:38
+#, sh-format
+msgid "Deleting directory $DIR"
+msgstr "Suppression du dossier $DIR"
+
+#: src/system/config/aur.sh:43 src/system/config/aur.sh:46
+#, sh-format
+msgid "Configuring ${AUR}"
+msgstr "Configuration de ${AUR}"
+
+#: src/system/config/aur.sh:44
+#, sh-format
+msgid "Enabling SudoLoop option for yay"
+msgstr "Activation de l'option SudoLoop de yay"
+
+#: src/system/config/aur.sh:47
+#, sh-format
+msgid "Enabling BottomUp option for paru"
+msgstr "Activation de l'option BottomUp de paru"
+
+#: src/system/config/aur.sh:48
+#, sh-format
+msgid "Enabling SudoLoop option for paru"
+msgstr "Activation de l'option SudoLoop de paru"
+
+#: src/system/config/aur.sh:49
+#, sh-format
+msgid "Enabling CombinedUpgrade option for paru"
+msgstr "Activation de l'option CombinedUpgrade de paru"
+
+#: src/system/config/aur.sh:50
+#, sh-format
+msgid "Enabling UpgradeMenu option for paru"
+msgstr "Activation de l'option UpgradeMenu de paru"
+
+#: src/system/config/aur.sh:51
+#, sh-format
+msgid "Enabling NewsOnUpgrade option for paru"
+msgstr "Activation de l'option NewsOnUpgrade de paru"
+
+#: src/system/config/aur.sh:52
+#, sh-format
+msgid "Enabling SkipReview option for paru"
+msgstr "Activation de l'option SkipReview de paru"
+
+#: src/system/drivers/amd.sh:19
+#, sh-format
+msgid ""
+"Would you like to install ROCM (${RED}say No if unsure${RESET}) (y/N) : "
+msgstr ""
+"Souhaitez-vous installer ROCM (${RED}dites Non si vous n'êtes pas "
+"sûr${RESET}) (y/N) : "
+
+#: src/system/drivers/devices.sh:4
+#, sh-format
+msgid ""
+"Would you want to install xpadneo ? (Can improve xbox gamepad support, ${RED}"
+"say No if unsure${RESET}) (y/N) : "
+msgstr ""
+"Voulez-vous installer xpadneo ? (Peut améliorer le support des manettes "
+"xbox, ${RED}dites Non si vous n'êtes pas sûr${RESET}) (y/N) : "
+
+#: src/system/drivers/devices.sh:11
+#, sh-format
+msgid "Do you want to use PS5 controllers ? (y/N) : "
+msgstr "Voulez-vous utiliser des manettes PS5 ? (y/N) : "
+
+#: src/system/drivers/devices.sh:20
+#, sh-format
+msgid "Do you want to use a printer ? (y/N) : "
+msgstr "Voulez-vous utiliser une imprimante ? (y/N) : "
+
+#: src/system/drivers/devices.sh:40
+#, sh-format
+msgid "Do you want to use a EPSON printer ? (y/N) : "
+msgstr "Voulez-vous utiliser une imprimante EPSON ? (y/N) : "
+
+#: src/system/drivers/devices.sh:49
+#, sh-format
+msgid "Do you want to use a HP printer ? (y/N) : "
+msgstr "Voulez-vous utiliser une imprimante HP ? (y/N) : "
+
+#: src/system/drivers/devices.sh:61
+#, sh-format
+msgid "enabling avahi-daemon service"
+msgstr "Activation du service avahi-daemon"
+
+#: src/system/drivers/devices.sh:62
+#, sh-format
+msgid "enabling cups service"
+msgstr "Activation du service cups"
+
+#: src/system/drivers/devices.sh:67
+#, sh-format
+msgid "Do you want to use bluetooth ? (y/N) : "
+msgstr "Voulez-vous utiliser le bluetooth ? (y/N) : "
+
+#: src/system/drivers/devices.sh:79
+#, sh-format
+msgid "enabling bluetooth service"
+msgstr "Activation du service bluetooth"
+
+#: src/system/drivers/gpu.sh:10 src/system/drivers/gpu.sh:13
+#, sh-format
+msgid "What is your graphics card type ?"
+msgstr "Quel est le type de votre carte graphique ?"
+
+#: src/system/drivers/nvidia.sh:4
+#, sh-format
+msgid "Setting nvidia power management option"
+msgstr "Configuration de l'option de gestion d'énergie NVIDIA"
+
+#: src/system/drivers/nvidia.sh:5
+#, sh-format
+msgid "Setting nvidia-drm modeset=1 option"
+msgstr "Configurationd de l'option nvidia-drm modeset=1"
+
+#: src/system/drivers/nvidia.sh:9
+#, sh-format
+msgid "Do you have an Intel/Nvidia Laptop (y/N) : "
+msgstr "Avez-vous un portable Intel/Nvidia (y/N) : "
+
+#: src/system/drivers/nvidia.sh:53
+#, sh-format
+msgid "Clean old nvidia drivers dependencies"
+msgstr "Nettoyage des dépendances des anciens pilotes NVIDIA"
+
+#: src/system/drivers/nvidia.sh:55
+#, sh-format
+msgid ""
+"Do you want to use NVIDIA-ALL ${RED}/!\\ caution: if you choose nvidia-all, "
+"you'll need to know how to maintain it.${RESET} ? (y/N) : "
+msgstr ""
+"Voulez-vous utiliser NVIDIA-ALL ${RED}/!\\ caution: si vous choisissez "
+"nvidia-all, vous devez savoir comment le maintenir.${RESET} ? (y/N) : "
+
+#: src/system/drivers/nvidia.sh:60
+#, sh-format
+msgid "cloning nvidia-all repository"
+msgstr "Clonage du dépôt nvidia-all"
+
+#: src/system/drivers/nvidia.sh:64
+#, sh-format
+msgid "removal of nvidia-all repository"
+msgstr "Suppression du dépôt nvidia-all"
+
+#: src/system/drivers/nvidia.sh:84
+#, sh-format
+msgid "Do you want to install CUDA (${RED}say No if unsure${RESET}) (y/N) : "
+msgstr ""
+"Voulez-vous installer CUDA (${RED}dites Non si vous n'êtes pas sûr${RESET}) "
+"(y/N) : "
+
+#: src/system/drivers/vm.sh:21
+#, sh-format
+msgid "activation of vboxservice"
+msgstr "Activation du vboxservice"
+
+#: src/system/drivers/vm.sh:22
+#, sh-format
+msgid "activation of VBoxClient-all"
+msgstr "Activation de VBoxClient-all"
+
+#: src/system/grub-btrfs.sh:2
+#, sh-format
+msgid ""
+"Do you want to install and setup grub-btrfs and timeshift ${RED}say No if "
+"unsure${RESET} /!\\  ? (y/N) : "
+msgstr ""
+"Voulez-vous installer et configurer grub-btrfs et timeshift ${RED}dites Non "
+"si vous n'êtes pas sûr${RESET} /!\\  ? (y/N) : "
+
+#: src/system/grub-btrfs.sh:7
+#, sh-format
+msgid "Enable cronie"
+msgstr "Activationd de cronie"
+
+#: src/system/grub-btrfs.sh:8
+#, sh-format
+msgid "Enable grub-btrfsd"
+msgstr "Activation de grub-btrfsd"
+
+#: src/system/grub-btrfs.sh:9
+#, sh-format
+msgid "setup grub-btrfsd for timeshift"
+msgstr "Configuration de grub-btrfsd pour timeshift"
+
+#: src/system/internet.sh:8
+#, sh-format
+msgid "${RED}Error: No Internet connection${RESET}"
+msgstr "${RED}Erreur: Pas de connexion Internet${RESET}"
+
+#: src/system/kernel.sh:20
+#, sh-format
+msgid "Setting ${key} to ${value}"
+msgstr "Configuration de la valeur de ${key} à ${value}"
+
+#: src/system/other.sh:26
+#, sh-format
+msgid "Cleaning old sound server dependencies"
+msgstr "Nettoyage des dépendances de l'ancien serveur son"
+
+#: src/system/other.sh:31
+#, sh-format
+msgid "Checking if GRUB is installed"
+msgstr "Vérification de la présence de GRUB"
+
+#: src/system/other.sh:38
+#, sh-format
+msgid "Creating /etc/pacman.d/hooks"
+msgstr "Création de /etc/pacman.d/hooks"
+
+#: src/system/other.sh:40
+#, sh-format
+msgid "Creating /etc/pacman.d/hooks/grub.hook"
+msgstr "Création de /etc/pacman.d/hooks/grub.hook"
+
+#: src/system/other.sh:53
+#, sh-format
+msgid "Setting up GRUB hook"
+msgstr "Configuration du hook GRUB"
+
+#: src/system/other.sh:56
+#, sh-format
+msgid "Enabling os-prober"
+msgstr "Activation de os-prober"
+
+#: src/system/other.sh:57
+#, sh-format
+msgid "Running os-prober"
+msgstr "Exécution d'os-prober"
+
+#: src/system/other.sh:58
+#, sh-format
+msgid "Updating GRUB"
+msgstr "Mise à jour de GRUB"
+
+#: src/system/other.sh:62
+#, sh-format
+msgid ""
+"Do you want to install a firewall /!\\ Install and activate firewalld? The "
+"default configuration may block access to printers and other devices on your "
+"local network ? (y/N) : "
+msgstr ""
+"Voulez-vous installer un pare-feu /!\\ Installer et activer firewalld? La "
+"configuration par défaut peut bloquer l'accès à des imprimantes et autres "
+"appareils sur votre réseau local ? (y/N) : "
+
+#: src/system/other.sh:67
+#, sh-format
+msgid "Enabling firewalld"
+msgstr "Activation de firewalld"
+
+#: src/system/shell.sh:31
+#, sh-format
+msgid "What is your default shell ? (bash/fish) : "
+msgstr "Quel est votre shell par défaut ? (bash/fish) : "
+
+#: src/system/shell.sh:46
+#, sh-format
+msgid "Setting default shell to fish..."
+msgstr "Changement du shell par défaut vers fish..."
+
+#: src/system/shell.sh:58
+#, sh-format
+msgid "Invalid choice"
+msgstr "Choix invalide"
+
+#: src/end.sh:5
+#, sh-format
+msgid "Done in ${GREEN}${duration}${RESET} seconds."
+msgstr "Terminé en ${GREEN}${duration}${RESET} secondes."
+
+#: src/end.sh:8
+#, sh-format
+msgid "Do you want to upload the log file to a pastebin? (y/N) "
+msgstr "Voulez-vous téléverser le fichier journal vers un pastebin? (y/N) "
+
+#: src/end.sh:12
+#, sh-format
+msgid "Uploading log file to pastebin..."
+msgstr "Téléversement du fichier journal vers pastebin..."
+
+#: src/end.sh:14
+#, sh-format
+msgid "Log file uploaded to ${url}"
+msgstr "Fichier journal téléversé vers ${url}"
+
+#: src/end.sh:17
+#, sh-format
+msgid ""
+"${GREEN}Script completed successfully, the system must restart${RESET}: "
+"Press ${GREEN}Enter${RESET} to restart or ${RED}Ctrl+C${RESET} to cancel."
+msgstr ""
+"${GREEN}Script terminé avec succès, le système doit redémarrer${RESET}: "
+"Appuyez sur ${GREEN}Entrée${RESET} pour redémarrer ou ${RED}Ctrl+C${RESET} "
+"pour annuler."
+
+#: src/end.sh:19
+#, sh-format
+msgid "${GREEN}Restarting in ${i} seconds...${RESET}"
+msgstr "${GREEN}Redémarrage dans ${i} secondes...${RESET}"
+
+#: src/init.sh:8
+#, sh-format
+msgid "Script Architect for Arch Linux"
+msgstr "Script Architect pour Arch Linux"
+
+#: src/init.sh:20
+#, sh-format
+msgid "${RED}This script will make changes to your system.${RESET}"
+msgstr ""
+"${RED}Ce script va effectuer des changements sur votre système.${RESET}"
+
+#: src/init.sh:21
+#, sh-format
+msgid ""
+"Some steps may take longer, depending on your Internet connection and CPU."
+msgstr ""
+"Quelques étapes prendront peut-être plus de temps, en fonction de votre "
+"connexion Internet et de votre processeur."
+
+#: src/init.sh:22
+#, sh-format
+msgid ""
+"Press ${GREEN}Enter${RESET} to continue, or ${RED}Ctrl+C${RESET} to cancel."
+msgstr ""
+"Appuyez sur ${GREEN}Entrée${RESET} pour continuer, ou ${RED}Ctrl+C${RESET} "
+"pour annuler."
+
+#: src/cmd.sh:52
+#, sh-format
+msgid "${RED}Error: ${package} installation failed${RESET}"
+msgstr "${RED}Erreur: l'installation de ${package} a échoué${RESET}"
+
+#: architect.sh:20
+#, sh-format
+msgid "${GREEN}Root privileges granted${RESET}"
+msgstr "${GREEN}Privilèges d'administrateur accordés${RESET}"
+
+#: architect.sh:22
+#, sh-format
+msgid "${RED}Root privileges denied${RESET}"
+msgstr "${GREEN}Privilèges d'administrateur refusés${RESET}"
+
+#: architect.sh:84
+#, sh-format
+msgid "Initialization"
+msgstr "Initialisation"
+
+#: architect.sh:89
+#, sh-format
+msgid "System preparation"
+msgstr "Préparation du système"
+
+#: architect.sh:91
+#, sh-format
+msgid "Pacman configuration"
+msgstr "Configuration de pacman"
+
+#: architect.sh:92
+#, sh-format
+msgid "AUR helper installation"
+msgstr "Installation du gestionnaire AUR"
+
+#: architect.sh:93
+#, sh-format
+msgid "Mirrorlist configuration"
+msgstr "Configuration de la liste des miroirs"
+
+#: architect.sh:94
+#, sh-format
+msgid "Kernel headers installation"
+msgstr "Installation des en-têtes (headers) du kernel"
+
+#: architect.sh:95
+#, sh-format
+msgid "Max map count configuration"
+msgstr "Configuration du max map count"
+
+#: architect.sh:96
+#, sh-format
+msgid "Sound server configuration"
+msgstr "Configuration du serveur son"
+
+#: architect.sh:97
+#, sh-format
+msgid "System loaders configuration"
+msgstr "Configuration des chargeurs de démarrage"
+
+#: architect.sh:98
+#, sh-format
+msgid "Useful package installation"
+msgstr "Installation des paquets utiles"
+
+#: architect.sh:99
+#, sh-format
+msgid "grub-btrfs setup"
+msgstr "Configuration de grub-btrfs"
+
+#: architect.sh:100
+#, sh-format
+msgid "Firewall installation"
+msgstr "Configuration du pare-feu"
+
+#: architect.sh:101
+#, sh-format
+msgid "Shell configuration"
+msgstr "Configuration du shell"
+
+#: architect.sh:104
+#, sh-format
+msgid "System configuration"
+msgstr "Configuration du système"
+
+#: architect.sh:106
+#, sh-format
+msgid "Video drivers installation"
+msgstr "Installation des pilotes vidéo"
+
+#: architect.sh:107
+#, sh-format
+msgid "Gamepad configuration"
+msgstr "Configuration des manettes"
+
+#: architect.sh:108
+#, sh-format
+msgid "Printer configuration"
+msgstr "Configuration de(s) imprimante(s)"
+
+#: architect.sh:109
+#, sh-format
+msgid "Bluetooth configuration"
+msgstr "Configuration du bluetooth"
+
+#: architect.sh:112
+#, sh-format
+msgid "Environment configuration"
+msgstr "Configuration de l'environnement"
+
+#: architect.sh:114
+#, sh-format
+msgid "Desktop environment detection"
+msgstr "Détection de l'environnement de bureau"
+
+#: architect.sh:118 architect.sh:119
+#, sh-format
+msgid "Software installation"
+msgstr "Installation de logiciels"

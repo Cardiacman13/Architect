@@ -30,9 +30,9 @@ function install_kde() {
     install_lst "${inlst}"
 
     if [ ! -f /etc/sddm.conf ]; then
-        exec_log "sudo touch /etc/sddm.conf" "Creating /etc/sddm.conf"
+        exec_log "sudo touch /etc/sddm.conf" "$(eval_gettext "Creating /etc/sddm.conf")"
     fi
-    exec_log "echo -e '[Theme]\nCurrent=breeze' | sudo tee -a /etc/sddm.conf" "Setting Breeze theme for SDDM"
-    exec_log "echo -e '[General]\nNumlock=on' | sudo tee -a /etc/sddm.conf" "Setting Numlock=on for SDDM"
-    exec_log "echo 'GTK_USE_PORTAL=1' | sudo tee -a /etc/environment" "Setting GTK_USE_PORTAL=1"
+    exec_log "echo -e '[Theme]\nCurrent=breeze' | sudo tee -a /etc/sddm.conf" "$(eval_gettext "Setting Breeze theme for SDDM")"
+    exec_log "echo -e '[General]\nNumlock=on' | sudo tee -a /etc/sddm.conf" "$(eval_gettext "Setting Numlock=on for SDDM")"
+    exec_log "echo 'GTK_USE_PORTAL=1' | sudo tee -a /etc/environment" "$(eval_gettext "Setting GTK_USE_PORTAL=1")"
 }

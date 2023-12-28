@@ -1,4 +1,4 @@
-source src/cmd.sh
+# source src/cmd.sh
 
 declare -A desktop_list
 declare -A system_list
@@ -73,14 +73,14 @@ function select_and_install() {
     local options=()
     local input
 
-    echo "${GREEN}${software_type} software${RESET} :"
+    eval_gettext "\${GREEN}\${software_type} software\${RESET} :"; echo
     for software in "${!software_list[@]}"; do
         printf " ${PURPLE}%2d${RESET}) %s\n" "$i" "$software"
         options+=("$software")
         ((i++))
     done
 
-    echo -en "${BLUE}::${RESET} Packages to install (e.g., 1 2 3, 1-3, all or press enter to skip): "
+    eval_gettext "\${BLUE}::\${RESET} Packages to install (e.g., 1 2 3, 1-3, all or press enter to skip): "
     read -ra input
 
     for item in "${input[@]}"; do
@@ -117,11 +117,11 @@ function install_software() {
     install_lst "${aur_packages}" "aur"
 
     if [[ "${aur_packages}" =~ "arch-update" ]]; then
-        exec_log "systemctl --user enable --now arch-update.timer" "Enable arch-update.timer"
+        exec_log "systemctl --user enable --now arch-update.timer" "$(eval_gettext "Enable arch-update.timer")"
     fi
     
     if [[ "${aur_packages}" =~ "virtualbox" ]]; then
-        exec_log "sudo gpasswd -a $USER vboxusers" "Add the current user to the vboxusers group"
-        exec_log "sudo systemctl enable vboxweb.service" "Enable vboxweb"
+        exec_log "sudo gpasswd -a $USER vboxusers" "$(eval_gettext "Add the current user to the vboxusers group")"
+        exec_log "sudo systemctl enable vboxweb.service" "$(eval_gettext "Enable vboxweb")"
     fi
 }

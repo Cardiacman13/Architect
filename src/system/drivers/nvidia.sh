@@ -1,12 +1,12 @@
 source src/cmd.sh
 
 function nvidia_config() {
-    exec_log "echo -e 'options nvidia NVreg_UsePageAttributeTable=1 NVreg_InitializeSystemMemoryAllocations=0 NVreg_DynamicPowerManagement=0x02' | sudo tee -a /etc/modprobe.d/nvidia.conf" "Setting nvidia power management option"
-    exec_log "echo -e 'options nvidia_drm modeset=1 fbdev=1' | sudo tee -a /etc/modprobe.d/nvidia.conf" "Setting nvidia-drm modeset=1 option"
+    exec_log "echo -e 'options nvidia NVreg_UsePageAttributeTable=1 NVreg_InitializeSystemMemoryAllocations=0 NVreg_DynamicPowerManagement=0x02' | sudo tee -a /etc/modprobe.d/nvidia.conf" "$(eval_gettext "Setting nvidia power management option")"
+    exec_log "echo -e 'options nvidia_drm modeset=1 fbdev=1' | sudo tee -a /etc/modprobe.d/nvidia.conf" "$(eval_gettext "Setting nvidia-drm modeset=1 option")"
 }
 
 function nvidia_intel() {
-    read -rp "Do you have an Intel/Nvidia Laptop (y/N) : " user_intel
+    read -rp "$(eval_gettext "Do you have an Intel/Nvidia Laptop (y/N) : ")" user_intel
     user_intel="${user_intel,,}"
 
     if [[ ${user_intel} =~ ^(yes|y)$ ]]; then
@@ -50,18 +50,18 @@ function nvidia_drivers() {
         opencl-nvidia-dev-tkg
     "
 
-    uninstall_lst "${unlst}" "Clean old nvidia drivers dependencies"
+    uninstall_lst "${unlst}" "$(eval_gettext "Clean old nvidia drivers dependencies")"
 
-    read -rp "Do you want to use NVIDIA-ALL ${RED}/!\ caution: if you choose nvidia-all, you'll need to know how to maintain it.${RESET} ? (y/N) : " user_nvidia_all
+    read -rp "$(eval_gettext "Do you want to use NVIDIA-ALL \${RED}/!\ caution: if you choose nvidia-all, you'll need to know how to maintain it.\${RESET} ? (y/N) : ")" user_nvidia_all
     user_nvidia_all="${user_nvidia_all^^}"
 
     nvidia_config
     if [[ ${user_nvidia_all} == "Y" ]]; then
-        exec_log "git clone https://github.com/Frogging-Family/nvidia-all.git" "cloning nvidia-all repository"
+        exec_log "git clone https://github.com/Frogging-Family/nvidia-all.git" "$(eval_gettext "cloning nvidia-all repository")"
         cd nvidia-all || exit
         makepkg -si --noconfirm
         cd .. || exit
-        exec_log "rm -rf nvidia-all" "removal of nvidia-all repository"
+        exec_log "rm -rf nvidia-all" "$(eval_gettext "removal of nvidia-all repository")"
 
     else
         local -r inlst="
@@ -81,7 +81,7 @@ function nvidia_drivers() {
     fi
 
     nvidia_intel
-    read -rp "Do you want to install CUDA (${RED}say No if unsure${RESET}) (y/N) : " user_cuda
+    read -rp "$(eval_gettext "Do you want to install CUDA (\${RED}say No if unsure\${RESET}) (y/N) : ")" user_cuda
     user_cuda="${user_cuda,,}"
 
     if [[ ${user_cuda} =~ ^(yes|y)$ ]]; then

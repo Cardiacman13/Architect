@@ -2,7 +2,7 @@ source src/cmd.sh
 
 function install_aur() {
     
-    exec_log "sudo pacman -S --noconfirm --needed git" "Installing git"
+    exec_log "sudo pacman -S --noconfirm --needed git" "$(eval_gettext "Installing git")"
     
     local -r git_url=(
         "https://aur.archlinux.org/yay-bin.git"
@@ -16,10 +16,10 @@ function install_aur() {
     local choice=""
 
     while [[ $choice != "yay" && $choice != "paru" ]]; do
-        read -rp "which aur helper do you want to install ? (yay/paru) : " choice
+        read -rp "$(eval_gettext "which aur helper do you want to install ? (yay/paru) : ")" choice
         choice="${choice,,}"
     done
-    echo -e "${GREEN}You chose ${choice}${RESET}"
+    eval_gettext "\${GREEN}You chose \${choice}\${RESET}"; echo
 
     if [[ $choice == "yay" ]]; then
         id=0
@@ -30,24 +30,25 @@ function install_aur() {
     fi
 
     if ! pacman -Qi "${AUR}" &>/dev/null; then
-        exec_log "git clone ${git_url[$id]}" "Cloning ${aur_name[$id]}"
-        cd "${aur_name[$id]}" || return 1
-        exec_log "makepkg -si --noconfirm" "Installing ${AUR}"
+        DIR=${aur_name[$id]}
+        exec_log "git clone ${git_url[$id]}" "$(eval_gettext "Cloning \$DIR")"
+        cd "$DIR" || return 1
+        exec_log "makepkg -si --noconfirm" "$(eval_gettext "Installing \${AUR}")"
         cd .. || return 1
-        exec_log "rm -rf ${aur_name[$id]}" "Deleting directory ${aur_name[$id]}"
+        exec_log "rm -rf $DIR" "$(eval_gettext "Deleting directory \$DIR")"
     fi
 
     if [[ $choice == "yay" ]]; then
-        exec "yay -Y --gendb" "Configuring ${AUR}"
-        exec "yay -Y --devel --save" "Configuring ${AUR}"
-        exec_log "sed -i 's/\"sudoloop\": false,/\"sudoloop\": true,/' ~/.config/yay/config.json" "Enabling SudoLoop option for yay"
+        exec "yay -Y --gendb" "$(eval_gettext "Configuring ${AUR}")"
+        exec "yay -Y --devel --save" "$(eval_gettext "Configuring \${AUR}")"
+        exec_log "sed -i 's/\"sudoloop\": false,/\"sudoloop\": true,/' ~/.config/yay/config.json" "$(eval_gettext "Enabling SudoLoop option for yay")"
     elif [[ $choice == "paru" ]]; then
-        exec "paru --gendb" "Configuring ${AUR}"
-        exec_log "sudo sed -i 's/#BottomUp/BottomUp/' /etc/paru.conf" "Enabling BottomUp option for paru"
-        exec_log "sudo sed -i 's/#SudoLoop/SudoLoop/' /etc/paru.conf" "Enabling SudoLoop option for paru"
-        exec_log "sudo sed -i 's/#CombinedUpgrade/CombinedUpgrade/' /etc/paru.conf" "Enabling CombinedUpgrade option for paru"
-        exec_log "sudo sed -i 's/#UpgradeMenu/UpgradeMenu/' /etc/paru.conf" "Enabling UpgradeMenu option for paru"
-        exec_log "sudo sed -i 's/#NewsOnUpgrade/NewsOnUpgrade/' /etc/paru.conf" "Enabling NewsOnUpgrade option for paru"
-        exec_log "sudo sh -c 'echo "SkipReview" >> /etc/paru.conf'" "Enabling SkipReview option for paru"
+        exec "paru --gendb" "$(eval_gettext "Configuring \${AUR}")"
+        exec_log "sudo sed -i 's/#BottomUp/BottomUp/' /etc/paru.conf" "$(eval_gettext "Enabling BottomUp option for paru")"
+        exec_log "sudo sed -i 's/#SudoLoop/SudoLoop/' /etc/paru.conf" "$(eval_gettext "Enabling SudoLoop option for paru")"
+        exec_log "sudo sed -i 's/#CombinedUpgrade/CombinedUpgrade/' /etc/paru.conf" "$(eval_gettext "Enabling CombinedUpgrade option for paru")"
+        exec_log "sudo sed -i 's/#UpgradeMenu/UpgradeMenu/' /etc/paru.conf" "$(eval_gettext "Enabling UpgradeMenu option for paru")"
+        exec_log "sudo sed -i 's/#NewsOnUpgrade/NewsOnUpgrade/' /etc/paru.conf" "$(eval_gettext "Enabling NewsOnUpgrade option for paru")"
+        exec_log "sudo sh -c 'echo "SkipReview" >> /etc/paru.conf'" "$(eval_gettext "Enabling SkipReview option for paru")"
     fi
 }

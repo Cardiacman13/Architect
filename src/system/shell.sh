@@ -28,11 +28,11 @@ function shell_config() {
     local choice=""
 
     while [[ $choice != "bash" && $choice != "fish" ]]; do
-        read -rp "What is your default shell ? (bash/fish) : " choice
+        read -rp "$(eval_gettext "What is your default shell ? (bash/fish) : ")" choice
         choice="${choice,,}"
     done
 
-    echo -e "${GREEN}You chose ${choice}${RESET}"
+    eval_gettext "\${GREEN}You chose \${choice}\${RESET}"; echo
     case $choice in
     bash)
         touch "${HOME}/.bashrc"
@@ -43,7 +43,7 @@ function shell_config() {
         local current_shell=$(getent passwd $USER | cut -d: -f7)
 
         while [ "$current_shell" != "/usr/bin/fish" ]; do
-            echo "Changement du shell par défaut en fish..."
+            eval_gettext "Setting default shell to fish..."; echo
             chsh -s "/usr/bin/fish"
             current_shell=$(getent passwd $USER | cut -d: -f7)
         done
@@ -55,7 +55,7 @@ function shell_config() {
         index=2
         ;;
     *)
-        echo "Invalid choice"
+        eval_gettext "Invalid choice"; echo
         ;;
     esac
 

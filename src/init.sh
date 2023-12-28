@@ -5,7 +5,7 @@ function header() {
 
        ${PURPLE}%%%%%%%%%%${RESET}  ${GREEN}*********${RESET}            
        ${PURPLE}%%%${RESET}                 ${GREEN}******${RESET}       
-       ${PURPLE}%%%${RESET}                     ${GREEN}***${RESET}      Script Architect for Arch Linux
+       ${PURPLE}%%%${RESET}                     ${GREEN}***${RESET}      `eval_gettext "Script Architect for Arch Linux"`
        ${PURPLE}%%%${RESET}                     ${GREEN}***${RESET}      
        ${PURPLE}%%%${RESET}                     ${GREEN}***${RESET}      GitHub : https://github.com/Cardiacman13/Architect
        ${PURPLE}%%%${RESET}                     ${GREEN}***${RESET}      
@@ -17,8 +17,9 @@ function header() {
 EOF
 
     sleep 1
-    printf "%b" "${RED}This script will make changes to your system.${RESET}\n"
-    printf "%b" "Some steps may take longer, depending on your Internet connection and CPU.\nPress ${GREEN}Enter${RESET} to continue, or ${RED}Ctrl+C${RESET} to cancel."
+    eval_gettext "\${RED}This script will make changes to your system.\${RESET}"; echo
+    eval_gettext "Some steps may take longer, depending on your Internet connection and CPU."; echo
+    eval_gettext "Press \${GREEN}Enter\${RESET} to continue, or \${RED}Ctrl+C\${RESET} to cancel."; echo
 
     read -rp "" choice
     [[ -n $choice ]] && exit 0
