@@ -6,7 +6,6 @@ declare -A browser_list
 declare -A video_list
 declare -A picture_list
 declare -A gaming_list
-declare -A flatpak_list
 
 selected_packages=""
 
@@ -65,21 +64,6 @@ function set_software_list() {
         ["Goverlay"]="goverlay"
         ["Gamemode"]="gamemode"
     )
-
-    flatpak_list=(
-        ["Firefox"]="org.mozilla.firefox"
-        ["Google Chrome"]="com.google.Chrome"
-        ["RetroArch"]="org.libretro.RetroArch"
-        ["Discord"]="com.discordapp.Discord"
-        ["Brave"]="com.brave.Browser"
-        ["Spotify"]="com.spotify.Client"
-        ["Deezer"]="dev.aunetx.deezer"
-        ["Telegram"]="org.telegram.desktop"
-        ["ProtonUP"]="net.davidotek.pupgui2"
-        ["Lutris"]="net.lutris.Lutris"
-        ["Steam"]="com.valvesoftware.Steam"
-        ["OBS"]="com.obsproject.Studio"
-    )
 }
 
 function select_and_install() {
@@ -130,12 +114,7 @@ function install_software() {
 
     selected_packages=""
 
-    select_and_install flatpak_list "flatpak"
-
-    local -r flatpak_packages="${selected_packages}"
-
     install_lst "${aur_packages}" "aur"
-    install_lst "${flatpak_packages}" "flatpak"
 
     if [[ "${aur_packages}" =~ "arch-update" ]]; then
         exec_log "systemctl --user enable --now arch-update.timer" "Enable arch-update.timer"

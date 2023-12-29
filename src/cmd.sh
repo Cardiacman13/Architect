@@ -43,11 +43,7 @@ function install_one() {
     fi
 
     log_msg "${GREEN}[+]${RESET} ${package}${warning_msg}"
-    if [[ ${type} == "flatpak" ]]; then
-        exec "flatpak install -y flathub ${package}"
-    else
-        exec "${AUR} -S --noconfirm --needed ${package}"
-    fi
+    exec "${AUR} -S --noconfirm --needed ${package}"
 
     local exit_status=$?
 

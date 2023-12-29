@@ -35,7 +35,6 @@ fi
 source src/init.sh
 source src/end.sh
 source src/de/detect.sh
-source src/software/flatpak.sh
 source src/software/install.sh
 source src/system/internet.sh
 source src/system/config/aur.sh
@@ -108,7 +107,6 @@ function main() {
     # software
     sleep 1
     display_step "Software installation"
-    little_step support_flatpak         "Flatpak support installation"
     little_step install_software        "Software installation"
 
     # end
