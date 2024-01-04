@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Architect V2.0.4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-12-31 18:45+0100\n"
+"POT-Creation-Date: 2024-01-04 15:38+0100\n"
 "PO-Revision-Date: 2023-12-31 17:53+0100\n"
 "Last-Translator: Skythrew <mael.guerin@murena.io>\n"
 "Language-Team: French\n"
@@ -209,59 +209,51 @@ msgstr "Activation de l'option NewsOnUpgrade de paru"
 msgid "Enabling SkipReview option for paru"
 msgstr "Activation de l'option SkipReview de paru"
 
-#: src/system/drivers/amd.sh:19
-#, sh-format
-msgid ""
-"Would you like to install ROCM (${RED}say No if unsure${RESET}) (y/N) : "
-msgstr ""
-"Souhaitez-vous installer ROCM (${RED}dites Non si vous n'êtes pas "
-"sûr${RESET}) (y/N) : "
-
 #: src/system/drivers/devices.sh:4
 #, sh-format
 msgid ""
 "Would you want to install xpadneo ? (Can improve xbox gamepad support, ${RED}"
-"say No if unsure${RESET}) (y/N) : "
+"say No if unsure${RESET})"
 msgstr ""
 "Voulez-vous installer xpadneo ? (Peut améliorer le support des manettes "
-"xbox, ${RED}dites Non si vous n'êtes pas sûr${RESET}) (y/N) : "
+"xbox, ${RED}dites Non si vous n'êtes pas sûr${RESET})"
 
-#: src/system/drivers/devices.sh:11
+#: src/system/drivers/devices.sh:8
 #, sh-format
-msgid "Do you want to use PS5 controllers ? (y/N) : "
-msgstr "Voulez-vous utiliser des manettes PS5 ? (y/N) : "
+msgid "Do you want to use PS5 controllers ?"
+msgstr "Voulez-vous utiliser des manettes PS5 ?"
 
-#: src/system/drivers/devices.sh:20
+#: src/system/drivers/devices.sh:14
 #, sh-format
-msgid "Do you want to use a printer ? (y/N) : "
-msgstr "Voulez-vous utiliser une imprimante ? (y/N) : "
+msgid "Do you want to use a printer ?"
+msgstr "Voulez-vous utiliser une imprimante ?"
 
-#: src/system/drivers/devices.sh:40
+#: src/system/drivers/devices.sh:32
 #, sh-format
-msgid "Do you want to use a EPSON printer ? (y/N) : "
-msgstr "Voulez-vous utiliser une imprimante EPSON ? (y/N) : "
+msgid "Do you want to use a EPSON printer ?"
+msgstr "Voulez-vous utiliser une imprimante EPSON ?"
 
-#: src/system/drivers/devices.sh:49
+#: src/system/drivers/devices.sh:39
 #, sh-format
-msgid "Do you want to use a HP printer ? (y/N) : "
-msgstr "Voulez-vous utiliser une imprimante HP ? (y/N) : "
+msgid "Do you want to use a HP printer ?"
+msgstr "Voulez-vous utiliser une imprimante HP ?"
 
-#: src/system/drivers/devices.sh:61
+#: src/system/drivers/devices.sh:48
 #, sh-format
 msgid "enabling avahi-daemon service"
 msgstr "Activation du service avahi-daemon"
 
-#: src/system/drivers/devices.sh:62
+#: src/system/drivers/devices.sh:49
 #, sh-format
 msgid "enabling cups service"
 msgstr "Activation du service cups"
 
-#: src/system/drivers/devices.sh:67
+#: src/system/drivers/devices.sh:54
 #, sh-format
-msgid "Do you want to use bluetooth ? (y/N) : "
-msgstr "Voulez-vous utiliser le bluetooth ? (y/N) : "
+msgid "Do you want to use bluetooth ?"
+msgstr "Voulez-vous utiliser le bluetooth ?"
 
-#: src/system/drivers/devices.sh:79
+#: src/system/drivers/devices.sh:63
 #, sh-format
 msgid "enabling bluetooth service"
 msgstr "Activation du service bluetooth"
@@ -270,6 +262,13 @@ msgstr "Activation du service bluetooth"
 #, sh-format
 msgid "What is your graphics card type ?"
 msgstr "Quel est le type de votre carte graphique ?"
+
+#: src/system/drivers/amd.sh:19
+#, sh-format
+msgid "Would you like to install ROCM (${RED}say No if unsure${RESET})"
+msgstr ""
+"Souhaitez-vous installer ROCM (${RED}dites Non si vous n'êtes pas "
+"sûr${RESET})"
 
 #: src/system/drivers/nvidia.sh:4
 #, sh-format
@@ -283,39 +282,37 @@ msgstr "Configurationd de l'option nvidia-drm modeset=1"
 
 #: src/system/drivers/nvidia.sh:9
 #, sh-format
-msgid "Do you have an Intel/Nvidia Laptop (y/N) : "
-msgstr "Avez-vous un portable Intel/Nvidia (y/N) : "
+msgid "Do you have an Intel/Nvidia Laptop ?"
+msgstr "Avez-vous un portable Intel/Nvidia ?"
 
-#: src/system/drivers/nvidia.sh:53
+#: src/system/drivers/nvidia.sh:50
 #, sh-format
 msgid "Clean old nvidia drivers dependencies"
 msgstr "Nettoyage des dépendances des anciens pilotes NVIDIA"
 
-#: src/system/drivers/nvidia.sh:55
+#: src/system/drivers/nvidia.sh:53
 #, sh-format
 msgid ""
 "Do you want to use NVIDIA-ALL ${RED}/!\\ caution: if you choose nvidia-all, "
-"you'll need to know how to maintain it.${RESET} ? (y/N) : "
+"you'll need to know how to maintain it.${RESET} ?"
 msgstr ""
-"Voulez-vous utiliser NVIDIA-ALL ${RED}/!\\ caution: si vous choisissez "
-"nvidia-all, vous devez savoir comment le maintenir.${RESET} ? (y/N) : "
+"Voulez-vous utiliser NVIDIA-ALL ${RED}/!\\ attention: si vous choisissez nvidia-all, "
+"vous devez savoir comment le maintenir.${RESET} ?"
 
-#: src/system/drivers/nvidia.sh:60
+#: src/system/drivers/nvidia.sh:54
 #, sh-format
 msgid "cloning nvidia-all repository"
 msgstr "Clonage du dépôt nvidia-all"
 
-#: src/system/drivers/nvidia.sh:64
+#: src/system/drivers/nvidia.sh:58
 #, sh-format
 msgid "removal of nvidia-all repository"
 msgstr "Suppression du dépôt nvidia-all"
 
-#: src/system/drivers/nvidia.sh:84
+#: src/system/drivers/nvidia.sh:79
 #, sh-format
-msgid "Do you want to install CUDA (${RED}say No if unsure${RESET}) (y/N) : "
-msgstr ""
-"Voulez-vous installer CUDA (${RED}dites Non si vous n'êtes pas sûr${RESET}) "
-"(y/N) : "
+msgid "Do you want to install CUDA (${RED}say No if unsure${RESET}) ?"
+msgstr "Voulez-vous installer CUDA (${RED}dites Non si vous n'êtes pas sûr${RESET}) ?"
 
 #: src/system/drivers/vm.sh:21
 #, sh-format
@@ -327,39 +324,10 @@ msgstr "Activation du vboxservice"
 msgid "activation of VBoxClient-all"
 msgstr "Activation de VBoxClient-all"
 
-#: src/system/grub-btrfs.sh:2
-#, sh-format
-msgid ""
-"Do you want to install and setup grub-btrfs and timeshift ${RED}say No if "
-"unsure${RESET} /!\\  ? (y/N) : "
-msgstr ""
-"Voulez-vous installer et configurer grub-btrfs et timeshift ${RED}dites Non "
-"si vous n'êtes pas sûr${RESET} /!\\  ? (y/N) : "
-
-#: src/system/grub-btrfs.sh:7
-#, sh-format
-msgid "Enable cronie"
-msgstr "Activationd de cronie"
-
-#: src/system/grub-btrfs.sh:8
-#, sh-format
-msgid "Enable grub-btrfsd"
-msgstr "Activation de grub-btrfsd"
-
-#: src/system/grub-btrfs.sh:9
-#, sh-format
-msgid "setup grub-btrfsd for timeshift"
-msgstr "Configuration de grub-btrfsd pour timeshift"
-
 #: src/system/internet.sh:8
 #, sh-format
 msgid "${RED}Error: No Internet connection${RESET}"
 msgstr "${RED}Erreur: Pas de connexion Internet${RESET}"
-
-#: src/system/kernel.sh:20
-#, sh-format
-msgid "Setting ${key} to ${value}"
-msgstr "Configuration de la valeur de ${key} à ${value}"
 
 #: src/system/other.sh:26
 #, sh-format
@@ -406,16 +374,40 @@ msgstr "Mise à jour de GRUB"
 msgid ""
 "Do you want to install a firewall /!\\ Install and activate firewalld? The "
 "default configuration may block access to printers and other devices on your "
-"local network ? (y/N) : "
+"local network ?"
 msgstr ""
-"Voulez-vous installer un pare-feu /!\\ Installer et activer firewalld? La "
-"configuration par défaut peut bloquer l'accès à des imprimantes et autres "
-"appareils sur votre réseau local ? (y/N) : "
+"Voulez-vous installer un pare-feu /!\\ Installer et activer firewalld ? "
+"Laconfiguration par défaut peut bloquer l'accès à des imprimantes et autres "
+"appareils sur votreréseau local ?"
 
-#: src/system/other.sh:67
+#: src/system/other.sh:64
 #, sh-format
 msgid "Enabling firewalld"
 msgstr "Activation de firewalld"
+
+#: src/system/grub-btrfs.sh:2
+#, sh-format
+msgid ""
+"Do you want to install and setup grub-btrfs and timeshift ${RED}say No if "
+"unsure${RESET} /!\\  ?"
+msgstr ""
+"Voulez-vous installer et configurer grub-btrfs et timeshift ${RED}dites Non "
+"si vous n'êtes pas sûr${RESET} /!\\  ?"
+
+#: src/system/grub-btrfs.sh:4
+#, sh-format
+msgid "Enable cronie"
+msgstr "Activationd de cronie"
+
+#: src/system/grub-btrfs.sh:5
+#, sh-format
+msgid "Enable grub-btrfsd"
+msgstr "Activation de grub-btrfsd"
+
+#: src/system/grub-btrfs.sh:6
+#, sh-format
+msgid "setup grub-btrfsd for timeshift"
+msgstr "Configuration de grub-btrfsd pour timeshift"
 
 #: src/system/shell.sh:31
 #, sh-format
@@ -431,6 +423,38 @@ msgstr "Changement du shell par défaut vers fish..."
 #, sh-format
 msgid "Invalid choice"
 msgstr "Choix invalide"
+
+#: src/system/kernel.sh:20
+#, sh-format
+msgid "Setting ${key} to ${value}"
+msgstr "Configuration de la valeur de ${key} à ${value}"
+
+#: src/init.sh:8
+#, sh-format
+msgid "Script Architect for Arch Linux"
+msgstr "Script Architect pour Arch Linux"
+
+#: src/init.sh:20
+#, sh-format
+msgid "${RED}This script will make changes to your system.${RESET}"
+msgstr ""
+"${RED}Ce script va effectuer des changements sur votre système.${RESET}"
+
+#: src/init.sh:21
+#, sh-format
+msgid ""
+"Some steps may take longer, depending on your Internet connection and CPU."
+msgstr ""
+"Quelques étapes prendront peut-être plus de temps, en fonction de votre "
+"connexion Internet et de votre processeur."
+
+#: src/init.sh:22
+#, sh-format
+msgid ""
+"Press ${GREEN}Enter${RESET} to continue, or ${RED}Ctrl+C${RESET} to cancel."
+msgstr ""
+"Appuyez sur ${GREEN}Entrée${RESET} pour continuer, ou ${RED}Ctrl+C${RESET} "
+"pour annuler."
 
 #: src/end.sh:5
 #, sh-format
@@ -467,149 +491,132 @@ msgstr ""
 msgid "${GREEN}Restarting in ${i} seconds...${RESET}"
 msgstr "${GREEN}Redémarrage dans ${i} secondes...${RESET}"
 
-#: src/init.sh:8
-#, sh-format
-msgid "Script Architect for Arch Linux"
-msgstr "Script Architect pour Arch Linux"
-
-#: src/init.sh:20
-#, sh-format
-msgid "${RED}This script will make changes to your system.${RESET}"
-msgstr ""
-"${RED}Ce script va effectuer des changements sur votre système.${RESET}"
-
-#: src/init.sh:21
-#, sh-format
-msgid ""
-"Some steps may take longer, depending on your Internet connection and CPU."
-msgstr ""
-"Quelques étapes prendront peut-être plus de temps, en fonction de votre "
-"connexion Internet et de votre processeur."
-
-#: src/init.sh:22
-#, sh-format
-msgid ""
-"Press ${GREEN}Enter${RESET} to continue, or ${RED}Ctrl+C${RESET} to cancel."
-msgstr ""
-"Appuyez sur ${GREEN}Entrée${RESET} pour continuer, ou ${RED}Ctrl+C${RESET} "
-"pour annuler."
-
 #: src/cmd.sh:52
 #, sh-format
 msgid "${RED}Error: ${package} installation failed${RESET}"
 msgstr "${RED}Erreur: l'installation de ${package} a échoué${RESET}"
 
-#: architect.sh:20
+#: src/cmd.sh:83
+#, sh-format
+msgid "y"
+msgstr "o"
+
+#: src/cmd.sh:84
+#, sh-format
+msgid "n"
+msgstr "n"
+
+#: architect.sh:18
 #, sh-format
 msgid "${GREEN}Root privileges granted${RESET}"
 msgstr "${GREEN}Privilèges d'administrateur accordés${RESET}"
 
-#: architect.sh:22
+#: architect.sh:20
 #, sh-format
 msgid "${RED}Root privileges denied${RESET}"
 msgstr "${GREEN}Privilèges d'administrateur refusés${RESET}"
 
-#: architect.sh:84
+#: architect.sh:82
 #, sh-format
 msgid "Initialization"
 msgstr "Initialisation"
 
-#: architect.sh:89
+#: architect.sh:87
 #, sh-format
 msgid "System preparation"
 msgstr "Préparation du système"
 
-#: architect.sh:91
+#: architect.sh:89
 #, sh-format
 msgid "Pacman configuration"
 msgstr "Configuration de pacman"
 
-#: architect.sh:92
+#: architect.sh:90
 #, sh-format
 msgid "AUR helper installation"
 msgstr "Installation du gestionnaire AUR"
 
-#: architect.sh:93
+#: architect.sh:91
 #, sh-format
 msgid "Mirrorlist configuration"
 msgstr "Configuration de la liste des miroirs"
 
-#: architect.sh:94
+#: architect.sh:92
 #, sh-format
 msgid "Kernel headers installation"
 msgstr "Installation des en-têtes (headers) du kernel"
 
-#: architect.sh:95
+#: architect.sh:93
 #, sh-format
 msgid "Max map count configuration"
 msgstr "Configuration du max map count"
 
-#: architect.sh:96
+#: architect.sh:94
 #, sh-format
 msgid "Sound server configuration"
 msgstr "Configuration du serveur son"
 
-#: architect.sh:97
+#: architect.sh:95
 #, sh-format
 msgid "System loaders configuration"
 msgstr "Configuration des chargeurs de démarrage"
 
-#: architect.sh:98
+#: architect.sh:96
 #, sh-format
 msgid "Useful package installation"
 msgstr "Installation des paquets utiles"
 
-#: architect.sh:99
+#: architect.sh:97
 #, sh-format
 msgid "grub-btrfs setup"
 msgstr "Configuration de grub-btrfs"
 
-#: architect.sh:100
+#: architect.sh:98
 #, sh-format
 msgid "Firewall installation"
 msgstr "Configuration du pare-feu"
 
-#: architect.sh:101
+#: architect.sh:99
 #, sh-format
 msgid "Shell configuration"
 msgstr "Configuration du shell"
 
-#: architect.sh:104
+#: architect.sh:102
 #, sh-format
 msgid "System configuration"
 msgstr "Configuration du système"
 
-#: architect.sh:106
+#: architect.sh:104
 #, sh-format
 msgid "Video drivers installation"
 msgstr "Installation des pilotes vidéo"
 
-#: architect.sh:107
+#: architect.sh:105
 #, sh-format
 msgid "Gamepad configuration"
 msgstr "Configuration des manettes"
 
-#: architect.sh:108
+#: architect.sh:106
 #, sh-format
 msgid "Printer configuration"
 msgstr "Configuration de(s) imprimante(s)"
 
-#: architect.sh:109
+#: architect.sh:107
 #, sh-format
 msgid "Bluetooth configuration"
 msgstr "Configuration du bluetooth"
 
-#: architect.sh:112
+#: architect.sh:110
 #, sh-format
 msgid "Environment configuration"
 msgstr "Configuration de l'environnement"
 
-#: architect.sh:114
+#: architect.sh:112
 #, sh-format
 msgid "Desktop environment detection"
 msgstr "Détection de l'environnement de bureau"
 
-#: architect.sh:118 architect.sh:119
+#: architect.sh:116 architect.sh:117
 #, sh-format
 msgid "Software installation"
 msgstr "Installation de logiciels"
