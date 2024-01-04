@@ -82,7 +82,7 @@ function uninstall_lst() {
 function ask_question() {
     yes="$(eval_gettext "y")"
     no="$(eval_gettext "n")"
-    read -rp "$1 ($yes/${no^^})" choice
+    read -rp "$1 ($yes/${no^^}) : " choice
 
     if [ "${choice,,}" == "$yes" ]; then
         return 0
