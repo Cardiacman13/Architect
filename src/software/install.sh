@@ -73,7 +73,7 @@ function select_and_install() {
     local options=()
     local input
 
-    eval_gettext "\${GREEN}\${software_type} software\${RESET} :"; echo
+    eval_gettext "\${GREEN}\${software_type}\${RESET} :"; echo
     for software in "${!software_list[@]}"; do
         printf " ${PURPLE}%2d${RESET}) %s\n" "$i" "$software"
         options+=("$software")
@@ -103,12 +103,12 @@ function select_and_install() {
 function install_software() {
     set_software_list
 
-    select_and_install browser_list "browsers"
-    select_and_install system_list "system"
-    select_and_install desktop_list "desktop"
-    select_and_install video_list "video"
-    select_and_install picture_list "image"
-    select_and_install gaming_list "gaming"
+    select_and_install browser_list "$(eval_gettext "Browsers")"
+    select_and_install system_list "$(eval_gettext "System Software")"
+    select_and_install desktop_list "$(eval_gettext "Desktop Apps")"
+    select_and_install video_list "$(eval_gettext "Video Software")"
+    select_and_install picture_list "$(eval_gettext "Image Editors")"
+    select_and_install gaming_list "$(eval_gettext "Gaming Software")"
 
     local -r aur_packages="${selected_packages}"
 
