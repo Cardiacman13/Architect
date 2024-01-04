@@ -1,8 +1,5 @@
 function grub-btrfs() {
-    read -rp "$(eval_gettext "Do you want to install and setup grub-btrfs and timeshift \${RED}say No if unsure\${RESET} /!\  ? (y/N) : ")" choice
-    choice="${choice,,}"
-
-    if [[ $choice =~ ^(yes|y)$ ]]; then
+    if ask_question "$(eval_gettext "Do you want to install and setup grub-btrfs and timeshift \${RED}say No if unsure\${RESET} /!\  ?")"; then
         install_lst "timeshift grub-btrfs timeshift-autosnap"
         exec_log "sudo systemctl enable --now cronie.service" "$(eval_gettext "Enable cronie")"
         exec_log "sudo systemctl enable --now grub-btrfsd" "$(eval_gettext "Enable grub-btrfsd")"
