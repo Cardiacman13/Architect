@@ -408,8 +408,8 @@ msgid ""
 "local network ?"
 msgstr ""
 "Voulez-vous installer un pare-feu /!\\ Installer et activer firewalld ? "
-"Laconfiguration par défaut peut bloquer l'accès à des imprimantes et autres "
-"appareils sur votreréseau local ?"
+"La configuration par défaut peut bloquer l'accès à des imprimantes et autres "
+"appareils sur votre réseau local ?"
 
 #: src/system/other.sh:64
 #, sh-format
