@@ -84,7 +84,7 @@ function select_and_install() {
     read -ra input
 
     for item in "${input[@]}"; do
-        if [[ "$item" == "all" ]]; then
+        if [[ "$item" == "$(eval_gettext "all")" ]]; then
             for software in "${!software_list[@]}"; do
                 selected_packages+=" ${software_list[$software]} "
             done
