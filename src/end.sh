@@ -5,10 +5,7 @@ function endscript() {
     eval_gettext "Done in \${GREEN}\${duration}\${RESET} seconds."; echo
     echo -e "Done in ${duration} seconds." >>"${LOG_FILE}"
 
-    read -rp "$(eval_gettext "Do you want to upload the log file to a pastebin? (y/N) ")" response
-    response=${response,,}
-
-    if [[ "$response" =~ ^(yes|y)$ ]]; then
+    if ask_question "$(eval_gettext "Do you want to upload the log file to a pastebin?")"; then
         eval_gettext "Uploading log file to pastebin..."; echo
         local -r url="$(curl -s -F 'file=@'"${LOG_FILE}" https://0x0.st)"
         eval_gettext "Log file uploaded to \${url}"; echo

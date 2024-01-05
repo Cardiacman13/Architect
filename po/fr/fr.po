@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Architect V2.0.4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-01-05 11:37+0100\n"
+"POT-Creation-Date: 2024-01-05 11:46+0100\n"
 "PO-Revision-Date: 2023-12-31 17:53+0100\n"
 "Last-Translator: Skythrew <mael.guerin@murena.io>\n"
 "Language-Team: French\n"
@@ -509,20 +509,20 @@ msgstr "Terminé en ${GREEN}${duration}${RESET} secondes."
 
 #: src/end.sh:8
 #, sh-format
-msgid "Do you want to upload the log file to a pastebin? (y/N) "
-msgstr "Voulez-vous téléverser le fichier journal vers un pastebin? (y/N) "
+msgid "Do you want to upload the log file to a pastebin?"
+msgstr "Voulez-vous téléverser le fichier journal vers un pastebin ?"
 
-#: src/end.sh:12
+#: src/end.sh:9
 #, sh-format
 msgid "Uploading log file to pastebin..."
 msgstr "Téléversement du fichier journal vers pastebin..."
 
-#: src/end.sh:14
+#: src/end.sh:11
 #, sh-format
 msgid "Log file uploaded to ${url}"
 msgstr "Fichier journal téléversé vers ${url}"
 
-#: src/end.sh:17
+#: src/end.sh:14
 #, sh-format
 msgid ""
 "${GREEN}Script completed successfully, the system must restart${RESET}: "
@@ -532,7 +532,7 @@ msgstr ""
 "Appuyez sur ${GREEN}Entrée${RESET} pour redémarrer ou ${RED}Ctrl+C${RESET} "
 "pour annuler."
 
-#: src/end.sh:19
+#: src/end.sh:16
 #, sh-format
 msgid "${GREEN}Restarting in ${i} seconds...${RESET}"
 msgstr "${GREEN}Redémarrage dans ${i} secondes...${RESET}"
