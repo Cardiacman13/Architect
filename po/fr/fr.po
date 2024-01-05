@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Architect V2.0.4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-01-05 11:24+0100\n"
+"POT-Creation-Date: 2024-01-05 11:30+0100\n"
 "PO-Revision-Date: 2023-12-31 17:53+0100\n"
 "Last-Translator: Skythrew <mael.guerin@murena.io>\n"
 "Language-Team: French\n"
@@ -67,6 +67,11 @@ msgstr "Mise en place de GTK_USE_PORTAL=1"
 #, sh-format
 msgid "Updating user directories"
 msgstr "Mise à jour des dossiers utilisateurs"
+
+#: src/software/install.sh:43
+#, sh-format
+msgid "paid version"
+msgstr "version payante"
 
 #: src/software/install.sh:76
 #, sh-format

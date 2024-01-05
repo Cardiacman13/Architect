@@ -40,7 +40,7 @@ function set_software_list() {
     video_list=(
         ["Kdenlive"]="kdenlive"
         ["Davinci Resolve"]="davinci-resolve"
-        ["Davinci Resolve (paid version)"]="davinci-resolve-studio"
+        ["Davinci Resolve ($(eval_gettext "paid version"))"]="davinci-resolve-studio"
         ["OBS Studio"]="obs-studio"
         ["VLC"]="vlc"
         ["MPV"]="mpv"
