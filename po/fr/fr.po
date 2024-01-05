@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Architect V2.0.4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-01-04 16:06+0100\n"
+"POT-Creation-Date: 2024-01-05 11:24+0100\n"
 "PO-Revision-Date: 2023-12-31 17:53+0100\n"
 "Last-Translator: Skythrew <mael.guerin@murena.io>\n"
 "Language-Team: French\n"
@@ -18,7 +18,12 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: src/de/detect.sh:8 src/de/detect.sh:11
+#: src/de/detect.sh:6
+#, sh-format
+msgid "OTHER"
+msgstr "AUTRE"
+
+#: src/de/detect.sh:9 src/de/detect.sh:12
 #, sh-format
 msgid "What is your desktop environment"
 msgstr "Quel est votre environnement de bureau"
@@ -407,8 +412,8 @@ msgid ""
 "default configuration may block access to printers and other devices on your "
 "local network ?"
 msgstr ""
-"Voulez-vous installer un pare-feu /!\\ Installer et activer firewalld ? "
-"La configuration par défaut peut bloquer l'accès à des imprimantes et autres "
+"Voulez-vous installer un pare-feu /!\\ Installer et activer firewalld ? La "
+"configuration par défaut peut bloquer l'accès à des imprimantes et autres "
 "appareils sur votre réseau local ?"
 
 #: src/system/other.sh:64
