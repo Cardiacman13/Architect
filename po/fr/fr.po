@@ -443,7 +443,7 @@ msgstr ""
 #: src/system/grub-btrfs.sh:4
 #, sh-format
 msgid "Enable cronie"
-msgstr "Activationd de cronie"
+msgstr "Activation de cronie"
 
 #: src/system/grub-btrfs.sh:5
 #, sh-format
