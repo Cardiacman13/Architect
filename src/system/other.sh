@@ -1,4 +1,5 @@
 source src/cmd.sh
+source src/system/grub-btrfs.sh
 
 function sound_server() {
     local -r unlst="
@@ -56,6 +57,7 @@ Exec = /usr/bin/grub-mkconfig -o /boot/grub/grub.cfg
     exec_log "sudo sed -i 's/#\s*GRUB_DISABLE_OS_PROBER=false/GRUB_DISABLE_OS_PROBER=false/' '/etc/default/grub'" "$(eval_gettext "Enabling os-prober")"
     exec_log "sudo os-prober" "$(eval_gettext "Running os-prober")"
     exec_log "sudo update-grub" "$(eval_gettext "Updating GRUB")"
+    grub-btrfs
 }
 
 function firewall() {
