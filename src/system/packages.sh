@@ -38,7 +38,7 @@ function usefull_package() {
         fuse2
         fuse2fs
         fuse3
-        exfat-utils
+        exfatprogs
         bash-completion
         ffmpegthumbs
         man-db
