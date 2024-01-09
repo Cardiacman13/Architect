@@ -3,13 +3,13 @@ source src/de/kde.sh
 source src/de/xfce4.sh
 
 function detect_de() {
-    local -r message="What is your desktop environment"
-    local -r valid_des="GNOME KDE XFCE OTHER"
+    other="$(eval_gettext "OTHER")"
+    local -r valid_des="GNOME KDE XFCE $other"
 
-    read -rp "${message} (${valid_des}) : " choice
+    read -rp "$(eval_gettext "What is your desktop environment") (${valid_des}) : " choice
     choice="${choice^^}"
     while [[ ! ${valid_des} =~ (^|[[:space:]])"${choice}"($|[[:space:]]) ]]; do
-        read -rp "${message} (${valid_des}) : " choice
+        read -rp "$(eval_gettext "What is your desktop environment") (${valid_des}) : " choice
         choice="${choice^^}"
     done
 
@@ -17,7 +17,7 @@ function detect_de() {
     GNOME) install_gnome ;;
     KDE) install_kde ;;
     XFCE) install_xfce ;;
-    OTHER) ;;
-    *) echo "Invalid desktop environment : ${choice}" ;;
+    $other) ;;
+    *) eval_gettext "Invalid desktop environment : ${choice}"; echo ;; # Inutile ?
     esac
 }

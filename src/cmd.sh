@@ -49,7 +49,7 @@ function install_one() {
 
     echo "[INFO]: Exit status: ${exit_status}" >>"${LOG_FILE}"
     if [[ ${exit_status} -ne 0 ]]; then
-        echo -e "${RED}Error: ${package} installation failed${RESET}"
+        eval_gettext "\${RED}Error: \${package} installation failed\${RESET}"; echo
     fi
 }
 
@@ -77,6 +77,18 @@ function uninstall_lst() {
     for package in ${lst_split[@]}; do
         uninstall_one "${package}"
     done
+}
+
+function ask_question() {
+    yes="$(eval_gettext "y")"
+    no="$(eval_gettext "n")"
+    read -rp "$1 ($yes/${no^^}) : " choice
+
+    if [ "${choice,,}" == "$yes" ]; then
+        return 0
+    else
+        return 1
+    fi
 }
 
 # unused function

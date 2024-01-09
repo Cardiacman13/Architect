@@ -1,26 +1,17 @@
 source src/cmd.sh
 
 function gamepad() {
-    read -rp "Would you want to install xpadneo ? (Can improve xbox gamepad support, ${RED}say No if unsure${RESET}) (y/N) : " choice
-    choice="${choice^^}"
-
-    if [[ $choice == "Y" ]]; then
+    if ask_question "$(eval_gettext "Would you want to install xpadneo ? (Can improve xbox gamepad support, \${RED}say No if unsure\${RESET})")"; then
         install_one "xpadneo-dkms-git"
     fi
 
-    read -rp "Do you want to use PS5 controllers ? (y/N) : " choice
-    choice="${choice^^}"
-
-    if [[ $choice == "Y" ]]; then
+    if ask_question "$(eval_gettext "Do you want to use PS5 controllers ?")"; then
         install_one "dualsensectl-git"
     fi
 }
 
 function printer() {
-    read -rp "Do you want to use a printer ? (y/N) : " choice
-    choice="${choice^^}"
-
-    if [[ $choice == "Y" ]]; then
+    if ask_question "$(eval_gettext "Do you want to use a printer ?")"; then
         local inlst="
             ghostscript
             gsfonts
@@ -37,19 +28,15 @@ function printer() {
             gutenprint
             foomatic-db-gutenprint-ppds
         "
-        read -rp "Do you want to use a EPSON printer ? (y/N) : " choice
-        choice="${choice^^}"
 
-        if [[ $choice == "Y" ]]; then
+        if ask_question "$(eval_gettext "Do you want to use a EPSON printer ?")"; then
             inlst+="
                 epson-inkjet-printer-escpr
                 epson-inkjet-printer-escpr2
             "
         fi
-        read -rp "Do you want to use a HP printer ? (y/N) : " choice
-        choice="${choice^^}"
 
-        if [[ $choice == "Y" ]]; then
+        if ask_question "$(eval_gettext "Do you want to use a HP printer ?")"; then
             inlst+="
                 hplip
                 python-pyqt5
@@ -58,16 +45,13 @@ function printer() {
 
         install_lst "${inlst}"
 
-        exec_log "sudo systemctl enable --now avahi-daemon" "enabling avahi-daemon service"
-        exec_log "sudo systemctl enable --now cups" "enabling cups service"
+        exec_log "sudo systemctl enable --now avahi-daemon" "$(eval_gettext "enabling avahi-daemon service")"
+        exec_log "sudo systemctl enable --now cups" "$(eval_gettext "enabling cups service")"
     fi
 }
 
 function bluetooth() {
-    read -rp "Do you want to use bluetooth ? (y/N) : " choice
-    choice="${choice^^}"
-
-    if [[ $choice == "Y" ]]; then
+    if ask_question "$(eval_gettext "Do you want to use bluetooth ?")"; then
         local -r inlst="
             bluez
             bluez-plugins
@@ -76,6 +60,6 @@ function bluetooth() {
 
         install_lst "${inlst}"
 
-        exec_log "sudo systemctl enable --now bluetooth" "enabling bluetooth service"
+        exec_log "sudo systemctl enable --now bluetooth" "$(eval_gettext "enabling bluetooth service")"
     fi
 }

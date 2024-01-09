@@ -1,5 +1,12 @@
 #!/usr/bin/env bash
 
+. gettext.sh
+
+SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+
+export TEXTDOMAIN="architect"
+export TEXTDOMAINDIR="$SCRIPT_DIR/po"
+
 export RESET=$(tput sgr0)
 export RED=$(tput setaf 1)
 export GREEN=$(tput setaf 2)
@@ -8,9 +15,9 @@ export BLUE=$(tput setaf 4)
 export PURPLE=$(tput setaf 5)
 
 if sudo -v; then
-    echo -e "\n${GREEN}Root privileges granted${RESET}"
+    echo; eval_gettext "\${GREEN}Root privileges granted\${RESET}"; echo
 else
-    echo -e "\n${RED}Root privileges denied${RESET}"
+    echo; eval_gettext "\${RED}Root privileges denied\${RESET}"; echo
     exit 1
 fi
 
@@ -44,7 +51,6 @@ source src/system/drivers/gpu.sh
 source src/system/kernel.sh
 source src/system/other.sh
 source src/system/packages.sh
-source src/system/grub-btrfs.sh
 source src/system/shell.sh
 
 function display_step() {
@@ -72,42 +78,41 @@ function main() {
     
     local -r start_time="$(date +%s)"
     # init
-    display_step "Initialization"
+    display_step "$(eval_gettext "Initialization")"
     init_log
     header
 
     # system
-    display_step "System preparation"
+    display_step "$(eval_gettext "System preparation")"
     sleep 1
-    little_step config_pacman           "Pacman configuration"
-    little_step install_aur             "AUR helper installation"
-    little_step mirrorlist              "Mirrorlist configuration"
-    little_step install_headers         "Kernel headers installation"
-    little_step max_map_count           "Max map count configuration"
-    little_step sound_server            "Sound server configuration"
-    little_step setup_system_loaders    "System loaders configuration"
-    little_step usefull_package         "Usefull package installation"
-    little_step grub-btrfs              "grub-btrfs setup"
-    little_step firewall                "Firewall installation"
-    little_step shell_config            "Shell configuration"
+    little_step config_pacman           "$(eval_gettext "Pacman configuration")"
+    little_step install_aur             "$(eval_gettext "AUR helper installation")"
+    little_step mirrorlist              "$(eval_gettext "Mirrorlist configuration")"
+    little_step install_headers         "$(eval_gettext "Kernel headers installation")"
+    little_step max_map_count           "$(eval_gettext "Max map count configuration")"
+    little_step sound_server            "$(eval_gettext "Sound server configuration")"
+    little_step setup_system_loaders    "$(eval_gettext "System loaders configuration")"
+    little_step usefull_package         "$(eval_gettext "Useful package installation")"
+    little_step firewall                "$(eval_gettext "Firewall installation")"
+    little_step shell_config            "$(eval_gettext "Shell configuration")"
 
     # drivers
-    display_step "System configuration"
+    display_step "$(eval_gettext "System configuration")"
     sleep 1
-    little_step video_drivers           "Video drivers installation"
-    little_step gamepad                 "Gamepad configuration"
-    little_step printer                 "Printer configuration"
-    little_step bluetooth               "Bluetooth configuration"
+    little_step video_drivers           "$(eval_gettext "Video drivers installation")"
+    little_step gamepad                 "$(eval_gettext "Gamepad configuration")"
+    little_step printer                 "$(eval_gettext "Printer configuration")"
+    little_step bluetooth               "$(eval_gettext "Bluetooth configuration")"
 
     # desktop environment
-    display_step "Environment configuration"
+    display_step "$(eval_gettext "Environment configuration")"
     sleep 1
-    little_step detect_de               "Desktop environment detection"
+    little_step detect_de               "$(eval_gettext "Desktop environment detection")"
 
     # software
     sleep 1
-    display_step "Software installation"
-    little_step install_software        "Software installation"
+    display_step "$(eval_gettext "Software installation")"
+    little_step install_software        "$(eval_gettext "Software installation")"
 
     # end
     sleep 1

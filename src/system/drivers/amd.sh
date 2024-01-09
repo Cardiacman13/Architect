@@ -16,10 +16,7 @@ function amd_drivers() {
         lib32-mesa-vdpau
     "
 
-    read -rp "Would you like to install ROCM (${RED}say No if unsure${RESET}) (y/N) : " choice
-    choice="${choice,,}"
-
-    if [[ $choice =~ ^(yes|y)$ ]]; then
+    if ask_question "$(eval_gettext "Would you like to install ROCM (\${RED}say No if unsure\${RESET})")"; then
         inlst="${inlst} rocm-opencl-runtime rocm-hip-runtime"
     fi
 

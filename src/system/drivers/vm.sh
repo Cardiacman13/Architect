@@ -18,8 +18,8 @@ function vm_drivers() {
         "
 
         install_lst "${inlst}"
-        exec_log "sudo systemctl enable --now vboxservice" "activation of vboxservice"
-        exec_log "sudo VBoxClient-all" "activation of VBoxClient-all"
+        exec_log "sudo systemctl enable --now vboxservice" "$(eval_gettext "activation of vboxservice")"
+        exec_log "sudo VBoxClient-all" "$(eval_gettext "activation of VBoxClient-all")"
     else
         local -r inlst="
             spice-vdagent

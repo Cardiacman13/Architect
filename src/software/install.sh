@@ -1,4 +1,4 @@
-source src/cmd.sh
+# source src/cmd.sh
 
 declare -A desktop_list
 declare -A system_list
@@ -40,7 +40,7 @@ function set_software_list() {
     video_list=(
         ["Kdenlive"]="kdenlive"
         ["Davinci Resolve"]="davinci-resolve"
-        ["Davinci Resolve (paid version)"]="davinci-resolve-studio"
+        ["Davinci Resolve ($(eval_gettext "paid version"))"]="davinci-resolve-studio"
         ["OBS Studio"]="obs-studio"
         ["VLC"]="vlc"
         ["MPV"]="mpv"
@@ -73,18 +73,18 @@ function select_and_install() {
     local options=()
     local input
 
-    echo "${GREEN}${software_type} software${RESET} :"
+    eval_gettext "\${GREEN}\${software_type}\${RESET} :"; echo
     for software in "${!software_list[@]}"; do
         printf " ${PURPLE}%2d${RESET}) %s\n" "$i" "$software"
         options+=("$software")
         ((i++))
     done
 
-    echo -en "${BLUE}::${RESET} Packages to install (e.g., 1 2 3, 1-3, all or press enter to skip): "
+    eval_gettext "\${BLUE}::\${RESET} Packages to install (e.g., 1 2 3, 1-3, all or press enter to skip): "
     read -ra input
 
     for item in "${input[@]}"; do
-        if [[ "$item" == "all" ]]; then
+        if [[ "$item" == "$(eval_gettext "all")" ]]; then
             for software in "${!software_list[@]}"; do
                 selected_packages+=" ${software_list[$software]} "
             done
@@ -103,12 +103,12 @@ function select_and_install() {
 function install_software() {
     set_software_list
 
-    select_and_install browser_list "browsers"
-    select_and_install system_list "system"
-    select_and_install desktop_list "desktop"
-    select_and_install video_list "video"
-    select_and_install picture_list "image"
-    select_and_install gaming_list "gaming"
+    select_and_install browser_list "$(eval_gettext "Browsers")"
+    select_and_install system_list "$(eval_gettext "System Software")"
+    select_and_install desktop_list "$(eval_gettext "Desktop Apps")"
+    select_and_install video_list "$(eval_gettext "Video Software")"
+    select_and_install picture_list "$(eval_gettext "Image Editors")"
+    select_and_install gaming_list "$(eval_gettext "Gaming Software")"
 
     local -r aur_packages="${selected_packages}"
 
@@ -117,11 +117,11 @@ function install_software() {
     install_lst "${aur_packages}" "aur"
 
     if [[ "${aur_packages}" =~ "arch-update" ]]; then
-        exec_log "systemctl --user enable --now arch-update.timer" "Enable arch-update.timer"
+        exec_log "systemctl --user enable --now arch-update.timer" "$(eval_gettext "Enable arch-update.timer")"
     fi
     
     if [[ "${aur_packages}" =~ "virtualbox" ]]; then
-        exec_log "sudo gpasswd -a $USER vboxusers" "Add the current user to the vboxusers group"
-        exec_log "sudo systemctl enable vboxweb.service" "Enable vboxweb"
+        exec_log "sudo gpasswd -a $USER vboxusers" "$(eval_gettext "Add the current user to the vboxusers group")"
+        exec_log "sudo systemctl enable vboxweb.service" "$(eval_gettext "Enable vboxweb")"
     fi
 }

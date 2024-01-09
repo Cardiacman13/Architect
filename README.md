@@ -170,3 +170,5 @@ Sources and useful links :
 - [OpenRGB](https://github.com/CalcProgrammer1/OpenRGB)
 - Thanks to the [GLF Discord](https://discord.gg/6t4REDETJd) for the numerous tests and feedback.
 - Huge thanks to [wmemcpy](https://github.com/wmemcpy) for all his work on this project.
+- Thanks to [Skythrew](https://github.com/Skythrew) for his work on the French translation.
+- Thanks to [A1RM4X](https://www.youtube.com/A1RM4X) for his videos about archinstall and this project.

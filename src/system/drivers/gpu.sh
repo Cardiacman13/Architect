@@ -7,14 +7,14 @@ source src/system/drivers/vm.sh
 function video_drivers() {
     local -r valid_gpus="INTEL AMD NVIDIA VM"
 
-    read -rp "What is your graphics card type ? (${valid_gpus}) : " choice
+    read -rp "$(eval_gettext "What is your graphics card type ?") (${valid_gpus}) : " choice
     choice="${choice^^}"
     while [[ ! ${valid_gpus} =~ (^|[[:space:]])"${choice}"($|[[:space:]]) ]]; do
-        read -rp "What is your graphics card type ? (${valid_gpus}) : " choice
+        read -rp "$(eval_gettext "What is your graphics card type ?") (${valid_gpus}) : " choice
         choice="${choice^^}"
     done
 
-    echo -e "${GREEN}You chose ${choice}${RESET}"
+    eval_gettext "\${GREEN}You chose \${choice}\${RESET}"; echo
     case "${choice}" in
     "NVIDIA") nvidia_drivers ;;
     "AMD") amd_drivers ;;
