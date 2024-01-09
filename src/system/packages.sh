@@ -15,7 +15,6 @@ function usefull_package() {
         lib32-libva-mesa-driver
         mesa-vdpau
         lib32-mesa-vdpau
-        irqbalance
         fwupd
         xdg-utils
         downgrade
@@ -51,5 +50,4 @@ function usefull_package() {
     fi
 
     install_lst "${inlst}"
-    exec_log "sudo systemctl enable irqbalance.service" "irqbalance"
 }
