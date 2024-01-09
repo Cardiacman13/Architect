@@ -14,17 +14,53 @@ export YELLOW=$(tput setaf 3)
 export BLUE=$(tput setaf 4)
 export PURPLE=$(tput setaf 5)
 
+function usage() {
+    eval_gettext "Usage : ./architect.sh [OPTION]"; echo
+    eval_gettext "Options :"; echo
+    eval_gettext "  -h --help    : Display this help."; echo
+    eval_gettext "  -v --verbose : Verbose mode."; echo
+    eval_gettext "  --no-reboot  : Do not reboot the system at the end of the script."; echo
+}
+
+VALID_ARGS=$(getopt -o hv --long help,verbose,no-reboot -- "$@")
+if [[ $? -ne 0 ]]; then
+    exit 1;
+fi
+
+eval set -- "$VALID_ARGS"
+while [ : ]; do
+  case "$1" in
+    -h | --help)
+        usage
+        exit 1
+        ;;
+    -v | --verbose)
+        export VERBOSE=true
+        shift
+        ;;
+    --no-reboot)
+        export NOREBOOT=true
+        shift
+        ;;
+    --) shift; 
+        break 
+        ;;
+  esac
+done
+
+if [[ -z ${VERBOSE+x} ]]; then
+    export VERBOSE=false
+fi
+
+if [[ -z ${NOREBOOT+x} ]]; then
+    export NOREBOOT=false
+fi
+
 if sudo -v; then
     echo; eval_gettext "\${GREEN}Root privileges granted\${RESET}"; echo
 else
     echo; eval_gettext "\${RED}Root privileges denied\${RESET}"; echo
     exit 1
-fi
-
-if [[ $1 == "-v" ]]; then
-    export VERBOSE=true
-else
-    export VERBOSE=false
 fi
 
 export LOG_FILE="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/logfile_$(date "+%Y%m%d-%H%M%S").log"

@@ -11,6 +11,11 @@ function endscript() {
         eval_gettext "Log file uploaded to \${url}"; echo
     fi
 
+    if [[ "${NOREBOOT}" == "true" ]]; then
+        eval_gettext "\${GREEN}Script completed successfully.\${RESET}"; echo
+        exit 0
+    fi
+
     read -rp "$(eval_gettext "\${GREEN}Script completed successfully, the system must restart\${RESET}: Press \${GREEN}Enter\${RESET} to restart or \${RED}Ctrl+C\${RESET} to cancel.")"
     for i in {5..1}; do
         eval_gettext "\${GREEN}Restarting in \${i} seconds...\${RESET}"; echo -ne "\r"
