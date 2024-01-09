@@ -106,7 +106,6 @@ Select additional softwares based on your needs:
 | Name                    | Package                                     | Type    |
 |-------------------------|---------------------------------------------|---------|
 | Arch Update             | arch-update                                 | package |
-| PAMAC                   | pamac-all                                   | package |
 | Open RGB                | openrgb                                     | package |
 
 #### **Communication:**

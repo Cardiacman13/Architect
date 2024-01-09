@@ -26,8 +26,6 @@ function set_software_list() {
     system_list=(
         ["Open RGB"]="openrgb-bin"
         ["Arch Update"]="arch-update"
-        ["PAMAC ALL"]="pamac-all"
-        ["PAMAC tray icon for plasma"]="pamac-tray-icon-plasma"
     )
 
     picture_list=(
@@ -117,7 +115,7 @@ function install_software() {
     install_lst "${aur_packages}" "aur"
 
     if [[ "${aur_packages}" =~ "arch-update" ]]; then
-        exec_log "systemctl --user enable --now arch-update.timer" "$(eval_gettext "Enable arch-update.timer")"
+        exec_log "systemctl --user enable arch-update.timer" "$(eval_gettext "Enable arch-update.timer")"
     fi
     
     if [[ "${aur_packages}" =~ "virtualbox" ]]; then
