@@ -45,11 +45,11 @@ function usefull_package() {
         man-db
         man-pages
     "
-    exec_log "sudo systemctl enable irqbalance.service" "irqbalance"
     
     if [[ ${BTRFS} == true ]]; then
         inlst+=" btrfs-progs btrfs-assistant btrfs-du btrfsmaintenance"
     fi
 
     install_lst "${inlst}"
+    exec_log "sudo systemctl enable irqbalance.service" "irqbalance"
 }
