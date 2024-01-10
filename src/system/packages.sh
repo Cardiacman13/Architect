@@ -20,7 +20,7 @@ function usefull_package() {
         downgrade
         rebuild-detector
         xdg-desktop-portal
-        neofetch
+        fastfetch
         power-profiles-daemon
         hunspell
         hunspell-fr
