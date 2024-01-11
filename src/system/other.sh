@@ -34,13 +34,11 @@ function setup_system_loaders() {
         return
     fi
 
-    # copy_bak "assets/data/hooks" "grub.hook" "/etc/pacman.d/hooks" true
-    
     exec_log "sudo mkdir -p /etc/pacman.d/hooks" "$(eval_gettext "Creating /etc/pacman.d/hooks")"
+    
     if [ ! -f /etc/pacman.d/hooks/grub.hook ]; then
         exec_log "sudo touch /etc/pacman.d/hooks/grub.hook" "$(eval_gettext "Creating /etc/pacman.d/hooks/grub.hook")"
-    fi
-    exec_log "echo -e '[Trigger]
+        exec_log "echo -e '[Trigger]
 Type = File
 Operation = Install
 Operation = Upgrade
@@ -52,12 +50,15 @@ Description = Updating grub configuration ...
 When = PostTransaction
 Exec = /usr/bin/grub-mkconfig -o /boot/grub/grub.cfg
 ' | sudo tee -a /etc/pacman.d/hooks/grub.hook" "$(eval_gettext "Setting up GRUB hook")"
+    fi
 
     install_lst "update-grub os-prober"
     exec_log "sudo sed -i 's/#\s*GRUB_DISABLE_OS_PROBER=false/GRUB_DISABLE_OS_PROBER=false/' '/etc/default/grub'" "$(eval_gettext "Enabling os-prober")"
     exec_log "sudo os-prober" "$(eval_gettext "Running os-prober")"
     exec_log "sudo update-grub" "$(eval_gettext "Updating GRUB")"
-    grub-btrfs
+    if [[ ${BTRFS} == true ]]; then
+        grub-btrfs
+    fi
 }
 
 function firewall() {
