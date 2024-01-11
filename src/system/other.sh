@@ -56,7 +56,7 @@ Exec = /usr/bin/grub-mkconfig -o /boot/grub/grub.cfg
     exec_log "sudo sed -i 's/#\s*GRUB_DISABLE_OS_PROBER=false/GRUB_DISABLE_OS_PROBER=false/' '/etc/default/grub'" "$(eval_gettext "Enabling os-prober")"
     exec_log "sudo os-prober" "$(eval_gettext "Running os-prober")"
     exec_log "sudo update-grub" "$(eval_gettext "Updating GRUB")"
-    if [[ ${BTRFS} == true && ! command -v grub-btrfs &> /dev/null ]]; then
+    if ! pacman -Q grub-btrfs &> /dev/null && [[ ${BTRFS} == true ]]; then
         grub-btrfs
     fi
 }
