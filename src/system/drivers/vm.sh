@@ -8,6 +8,7 @@ function vm_drivers() {
     local -r inlst_all="
         vulkan-swrast
         lib32-vulkan-swrast
+        lib32-vulkan-icd-loader
     "
 
     install_lst "${inlst_all}"
