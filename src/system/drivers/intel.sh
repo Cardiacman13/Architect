@@ -10,7 +10,6 @@ function intel_drivers() {
         lib32-vulkan-icd-loader
         intel-media-driver
         intel-gmmlib
-        intel-media-driver
         onevpl-intel-gpu
         libva-mesa-driver
         lib32-libva-mesa-driver
