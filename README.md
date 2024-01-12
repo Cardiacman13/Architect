@@ -1,173 +1,175 @@
-# 🐧 ARCHITECT SCRIPT
+# 🐧 SCRIPT ARCHITECT
 
-A minimalist archlinux configuration script
+[ENGLISH VERSION](https://github.com/Gaming-Linux-FR/Architect/blob/main/README-EN.md)
 
-## Table of Contents
+Un script de post-installation pour Arch Linux
 
-<div align = center>
+## Table des matières
 
-&ensp;[<kbd> <br> Install with archinstall <br> </kbd>](#archinstall)&ensp;
-&ensp;[<kbd> <br> All-in-one script <br> </kbd>](#script)&ensp;
-&ensp;[<kbd> <br> Community stuff <br> </kbd>](https://github.com/Cardiacman13/Architect/discussions)&ensp;
+<div align="center">
+
+&ensp;[<kbd> <br> Installer avec archinstall <br> </kbd>](#archinstall)&ensp;
+&ensp;[<kbd> <br> Script tout-en-un <br> </kbd>](#script)&ensp;
+&ensp;[<kbd> <br> Communauté <br> </kbd>](https://github.com/Cardiacman13/Architect/discussions)&ensp;
 &ensp;[<kbd> <br> Wiki <br> </kbd>](https://github.com/Cardiacman13/Architect/wiki)&ensp;
 <br><br><br><br></div>
 
-## Before the script, here's a video from A1RM4X to assist you with archinstall <a name="archinstall"/>
+## Avant le script, voici une vidéo pour vous aider avec archinstall <a name="archinstall"/>
 
-<img src="https://github.com/Cardiacman13/tuto-archlinux-fr/blob/main/assets/images/LOGO-A1RM4X-2K.png" width="30" height="30"> [ Install Arch like a boss: Archinstall script ](https://youtu.be/56u5tddLxCI?si=0DKyfDp7hQGTfLny)
+<img src="https://github.com/Cardiacman13/tuto-archlinux-fr/blob/main/assets/images/Cardiac-icon.png" width="30" height="30"> [ Tutoriel Arch Linux Partie 1 : Archinstall ](https://www.youtube.com/watch?v=JE6VwNHLcyk)
 
-## 🚀 Arch Linux Script <a name="script"/>
+## 🚀 Script Arch Linux <a name="script"/>
 
-<img src="https://github.com/Cardiacman13/tuto-archlinux-fr/blob/main/assets/images/LOGO-A1RM4X-2K.png" width="30" height="30"> [ Configure Arch the easy way: Architect project by Cardiac ](https://youtu.be/0MV3MxmO7ns?si=eOMc-e4wdSwv1Fbb)
+<img src="https://github.com/Cardiacman13/tuto-archlinux-fr/blob/main/assets/images/Cardiac-icon.png" width="30" height="30"> [ Tutoriel Arch Linux Partie 2 : Post Installation ](https://youtu.be/FEFhC46BkXo?si=Gi-6BOhqENLoh5Ak)
 
-This script is perfect for configuring a **stock Arch** system with a **minimal set of packages** tailored to your needs right after using [`archinstall`](https://github.com/archlinux/archinstall). Specifically, it's **geared towards gaming**.
+Ce script est parfait pour configurer un système **Arch standard** avec un **ensemble minimal de paquets** adapté à vos besoins juste après avoir utilisé [`archinstall`](https://github.com/archlinux/archinstall). Il est spécifiquement **orienté vers le gaming**.
 
 > [!IMPORTANT]
-> It's specifically designed for a pure Arch Linux experience (not tested on *Garuda*, *Manjaro*, etc.).
-> We make all our test based on a fresh install of Arch Linux with [`archinstall`](https://github.com/archlinux/archinstall).
-> It is not suitable for outdated computers. Ensure your hardware meets the requirements for the latest Nvidia drivers.
+> Il est spécifiquement conçu pour une expérience pure d'Arch Linux (non testé sur *Garuda*, *Manjaro*, etc.).
+> Nous effectuons tous nos tests sur une installation fraîche d'Arch Linux avec [`archinstall`](https://github.com/archlinux/archinstall).
+> Il n'est pas adapté aux ordinateurs de plus de 10 ans. Assurez-vous que votre matériel répond aux exigences des derniers pilotes Nvidia.
 
-> [!CAUTION]
-> The script modifies your system configuration, see the [wiki](https://github.com/Cardiacman13/Architect/wiki) or [community panel](https://github.com/Cardiacman13/Architect/discussions) for more informations.
+> [!ATTENTION]
+> Le script modifie la configuration de votre système, consultez le [wiki](https://github.com/Cardiacman13/Architect/wiki) ou le [forum de la communauté](https://github.com/Cardiacman13/Architect/discussions) pour plus d'informations.
 
-Execute the following in the terminal to run the script (**requires sudo access**):
+Exécutez la commande suivante dans le terminal pour lancer le script :
 
 ```bash
 sudo pacman -S git base-devel && git clone https://github.com/Cardiacman13/Architect.git ~/Architect && cd ~/Architect && ./architect.sh
 ```
 
-## 📝 Main Features
+## 📝 Principales fonctionnalités
 
-### 1. 🚀 Configure Package Manager
-Boost Pacman's functionality:
-- 🎨 Enabling colored output.
-- 📝 Detailed package lists.
-- ⚡ Parallel downloads.
-- 🔗 Multilib support.
+### 1. 🚀 Configurer le gestionnaire de paquets
+Améliorer les fonctionnalités de Pacman :
+- 🎨 Activation de la sortie colorée.
+- 📝 Listes détaillées des paquets.
+- ⚡ Téléchargements parallèles.
+- 🔗 Support multilib.
 
-### 2. ⌨️ Adding Useful Aliases
-Ease your command-line tasks:
-- `update-arch`: Updates your system apps in one go.
-- `clean-arch`: Removes unused packages.
-- `fix-key`: Solves key-related issues for updates.
-- `update-mirrors`: Refreshes your system's mirror list.
+### 2. ⌨️ Ajout d'Alias Utiles
+Faciliter vos tâches en ligne de commande :
+- `update-arch` : Met à jour vos applications système en une seule fois.
+- `clean-arch` : Supprime les paquets inutilisés.
+- `fix-key` : Résout les problèmes liés aux clés lors des mises à jour.
+- `update-mirrors` : Rafraîchit la liste des miroirs de votre système.
 
-### 3. 🎮 GPU Setup for Gaming (AMD, NVIDIA, Intel)
-Prepare your system for gaming with :
-- 🎮 GPU drivers choises:
-  - 📹 AMD and 32-bit library support.
-  - 📹 Intel and 32-bit library support.
-  - 🔄 NVIDIA choises:
-    - **Nvidia**: Standard drivers **recommended for most**.
-    - **Nvidia-all**: For advanced users (via [`Frogging-Family/nvidia-all`](https://github.com/Frogging-Family/nvidia-all) repo).
+### 3. 🎮 Configuration GPU pour le jeu (AMD, NVIDIA, Intel)
+Préparer votre système pour le jeu avec :
+- 🎮 Choix des pilotes GPU :
+  - 📹 Support AMD et bibliothèque 32 bits.
+  - 📹 Support Intel et bibliothèque 32 bits.
+  - 🔄 Choix NVIDIA :
+    - **Nvidia** : Pilotes standard **recommandés pour la plupart**.
+    - **Nvidia-all** : Pour les utilisateurs avancés (via le dépôt [`Frogging-Family/nvidia-all`](https://github.com/Frogging-Family/nvidia-all)).
 
-<img src="https://github.com/Cardiacman13/tuto-archlinux-fr/blob/main/assets/images/LOGO-A1RM4X-2K.png" width="30" height="30"> [ Never struggle again with Nvidia drivers on Linux! NVIDIA ALL by TkG on Arch / Arch based distros ](https://www.youtube.com/watch?v=QW2XGMAu6VE)
+<img src="https://github.com/Cardiacman13/tuto-archlinux-fr/blob/main/assets/images/LOGO-A1RM4X-2K.png" width="30" height="30"> [ Ne luttez plus avec les pilotes Nvidia sur Linux ! NVIDIA ALL par TkG sur Arch / Distributions basées sur Arch ](https://www.youtube.com/watch?v=QW2XGMAu6VE)
 
-### 4. 🖥️ Desktop Environment
-Choose your DE:
+### 4. 🖥️ Environnement de Bureau
+Choisissez votre DE :
 - 🖥️ `GNOME`.
 - 🖥️ `KDE Plasma`.
 - 🖥️ `XFCE`.
-- 🖥️ `i3wm` ([custom config](https://github.com/wmemcpy/i3-config) coming soon... 😏).
+- 🖥️ `i3wm` ( [configuration personnalisée](https://github.com/wmemcpy/i3-config) bientôt disponible... 😏).
 
-### 5. 📦 Install Base Packages
-Essential packages for a rounded experience:
-- 📦 AUR helpers: [`yay`](https://github.com/Jguer/yay) or [`paru`](https://github.com/Morganamilo/paru).
-- 🖋️ Fonts, Emoji.
+### 5. 📦 Installer des paquets de base
+Paquets essentiels pour une expérience complète :
+- 📦 Aideurs AUR : [`yay`](https://github.com/Jguer/yay) ou [`paru`](https://github.com/Morganamilo/paru).
+- 🖋️ Polices, Emoji.
 - 🎬 Codecs.
-- ➕ Other crucial packages.
+- ➕ Autres paquets cruciaux.
 
-### 6. 🛠️ Miscellaneous Enhancements
-Tune-up your system:
-- 🎲 Boost `vm.max_map_count` for better Windows game compatibility. [Arch wiki about vm-max-map-count](https://wiki.archlinux.org/title/gaming#Increase_vm.max_map_count)
-- 🖨️ Options for Print support.
-- 🎵 Bluetooth configuration.
-- 🎮 Enhanced support for Xbox, PS5, 8bitdo controllers.
-- 🐟 Suggest Fish shell configuration. (zsh in WIP)
-- 📂 Btrfs support in GRUB with grub-btrfs.
-
----
-
-### 7. 🔄 Ask to Install Additional Software
-
-Select additional softwares based on your needs:
-
-#### **Web Browsers:**
-| Name                    | Package                                     | Type    |
-|-------------------------|---------------------------------------------|---------|
-| Firefox                 | firefox                                     | package |
-| Brave                   | brave-bin                                   | package |
-| Chromium                | chromium                                    | package |
-| Vivaldi                 | vivaldi                                     | package |
-| Google Chrome           | google-chrome                               | package |
-| Microsoft Edge          | microsoft-edge-stable-bin                   | package |
-
-#### **System Utilities:**
-| Name                    | Package                                     | Type    |
-|-------------------------|---------------------------------------------|---------|
-| Arch Update             | arch-update                                 | package |
-| Open RGB                | openrgb                                     | package |
-
-#### **Communication:**
-| Name                    | Package                                     | Type    |
-|-------------------------|---------------------------------------------|---------|
-| Discord                 | discord                                     | package |
-| Telegram                | telegram-desktop                            | package |
-
-#### **Media and Design:**
-| Name                    | Package                                     | Type    |
-|-------------------------|---------------------------------------------|---------|
-| OBS Studio              | obs-studio                                  | package |
-| Kdenlive                | kdenlive                                    | package |
-| Davinci Resolve         | davinci-resolve                             | package |
-| Gimp                    | gimp                                        | package |
-| Inkscape                | inkscape                                    | package |
-| Krita                   | krita                                       | package |
-| VLC                     | vlc                                         | package |
-| MPV                     | mvp                                         | package |
-| Kazam                   | kazam                                       | package |
-
-#### **Productivity and Office:**
-| Name                    | Package                                     | Type    |
-|-------------------------|---------------------------------------------|---------|
-| LibreOffice             | libreoffice-fresh                           | package |
-| OnlyOffice              | onlyoffice-bin                              | package |
-| Visual Studio Code      | visual-studio-code-bin                      | package |
-
-#### **Entertainment and Gaming:**
-| Name                    | Package                                     | Type    |
-|-------------------------|---------------------------------------------|---------|
-| Steam                   | steam                                       | package |
-| Lutris                  | lutris wine-staging                         | package |
-| Heroic Games Launcher   | heroic-games-launcher-bin                   | package |
-| Goverlay                | goverlay                                    | package |
-| Gamemode                | gamemode                                    | package |
-| Spotify                 | spotify                                     | package |
+### 6. 🛠️ Améliorations diverses
+Optimisez votre système :
+- 🎲 Augmentation de `vm.max_map_count` pour une meilleure compatibilité avec les jeux Windows. [Arch wiki sur vm-max-map-count](https://wiki.archlinux.org/title/gaming#Increase_vm.max_map_count)
+- 🖨️ Options pour le support de l'impression.
+- 🎵 Configuration Bluetooth.
+- 🎮 Support amélioré pour les manettes Xbox, PS5, 8bitdo.
+- 🐟 Suggérer la configuration de l'environnement Fish shell. (zsh en cours de réalisation)
+- 📂 Support Btrfs dans GRUB avec grub-btrfs.
 
 ---
 
-## Troubleshooting
+### 7. 🔄 Demander l'installation de logiciels supplémentaires
 
-For help, open a conversation in the [conversation section](https://github.com/Cardiacman13/Architect/discussions)
+Sélectionnez des logiciels supplémentaires en fonction de vos besoins :
+
+#### **Navigateurs Web :**
+| Nom                     | Paquet                                     |
+|-------------------------|--------------------------------------------|
+| Firefox                 | firefox                                    |
+| Brave                   | brave-bin                                  |
+| Chromium                | chromium                                   |
+| Vivaldi                 | vivaldi                                    |
+| Google Chrome           | google-chrome                              |
+| Microsoft Edge          | microsoft-edge-stable-bin                  |
+
+#### **Utilitaires Système :**
+| Nom                     | Paquet                                     |
+|-------------------------|--------------------------------------------|
+| Arch Update             | arch-update                                |
+| Open RGB                | openrgb                                    |
+
+#### **Communication :**
+| Nom                     | Paquet                                     |
+|-------------------------|--------------------------------------------|
+| Discord                 | discord                                    |
+| Telegram                | telegram-desktop                           |
+
+#### **Médias et Design :**
+| Nom                     | Paquet                                     |
+|-------------------------|--------------------------------------------|
+| OBS Studio              | obs-studio                                 |
+| Kdenlive                | kdenlive                                   |
+| Davinci Resolve         | davinci-resolve                            |
+| Gimp                    | gimp                                       |
+| Inkscape                | inkscape                                   |
+| Krita                   | krita                                      |
+| VLC                     | vlc                                        |
+| MPV                     | mvp                                        |
+| Kazam                   | kazam                                      |
+
+#### **Productivité et Bureautique :**
+| Nom                     | Paquet                                     |
+|-------------------------|--------------------------------------------|
+| LibreOffice             | libreoffice-fresh                          |
+| OnlyOffice              | onlyoffice-bin                             |
+| Visual Studio Code      | visual-studio-code-bin                     |
+
+#### **Divertissement et Jeu :**
+| Nom                     | Paquet                                     |
+|-------------------------|--------------------------------------------|
+| Steam                   | steam                                      |
+| Lutris                  | lutris wine-staging                        |
+| Heroic Games Launcher   | heroic-games-launcher-bin                  |
+| Goverlay                | goverlay                                   |
+| Gamemode                | gamemode                                   |
+| Spotify                 | spotify                                    |
+
+---
+
+## Dépannage
+
+Pour obtenir de l'aide, ouvrez une discussion dans la [section de discussion](https://github.com/Cardiacman13/Architect/discussions)
 
 ## Sources
 
-Sources and useful links :
+Sources et liens utiles :
 - [ArchWiki](https://wiki.archlinux.org/)
 - [Site GLF](https://www.gaminglinux.fr/)
-- [GLF Discord](http://discord.gg/EP3Jm8YMvj)
-- [My Youtube channel](https://www.youtube.com/@Cardiacman)
+- [Discord GLF](http://discord.gg/EP3Jm8YMvj)
+- [Ma chaîne YouTube](https://www.youtube.com/@Cardiacman)
 
-## 🙏 Acknowledgments
+## 🙏 Remerciements
 
-- [Arch Linux](https://archlinux.org/) team for their amazing work.
-- Arch Linux community for their amazing documentation.
-- AUR maintainers for their hard work.
-- All contributors.
-- Developers of the packages used in this project. Special mention to : 
-- [Frogging Family](https://github.com/Frogging-Family)
-- [OpenRGB](https://github.com/CalcProgrammer1/OpenRGB)
-- Thanks to the [GLF Discord](https://discord.gg/6t4REDETJd) for the numerous tests and feedback.
-- Huge thanks to [wmemcpy](https://github.com/wmemcpy) for all his work on this project.
-- Thanks to [Skythrew](https://github.com/Skythrew) for his work on the French translation.
-- Thanks to [A1RM4X](https://www.youtube.com/A1RM4X) for his videos about archinstall and this project.
+- Équipe [Arch Linux](https://archlinux.org/) pour leur travail incroyable.
+- Communauté Arch Linux pour leur documentation exceptionnelle.
+- Mainteneurs AUR pour leur travail acharné.
+- Tous les contributeurs.
+- Développeurs des paquets utilisés dans ce projet. Mention spéciale à :
+  - [Frogging Family](https://github.com/Frogging-Family)
+  - [OpenRGB](https://github.com/CalcProgrammer1/OpenRGB)
+- Merci au [Discord GLF](https://discord.gg/6t4REDETJd) pour les nombreux tests et retours.
+- Un grand merci à [wmemcpy](https://github.com/wmemcpy) pour tout son travail sur ce projet.
+- Merci à [Skythrew](https://github.com/Skythrew) pour son travail sur la traduction française.
+- Merci à [A1RM4X](https://www.youtube.com/A1RM4X) pour ses vidéos en anglais sur archinstall et ce projet.
