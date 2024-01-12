@@ -24,7 +24,7 @@ Un script de post-installation pour Arch Linux
 
 ## 🚀 Script Arch Linux <a name="script"/>
 
-<img src="https://github.com/Cardiacman13/tuto-archlinux-fr/blob/main/assets/images/Cardiac-icon.png" width="30" height="30"> [ Tutoriel Arch Linux Partie 2 : Post Installation ](https://youtu.be/FEFhC46BkXo?si=Gi-6BOhqENLoh5Ak)
+<img src="https://github.com/Cardiacman13/tuto-archlinux-fr/blob/main/assets/images/Cardiac-icon.png" width="30" height="30"> [Mise à jour de Architect, la trad FR enfin disponible !](https://youtu.be/lxUpVr4xnes?si=iTLZx1Y12ddn60kv)
 
 Ce script est parfait pour configurer un système **Arch standard** avec un **ensemble minimal de paquets** adapté à vos besoins juste après avoir utilisé [`archinstall`](https://github.com/archlinux/archinstall). Il est spécifiquement **orienté vers le gaming**.
 
