@@ -1,8 +1,9 @@
 # 🐧 SCRIPT ARCHITECT
 
+Un script de post-installation pour Arch Linux
+
 [ENGLISH VERSION](https://github.com/Gaming-Linux-FR/Architect/blob/main/README-EN.md)
 
-Un script de post-installation pour Arch Linux
 
 ## Table des matières
 
@@ -14,7 +15,7 @@ Un script de post-installation pour Arch Linux
 &ensp;[<kbd> <br> Wiki <br> </kbd>](https://github.com/Cardiacman13/Architect/wiki)&ensp;
 <br><br><br><br></div>
 
-## Tout d'abord Arch est-elle faites pour vous ?
+## Tout d'abord Arch est-elle faite pour vous ?
 
 <img src="https://github.com/Cardiacman13/tuto-archlinux-fr/blob/main/assets/images/Cardiac-icon.png" width="30" height="30"> [ Arch Linux : Introduction & démo d'installation ](https://www.youtube.com/watch?v=2B3Z0WiLT6A)
 

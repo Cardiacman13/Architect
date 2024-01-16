@@ -45,8 +45,8 @@ function printer() {
 
         install_lst "${inlst}"
 
-        exec_log "sudo systemctl enable --now avahi-daemon" "$(eval_gettext "enabling avahi-daemon service")"
-        exec_log "sudo systemctl enable --now cups" "$(eval_gettext "enabling cups service")"
+        exec_log "sudo systemctl enable avahi-daemon" "$(eval_gettext "enabling avahi-daemon service")"
+        exec_log "sudo systemctl enable cups" "$(eval_gettext "enabling cups service")"
     fi
 }
 
@@ -60,6 +60,6 @@ function bluetooth() {
 
         install_lst "${inlst}"
 
-        exec_log "sudo systemctl enable --now bluetooth" "$(eval_gettext "enabling bluetooth service")"
+        exec_log "sudo systemctl enable bluetooth" "$(eval_gettext "enabling bluetooth service")"
     fi
 }
