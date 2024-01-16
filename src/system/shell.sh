@@ -27,8 +27,8 @@ function shell_config() {
     local index=0
     local choice=""
 
-    while [[ $choice != "bash" && $choice != "fish" ]]; do
-        read -rp "$(eval_gettext "What is your default shell ? (bash/fish) : ")" choice
+    while [[ $choice != "bash" && $choice != "fish" && $choice != "zsh" ]]; do
+        read -rp "$(eval_gettext "What is your default shell? (bash/fish/zsh) : ")" choice
         choice="${choice,,}"
     done
 
@@ -53,6 +53,13 @@ function shell_config() {
         mkdir -p "${HOME}/.config/fish"
         touch "${HOME}/.config/fish/config.fish"
         index=2
+        ;;
+    zsh)
+        sudo pacman -Sy zsh
+        chsh -s "$(which zsh)"
+        sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+        touch "${HOME}/.zshrc"
+        index=1
         ;;
     *)
         eval_gettext "Invalid choice"; echo
