@@ -243,6 +243,11 @@ msgstr ""
 msgid "enabling avahi-daemon service"
 msgstr ""
 
+#: src/system/drivers/devices.sh:61
+#, sh-format
+msgid "Disabling systemd-resolved service"
+msgstr ""
+
 #: src/system/drivers/devices.sh:62
 #, sh-format
 msgid "enabling cups service"

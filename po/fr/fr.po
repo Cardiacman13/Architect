@@ -290,8 +290,8 @@ msgstr "Activation du service avahi-daemon"
 
 #: src/system/drivers/devices.sh:48
 #, sh-format
-msgid "disabling systemd-resolved service"
-msgstr "désactivation du service systemd-resolved"
+msgid "Disabling systemd-resolved service"
+msgstr "Désactivation du service systemd-resolved"
 
 #: src/system/drivers/devices.sh:49
 #, sh-format
