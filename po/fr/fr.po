@@ -288,6 +288,11 @@ msgstr "Voulez-vous utiliser une imprimante HP ?"
 msgid "enabling avahi-daemon service"
 msgstr "Activation du service avahi-daemon"
 
+#: src/system/drivers/devices.sh:48
+#, sh-format
+msgid "disabling systemd-resolved service"
+msgstr "désactivation du service systemd-resolved"
+
 #: src/system/drivers/devices.sh:49
 #, sh-format
 msgid "enabling cups service"
