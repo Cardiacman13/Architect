@@ -56,6 +56,11 @@ if [[ -z ${NOREBOOT+x} ]]; then
     export NOREBOOT=false
 fi
 
+if [[ $(whoami) == 'root' ]]; then
+    echo; eval_gettext "\${RED}Do not run this script as root, use a user with sudo rights\${RESET}"; echo
+    exit 1
+fi
+
 if sudo -v; then
     echo; eval_gettext "\${GREEN}Root privileges granted\${RESET}"; echo
 else

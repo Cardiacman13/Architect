@@ -562,10 +562,15 @@ msgstr "n"
 msgid "${GREEN}Root privileges granted${RESET}"
 msgstr "${GREEN}Privilèges d'administrateur accordés${RESET}"
 
+#: architect.sh:65
+#, sh-format
+msgid "${RED}Do not run this script as root, use a user with sudo rights${RESET}"
+msgstr "${RED}N'exécutez pas ce script en root, utilisez un utilisateur sudoer${RESET}"
+
 #: architect.sh:20
 #, sh-format
 msgid "${RED}Root privileges denied${RESET}"
-msgstr "${GREEN}Privilèges d'administrateur refusés${RESET}"
+msgstr "${RED}Privilèges d'administrateur refusés${RESET}"
 
 #: architect.sh:82
 #, sh-format
