@@ -8,7 +8,6 @@ function install_kde() {
         dolphin
         ark
         plasma-wayland-session
-        powerdevil
         xdg-desktop-portal-kde
         okular
         print-manager
@@ -21,7 +20,6 @@ function install_kde() {
         qt6-multimedia-ffmpeg
         qt6-wayland
         kdeplasma-addons
-        powerdevil
         kcalc
         plasma-systemmonitor
         kwalletmanager

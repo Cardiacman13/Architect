@@ -29,6 +29,7 @@ function usefull_package() {
         duf
         p7zip
         unrar
+        ttf-dejavu
         ttf-liberation
         ttf-meslo-nerd
         noto-fonts-emoji
