@@ -20,11 +20,13 @@ function set_software_list() {
         ["Audacity"]="audacity"
         ["Kazam"]="kazam"
         ["Visual Studio Code"]="visual-studio-code-bin"
+        ["Visual Studio Code Open Source"]="code"
         ["Virtualbox"]="virtualbox virtualbox-host-dkms virtualbox-guest-iso virtualbox-ext-oracle"
+        ["CrossOver"]="crossover"
     )
 
     system_list=(
-        ["Open RGB"]="openrgb-bin"
+        ["Open RGB"]="openrgb"
         ["Arch Update"]="arch-update"
     )
 
@@ -56,9 +58,9 @@ function set_software_list() {
     gaming_list=(
         ["Steam"]="steam"
         ["Lutris (LOL, etc.)"]="lutris wine-staging "
-        ["Heroic Games Launcher (Epic Games, GOG, etc.)"]="heroic-games-launcher-bin"
+        ["Heroic Games Launcher (Epic Games, GOG, etc.)"]="heroic-games-launcher"
         ["Prism Launcher (Minecraft)"]="prismlauncher-qt5 jdk8-openjdk"
-        ["ProtonUp QT"]="protonup-qt-bin"
+        ["ProtonUp QT"]="protonup-qt"
         ["Goverlay"]="goverlay"
         ["Gamemode"]="gamemode"
     )

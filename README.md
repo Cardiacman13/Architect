@@ -144,13 +144,16 @@ Sélectionnez des logiciels supplémentaires en fonction de vos besoins :
 | LibreOffice             | libreoffice-fresh                          |
 | OnlyOffice              | onlyoffice-bin                             |
 | Visual Studio Code      | visual-studio-code-bin                     |
+| VS Code Open Source     | code                                       |
+| CrossOver               | crossover                                  |
 
 #### **Divertissement et Jeu :**
 | Nom                     | Paquet                                     |
 |-------------------------|--------------------------------------------|
 | Steam                   | steam                                      |
 | Lutris                  | lutris wine-staging                        |
-| Heroic Games Launcher   | heroic-games-launcher-bin                  |
+| Heroic Games Launcher   | heroic-games-launcher                      |
+| Proton UP               | protonup-qt                                |
 | Goverlay                | goverlay                                   |
 | Gamemode                | gamemode                                   |
 | Spotify                 | spotify                                    |
