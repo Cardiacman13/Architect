@@ -32,5 +32,5 @@ function init_log() {
 
     touch "${LOG_FILE}"
     echo -e "Commit hash: $(git rev-parse HEAD)" >>"${LOG_FILE}"
-    echo -e "Log file: ${LOGFILE}\n" >>"${LOG_FILE}"
+    echo -e "Log file: ${LOG_FILE}\n" >>"${LOG_FILE}"
 }
