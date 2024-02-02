@@ -6,7 +6,7 @@ function gamepad() {
     fi
 
     if ask_question "$(eval_gettext "Would you want to install xone ? (For Xbox controler Bluetooth USB Dongle, \${RED}say No if unsure\${RESET})")"; then
-        install_one "xpadneo-dkms-git"
+        install_one "xone-dkms-git"
     fi
 
     if ask_question "$(eval_gettext "Do you want to use PS5 controllers ?")"; then
