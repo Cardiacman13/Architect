@@ -50,7 +50,6 @@ function printer() {
         install_lst "${inlst}"
 
         exec_log "sudo systemctl enable avahi-daemon" "$(eval_gettext "enabling avahi-daemon service")"
-        exec_log "sudo systemctl disable systemd-resolved" "$(eval_gettext "Disabling systemd-resolved service")"
         exec_log "sudo systemctl enable cups" "$(eval_gettext "enabling cups service")"
     fi
 }
