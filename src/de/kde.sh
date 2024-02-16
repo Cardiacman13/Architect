@@ -7,7 +7,6 @@ function install_kde() {
         kwrite
         dolphin
         ark
-        plasma-wayland-session
         xdg-desktop-portal-kde
         okular
         print-manager
