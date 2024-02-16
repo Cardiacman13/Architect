@@ -38,7 +38,7 @@ Ce script est parfait pour configurer un système **Arch standard** avec un **en
 > Nous effectuons tous nos tests sur une installation fraîche d'Arch Linux avec [`archinstall`](https://github.com/archlinux/archinstall).
 > Il n'est pas adapté aux ordinateurs de plus de 10 ans. Assurez-vous que votre matériel répond aux exigences des derniers pilotes Nvidia.
 
-> [!ATTENTION]
+> [!WARNING]
 > Le script modifie la configuration de votre système, consultez le [wiki](https://github.com/Cardiacman13/Architect/wiki) ou le [forum de la communauté](https://github.com/Cardiacman13/Architect/discussions) pour plus d'informations.
 
 Exécutez la commande suivante dans le terminal pour lancer le script :
