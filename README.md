@@ -130,7 +130,6 @@ Sélectionnez des logiciels supplémentaires en fonction de vos besoins :
 |-------------------------|--------------------------------------------|
 | OBS Studio              | obs-studio                                 |
 | Kdenlive                | kdenlive                                   |
-| Davinci Resolve         | davinci-resolve                            |
 | Gimp                    | gimp                                       |
 | Inkscape                | inkscape                                   |
 | Krita                   | krita                                      |
