@@ -3,7 +3,6 @@ source src/cmd.sh
 function nvidia_config() {
     exec_log "echo -e 'options nvidia NVreg_UsePageAttributeTable=1 NVreg_InitializeSystemMemoryAllocations=0 NVreg_DynamicPowerManagement=0x02' | sudo tee -a /etc/modprobe.d/nvidia.conf" "$(eval_gettext "Setting nvidia power management option")"
     exec_log "echo -e 'options nvidia_drm modeset=1' | sudo tee -a /etc/modprobe.d/nvidia.conf" "$(eval_gettext "Setting nvidia-drm modeset=1 option")"
-    exec_log "sudo systemctl enable nvidia-suspend.service nvidia-hibernate.service nvidia-resume.service nvidia-powerd.service"
 }
 
 function nvidia_intel() {
@@ -16,7 +15,7 @@ function nvidia_intel() {
     "
     install_lst "${inlst}"
     fi
-
+    exec_log "sudo systemctl enable nvidia-powerd.service"
 }
 
 function nvidia_drivers() {
@@ -57,7 +56,7 @@ function nvidia_drivers() {
         makepkg -si --noconfirm
         cd .. || exit
         exec_log "rm -rf nvidia-all" "$(eval_gettext "removal of nvidia-all repository")"
-
+        exec_log "sudo systemctl enable nvidia-suspend.service nvidia-hibernate.service nvidia-resume.service"
     else
         local -r inlst="
             nvidia-dkms
@@ -73,6 +72,7 @@ function nvidia_drivers() {
             libvdpau
         "
         install_lst "${inlst}"
+        exec_log "sudo systemctl enable nvidia-suspend.service nvidia-hibernate.service nvidia-resume.service"
     fi
 
     nvidia_intel
