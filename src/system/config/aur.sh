@@ -7,16 +7,18 @@ function install_aur() {
     local -r git_url=(
         "https://aur.archlinux.org/yay-bin.git"
         "https://aur.archlinux.org/paru-bin.git"
+        "https://aur.archlinux.org/trizen.git"
     )
     local -r aur_name=(
         "yay-bin"
         "paru-bin"
+        "trizen"
     )
     local id=-1
     local choice=""
 
-    while [[ $choice != "yay" && $choice != "paru" ]]; do
-        read -rp "$(eval_gettext "which aur helper do you want to install ? (yay/paru) : ")" choice
+    while [[ $choice != "yay" && $choice != "paru" && $choice != "trizen" ]]; do
+        read -rp "$(eval_gettext "which aur helper do you want to install ? (yay/paru/trizen) : ")" choice
         choice="${choice,,}"
     done
     eval_gettext "\${GREEN}You chose \${choice}\${RESET}"; echo
@@ -27,6 +29,9 @@ function install_aur() {
     elif [[ $choice == "paru" ]]; then
         id=1
         export AUR="paru"
+    elif [[ $choice == "trizen" ]]; then
+    	id=2
+        export AUR="trizen"
     fi
 
     if ! pacman -Qi "${AUR}" &>/dev/null; then
