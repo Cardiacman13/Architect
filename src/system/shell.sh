@@ -27,8 +27,8 @@ function shell_config() {
     local index=0
     local choice=""
 
-    while [[ $choice != "bash" && $choice != "fish" ]]; do
-        read -rp "$(eval_gettext "What is your default shell ? (bash/fish) : ")" choice
+    while [[ $choice != "bash" && $choice != "zsh" && $choice != "fish" ]]; do
+        read -rp "$(eval_gettext "What is your default shell ? (bash/zsh/fish) : ")" choice
         choice="${choice,,}"
     done
 
@@ -36,6 +36,27 @@ function shell_config() {
     case $choice in
     bash)
         touch "${HOME}/.bashrc"
+        ;;
+    zsh)
+        install_one "zsh"
+        install_one "zsh-completions"
+
+        local current_shell=$(getent passwd $USER | cut -d: -f7)
+
+        while [ "$current_shell" != "/usr/bin/zsh" ]; do
+            eval_gettext "Setting default shell to zsh..."; echo
+            chsh -s "/usr/bin/zsh"
+            current_shell=$(getent passwd $USER | cut -d: -f7)
+        done
+
+        if ask_question "$(eval_gettext "Do you want to install oh-my-zsh ? This will install the default oh-my-zsh's .zshrc configuration")"; then
+            eval_gettext "You chose to install oh-my-zsh"; echo
+
+            git clone https://github.com/ohmyzsh/ohmyzsh.git "${HOME}/.oh-my-zsh"
+            cp "${HOME}/.oh-my-zsh/templates/zshrc.zsh-template" "${HOME}/.zshrc"
+        fi
+        
+        index=1
         ;;
     fish)
         install_one "fish"
