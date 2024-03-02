@@ -16,7 +16,6 @@ function nvidia_intel() {
     install_lst "${inlst}"
     exec_log "sudo systemctl enable nvidia-powerd.service"  "$(eval_gettext "Enable nvidia-powerd.service"
     fi
-    #exec_log "sudo systemctl enable nvidia-powerd.service"
 }
 
 function nvidia_drivers() {
