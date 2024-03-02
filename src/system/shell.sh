@@ -27,7 +27,7 @@ function shell_config() {
     local index=0
     local choice=""
 
-    while [[ $choice != "bash" && $choice != "fish" ]]; do
+    while [[ $choice != "bash" && $choice != "zsh" && $choice != "fish" ]]; do
         read -rp "$(eval_gettext "What is your default shell ? (bash/zsh/fish) : ")" choice
         choice="${choice,,}"
     done
