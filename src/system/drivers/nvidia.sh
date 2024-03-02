@@ -14,7 +14,7 @@ function nvidia_intel() {
             nvidia-prime
     "
     install_lst "${inlst}"
-    exec_log "sudo systemctl enable nvidia-powerd.service"  "$(eval_gettext "Enable nvidia-powerd.service"
+    exec_log "sudo systemctl enable nvidia-powerd.service"  "$(eval_gettext "Enable nvidia-powerd.service")"
     fi
 }
 
@@ -56,7 +56,7 @@ function nvidia_drivers() {
         makepkg -si --noconfirm
         cd .. || exit
         exec_log "rm -rf nvidia-all" "$(eval_gettext "removal of nvidia-all repository")"
-        exec_log "sudo systemctl enable nvidia-suspend.service nvidia-hibernate.service nvidia-resume.service"  "$(eval_gettext "Enable nvidia-suspend.service nvidia-hibernate.service nvidia-resume.service"
+        exec_log "sudo systemctl enable nvidia-suspend.service nvidia-hibernate.service nvidia-resume.service"  "$(eval_gettext "Enable nvidia-suspend.service nvidia-hibernate.service nvidia-resume.service")"
     else
         local -r inlst="
             nvidia-dkms
@@ -72,7 +72,7 @@ function nvidia_drivers() {
             libvdpau
         "
         install_lst "${inlst}"
-        exec_log "sudo systemctl enable nvidia-suspend.service nvidia-hibernate.service nvidia-resume.service"  "$(eval_gettext "Enable nvidia-suspend.service nvidia-hibernate.service nvidia-resume.service"
+        exec_log "sudo systemctl enable nvidia-suspend.service nvidia-hibernate.service nvidia-resume.service"  "$(eval_gettext "Enable nvidia-suspend.service nvidia-hibernate.service nvidia-resume.service")"
     fi
 
     nvidia_intel
