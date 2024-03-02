@@ -4,6 +4,7 @@ Un script de post-installation pour Arch Linux
 
 [ENGLISH VERSION](https://github.com/Gaming-Linux-FR/Architect/blob/main/README-EN.md)
 
+---
 
 ## Table des matières
 
@@ -14,6 +15,8 @@ Un script de post-installation pour Arch Linux
 &ensp;[<kbd> <br> Communauté <br> </kbd>](https://github.com/Cardiacman13/Architect/discussions)&ensp;
 &ensp;[<kbd> <br> Wiki <br> </kbd>](https://github.com/Cardiacman13/Architect/wiki)&ensp;
 <br><br><br><br></div>
+
+---
 
 ## Tout d'abord Arch est-elle faite pour vous ?
 
@@ -26,6 +29,8 @@ Un script de post-installation pour Arch Linux
 ## ET, le grand minimum à savoir pour survivre sur Arch :
 
 <img src="https://github.com/Cardiacman13/tuto-archlinux-fr/blob/main/assets/images/Cardiac-icon.png" width="30" height="30"> [ Arch Linux, les bonnes pratiques avec Antiz !](https://youtu.be/4CiGmS3UM3Y?si=FARbltfaw2oXVBpO)
+
+---
 
 ## 🚀 Script Arch Linux <a name="script"/>
 
@@ -46,6 +51,7 @@ Exécutez la commande suivante dans le terminal pour lancer le script :
 ```bash
 sudo pacman -S --needed git base-devel && git clone https://github.com/Cardiacman13/Architect.git ~/Architect && cd ~/Architect && chmod +x ./architect.sh && ./architect.sh
 ```
+---
 
 ## 📝 Principales fonctionnalités
 
@@ -56,12 +62,16 @@ Améliorer les fonctionnalités de Pacman :
 - ⚡ Téléchargements parallèles.
 - 🔗 Support multilib.
 
+---
+
 ### 2. ⌨️ Ajout d'Alias Utiles
 Faciliter vos tâches en ligne de commande :
 - `update-arch` : Met à jour vos applications système en une seule fois.
 - `clean-arch` : Supprime les paquets inutilisés.
 - `fix-key` : Résout les problèmes liés aux clés lors des mises à jour.
 - `update-mirrors` : Rafraîchit la liste des miroirs de votre système.
+
+---
 
 ### 3. 🎮 Configuration GPU pour le jeu (AMD, NVIDIA, Intel)
 Préparer votre système pour le jeu avec :
@@ -81,12 +91,16 @@ Choisissez votre DE :
 - 🖥️ `XFCE`.
 - 🖥️ `i3wm` ( [configuration personnalisée](https://github.com/wmemcpy/i3-config) bientôt disponible... 😏).
 
+---
+
 ### 5. 📦 Installer des paquets de base
 Paquets essentiels pour une expérience complète :
 - 📦 Aideurs AUR : [`yay`](https://github.com/Jguer/yay) ou [`paru`](https://github.com/Morganamilo/paru).
 - 🖋️ Polices, Emoji.
 - 🎬 Codecs.
 - ➕ Autres paquets cruciaux.
+
+---
 
 ### 6. 🛠️ Améliorations diverses
 Optimisez votre système :
