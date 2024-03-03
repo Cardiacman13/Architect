@@ -55,9 +55,12 @@ function install_one() {
 
 function uninstall_one() {
     local -r package=$1
-
-    log_msg "${RED}[-]${RESET} ${package}"
-    exec "sudo pacman -Rdd --noconfirm ${package}"
+    if pacman -Q ${package} &> /dev/null; then
+        log_msg "${RED}[-]${RESET} ${package}"
+        exec "sudo pacman -Rdd --noconfirm ${package}"
+    else
+        log_msg "${YELLOW}[!]${RESET} Package ${package} is not installed."
+    fi
 }
 
 function install_lst() {
