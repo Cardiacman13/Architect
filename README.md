@@ -47,8 +47,6 @@ Avant de plonger dans le script, si vous êtes nouveau sur Arch Linux ou si vous
 
 ## Script Arch Linux
 
-[![Mise à jour de Architect](https://img.youtube.com/vi/lxUpVr4xnes/0.jpg)
-
 Pour démarrer avec le script :
 
 ```bash
