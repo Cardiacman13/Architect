@@ -57,9 +57,6 @@ sudo pacman -S --needed git base-devel && git clone https://github.com/Cardiacma
    - `fix-key`: Solves key-related issues during updates.
    - `update-mirrors`: Refreshes your system's mirror list.
 3. **GPU Configuration for Gaming** - Optimal support for AMD, NVIDIA, and Intel drivers
-
-<img src="https://github.com/Cardiacman13/tuto-archlinux-fr/blob/main/assets/images/LOGO-A1RM4X-2K.png" width="30" height="30"> [ Never struggle again with Nvidia drivers on Linux! NVIDIA ALL by TkG on Arch / Arch based distros ](https://www.youtube.com/watch?v=QW2XGMAu6VE)
-
 5. **Desktop Environment** - Choose between GNOME, KDE Plasma, XFCE, and i3wm.
 6. **Install Base Packages** - Install essential tools, including AUR helpers like `yay` or `paru`.
 7. **Miscellaneous Enhancements** - Various adjustments to optimize your Arch experience.
