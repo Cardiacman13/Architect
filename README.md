@@ -31,15 +31,22 @@ Ce README présente "SCRIPT ARCHITECT", un script de post-installation pour Arch
 
 ### Arch est-elle faite pour vous ?
 
+<img src="https://github.com/Cardiacman13/tuto-archlinux-fr/blob/main/assets/images/Cardiac-icon.png" width="30" height="30"> [ Arch Linux : Introduction & démo d'installation ](https://www.youtube.com/watch?v=2B3Z0WiLT6A)
+
 [![Arch Linux : Introduction & démo d'installation](https://img.youtube.com/vi/2B3Z0WiLT6A/0.jpg)](https://www.youtube.com/watch?v=2B3Z0WiLT6A)
 
 ### Archinstall
 
 Avant de plonger dans le script, si vous êtes nouveau sur Arch Linux ou si vous souhaitez une installation plus guidée, considérez d'utiliser `archinstall`.
 
+<img src="https://github.com/Cardiacman13/tuto-archlinux-fr/blob/main/assets/images/Cardiac-icon.png" width="30" height="30"> [ Tutoriel Arch Linux Partie 1 : Archinstall ](https://www.youtube.com/watch?v=JE6VwNHLcyk)
+
+
 [![Tutoriel Arch Linux Partie 1 : Archinstall](https://img.youtube.com/vi/JE6VwNHLcyk/0.jpg)](https://www.youtube.com/watch?v=JE6VwNHLcyk)
 
 ### Le grand minimum à savoir
+
+<img src="https://github.com/Cardiacman13/tuto-archlinux-fr/blob/main/assets/images/Cardiac-icon.png" width="30" height="30"> [ Arch Linux, les bonnes pratiques avec Antiz !](https://youtu.be/4CiGmS3UM3Y?si=FARbltfaw2oXVBpO)
 
 [![Arch Linux, les bonnes pratiques avec Antiz !](https://img.youtube.com/vi/4CiGmS3UM3Y/0.jpg)](https://youtu.be/4CiGmS3UM3Y?si=FARbltfaw2oXVBpO)
 
