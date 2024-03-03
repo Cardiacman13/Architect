@@ -30,6 +30,8 @@ Before diving into the script, if you're new to Arch Linux or if you're looking 
 
 <img src="https://github.com/Cardiacman13/tuto-archlinux-fr/blob/main/assets/images/LOGO-A1RM4X-2K.png" width="30" height="30"> [ Install Arch like a boss: Archinstall script ](https://youtu.be/56u5tddLxCI?si=0DKyfDp7hQGTfLny)
 
+[![Install Arch like a boss: Archinstall script](https://img.youtube.com/vi/56u5tddLxCI/0.jpg)](https://youtu.be/56u5tddLxCI?si=0DKyfDp7hQGTfLny)
+
 ---
 
 ## Arch Linux Script
@@ -37,6 +39,8 @@ Before diving into the script, if you're new to Arch Linux or if you're looking 
 To get started with the script:
 
 <img src="https://github.com/Cardiacman13/tuto-archlinux-fr/blob/main/assets/images/LOGO-A1RM4X-2K.png" width="30" height="30"> [ Configure Arch the easy way: Architect project by Cardiac ](https://youtu.be/0MV3MxmO7ns?si=eOMc-e4wdSwv1Fbb)
+
+[![Configure Arch the easy way: Architect project by Cardiac](https://img.youtube.com/vi/0MV3MxmO7ns/0.jpg)](https://youtu.be/0MV3MxmO7ns?si=eOMc-e4wdSwv1Fbb)
 
 ```bash
 sudo pacman -S --needed git base-devel && git clone https://github.com/Cardiacman13/Architect.git ~/Architect && cd ~/Architect && chmod +x ./architect.sh && ./architect.sh
