@@ -37,12 +37,17 @@ function install_one() {
     local -r package=$1
     local -r type=$2
 
+    if pacman -Qi ${package} &> /dev/null; then
+        log_msg "${YELLOW}[!]${RESET} Package ${package} is already installed."
+        return
+    fi
+
     local warning_msg=""
     if [[ ${warning} =~ ${package} ]]; then
         warning_msg=" ${RED}(might be long)${RESET}"
     fi
 
-    log_msg "${GREEN}[+]${RESET} ${package}${warning_msg}"
+    log_msg "${GREEN}[+]${RESET}${package}${warning_msg}"
     exec "${AUR} -S --noconfirm --needed ${package}"
 
     local exit_status=$?
