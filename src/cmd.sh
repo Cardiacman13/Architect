@@ -37,12 +37,17 @@ function install_one() {
     local -r package=$1
     local -r type=$2
 
+    if pacman -Qi ${package} &> /dev/null; then
+        log_msg "${YELLOW}[!]${RESET} Package ${package} is already installed."
+        return
+    fi
+
     local warning_msg=""
     if [[ ${warning} =~ ${package} ]]; then
         warning_msg=" ${RED}(might be long)${RESET}"
     fi
 
-    log_msg "${GREEN}[+]${RESET} ${package}${warning_msg}"
+    log_msg "${GREEN}[+]${RESET}${package}${warning_msg}"
     exec "${AUR} -S --noconfirm --needed ${package}"
 
     local exit_status=$?
@@ -55,9 +60,10 @@ function install_one() {
 
 function uninstall_one() {
     local -r package=$1
-
-    log_msg "${RED}[-]${RESET} ${package}"
-    exec "sudo pacman -Rdd --noconfirm ${package}"
+    if pacman -Q ${package} &> /dev/null; then
+        log_msg "${RED}[-]${RESET} ${package}"
+        exec "sudo pacman -Rdd --noconfirm ${package}"
+    fi
 }
 
 function install_lst() {
@@ -90,20 +96,3 @@ function ask_question() {
         return 1
     fi
 }
-
-# unused function
-# function copy_bak() {
-#     local -r file_path=$1
-#     local -r file_name=$2
-#     local -r dest=$3
-#     local sudo_str=""
-
-#     if [[ $4 == true ]]; then
-#         sudo_str="sudo "
-#     fi
-#     exec_log "${sudo_str}mkdir -p ${dest}" "Creating ${dest}"
-#     if [[ -f "${dest}/${file_name}" ]]; then
-#         exec_log "${sudo_str}cp -f ${dest}/${file_name} ${dest}/${file_name}.bak" "Backup of ${file_name}"
-#     fi
-#     exec_log "${sudo_str}cp -f ${file_path}/${file_name} ${dest}/${file_name}" "Copy of ${file_name}"
-# }
