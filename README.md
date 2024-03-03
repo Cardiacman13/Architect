@@ -37,7 +37,7 @@ Ce README présente "SCRIPT ARCHITECT", un script de post-installation pour Arch
 
 ### Archinstall
 
-Avant de plonger dans le script, si vous êtes nouveau sur Arch Linux ou si vous souhaitez une installation plus guidée, considérez d'utiliser `archinstall`.
+Avant de plonger dans le script, utilisez `archinstall`, le script est fait pour être utilisé après archinstall.
 
 <img src="https://github.com/Cardiacman13/tuto-archlinux-fr/blob/main/assets/images/Cardiac-icon.png" width="30" height="30"> [ Tutoriel Arch Linux Partie 1 : Archinstall ](https://www.youtube.com/watch?v=JE6VwNHLcyk)
 
