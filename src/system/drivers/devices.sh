@@ -2,7 +2,11 @@ source src/cmd.sh
 
 function gamepad() {
     if ask_question "$(eval_gettext "Would you want to install xpadneo ? (Can improve xbox gamepad support, \${RED}say No if unsure\${RESET})")"; then
-        install_one "xpadneo-dkms-git xone-dkms-git"
+        install_one "xpadneo-dkms-git"
+    fi
+
+    if ask_question "$(eval_gettext "Would you want to install Xone ? (Can improve xbox gamepad support when then use usb wireless dongle, \${RED}say No if unsure\${RESET})")"; then
+        install_one "xone-dkms-git"
     fi
 
     if ask_question "$(eval_gettext "Do you want to use PS5 controllers ?")"; then
