@@ -52,10 +52,10 @@ Exec = /usr/bin/grub-mkconfig -o /boot/grub/grub.cfg
 ' | sudo tee -a /etc/pacman.d/hooks/grub.hook" "$(eval_gettext "Setting up GRUB hook")"
     fi
 
-    install_lst "update-grub os-prober"
+    install_one "os-prober"
     exec_log "sudo sed -i 's/#\s*GRUB_DISABLE_OS_PROBER=false/GRUB_DISABLE_OS_PROBER=false/' '/etc/default/grub'" "$(eval_gettext "Enabling os-prober")"
     exec_log "sudo os-prober" "$(eval_gettext "Running os-prober")"
-    exec_log "sudo update-grub" "$(eval_gettext "Updating GRUB")"
+    exec_log "sudo grub-mkconfig -o /boot/grub/grub.cfg" "$(eval_gettext "Updating GRUB")"
     if ! pacman -Q grub-btrfs &> /dev/null && [[ ${BTRFS} == true ]]; then
         grub-btrfs
     fi
