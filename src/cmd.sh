@@ -38,7 +38,7 @@ function install_one() {
     local -r type=$2
 
     if pacman -Qi ${package} &> /dev/null; then
-        log_msg "${YELLOW}[!]${RESET} Package ${package} is already installed."
+        log_msg "${GREEN}[I]${RESET} Package ${package} is already installed."
         return
     fi
 
