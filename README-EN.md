@@ -6,24 +6,6 @@ A post-installation script for Arch Linux, designed to configure a standard Arch
 
 ---
 
-## Table of Contents
-
-- [Introduction](#introduction)
-- [Archinstall](#archinstall)
-- [Arch Linux Script](#arch-linux-script)
-- [Main Features](#main-features)
-- [Troubleshooting](#troubleshooting)
-- [Sources](#sources)
-- [Acknowledgments](#acknowledgments)
-
----
-
-## Introduction
-
-This README introduces "ARCHITECT SCRIPT," a post-installation script for Arch Linux. Specially designed for users who prefer a pure Arch Linux experience, this script helps you quickly configure an Arch system with a minimal package set, with a particular focus on gaming.
-
----
-
 ### Archinstall
 
 <img src="https://github.com/Cardiacman13/tuto-archlinux-fr/blob/main/assets/images/LOGO-A1RM4X-2K.png" width="30" height="30"> [ Install Arch like a boss: Archinstall script ](https://youtu.be/56u5tddLxCI?si=0DKyfDp7hQGTfLny)
