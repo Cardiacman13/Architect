@@ -6,27 +6,6 @@ Un script de post-installation pour Arch Linux, conçu pour configurer un systè
 
 ---
 
-## Table des Matières
-
-- [Introduction](#introduction)
-- [Avant de Commencer](#avant-de-commencer)
-  - [Arch est-elle faite pour vous ?](#arch-est-elle-faite-pour-vous-)
-  - [Archinstall](#archinstall)
-  - [Le grand minimum à savoir](#le-grand-minimum-à-savoir)
-- [Script Arch Linux](#script-arch-linux)
-- [Principales Fonctionnalités](#principales-fonctionnalités)
-- [Dépannage](#dépannage)
-- [Sources](#sources)
-- [Remerciements](#remerciements)
-
----
-
-## Introduction
-
-Ce README présente "SCRIPT ARCHITECT", un script de post-installation pour Arch Linux. Conçu spécifiquement pour les utilisateurs qui préfèrent une expérience pure d'Arch Linux, ce script vous aide à configurer rapidement un système Arch avec un ensemble minimal de paquets, en mettant un accent particulier sur le gaming.
-
----
-
 ## Avant de Commencer
 
 ### Arch est-elle faite pour vous ?
