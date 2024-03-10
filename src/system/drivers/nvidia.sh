@@ -2,7 +2,8 @@ source src/cmd.sh
 
 function nvidia_config() {
     exec_log "echo -e 'options nvidia NVreg_UsePageAttributeTable=1 NVreg_InitializeSystemMemoryAllocations=0 NVreg_DynamicPowerManagement=0x02' | sudo tee -a /etc/modprobe.d/nvidia.conf" "$(eval_gettext "Setting nvidia power management option")"
-    exec_log "echo -e 'options nvidia_drm modeset=1' | sudo tee -a /etc/modprobe.d/nvidia.conf" "$(eval_gettext "Setting nvidia-drm modeset=1 option")"
+    exec_log "echo -e 'options nvidia_drm modeset=1 fbdev=1' | sudo tee -a /etc/modprobe.d/nvidia.conf" "$(eval_gettext "Setting nvidia-drm modeset=1 option")"
+    exec_log "sudo sed -i "/^MODULES=(/ s/)$/ nvidia nvidia_modeset nvidia_uvm nvidia_drm)/" /etc/mkinitcpio.conf" "$(eval_gettext "Setting early loading")"
 }
 
 function nvidia_intel() {
