@@ -10,7 +10,7 @@ function shell_config() {
         "alias fix-key='sudo rm /var/lib/pacman/sync/* && sudo rm -rf /etc/pacman.d/gnupg/* && sudo pacman-key --init && sudo pacman-key --populate && sudo pacman -Sy --noconfirm archlinux-keyring && sudo pacman --noconfirm -Su'"
         "alias update-arch='${AUR}'"
         "alias update-mirrors='sudo reflector --verbose --score 100 --latest 20 --fastest 5 --sort rate --save /etc/pacman.d/mirrorlist && sudo pacman -Syyu'"
-        "alias update-grub='grub-mkconfig -o /boot/grub/grub.cfg'"
+        "alias update-grub='sudo grub-mkconfig -o /boot/grub/grub.cfg'"
     )
 
     if [[ ${AUR} == yay ]]; then
