@@ -47,5 +47,9 @@ function usefull_package() {
         man-pages
     "
 
+    if [[ ${BTRFS} == true ]]; then
+        inlst+=" btrfs-progs btrfs-assistant btrfs-du btrfsmaintenance"
+    fi
+
     install_lst "${inlst}"
 }
