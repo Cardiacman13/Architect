@@ -45,8 +45,10 @@ function usefull_package() {
         ffmpegthumbs
         man-db
         man-pages
+        zram-generator
     "
-
+    exec_log "echo -e '[zram0]\nzram-size=ram\ncompression-algorithm=zstd' | sudo tee /etc/systemd/zram-generator.conf"
+    
     if [[ ${BTRFS} == true ]]; then
         inlst+=" btrfs-progs btrfs-assistant btrfs-du btrfsmaintenance"
     fi
