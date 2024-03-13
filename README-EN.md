@@ -15,15 +15,9 @@ A post-installation script for Arch Linux, designed to configure a standard Arch
 **Installation and usage:**  
 To launch `archinstall`, start by updating `archinstall` to ensure you're using the most recent version. This is important because, for example, at the time these lines are written, the Arch Linux ISO version from 01/03/2024 tries to install the "plasma-wayland" package, which has been nonexistent since the release of Plasma 6, leading to an error that crashes archinstall. This issue has been fixed in newer versions of `archinstall`, so updating before starting the installation is essential.
 
-There are two main methods to update `archinstall`:
-
-**Update with pip:**
-```sh
-pip install --upgrade archinstall
-```
-
 **Update by cloning the git repository:**
 ```sh
+pacman -S git
 git clone https://github.com/archlinux/archinstall.git
 cd archinstall
 python -m archinstall
