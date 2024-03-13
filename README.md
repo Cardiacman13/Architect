@@ -19,9 +19,30 @@ Un script de post-installation pour Arch Linux, conçu pour configurer un systè
 Avant de plonger dans le script, utilisez `archinstall`, le script est fait pour être utilisé après archinstall.
 
 <img src="https://github.com/Cardiacman13/tuto-archlinux-fr/blob/main/assets/images/Cardiac-icon.png" width="30" height="30"> [ Tutoriel Arch Linux Partie 1 : Archinstall ](https://www.youtube.com/watch?v=JE6VwNHLcyk)
-
-
 [![Tutoriel Arch Linux Partie 1 : Archinstall](https://img.youtube.com/vi/JE6VwNHLcyk/0.jpg)](https://www.youtube.com/watch?v=JE6VwNHLcyk)
+
+Pour lancer `archinstall`, commencez par mettre à jour `archinstall` pour vous assurer d'utiliser la version la plus récente. C'est important car, par exemple au moment où ces lignes sont écrites, la version de l'ISO d'Arch Linux 01/03/2024 tente d'installer le paquet "plasma-wayland" qui n'existe plus depuis la sortie de Plasma 6 et mène donc à une erreur qui plante archinstall. Ce problème est corrigé dans les versions plus récentes d'`archinstall`, donc mettre à jour avant de lancer l'installation est essentiel.
+
+Il y a deux méthodes principales pour mettre à jour `archinstall` :
+
+**Mise à jour avec pip :**
+```sh
+pip install --upgrade archinstall
+```
+
+**Mise à jour en clonant le dépôt git :**
+```sh
+git clone https://github.com/archlinux/archinstall.git
+cd archinstall
+python -m archinstall
+```
+
+Une fois `archinstall` mis à jour, vous pouvez le lancer avec la commande suivante :
+```sh
+archinstall
+```
+
+---
 
 ### Le grand minimum à savoir
 
