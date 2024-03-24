@@ -61,6 +61,7 @@ sudo pacman -S --needed git base-devel && git clone https://github.com/Cardiacma
    - `clean-arch` : Supprime les paquets inutilisés.
    - `fix-key` : Résout les problèmes liés aux clés lors des mises à jour.
    - `update-mirrors` : Rafraîchit la liste des miroirs de votre système.
+3. **Activation de Zram** - Améliore les performances et réduit l'usure du SSD en compressant la RAM au lieu d'utiliser le swap sur disque.
 4. **Configuration GPU pour le jeu** - Prise en charge optimale des pilotes AMD, NVIDIA, et Intel.
 5. **Environnement de Bureau** - Choix entre GNOME, KDE Plasma, XFCE, et i3wm.
 6. **Installer des paquets de base** - Installation des outils essentiels, y compris les aideurs AUR comme `yay` ou `paru`.
