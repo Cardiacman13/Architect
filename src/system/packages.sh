@@ -47,7 +47,7 @@ function usefull_package() {
         man-pages
         zram-generator
     "
-    exec_log "echo -e '[zram0]\nzram-size=ram\ncompression-algorithm=50%' | sudo tee /etc/systemd/zram-generator.conf" "$(eval_gettext "Enabling Zram")"
+    exec_log "echo -e '[zram0]\nzram-size = ram / 4\ncompression-algorithm = zstd\nswap-priority = 10\nfs-type = swap' | sudo tee -a /etc/systemd/zram-generator.conf" "$(eval_gettext "Enabling Zram")"
     
     if [[ ${BTRFS} == true ]]; then
         inlst+=" btrfs-progs btrfs-assistant btrfs-du btrfsmaintenance"
