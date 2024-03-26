@@ -67,5 +67,3 @@ function firewall() {
         exec_log "sudo systemctl enable firewalld.service" "$(eval_gettext "Enabling firewalld")"
     fi
 }
-
-exec_log "echo -e 'vm.swappiness=10' | sudo tee /etc/sysctl.d/99-swappiness.con" "$(eval_gettext "Setting swappiness to 10")"
