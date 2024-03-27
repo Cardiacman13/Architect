@@ -48,7 +48,11 @@ archinstall
 Pour démarrer avec le script :
 
 ```bash
-sudo pacman -S --needed git base-devel && git clone https://github.com/Cardiacman13/Architect.git ~/Architect && cd ~/Architect && chmod +x ./architect.sh && ./architect.sh
+sudo pacman -S --needed git base-devel \
+  && git clone https://github.com/Cardiacman13/Architect.git ~/Architect \
+  && cd ~/Architect \
+  && chmod +x ./architect.sh \
+  && ./architect.sh
 ```
 
 ---
@@ -87,4 +91,4 @@ Pour toute question ou problème, n'hésitez pas à ouvrir une discussion dans l
 
 ## Remerciements
 
-Un grand merci à l'équipe d'Arch Linux, à la communauté Arch Linux, aux mainteneurs AUR, aux contributeurs et développeurs des paquets utilisés dans ce projet.Merci à toute la communauté du Discord GLF pour leurs tests et retours.
+Un grand merci à l'équipe d'Arch Linux, à la communauté Arch Linux, aux mainteneurs AUR, aux contributeurs et développeurs des paquets utilisés dans ce projet. Merci à toute la communauté du Discord GLF pour leurs tests et retours.
