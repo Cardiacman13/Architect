@@ -1,4 +1,4 @@
-# 🐧 SCRIPT ARCHITECT
+# SCRIPT ARCHITECT
 
 Un script de post-installation pour Arch Linux, conçu pour configurer un système Arch standard avec un ensemble minimal de paquets adapté à vos besoins juste après avoir utilisé `archinstall`. Orienté vers le gaming, ce script est idéal pour une expérience pure d'Arch Linux.
 
@@ -17,6 +17,11 @@ Un script de post-installation pour Arch Linux, conçu pour configurer un systè
 ### Archinstall
 
 Avant de plonger dans le script, utilisez `archinstall`, le script est fait pour être utilisé après archinstall.
+
+
+Vidéo de présentation d'une installation de Arch Linux avec archinstall + utilisation du script Architect : 
+
+<img src="https://github.com/Cardiacman13/tuto-archlinux-fr/blob/main/assets/images/Cardiac-icon.png" width="30" height="30"> [Arch Linux, installation et post installation](https://youtu.be/m3A2Os74P-4)
 
 Pour lancer `archinstall`, commencez par mettre à jour `archinstall` pour vous assurer d'utiliser la version la plus récente. C'est important car, par exemple au moment où ces lignes sont écrites, la version de l'ISO d'Arch Linux 01/03/2024 tente d'installer le paquet "plasma-wayland" qui n'existe plus depuis la sortie de Plasma 6 et mène donc à une erreur qui plante archinstall. Ce problème est corrigé dans les versions plus récentes d'`archinstall`, donc mettre à jour avant de lancer l'installation est essentiel.
 
