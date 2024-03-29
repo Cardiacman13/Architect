@@ -78,4 +78,7 @@ function nvidia_drivers() {
     if ask_question "$(eval_gettext "Do you want to install CUDA (\${RED}say No if unsure\${RESET}) ?")"; then
         install_one "cuda"
     fi
+
+sudo systemctl enable nvidia-suspend.service nvidia-hibernate.service nvidia-resume.service nvidia-powerd.service
+
 }
