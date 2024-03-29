@@ -15,7 +15,8 @@ function set_software_list() {
         ["Discord"]="discord"
         ["Telegram"]="telegram-desktop"
         ["Spotify"]="spotify"
-        ["LibreOffice"]="libreoffice-fresh"
+        ["LibreOffice en"]="libreoffice-fresh"
+        ["LibreOffice fr"]="libreoffice-fresh libreoffice-fresh-fr"
         ["OnlyOffice"]="onlyoffice-bin"
         ["Audacity"]="audacity"
         ["Kazam"]="kazam"
@@ -45,7 +46,8 @@ function set_software_list() {
     )
 
     browser_list=(
-        ["Firefox"]="firefox"
+        ["Firefox en"]="firefox"
+        ["Firefox fr"]="firefox firefox-i18n-fr"
         ["Brave"]="brave-bin"
         ["Chromium"]="chromium"
         ["Vivaldi"]="vivaldi vivaldi-ffmpeg-codecs"
