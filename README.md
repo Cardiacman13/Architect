@@ -20,15 +20,16 @@ Avant de plonger dans le script, utilisez `archinstall`, le script est fait pour
 
 Pour lancer `archinstall`, commencez par mettre à jour `archinstall` pour vous assurer d'utiliser la version la plus récente. C'est important car, par exemple au moment où ces lignes sont écrites, la version de l'ISO d'Arch Linux 01/03/2024 tente d'installer le paquet "plasma-wayland" qui n'existe plus depuis la sortie de Plasma 6 et mène donc à une erreur qui plante archinstall. Ce problème est corrigé dans les versions plus récentes d'`archinstall`, donc mettre à jour avant de lancer l'installation est essentiel.
 
-**Mise à jour en clonant le dépôt git :**
+**Mise à jour de archinstall :**
+
 ```sh
-pacman -S git
-git clone https://github.com/archlinux/archinstall.git
-cd archinstall
-python -m archinstall
+pacman -Sy archinstall
 ```
 
-Une fois `archinstall` mis à jour, vous pouvez le lancer avec la commande suivante :
+D'autres erreurs de ce type peuvent arriver, il peut donc être parfois intéressant de prendre la dernière version de archinstall.
+
+**Lancer archinstall**
+
 ```sh
 archinstall
 ```
