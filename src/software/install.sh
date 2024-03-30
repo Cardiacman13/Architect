@@ -58,7 +58,7 @@ function set_software_list() {
     gaming_list=(
         ["Steam"]="steam"
         ["Lutris (LOL, etc.)"]="lutris wine-staging "
-        ["Heroic Games Launcher (Epic Games, GOG, etc.)"]="heroic-games-launcher"
+        ["Heroic Games Launcher (Epic Games, GOG, etc.)"]="heroic-games-launcher-bin"
         ["Prism Launcher (Minecraft)"]="prismlauncher-qt5 jdk8-openjdk"
         ["ProtonUp QT"]="protonup-qt"
         ["Goverlay"]="goverlay"
