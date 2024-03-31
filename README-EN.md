@@ -50,12 +50,11 @@ sudo pacman -S --needed git base-devel && git clone https://github.com/Cardiacma
    - `clean-arch`: Removes unused packages.
    - `fix-key`: Solves key-related issues during updates.
    - `update-mirrors`: Refreshes your system's mirror list.
-3. Zram Activation - Enhances performance and reduces SSD wear by compressing RAM instead of using disk swap.
-4. **GPU Configuration for Gaming** - Optimal support for AMD, NVIDIA, and Intel drivers
-5. **Desktop Environment** - Choose between GNOME, KDE Plasma, XFCE, and i3wm.
-6. **Install Base Packages** - Install essential tools, including AUR helpers like `yay` or `paru`.
-7. **Miscellaneous Enhancements** - Various adjustments to optimize your Arch experience.
-8. **Install Additional Software** - Selection of additional software to customize your installation.
+3. **GPU Configuration for Gaming** - Optimal support for AMD, NVIDIA, and Intel drivers
+4. **Desktop Environment** - Choose between GNOME, KDE Plasma, XFCE, and i3wm.
+5. **Install Base Packages** - Install essential tools, including AUR helpers like `yay` or `paru`.
+6. **Miscellaneous Enhancements** - Various adjustments to optimize your Arch experience.
+7. **Install Additional Software** - Selection of additional software to customize your installation.
 
 ---
 

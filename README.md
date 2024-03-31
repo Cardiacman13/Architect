@@ -71,12 +71,11 @@ sudo pacman -S --needed git base-devel \
    - `clean-arch` : Supprime les paquets inutilisés.
    - `fix-key` : Résout les problèmes liés aux clés lors des mises à jour.
    - `update-mirrors` : Rafraîchit la liste des miroirs de votre système.
-3. **Activation de Zram** - Améliore les performances et réduit l'usure du SSD en compressant la RAM au lieu d'utiliser le swap sur disque.
-4. **Configuration GPU pour le jeu** - Prise en charge optimale des pilotes AMD, NVIDIA, et Intel.
-5. **Environnement de Bureau** - Choix entre GNOME, KDE Plasma, XFCE, et i3wm.
-6. **Installer des paquets de base** - Installation des outils essentiels, y compris les aideurs AUR comme `yay` ou `paru`.
-7. **Améliorations diverses** - Divers ajustements pour optimiser votre expérience Arch.
-8. **Installation de logiciels supplémentaires** - Sélection de logiciels supplémentaires pour personnaliser votre installation.
+3. **Configuration GPU pour le jeu** - Prise en charge optimale des pilotes AMD, NVIDIA, et Intel.
+4. **Environnement de Bureau** - Choix entre GNOME, KDE Plasma, XFCE, et i3wm.
+5. **Installer des paquets de base** - Installation des outils essentiels, y compris les aideurs AUR comme `yay` ou `paru`.
+6. **Améliorations diverses** - Divers ajustements pour optimiser votre expérience Arch.
+7. **Installation de logiciels supplémentaires** - Sélection de logiciels supplémentaires pour personnaliser votre installation.
 
 ---
 

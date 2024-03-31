@@ -79,6 +79,6 @@ function nvidia_drivers() {
         install_one "cuda"
     fi
 
-sudo systemctl enable nvidia-suspend.service nvidia-hibernate.service nvidia-resume.service nvidia-powerd.service
+exec_log "sudo systemctl enable nvidia-suspend.service nvidia-hibernate.service nvidia-resume.service nvidia-powerd.service" "$(eval_gettext "Enabling nvidia services")"
 
 }
