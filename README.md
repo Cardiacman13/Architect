@@ -1,6 +1,8 @@
 # SCRIPT ARCHITECT
 
-Un script de post-installation pour Arch Linux, conçu pour configurer un système Arch standard avec un ensemble minimal de paquets adapté à vos besoins juste après avoir utilisé `archinstall`. Orienté vers le gaming, ce script est idéal pour une expérience pure d'Arch Linux.
+Un script de post-installation pour Arch Linux, conçu pour configurer un système Arch standard avec un ensemble minimal de paquets adapté à mes besoins juste après avoir utilisé `archinstall`. Orienté vers le gaming, ce script est pensé pour une expérience pure d'Arch Linux.
+
+Il a été conçu à partir de ce [tuto](https://github.com/Gaming-Linux-FR/tuto-archlinux-fr) qui vient, à la base, d'une prise de note personnelle pour répondre à mes besoins. Je peux vous affirmer qu'il fonctionne parfaitement bien sur mon PC et me satisfait pleinement. Je ne peux néanmoins pas être sûr du résultat sur votre matériel. À utiliser en connaissance de cause, bon script...
 
 **[ENGLISH VERSION](https://github.com/Gaming-Linux-FR/Architect/blob/main/README-EN.md)**
 
