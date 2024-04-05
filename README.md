@@ -6,8 +6,6 @@ Un script de post-installation pour Arch Linux, conçu pour configurer un systè
 
 Il a été conçu à partir de ce [tuto](https://github.com/Gaming-Linux-FR/tuto-archlinux-fr) qui vient, à la base, d'une prise de note personnelle pour répondre à mes besoins. Je peux vous affirmer qu'il fonctionne parfaitement bien sur mon PC et me satisfait pleinement. **Je ne peux néanmoins pas être sûr du résultat sur votre matériel. À utiliser en connaissance de cause, bon script...**
 
----
-
 ## Avant de Commencer
 
 ### Arch est-elle faite pour vous ?
@@ -15,6 +13,12 @@ Il a été conçu à partir de ce [tuto](https://github.com/Gaming-Linux-FR/tuto
 <img src="https://github.com/Cardiacman13/tuto-archlinux-fr/blob/main/assets/images/Cardiac-icon.png" width="30" height="30"> [ Arch Linux : Introduction & démo d'installation ](https://www.youtube.com/watch?v=2B3Z0WiLT6A)
 
 [![Arch Linux : Introduction & démo d'installation](https://img.youtube.com/vi/2B3Z0WiLT6A/0.jpg)](https://www.youtube.com/watch?v=2B3Z0WiLT6A)
+
+### Le grand minimum à savoir
+
+<img src="https://github.com/Cardiacman13/tuto-archlinux-fr/blob/main/assets/images/Cardiac-icon.png" width="30" height="30"> [ Arch Linux, les bonnes pratiques avec Antiz !](https://youtu.be/4CiGmS3UM3Y?si=FARbltfaw2oXVBpO)
+
+[![Arch Linux, les bonnes pratiques avec Antiz !](https://img.youtube.com/vi/4CiGmS3UM3Y/0.jpg)](https://youtu.be/4CiGmS3UM3Y?si=FARbltfaw2oXVBpO)
 
 ### Archinstall
 
@@ -41,17 +45,7 @@ D'autres erreurs de ce type peuvent arriver, il peut donc être parfois intéres
 archinstall
 ```
 
----
-
-### Le grand minimum à savoir
-
-<img src="https://github.com/Cardiacman13/tuto-archlinux-fr/blob/main/assets/images/Cardiac-icon.png" width="30" height="30"> [ Arch Linux, les bonnes pratiques avec Antiz !](https://youtu.be/4CiGmS3UM3Y?si=FARbltfaw2oXVBpO)
-
-[![Arch Linux, les bonnes pratiques avec Antiz !](https://img.youtube.com/vi/4CiGmS3UM3Y/0.jpg)](https://youtu.be/4CiGmS3UM3Y?si=FARbltfaw2oXVBpO)
-
----
-
-## Script Arch Linux
+## Script ARCHITECT
 
 Pour démarrer avec le script :
 
@@ -62,8 +56,6 @@ sudo pacman -S --needed git base-devel \
   && chmod +x ./architect.sh \
   && ./architect.sh
 ```
-
----
 
 ## Principales Fonctionnalités
 
@@ -79,13 +71,9 @@ sudo pacman -S --needed git base-devel \
 6. **Améliorations diverses** - Divers ajustements pour optimiser votre expérience Arch.
 7. **Installation de logiciels supplémentaires** - Sélection de logiciels supplémentaires pour personnaliser votre installation.
 
----
-
 ## Dépannage
 
 Pour toute question ou problème, n'hésitez pas à ouvrir une discussion dans la [section discussions](https://github.com/Cardiacman13/Architect/discussions) du projet.
-
----
 
 ## Sources
 
@@ -93,8 +81,6 @@ Pour toute question ou problème, n'hésitez pas à ouvrir une discussion dans l
 - [Site GLF](https://www.gaminglinux.fr/)
 - [Discord GLF](http://discord.gg/EP3Jm8YMvj)
 - [Chaîne YouTube de Cardiacman](https://www.youtube.com/@Cardiacman)
-
----
 
 ## Remerciements
 
