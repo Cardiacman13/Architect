@@ -80,4 +80,10 @@ function nvidia_drivers() {
 
 exec_log "sudo systemctl enable nvidia-suspend.service nvidia-hibernate.service nvidia-resume.service" "$(eval_gettext "Enabling nvidia services")"
 
+echo "GTK_USE_PORTAL=1
+GBM_BACKEND=nvidia-drm
+__GLX_VENDOR_LIBRARY_NAME=nvidia
+QT_QPA_PLATFORM=wayland
+ELECTRON_OZONE_PLATFORM_HINT=auto" | sudo tee -a /etc/environement
+
 }
