@@ -4,9 +4,11 @@
 
 A post-installation script for Arch Linux, designed to configure a standard Arch system with a minimal set of packages tailored to my needs right after using `archinstall`. Geared towards gaming, this script is intended for a pure Arch Linux experience.
 
-It was designed based on this [tutorial](https://github.com/Gaming-Linux-FR/tuto-archlinux-fr) which originates from personal note-taking to meet my needs. I can assure you that it works perfectly well on my PC and fully satisfies me. However, **I cannot guarantee the results on your hardware. Use with knowledge of the potential risks, enjoy the script.**
+> [!WARNING]
+> It was designed based on this [tutorial](https://github.com/Gaming-Linux-FR/tuto-archlinux-fr) which originates from personal note-taking to meet my needs. I can assure you that it works perfectly well on my PC and fully satisfies me. However, **I cannot guarantee the results on your hardware. Use with knowledge of the potential risks, enjoy the script.**
 
 ### Archinstall
+
 
 <img src="https://github.com/Cardiacman13/tuto-archlinux-fr/blob/main/assets/images/LOGO-A1RM4X-2K.png" width="30" height="30"> [ Install Arch like a boss: Archinstall script ](https://youtu.be/56u5tddLxCI?si=0DKyfDp7hQGTfLny)
 
