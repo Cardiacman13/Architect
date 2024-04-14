@@ -83,6 +83,6 @@ exec_log "sudo systemctl enable nvidia-suspend.service nvidia-hibernate.service 
 echo "GTK_USE_PORTAL=1
 GBM_BACKEND=nvidia-drm
 __GLX_VENDOR_LIBRARY_NAME=nvidia
-ELECTRON_OZONE_PLATFORM_HINT=auto" | sudo tee -a /etc/environement
+ELECTRON_OZONE_PLATFORM_HINT=auto" | sudo tee -a /etc/environment
 
 }
