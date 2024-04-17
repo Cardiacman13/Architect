@@ -1,5 +1,7 @@
 # SCRIPT ARCHITECT
 
+https://github.com/Gaming-Linux-FR/Architect/assets/83916775/792c6453-c4b7-4ae9-ba94-1a16fd605e42
+
 [![lang-en](https://img.shields.io/badge/lang-en-blue.svg)](https://github.com/Gaming-Linux-FR/Architect/blob/main/README-EN.md)
 
 Un script de post-installation pour Arch Linux, conçu pour configurer un système Arch standard avec un ensemble minimal de paquets adapté à mes besoins juste après avoir utilisé `archinstall`. Orienté vers le gaming, ce script est pensé pour une expérience pure d'Arch Linux.
