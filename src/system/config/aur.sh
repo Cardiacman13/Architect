@@ -39,11 +39,11 @@ function install_aur() {
     fi
 
     if [[ $choice == "yay" ]]; then
-        exec "yay -Y --gendb" "$(eval_gettext "Configuring ${AUR}")"
-        exec "yay -Y --devel --save" "$(eval_gettext "Configuring \${AUR}")"
+        exec_log "yay -Y --gendb" "$(eval_gettext "Configuring \${AUR}")"
+        exec_log "yay -Y --devel --save" "$(eval_gettext "Configuring \${AUR}")"
         exec_log "sed -i 's/\"sudoloop\": false,/\"sudoloop\": true,/' ~/.config/yay/config.json" "$(eval_gettext "Enabling SudoLoop option for yay")"
     elif [[ $choice == "paru" ]]; then
-        exec "paru --gendb" "$(eval_gettext "Configuring \${AUR}")"
+        exec_log "paru --gendb" "$(eval_gettext "Configuring \${AUR}")"
         exec_log "sudo sed -i 's/#BottomUp/BottomUp/' /etc/paru.conf" "$(eval_gettext "Enabling BottomUp option for paru")"
         exec_log "sudo sed -i 's/#SudoLoop/SudoLoop/' /etc/paru.conf" "$(eval_gettext "Enabling SudoLoop option for paru")"
         exec_log "sudo sed -i 's/#CombinedUpgrade/CombinedUpgrade/' /etc/paru.conf" "$(eval_gettext "Enabling CombinedUpgrade option for paru")"

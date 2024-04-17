@@ -17,7 +17,13 @@ function exec() {
     if [[ ${VERBOSE} == true ]]; then
         eval "${command}" 2>&1 | tee -a "${LOG_FILE}"
     else
-        eval "${command}" >>"${LOG_FILE}" 2>&1
+        eval "${command}" >>"${LOG_FILE}" 2>&1 &
+
+        job_pid=$!
+    
+        progress_dots
+        wait -n
+        exit_status "${comment}"
     fi
 }
 
@@ -47,22 +53,13 @@ function install_one() {
         warning_msg="$(eval_gettext " \${RED}(might be long)\${RESET}")"
     fi
 
-    log_msg "${GREEN}[+] ${RESET}${package}${warning_msg}"
-    exec "${AUR} -S --noconfirm --needed ${package}"
-
-    local exit_status=$?
-
-    echo "[INFO]: Exit status: ${exit_status}" >>"${LOG_FILE}"
-    if [[ ${exit_status} -ne 0 ]]; then
-        eval_gettext "\${RED}Error: \${package} installation failed\${RESET}"; echo
-    fi
+    exec_log "${AUR} -S --noconfirm --needed ${package}" "${GREEN}[+] ${RESET}${package}${warning_msg}"
 }
 
 function uninstall_one() {
     local -r package=$1
     if pacman -Q ${package} &> /dev/null; then
-        log_msg "${RED}[-]${RESET} ${package}"
-        exec "sudo pacman -Rdd --noconfirm ${package}"
+        exec_log "sudo pacman -Rdd --noconfirm ${package}" "${RED}[-]${RESET} ${package}"
     fi
 }
 
@@ -94,5 +91,31 @@ function ask_question() {
         return 0
     else
         return 1
+    fi
+}
+
+progress_dots() {
+    local dots="....."
+
+    while kill -0 $job_pid 2> /dev/null; do
+        printf "%b [     ]%b\n" "\033[1A${comment}" "\033[6D${BOLD}${GREEN}${dots}${RESET}"
+        sleep 0.5
+        dots+="."
+        if [[ ${dots} == "......" ]]; then
+            dots=""
+        fi   
+    done  
+}
+
+exit_status() {
+    local exit_status=$?
+    local -r comment="$1"
+    
+    echo "[INFO]: Exit status: ${exit_status}" >>"${LOG_FILE}"
+    if [[ ${exit_status} -ne 0 ]]; then
+        printf "%b\n" "\033[1A\033[2K${comment} ${RED}\u2718${RESET}"
+        log_msg "$(eval_gettext "\${RED}Error: installation failed\${RESET}")"
+    else
+        printf "%b\n" "\033[1A\033[2K${comment} ${GREEN}\u2714${RESET}"
     fi
 }
