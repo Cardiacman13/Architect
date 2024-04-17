@@ -2,14 +2,6 @@ source src/cmd.sh
 source src/system/grub-btrfs.sh
 
 function sound_server() {
-    local -r unlst="
-        pulseaudio
-        pulseaudio-bluetooth
-        pulseaudio-alsa
-        pulseaudio-jack
-        jack2
-        pipewire-media-session 
-    "
     local -r inlst="
         pipewire
         wireplumber
