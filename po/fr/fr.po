@@ -719,27 +719,27 @@ msgstr "Changement du shell par défaut vers fish..."
 msgid "Invalid choice"
 msgstr "Choix invalide"
 
-#: src/cmd.sh:41
+#: src/cmd.sh:47
 #, sh-format
 msgid "${GREEN}[I]${RESET} Package ${package} is already installed."
 msgstr "${GREEN}[I]${RESET} Le paquet ${package} est déjà installé."
 
-#: src/cmd.sh:47
+#: src/cmd.sh:53
 #, sh-format
 msgid " ${RED}(might be long)${RESET}"
 msgstr " ${RED}(peut être long)${RESET}"
 
-#: src/cmd.sh:57
+#: src/cmd.sh:117
 #, sh-format
-msgid "${RED}Error: ${package} installation failed${RESET}"
-msgstr "${RED}Erreur: l'installation de ${package} a échoué${RESET}"
+msgid "${RED}Error: installation failed${RESET}"
+msgstr "${RED}Erreur: l'installation a échoué${RESET}"
 
-#: src/cmd.sh:89
+#: src/cmd.sh:86
 #, sh-format
 msgid "y"
 msgstr "o"
 
-#: src/cmd.sh:90
+#: src/cmd.sh:87
 #, sh-format
 msgid "n"
 msgstr "n"

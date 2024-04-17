@@ -474,9 +474,9 @@ msgid ""
 "Press ${GREEN}Enter${RESET} to continue, or ${RED}Ctrl+C${RESET} to cancel."
 msgstr ""
 
-#: src/cmd.sh:52
+#: src/cmd.sh:117
 #, sh-format
-msgid "${RED}Error: ${package} installation failed${RESET}"
+msgid "${RED}Error: installation failed${RESET}"
 msgstr ""
 
 #: architect.sh:18
