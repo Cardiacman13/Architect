@@ -22,7 +22,7 @@ function set_software_list() {
         ["Kazam"]="kazam"
         ["Visual Studio Code"]="visual-studio-code-bin"
         ["Visual Studio Code Open Source"]="code"
-        ["Virtualbox"]="virtualbox virtualbox-host-dkms virtualbox-guest-iso virtualbox-ext-oracle"
+        ["Virtualbox"]="virtualbox virtualbox-host-dkms virtualbox-guest-iso"
         ["CrossOver"]="crossover"
     )
 
