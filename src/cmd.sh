@@ -62,7 +62,7 @@ function uninstall_one() {
     if pacman -Q ${package} &> /dev/null; then
         exec_log "sudo pacman -Rdd --noconfirm ${package}" "${RED}[-]${RESET} ${package}"
     else
-        log_msg "$(eval_gettext "\${GREEN}[U]\${RESET} Package \${package} is already uninstall.")"
+        log_msg "$(eval_gettext "\${GREEN}[U]\${RESET} Package \${package} is not installed.")"
     fi
 }
 
