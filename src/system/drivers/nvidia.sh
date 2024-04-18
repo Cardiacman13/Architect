@@ -27,7 +27,6 @@ function nvidia_drivers() {
         opencl-nvidia
         libvdpau
         lib32-libvdpau
-        lib32-libvdpau
         lib32-nvidia-utils
         egl-wayland
         dxvk-nvapi-mingw
@@ -68,6 +67,7 @@ function nvidia_drivers() {
             lib32-opencl-nvidia
             libvdpau-va-gl
             libvdpau
+            libva-nvidia-driver 
         "
         install_lst "${inlst}"
     fi
