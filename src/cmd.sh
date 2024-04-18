@@ -2,6 +2,7 @@ function log() {
     local -r comment="$1"
 
     echo "[$(date "+%Y-%m-%d %H:%M:%S")] ${comment}" >>"${LOG_FILE}"
+    sed -i -E "s/\x1B\[[0-9;]*[JKmsu]|\x1B\(B|\\\u[0-9]{0,4}|\\\n//g" ${LOG_FILE}
 }
 
 function log_msg() {

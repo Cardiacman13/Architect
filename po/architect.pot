@@ -474,7 +474,7 @@ msgid ""
 "Press ${GREEN}Enter${RESET} to continue, or ${RED}Ctrl+C${RESET} to cancel."
 msgstr ""
 
-#: src/cmd.sh:117
+#: src/cmd.sh:120
 #, sh-format
 msgid "${RED}Error: installation failed${RESET}"
 msgstr ""
