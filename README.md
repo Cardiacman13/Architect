@@ -1,3 +1,3 @@
-Déplacé sur https://codeberg.org/Gaming-Linux-FR
+Déplacé sur https://codeberg.org/Gaming-Linux-FR/Architect
 
-Moved to https://codeberg.org/Gaming-Linux-FR
+Moved to https://codeberg.org/Gaming-Linux-FR/Architect/src/branch/main/README-EN.md
