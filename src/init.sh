@@ -7,7 +7,7 @@ function header() {
        ${PURPLE}%%%${RESET}                 ${GREEN}******${RESET}       
        ${PURPLE}%%%${RESET}                     ${GREEN}***${RESET}      `eval_gettext "Script Architect for Arch Linux"`
        ${PURPLE}%%%${RESET}                     ${GREEN}***${RESET}      
-       ${PURPLE}%%%${RESET}                     ${GREEN}***${RESET}      GitHub : https://github.com/Cardiacman13/Architect
+       ${PURPLE}%%%${RESET}                     ${GREEN}***${RESET}      CodeBerg : https://codeberg.org/Gaming-Linux-FR/Architect
        ${PURPLE}%%%${RESET}                     ${GREEN}***${RESET}      
        ${PURPLE}%%%${RESET}                     ${GREEN}***${RESET} 
         ${PURPLE}%%%%%%${RESET}                 ${GREEN}***${RESET} 

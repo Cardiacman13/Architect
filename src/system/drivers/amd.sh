@@ -10,6 +10,7 @@ function amd_drivers() {
         lib32-vulkan-icd-loader
         libva-mesa-driver
         lib32-libva-mesa-driver
+        vulkan-mesa-layers
         mesa-vdpau
         lib32-mesa-vdpau
     "

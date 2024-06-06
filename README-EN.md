@@ -1,39 +1,23 @@
 # 🐧 ARCHITECT SCRIPT
 
-[![fr](https://img.shields.io/badge/langue-français-blue.svg)](https://github.com/Gaming-Linux-FR/Architect/blob/main/README.md)
+[![fr](https://img.shields.io/badge/langue-français-blue.svg)](https://codeberg.org/Gaming-Linux-FR/Architect)
 
 A post-installation script for Arch Linux, designed to configure a standard Arch system with a minimal set of packages tailored to my needs right after using `archinstall`. Geared towards gaming, this script is intended for a pure Arch Linux experience.
 
 > [!WARNING]
-> It was designed based on this [tutorial](https://github.com/Gaming-Linux-FR/tuto-archlinux-fr) which originates from personal note-taking to meet my needs. I can assure you that it works perfectly well on my PC and fully satisfies me. However, **I cannot guarantee the results on your hardware. Use with knowledge of the potential risks, enjoy the script.**
-
-### Archinstall
-
-
-<img src="https://github.com/Cardiacman13/tuto-archlinux-fr/blob/main/assets/images/LOGO-A1RM4X-2K.png" width="30" height="30"> [ Install Arch like a boss: Archinstall script ](https://youtu.be/56u5tddLxCI?si=0DKyfDp7hQGTfLny)
-
-[![Install Arch like a boss: Archinstall script](https://img.youtube.com/vi/56u5tddLxCI/0.jpg)](https://youtu.be/56u5tddLxCI?si=0DKyfDp7hQGTfLny)
-
-**Installation and usage:**  
-To launch `archinstall`, start by updating `archinstall` to ensure you're using the most recent version. This is important because, for example, at the time these lines are written, the Arch Linux ISO version from 01/03/2024 tries to install the "plasma-wayland" package, which has been nonexistent since the release of Plasma 6, leading to an error that crashes archinstall. This issue has been fixed in newer versions of `archinstall`, so updating before starting the installation is essential.
-
-**Update `archinstall`:**
-```sh
-pacman -Sy archinstall
-```
-
-Once `archinstall` is updated, you can launch it with the following command:
-```sh
-archinstall
-```
+> It was designed based on this [tutorial](https://codeberg.org/Gaming-Linux-FR/tuto-archlinux-fr) which originates from personal note-taking to meet my needs. I can assure you that it works perfectly well on my PC and fully satisfies me. However, **I cannot guarantee the results on your hardware. Use with knowledge of the potential risks, enjoy the script.**
 
 ## Arch Linux Script
 
 ```bash
-sudo pacman -S --needed git base-devel && git clone https://github.com/Cardiacman13/Architect.git ~/Architect && cd ~/Architect && chmod +x ./architect.sh && ./architect.sh
+sudo pacman -S --needed git base-devel \
+  && git clone https://codeberg.org/Gaming-Linux-FR/Architect.git ~/Architect \
+  && cd ~/Architect \
+  && chmod +x ./architect.sh \
+  && ./architect.sh
 ```
 
-<img src="https://github.com/Cardiacman13/tuto-archlinux-fr/blob/main/assets/images/LOGO-A1RM4X-2K.png" width="30" height="30"> [ Configure Arch the easy way: Architect project by Cardiac ](https://youtu.be/0MV3MxmO7ns?si=eOMc-e4wdSwv1Fbb)
+[ Configure Arch the easy way: Architect project by Cardiac ](https://youtu.be/0MV3MxmO7ns?si=eOMc-e4wdSwv1Fbb)
 
 [![Configure Arch the easy way: Architect project by Cardiac](https://img.youtube.com/vi/0MV3MxmO7ns/0.jpg)](https://youtu.be/0MV3MxmO7ns?si=eOMc-e4wdSwv1Fbb)
 
@@ -50,10 +34,6 @@ sudo pacman -S --needed git base-devel && git clone https://github.com/Cardiacma
 5. **Install Base Packages** - Install essential tools, including AUR helpers like `yay` or `paru`.
 6. **Miscellaneous Enhancements** - Various adjustments to optimize your Arch experience.
 7. **Install Additional Software** - Selection of additional software to customize your installation.
-
-## Troubleshooting
-
-For any questions or problems, feel free to open a discussion in the [discussion section](https://github.com/Cardiacman13/Architect/discussions) of the project.
 
 ## Sources
 

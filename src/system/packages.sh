@@ -46,8 +46,6 @@ function usefull_package() {
         man-db
         man-pages
     "
-    
-    exec_log "echo -e 'vm.swappiness=10' | sudo tee /etc/sysctl.d/99-swappiness.conf" "$(eval_gettext "Setting swappiness to 10")"
 
     if [[ ${BTRFS} == true ]]; then
         inlst+=" btrfs-progs btrfs-assistant btrfs-du btrfsmaintenance"

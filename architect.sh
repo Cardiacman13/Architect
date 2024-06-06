@@ -106,6 +106,14 @@ ${BLUE}-------------------------------------------------------------------------
 EOF
 }
 
+function check_os() {
+    if [[ $(grep '^ID=' /etc/os-release) != "ID=arch" ]]; then
+        echo "${RED}Error: This script is only compatible with Arch Linux and not its derivatives.${RESET}"
+        exit 1
+    fi
+
+}
+
 function little_step() {
     local -r function=$1
     local -r message=$2
@@ -115,6 +123,7 @@ function little_step() {
 }
 
 function main() {
+    check_os
     check_internet || exit 1
     
     local -r start_time="$(date +%s)"
@@ -134,6 +143,7 @@ function main() {
     little_step sound_server            "$(eval_gettext "Sound server configuration")"
     little_step setup_system_loaders    "$(eval_gettext "System loaders configuration")"
     little_step usefull_package         "$(eval_gettext "Useful package installation")"
+    little_step performance-optimisation
     little_step firewall                "$(eval_gettext "Firewall installation")"
     little_step shell_config            "$(eval_gettext "Shell configuration")"
 
