@@ -11,7 +11,9 @@ A post-installation script for Arch Linux, designed to configure a standard Arch
 >
 > ArchLinux is a DIY (Do It Yourself) distribution. It is crucial to have strong technical skills or to be prepared to consult extensive documentation. It is unthinkable to stay on Arch Linux if you constantly rely on others' help. In case of a problem, you must be able to find and fix issues yourself quickly. Otherwise, you risk becoming dependent on others or spending hours fixing or reinstalling repeatedly.
 
-### Essential Documentation
+### Basics of Arch Linux System Administration
+
+To effectively administer an Arch Linux system, it is important to master the following concepts and tools:
 
 - **Package Manager:** Read and understand the documentation for [pacman](https://wiki.archlinux.org/title/Pacman_(Fran%C3%A7ais)).
 
@@ -27,9 +29,7 @@ A post-installation script for Arch Linux, designed to configure a standard Arch
   - [Intel](https://wiki.archlinux.org/title/Intel_graphics)
   - [Hardware Video Acceleration](https://wiki.archlinux.org/title/Hardware_video_acceleration)
 
-### Basics of Linux System Administration
-
-To effectively administer an Arch Linux system, it is important to master the following concepts and tools:
+And also :
 
 - **fstab:** Managing partition mounts.
 - **Partition Formatting:** Creating and managing file systems on partitions.
