@@ -11,6 +11,53 @@ A post-installation script for Arch Linux, designed to configure a standard Arch
 >
 > ArchLinux is a DIY (Do It Yourself) distribution. It is crucial to have strong technical skills or to be prepared to consult extensive documentation. It is unthinkable to stay on Arch Linux if you constantly rely on others' help. In case of a problem, you must be able to find and fix issues yourself quickly. Otherwise, you risk becoming dependent on others or spending hours fixing or reinstalling repeatedly.
 
+### Essential Documentation
+
+- **Package Manager:** Read and understand the documentation for [pacman](https://wiki.archlinux.org/title/Pacman_(Fran%C3%A7ais)).
+
+- **Bootloaders:** Read and understand the documentation for your bootloader, such as [GRUB](https://wiki.archlinux.org/title/GRUB) or [systemd-boot](https://wiki.archlinux.org/title/Systemd-boot).
+
+- **Initramfs Tool:** Read and understand the documentation for [mkinitcpio](https://wiki.archlinux.org/title/Mkinitcpio).
+
+- **Service and Initialization System:** Read and understand the documentation for [systemd](https://wiki.archlinux.org/title/Systemd_(Fran%C3%A7ais)).
+
+- **Hardware Acceleration:** Read and understand the documentation related to GPU and hardware acceleration:
+  - [NVIDIA](https://wiki.archlinux.org/title/NVIDIA)
+  - [AMD](https://wiki.archlinux.org/title/AMDGPU)
+  - [Intel](https://wiki.archlinux.org/title/Intel_graphics)
+  - [Hardware Video Acceleration](https://wiki.archlinux.org/title/Hardware_video_acceleration)
+
+### Basics of Linux System Administration
+
+To effectively administer an Arch Linux system, it is important to master the following concepts and tools:
+
+- **fstab:** Managing partition mounts.
+- **Partition Formatting:** Creating and managing file systems on partitions.
+- **Linux Directory Structure:** Understanding the hierarchy of directories and files.
+- **CUPS:** Printing system for Unix.
+- **Avahi:** Implementation of zeroconf for service discovery on a local network.
+- **Basic Commands:** Knowledge of essential commands such as:
+  - `mkdir`: create directories.
+  - `cd`: change directory.
+  - `ls`: list files and directories.
+  - `mv`: move or rename files and directories.
+  - `cp`: copy files and directories.
+  - `rm`: delete files and directories.
+  - `touch`: create empty files or update file timestamps.
+  - `chmod`: change file and directory permissions.
+  - `chown`: change file and directory ownership.
+  - `find`: search for files and directories.
+  - `grep`: search for text within files.
+  - `ps`: display running processes.
+  - `top`: monitor processes in real-time.
+  - `kill`: terminate processes.
+  - `df`: display disk space usage.
+  - `du`: estimate disk space usage.
+  - `tar`: archive files.
+  - `nano` / `vim`: text editors for modifying configuration files.
+
+These points are crucial for the effective and secure administration of your Arch Linux system.
+
 ## Arch Linux Script
 
 ```bash
