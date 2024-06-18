@@ -27,7 +27,10 @@ Un script de post-installation pour Arch Linux, conçu pour configurer un systè
 
 [![Arch Linux, les bonnes pratiques avec Antiz !](https://img.youtube.com/vi/4CiGmS3UM3Y/0.jpg)](https://youtu.be/4CiGmS3UM3Y?si=FARbltfaw2oXVBpO)
 
-#### Documentation essentielle
+
+#### Bases de l'administration **Arch** Linux
+
+Pour bien administrer un système **Arch** Linux, il est important de maîtriser les concepts et outils suivants :
 
 - **Gestionnaire de paquets :** Lire et comprendre la documentation de [pacman](https://wiki.archlinux.org/title/Pacman_(Fran%C3%A7ais)).
 
@@ -42,10 +45,8 @@ Un script de post-installation pour Arch Linux, conçu pour configurer un systè
   - [AMD](https://wiki.archlinux.org/title/AMDGPU)
   - [Intel](https://wiki.archlinux.org/title/Intel_graphics)
   - [Accélération graphique](https://wiki.archlinux.org/title/Hardware_video_acceleration)
-
-#### Bases de l'administration système Linux
-
-Pour bien administrer un système Linux, il est important de maîtriser les concepts et outils suivants :
+ 
+  Mais aussi :
 
 - **fstab :** Gestion des montages de partitions.
 - **Formatage de partitions :** Création et gestion de systèmes de fichiers sur les partitions.
