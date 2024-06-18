@@ -21,9 +21,58 @@ Un script de post-installation pour Arch Linux, conçu pour configurer un systè
 
 ### Le grand minimum à savoir
 
-[ Arch Linux, les bonnes pratiques avec Antiz !](https://youtu.be/4CiGmS3UM3Y?si=FARbltfaw2oXVBpO)
+#### Vidéo recommandée
+
+[Arch Linux, les bonnes pratiques avec Antiz !](https://youtu.be/4CiGmS3UM3Y?si=FARbltfaw2oXVBpO)
 
 [![Arch Linux, les bonnes pratiques avec Antiz !](https://img.youtube.com/vi/4CiGmS3UM3Y/0.jpg)](https://youtu.be/4CiGmS3UM3Y?si=FARbltfaw2oXVBpO)
+
+#### Documentation essentielle
+
+- **Gestionnaire de paquets :** Lire et comprendre la documentation de [pacman](https://wiki.archlinux.org/title/Pacman_(Fran%C3%A7ais)).
+
+- **Bootloaders :** Lire et comprendre la documentation de votre bootloader, tel que [GRUB](https://wiki.archlinux.org/title/GRUB) ou [systemd-boot](https://wiki.archlinux.org/title/Systemd-boot).
+
+- **Outil d'initramfs :** Lire et comprendre la documentation de [mkinitcpio](https://wiki.archlinux.org/title/Mkinitcpio).
+
+- **Système d'initialisation et de gestion des services :** Lire et comprendre la documentation de [systemd](https://wiki.archlinux.org/title/Systemd_(Fran%C3%A7ais)).
+
+- **Accélération matérielle :** Lire et comprendre la documentation relative au GPU et à l'accélération matérielle :
+  - [NVIDIA](https://wiki.archlinux.org/title/NVIDIA)
+  - [AMD](https://wiki.archlinux.org/title/AMDGPU)
+  - [Intel](https://wiki.archlinux.org/title/Intel_graphics)
+  - [Accélération graphique](https://wiki.archlinux.org/title/Hardware_video_acceleration)
+
+#### Bases de l'administration système Linux
+
+Pour bien administrer un système Linux, il est important de maîtriser les concepts et outils suivants :
+
+- **fstab :** Gestion des montages de partitions.
+- **Formatage de partitions :** Création et gestion de systèmes de fichiers sur les partitions.
+- **Arborescence de Linux :** Compréhension de la structure des répertoires et fichiers.
+- **CUPS :** Système d'impression pour Unix.
+- **Avahi :** Implémentation de zeroconf pour la découverte de services sur un réseau local.
+- **Commandes de base :** Connaissance des commandes essentielles telles que :
+  - `mkdir` : créer des répertoires.
+  - `cd` : changer de répertoire.
+  - `ls` : lister les fichiers et répertoires.
+  - `mv` : déplacer ou renommer des fichiers et répertoires.
+  - `cp` : copier des fichiers et répertoires.
+  - `rm` : supprimer des fichiers et répertoires.
+  - `touch` : créer des fichiers vides ou mettre à jour les horodatages de fichiers.
+  - `chmod` : changer les permissions des fichiers et répertoires.
+  - `chown` : changer le propriétaire et le groupe des fichiers et répertoires.
+  - `find` : rechercher des fichiers et répertoires.
+  - `grep` : rechercher du texte dans des fichiers.
+  - `ps` : afficher les processus en cours d'exécution.
+  - `top` : surveiller les processus en temps réel.
+  - `kill` : terminer des processus.
+  - `df` : afficher l'espace disque utilisé et disponible.
+  - `du` : estimer l'utilisation de l'espace disque.
+  - `tar` : archiver des fichiers.
+  - `nano` / `vim` : éditeurs de texte pour modifier les fichiers de configuration.
+
+Ces points sont cruciaux pour une administration de votre système Arch Linux.
 
 ## Script ARCHITECT
 
