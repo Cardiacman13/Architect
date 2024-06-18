@@ -1,6 +1,6 @@
 # SCRIPT ARCHITECT
 
-[![lang-en](https://img.shields.io/badge/lang-en-blue.svg)](https://codeberg.org/Gaming-Linux-FR/Architect/src/branch/main/README-EN.md)
+[![lang-en](https://img.shields.io/badge/lang-en-blue.svg)](https://github.com/Cardiacman13/Architect/blob/main/README-EN.md)
 
 Un script de post-installation pour Arch Linux, conçu pour configurer un système Arch standard avec un ensemble minimal de paquets adapté à mes besoins juste après avoir utilisé `archinstall`. Orienté vers le gaming, ce script est pensé pour une expérience pure d'Arch Linux.
 
