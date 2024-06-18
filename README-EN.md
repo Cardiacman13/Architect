@@ -36,25 +36,7 @@ And also :
 - **Linux Directory Structure:** Understanding the hierarchy of directories and files.
 - **CUPS:** Printing system for Unix.
 - **Avahi:** Implementation of zeroconf for service discovery on a local network.
-- **Basic Commands:** Knowledge of essential commands such as:
-  - `mkdir`: create directories.
-  - `cd`: change directory.
-  - `ls`: list files and directories.
-  - `mv`: move or rename files and directories.
-  - `cp`: copy files and directories.
-  - `rm`: delete files and directories.
-  - `touch`: create empty files or update file timestamps.
-  - `chmod`: change file and directory permissions.
-  - `chown`: change file and directory ownership.
-  - `find`: search for files and directories.
-  - `grep`: search for text within files.
-  - `ps`: display running processes.
-  - `top`: monitor processes in real-time.
-  - `kill`: terminate processes.
-  - `df`: display disk space usage.
-  - `du`: estimate disk space usage.
-  - `tar`: archive files.
-  - `nano` / `vim`: text editors for modifying configuration files.
+- **Basic Commands:** Knowledge of essential commands such as:`mkdir` `cd` `ls` `mv` `cp` `rm` `touch` `chmod` `chown` `find` `grep` `ps` `top` `kill` `df` `du` `tar` `nano` / `vim` etc.
 
 These points are crucial for the effective and secure administration of your Arch Linux system.
 
