@@ -5,7 +5,11 @@
 Un script de post-installation pour Arch Linux, conçu pour configurer un système Arch standard avec un ensemble minimal de paquets adapté à mes besoins juste après avoir utilisé `archinstall`. Orienté vers le gaming, ce script est pensé pour une expérience pure d'Arch Linux.
 
 > [!WARNING]
-> Il a été conçu à partir de [ce tuto](https://codeberg.org/Gaming-Linux-FR/tuto-archlinux-fr) qui vient, à la base, d'une prise de note personnelle pour répondre à mes besoins. Je peux vous affirmer qu'il fonctionne parfaitement bien sur mon PC et me satisfait pleinement. **Je ne peux néanmoins pas être sûr du résultat sur votre matériel, pour vos besoins. À utiliser en connaissance de cause, bon script...**
+> Ce script a été élaboré à partir de [ce tutoriel](https://codeberg.org/Gaming-Linux-FR/tuto-archlinux-fr), initialement issu de notes personnelles pour répondre à mes besoins spécifiques. Je peux confirmer qu'il fonctionne parfaitement sur mon PC et me satisfait pleinement. **Cependant, je ne peux garantir qu'il donnera les mêmes résultats sur votre matériel ou qu'il répondra à vos besoins. Utilisez-le en toute connaissance de cause. Bon script !**
+>
+> Ce n'est pas une distribution mais bien un script de configuration pour gagner du temps en post-innstallation, la maintenance et la gestion de votre Arch linux vous incombe après son utilisation.
+> 
+> ArchLinux est une distribution DIY (Do It Yourself). Il est crucial d'avoir de solides compétences techniques ou d'être prêt à consulter abondamment la documentation. Il est impensable de rester sur Arch Linux si l'on dépend constamment de l'aide des autres. En cas de problème, il faut absolument être capable de trouver et de réparer soi-même rapidement. Sinon, on risque de devenir dépendant des autres ou de passer des heures à réparer ou réinstaller en boucle.
 
 ## Avant de Commencer
 
