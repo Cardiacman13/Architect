@@ -78,10 +78,9 @@ sudo pacman -S --needed git base-devel \
    - `fix-key` : Résout les problèmes liés aux clés lors des mises à jour.
    - `update-mirrors` : Rafraîchit la liste des miroirs de votre système.
 3. **Configuration GPU pour le jeu** - Prise en charge optimale des pilotes AMD, NVIDIA, et Intel.
-4. **Environnement de Bureau** - Choix entre GNOME, KDE Plasma, XFCE, et i3wm.
-5. **Installer des paquets de base** - Installation des outils essentiels, y compris les aideurs AUR comme `yay` ou `paru`.
-6. **Améliorations diverses** - Divers ajustements pour optimiser votre expérience Arch.
-7. **Installation de logiciels supplémentaires** - Sélection de logiciels supplémentaires pour personnaliser votre installation.
+4. **Installer des paquets de base** - Installation des outils essentiels, y compris les [AUR helpers[(https://wiki.archlinux.org/title/AUR_helpers) comme `yay` ou `paru`.
+5. **Améliorations diverses** - Divers ajustements pour optimiser votre expérience Arch.
+6. **Installation de logiciels supplémentaires** - Sélection de logiciels supplémentaires pour personnaliser votre installation.
 
 ## Sources
 
