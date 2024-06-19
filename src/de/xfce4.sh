@@ -25,6 +25,7 @@ function install_xfce() {
         network-manager-applet
         xfce4-notifyd
         gnome-keyring
+        mugshot
         xdg-user-dirs
         blueman
         file-roller
