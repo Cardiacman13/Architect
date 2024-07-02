@@ -244,6 +244,9 @@ function install_software() {
         ;script_timeout=10
         '
 
-        echo "$config_content" | sudo tee /etc/gamemode.ini
+     if [ ! -f /etc/gamemode.ini ]; then
+        echo "$config_content" | sudo tee /etc/gamemode.ini > /dev/null
     fi
+fi
+
 }
