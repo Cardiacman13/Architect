@@ -118,7 +118,7 @@ function install_software() {
 
     if [[ "${aur_packages}" =~ "arch-update" ]]; then
         exec_log "systemctl --user enable arch-update.timer" "$(eval_gettext "Enable arch-update.timer")"
-        exec_log "systemctl --user enable arch-update-tray.service" "$(eval_gettext "Enable arch-update tray")"
+        exec_log "arch-update --tray --enable" "$(eval_gettext "Enable arch-update tray")"
     fi
     
     if [[ "${aur_packages}" =~ "virtualbox" ]]; then
