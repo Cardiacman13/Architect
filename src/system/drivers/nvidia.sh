@@ -17,8 +17,8 @@ function nvidia_intel() {
             intel-media-driver
             intel-gmmlib
             onevpl-intel-gpu
-    "
-    install_lst "${inlst}"
+        "
+        install_lst "${inlst}"
     fi
 }
 
@@ -62,4 +62,34 @@ function nvidia_drivers() {
     fi
 
     exec_log "sudo systemctl enable nvidia-suspend.service nvidia-hibernate.service nvidia-resume.service" "$(eval_gettext "Enabling nvidia services")"
+
+    create_pacman_hook
+}
+
+function create_pacman_hook() {
+    local hook_file="/etc/pacman.d/hooks/nvidia.hook"
+    
+    # Check if the hook file exists and remove it if it does
+    if [ -f "$hook_file" ]; then
+        exec_log "sudo rm $hook_file" "$(eval_gettext "Removing existing Nvidia pacman hook file")"
+    fi
+
+    # Create the new hook file
+    sudo tee "$hook_file" > /dev/null << EOL
+[Trigger]
+Operation=Install
+Operation=Upgrade
+Operation=Remove
+Type=File
+Target=etc/modprobe.d/nvidia.conf
+Target=usr/src/nvidia-*/dkms.conf
+Target=usr/lib/modules/*/extramodules/nvidia.ko.*
+Target=usr/lib/modules/*/nvidia.ko.*
+
+[Action]
+Description=Updating NVIDIA module in initcpio
+Depends=mkinitcpio
+When=PostTransaction
+NeedsTargets
+Exec=/bin/sh -c 'while read -r trg; do case $trg in linux*) exit 0; esac; done; /usr/bin/mkinitcpio -P'
 }
