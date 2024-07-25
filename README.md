@@ -10,6 +10,10 @@ Un script de post-installation pour Arch Linux, conçu pour configurer un systè
 > Ce n'est pas une distribution mais bien un script de configuration pour gagner du temps en post-innstallation, la maintenance et la gestion de votre Arch linux vous incombe après son utilisation.
 > 
 > ArchLinux est une distribution DIY (Do It Yourself). Il est crucial d'avoir de solides compétences techniques ou d'être prêt à consulter abondamment la documentation. Il est impensable de rester sur Arch Linux si l'on dépend constamment de l'aide des autres. En cas de problème, il faut absolument être capable de trouver et de réparer soi-même rapidement. Sinon, on risque de devenir dépendant des autres ou de passer des heures à réparer ou réinstaller en boucle.
+>
+> Extrait de [la philosophie de Arch Linux](https://wiki.archlinux.org/title/Arch_Linux_(Fran%C3%A7ais)) : "Tandis que de nombreuses distributions GNU/Linux tentent d'être plus conviviales, Arch Linux a toujours été, et restera toujours centrée sur l'utilisateur. Elle est destinée à répondre aux besoins de ceux qui y contribuent, plutôt que d'essayer d'attirer le plus grand nombre. Elle est destinée à l'utilisateur compétent de GNU/Linux ou à toute personne ayant une attitude de bricoleur et disposée à lire la documentation et à résoudre ses propres problèmes."
+>
+> Être sur Arch Linux sans lire la documentation et en étant dépendant des autres va à l'encontre de ce qu'est cette distribution.
 
 ## Avant de Commencer
 
@@ -26,36 +30,6 @@ Un script de post-installation pour Arch Linux, conçu pour configurer un systè
 [Arch Linux, les bonnes pratiques avec Antiz !](https://youtu.be/4CiGmS3UM3Y?si=FARbltfaw2oXVBpO)
 
 [![Arch Linux, les bonnes pratiques avec Antiz !](https://img.youtube.com/vi/4CiGmS3UM3Y/0.jpg)](https://youtu.be/4CiGmS3UM3Y?si=FARbltfaw2oXVBpO)
-
-
-#### Bases de l'administration **Arch** Linux
-
-Pour bien administrer un système **Arch** Linux, il est important de maîtriser les concepts et outils suivants :
-
-- **Gestionnaire de paquets :** Lire et comprendre la documentation de [pacman](https://wiki.archlinux.org/title/Pacman_(Fran%C3%A7ais)).
-
-- **Bootloaders :** Lire et comprendre la documentation de votre bootloader, tel que [GRUB](https://wiki.archlinux.org/title/GRUB) ou [systemd-boot](https://wiki.archlinux.org/title/Systemd-boot).
-
-- **Outil d'initramfs :** Lire et comprendre la documentation de [mkinitcpio](https://wiki.archlinux.org/title/Mkinitcpio).
-
-- **Système d'initialisation et de gestion des services :** Lire et comprendre la documentation de [systemd](https://wiki.archlinux.org/title/Systemd_(Fran%C3%A7ais)).
-
-- **Accélération matérielle :** Lire et comprendre la documentation relative au GPU et à l'accélération matérielle :
-  - [NVIDIA](https://wiki.archlinux.org/title/NVIDIA)
-  - [AMD](https://wiki.archlinux.org/title/AMDGPU)
-  - [Intel](https://wiki.archlinux.org/title/Intel_graphics)
-  - [Accélération graphique](https://wiki.archlinux.org/title/Hardware_video_acceleration)
- 
-  Mais aussi :
-
-- **fstab :** Gestion des montages de partitions.
-- **Formatage de partitions :** Création et gestion de systèmes de fichiers sur les partitions.
-- **Arborescence de Linux :** Compréhension de la structure des répertoires et fichiers.
-- **CUPS :** Système d'impression pour Unix.
-- **Avahi :** Implémentation de zeroconf pour la découverte de services sur un réseau local.
-- **Commandes de base :** Connaissance des commandes essentielles telles que :`mkdir` `cd` `ls` `mv` `cp` `rm` `touch` `chmod` `chown` `find` `grep` `ps` `top` `kill` `df` `du` `tar` `nano` / `vim` etc.
-
-Ces points sont cruciaux pour une administration de votre système Arch Linux.
 
 ## Script ARCHITECT
 
