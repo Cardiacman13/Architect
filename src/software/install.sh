@@ -122,12 +122,12 @@ function install_software() {
     fi
     
     if [[ "${aur_packages}" =~ "virtualbox" ]]; then
-        exec_log "sudo usermod -aG vboxusers $(whoami)" "$(eval_gettext "Add the current user to the vboxusers group")"
+        exec_log "sudo usermod -aG vboxusers $SUDO_USER" "$(eval_gettext "Add the current user to the vboxusers group")"
         exec_log "sudo systemctl enable vboxweb.service" "$(eval_gettext "Enable vboxweb")"
     fi
 
     if [[ "${aur_packages}" =~ "gamemode" ]]; then
-        exec_log "sudo usermod -aG gamemode $(whoami)" "$(eval_gettext "Add the current user to the gamemode group")"
+        exec_log "sudo usermod -aG gamemode $SUDO_USER" "$(eval_gettext "Add the current user to the gamemode group")"
         
         # Add gamemode configuration
         config_content='[general]
@@ -156,7 +156,7 @@ function install_software() {
         ; GameMode can renice game processes. You can put any value between 0 and 20 here, the value
         ; will be negated and applied as a nice value (0 means no change). Defaults to 0.
         ; To use this feature, the user must be added to the gamemode group (and then rebooted):
-        ; sudo usermod -aG gamemode $(whoami)
+        ; sudo usermod -aG gamemode $SUDO_USER
         renice=0
         
         ; By default, GameMode adjusts the iopriority of clients to BE/0, you can put any value
