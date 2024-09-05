@@ -115,6 +115,8 @@ function install_software() {
     selected_packages=""
 
     install_lst "${aur_packages}" "aur"
+    
+    CURRENT_USER=${SUDO_USER:-$(whoami)}
 
     if [[ "${aur_packages}" =~ "arch-update" ]]; then
         exec_log "systemctl --user enable arch-update.timer" "$(eval_gettext "Enable arch-update.timer")"
@@ -122,12 +124,12 @@ function install_software() {
     fi
     
     if [[ "${aur_packages}" =~ "virtualbox" ]]; then
-        exec_log "sudo usermod -aG vboxusers $(whoami)" "$(eval_gettext "Add the current user to the vboxusers group")"
+        usermod -a -G vboxusers "${CURRENT_USER}"
         exec_log "sudo systemctl enable vboxweb.service" "$(eval_gettext "Enable vboxweb")"
     fi
 
     if [[ "${aur_packages}" =~ "gamemode" ]]; then
-        exec_log "sudo usermod -aG gamemode $(whoami)" "$(eval_gettext "Add the current user to the gamemode group")"
+        usermod -a -G gamemode "${CURRENT_USER}"
         
         # Add gamemode configuration
         config_content='[general]
