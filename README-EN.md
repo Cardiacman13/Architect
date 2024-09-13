@@ -4,12 +4,16 @@
 
 A post-installation script for Arch Linux, designed to configure a standard Arch system with a minimal set of packages tailored to my needs right after using `archinstall`. Geared towards gaming, this script is intended for a pure Arch Linux experience.
 
-> [!WARNING]
-> This script was developed based on [this tutorial](https://github.com/Cardiacman13/tuto-archlinux-fr), which originally came from personal notes to meet my specific needs. I can confirm that it works perfectly on my PC and meets my expectations. **However, I cannot guarantee that it will produce the same results on your hardware or meet your needs. Use it at your own risk. Happy scripting!**
-> 
-> This is not a distribution but a configuration script to save time in post-installation. The maintenance and management of your Arch Linux system are your responsibility after using this script.
+> [!WARNING]  
+> This script was developed based on [this tutorial](https://github.com/Cardiacman13/tuto-archlinux-fr), originally derived from personal notes to meet my specific needs. I can confirm that it works perfectly on my PC and fully satisfies me. **However, I cannot guarantee that it will yield the same results on your hardware or meet your needs. Use it at your own risk. Happy scripting!**
 >
-> ArchLinux is a DIY (Do It Yourself) distribution. It is crucial to have strong technical skills or to be prepared to consult extensive documentation. It is unthinkable to stay on Arch Linux if you constantly rely on others' help. In case of a problem, you must be able to find and fix issues yourself quickly. Otherwise, you risk becoming dependent on others or spending hours fixing or reinstalling repeatedly.
+> This is not a distribution but a configuration script meant to save time in post-installation. The maintenance and management of your Arch Linux are your responsibility after using it.
+>
+> Arch Linux is a DIY (Do It Yourself) distribution. It's crucial to have solid technical skills or be ready to extensively consult the documentation. It is unrealistic to stick with Arch Linux if you constantly rely on others for help. In case of issues, you absolutely must be able to troubleshoot and fix them quickly on your own. Otherwise, you risk becoming dependent on others or spending hours repeatedly fixing or reinstalling.
+>
+> Excerpt from the [official Arch Linux WIKI](https://wiki.archlinux.org/title/Arch_Linux): "While many GNU/Linux distributions aim to be more user-friendly, Arch Linux has always been, and will remain, user-centric. It is designed to meet the needs of those who contribute to it, rather than trying to appeal to the masses. It is intended for competent GNU/Linux users or anyone with a do-it-yourself attitude willing to read documentation and solve their own problems."
+>
+> Being on Arch Linux without reading the documentation and relying on others goes against the very essence of this distribution.
 
 ### Basics of Arch Linux System Administration
 
