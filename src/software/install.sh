@@ -131,8 +131,9 @@ function install_software() {
         exec_log "sudo usermod -aG libvirt $(whoami)" "$(eval_gettext "Add the current user to the libvirt group")"
         exec_log "sudo usermod -aG kvm $(whoami)" "$(eval_gettext "Add the current user to the kvm group")"
         exec_log "sudo systemctl enable --now libvirtd" "$(eval_gettext "Enable libvirtd")"
-        exec_log "sudo sed -i 's/#unix_sock_group = "libvirt"/unix_sock_group = "libvirt"/' /etc/libvirt/libvirtd.conf" "$(eval_gettext "unix_sock_group = libvirt")"
-        exec_log "sudo sed -i 's/#unix_sock_rw_perms = "0770"/unix_sock_rw_perms = "0770"/' /etc/libvirt/libvirtd.conf" "$(eval_gettext "unix_sock_rw_perms = 0770")"
+	sudo sed -i 's/#unix_sock_group = "libvirt"/unix_sock_group = "libvirt"/' /etc/libvirt/libvirtd.conf
+	sudo sed -i 's/#unix_sock_rw_perms = "0770"/unix_sock_rw_perms = "0770"/' /etc/libvirt/libvirtd.conf
+
     fi
 
     if [[ "${aur_packages}" =~ "gamemode" ]]; then

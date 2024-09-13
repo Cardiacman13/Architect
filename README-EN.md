@@ -1,6 +1,6 @@
 # ARCHITECT SCRIPT
 
-[![fr](https://img.shields.io/badge/langue-français-blue.svg)](https://codeberg.org/Gaming-Linux-FR/Architect)
+[![fr](https://img.shields.io/badge/langue-français-blue.svg)](https://github.com/Cardiacman13/Architect)
 
 A post-installation script for Arch Linux, designed to configure a standard Arch system with a minimal set of packages tailored to my needs right after using `archinstall`. Geared towards gaming, this script is intended for a pure Arch Linux experience.
 
@@ -15,40 +15,11 @@ A post-installation script for Arch Linux, designed to configure a standard Arch
 >
 > Being on Arch Linux without reading the documentation and relying on others goes against the very essence of this distribution.
 
-### Basics of Arch Linux System Administration
-
-To effectively administer an Arch Linux system, it is important to master the following concepts and tools:
-
-- **Package Manager:** Read and understand the documentation for [pacman](https://wiki.archlinux.org/title/Pacman_(Fran%C3%A7ais)).
-
-- **Bootloaders:** Read and understand the documentation for your bootloader, such as [GRUB](https://wiki.archlinux.org/title/GRUB) or [systemd-boot](https://wiki.archlinux.org/title/Systemd-boot).
-
-- **Initramfs Tool:** Read and understand the documentation for [mkinitcpio](https://wiki.archlinux.org/title/Mkinitcpio).
-
-- **Service and Initialization System:** Read and understand the documentation for [systemd](https://wiki.archlinux.org/title/Systemd_(Fran%C3%A7ais)).
-
-- **Hardware Acceleration:** Read and understand the documentation related to GPU and hardware acceleration:
-  - [NVIDIA](https://wiki.archlinux.org/title/NVIDIA)
-  - [AMD](https://wiki.archlinux.org/title/AMDGPU)
-  - [Intel](https://wiki.archlinux.org/title/Intel_graphics)
-  - [Hardware Video Acceleration](https://wiki.archlinux.org/title/Hardware_video_acceleration)
-
-And also :
-
-- **fstab:** Managing partition mounts.
-- **Partition Formatting:** Creating and managing file systems on partitions.
-- **Linux Directory Structure:** Understanding the hierarchy of directories and files.
-- **CUPS:** Printing system for Unix.
-- **Avahi:** Implementation of zeroconf for service discovery on a local network.
-- **Basic Commands:** Knowledge of essential commands such as: `mkdir` `cd` `ls` `mv` `cp` `rm` `touch` `chmod` `chown` `find` `grep` `ps` `top` `kill` `df` `du` `tar` `nano` / `vim` etc.
-
-These points are crucial for the effective and secure administration of your Arch Linux system.
-
 ## Arch Linux Script
 
 ```bash
 sudo pacman -S --needed git base-devel \
-  && git clone https://codeberg.org/Gaming-Linux-FR/Architect.git ~/Architect \
+  && git clone https://github.com/Gaming-Linux-FR/Architect.git ~/Architect \
   && cd ~/Architect \
   && chmod +x ./architect.sh \
   && ./architect.sh
