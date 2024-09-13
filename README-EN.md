@@ -1,6 +1,6 @@
-# 🐧 ARCHITECT SCRIPT
+# ARCHITECT SCRIPT
 
-[![fr](https://img.shields.io/badge/langue-français-blue.svg)](https://github.com/Cardiacman13/Architect)
+[![fr](https://img.shields.io/badge/langue-français-blue.svg)](https://codeberg.org/Gaming-Linux-FR/Architect)
 
 A post-installation script for Arch Linux, designed to configure a standard Arch system with a minimal set of packages tailored to my needs right after using `archinstall`. Geared towards gaming, this script is intended for a pure Arch Linux experience.
 
@@ -40,7 +40,7 @@ And also :
 - **Linux Directory Structure:** Understanding the hierarchy of directories and files.
 - **CUPS:** Printing system for Unix.
 - **Avahi:** Implementation of zeroconf for service discovery on a local network.
-- **Basic Commands:** Knowledge of essential commands such as:`mkdir` `cd` `ls` `mv` `cp` `rm` `touch` `chmod` `chown` `find` `grep` `ps` `top` `kill` `df` `du` `tar` `nano` / `vim` etc.
+- **Basic Commands:** Knowledge of essential commands such as: `mkdir` `cd` `ls` `mv` `cp` `rm` `touch` `chmod` `chown` `find` `grep` `ps` `top` `kill` `df` `du` `tar` `nano` / `vim` etc.
 
 These points are crucial for the effective and secure administration of your Arch Linux system.
 
@@ -48,7 +48,7 @@ These points are crucial for the effective and secure administration of your Arc
 
 ```bash
 sudo pacman -S --needed git base-devel \
-  && git clone https://github.com/Gaming-Linux-FR/Architect.git ~/Architect \
+  && git clone https://codeberg.org/Gaming-Linux-FR/Architect.git ~/Architect \
   && cd ~/Architect \
   && chmod +x ./architect.sh \
   && ./architect.sh

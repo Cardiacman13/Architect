@@ -1,6 +1,6 @@
 # SCRIPT ARCHITECT
 
-[![lang-en](https://img.shields.io/badge/lang-en-blue.svg)](https://github.com/Cardiacman13/Architect/blob/main/README-EN.md)
+[![lang-en](https://img.shields.io/badge/lang-en-blue.svg)](https://codeberg.org/Gaming-Linux-FR/Architect/src/branch/main/README-EN.md)
 
 Un script de post-installation pour Arch Linux, conçu pour configurer un système Arch standard avec un ensemble minimal de paquets adapté à mes besoins juste après avoir utilisé `archinstall`. Orienté vers le gaming, ce script est pensé pour une expérience pure d'Arch Linux.
 
@@ -11,7 +11,7 @@ Un script de post-installation pour Arch Linux, conçu pour configurer un systè
 > 
 > ArchLinux est une distribution DIY (Do It Yourself). Il est crucial d'avoir de solides compétences techniques ou d'être prêt à consulter abondamment la documentation. Il est impensable de rester sur Arch Linux si l'on dépend constamment de l'aide des autres. En cas de problème, il faut absolument être capable de trouver et de réparer soi-même rapidement. Sinon, on risque de devenir dépendant des autres ou de passer des heures à réparer ou réinstaller en boucle.
 >
-> Extrait de [du WIKI officiel de Arch Linux](https://wiki.archlinux.org/title/Arch_Linux_(Fran%C3%A7ais)) : "Tandis que de nombreuses distributions GNU/Linux tentent d'être plus conviviales, Arch Linux a toujours été, et restera toujours centrée sur l'utilisateur. Elle est destinée à répondre aux besoins de ceux qui y contribuent, plutôt que d'essayer d'attirer le plus grand nombre. Elle est destinée à l'utilisateur compétent de GNU/Linux ou à toute personne ayant une attitude de bricoleur et disposée à lire la documentation et à résoudre ses propres problèmes."
+> Extrait **[du WIKI officiel de Arch Linux](https://wiki.archlinux.org/title/Arch_Linux_(Fran%C3%A7ais))** : "Tandis que de nombreuses distributions GNU/Linux tentent d'être plus conviviales, Arch Linux a toujours été, et restera toujours centrée sur l'utilisateur. Elle est destinée à répondre aux besoins de ceux qui y contribuent, plutôt que d'essayer d'attirer le plus grand nombre. Elle est destinée à l'utilisateur compétent de GNU/Linux ou à toute personne ayant une attitude de bricoleur et disposée à lire la documentation et à résoudre ses propres problèmes."
 >
 > Être sur Arch Linux sans lire la documentation et en étant dépendant des autres va à l'encontre de ce qu'est cette distribution.
 
@@ -37,7 +37,7 @@ Pour démarrer avec le script :
 
 ```bash
 sudo pacman -S --needed git base-devel \
-  && git clone https://github.com/Gaming-Linux-FR/Architect.git ~/Architect \
+  && git clone https://codeberg.org/Gaming-Linux-FR/Architect.git ~/Architect \
   && cd ~/Architect \
   && chmod +x ./architect.sh \
   && ./architect.sh
@@ -52,9 +52,10 @@ sudo pacman -S --needed git base-devel \
    - `fix-key` : Résout les problèmes liés aux clés lors des mises à jour.
    - `update-mirrors` : Rafraîchit la liste des miroirs de votre système.
 3. **Configuration GPU pour le jeu** - Prise en charge optimale des pilotes AMD, NVIDIA, et Intel.
-4. **Installer des paquets de base** - Installation des outils essentiels, y compris les [AUR helpers[(https://wiki.archlinux.org/title/AUR_helpers) comme `yay` ou `paru`.
-5. **Améliorations diverses** - Divers ajustements pour optimiser votre expérience Arch.
-6. **Installation de logiciels supplémentaires** - Sélection de logiciels supplémentaires pour personnaliser votre installation.
+4. **Environnement de Bureau** - Choix entre GNOME, KDE Plasma, XFCE, et i3wm.
+5. **Installer des paquets de base** - Installation des outils essentiels, y compris les aideurs AUR comme `yay` ou `paru`.
+6. **Améliorations diverses** - Divers ajustements pour optimiser votre expérience Arch.
+7. **Installation de logiciels supplémentaires** - Sélection de logiciels supplémentaires pour personnaliser votre installation.
 
 ## Sources
 

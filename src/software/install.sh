@@ -23,6 +23,7 @@ function set_software_list() {
         ["Visual Studio Code"]="visual-studio-code-bin"
         ["Visual Studio Code Open Source"]="code"
         ["Virtualbox"]="virtualbox virtualbox-host-dkms virtualbox-guest-iso"
+        ["Virtmanager"]="virt-manager virt-viewer dnsmasq vde2 bridge-utils openbsd-netcat dmidecode libguestfs"
         ["CrossOver"]="crossover"
     )
 
@@ -115,8 +116,6 @@ function install_software() {
     selected_packages=""
 
     install_lst "${aur_packages}" "aur"
-    
-    CURRENT_USER=${SUDO_USER:-$(whoami)}
 
     if [[ "${aur_packages}" =~ "arch-update" ]]; then
         exec_log "systemctl --user enable arch-update.timer" "$(eval_gettext "Enable arch-update.timer")"
@@ -124,12 +123,20 @@ function install_software() {
     fi
     
     if [[ "${aur_packages}" =~ "virtualbox" ]]; then
-        usermod -a -G vboxusers "${CURRENT_USER}"
+        exec_log "sudo usermod -aG vboxusers $(whoami)" "$(eval_gettext "Add the current user to the vboxusers group")"
         exec_log "sudo systemctl enable vboxweb.service" "$(eval_gettext "Enable vboxweb")"
     fi
 
+    if [[ "${aur_packages}" =~ "Virtmanager" ]]; then
+        exec_log "sudo usermod -aG libvirt $(whoami)" "$(eval_gettext "Add the current user to the libvirt group")"
+        exec_log "sudo usermod -aG kvm $(whoami)" "$(eval_gettext "Add the current user to the kvm group")"
+        exec_log "sudo systemctl enable --now libvirtd" "$(eval_gettext "Enable libvirtd")"
+        exec_log "sudo sed -i 's/#unix_sock_group = "libvirt"/unix_sock_group = "libvirt"/' /etc/libvirt/libvirtd.conf" "$(eval_gettext "unix_sock_group = libvirt")"
+        exec_log "sudo sed -i 's/#unix_sock_rw_perms = "0770"/unix_sock_rw_perms = "0770"/' /etc/libvirt/libvirtd.conf" "$(eval_gettext "unix_sock_rw_perms = 0770")"
+    fi
+
     if [[ "${aur_packages}" =~ "gamemode" ]]; then
-        usermod -a -G gamemode "${CURRENT_USER}"
+        exec_log "sudo usermod -aG gamemode $(whoami)" "$(eval_gettext "Add the current user to the gamemode group")"
         
         # Add gamemode configuration
         config_content='[general]
