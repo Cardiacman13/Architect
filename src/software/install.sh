@@ -127,7 +127,7 @@ function install_software() {
         exec_log "sudo systemctl enable vboxweb.service" "$(eval_gettext "Enable vboxweb")"
     fi
 
-    if [[ "${aur_packages}" =~ "Virtmanager" ]]; then
+    if [[ "${aur_packages}" =~ "virt-manager" ]]; then
         exec_log "sudo usermod -aG libvirt $(whoami)" "$(eval_gettext "Add the current user to the libvirt group")"
         exec_log "sudo usermod -aG kvm $(whoami)" "$(eval_gettext "Add the current user to the kvm group")"
         exec_log "sudo systemctl enable --now libvirtd" "$(eval_gettext "Enable libvirtd")"
