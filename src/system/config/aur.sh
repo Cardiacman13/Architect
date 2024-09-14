@@ -5,12 +5,12 @@ function install_aur() {
     exec_log "sudo pacman -S --noconfirm --needed git" "$(eval_gettext "Installing git")"
     
     local -r git_url=(
-        "https://aur.archlinux.org/yay-bin.git"
-        "https://aur.archlinux.org/paru-bin.git"
+        "https://aur.archlinux.org/yay.git"
+        "https://aur.archlinux.org/paru.git"
     )
     local -r aur_name=(
-        "yay-bin"
-        "paru-bin"
+        "yay"
+        "paru"
     )
     local id=-1
     local choice=""
