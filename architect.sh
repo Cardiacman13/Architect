@@ -145,6 +145,7 @@ function main() {
     little_step performance-optimisation
     little_step firewall                "$(eval_gettext "Firewall installation")"
     little_step shell_config            "$(eval_gettext "Shell configuration")"
+    little_step add_groups_to_user      "$(eval_gettext "Adding user to necessary groups")"
 
     # drivers
     display_step "$(eval_gettext "System configuration")"
