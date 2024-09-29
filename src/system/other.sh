@@ -61,6 +61,11 @@ function firewall() {
 }
 
 function performance-optimisation() {
-exec_log "echo "kernel.split_lock_mitigate=0" | sudo tee /etc/sysctl.d/99-split-lock.conf" "$(eval_gettext "Disable Intel split-lock")"
-exec_log "echo -e 'vm.swappiness=10' | sudo tee /etc/sysctl.d/99-swappiness.conf" "$(eval_gettext "Setting swappiness to 10")"
+    exec_log "echo 'kernel.split_lock_mitigate=0' | sudo tee /etc/sysctl.d/99-split-lock.conf" "$(eval_gettext "Disable Intel split-lock")"
+    exec_log "echo -e 'vm.swappiness=10' | sudo tee /etc/sysctl.d/99-swappiness.conf" "$(eval_gettext "Setting swappiness to 10")"
+}
+
+function add_groups_to_user() {
+    local -r groups_lst="sys,network,wheel,audio,lp,storage,video,users,rfkill"
+    exec_log "sudo usermod -aG ${groups_lst} $(whoami)" "$(eval_gettext "Adding user to groups: ${groups_lst}")"
 }
