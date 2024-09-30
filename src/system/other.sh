@@ -61,7 +61,7 @@ function firewall() {
 }
 
 function performance-optimisation() {
-    exec_log "echo 'kernel.split_lock_mitigate=0' | sudo tee /etc/sysctl.d/99-split-lock.conf" "$(eval_gettext "Disable Intel split-lock")"
+    # exec_log "echo 'kernel.split_lock_mitigate=0' | sudo tee /etc/sysctl.d/99-split-lock.conf" "$(eval_gettext "Disable Intel split-lock")"
     exec_log "echo -e 'vm.swappiness=10' | sudo tee /etc/sysctl.d/99-swappiness.conf" "$(eval_gettext "Setting swappiness to 10")"
 }
 
