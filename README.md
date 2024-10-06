@@ -14,6 +14,8 @@ Un script de post-installation pour Arch Linux, conçu pour configurer un systè
 > Extrait **[du WIKI officiel de Arch Linux](https://wiki.archlinux.org/title/Arch_Linux_(Fran%C3%A7ais))** : "Tandis que de nombreuses distributions GNU/Linux tentent d'être plus conviviales, Arch Linux a toujours été, et restera toujours centrée sur l'utilisateur. Elle est destinée à répondre aux besoins de ceux qui y contribuent, plutôt que d'essayer d'attirer le plus grand nombre. Elle est destinée à l'utilisateur compétent de GNU/Linux ou à toute personne ayant une attitude de bricoleur et disposée à lire la documentation et à résoudre ses propres problèmes."
 >
 > Être sur Arch Linux sans lire la documentation et en étant dépendant des autres va à l'encontre de ce qu'est cette distribution.
+>
+> **IMPORTANT : Si vous utilisez une carte graphique Nvidia, elle doit être d'une génération 16xx ou RTX (post-Pascal).**
 
 ## Avant de Commencer
 
