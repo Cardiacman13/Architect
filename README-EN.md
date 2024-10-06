@@ -14,6 +14,8 @@ A post-installation script for Arch Linux, designed to configure a standard Arch
 > Excerpt from the [official Arch Linux WIKI](https://wiki.archlinux.org/title/Arch_Linux): "While many GNU/Linux distributions aim to be more user-friendly, Arch Linux has always been, and will remain, user-centric. It is designed to meet the needs of those who contribute to it, rather than trying to appeal to the masses. It is intended for competent GNU/Linux users or anyone with a do-it-yourself attitude willing to read documentation and solve their own problems."
 >
 > Being on Arch Linux without reading the documentation and relying on others goes against the very essence of this distribution.
+>
+> IMPORTANT: If you are using an Nvidia graphics card, it must be a 16xx or RTX generation (post-Pascal).
 
 ## Arch Linux Script
 
