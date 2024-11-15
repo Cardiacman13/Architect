@@ -15,7 +15,7 @@ Un script de post-installation pour Arch Linux, conçu pour configurer un systè
 >
 > Être sur Arch Linux sans lire la documentation et en étant dépendant des autres va à l'encontre de ce qu'est cette distribution.
 >
-> **IMPORTANT : Si vous utilisez une carte graphique Nvidia, elle doit être d'une génération 16xx ou RTX (post-Pascal).**
+> **IMPORTANT : Si vous utilisez une carte graphique Nvidia, elle doit être d'une génération 16xx ou RTX (post-Pascal).** Note qu'il suffit de faire `sudo pacman -S nvidia-dkms` après le script et d'écraser `nvidia-open-dkms` pour régler le problème.
 
 ## Avant de Commencer
 
