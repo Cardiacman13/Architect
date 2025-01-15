@@ -7,7 +7,7 @@ function sound_server() {
         wireplumber
         lib32-pipewire
         pipewire-alsa
-        pipewire-jack
+        jack2
         pipewire-pulse
         alsa-utils
         alsa-plugins
