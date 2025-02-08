@@ -62,7 +62,7 @@ function set_software_list() {
         ["Heroic Games Launcher (Epic Games, GOG, etc.)"]="heroic-games-launcher-bin"
         ["Prism Launcher (Minecraft)"]="prismlauncher-qt5 jdk8-openjdk"
         ["ProtonUp QT"]="protonup-qt"
-        ["Goverlay"]="goverlay"
+        ["Goverlay"]="goverlay lib32-mangohud"
         ["Gamemode"]="gamemode lib32-gamemode"
     )
 }
