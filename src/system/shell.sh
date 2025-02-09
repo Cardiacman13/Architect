@@ -11,7 +11,7 @@ function shell_config() {
         "alias update-arch='${AUR}'"
         "alias update-mirrors='sudo reflector --verbose --score 100 --latest 20 --fastest 5 --sort rate --save /etc/pacman.d/mirrorlist && sudo pacman -Syyu'"
         "alias update-grub='sudo grub-mkconfig -o /boot/grub/grub.cfg'"
-        "alias reinstall-all-pkg='sudo pacman -Qq | sudo pacman -S -'"
+        "alias reinstall-all-pkg='sudo pacman -S  $(pacman -Qnq)'"
     )
 
     if [[ ${AUR} == yay ]]; then
