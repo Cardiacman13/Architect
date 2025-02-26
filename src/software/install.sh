@@ -29,7 +29,7 @@ function set_software_list() {
 
     system_list=(
         ["Open RGB"]="openrgb"
-        ["Arch Update"]="arch-update"
+        ["Arch Update"]="arch-update vim"
     )
 
     picture_list=(
