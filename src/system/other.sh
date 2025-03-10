@@ -16,6 +16,8 @@ function sound_server() {
         sof-firmware
     "
 
+    local -r unlst="pipewire-jack"
+
     uninstall_lst "${unlst}" "$(eval_gettext "Cleaning old sound server dependencies")"
     install_lst "${inlst}"
 }
