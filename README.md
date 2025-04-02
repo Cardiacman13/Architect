@@ -15,7 +15,7 @@ Un script de post-installation pour Arch Linux, conçu pour configurer un systè
 >
 > Être sur Arch Linux sans lire la documentation et en étant dépendant des autres va à l'encontre de ce qu'est cette distribution.
 >
-> **IMPORTANT : Si vous utilisez une carte graphique Nvidia, elle doit être d'une génération 16xx ou RTX (post-Pascal).** Note qu'il suffit de faire `sudo pacman -S nvidia-dkms` après le script et d'écraser `nvidia-open-dkms` pour régler le problème.
+> **IMPORTANT : Si vous utilisez une carte graphique Nvidia, elle doit être d'une génération 16xx ou RTX (post-Pascal).** Note qu'il suffit de faire `sudo pacman -S nvidia-dkms` après le script et d'écraser `nvidia-open-dkms` si vous avez une gtx 1000 ou antérieure.
 
 ## Avant de Commencer
 
@@ -55,7 +55,7 @@ sudo pacman -S --needed git base-devel \
    - `update-mirrors` : Rafraîchit la liste des miroirs de votre système.
 3. **Configuration GPU pour le jeu** - Prise en charge optimale des pilotes AMD, NVIDIA, et Intel.
 4. **Environnement de Bureau** - Choix entre GNOME, KDE Plasma, XFCE, et i3wm.
-5. **Installer des paquets de base** - Installation des outils essentiels, y compris les aideurs AUR comme `yay` ou `paru`.
+5. **Installer des paquets de base** - Installation des outils essentiels.
 6. **Améliorations diverses** - Divers ajustements pour optimiser votre expérience Arch.
 7. **Installation de logiciels supplémentaires** - Sélection de logiciels supplémentaires pour personnaliser votre installation.
 
