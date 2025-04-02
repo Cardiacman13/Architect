@@ -102,7 +102,6 @@ source src/system/config/pacman.sh
 source src/system/drivers/devices.sh
 source src/system/drivers/gpu.sh
 source src/system/kernel.sh
-source src/system/other.sh
 source src/system/packages.sh
 source src/system/shell.sh
 
