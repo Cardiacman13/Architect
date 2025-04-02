@@ -25,6 +25,10 @@ function install_kde() {
         plasma-systemmonitor
         kwalletmanager
     "
+    # Define a list of KDE applications to uninstall
+    local -r unlst="discover"
+
+    uninstall_lst "${unlst}" "$(eval_gettext "Uninstall discover")"
 
     # Call the install_lst function to install the listed applications
     install_lst "${inlst}"
