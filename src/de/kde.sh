@@ -51,7 +51,7 @@ function install_kde() {
     #  2. If the line is already uncommented (IgnorePkg = ...), add 'discover' if missing
     #  3. If the line does not exist at all, append "IgnorePkg = discover" at the end of the file
     exec_log \
-        "sed -i -E '
+        "sudo sed -i -E '
           /^[[:space:]]*#[[:space:]]*IgnorePkg[[:space:]]*=/ {
             s/^[[:space:]]*#[[:space:]]*//            # Remove the # and any leading spaces
             /(\s|^)discover(\s|$)/! s/$/ discover/    # Add discover if it is not already present
