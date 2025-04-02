@@ -60,7 +60,7 @@ function install_gnome() {
     #  2. If the line is already uncommented (IgnorePkg = ...), add 'gnome-software' if missing
     #  3. If the line does not exist at all, append "IgnorePkg = gnome-software" at the end of the file
     exec_log \
-        "sed -i -E '
+        "sudo sed -i -E '
           /^[[:space:]]*#[[:space:]]*IgnorePkg[[:space:]]*=/ {
             s/^[[:space:]]*#[[:space:]]*//             # Remove the # and any leading spaces
             /(\s|^)gnome-software(\s|$)/! s/$/ gnome-software/   # Add gnome-software if it is not already present
