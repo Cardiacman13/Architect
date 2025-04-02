@@ -37,7 +37,7 @@ function install_gnome() {
         snapshot
         qt6-wayland
     "
-    # Define a list of KDE applications to uninstall
+    # Define a list of Gnome applications to uninstall
     local -r unlst="gnome-software"
 
     # Call the unistall_lst function to uninstall the listed applications
