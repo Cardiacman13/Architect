@@ -147,11 +147,11 @@ function install_software() {
 
         # If firewalld is installed, open relevant Virt-Manager (libvirt) ports
         if command -v firewall-cmd >/dev/null 2>&1; then
-            exec_log "sudo firewall-cmd --permanent --add-service=libvirt" "Adding libvirt service to firewalld"
-            exec_log "sudo firewall-cmd --permanent --add-port=5900-5999/tcp" "Opening VNC ports (5900-5999)"
-            exec_log "sudo firewall-cmd --permanent --add-port=16509/tcp" "Opening libvirt port (16509)"
-            exec_log "sudo firewall-cmd --permanent --add-port=5666/tcp" "Opening SPICE port (5666) if needed"
-            exec_log "sudo firewall-cmd --reload" "Reloading firewalld configuration"
+            exec_log "sudo firewall-cmd --permanent --add-service=libvirt"
+            exec_log "sudo firewall-cmd --permanent --add-port=5900-5999/tcp"
+            exec_log "sudo firewall-cmd --permanent --add-port=16509/tcp"
+            exec_log "sudo firewall-cmd --permanent --add-port=5666/tcp"
+            exec_log "sudo firewall-cmd --reload"
         fi
     fi
 
@@ -205,29 +205,29 @@ disable_splitlock=1
     if [[ "${aur_packages}" =~ "steam" ]]; then
         if command -v firewall-cmd >/dev/null 2>&1; then
             # -- To log into Steam and download content
-            exec_log "sudo firewall-cmd --permanent --add-port=80/tcp" "Opening HTTP port (TCP 80) for Steam"
-            exec_log "sudo firewall-cmd --permanent --add-port=443/tcp" "Opening HTTPS port (TCP 443) for Steam"
-            exec_log "sudo firewall-cmd --permanent --add-port=27015-27050/udp" "Opening UDP ports 27015-27050 for Steam"
-            exec_log "sudo firewall-cmd --permanent --add-port=27015-27050/tcp" "Opening TCP ports 27015-27050 for Steam"
+            exec_log "sudo firewall-cmd --permanent --add-port=80/tcp"
+            exec_log "sudo firewall-cmd --permanent --add-port=443/tcp"
+            exec_log "sudo firewall-cmd --permanent --add-port=27015-27050/udp"
+            exec_log "sudo firewall-cmd --permanent --add-port=27015-27050/tcp"
 
             # Steam Client
-            exec_log "sudo firewall-cmd --permanent --add-port=27000-27100/udp" "Opening UDP ports 27000-27100 (Game traffic)"
-            exec_log "sudo firewall-cmd --permanent --add-port=27031-27036/udp" "Opening UDP ports 27031-27036 (Remote Play)"
-            exec_log "sudo firewall-cmd --permanent --add-port=27036/tcp" "Opening TCP port 27036 (Remote Play)"
-            exec_log "sudo firewall-cmd --permanent --add-port=4380/udp" "Opening UDP port 4380 for Steam"
-
+            exec_log "sudo firewall-cmd --permanent --add-port=27000-27100/udp"
+            exec_log "sudo firewall-cmd --permanent --add-port=27031-27036/udp"
+            exec_log "sudo firewall-cmd --permanent --add-port=27036/tcp"
+            exec_log "sudo firewall-cmd --permanent --add-port=4380/udp"
+            
             # Dedicated or Listen Servers
-            exec_log "sudo firewall-cmd --permanent --add-port=27015/tcp" "Opening TCP port 27015 (SRCDS Rcon)"
-            exec_log "sudo firewall-cmd --permanent --add-port=27015/udp" "Opening UDP port 27015 (Gameplay traffic)"
+            exec_log "sudo firewall-cmd --permanent --add-port=27015/tcp"
+            exec_log "sudo firewall-cmd --permanent --add-port=27015/udp"
 
             # Steamworks P2P Networking and Steam Voice Chat
-            exec_log "sudo firewall-cmd --permanent --add-port=3478/udp" "Opening UDP port 3478"
-            exec_log "sudo firewall-cmd --permanent --add-port=4379/udp" "Opening UDP port 4379"
-            exec_log "sudo firewall-cmd --permanent --add-port=4380/udp" "Opening UDP port 4380"
-            exec_log "sudo firewall-cmd --permanent --add-port=27014-27030/udp" "Opening UDP ports 27014-27030"
+            exec_log "sudo firewall-cmd --permanent --add-port=3478/udp"
+            exec_log "sudo firewall-cmd --permanent --add-port=4379/udp"
+            exec_log "sudo firewall-cmd --permanent --add-port=4380/udp"
+            exec_log "sudo firewall-cmd --permanent --add-port=27014-27030/udp"
 
             # Apply changes
-            exec_log "sudo firewall-cmd --reload" "Reloading firewalld configuration"
+            exec_log "sudo firewall-cmd --reload"
         fi
     fi
 }
