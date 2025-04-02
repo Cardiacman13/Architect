@@ -2,10 +2,10 @@
 
 [![lang-en](https://img.shields.io/badge/lang-en-blue.svg)](https://github.com/Cardiacman13/Architect/blob/main/README-EN.md)
 
-Un script de post-installation pour Arch Linux, conçu pour configurer un système Arch standard avec un ensemble minimal de paquets adapté à mes besoins juste après avoir utilisé `archinstall`. Orienté vers le gaming, ce script est pensé pour une expérience pure d'Arch Linux.
+Un script de post-installation pour Arch Linux, conçu pour configurer un système Arch standard avec un ensemble minimal de paquets adapté à mes besoins juste après avoir utilisé `archinstall` et installé un DE. Orienté gaming, ce script est pensé pour une expérience pure d'Arch Linux.
 
 > [!WARNING]
-> Ce script a été élaboré à partir de [ce tutoriel](https://github.com/Cardiacman13/tuto-archlinux-fr), initialement issu de notes personnelles pour répondre à mes besoins spécifiques. Je peux confirmer qu'il fonctionne parfaitement sur mon PC et me satisfait pleinement. **Cependant, je ne peux garantir qu'il donnera les mêmes résultats sur votre matériel ou qu'il répondra à vos besoins. Utilisez-le en toute connaissance de cause. Bon script !**
+> Ce script est initialement issu de notes personnelles pour répondre à mes besoins spécifiques. Je peux confirmer qu'il fonctionne parfaitement sur mon PC et me satisfait pleinement. **Cependant, je ne peux garantir qu'il donnera les mêmes résultats sur votre matériel ou qu'il répondra à vos besoins. Utilisez-le en toute connaissance de cause.**
 >
 > Ce n'est pas une distribution mais bien un script de configuration pour gagner du temps en post-innstallation, la maintenance et la gestion de votre Arch linux vous incombe après son utilisation.
 > 
@@ -18,12 +18,6 @@ Un script de post-installation pour Arch Linux, conçu pour configurer un systè
 > **IMPORTANT : Si vous utilisez une carte graphique Nvidia, elle doit être d'une génération 16xx ou RTX (post-Pascal).** Note qu'il suffit de faire `sudo pacman -S nvidia-dkms` après le script et d'écraser `nvidia-open-dkms` si vous avez une gtx 1000 ou antérieure.
 
 ## Avant de Commencer
-
-### Arch est-elle faite pour vous ?
-
-[ Arch Linux : Introduction & démo d'installation ](https://www.youtube.com/watch?v=2B3Z0WiLT6A)
-
-[![Arch Linux : Introduction & démo d'installation](https://img.youtube.com/vi/2B3Z0WiLT6A/0.jpg)](https://www.youtube.com/watch?v=2B3Z0WiLT6A)
 
 ### Le grand minimum à savoir
 
@@ -44,6 +38,8 @@ sudo pacman -S --needed git base-devel \
   && chmod +x ./architect.sh \
   && ./architect.sh
 ```
+
+Vous pouvez supprimer le dossier Architect dans votre home après l'utilisation du script.
 
 ## Principales Fonctionnalités
 
