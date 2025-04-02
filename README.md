@@ -67,7 +67,7 @@ sudo pacman -S --needed git base-devel \
 
 <a name="script-architect-fr"></a>
 
-# 🚀 SCRIPT ARCHITECT (🇫🇷 Version Française)
+# 🚀 SCRIPT ARCHITECT
 
 Un script post-installation pour **Arch Linux**, destiné à configurer rapidement un système propre après `archinstall`. Pensé pour les joueurs et les utilisateurs avancés recherchant **performance, minimalisme et flexibilité**.
 
@@ -87,6 +87,13 @@ Un script post-installation pour **Arch Linux**, destiné à configurer rapideme
 
 > 💡 **Important :** Si vous utilisez une carte **NVIDIA**, elle doit être de génération **GTX 16xx ou RTX**. Si vous avez une **GTX 1000 ou plus ancienne**, exécutez simplement :  
 > `sudo pacman -S nvidia-dkms` après le script pour remplacer `nvidia-open-dkms`.
+
+---
+
+## Le grand minimum à savoir pour utiliser Arch Linux : 
+
+[Arch Linux - les bonnes pratiques avec Antiz !](https://youtu.be/4CiGmS3UM3Y?si=FARbltfaw2oXVBpO)
+[![Arch Linux - les bonnes pratiques avec Antiz !](https://img.youtube.com/vi/4CiGmS3UM3Y/0.jpg)](https://youtu.be/4CiGmS3UM3Y?si=FARbltfaw2oXVBpO)
 
 ---
 
