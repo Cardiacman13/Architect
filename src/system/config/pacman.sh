@@ -27,9 +27,6 @@ function config_pacman() {
     # Enable automatic cleaning of old package versions
     exec_log "sudo systemctl enable paccache.timer" "$(eval_gettext "Enabling paccache timer")"
 
-    # Ensure rate-mirrors is installed
-    install_one "rate-mirrors"
-
     # Remove existing update-mirrors script if it exists
     if [[ -f /usr/bin/update-mirrors ]]; then
         exec_log "sudo rm /usr/bin/update-mirrors" "$(eval_gettext "Removing existing update-mirrors script")"
@@ -52,6 +49,10 @@ EOF" "$(eval_gettext "Creating update-mirrors script")"
 
 # Optimize and update mirrorlist using rate-mirrors wrapper
 function mirrorlist() {
+
+    # Ensure rate-mirrors is installed
+    install_one "rate-mirrors"
+
     # Use the new /usr/bin/update-mirrors binary
     exec_log "update-mirrors" "$(eval_gettext "Running update-mirrors")"
 }
