@@ -107,8 +107,10 @@ function select_and_install() {
 
 # Master function that runs software selection and handles post-install logic
 function install_software() {
+    # Initialize software lists
     set_software_list
 
+    # Let user select software from each category
     select_and_install browser_list "$(eval_gettext "Browsers")"
     select_and_install system_list "$(eval_gettext "System Software")"
     select_and_install desktop_list "$(eval_gettext "Desktop Apps")"
@@ -116,11 +118,14 @@ function install_software() {
     select_and_install picture_list "$(eval_gettext "Image Editors")"
     select_and_install gaming_list "$(eval_gettext "Gaming Software")"
 
+    # We now have a single string of selected packages in $selected_packages
     local -r aur_packages="${selected_packages}"
     selected_packages=""
 
+    # Install the selected packages via AUR (or your chosen method)
     install_lst "${aur_packages}" "aur"
 
+    # Additional actions if certain packages were included
     if [[ "${aur_packages}" =~ "arch-update" ]]; then
         exec_log "systemctl --user enable arch-update.timer" "$(eval_gettext "Enable arch-update.timer")"
         exec_log "arch-update --tray --enable" "$(eval_gettext "Enable arch-update tray")"
@@ -139,6 +144,15 @@ function install_software() {
         # Configure libvirtd socket permissions
         sudo sed -i 's/#unix_sock_group = "libvirt"/unix_sock_group = "libvirt"/' /etc/libvirt/libvirtd.conf
         sudo sed -i 's/#unix_sock_rw_perms = "0770"/unix_sock_rw_perms = "0770"/' /etc/libvirt/libvirtd.conf
+
+        # If firewalld is installed, open relevant Virt-Manager (libvirt) ports
+        if command -v firewall-cmd >/dev/null 2>&1; then
+            exec_log "sudo firewall-cmd --permanent --add-service=libvirt" "Adding libvirt service to firewalld"
+            exec_log "sudo firewall-cmd --permanent --add-port=5900-5999/tcp" "Opening VNC ports (5900-5999)"
+            exec_log "sudo firewall-cmd --permanent --add-port=16509/tcp" "Opening libvirt port (16509)"
+            exec_log "sudo firewall-cmd --permanent --add-port=5666/tcp" "Opening SPICE port (5666) if needed"
+            exec_log "sudo firewall-cmd --reload" "Reloading firewalld configuration"
+        fi
     fi
 
     if [[ "${aur_packages}" =~ "gamemode" ]]; then
@@ -184,6 +198,36 @@ disable_splitlock=1
 
         if [ ! -f /etc/gamemode.ini ]; then
             echo "$config_content" | sudo tee /etc/gamemode.ini > /dev/null
+        fi
+    fi
+
+    # If the user selected Steam, open the relevant ports if firewalld is installed
+    if [[ "${aur_packages}" =~ "steam" ]]; then
+        if command -v firewall-cmd >/dev/null 2>&1; then
+            # -- To log into Steam and download content
+            exec_log "sudo firewall-cmd --permanent --add-port=80/tcp" "Opening HTTP port (TCP 80) for Steam"
+            exec_log "sudo firewall-cmd --permanent --add-port=443/tcp" "Opening HTTPS port (TCP 443) for Steam"
+            exec_log "sudo firewall-cmd --permanent --add-port=27015-27050/udp" "Opening UDP ports 27015-27050 for Steam"
+            exec_log "sudo firewall-cmd --permanent --add-port=27015-27050/tcp" "Opening TCP ports 27015-27050 for Steam"
+
+            # Steam Client
+            exec_log "sudo firewall-cmd --permanent --add-port=27000-27100/udp" "Opening UDP ports 27000-27100 (Game traffic)"
+            exec_log "sudo firewall-cmd --permanent --add-port=27031-27036/udp" "Opening UDP ports 27031-27036 (Remote Play)"
+            exec_log "sudo firewall-cmd --permanent --add-port=27036/tcp" "Opening TCP port 27036 (Remote Play)"
+            exec_log "sudo firewall-cmd --permanent --add-port=4380/udp" "Opening UDP port 4380 for Steam"
+
+            # Dedicated or Listen Servers
+            exec_log "sudo firewall-cmd --permanent --add-port=27015/tcp" "Opening TCP port 27015 (SRCDS Rcon)"
+            exec_log "sudo firewall-cmd --permanent --add-port=27015/udp" "Opening UDP port 27015 (Gameplay traffic)"
+
+            # Steamworks P2P Networking and Steam Voice Chat
+            exec_log "sudo firewall-cmd --permanent --add-port=3478/udp" "Opening UDP port 3478"
+            exec_log "sudo firewall-cmd --permanent --add-port=4379/udp" "Opening UDP port 4379"
+            exec_log "sudo firewall-cmd --permanent --add-port=4380/udp" "Opening UDP port 4380"
+            exec_log "sudo firewall-cmd --permanent --add-port=27014-27030/udp" "Opening UDP ports 27014-27030"
+
+            # Apply changes
+            exec_log "sudo firewall-cmd --reload" "Reloading firewalld configuration"
         fi
     fi
 }
