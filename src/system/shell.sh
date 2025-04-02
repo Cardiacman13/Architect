@@ -14,7 +14,6 @@ function shell_config() {
     local alias=(
         "alias fix-key='sudo rm /var/lib/pacman/sync/* && sudo rm -rf /etc/pacman.d/gnupg/* && sudo pacman-key --init && sudo pacman-key --populate && sudo pacman -Sy --noconfirm archlinux-keyring && sudo pacman --noconfirm -Su'",
         "alias update-arch='${AUR}'",
-        "alias update-mirrors='export TMPFILE=\"\$(mktemp)\" && rate-mirrors --save=\$TMPFILE arch --max-delay=43200 && sudo mv /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist-backup && sudo mv \$TMPFILE /etc/pacman.d/mirrorlist && sudo pacman -Syyu'",
         "alias update-grub='sudo grub-mkconfig -o /boot/grub/grub.cfg'",
         "alias reinstall-all-pkg='sudo pacman -S  \$(pacman -Qnq)'"
     )
