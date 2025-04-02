@@ -147,11 +147,11 @@ function install_software() {
 
         # If firewalld is installed, open relevant Virt-Manager (libvirt) ports
         if command -v firewall-cmd >/dev/null 2>&1; then
-            exec_log "sudo firewall-cmd --permanent --add-service=libvirt"
-            exec_log "sudo firewall-cmd --permanent --add-port=5900-5999/tcp"
-            exec_log "sudo firewall-cmd --permanent --add-port=16509/tcp"
-            exec_log "sudo firewall-cmd --permanent --add-port=5666/tcp"
-            exec_log "sudo firewall-cmd --reload"
+            sudo firewall-cmd --permanent --add-service=libvirt
+            sudo firewall-cmd --permanent --add-port=5900-5999/tcp
+            sudo firewall-cmd --permanent --add-port=16509/tcp
+            sudo firewall-cmd --permanent --add-port=5666/tcp
+            sudo firewall-cmd --reload
         fi
     fi
 
@@ -205,29 +205,29 @@ disable_splitlock=1
     if [[ "${aur_packages}" =~ "steam" ]]; then
         if command -v firewall-cmd >/dev/null 2>&1; then
             # -- To log into Steam and download content
-            exec_log "sudo firewall-cmd --permanent --add-port=80/tcp"
-            exec_log "sudo firewall-cmd --permanent --add-port=443/tcp"
-            exec_log "sudo firewall-cmd --permanent --add-port=27015-27050/udp"
-            exec_log "sudo firewall-cmd --permanent --add-port=27015-27050/tcp"
+            sudo firewall-cmd --permanent --add-port=80/tcp
+            sudo firewall-cmd --permanent --add-port=443/tcp
+            sudo firewall-cmd --permanent --add-port=27015-27050/udp
+            sudo firewall-cmd --permanent --add-port=27015-27050/tcp
 
             # Steam Client
-            exec_log "sudo firewall-cmd --permanent --add-port=27000-27100/udp"
-            exec_log "sudo firewall-cmd --permanent --add-port=27031-27036/udp"
-            exec_log "sudo firewall-cmd --permanent --add-port=27036/tcp"
-            exec_log "sudo firewall-cmd --permanent --add-port=4380/udp"
+            sudo firewall-cmd --permanent --add-port=27000-27100/udp
+            sudo firewall-cmd --permanent --add-port=27031-27036/udp
+            sudo firewall-cmd --permanent --add-port=27036/tcp
+            sudo firewall-cmd --permanent --add-port=4380/udp
             
             # Dedicated or Listen Servers
-            exec_log "sudo firewall-cmd --permanent --add-port=27015/tcp"
-            exec_log "sudo firewall-cmd --permanent --add-port=27015/udp"
+            sudo firewall-cmd --permanent --add-port=27015/tcp
+            sudo firewall-cmd --permanent --add-port=27015/udp
 
             # Steamworks P2P Networking and Steam Voice Chat
-            exec_log "sudo firewall-cmd --permanent --add-port=3478/udp"
-            exec_log "sudo firewall-cmd --permanent --add-port=4379/udp"
-            exec_log "sudo firewall-cmd --permanent --add-port=4380/udp"
-            exec_log "sudo firewall-cmd --permanent --add-port=27014-27030/udp"
+            sudo firewall-cmd --permanent --add-port=3478/udp
+            sudo firewall-cmd --permanent --add-port=4379/udp
+            sudo firewall-cmd --permanent --add-port=4380/udp
+            sudo firewall-cmd --permanent --add-port=27014-27030/udp
 
             # Apply changes
-            exec_log "sudo firewall-cmd --reload"
+            sudo firewall-cmd --reload
         fi
     fi
 }
