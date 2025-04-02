@@ -107,7 +107,7 @@ source src/system/shell.sh
 source src/system/firewall.sh
 source src/system/usergroups.sh
 source src/system/audio.sh
-source src/system/bootlader.sh
+source src/system/bootloader.sh
 
 # Display a big step with a visual separator
 function display_step() {
