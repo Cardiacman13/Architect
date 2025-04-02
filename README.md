@@ -3,6 +3,8 @@
 
 **[🇫🇷 Passer à la version française](#script-architect-fr)**
 
+**[📚 Architect Wiki](https://github.com/Cardiacman13/Architect/wiki)**
+
 A post-installation script for Arch Linux, designed to configure a standard Arch system with a minimal set of packages tailored to my needs right after using `archinstall`. Geared towards gaming, this script is intended for a pure Arch Linux experience.
 
 > [!WARNING]  
