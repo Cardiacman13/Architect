@@ -28,6 +28,7 @@ function install_kde() {
     # Define a list of KDE applications to uninstall
     local -r unlst="discover"
 
+    # Call the unistall_lst function to uninstall the listed applications
     uninstall_lst "${unlst}" "$(eval_gettext "Uninstall discover")"
 
     # Call the install_lst function to install the listed applications
