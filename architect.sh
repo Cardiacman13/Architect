@@ -99,7 +99,9 @@ source src/software/install.sh
 source src/system/internet.sh
 source src/system/config/aur.sh
 source src/system/config/pacman.sh
-source src/system/drivers/devices.sh
+source src/system/drivers/bluetooth.sh
+source src/system/drivers/printer.sh
+source src/system/drivers/gamepad.sh
 source src/system/drivers/gpu.sh
 source src/system/kernel.sh
 source src/system/packages.sh
