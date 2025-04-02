@@ -40,4 +40,23 @@ function install_kde() {
 
     # Enable Numlock for SDDM
     exec_log "echo -e '[General]\nNumlock=on' | sudo tee -a /etc/sddm.conf" "$(eval_gettext "Setting Numlock=on for SDDM")"
+
+    # Ensure 'discover' is added to the IgnorePkg line in /etc/pacman.conf
+    #  1. If the line is commented (#IgnorePkg = ...), uncomment and add 'discover' if missing
+    #  2. If the line is already uncommented (IgnorePkg = ...), add 'discover' if missing
+    #  3. If the line does not exist at all, append "IgnorePkg = discover" at the end of the file
+    exec_log \
+        "sed -i -E '
+          /^[[:space:]]*#[[:space:]]*IgnorePkg[[:space:]]*=/ {
+            s/^[[:space:]]*#[[:space:]]*//            # Remove the # and any leading spaces
+            /(\s|^)discover(\s|$)/! s/$/ discover/    # Add discover if it is not already present
+            b
+          }
+          /^[[:space:]]*IgnorePkg[[:space:]]*=/ {
+            /(\s|^)discover(\s|$)/! s/$/ discover/    # Add discover if missing
+            b
+          }
+          $ aIgnorePkg = discover                    # If no line found, append at EOF
+        ' /etc/pacman.conf" \
+        "$(eval_gettext "Adding 'discover' to IgnorePkg in /etc/pacman.conf")"
 }
