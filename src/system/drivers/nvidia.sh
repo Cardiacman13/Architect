@@ -94,8 +94,7 @@ Description=Regenerating initramfs for NVIDIA modules (Wayland/PRIME ready)
 Depends=mkinitcpio
 When=PostTransaction
 NeedsTargets
-Exec=/bin/sh -c 'while read -r trg; do case $trg in linux*) exit 0; esac; done; /usr/bin/mkinitcpio -P'
-
+Exec=/bin/sh -c 'while read -r trg; do case \$trg in linux*) exit 0; esac; done; /usr/bin/mkinitcpio -P'
 EOF
 " "$(eval_gettext "Creating pacman hook for NVIDIA module regeneration")"
 }
