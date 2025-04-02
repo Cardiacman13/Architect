@@ -32,17 +32,18 @@ function mirrorlist() {
     # Ensure rate-mirrors is installed
     install_one "rate-mirrors"
 
-    # Create a temporary file for the new mirrorlist
-    exec_log "export TMPFILE=\$(mktemp)" "$(eval_gettext "Creating temporary file for mirrorlist")"
+    # Create a temporary file path for the new mirrorlist (in subshell scope)
+    local tmpfile=$(mktemp)
+    log_msg "$(eval_gettext "Using temporary file: \${tmpfile}")"
 
     # Fetch and rate mirrors, storing output to the temporary file
-    exec_log "rate-mirrors --save=\$TMPFILE arch --max-delay=43200" "$(eval_gettext "Fetching and rating Arch Linux mirrors \${RED}(might be long)\${RESET}")"
+    exec_log "rate-mirrors --save=${tmpfile} arch --max-delay=43200" "$(eval_gettext "Fetching and rating Arch Linux mirrors \${RED}(might be long)\${RESET}")"
 
     # Backup the existing mirrorlist
-    exec_log "sudo mv /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist-backup" "$(eval_gettext "Backing up old mirrorlist")"
+    exec_log "sudo cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist-backup" "$(eval_gettext "Backing up old mirrorlist")"
 
     # Replace with the new mirrorlist
-    exec_log "sudo mv \$TMPFILE /etc/pacman.d/mirrorlist" "$(eval_gettext "Applying new mirrorlist")"
+    exec_log "sudo mv ${tmpfile} /etc/pacman.d/mirrorlist" "$(eval_gettext "Applying new mirrorlist")"
 
     # Refresh package database from new mirrors
     exec_log "sudo pacman -Syyu --noconfirm" "$(eval_gettext "Refreshing package database \${RED}(might be long)\${RESET}")"
