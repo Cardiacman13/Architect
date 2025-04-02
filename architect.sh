@@ -104,6 +104,10 @@ source src/system/drivers/gpu.sh
 source src/system/kernel.sh
 source src/system/packages.sh
 source src/system/shell.sh
+source src/system/firewall.sh
+source src/system/usergroups.sh
+source src/system/audio.sh
+source src/system/bootlader.sh
 
 # Display a big step with a visual separator
 function display_step() {
@@ -158,7 +162,7 @@ function main() {
     little_step sound_server             "$(eval_gettext "Sound server configuration")"
     little_step setup_system_loaders     "$(eval_gettext "System loaders configuration")"
     little_step usefull_package          "$(eval_gettext "Useful package installation")"
-    little_step performance-optimisation
+    little_step configure_sysctl_tweaks
     little_step firewall                 "$(eval_gettext "Firewall installation")"
     little_step shell_config             "$(eval_gettext "Shell configuration")"
     little_step add_groups_to_user       "$(eval_gettext "Adding user to necessary groups")"
