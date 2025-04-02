@@ -114,6 +114,7 @@ function nvidia_intel() {
 # Main function to uninstall legacy NVIDIA drivers and install the correct set
 function nvidia_drivers() {
     local -r unlst="
+        nvidia-dkms
         nvidia
         nvidia-lts
         dxvk-nvapi-mingw
