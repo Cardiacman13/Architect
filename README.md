@@ -93,6 +93,7 @@ Un script post-installation pour **Arch Linux**, destiné à configurer rapideme
 ## Le grand minimum à savoir pour utiliser Arch Linux : 
 
 [Arch Linux - les bonnes pratiques avec Antiz !](https://youtu.be/4CiGmS3UM3Y?si=FARbltfaw2oXVBpO)
+
 [![Arch Linux - les bonnes pratiques avec Antiz !](https://img.youtube.com/vi/4CiGmS3UM3Y/0.jpg)](https://youtu.be/4CiGmS3UM3Y?si=FARbltfaw2oXVBpO)
 
 ---
