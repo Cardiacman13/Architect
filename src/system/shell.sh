@@ -1,32 +1,39 @@
 # Load shared functions
 source src/cmd.sh
 
+# Configure default shell and useful aliases based on user's shell preference
 function shell_config() {
+    # List of shell config files (bash, zsh, fish)
     local -r config_file=(
         "${HOME}/.bashrc"
         "${HOME}/.zshrc"
         "${HOME}/.config/fish/config.fish"
     )
+
+    # Define commonly useful aliases
     local alias=(
-        "alias fix-key='sudo rm /var/lib/pacman/sync/* && sudo rm -rf /etc/pacman.d/gnupg/* && sudo pacman-key --init && sudo pacman-key --populate && sudo pacman -Sy --noconfirm archlinux-keyring && sudo pacman --noconfirm -Su'"
-        "alias update-arch='${AUR}'"
-        "alias update-mirrors='sudo reflector --verbose --score 100 --latest 20 --fastest 5 --sort rate --save /etc/pacman.d/mirrorlist && sudo pacman -Syyu'"
-        "alias update-grub='sudo grub-mkconfig -o /boot/grub/grub.cfg'"
-        "alias reinstall-all-pkg='sudo pacman -S  $(pacman -Qnq)'"
+        "alias fix-key='sudo rm /var/lib/pacman/sync/* && sudo rm -rf /etc/pacman.d/gnupg/* && sudo pacman-key --init && sudo pacman-key --populate && sudo pacman -Sy --noconfirm archlinux-keyring && sudo pacman --noconfirm -Su'",
+        "alias update-arch='${AUR}'",
+        "alias update-mirrors='export TMPFILE=\"\$(mktemp)\" && rate-mirrors --save=\$TMPFILE arch --max-delay=43200 && sudo mv /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist-backup && sudo mv \$TMPFILE /etc/pacman.d/mirrorlist && sudo pacman -Syyu'",
+        "alias update-grub='sudo grub-mkconfig -o /boot/grub/grub.cfg'",
+        "alias reinstall-all-pkg='sudo pacman -S  \$(pacman -Qnq)'"
     )
 
+    # Add clean-arch alias based on AUR helper
     if [[ ${AUR} == yay ]]; then
         alias+=("alias clean-arch='yay -Sc && yay -Yc'")
     elif [[ ${AUR} == paru ]]; then
         alias+=("alias clean-arch='paru -Sc && paru -c'")
     fi
 
+    # Add aliases to .bashrc to ensure availability even if shell is not changed
     for i in "${alias[@]}"; do
         if ! grep -q "${i}" "${HOME}/.bashrc"; then
             echo "${i}" >>"${HOME}/.bashrc"
         fi
     done
 
+    # Ask the user what their default shell is
     local index=0
     local choice=""
 
@@ -36,6 +43,8 @@ function shell_config() {
     done
 
     eval_gettext "\${GREEN}You chose \${choice}\${RESET}"; echo
+
+    # Configure specific shell environment and change default shell if needed
     case $choice in
     bash)
         touch "${HOME}/.bashrc"
@@ -54,11 +63,10 @@ function shell_config() {
 
         if ask_question "$(eval_gettext "Do you want to install oh-my-zsh ? This will install the default oh-my-zsh's .zshrc configuration")"; then
             eval_gettext "You chose to install oh-my-zsh"; echo
-
             git clone https://github.com/ohmyzsh/ohmyzsh.git "${HOME}/.oh-my-zsh"
             cp "${HOME}/.oh-my-zsh/templates/zshrc.zsh-template" "${HOME}/.zshrc"
         fi
-        
+
         index=1
         ;;
     fish)
@@ -83,6 +91,7 @@ function shell_config() {
         ;;
     esac
 
+    # Add aliases to the corresponding shell config file if not already present
     if [[ $index -ne 3 ]]; then
         for i in "${alias[@]}"; do
             if ! grep -q "${i}" "${config_file[$index]}"; then
