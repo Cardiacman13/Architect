@@ -49,7 +49,6 @@ function install_kde() {
     # Ensure 'discover' is added to the IgnorePkg line in /etc/pacman.conf
     #  1. If the line is commented (#IgnorePkg = ...), uncomment and add 'discover' if missing
     #  2. If the line is already uncommented (IgnorePkg = ...), add 'discover' if missing
-    #  3. If the line does not exist at all, append "IgnorePkg = discover" at the end of the file
     exec_log \
         "sudo sed -i -E '
           /^[[:space:]]*#[[:space:]]*IgnorePkg[[:space:]]*=/ {
@@ -61,7 +60,6 @@ function install_kde() {
             /(\s|^)discover(\s|$)/! s/$/ discover/    # Add discover if missing
             b
           }
-          $ aIgnorePkg = discover                    # If no line found, append at EOF
         ' /etc/pacman.conf" \
         "$(eval_gettext "Adding 'discover' to IgnorePkg in /etc/pacman.conf")"
 }
