@@ -1,3 +1,6 @@
+# Load shared functions
+source src/cmd.sh
+
 function grub-btrfs() {
     if ask_question "$(eval_gettext "Do you want to install and setup grub-btrfs and timeshift \${RED}say No if unsure\${RESET} /!\  ?")"; then
         install_lst "timeshift grub-btrfs timeshift-autosnap"

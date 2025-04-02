@@ -1,4 +1,6 @@
+# Load shared functions
 source src/cmd.sh
+
 
 function usefull_package() {
     local inlst="

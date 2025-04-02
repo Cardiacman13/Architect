@@ -1,12 +1,16 @@
 #!/usr/bin/env bash
 
+# Load gettext for translations
 . gettext.sh
 
+# Get the script's base directory
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 
+# Set gettext domains for translation
 export TEXTDOMAIN="architect"
 export TEXTDOMAINDIR="$SCRIPT_DIR/po"
 
+# Set up colors for terminal output
 export RESET=$(tput sgr0)
 export RED=$(tput setaf 1)
 export GREEN=$(tput setaf 2)
@@ -14,6 +18,7 @@ export YELLOW=$(tput setaf 3)
 export BLUE=$(tput setaf 4)
 export PURPLE=$(tput setaf 5)
 
+# Display usage information
 function usage() {
     eval_gettext "Usage : ./architect.sh [OPTION]"; echo
     eval_gettext "Options :"; echo
@@ -22,45 +27,46 @@ function usage() {
     eval_gettext "  --no-reboot  : Do not reboot the system at the end of the script."; echo
 }
 
+# Parse command-line arguments
 VALID_ARGS=$(getopt -o hv --long help,verbose,no-reboot -- "$@")
 if [[ $? -ne 0 ]]; then
-    exit 1;
+    exit 1
 fi
 
+# Process parsed arguments
 eval set -- "$VALID_ARGS"
-while [ : ]; do
-  case "$1" in
-    -h | --help)
-        usage
-        exit 1
-        ;;
-    -v | --verbose)
-        export VERBOSE=true
-        shift
-        ;;
-    --no-reboot)
-        export NOREBOOT=true
-        shift
-        ;;
-    --) shift; 
-        break 
-        ;;
-  esac
+while :; do
+    case "$1" in
+        -h | --help)
+            usage
+            exit 1
+            ;;
+        -v | --verbose)
+            export VERBOSE=true
+            shift
+            ;;
+        --no-reboot)
+            export NOREBOOT=true
+            shift
+            ;;
+        --)
+            shift
+            break
+            ;;
+    esac
 done
 
-if [[ -z ${VERBOSE+x} ]]; then
-    export VERBOSE=false
-fi
+# Set defaults if variables are not defined
+export VERBOSE=${VERBOSE:-false}
+export NOREBOOT=${NOREBOOT:-false}
 
-if [[ -z ${NOREBOOT+x} ]]; then
-    export NOREBOOT=false
-fi
-
+# Ensure the script is not run as root
 if [[ $(whoami) == 'root' ]]; then
     echo; eval_gettext "\${RED}Do not run this script as root, use a user with sudo rights\${RESET}"; echo
     exit 1
 fi
 
+# Prompt for sudo and test privileges
 if sudo -v; then
     echo; eval_gettext "\${GREEN}Root privileges granted\${RESET}"; echo
 else
@@ -68,18 +74,24 @@ else
     exit 1
 fi
 
-export LOG_FILE="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/logfile_$(date "+%Y%m%d-%H%M%S").log"
+# Set log file path
+export LOG_FILE="$SCRIPT_DIR/logfile_$(date "+%Y%m%d-%H%M%S").log"
+
+# Detect the boot loader
 if [[ -d "/boot/loader/entries" ]]; then
     export BOOT_LOADER="systemd-boot"
 else
     export BOOT_LOADER="grub"
 fi
-if [[ $(lsblk -o FSTYPE | grep -c btrfs) -gt 0 ]]; then
+
+# Detect Btrfs usage
+if lsblk -o FSTYPE | grep -q btrfs; then
     export BTRFS=true
 else
     export BTRFS=false
 fi
 
+# Source all modules
 source src/init.sh
 source src/end.sh
 source src/de/detect.sh
@@ -94,26 +106,28 @@ source src/system/other.sh
 source src/system/packages.sh
 source src/system/shell.sh
 
+# Display a big step with a visual separator
 function display_step() {
     local -r message="$1"
     clear
     cat <<-EOF
 ${BLUE}-----------------------------------------------------------------------------------------------------------
 
-                                   ${message}                                                        
+                                   ${message}
 
 -----------------------------------------------------------------------------------------------------------${RESET}
 EOF
 }
 
+# Check if the OS is Arch Linux (not a derivative)
 function check_os() {
     if [[ $(grep '^ID=' /etc/os-release) != "ID=arch" ]]; then
         echo "${RED}Error: This script is only compatible with Arch Linux and not its derivatives.${RESET}"
         exit 1
     fi
-
 }
 
+# Run a small step with a title and a function
 function little_step() {
     local -r function=$1
     local -r message=$2
@@ -122,53 +136,56 @@ function little_step() {
     ${function}
 }
 
+# Main installation logic
 function main() {
     check_os
     check_internet || exit 1
-    
+
     local -r start_time="$(date +%s)"
-    # init
+
+    # Initialization
     display_step "$(eval_gettext "Initialization")"
     init_log
     header
 
-    # system
+    # System configuration
     display_step "$(eval_gettext "System preparation")"
     sleep 1
-    little_step config_pacman           "$(eval_gettext "Pacman configuration")"
-    little_step install_aur             "$(eval_gettext "AUR helper installation")"
-    little_step mirrorlist              "$(eval_gettext "Mirrorlist configuration")"
-    little_step install_headers         "$(eval_gettext "Kernel headers installation")"
-    little_step configure_sysctl_tweaks "$(eval_gettext "Kernel tweaks")"
-    little_step sound_server            "$(eval_gettext "Sound server configuration")"
-    little_step setup_system_loaders    "$(eval_gettext "System loaders configuration")"
-    little_step usefull_package         "$(eval_gettext "Useful package installation")"
+    little_step config_pacman            "$(eval_gettext "Pacman configuration")"
+    little_step install_aur              "$(eval_gettext "AUR helper installation")"
+    little_step mirrorlist               "$(eval_gettext "Mirrorlist configuration")"
+    little_step install_headers          "$(eval_gettext "Kernel headers installation")"
+    little_step configure_sysctl_tweaks  "$(eval_gettext "Kernel tweaks")"
+    little_step sound_server             "$(eval_gettext "Sound server configuration")"
+    little_step setup_system_loaders     "$(eval_gettext "System loaders configuration")"
+    little_step usefull_package          "$(eval_gettext "Useful package installation")"
     little_step performance-optimisation
-    little_step firewall                "$(eval_gettext "Firewall installation")"
-    little_step shell_config            "$(eval_gettext "Shell configuration")"
-    little_step add_groups_to_user      "$(eval_gettext "Adding user to necessary groups")"
+    little_step firewall                 "$(eval_gettext "Firewall installation")"
+    little_step shell_config             "$(eval_gettext "Shell configuration")"
+    little_step add_groups_to_user       "$(eval_gettext "Adding user to necessary groups")"
 
-    # drivers
+    # Driver installation
     display_step "$(eval_gettext "System configuration")"
     sleep 1
-    little_step video_drivers           "$(eval_gettext "Video drivers installation")"
-    little_step gamepad                 "$(eval_gettext "Gamepad configuration")"
-    little_step printer                 "$(eval_gettext "Printer configuration")"
-    little_step bluetooth               "$(eval_gettext "Bluetooth configuration")"
+    little_step video_drivers            "$(eval_gettext "Video drivers installation")"
+    little_step gamepad                  "$(eval_gettext "Gamepad configuration")"
+    little_step printer                  "$(eval_gettext "Printer configuration")"
+    little_step bluetooth                "$(eval_gettext "Bluetooth configuration")"
 
-    # desktop environment
+    # Desktop environment configuration
     display_step "$(eval_gettext "Environment configuration")"
     sleep 1
-    little_step detect_de               "$(eval_gettext "Desktop environment detection")"
+    little_step detect_de                "$(eval_gettext "Desktop environment detection")"
 
-    # software
+    # Software installation
     sleep 1
     display_step "$(eval_gettext "Software installation")"
-    little_step install_software        "$(eval_gettext "Software installation")"
+    little_step install_software         "$(eval_gettext "Software installation")"
 
-    # end
+    # Final wrap-up
     sleep 1
     endscript "${start_time}"
 }
 
+# Launch main procedure
 main

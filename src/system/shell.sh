@@ -1,3 +1,4 @@
+# Load shared functions
 source src/cmd.sh
 
 function shell_config() {
