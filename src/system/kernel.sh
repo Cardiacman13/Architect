@@ -63,6 +63,9 @@ fs.file-max = 2097152
 
 # Lower frequency of XFS flusher threads
 fs.xfs.xfssyncd_centisecs = 10000
+
+# Disable Intel split-lock
+kernel.split_lock_mitigate = 0
 EOF
 " "$(eval_gettext "Applying sysctl memory and kernel performance tweaks")"
 

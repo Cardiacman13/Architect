@@ -62,10 +62,6 @@ function firewall() {
     fi
 }
 
-function performance-optimisation() {
-    exec_log "echo 'kernel.split_lock_mitigate=0' | sudo tee /etc/sysctl.d/99-split-lock.conf" "$(eval_gettext "Disable Intel split-lock")"
-}
-
 function add_groups_to_user() {
     local -r groups_lst="sys,network,wheel,audio,lp,storage,video,users,rfkill"
     exec_log "sudo usermod -aG ${groups_lst} $(whoami)" "$(eval_gettext "Adding user to groups: ${groups_lst}")"
