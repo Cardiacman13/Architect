@@ -49,10 +49,9 @@ sudo pacman -S --needed git base-devel \
    - `fix-key`
    - `update-mirrors`
 3. **GPU Configuration** — Fully automated NVIDIA/AMD/Intel detection and setup.
-4. **Desktop Environment** — Choose from GNOME, KDE Plasma, XFCE, or i3.
-5. **AUR Support** — Auto-install `yay` or `paru`, depending on your preference.
-6. **Optional Components** — Printers, Firewall, Bluetooth, Sound, etc.
-7. **Extra Software** — Browsers, games, apps, media tools, and more.
+4. **AUR Support** — Auto-install `yay` or `paru`, depending on your preference.
+5. **Optional Components** — Printers, Firewall, Bluetooth, Sound, etc.
+6. **Extra Software** — Browsers, games, apps, media tools, and more.
 
 ---
 
@@ -121,10 +120,9 @@ Vous pouvez ensuite supprimer le dossier `~/Architect`.
    - `fix-key`
    - `update-mirrors`
 3. **Configuration GPU** — Support complet pour NVIDIA, AMD, Intel.
-4. **Choix d’Environnement** — GNOME, KDE Plasma, XFCE, i3wm.
-5. **Support AUR** — Installe automatiquement `yay` ou `paru`.
-6. **Composants Optionnels** — Imprimantes, Firewall, Bluetooth, Audio, etc.
-7. **Installation de Logiciels** — Navigateur, multimédia, développement, gaming.
+4. **Support AUR** — Installe automatiquement `yay` ou `paru`.
+5. **Composants Optionnels** — Imprimantes, Firewall, Bluetooth, Audio, etc.
+6. **Installation de Logiciels** — Navigateur, multimédia, développement, gaming.
 
 ---
 
