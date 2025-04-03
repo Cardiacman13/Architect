@@ -62,29 +62,35 @@ export NOREBOOT=${NOREBOOT:-false}
 
 # Ensure the script is not run as root
 if [[ $(whoami) == 'root' ]]; then
-    echo; eval_gettext "\${RED}Do not run this script as root, use a user with sudo rights\${RESET}"; echo
+    echo
+    eval_gettext "\${RED}Do not run this script as root, use a user with sudo rights\${RESET}"
+    echo
     exit 1
 fi
 
 # Prompt for sudo and test privileges
 if sudo -v; then
-    echo; eval_gettext "\${GREEN}Root privileges granted\${RESET}"; echo
+    echo
+    eval_gettext "\${GREEN}Root privileges granted\${RESET}"
+    echo
 else
-    echo; eval_gettext "\${RED}Root privileges denied\${RESET}"; echo
+    echo
+    eval_gettext "\${RED}Root privileges denied\${RESET}"
+    echo
     exit 1
 fi
 
 # Set log file path
 export LOG_FILE="$SCRIPT_DIR/logfile_$(date "+%Y%m%d-%H%M%S").log"
 
-# Detect the boot loader
+# Detect the boot loader (systemd-boot vs grub)
 if [[ -d "/boot/loader/entries" ]]; then
     export BOOT_LOADER="systemd-boot"
 else
     export BOOT_LOADER="grub"
 fi
 
-# Detect Btrfs usage
+# Detect if Btrfs is being used
 if lsblk -o FSTYPE | grep -q btrfs; then
     export BTRFS=true
 else
@@ -132,7 +138,7 @@ function check_os() {
     fi
 }
 
-# Run a small step with a title and a function
+# Run a smaller step with a title and a function
 function little_step() {
     local -r function=$1
     local -r message=$2
