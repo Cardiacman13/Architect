@@ -10,6 +10,8 @@ function bluetooth() {
             bluez
             bluez-plugins
             bluez-utils
+            bluez-hid2hci
+            bluez-libs
         "
 
         install_lst "${inlst}"
