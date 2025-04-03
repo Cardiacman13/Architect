@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
+# Exit on any error and show a brief message
+set -e
+trap 'echo -e "${RED}An error occurred at line $LINENO. Exiting...${RESET}"; exit 1' ERR
+
 # Load gettext for translations
 . gettext.sh
 
@@ -33,7 +37,6 @@ if [[ $? -ne 0 ]]; then
     exit 1
 fi
 
-# Process parsed arguments
 eval set -- "$VALID_ARGS"
 while :; do
     case "$1" in
