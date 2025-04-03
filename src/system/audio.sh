@@ -7,7 +7,6 @@ function sound_server() {
     local -r inlst="
         pipewire
         wireplumber
-        lib32-pipewire
         pipewire-alsa
         jack2
         pipewire-pulse
@@ -16,6 +15,7 @@ function sound_server() {
         alsa-firmware
         alsa-ucm-conf
         sof-firmware
+        rtkit
     "
 
     # Remove conflicting or outdated audio components
