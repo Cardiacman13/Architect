@@ -5,12 +5,12 @@ source src/cmd.sh
 function nvidia_config() {
     local nvidia_config_file="/etc/modprobe.d/nvidia.conf"
 
-    # Remove existing configuration if it exists
+    # Remove existing configuration file if it exists
     if [ -f "$nvidia_config_file" ]; then
         exec_log "sudo rm $nvidia_config_file" "$(eval_gettext "Removing existing nvidia.conf file")"
     fi
 
-    # Write optimized NVIDIA kernel module options with inline documentation
+    # Create optimized NVIDIA kernel module configuration
     exec_log "sudo tee $nvidia_config_file > /dev/null << 'EOF'
 # NVIDIA kernel module parameters for optimized performance and Wayland support
 
@@ -40,11 +40,16 @@ options nvidia_drm modeset=1
 EOF
 " "$(eval_gettext "Setting advanced NVIDIA module options")"
 
-    # Ensure early loading of NVIDIA kernel modules at boot
-    exec_log "sudo sed -i '/^MODULES=(/ s/)$/ nvidia nvidia_modeset nvidia_uvm nvidia_drm)/' /etc/mkinitcpio.conf" "$(eval_gettext "Setting early loading of NVIDIA modules")"
+    # Ensure early loading of NVIDIA modules in initramfs
+    if ! grep -q 'nvidia_drm' /etc/mkinitcpio.conf; then
+        exec_log "sudo sed -i 's/^MODULES=(/MODULES=(nvidia nvidia_modeset nvidia_uvm nvidia_drm /' /etc/mkinitcpio.conf" \
+        "$(eval_gettext "Adding NVIDIA modules to mkinitcpio.conf")"
+    else
+        log "$(eval_gettext "NVIDIA modules already present in mkinitcpio.conf")"
+    fi
 }
 
-# Create udev rule to manage NVIDIA runtime power management
+# Create udev rule for runtime power management
 function nvidia_runtime_pm_udev_rule() {
     local udev_file="/etc/udev/rules.d/80-nvidia-pm.rules"
 
@@ -53,14 +58,14 @@ function nvidia_runtime_pm_udev_rule() {
         exec_log "sudo rm $udev_file" "$(eval_gettext "Removing existing NVIDIA udev rule")"
     fi
 
-    # Create new rule
+    # Create new udev rule
     exec_log "sudo tee $udev_file > /dev/null << 'EOF'
 # Enable runtime PM for NVIDIA VGA/3D controller devices on driver bind
 ACTION==\"add|bind\", SUBSYSTEM==\"pci\", DRIVERS==\"nvidia\", \\
     ATTR{vendor}==\"0x10de\", ATTR{class}==\"0x03[0-9]*\", \\
     TEST==\"power/control\", ATTR{power/control}=\"auto\"
 
-# Disable runtime PM for NVIDIA VGA/3D controller devices on driver unbind
+# Disable runtime PM for NVIDIA devices on driver unbind (rarely triggered)
 ACTION==\"remove|unbind\", SUBSYSTEM==\"pci\", DRIVERS==\"nvidia\", \\
     ATTR{vendor}==\"0x10de\", ATTR{class}==\"0x03[0-9]*\", \\
     TEST==\"power/control\", ATTR{power/control}=\"on\"
@@ -70,7 +75,13 @@ EOF
 
 # Create a pacman hook to regenerate initramfs after NVIDIA-related changes
 function create_pacman_hook() {
-    local hook_file="/etc/pacman.d/hooks/nvidia.hook"
+    local hook_dir="/etc/pacman.d/hooks"
+    local hook_file="$hook_dir/nvidia.hook"
+
+    # Ensure the hook directory exists
+    if [ ! -d "$hook_dir" ]; then
+        exec_log "sudo mkdir -p $hook_dir" "$(eval_gettext "Creating pacman hook directory")"
+    fi
 
     # Remove existing hook if it exists
     if [ -f "$hook_file" ]; then
@@ -129,8 +140,10 @@ function nvidia_drivers() {
 
     uninstall_lst "${unlst}" "$(eval_gettext "Clean old nvidia drivers dependencies")"
 
+    # Configure new NVIDIA kernel parameters
     nvidia_config
 
+    # Install required NVIDIA packages
     local -r inlst="
         nvidia-open-dkms
         nvidia-utils
@@ -147,14 +160,18 @@ function nvidia_drivers() {
     "
     install_lst "${inlst}"
 
+    # Install optional Intel drivers for hybrid laptops
     nvidia_intel
 
-    if ask_question "$(eval_gettext "Do you want to install CUDA (\${RED}say No if unsure\${RESET}) ?")"; then
+    # Ask user whether CUDA should be installed
+    if ask_question "$(eval_gettext "Do you want to install CUDA (${RED}say No if unsure${RESET}) ?")"; then
         install_one "cuda"
     fi
 
-    exec_log "sudo systemctl enable nvidia-suspend.service nvidia-hibernate.service nvidia-resume.service" "$(eval_gettext "Enabling nvidia services")"
+    # Enable NVIDIA suspend/resume services
+    exec_log "sudo systemctl enable nvidia-suspend.service nvidia-hibernate.service nvidia-resume.service" "$(eval_gettext "Enabling NVIDIA services")"
 
+    # Set up system integration
     create_pacman_hook
     nvidia_runtime_pm_udev_rule
 }
