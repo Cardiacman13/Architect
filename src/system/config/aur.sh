@@ -23,12 +23,8 @@ function install_aur() {
 
     # Determine index and export AUR helper name
     case "$choice" in
-        yay)
-            index=0
-            ;;
-        paru)
-            index=1
-            ;;
+        yay) index=0 ;;
+        paru) index=1 ;;
     esac
 
     export AUR="${aur_helpers[$index]}"
@@ -38,10 +34,16 @@ function install_aur() {
         local dir="${aur_dirs[$index]}"
         exec_log "git clone ${aur_repos[$index]}" "$(eval_gettext "Cloning $dir")"
 
+        # Temporarily allow pacman to run without password
+        exec_log "echo \"$USER ALL=(ALL) NOPASSWD: /usr/bin/pacman\" | sudo tee /etc/sudoers.d/99-pacman-nopasswd >/dev/null" \
+            "$(eval_gettext "Allowing pacman without password temporarily")"
+
         pushd "$dir" >/dev/null || return 1
         exec_log "makepkg -si --noconfirm" "$(eval_gettext "Installing $AUR")"
         popd >/dev/null || return 1
 
+        # Clean up
+        exec_log "sudo rm -f /etc/sudoers.d/99-pacman-nopasswd" "$(eval_gettext "Removing temporary sudoers rule")"
         exec_log "rm -rf $dir" "$(eval_gettext "Deleting directory $dir")"
     fi
 
