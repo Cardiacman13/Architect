@@ -88,8 +88,8 @@ function create_pacman_hook() {
         exec_log "sudo rm $hook_file" "$(eval_gettext "Removing existing Nvidia pacman hook file")"
     fi
 
-    # Create the new hook
-    exec_log "sudo tee $hook_file > /dev/null << 'EOF'
+# Create the new hook
+exec_log "sudo tee $hook_file > /dev/null << 'EOF'
 [Trigger]
 Operation=Install
 Operation=Upgrade
@@ -103,7 +103,15 @@ Target=usr/lib/modules/*/nvidia.ko.*
 Description=Update Nvidia module in initcpio (for DRM KMS)
 When=PostTransaction
 NeedsTargets
-Exec=/bin/sh -c 'if command -v mkinitcpio >/dev/null 2>&1; then mkinitcpio -P; elif command -v /usr/lib/booster/regenerate_images >/dev/null 2>&1; then /usr/lib/booster/regenerate_images; elif command -v dracut-rebuild >/dev/null 2>&1; then dracut-rebuild; else printf "\\033[31m The initramfs generator was not found, please update initramfs manually\\033[0m\\n"; fi'
+Exec=/bin/sh -c \"if command -v mkinitcpio >/dev/null 2>&1; then \
+  mkinitcpio -P; \
+elif command -v /usr/lib/booster/regenerate_images >/dev/null 2>&1; then \
+  /usr/lib/booster/regenerate_images; \
+elif command -v dracut-rebuild >/dev/null 2>&1; then \
+  dracut-rebuild; \
+else \
+  printf '\\033[31m The initramfs generator was not found, please update initramfs manually\\033[0m\\n'; \
+fi\"
 EOF
 " "$(eval_gettext "Creating pacman hook for NVIDIA module regeneration")"
 }
