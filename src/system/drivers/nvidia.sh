@@ -95,17 +95,15 @@ Operation=Install
 Operation=Upgrade
 Operation=Remove
 Type=File
-Target=etc/modprobe.d/nvidia.conf
-Target=usr/src/nvidia-*/dkms.conf
+Target=usr/lib/modprobe.d/nvidia.conf
 Target=usr/lib/modules/*/extramodules/nvidia.ko.*
 Target=usr/lib/modules/*/nvidia.ko.*
 
 [Action]
-Description=Regenerating initramfs for NVIDIA modules (Wayland/PRIME ready)
-Depends=mkinitcpio
+Description=Update Nvidia module in initcpio (for DRM KMS)
 When=PostTransaction
 NeedsTargets
-Exec=/bin/sh -c 'while read -r trg; do case \$trg in linux*) exit 0; esac; done; /usr/bin/mkinitcpio -P'
+Exec=/bin/sh -c 'if command -v mkinitcpio >/dev/null 2>&1; then mkinitcpio -P; elif command -v /usr/lib/booster/regenerate_images >/dev/null 2>&1; then /usr/lib/booster/regenerate_images; elif command -v dracut-rebuild >/dev/null 2>&1; then dracut-rebuild; else printf "\\033[31m The initramfs generator was not found, please update initramfs manually\\033[0m\\n"; fi'
 EOF
 " "$(eval_gettext "Creating pacman hook for NVIDIA module regeneration")"
 }
