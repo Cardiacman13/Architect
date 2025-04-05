@@ -31,7 +31,8 @@ function set_software_list() {
     )
 
     system_list=(
-        ["Open RGB"]="openrgb"
+        ["Open RGB"]="openrgb i2c-tools"
+        ["Open Razer"]="openrazer-daemon libnotify"
         ["Arch Update"]="arch-update vim"
     )
 
