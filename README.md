@@ -18,10 +18,22 @@ A powerful post-install script designed to set up a complete and ready-to-use **
 > > _"While many GNU/Linux distributions attempt to be more user-friendly, Arch Linux has always been and will remain a user-centric distribution. It is designed for competent GNU/Linux users who are willing to read documentation and solve their own problems."_  
 > >
 > > Running Arch without reading documentation defeats its purpose.
+> > 
+> 🧠 **Note:** If you are using an **NVIDIA GPU**, it must be from the **16xx (Turing) series or newer** to use the **`nvidia-open-dkms`** driver (open kernel modules).  
+>  
+> If you own a **Pascal GTX 10xx** or an **older GPU** (e.g., **Maxwell**, **Kepler**, or earlier such as **GTX 9xx / 8xx / 7xx**), you need the **proprietary driver** instead.  
+> In that case, run the following command after the script:
+> ```bash
+> sudo pacman -S nvidia-dkms
+> ```
+> When prompted by `pacman`, **replace** `nvidia-open-dkms` with `nvidia-dkms`.
+> > ⚠️ **Important information:**  
+> [NVIDIA is planning to drop support for its Maxwell, Pascal, and Volta GPUs, along with the legacy proprietary driver](https://www.phoronix.com/news/Maxwell-Pascal-Volta-Legacy-Near).  
+> If you're using one of these GPUs, it's strongly recommended to upgrade to a newer graphics card, ideally an **AMD GPU** or a **NVIDIA Turing or newer** model that supports the new open kernel modules (`nvidia-open`).
 
-> 🧠 **Note:** If you are using an **NVIDIA GPU**, it must be from the **16xx or RTX series (Turing or newer)**. If you own a GTX 1000 or earlier, simply run:  
-> `sudo pacman -S nvidia-dkms` after the script to replace `nvidia-open-dkms`.
+---
 
+Souhaite-tu aussi une version en français ?
 ---
 
 ## ⚙️ Installation Command
@@ -83,9 +95,18 @@ Un script post-installation pour **Arch Linux**, destiné à configurer rapideme
 > > _"Tandis que de nombreuses distributions GNU/Linux tentent d’être plus conviviales, Arch Linux a toujours été et restera centrée sur l’utilisateur. Elle est destinée aux utilisateurs compétents ou ayant une mentalité de bricoleur prêt à lire la documentation et à résoudre ses propres problèmes."_  
 > >
 > > Être sous Arch sans lire la doc, c’est aller à l’encontre de son principe.
-
-> 💡 **Important :** Si vous utilisez une carte **NVIDIA**, elle doit être de génération **GTX 16xx ou RTX**. Si vous avez une **GTX 1000 ou plus ancienne**, exécutez simplement :  
-> `sudo pacman -S nvidia-dkms` après le script pour remplacer `nvidia-open-dkms`.
+> > 
+> 🧠 **Remarque :** Si vous utilisez un **GPU NVIDIA**, il doit appartenir à la série **16xx (Turing) ou plus récente** pour pouvoir utiliser le pilote **`nvidia-open-dkms`** (modules open source du noyau).  
+>
+> Si vous possédez une carte graphique **Pascal GTX 10xx** ou plus ancienne (par exemple **Maxwell**, **Kepler**, etc. comme les **GTX 9xx / 8xx / 7xx**), vous devez utiliser le **pilote propriétaire** à la place.  
+> Dans ce cas, exécutez la commande suivante après le script :
+> ```bash
+> sudo pacman -S nvidia-dkms
+> ```
+> Lorsque `pacman` vous le demande, **remplacez** `nvidia-open-dkms` par `nvidia-dkms`.
+> ⚠️ **Info importante :**  
+> [NVIDIA prévoit d’abandonner prochainement le support de ses cartes Maxwell, Pascal et Volta ainsi que du pilote entièrement propriétaire](https://www.phoronix.com/news/Maxwell-Pascal-Volta-Legacy-Near).  
+> Si vous utilisez l’un de ces GPU, il est fortement recommandé d’envisager une mise à niveau vers une carte plus récente, **de préférence AMD** ou **une NVIDIA Turing ou plus récente** compatible avec les nouveaux pilotes open kernel modules (`nvidia-open`).
 
 ---
 
