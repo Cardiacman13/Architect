@@ -32,7 +32,7 @@ function set_software_list() {
 
     system_list=(
         ["Open RGB"]="openrgb i2c-tools"
-        ["Open Razer"]="openrazer-daemon libnotify"
+        ["Open Razer"]="openrazer-daemon libnotify polychromatic"
         ["Arch Update"]="arch-update vim"
     )
 
@@ -130,6 +130,10 @@ function install_software() {
     if [[ "${aur_packages}" =~ "arch-update" ]]; then
         exec_log "systemctl --user enable arch-update.timer" "$(eval_gettext "Enable arch-update.timer")"
         exec_log "arch-update --tray --enable" "$(eval_gettext "Enable arch-update tray")"
+    fi
+
+    if [[ "${aur_packages}" =~ "openrazer-daemon" ]]; then
+        exec_log "sudo usermod -aG plugdev $(whoami)" "$(eval_gettext "Add the current user to the plugdev group")"
     fi
 
     if [[ "${aur_packages}" =~ "virtualbox" ]]; then
