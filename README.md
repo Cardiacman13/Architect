@@ -104,7 +104,7 @@ Un script post-installation pour **Arch Linux**, destiné à configurer rapideme
 > sudo pacman -S nvidia-dkms
 > ```
 > Lorsque `pacman` vous le demande, **remplacez** `nvidia-open-dkms` par `nvidia-dkms`.
-> ⚠️ **Info importante :**  
+> > ⚠️ **Info importante :**  
 > [NVIDIA prévoit d’abandonner prochainement le support de ses cartes Maxwell, Pascal et Volta ainsi que du pilote entièrement propriétaire](https://www.phoronix.com/news/Maxwell-Pascal-Volta-Legacy-Near).  
 > Si vous utilisez l’un de ces GPU, il est fortement recommandé d’envisager une mise à niveau vers une carte plus récente, **de préférence AMD** ou **une NVIDIA Turing ou plus récente** compatible avec les nouveaux pilotes open kernel modules (`nvidia-open`).
 
