@@ -8,7 +8,7 @@ function sound_server() {
         pipewire
         wireplumber
         pipewire-alsa
-        jack2
+        pipewire-jack
         pipewire-pulse
         alsa-utils
         alsa-plugins
@@ -19,7 +19,7 @@ function sound_server() {
     "
 
     # Remove conflicting or outdated audio components
-    local -r unlst="pipewire-jack"
+    local -r unlst="jack2"
 
     uninstall_lst "${unlst}" "$(eval_gettext "Cleaning old sound server dependencies")"
     install_lst "${inlst}"
