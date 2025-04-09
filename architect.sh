@@ -107,6 +107,7 @@ source src/system/kernel.sh
 source src/system/packages.sh
 source src/system/shell.sh
 source src/system/firewall.sh
+source src/system/apparmor.sh
 source src/system/usergroups.sh
 source src/system/audio.sh
 source src/system/bootloader.sh
@@ -166,6 +167,7 @@ function main() {
     little_step usefull_package          "$(eval_gettext "Useful package installation")"
     little_step configure_sysctl_tweaks  "$(eval_gettext "sysctl kernel tweaks")"
     little_step firewall                 "$(eval_gettext "Firewall installation")"
+    little_step apparmor                 "$(eval_gettext "Apparmor installation")"
     little_step shell_config             "$(eval_gettext "Shell configuration")"
     little_step add_groups_to_user       "$(eval_gettext "Adding user to necessary groups")"
 
