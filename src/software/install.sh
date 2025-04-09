@@ -1,7 +1,11 @@
+# =============================================================================
+# Software installation script with automatic configuration if needed
+# =============================================================================
+
 # Load shared functions
 source src/cmd.sh
 
-# Declare associative arrays to categorize software options
+# Declare associative arrays for each software category
 declare -A desktop_list
 declare -A system_list
 declare -A browser_list
@@ -9,10 +13,12 @@ declare -A video_list
 declare -A picture_list
 declare -A gaming_list
 
-# Stores the full package string to install
+# Will store the complete list of packages to install
 selected_packages=""
 
-# Define all available software choices for each category
+# -----------------------------------------------------------------------------
+# Define software choices for each category
+# -----------------------------------------------------------------------------
 function set_software_list() {
     desktop_list=(
         ["Discord"]="discord"
@@ -71,7 +77,10 @@ function set_software_list() {
     )
 }
 
-# Display and let the user choose from the given software list
+# -----------------------------------------------------------------------------
+# Display the available software, ask the user to make a choice, 
+# and populate the global 'selected_packages' variable accordingly.
+# -----------------------------------------------------------------------------
 function select_and_install() {
     declare -n software_list=$1
     local -r software_type=$2
@@ -106,12 +115,18 @@ function select_and_install() {
     done
 }
 
-# Master function that runs software selection and handles post-install logic
+# -----------------------------------------------------------------------------
+# Main function:
+# 1. Initialize software lists
+# 2. Let user select and install
+# 3. Perform post-install actions (groups, timers, etc.)
+# 4. Manage firewall configuration (firewalld and ufw) if needed
+# -----------------------------------------------------------------------------
 function install_software() {
-    # Initialize software lists
+    # 1. Initialize lists
     set_software_list
 
-    # Let user select software from each category
+    # 2. Selection
     select_and_install browser_list "$(eval_gettext "Browsers")"
     select_and_install system_list "$(eval_gettext "System Software")"
     select_and_install desktop_list "$(eval_gettext "Desktop Apps")"
@@ -119,38 +134,43 @@ function install_software() {
     select_and_install picture_list "$(eval_gettext "Image Editors")"
     select_and_install gaming_list "$(eval_gettext "Gaming Software")"
 
-    # We now have a single string of selected packages in $selected_packages
+    # Retrieve selected packages to install
     local -r aur_packages="${selected_packages}"
     selected_packages=""
 
-    # Install the selected packages via AUR (or your chosen method)
+    # Install via AUR helper
     install_lst "${aur_packages}" "aur"
 
-    # Additional actions if certain packages were included
+    # 3. Post-install actions
+    # -------------------------------------------------------------------------
+    # Arch Update
     if [[ "${aur_packages}" =~ "arch-update" ]]; then
         exec_log "systemctl --user enable arch-update.timer" "$(eval_gettext "Enable arch-update.timer")"
         exec_log "arch-update --tray --enable" "$(eval_gettext "Enable arch-update tray")"
     fi
 
+    # Open Razer
     if [[ "${aur_packages}" =~ "openrazer-daemon" ]]; then
         exec_log "sudo usermod -aG plugdev $(whoami)" "$(eval_gettext "Add the current user to the plugdev group")"
     fi
 
+    # VirtualBox
     if [[ "${aur_packages}" =~ "virtualbox" ]]; then
         exec_log "sudo usermod -aG vboxusers $(whoami)" "$(eval_gettext "Add the current user to the vboxusers group")"
         exec_log "sudo systemctl enable vboxweb.service" "$(eval_gettext "Enable vboxweb")"
     fi
 
+    # Virt-Manager
     if [[ "${aur_packages}" =~ "virt-manager" ]]; then
         exec_log "sudo usermod -aG libvirt $(whoami)" "$(eval_gettext "Add the current user to the libvirt group")"
         exec_log "sudo usermod -aG kvm $(whoami)" "$(eval_gettext "Add the current user to the kvm group")"
         exec_log "sudo systemctl enable --now libvirtd" "$(eval_gettext "Enable libvirtd")"
 
-        # Configure libvirtd socket permissions
+        # Configure libvirtd socket (permissions)
         sudo sed -i 's/#unix_sock_group = "libvirt"/unix_sock_group = "libvirt"/' /etc/libvirt/libvirtd.conf
         sudo sed -i 's/#unix_sock_rw_perms = "0770"/unix_sock_rw_perms = "0770"/' /etc/libvirt/libvirtd.conf
 
-        # If firewalld is installed, open relevant Virt-Manager (libvirt) ports
+        # -- Open relevant ports if firewalld is installed
         if command -v firewall-cmd >/dev/null 2>&1; then
             sudo firewall-cmd --permanent --add-service=libvirt &> /dev/null
             sudo firewall-cmd --permanent --add-port=5900-5999/tcp &> /dev/null
@@ -158,13 +178,22 @@ function install_software() {
             sudo firewall-cmd --permanent --add-port=5666/tcp &> /dev/null
             sudo firewall-cmd --reload &> /dev/null
         fi
+
+        # -- Open the same ports if ufw is installed
+        if command -v ufw >/dev/null 2>&1; then
+            sudo ufw allow 5900:5999/tcp
+            sudo ufw allow 16509/tcp
+            sudo ufw allow 5666/tcp
+            sudo ufw reload &> /dev/null
+        fi
     fi
 
+    # Gamemode
     if [[ "${aur_packages}" =~ "gamemode" ]]; then
         exec_log "sudo usermod -aG gamemode $(whoami)" "$(eval_gettext "Add the current user to the gamemode group")"
 
-        # GameMode configuration content
-        config_content='[general]
+        # Default configuration for /etc/gamemode.ini
+        local config_content='[general]
 reaper_freq=5
 desiredgov=performance
 igpu_desiredgov=powersave
@@ -206,10 +235,12 @@ disable_splitlock=1
         fi
     fi
 
-    # If the user selected Steam, open the relevant ports if firewalld is installed
+    # 4. Firewall configuration for Steam if necessary
+    # -------------------------------------------------------------------------
     if [[ "${aur_packages}" =~ "steam" ]]; then
+        # -- firewalld
         if command -v firewall-cmd >/dev/null 2>&1; then
-            # -- To log into Steam and download content
+            # To log in and download content from Steam
             sudo firewall-cmd --permanent --add-port=80/tcp &> /dev/null
             sudo firewall-cmd --permanent --add-port=443/tcp &> /dev/null
             sudo firewall-cmd --permanent --add-port=27015-27050/udp &> /dev/null
@@ -220,8 +251,8 @@ disable_splitlock=1
             sudo firewall-cmd --permanent --add-port=27031-27036/udp &> /dev/null
             sudo firewall-cmd --permanent --add-port=27036/tcp &> /dev/null
             sudo firewall-cmd --permanent --add-port=4380/udp &> /dev/null
-            
-            # Dedicated or Listen Servers
+
+            # Dedicated or “listen servers”
             sudo firewall-cmd --permanent --add-port=27015/tcp &> /dev/null
             sudo firewall-cmd --permanent --add-port=27015/udp &> /dev/null
 
@@ -233,6 +264,33 @@ disable_splitlock=1
 
             # Apply changes
             sudo firewall-cmd --reload &> /dev/null
+        fi
+
+        # -- ufw
+        if command -v ufw >/dev/null 2>&1; then
+            # To log in and download content from Steam
+            sudo ufw allow 80/tcp
+            sudo ufw allow 443/tcp
+            sudo ufw allow 27015:27050/udp
+            sudo ufw allow 27015:27050/tcp
+
+            # Steam Client
+            sudo ufw allow 27000:27100/udp
+            sudo ufw allow 27031:27036/udp
+            sudo ufw allow 27036/tcp
+            sudo ufw allow 4380/udp
+
+            # Dedicated or “listen servers”
+            sudo ufw allow 27015/tcp
+            sudo ufw allow 27015/udp
+
+            # Steamworks P2P Networking and Steam Voice Chat
+            sudo ufw allow 3478/udp
+            sudo ufw allow 4379/udp
+            sudo ufw allow 4380/udp
+            sudo ufw allow 27014:27030/udp
+
+            sudo ufw reload &> /dev/null
         fi
     fi
 }
