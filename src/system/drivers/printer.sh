@@ -53,5 +53,17 @@ function printer() {
 
             exec_log "sudo firewall-cmd --reload" "Reloading firewalld configuration"
         fi
+
+        # If ufw is installed, open the same ports/services for CUPS
+        if command -v ufw >/dev/null 2>&1; then
+            # The IPP service uses TCP port 631
+            # UFW doesn't have a named 'ipp' service by default, so we directly open port 631
+            exec_log "sudo ufw allow 631/tcp" "Opening TCP port 631 for IPP"
+
+            # mDNS typically uses UDP port 5353
+            exec_log "sudo ufw allow 5353/udp" "Opening UDP port 5353 for mDNS"
+
+            exec_log "sudo ufw reload" "Reloading ufw configuration"
+        fi
     fi
 }
