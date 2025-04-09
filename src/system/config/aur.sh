@@ -1,4 +1,4 @@
-# Load shared utility functions
+# Load shared functions
 source src/cmd.sh
 
 function install_aur() {
@@ -23,7 +23,7 @@ function install_aur() {
 
     # Determine index and export AUR helper name
     case "$choice" in
-        yay) index=0 ;;
+        yay)  index=0 ;;
         paru) index=1 ;;
     esac
 
@@ -50,20 +50,28 @@ function install_aur() {
     # Post-install configuration
     case "$AUR" in
         yay)
-            exec_log "yay -Y --gendb" "$(eval_gettext "gen db for $AUR")"
-            exec_log "yay -Y --devel --save" "$(eval_gettext "Auto-updates Git-based AUR packages")"
+            exec_log "yay -Y --gendb" "$(eval_gettext "Generating DB for $AUR")"
+            exec_log "yay -Y --devel --save" "$(eval_gettext "Auto-updating Git-based AUR packages")"
             exec_log "sed -i 's/\"sudoloop\": false,/\"sudoloop\": true,/' ~/.config/yay/config.json" \
                 "$(eval_gettext "Enabling SudoLoop option for yay")"
             ;;
         paru)
-            exec_log "paru --gendb" "$(eval_gettext "Gen db for $AUR and Auto-updates Git-based AUR packages")"
+            exec_log "paru --gendb" "$(eval_gettext "Generating DB for $AUR and auto-updating Git-based AUR packages")"
             local paru_conf="/etc/paru.conf"
-            exec_log "sudo sed -i 's/#BottomUp/BottomUp/' $paru_conf" "$(eval_gettext "Enabling BottomUp option for paru")"
-            exec_log "sudo sed -i 's/#SudoLoop/SudoLoop/' $paru_conf" "$(eval_gettext "Enabling SudoLoop option for paru")"
-            exec_log "sudo sed -i 's/#CombinedUpgrade/CombinedUpgrade/' $paru_conf" "$(eval_gettext "Enabling CombinedUpgrade option for paru")"
-            exec_log "sudo sed -i 's/#UpgradeMenu/UpgradeMenu/' $paru_conf" "$(eval_gettext "Enabling UpgradeMenu option for paru")"
-            exec_log "sudo sed -i 's/#NewsOnUpgrade/NewsOnUpgrade/' $paru_conf" "$(eval_gettext "Enabling NewsOnUpgrade option for paru")"
-            exec_log "sudo sh -c 'echo \"SkipReview\" >> $paru_conf'" "$(eval_gettext "Enabling SkipReview option for paru")"
+            exec_log "sudo sed -i 's/#BottomUp/BottomUp/' $paru_conf" \
+                "$(eval_gettext "Enabling BottomUp option for paru")"
+            exec_log "sudo sed -i 's/#SudoLoop/SudoLoop/' $paru_conf" \
+                "$(eval_gettext "Enabling SudoLoop option for paru")"
+            exec_log "sudo sed -i 's/#CombinedUpgrade/CombinedUpgrade/' $paru_conf" \
+                "$(eval_gettext "Enabling CombinedUpgrade option for paru")"
+            exec_log "sudo sed -i 's/#UpgradeMenu/UpgradeMenu/' $paru_conf" \
+                "$(eval_gettext "Enabling UpgradeMenu option for paru")"
+            exec_log "sudo sed -i 's/#NewsOnUpgrade/NewsOnUpgrade/' $paru_conf" \
+                "$(eval_gettext "Enabling NewsOnUpgrade option for paru")"
+
+            # Only add SkipReview if it's not already present
+            exec_log "if ! grep -qxF \"SkipReview\" \"$paru_conf\"; then sudo sh -c 'echo \"SkipReview\" >> \"$paru_conf\"'; fi" \
+                "$(eval_gettext "Enabling SkipReview option for paru")"
             ;;
     esac
 }
