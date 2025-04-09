@@ -1,17 +1,16 @@
 # Load shared functions
 source src/cmd.sh
 
-# The firewall function prompts the user to install a firewall (Firewalld or UFW).
-# then lets the user choose between Firewalld and UFW.
-
+# The firewall function prompts the user to install a firewall (Firewalld or UFW),
+# then lets the user choose which one to install.
 function firewall() {
-    # Ask the user to install a firewall
-    if ask_question "$(eval_gettext "Do you want to install a firewall /!\\ Install and activate firewalld? The default configuration may block access to printers and other devices on your local network ?")"; then
+    # Ask the user if they want to install a firewall
+    if ask_question "$(eval_gettext "Would you like to install a firewall? /!\\ WARNING: This script can install and enable either Firewalld or UFW. The default configuration may block local network devices such as printers or block some softwares functions.")"; then
         
-        # Prompt the user to choose which firewall to install.
+        # Prompt the user to choose which firewall to install
         echo "Which firewall do you want to install?"
         
-        # The select statement presents a simple interactive menu:
+        # The select statement presents a simple interactive menu
         select firewall_choice in "Firewalld" "UFW"; do
             case $firewall_choice in
                 
