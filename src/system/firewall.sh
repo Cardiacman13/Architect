@@ -5,12 +5,15 @@ source src/cmd.sh
 # then lets the user choose which one to install.
 function firewall() {
     # Ask the user if they want to install a firewall
-    if ask_question "$(eval_gettext "Would you like to install a firewall? /!\\ WARNING: This script can install and enable either Firewalld or UFW. The default configuration may block local network devices such as printers or block some softwares functions.")"; then
+    if ask_question "$(eval_gettext "Would you like to install a firewall? /!\\ WARNING: This script can install and enable either Firewalld or UFW. The default configuration may block local network devices such as printers or block some software functions.")"; then
         
-        # Prompt the user to choose which firewall to install
-        echo "Which firewall do you want to install?"
-        
-        # The select statement presents a simple interactive menu
+        # Print an introduction message
+        echo "Please choose which firewall to install by typing the number of your choice."
+
+        # Customize the prompt shown by the 'select' command
+        PS3="Enter your choice (1 for Firewalld, 2 for UFW): "
+
+        # Present a simple interactive menu
         select firewall_choice in "Firewalld" "UFW"; do
             case $firewall_choice in
                 
@@ -49,7 +52,7 @@ function firewall() {
                 
                 # Any invalid choice leads to a prompt to select again
                 *)
-                    echo "Invalid choice, please select 'Firewalld' or 'UFW'."
+                    echo "Invalid choice, please select '1' for Firewalld or '2' for UFW."
                     ;;
             esac
         done
