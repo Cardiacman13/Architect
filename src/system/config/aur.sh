@@ -50,13 +50,13 @@ function install_aur() {
     # Post-install configuration
     case "$AUR" in
         yay)
-            exec_log "yay -Y --gendb" "$(eval_gettext "Configuring $AUR")"
-            exec_log "yay -Y --devel --save" "$(eval_gettext "Configuring $AUR")"
+            exec_log "yay -Y --gendb" "$(eval_gettext "gen db for $AUR")"
+            exec_log "yay -Y --devel --save" "$(eval_gettext "Auto-updates Git-based AUR packages")"
             exec_log "sed -i 's/\"sudoloop\": false,/\"sudoloop\": true,/' ~/.config/yay/config.json" \
                 "$(eval_gettext "Enabling SudoLoop option for yay")"
             ;;
         paru)
-            exec_log "paru --gendb" "$(eval_gettext "Configuring $AUR")"
+            exec_log "paru --gendb" "$(eval_gettext "Gen db for $AUR and Auto-updates Git-based AUR packages")"
             local paru_conf="/etc/paru.conf"
             exec_log "sudo sed -i 's/#BottomUp/BottomUp/' $paru_conf" "$(eval_gettext "Enabling BottomUp option for paru")"
             exec_log "sudo sed -i 's/#SudoLoop/SudoLoop/' $paru_conf" "$(eval_gettext "Enabling SudoLoop option for paru")"
