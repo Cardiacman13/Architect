@@ -27,9 +27,9 @@ function apparmor() {
             fi
             install_lst "apparmor apparmor.d-git"
             sudo systemctl enable --now apparmor.service &> /dev/null
-            echo "Done ! Profiles are in complain mode, to enforce the security reboot and use : 'sudo aa-enforce /etc/apparmor.d/*'"
+            echo "$(eval_gettext "Done ! Profiles are in complain mode, to enforce the security reboot and use : sudo aa-enforce /etc/apparmor.d/*")"
         else
-            echo "Skipping AppArmor installation due to invalid bootloader."
+            echo "$(eval_gettext "Skipping AppArmor installation due to invalid bootloader.")"
             exit 1
         fi
     fi
