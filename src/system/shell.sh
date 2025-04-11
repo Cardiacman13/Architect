@@ -15,7 +15,7 @@ function shell_config() {
         "alias fix-key='sudo rm /var/lib/pacman/sync/* && sudo rm -rf /etc/pacman.d/gnupg/* && sudo pacman-key --init && sudo pacman-key --populate && sudo pacman -Sy --noconfirm archlinux-keyring && sudo pacman --noconfirm -Su'"
         "alias update-arch='${AUR}'"
         "alias update-grub='sudo grub-mkconfig -o /boot/grub/grub.cfg'"
-        "alias reinstall-all-pkg='sudo pacman -S \$(pacman -Qnq)'"
+        "alias reinstall-all-pkg='sudo pacman -S (pacman -Qnq)'"
     )
 
     # Add a cleanup alias based on the selected AUR helper
