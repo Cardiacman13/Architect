@@ -135,33 +135,33 @@ function install_software() {
     select_and_install gaming_list "$(eval_gettext "Gaming Software")"
 
     # Retrieve selected packages to install
-    local -r aur_packages="${selected_packages}"
+    local -r packages="${selected_packages}"
     selected_packages=""
 
-    # Install via AUR helper
-    install_lst "${aur_packages}" "aur"
+    # Install via AUR helper previously chosen
+    install_lst "${packages}" "aur"
 
     # 3. Post-install actions
     # -------------------------------------------------------------------------
     # Arch Update
-    if [[ "${aur_packages}" =~ "arch-update" ]]; then
+    if [[ "${packages}" =~ "arch-update" ]]; then
         exec_log "systemctl --user enable arch-update.timer" "$(eval_gettext "Enable arch-update.timer")"
         exec_log "arch-update --tray --enable" "$(eval_gettext "Enable arch-update tray")"
     fi
 
     # Open Razer
-    if [[ "${aur_packages}" =~ "openrazer-daemon" ]]; then
+    if [[ "${packages}" =~ "openrazer-daemon" ]]; then
         exec_log "sudo usermod -aG plugdev $(whoami)" "$(eval_gettext "Add the current user to the plugdev group")"
     fi
 
     # VirtualBox
-    if [[ "${aur_packages}" =~ "virtualbox" ]]; then
+    if [[ "${packages}" =~ "virtualbox" ]]; then
         exec_log "sudo usermod -aG vboxusers $(whoami)" "$(eval_gettext "Add the current user to the vboxusers group")"
         exec_log "sudo systemctl enable vboxweb.service" "$(eval_gettext "Enable vboxweb")"
     fi
 
     # Virt-Manager
-    if [[ "${aur_packages}" =~ "virt-manager" ]]; then
+    if [[ "${packages}" =~ "virt-manager" ]]; then
         exec_log "sudo usermod -aG libvirt $(whoami)" "$(eval_gettext "Add the current user to the libvirt group")"
         exec_log "sudo usermod -aG kvm $(whoami)" "$(eval_gettext "Add the current user to the kvm group")"
         exec_log "sudo systemctl enable --now libvirtd" "$(eval_gettext "Enable libvirtd")"
@@ -189,7 +189,7 @@ function install_software() {
     fi
 
     # Gamemode
-    if [[ "${aur_packages}" =~ "gamemode" ]]; then
+    if [[ "${packages}" =~ "gamemode" ]]; then
         exec_log "sudo usermod -aG gamemode $(whoami)" "$(eval_gettext "Add the current user to the gamemode group")"
 
         # Default configuration for /etc/gamemode.ini
@@ -237,7 +237,7 @@ disable_splitlock=1
 
     # 4. Firewall configuration for Steam if necessary
     # -------------------------------------------------------------------------
-    if [[ "${aur_packages}" =~ "steam" ]]; then
+    if [[ "${packages}" =~ "steam" ]]; then
         # -- firewalld
         if command -v firewall-cmd >/dev/null 2>&1; then
             # To log in and download content from Steam
