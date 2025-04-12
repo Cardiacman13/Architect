@@ -10,7 +10,11 @@ function gamepad() {
     fi
 
     if ask_question "$(eval_gettext "Would you want to install Xone? (Can improve Xbox gamepad support with a USB wireless dongle. \${RED}Say No if unsure.\${RESET})")"; then
-        install_one "xone-dkms-git"
+        local -r inlst="
+            xone-dkms-git
+            xone-dongle-firmware
+        "
+        install_lst "${inlst}"
     fi
 
     if ask_question "$(eval_gettext "Do you want to use PS5 controllers?")"; then
