@@ -62,11 +62,11 @@ function install_gnome() {
         "sudo sed -i -E '
           /^[[:space:]]*#[[:space:]]*IgnorePkg[[:space:]]*=/ {
             s/^[[:space:]]*#[[:space:]]*//            # Remove the # and any leading spaces
-            /(\s|^)gnome-software(\s|$)/! s/$/ gnome-software/    # Add discover if it is not already present
+            /(\s|^)gnome-software(\s|$)/! s/$/ gnome-software/    # Add gnome-software if it is not already present
             b
           }
           /^[[:space:]]*IgnorePkg[[:space:]]*=/ {
-            /(\s|^)gnome-software(\s|$)/! s/$/ gnome-software/    # Add discover if missing
+            /(\s|^)gnome-software(\s|$)/! s/$/ gnome-software/    # Add gnome-software if missing
             b
           }
         ' /etc/pacman.conf" \
