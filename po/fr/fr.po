@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Architect V2.0.4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-04-12 13:32+0200\n"
+"POT-Creation-Date: 2025-04-14 13:18+0200\n"
 "PO-Revision-Date: 2023-12-31 17:53+0100\n"
 "Last-Translator: Skythrew <mael.guerin@murena.io>\n"
 "Language-Team: French\n"
@@ -209,7 +209,9 @@ msgstr "${RED}Erreur: l'installation a échoué${RESET}"
 #: src/de/detect.sh:31
 #, sh-format
 msgid "No supported DE detected (GNOME, KDE, XFCE). Skipping DE configuration."
-msgstr "Aucun environnement de bureau supporté détecté (GNOME, KDE, XFCE). Configuration de l'environnement de bureau ignorée."
+msgstr ""
+"Aucun environnement de bureau supporté détecté (GNOME, KDE, XFCE). "
+"Configuration de l'environnement de bureau ignorée."
 
 #: src/de/detect.sh:37
 #, sh-format
@@ -319,7 +321,8 @@ msgstr "Script Architect pour Arch Linux"
 #: src/init.sh:25
 #, sh-format
 msgid "${RED}This script will make changes to your system.${RESET}"
-msgstr "${RED}Ce script va effectuer des changements sur votre système.${RESET}"
+msgstr ""
+"${RED}Ce script va effectuer des changements sur votre système.${RESET}"
 
 #: src/init.sh:26
 #, sh-format
@@ -431,7 +434,7 @@ msgstr "Activation de libvirtd"
 msgid "Add the current user to the gamemode group"
 msgstr "Ajout de l'utilisateur actuel au groupe gamemode"
 
-#: src/system/apparmor.sh:5
+#: src/system/apparmor.sh:6
 #, sh-format
 msgid ""
 "Do you want to install apparmor security module /!\\ Install and activate "
@@ -439,27 +442,30 @@ msgid ""
 "access problems)"
 msgstr ""
 "Voulez-vous installer le module de sécurité apparmor /!\\ Installer et "
-"activer apparmor ? C'est une couche avec un modèle MAC (haute sécurité, "
-"mais peut causer des problèmes d'accès)"
+"activer apparmor ? C'est une couche avec un modèle MAC (haute sécurité, mais "
+"peut causer des problèmes d'accès)"
 
-#: src/system/apparmor.sh:18
+#: src/system/apparmor.sh:21
 #, sh-format
 msgid "No valid bootloader detected, skipping ..."
 msgstr "Aucun chargeur de démarrage valide détecté, ignoré ..."
 
-#: src/system/apparmor.sh:30
+#: src/system/apparmor.sh:37
 #, sh-format
-msgid ""
-"Done ! Profiles are in complain mode, to enforce the security reboot and "
-"use : sudo aa-enforce /etc/apparmor.d/*"
-msgstr ""
-"Terminé ! Les profils sont en mode complain, pour appliquer la sécurité, "
-"redémarrez et utilisez : sudo aa-enforce /etc/apparmor.d/*"
+msgid "Type 'yes' to confirm you have read the above message:"
+msgstr "Tapez 'yes' pour confirmer que vous avez lu le message ci-dessus :"
 
-#: src/system/apparmor.sh:32
+#: src/system/apparmor.sh:42
+#, sh-format
+msgid "Please read the message carefully and type 'yes' to confirm."
+msgstr "Veuillez lire attentivement le message et tapez 'yes' pour confirmer."
+
+#: src/system/apparmor.sh:46
 #, sh-format
 msgid "Skipping AppArmor installation due to invalid bootloader."
-msgstr "Installation d'AppArmor ignorée en raison d'un chargeur de démarrage invalide."
+msgstr ""
+"Installation d'AppArmor ignorée en raison d'un chargeur de démarrage "
+"invalide."
 
 #: src/system/audio.sh:24
 #, sh-format
@@ -626,7 +632,9 @@ msgstr "Exécution de update-mirrors"
 #: src/system/drivers/amd.sh:18
 #, sh-format
 msgid "Would you like to install ROCM (${RED}say No if unsure${RESET})"
-msgstr "Souhaitez-vous installer ROCM (${RED}dites Non si vous n'êtes pas sûr${RESET})"
+msgstr ""
+"Souhaitez-vous installer ROCM (${RED}dites Non si vous n'êtes pas "
+"sûr${RESET})"
 
 #: src/system/drivers/bluetooth.sh:8
 #, sh-format
@@ -654,10 +662,10 @@ msgid ""
 "wireless dongle. ${RED}Say No if unsure.${RESET})"
 msgstr ""
 "Voulez-vous installer Xone ? (Peut améliorer le support des manettes xbox "
-"quand elles utilisent un dongle usb sans fil, ${RED}dites Non si vous "
-"n'êtes pas sûr${RESET})"
+"quand elles utilisent un dongle usb sans fil, ${RED}dites Non si vous n'êtes "
+"pas sûr${RESET})"
 
-#: src/system/drivers/gamepad.sh:16
+#: src/system/drivers/gamepad.sh:20
 #, sh-format
 msgid "Do you want to use PS5 controllers?"
 msgstr "Voulez-vous utiliser des manettes PS5 ?"
@@ -695,7 +703,9 @@ msgstr "Suppression de la règle udev NVIDIA existante"
 #: src/system/drivers/nvidia.sh:73
 #, sh-format
 msgid "Creating NVIDIA udev rule for runtime power management"
-msgstr "Création de la règle udev NVIDIA pour la gestion de l'alimentation en temps réel"
+msgstr ""
+"Création de la règle udev NVIDIA pour la gestion de l'alimentation en temps "
+"réel"
 
 #: src/system/drivers/nvidia.sh:83
 #, sh-format
@@ -769,9 +779,9 @@ msgid ""
 "and enable either Firewalld or UFW. The default configuration may block "
 "local network devices such as printers or block some software functions."
 msgstr ""
-"Voulez-vous installer un pare-feu ? /!\\ ATTENTION : Ce script peut installer "
-"et activer soit Firewalld, soit UFW. La configuration par défaut peut "
-"bloquer les appareils du réseau local comme les imprimantes ou bloquer "
+"Voulez-vous installer un pare-feu ? /!\\ ATTENTION : Ce script peut "
+"installer et activer soit Firewalld, soit UFW. La configuration par défaut "
+"peut bloquer les appareils du réseau local comme les imprimantes ou bloquer "
 "certaines fonctions logicielles."
 
 #: src/system/grub-btrfs.sh:7
@@ -851,3 +861,11 @@ msgstr "Changement du shell par défaut vers fish..."
 #, sh-format
 msgid "Invalid choice"
 msgstr "Choix invalide"
+
+#, sh-format
+#~ msgid ""
+#~ "Done ! Profiles are in complain mode, to enforce the security reboot and "
+#~ "use : sudo aa-enforce /etc/apparmor.d/*"
+#~ msgstr ""
+#~ "Terminé ! Les profils sont en mode complain, pour appliquer la sécurité, "
+#~ "redémarrez et utilisez : sudo aa-enforce /etc/apparmor.d/*"
