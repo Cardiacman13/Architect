@@ -3,7 +3,7 @@
 source src/cmd.sh
 
 function apparmor() {
-    if ask_question "$(eval_gettext "Do you want to install apparmor security module /!\\ Install and activate apparmor? This is a layer with MAC model (high security, but can cause access problems)")"; then
+    if ask_question "$(eval_gettext "Do you want to install apparmor security module /!\\ Install and activate apparmor? This is a layer with MAC model. High security, but ${RED}can cause access problems${RESET}")"; then
 
         if [[ "$BOOT_LOADER" == "grub" ]]; then
             if ! grep -q "lsm=landlock,lockdown,yama,integrity,apparmor,bpf" '/etc/default/grub'; then
@@ -43,7 +43,7 @@ function apparmor() {
                 echo "$(eval_gettext "Done! Profiles are in complain mode, to enforce the security reboot and use: ${RED}sudo aa-enforce /etc/apparmor.d/*${RESET}")"
                 echo "$(eval_gettext "Type 'yes' to confirm you have read the above message:")"
                 read -r confirmation
-                if [[ "$confirmation" == "yes" ]]; then
+                if [[ "$confirmation" == "yes" || "$confirmation" == "oui" ]]; then
                     break
                 else
                     echo "$(eval_gettext "Please read the message carefully and type 'yes' to confirm.")"

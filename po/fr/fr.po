@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Architect V2.0.4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-04-14 13:18+0200\n"
+"POT-Creation-Date: 2025-04-14 13:40+0200\n"
 "PO-Revision-Date: 2023-12-31 17:53+0100\n"
 "Last-Translator: Skythrew <mael.guerin@murena.io>\n"
 "Language-Team: French\n"
@@ -434,38 +434,65 @@ msgstr "Activation de libvirtd"
 msgid "Add the current user to the gamemode group"
 msgstr "Ajout de l'utilisateur actuel au groupe gamemode"
 
-#: src/system/apparmor.sh:6
+#: src/system/apparmor.sh:11
 #, sh-format
-msgid ""
-"Do you want to install apparmor security module /!\\ Install and activate "
-"apparmor? This is a layer with MAC model (high security, but can cause "
-"access problems)"
-msgstr ""
-"Voulez-vous installer le module de sécurité apparmor /!\\ Installer et "
-"activer apparmor ? C'est une couche avec un modèle MAC (haute sécurité, mais "
-"peut causer des problèmes d'accès)"
+msgid "Adding AppArmor parameters to GRUB configuration"
+msgstr "Ajout des paramètres AppArmor à la configuration de GRUB"
 
-#: src/system/apparmor.sh:21
+#: src/system/apparmor.sh:18
+#, sh-format
+msgid "Adding AppArmor parameters to systemd-boot configuration"
+msgstr "Ajout des paramètres AppArmor à la configuration de systemd-boot"
+
+#: src/system/apparmor.sh:23
 #, sh-format
 msgid "No valid bootloader detected, skipping ..."
 msgstr "Aucun chargeur de démarrage valide détecté, ignoré ..."
 
+#: src/system/apparmor.sh:24
+#, sh-format
+msgid "No valid bootloader detected"
+msgstr "Aucun chargeur de démarrage valide détecté"
+
+#: src/system/apparmor.sh:31
+#, sh-format
+msgid "Updating GRUB configuration for EFI systems"
+msgstr "Mise à jour de la configuration de GRUB pour les systèmes EFI"
+
+#: src/system/apparmor.sh:34
+#, sh-format
+msgid "Updating GRUB configuration for BIOS systems"
+msgstr "Mise à jour de la configuration de GRUB pour les systèmes BIOS"
+
 #: src/system/apparmor.sh:37
 #, sh-format
-msgid "Type 'yes' to confirm you have read the above message:"
-msgstr "Tapez 'yes' pour confirmer que vous avez lu le message ci-dessus :"
+msgid "Installing AppArmor packages"
+msgstr "Installation des paquets AppArmor"
 
-#: src/system/apparmor.sh:42
+#: src/system/apparmor.sh:39
+#, sh-format
+msgid "Enabling and starting AppArmor service"
+msgstr "Activation et démarrage du service AppArmor"
+
+#: src/system/apparmor.sh:44
+#, sh-format
+msgid "Type 'yes' to confirm you have read the above message:"
+msgstr "Tapez 'oui' pour confirmer que vous avez lu le message ci-dessus :"
+
+#: src/system/apparmor.sh:49
 #, sh-format
 msgid "Please read the message carefully and type 'yes' to confirm."
-msgstr "Veuillez lire attentivement le message et tapez 'yes' pour confirmer."
+msgstr "Veuillez lire attentivement le message et tapez 'oui' pour confirmer."
 
-#: src/system/apparmor.sh:46
+#: src/system/apparmor.sh:53
 #, sh-format
 msgid "Skipping AppArmor installation due to invalid bootloader."
-msgstr ""
-"Installation d'AppArmor ignorée en raison d'un chargeur de démarrage "
-"invalide."
+msgstr "Installation d'AppArmor ignorée en raison d'un chargeur de démarrage invalide."
+
+#: src/system/apparmor.sh:54
+#, sh-format
+msgid "Skipping AppArmor installation"
+msgstr "Installation d'AppArmor ignorée"
 
 #: src/system/audio.sh:24
 #, sh-format
@@ -861,11 +888,3 @@ msgstr "Changement du shell par défaut vers fish..."
 #, sh-format
 msgid "Invalid choice"
 msgstr "Choix invalide"
-
-#, sh-format
-#~ msgid ""
-#~ "Done ! Profiles are in complain mode, to enforce the security reboot and "
-#~ "use : sudo aa-enforce /etc/apparmor.d/*"
-#~ msgstr ""
-#~ "Terminé ! Les profils sont en mode complain, pour appliquer la sécurité, "
-#~ "redémarrez et utilisez : sudo aa-enforce /etc/apparmor.d/*"
