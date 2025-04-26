@@ -4,6 +4,7 @@ source src/cmd.sh
 
 function usefull_package() {
     local inlst="
+        joystickwake
         gstreamer
         gst-plugins-bad
         gst-plugins-base
