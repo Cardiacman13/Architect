@@ -18,20 +18,10 @@ function usefull_package() {
         lib32-libva-mesa-driver
         mesa-vdpau
         lib32-mesa-vdpau
-        fwupd
         xdg-utils
-        downgrade
         rebuild-detector
-        xdg-desktop-portal
-        xdg-desktop-portal-gtk
         fastfetch
         power-profiles-daemon
-        hunspell
-        hunspell-fr
-        btop
-        duf
-        p7zip
-        unrar
         ttf-dejavu
         ttf-liberation
         ttf-meslo-nerd

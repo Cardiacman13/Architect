@@ -33,9 +33,6 @@ A powerful post-install script designed to set up a complete and ready-to-use **
 
 ---
 
-Souhaite-tu aussi une version en français ?
----
-
 ## ⚙️ Installation Command
 
 ```bash
@@ -45,6 +42,8 @@ sudo pacman -S --needed git base-devel \
   && chmod +x ./architect.sh \
   && ./architect.sh
 ```
+
+At the end of the script, you can delete the ~/Architect folder.
 
 [🧠 Configure Arch the easy way - Architect Script by Cardiac](https://youtu.be/0MV3MxmO7ns?si=eOMc-e4wdSwv1Fbb)
 
@@ -128,7 +127,7 @@ sudo pacman -S --needed git base-devel \
   && ./architect.sh
 ```
 
-Vous pouvez ensuite supprimer le dossier `~/Architect`.
+À la fin du script, vous pouvez supprimer le dossier `~/Architect`.
 
 ---
 
@@ -150,13 +149,10 @@ Vous pouvez ensuite supprimer le dossier `~/Architect`.
 ## 🔗 Ressources
 
 - 📖 [ArchWiki](https://wiki.archlinux.org/)
-- 🌐 [Site GLF](https://www.gaminglinux.fr/)
-- 💬 [Discord GLF](http://discord.gg/EP3Jm8YMvj)
 - ▶️ [Chaîne YouTube Cardiacman](https://www.youtube.com/@Cardiacman)
 
 ---
 
 ## 🙏 Remerciements
 
-Merci à l'équipe d'Arch Linux, à la communauté, aux mainteneurs AUR et à tous les contributeurs.  
-Merci au Discord GLF pour les retours, tests et soutiens.
+Merci à l'équipe d'Arch Linux, à la communauté, aux mainteneurs AUR et à tous les contributeurs.
