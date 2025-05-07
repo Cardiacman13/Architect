@@ -3,7 +3,7 @@
 [🇫🇷 Passer à la version française](#script-architect-fr)  
 [📚 Architect Wiki](https://github.com/Gaming-Linux-FR/Architect/wiki)
 
-A powerful post-install script designed to set up a complete and ready-to-use **Arch Linux system** right after using `archinstall`. Optimized for **gamers and advanced users**, this script provides modular configuration options, minimal bloat, and performance in mind.
+A post-install script designed to set up a complete and ready-to-use **Arch Linux system** right after using `archinstall`. Optimized for **gamers**, this script provides modular configuration options, minimal bloat, and performance in mind.
 
 ---
 
@@ -59,8 +59,8 @@ At the end of the script, you can delete the ~/Architect folder.
    - `clean-arch`
    - `fix-key`
    - `update-mirrors`
-3. **GPU Configuration** — Fully automated NVIDIA/AMD/Intel detection and setup.
-4. **AUR Support** — Auto-install `yay` or `paru`, depending on your preference.
+3. **GPU Configuration** — NVIDIA/AMD/Intel setup.
+4. **AUR Support** — Install `yay` or `paru`, depending on your preference.
 5. **Optional Components** — Printers, Firewall, Bluetooth, Sound, etc.
 6. **Extra Software** — Browsers, games, apps, media tools, and more.
 
@@ -69,8 +69,6 @@ At the end of the script, you can delete the ~/Architect folder.
 ## 🔗 Resources
 
 - 📖 [ArchWiki](https://wiki.archlinux.org/)
-- 🌐 [Gaming Linux FR](https://www.gaminglinux.fr/)
-- 💬 [Discord Community](http://discord.gg/EP3Jm8YMvj)
 - ▶️ [YouTube Channel (Cardiacman)](https://www.youtube.com/@Cardiacman)
 
 ---
@@ -79,7 +77,7 @@ At the end of the script, you can delete the ~/Architect folder.
 
 # 🚀 SCRIPT ARCHITECT
 
-Un script post-installation pour **Arch Linux**, destiné à configurer rapidement un système propre après `archinstall`. Pensé pour les joueurs et les utilisateurs avancés recherchant **performance, minimalisme et flexibilité**.
+Un script post-installation pour **Arch Linux**, destiné à configurer rapidement un système propre après `archinstall`. Pensé pour les joueurs recherchant **performance, minimalisme et flexibilité**.
 
 ---
 
@@ -91,7 +89,7 @@ Un script post-installation pour **Arch Linux**, destiné à configurer rapideme
 > Arch Linux est une **distribution DIY**. Il est indispensable de savoir lire la documentation, comprendre ce que vous faites et être autonome en cas de souci.
 >
 > > 📌 Extrait du [Wiki officiel Arch Linux](https://wiki.archlinux.org/title/Arch_Linux_(Fran%C3%A7ais)) :  
-> > _"Tandis que de nombreuses distributions GNU/Linux tentent d’être plus conviviales, Arch Linux a toujours été et restera centrée sur l’utilisateur. Elle est destinée aux utilisateurs compétents ou ayant une mentalité de bricoleur prêt à lire la documentation et à résoudre ses propres problèmes."_  
+> > _"Tandis que de nombreuses distributions GNU/Linux tentent d’être plus conviviales, Arch Linux a toujours été et restera centrée sur l’utilisateur. Elle est destinée aux utilisateurs compétents ou ayant une mentalité de bricoleur prêt à lire la documentation et à résoudre ses propres problèmes."
 > >
 > > Être sous Arch sans lire la doc, c’est aller à l’encontre de son principe.
 > > 
@@ -140,7 +138,7 @@ sudo pacman -S --needed git base-devel \
    - `fix-key`
    - `update-mirrors`
 3. **Configuration GPU** — Support complet pour NVIDIA, AMD, Intel.
-4. **Support AUR** — Installe automatiquement `yay` ou `paru`.
+4. **Support AUR** — Installe `yay` ou `paru`.
 5. **Composants Optionnels** — Imprimantes, Firewall, Bluetooth, Audio, etc.
 6. **Installation de Logiciels** — Navigateur, multimédia, développement, gaming.
 
@@ -155,4 +153,4 @@ sudo pacman -S --needed git base-devel \
 
 ## 🙏 Remerciements
 
-Merci à l'équipe d'Arch Linux, à la communauté, aux mainteneurs AUR et à tous les contributeurs.
+Merci à l'équipe d'Arch Linux, à la communauté Linux, aux mainteneurs AUR et à tous les contributeurs.
