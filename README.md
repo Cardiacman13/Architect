@@ -69,8 +69,7 @@ At the end of the script, you can delete the ~/Architect folder.
 ## 🔗 Resources
 
 - 📖 [ArchWiki](https://wiki.archlinux.org/)
-- ▶️ [YouTube Channel (Cardiacman)](https://www.youtube.com/@Cardiacman)
-
+- [📚 Architect Wiki](https://github.com/Gaming-Linux-FR/Architect/wiki)
 ---
 
 <a name="script-architect-fr"></a>
@@ -147,7 +146,7 @@ sudo pacman -S --needed git base-devel \
 ## 🔗 Ressources
 
 - 📖 [ArchWiki](https://wiki.archlinux.org/)
-- ▶️ [Chaîne YouTube Cardiacman](https://www.youtube.com/@Cardiacman)
+- [📚 Architect Wiki](https://github.com/Gaming-Linux-FR/Architect/wiki)
 
 ---
 
