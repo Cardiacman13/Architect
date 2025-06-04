@@ -1,7 +1,7 @@
 # 🚀 ARCHITECT SCRIPT
 
 [🇫🇷 Passer à la version française](#script-architect-fr)  
-[📚 Architect Wiki](https://github.com/Gaming-Linux-FR/Architect/wiki)
+[📚 Architect Wiki](https://github.com/Cardiacman13/Architect/wiki)
 
 A post-install script designed to set up a complete and ready-to-use **Arch Linux system** right after using `archinstall`. Optimized for **gamers**, this script provides modular configuration options, minimal bloat, and performance in mind.
 
@@ -37,7 +37,7 @@ A post-install script designed to set up a complete and ready-to-use **Arch Linu
 
 ```bash
 sudo pacman -S --needed git base-devel \
-  && git clone https://github.com/Gaming-Linux-FR/Architect.git ~/Architect \
+  && git clone https://github.com/Cardiacman13/Architect.git ~/Architect \
   && cd ~/Architect \
   && chmod +x ./architect.sh \
   && ./architect.sh
@@ -69,7 +69,7 @@ At the end of the script, you can delete the ~/Architect folder.
 ## 🔗 Resources
 
 - 📖 [ArchWiki](https://wiki.archlinux.org/)
-- [📚 Architect Wiki](https://github.com/Gaming-Linux-FR/Architect/wiki)
+- [📚 Architect Wiki](https://github.com/Cardiacman13/Architect/wiki)
 ---
 
 <a name="script-architect-fr"></a>
@@ -118,7 +118,7 @@ Un script post-installation pour **Arch Linux**, destiné à configurer rapideme
 
 ```bash
 sudo pacman -S --needed git base-devel \
-  && git clone https://github.com/Gaming-Linux-FR/Architect.git ~/Architect \
+  && git clone https://github.com/Cardiacman13/Architect.git ~/Architect \
   && cd ~/Architect \
   && chmod +x ./architect.sh \
   && ./architect.sh
@@ -139,14 +139,14 @@ sudo pacman -S --needed git base-devel \
 3. **Configuration GPU** — Support complet pour NVIDIA, AMD, Intel.
 4. **Support AUR** — Installe `yay` ou `paru`.
 5. **Composants Optionnels** — Imprimantes, Firewall, Bluetooth, Audio, etc.
-6. **Installation de Logiciels** — Navigateur, multimédia, développement, gaming.
+6. **Installation de Logiciels** — Navigateur, multimédia, développement, .
 
 ---
 
 ## 🔗 Ressources
 
 - 📖 [ArchWiki](https://wiki.archlinux.org/)
-- [📚 Architect Wiki](https://github.com/Gaming-Linux-FR/Architect/wiki)
+- [📚 Architect Wiki](https://github.com/Cardiacman13/Architect/wiki)
 
 ---
 
