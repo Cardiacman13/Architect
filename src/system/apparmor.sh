@@ -35,6 +35,10 @@ function apparmor() {
             fi
             exec_log "install_lst \"apparmor apparmor.d-git\"" \
             "$(eval_gettext "Installing AppArmor packages")"
+
+            exec_log "sudo sed -i -e '\$a write-cache' -e 'Optimize=compress-fast' /etc/apparmor/parser.conf" \
+            "$(eval_gettext 'Enabling caching for AppArmor profiles')"
+
             exec_log "sudo systemctl enable --now apparmor.service &> /dev/null" \
             "$(eval_gettext "Enabling and starting AppArmor service")"
 
