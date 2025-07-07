@@ -37,11 +37,6 @@ function install_gnome() {
         snapshot
         qt6-wayland
     "
-    # Define a list of Gnome applications to uninstall
-    local -r unlst="gnome-software"
-
-    # Call the unistall_lst function to uninstall the listed applications
-    uninstall_lst "${unlst}" "$(eval_gettext "Uninstall gnome-software")"
 
     # Call the install_lst function to install the listed applications
     install_lst "${inlst}"
@@ -54,21 +49,3 @@ function install_gnome() {
 
     # Disable GDM rules to unlock Wayland
     exec_log "sudo ln -s /dev/null /etc/udev/rules.d/61-gdm.rules" "$(eval_gettext "Disable GDM rules to unlock Wayland")"
-
-    # Ensure 'gnome-software' is added to the IgnorePkg line in /etc/pacman.conf
-    #  1. If the line is commented (#IgnorePkg = ...), uncomment and add 'discover' if missing
-    #  2. If the line is already uncommented (IgnorePkg = ...), add 'discover' if missing
-    exec_log \
-        "sudo sed -i -E '
-          /^[[:space:]]*#[[:space:]]*IgnorePkg[[:space:]]*=/ {
-            s/^[[:space:]]*#[[:space:]]*//            # Remove the # and any leading spaces
-            /(\s|^)gnome-software(\s|$)/! s/$/ gnome-software/    # Add gnome-software if it is not already present
-            b
-          }
-          /^[[:space:]]*IgnorePkg[[:space:]]*=/ {
-            /(\s|^)gnome-software(\s|$)/! s/$/ gnome-software/    # Add gnome-software if missing
-            b
-          }
-        ' /etc/pacman.conf" \
-        "$(eval_gettext "Adding 'gnome-software' to IgnorePkg in /etc/pacman.conf")"
-}
