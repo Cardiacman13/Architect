@@ -49,3 +49,4 @@ function install_gnome() {
 
     # Disable GDM rules to unlock Wayland
     exec_log "sudo ln -s /dev/null /etc/udev/rules.d/61-gdm.rules" "$(eval_gettext "Disable GDM rules to unlock Wayland")"
+}
