@@ -40,3 +40,4 @@ function install_kde() {
 
     # Enable Numlock for SDDM
     exec_log "echo -e '[General]\nNumlock=on' | sudo tee -a /etc/sddm.conf" "$(eval_gettext "Setting Numlock=on for SDDM")"
+}
