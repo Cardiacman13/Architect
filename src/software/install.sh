@@ -32,7 +32,7 @@ function set_software_list() {
         ["Visual Studio Code"]="visual-studio-code-bin"
         ["Visual Studio Code Open Source"]="code"
         ["Virtualbox"]="virtualbox virtualbox-host-dkms virtualbox-guest-iso"
-        ["Virtmanager"]="virt-manager virt-viewer dnsmasq vde2 bridge-utils openbsd-netcat dmidecode libguestfs"
+        ["Virtmanager"]="qemu-full virt-manager virt-viewer dnsmasq vde2 bridge-utils openbsd-netcat dmidecode libguestfs"
         ["CrossOver"]="crossover"
     )
 
