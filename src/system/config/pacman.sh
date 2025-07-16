@@ -10,7 +10,7 @@ function config_pacman() {
     exec_log "sudo sed -i 's/^#VerbosePkgLists$/VerbosePkgLists/' '/etc/pacman.conf'" "$(eval_gettext "Enabling verbose package lists in pacman")"
 
     # Enable parallel downloads and ILoveCandy easter egg
-    exec_log "sudo sed -i 's/^#\(ParallelDownloads.*\)/\1\nILoveCandy/' '/etc/pacman.conf'" "$(eval_gettext "Enabling parallel downloads and ILoveCandy in pacman")"
+    exec_log "sudo sed -i '/^#ParallelDownloads/s/^#//; /ParallelDownloads/a\ILoveCandy' '/etc/pacman.conf'" "$(eval_gettext "Enabling parallel downloads and ILoveCandy in pacman")"
 
     # Enable the multilib repository
     exec_log "sudo sed -i '/^#\[multilib\]/,/^#Include = \/etc\/pacman.d\/mirrorlist/ s/^#//' '/etc/pacman.conf'" "$(eval_gettext "Enabling multilib repository")"
