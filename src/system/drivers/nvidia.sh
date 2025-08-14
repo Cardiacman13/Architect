@@ -12,31 +12,50 @@ function nvidia_config() {
 
     # Create optimized NVIDIA kernel module configuration
     exec_log "sudo tee $nvidia_config_file > /dev/null << 'EOF'
-# NVIDIA kernel module parameters for optimized performance and Wayland support
-
-# NVreg_UsePageAttributeTable=1
-# Enables better memory management using PAT (Page Attribute Table).
-# Can improve CPU-GPU communication performance on supported systems.
-
-# NVreg_InitializeSystemMemoryAllocations=0
-# Disables pre-clearing system memory used by the GPU. Gains performance but slightly lowers security.
-
-# NVreg_DynamicPowerManagement=0x02
-# Enables dynamic power management on mobile Turing and newer cards.
-# Powers off the GPU when idle (for hybrid systems or laptops).
-
-# NVreg_RegistryDwords=RMIntrLockingMode=1
-# Experimental feature for better frame pacing, useful for high refresh-rate screens or VR.
-
-# nvidia_drm.modeset=1
-# Enables DRM kernel mode setting. Required for Wayland support and PRIME offloading.
-
-options nvidia NVreg_UsePageAttributeTable=1 \\
-    NVreg_InitializeSystemMemoryAllocations=0 \\
-    NVreg_DynamicPowerManagement=0x02 \\
-    NVreg_RegistryDwords=RMIntrLockingMode=1
-
-options nvidia_drm modeset=1
+#
+# NVreg_UsePageAttributeTable=1 (Default 0) - Activating the better memory
+# management method (PAT). The PAT method creates a partition type table at a
+# specific address mapped inside the register and utilizes the memory
+# architecture and instruction set more efficiently and faster. If your system
+# can support this feature, it should improve CPU performance.
+#
+# NVreg_InitializeSystemMemoryAllocations=0 (Default 1) - Disables clearing
+# system memory allocation before using it for the GPU. Potentially improves
+# performance, but at the cost of increased security risks. Write "options
+# nvidia NVreg_InitializeSystemMemoryAllocations=1" in
+# /etc/modprobe.d/nvidia.conf, if you want to return the default value. Note:
+# It is possible to use more memory (?)
+#
+# NVreg_DynamicPowerManagement=0x02 - Enables the use of dynamic power
+# management for Turing generation mobile cards, allowing the dGPU to be
+# powered down during idle time.
+#
+# NVreg_RegistryDwords=RMIntrLockingMode=1 (default 0) - enables experimental
+# switch for better frame-pacing this mainly improves it for high refresh rate
+# monitors with VRR or VR headsets.
+#
+# Note: This only works for PRIME configurations if your dGPU is controlling an
+# external monitor.
+#
+# For example: At 240Hz each frame is expected every 4ms. But if a 1ms
+# task—say, in the kernel or on the GSP — runs when a frame is about to be
+# displayed, it can delay the rendering. Instead of a neat sequence at T+4ms,
+# T+8ms, T+12ms, the frames might appear at T+4ms, T+9ms, T+12ms, etc. This
+# shows how even small delays can shift frame timing, potentially impacting
+# smooth display output.
+#
+# NVreg_EnableS0ixPowerManagement=1 (default 0) Enables S0ix for the NVIDIA GPU:
+# lets the device enter deep,
+# low-power idle states while the system uses s2idle (the S0 low-power idle path),
+# reducing battery drain—especially on laptops with recent Intel/AMD
+# platforms and Turing/Ampere/Ada GPUs
+#
+options nvidia NVreg_UsePageAttributeTable=1 \
+    NVreg_InitializeSystemMemoryAllocations=0 \
+    NVreg_DynamicPowerManagement=0x02 \
+    NVreg_RegistryDwords=RMIntrLockingMode=1 \
+    NVreg_EnableS0ixPowerManagement=1
+    
 EOF
 " "$(eval_gettext "Setting advanced NVIDIA module options")"
 
