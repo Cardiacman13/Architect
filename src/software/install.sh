@@ -240,56 +240,21 @@ disable_splitlock=1
     if [[ "${packages}" =~ "steam" ]]; then
         # -- firewalld
         if command -v firewall-cmd >/dev/null 2>&1; then
-            # To log in and download content from Steam
-            sudo firewall-cmd --permanent --add-port=80/tcp &> /dev/null
-            sudo firewall-cmd --permanent --add-port=443/tcp &> /dev/null
-            sudo firewall-cmd --permanent --add-port=27015-27050/udp &> /dev/null
-            sudo firewall-cmd --permanent --add-port=27015-27050/tcp &> /dev/null
-
-            # Steam Client
-            sudo firewall-cmd --permanent --add-port=27000-27100/udp &> /dev/null
+            # Steam Remote Play https://help.steampowered.com/en/faqs/view/0689-74B8-92AC-10F2
             sudo firewall-cmd --permanent --add-port=27031-27036/udp &> /dev/null
             sudo firewall-cmd --permanent --add-port=27036/tcp &> /dev/null
-            sudo firewall-cmd --permanent --add-port=4380/udp &> /dev/null
-
-            # Dedicated or “listen servers”
-            sudo firewall-cmd --permanent --add-port=27015/tcp &> /dev/null
-            sudo firewall-cmd --permanent --add-port=27015/udp &> /dev/null
-
-            # Steamworks P2P Networking and Steam Voice Chat
-            sudo firewall-cmd --permanent --add-port=3478/udp &> /dev/null
-            sudo firewall-cmd --permanent --add-port=4379/udp &> /dev/null
-            sudo firewall-cmd --permanent --add-port=4380/udp &> /dev/null
-            sudo firewall-cmd --permanent --add-port=27014-27030/udp &> /dev/null
-
+            sudo firewall-cmd --permanent --add-port=27037/tcp &> /dev/null
             # Apply changes
             sudo firewall-cmd --reload &> /dev/null
         fi
 
         # -- ufw
         if command -v ufw >/dev/null 2>&1; then
-            # To log in and download content from Steam
-            sudo ufw allow 80/tcp
-            sudo ufw allow 443/tcp
-            sudo ufw allow 27015:27050/udp
-            sudo ufw allow 27015:27050/tcp
-
-            # Steam Client
-            sudo ufw allow 27000:27100/udp
+            # Steam Remote Play https://help.steampowered.com/en/faqs/view/0689-74B8-92AC-10F2
             sudo ufw allow 27031:27036/udp
             sudo ufw allow 27036/tcp
-            sudo ufw allow 4380/udp
-
-            # Dedicated or “listen servers”
-            sudo ufw allow 27015/tcp
-            sudo ufw allow 27015/udp
-
-            # Steamworks P2P Networking and Steam Voice Chat
-            sudo ufw allow 3478/udp
-            sudo ufw allow 4379/udp
-            sudo ufw allow 4380/udp
-            sudo ufw allow 27014:27030/udp
-
+            sudo ufw allow 27037/tcp
+            # Apply changes
             sudo ufw reload &> /dev/null
         fi
     fi
