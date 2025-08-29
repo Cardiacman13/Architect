@@ -11,53 +11,13 @@ function nvidia_config() {
     fi
 
     # Create optimized NVIDIA kernel module configuration
-    exec_log "sudo tee $nvidia_config_file > /dev/null << 'EOF'
-#
-# NVreg_UsePageAttributeTable=1 (Default 0) - Activating the better memory
-# management method (PAT). The PAT method creates a partition type table at a
-# specific address mapped inside the register and utilizes the memory
-# architecture and instruction set more efficiently and faster. If your system
-# can support this feature, it should improve CPU performance.
-#
-# NVreg_InitializeSystemMemoryAllocations=0 (Default 1) - Disables clearing
-# system memory allocation before using it for the GPU. Potentially improves
-# performance, but at the cost of increased security risks. Write "options
-# nvidia NVreg_InitializeSystemMemoryAllocations=1" in
-# /etc/modprobe.d/nvidia.conf, if you want to return the default value. Note:
-# It is possible to use more memory (?)
-#
-# NVreg_DynamicPowerManagement=0x02 - Enables the use of dynamic power
-# management for Turing generation mobile cards, allowing the dGPU to be
-# powered down during idle time.
-#
-# NVreg_RegistryDwords=RMIntrLockingMode=1 (default 0) - enables experimental
-# switch for better frame-pacing this mainly improves it for high refresh rate
-# monitors with VRR or VR headsets.
-#
-# Note: This only works for PRIME configurations if your dGPU is controlling an
-# external monitor.
-#
-# For example: At 240Hz each frame is expected every 4ms. But if a 1ms
-# task—say, in the kernel or on the GSP — runs when a frame is about to be
-# displayed, it can delay the rendering. Instead of a neat sequence at T+4ms,
-# T+8ms, T+12ms, the frames might appear at T+4ms, T+9ms, T+12ms, etc. This
-# shows how even small delays can shift frame timing, potentially impacting
-# smooth display output.
-#
-# NVreg_EnableS0ixPowerManagement=1 (default 0) Enables S0ix for the NVIDIA GPU:
-# lets the device enter deep,
-# low-power idle states while the system uses s2idle (the S0 low-power idle path),
-# reducing battery drain—especially on laptops with recent Intel/AMD
-# platforms and Turing/Ampere/Ada GPUs
-#
+    exec_log "sudo tee $nvidia_config_file > /dev/null" "$(eval_gettext "Setting advanced NVIDIA module options")" << 'EOF'
 options nvidia NVreg_UsePageAttributeTable=1 \
     NVreg_InitializeSystemMemoryAllocations=0 \
     NVreg_DynamicPowerManagement=0x02 \
     NVreg_RegistryDwords=RMIntrLockingMode=1 \
     NVreg_EnableS0ixPowerManagement=1
-    
 EOF
-" "$(eval_gettext "Setting advanced NVIDIA module options")"
 
     # Ensure early loading of NVIDIA modules in initramfs
     if ! grep -q 'nvidia_drm' /etc/mkinitcpio.conf; then
@@ -78,18 +38,17 @@ function nvidia_runtime_pm_udev_rule() {
     fi
 
     # Create new udev rule
-    exec_log "sudo tee $udev_file > /dev/null << 'EOF'
+    exec_log "sudo tee $udev_file > /dev/null" "$(eval_gettext "Creating NVIDIA udev rule for runtime power management")" << 'EOF'
 # Enable runtime PM for NVIDIA VGA/3D controller devices on driver bind
-ACTION==\"add|bind\", SUBSYSTEM==\"pci\", DRIVERS==\"nvidia\", \\
-    ATTR{vendor}==\"0x10de\", ATTR{class}==\"0x03[0-9]*\", \\
-    TEST==\"power/control\", ATTR{power/control}=\"auto\"
+ACTION=="add|bind", SUBSYSTEM=="pci", DRIVERS=="nvidia", \
+    ATTR{vendor}=="0x10de", ATTR{class}=="0x03[0-9]*", \
+    TEST=="power/control", ATTR{power/control}="auto"
 
 # Disable runtime PM for NVIDIA devices on driver unbind (rarely triggered)
-ACTION==\"remove|unbind\", SUBSYSTEM==\"pci\", DRIVERS==\"nvidia\", \\
-    ATTR{vendor}==\"0x10de\", ATTR{class}==\"0x03[0-9]*\", \\
-    TEST==\"power/control\", ATTR{power/control}=\"on\"
+ACTION=="remove|unbind", SUBSYSTEM=="pci", DRIVERS=="nvidia", \
+    ATTR{vendor}=="0x10de", ATTR{class}=="0x03[0-9]*", \
+    TEST=="power/control", ATTR{power/control}="on"
 EOF
-" "$(eval_gettext "Creating NVIDIA udev rule for runtime power management")"
 }
 
 # Create a pacman hook to regenerate initramfs after NVIDIA-related changes
@@ -107,8 +66,8 @@ function create_pacman_hook() {
         exec_log "sudo rm $hook_file" "$(eval_gettext "Removing existing Nvidia pacman hook file")"
     fi
 
-# Create the new hook
-exec_log "sudo tee $hook_file > /dev/null << 'EOF'
+    # Create the new hook
+    exec_log "sudo tee $hook_file > /dev/null" "$(eval_gettext "Creating pacman hook for NVIDIA module regeneration")" << 'EOF'
 [Trigger]
 Operation=Install
 Operation=Upgrade
@@ -122,17 +81,16 @@ Target=usr/lib/modules/*/nvidia.ko.*
 Description=Update Nvidia module in initcpio (for DRM KMS)
 When=PostTransaction
 NeedsTargets
-Exec=/bin/sh -c \"if command -v mkinitcpio >/dev/null 2>&1; then \
+Exec=/bin/sh -c "if command -v mkinitcpio >/dev/null 2>&1; then \
   mkinitcpio -P; \
 elif command -v /usr/lib/booster/regenerate_images >/dev/null 2>&1; then \
   /usr/lib/booster/regenerate_images; \
 elif command -v dracut-rebuild >/dev/null 2>&1; then \
   dracut-rebuild; \
 else \
-  printf '\\033[31m The initramfs generator was not found, please update initramfs manually\\033[0m\\n'; \
-fi\"
+  printf '\033[31m The initramfs generator was not found, please update initramfs manually\033[0m\n'; \
+fi"
 EOF
-" "$(eval_gettext "Creating pacman hook for NVIDIA module regeneration")"
 }
 
 # Optional installation of Intel GPU drivers for hybrid laptops
@@ -194,7 +152,8 @@ function nvidia_drivers() {
     fi
 
     # Enable NVIDIA suspend/resume services
-    exec_log "sudo systemctl enable nvidia-suspend.service nvidia-hibernate.service nvidia-resume.service" "$(eval_gettext "Enabling NVIDIA services")"
+    exec_log "sudo systemctl enable nvidia-suspend.service nvidia-hibernate.service nvidia-resume.service" \
+        "$(eval_gettext "Enabling NVIDIA services")"
 
     # Set up system integration
     create_pacman_hook
