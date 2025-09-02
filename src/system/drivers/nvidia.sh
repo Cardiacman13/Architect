@@ -1,5 +1,16 @@
 source src/cmd.sh
 
+# Ensure early loading of NVIDIA modules in initramfs
+function nvidia_earlyloading () {
+    if ! grep -q 'nvidia_drm' /etc/mkinitcpio.conf; then
+        exec_log "sudo sed -i 's/^MODULES=(/MODULES=(nvidia nvidia_modeset nvidia_uvm nvidia_drm /' /etc/mkinitcpio.conf" \
+        "$(eval_gettext "Adding NVIDIA modules to mkinitcpio.conf")"
+    else
+        log "$(eval_gettext "NVIDIA modules already present in mkinitcpio.conf")"
+    fi
+}
+
+
 # Optional installation of Intel GPU drivers for hybrid laptops
 function nvidia_intel() {
     if ask_question "$(eval_gettext "Do you have an Intel/Nvidia Laptop ?")"; then
@@ -46,6 +57,9 @@ function nvidia_drivers() {
         libva-nvidia-driver
     "
     install_lst "${inlst}"
+
+    # call early loading NVIDIA fonction
+    nvidia_earlyloading
 
     # Optional Intel GPU driver installation for hybrid laptops
     nvidia_intel
