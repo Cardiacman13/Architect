@@ -24,12 +24,10 @@ function configure_sysctl_tweaks() {
 
     # Create new sysctl config with system performance optimizations
     exec_log "sudo tee $sysctl_file > /dev/null << 'EOF'
-# Kernel performance and memory tuning for desktop systems
-
 # The sysctl swappiness parameter determines the kernel's preference for pushing anonymous pages or page cache to disk in memory-starved situations.
 # A low value causes the kernel to prefer freeing up open files (page cache), a high value causes the kernel to try to use swap space,
 # and a value of 100 means IO cost is assumed to be equal.
-vm.swappiness = 10
+vm.swappiness = 100
 
 # The value controls the tendency of the kernel to reclaim the memory which is used for caching of directory and inode objects (VFS cache).
 # Lowering it from the default value of 100 makes the kernel less inclined to reclaim VFS cache (do not set it to 0, this may produce out-of-memory conditions)
@@ -75,9 +73,6 @@ net.core.netdev_max_backlog = 4096
 
 # Set size of file handles and inode cache
 fs.file-max = 2097152
-
-# Increase writeback interval  for xfs
-fs.xfs.xfssyncd_centisecs = 10000
 
 # Disable Intel split-lock
 kernel.split_lock_mitigate = 0
