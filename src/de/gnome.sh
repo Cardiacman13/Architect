@@ -20,7 +20,7 @@ function install_gnome() {
         gnome-browser-connector
         adwaita-icon-theme
         loupe
-        evince
+        papers
         gdm
         gvfs
         gvfs-afc
@@ -33,7 +33,7 @@ function install_gnome() {
         sushi
         totem
         xdg-user-dirs-gtk
-        adw-gtk3
+        adw-gtk-theme
         snapshot
         qt6-wayland
     "
