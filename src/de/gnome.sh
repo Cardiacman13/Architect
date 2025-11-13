@@ -31,7 +31,7 @@ function install_gnome() {
         nautilus
         nautilus-sendto
         sushi
-        totem
+        showtime
         xdg-user-dirs-gtk
         adw-gtk-theme
         snapshot
