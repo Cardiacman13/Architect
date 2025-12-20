@@ -52,8 +52,6 @@ function nvidia_drivers() {
         egl-wayland
         opencl-nvidia
         lib32-opencl-nvidia
-        libvdpau-va-gl
-        libvdpau
         libva-nvidia-driver
     "
     install_lst "${inlst}"
