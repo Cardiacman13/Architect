@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Architect V2.0.4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-05-19 18:07+0200\n"
+"POT-Creation-Date: 2025-12-23 22:56+0100\n"
 "PO-Revision-Date: 2023-12-31 17:53+0100\n"
 "Last-Translator: Skythrew <mael.guerin@murena.io>\n"
 "Language-Team: French\n"
@@ -61,112 +61,117 @@ msgstr "${GREEN}Privilèges d'administrateur accordés${RESET}"
 msgid "${RED}Root privileges denied${RESET}"
 msgstr "${RED}Privilèges d'administrateur refusés${RESET}"
 
-#: architect.sh:153
+#: architect.sh:154
 #, sh-format
 msgid "Initialization"
 msgstr "Initialisation"
 
-#: architect.sh:158
+#: architect.sh:159
 #, sh-format
 msgid "System preparation"
 msgstr "Préparation du système"
 
-#: architect.sh:160
+#: architect.sh:161
 #, sh-format
 msgid "Pacman configuration"
 msgstr "Configuration de pacman"
 
-#: architect.sh:161
+#: architect.sh:162
 #, sh-format
 msgid "AUR helper installation"
 msgstr "Installation du gestionnaire AUR"
 
-#: architect.sh:162
+#: architect.sh:163
 #, sh-format
 msgid "Mirrorlist configuration"
 msgstr "Configuration de la liste des miroirs"
 
-#: architect.sh:163
+#: architect.sh:164
 #, sh-format
 msgid "Kernel headers installation"
 msgstr "Installation des en-têtes (headers) du kernel"
 
-#: architect.sh:164
+#: architect.sh:165
 #, sh-format
 msgid "Kernel tweaks"
 msgstr "Optimisations du noyau"
 
-#: architect.sh:165
+#: architect.sh:166
 #, sh-format
 msgid "Sound server configuration"
 msgstr "Configuration du serveur son"
 
-#: architect.sh:166
+#: architect.sh:167
 #, sh-format
 msgid "System loaders configuration"
 msgstr "Configuration des chargeurs de démarrage"
 
-#: architect.sh:167
+#: architect.sh:168
 #, sh-format
 msgid "Useful package installation"
 msgstr "Installation des paquets utiles"
 
-#: architect.sh:168
+#: architect.sh:169
 #, sh-format
 msgid "sysctl kernel tweaks"
 msgstr "Optimisations sysctl du noyau"
 
-#: architect.sh:169
+#: architect.sh:170
 #, sh-format
 msgid "Firewall installation"
 msgstr "Configuration du pare-feu"
 
 #: architect.sh:171
 #, sh-format
+msgid "Low Latency Scheduler"
+msgstr ""
+
+#: architect.sh:173
+#, sh-format
 msgid "Shell configuration"
 msgstr "Configuration du shell"
 
-#: architect.sh:172
+#: architect.sh:174
 #, sh-format
 msgid "Adding user to necessary groups"
 msgstr "Ajout de l'utilisateur aux groupes nécessaires"
 
-#: architect.sh:175
+#: architect.sh:177
 #, sh-format
 msgid "System configuration"
 msgstr "Configuration du système"
 
-#: architect.sh:177
+#: architect.sh:179
 #, sh-format
 msgid "Video drivers installation"
 msgstr "Installation des pilotes vidéo"
 
-#: architect.sh:178
+#: architect.sh:180
 #, sh-format
 msgid "Gamepad configuration"
 msgstr "Configuration des manettes"
 
-#: architect.sh:179
+#: architect.sh:181
 #, sh-format
 msgid "Printer configuration"
 msgstr "Configuration de(s) imprimante(s)"
 
-#: architect.sh:180
+#: architect.sh:182
 #, sh-format
 msgid "Bluetooth configuration"
 msgstr "Configuration du bluetooth"
 
-#: architect.sh:183
+#: architect.sh:185
 #, sh-format
 msgid "Environment configuration"
 msgstr "Configuration de l'environnement"
 
-#: architect.sh:185
+#: architect.sh:187
 #, sh-format
 msgid "Desktop environment detection"
 msgstr "Détection de l'environnement de bureau"
 
-#: architect.sh:189 architect.sh:190
+#: architect.sh:191 architect.sh:192
 #, sh-format
 msgid "Software installation"
 msgstr "Installation de logiciels"
@@ -213,55 +218,35 @@ msgstr ""
 msgid "Detected desktop environment:"
 msgstr "Environnement de bureau détecté :"
 
-#: src/de/gnome.sh:44
-#, sh-format
-msgid "Uninstall gnome-software"
-msgstr "Désinstaller gnome-software"
-
-#: src/de/gnome.sh:50
+#: src/de/gnome.sh:45
 #, sh-format
 msgid "Setting gtk theme to adw-gtk3"
 msgstr "Changement du thème vers adw-gtk3"
 
-#: src/de/gnome.sh:53
+#: src/de/gnome.sh:48
 #, sh-format
 msgid "Enabling numlock on startup"
 msgstr "Activation du verrouillage numérique au démarrage"
 
-#: src/de/gnome.sh:56
+#: src/de/gnome.sh:51
 #, sh-format
 msgid "Disable GDM rules to unlock Wayland"
 msgstr "Désactivation des règles GDM pour déverrouiller Wayland"
 
-#: src/de/gnome.sh:73
-#, sh-format
-msgid "Adding 'gnome-software' to IgnorePkg in /etc/pacman.conf"
-msgstr "Ajout de 'gnome-software' à IgnorePkg dans /etc/pacman.conf"
-
-#: src/de/kde.sh:32
-#, sh-format
-msgid "Uninstall discover"
-msgstr "Désinstaller discover"
-
-#: src/de/kde.sh:40
+#: src/de/kde.sh:35
 #, sh-format
 msgid "Creating /etc/sddm.conf"
 msgstr "Création de /etc/sddm.conf"
 
-#: src/de/kde.sh:44
+#: src/de/kde.sh:39
 #, sh-format
 msgid "Setting Breeze theme for SDDM"
 msgstr "Mise en place du thème Breeze pour SDDM"
 
-#: src/de/kde.sh:47
+#: src/de/kde.sh:42
 #, sh-format
 msgid "Setting Numlock=on for SDDM"
 msgstr "Mise en place de Numlock=on pour SDDM"
-
-#: src/de/kde.sh:64
-#, sh-format
-msgid "Adding 'discover' to IgnorePkg in /etc/pacman.conf"
-msgstr "Ajout de 'discover' à IgnorePkg dans /etc/pacman.conf"
 
 #: src/de/xfce4.sh:49
 #, sh-format
@@ -608,51 +593,45 @@ msgstr "Activation des listes de paquets détaillées dans pacman"
 
 #: src/system/config/pacman.sh:13
 #, sh-format
-msgid "Enabling parallel downloads and ILoveCandy in pacman"
-msgstr ""
-"Activation des téléchargements en parallèle et du ILoveCandy dans pacman"
-
-#: src/system/config/pacman.sh:16
-#, sh-format
 msgid "Enabling multilib repository"
 msgstr "Activation du dépôt multilib"
 
-#: src/system/config/pacman.sh:19
+#: src/system/config/pacman.sh:16
 #, sh-format
 msgid "Enabling multithread compilation"
 msgstr "Activation de la compilation multithread"
 
-#: src/system/config/pacman.sh:22
+#: src/system/config/pacman.sh:19
 #, sh-format
 msgid "Updating full system ${RED}(might be long)${RESET}"
 msgstr "Mise à jour du système complet ${RED}(peut être long)${RESET}"
 
-#: src/system/config/pacman.sh:25
+#: src/system/config/pacman.sh:22
 #, sh-format
 msgid "Installing pacman-contrib"
 msgstr "Installation de pacman-contrib"
 
-#: src/system/config/pacman.sh:28
+#: src/system/config/pacman.sh:25
 #, sh-format
 msgid "Enabling paccache timer"
 msgstr "Activation du timer paccache"
 
-#: src/system/config/pacman.sh:32
+#: src/system/config/pacman.sh:29
 #, sh-format
 msgid "Removing existing update-mirrors script"
 msgstr "Suppression du script update-mirrors existant"
 
-#: src/system/config/pacman.sh:44
+#: src/system/config/pacman.sh:41
 #, sh-format
 msgid "Creating update-mirrors script"
 msgstr "Création du script update-mirrors"
 
-#: src/system/config/pacman.sh:47
+#: src/system/config/pacman.sh:44
 #, sh-format
 msgid "Making update-mirrors script executable"
 msgstr "Rendre le script update-mirrors exécutable"
 
-#: src/system/config/pacman.sh:57
+#: src/system/config/pacman.sh:54
 #, sh-format
 msgid "Running update-mirrors"
 msgstr "Exécution de update-mirrors"
@@ -703,67 +682,45 @@ msgstr "Voulez-vous utiliser des manettes PS5 ?"
 msgid "What is your graphics card type ?"
 msgstr "Quel est le type de votre carte graphique ?"
 
-#: src/system/drivers/nvidia.sh:10
-#, sh-format
-msgid "Removing existing nvidia.conf file"
-msgstr "Suppression du fichier nvidia.conf existant"
-
-#: src/system/drivers/nvidia.sh:41
-#, sh-format
-msgid "Setting advanced NVIDIA module options"
-msgstr "Configuration des options avancées du module NVIDIA"
-
-#: src/system/drivers/nvidia.sh:46
+#: src/system/drivers/nvidia.sh:7
 #, sh-format
 msgid "Adding NVIDIA modules to mkinitcpio.conf"
 msgstr "Ajout des modules NVIDIA à mkinitcpio.conf"
 
-#: src/system/drivers/nvidia.sh:48
+#: src/system/drivers/nvidia.sh:9
 #, sh-format
 msgid "NVIDIA modules already present in mkinitcpio.conf"
 msgstr "Les modules NVIDIA sont déjà présents dans mkinitcpio.conf"
 
-#: src/system/drivers/nvidia.sh:58
-#, sh-format
-msgid "Removing existing NVIDIA udev rule"
-msgstr "Suppression de la règle udev NVIDIA existante"
-
-#: src/system/drivers/nvidia.sh:73
-#, sh-format
-msgid "Creating NVIDIA udev rule for runtime power management"
-msgstr ""
-"Création de la règle udev NVIDIA pour la gestion de l'alimentation en temps "
-"réel"
-
-#: src/system/drivers/nvidia.sh:83
-#, sh-format
-msgid "Creating pacman hook directory"
-msgstr "Création du répertoire de hooks pacman"
-
-#: src/system/drivers/nvidia.sh:88
-#, sh-format
-msgid "Removing existing Nvidia pacman hook file"
-msgstr "Suppression du fichier de hook pacman Nvidia existant"
-
-#: src/system/drivers/nvidia.sh:116
-#, sh-format
-msgid "Creating pacman hook for NVIDIA module regeneration"
-msgstr "Création du hook pacman pour la régénération du module NVIDIA"
-
-#: src/system/drivers/nvidia.sh:121
+#: src/system/drivers/nvidia.sh:16
 #, sh-format
 msgid "Do you have an Intel/Nvidia Laptop ?"
 msgstr "Avez-vous un portable Intel/Nvidia ?"
 
-#: src/system/drivers/nvidia.sh:147
+#: src/system/drivers/nvidia.sh:42
 #, sh-format
-msgid "Clean old nvidia drivers dependencies"
-msgstr "Nettoyage des dépendances des anciens pilotes NVIDIA"
+msgid "Clean old NVIDIA driver dependencies"
+msgstr ""
 
-#: src/system/drivers/nvidia.sh:178
+#: src/system/drivers/nvidia.sh:72
 #, sh-format
-msgid "Enabling NVIDIA services"
-msgstr "Activation des services NVIDIA"
+msgid "Enabling NVIDIA suspend/resume services"
+msgstr ""
+
+#: src/system/drivers/nvidia.sh:81
+#, sh-format
+msgid "Enabling NVIDIA PowerD for supported laptop GPU"
+msgstr ""
+
+#: src/system/drivers/nvidia.sh:83
+#, sh-format
+msgid "NVIDIA PowerD is not supported on Turing GPUs"
+msgstr ""
+
+#: src/system/drivers/nvidia.sh:86
+#, sh-format
+msgid "Not a laptop chassis; skipping NVIDIA PowerD"
+msgstr ""
 
 #: src/system/drivers/printer.sh:8
 #, sh-format
@@ -846,12 +803,12 @@ msgstr "${RED}Erreur: Pas de connexion Internet${RESET}"
 msgid "Removing existing sysctl performance tweaks"
 msgstr "Suppression des optimisations sysctl existantes"
 
-#: src/system/kernel.sh:85
+#: src/system/kernel.sh:80
 #, sh-format
 msgid "Applying sysctl memory and kernel performance tweaks"
 msgstr "Application des optimisations sysctl de la mémoire et du noyau"
 
-#: src/system/kernel.sh:88
+#: src/system/kernel.sh:83
 #, sh-format
 msgid "Reloading sysctl parameters"
 msgstr "Rechargement des paramètres sysctl"
@@ -885,6 +842,97 @@ msgstr ""
 #, sh-format
 msgid "Shell configuration complete!"
 msgstr ""
+
+#: src/system/lavd.sh:7
+#, sh-format
+msgid ""
+"Do you want to install and setup LAVD scheduler for low latency task like "
+"gaming ${RED}say No if unsure${RESET} /!\\ ?"
+msgstr ""
+
+#: src/system/lavd.sh:16
+#, sh-format
+msgid "Creating systemd override directory"
+msgstr ""
+
+#: src/system/lavd.sh:24
+#, sh-format
+msgid "Setting permissions on override file"
+msgstr ""
+
+#: src/system/lavd.sh:27
+#, sh-format
+msgid "Reloading systemd daemon"
+msgstr ""
+
+#: src/system/lavd.sh:31
+#, sh-format
+msgid "Enable and start scx_loader with LAVD"
+msgstr ""
+
+#: src/system/lavd.sh:33
+#, sh-format
+msgid "LAVD scheduler has been configured and started successfully."
+msgstr ""
+
+#, sh-format
+#~ msgid "Uninstall gnome-software"
+#~ msgstr "Désinstaller gnome-software"
+
+#, sh-format
+#~ msgid "Adding 'gnome-software' to IgnorePkg in /etc/pacman.conf"
+#~ msgstr "Ajout de 'gnome-software' à IgnorePkg dans /etc/pacman.conf"
+
+#, sh-format
+#~ msgid "Uninstall discover"
+#~ msgstr "Désinstaller discover"
+
+#, sh-format
+#~ msgid "Adding 'discover' to IgnorePkg in /etc/pacman.conf"
+#~ msgstr "Ajout de 'discover' à IgnorePkg dans /etc/pacman.conf"
+
+#, sh-format
+#~ msgid "Enabling parallel downloads and ILoveCandy in pacman"
+#~ msgstr ""
+#~ "Activation des téléchargements en parallèle et du ILoveCandy dans pacman"
+
+#, sh-format
+#~ msgid "Removing existing nvidia.conf file"
+#~ msgstr "Suppression du fichier nvidia.conf existant"
+
+#, sh-format
+#~ msgid "Setting advanced NVIDIA module options"
+#~ msgstr "Configuration des options avancées du module NVIDIA"
+
+#, sh-format
+#~ msgid "Removing existing NVIDIA udev rule"
+#~ msgstr "Suppression de la règle udev NVIDIA existante"
+
+#, sh-format
+#~ msgid "Creating NVIDIA udev rule for runtime power management"
+#~ msgstr ""
+#~ "Création de la règle udev NVIDIA pour la gestion de l'alimentation en "
+#~ "temps réel"
+
+#, sh-format
+#~ msgid "Creating pacman hook directory"
+#~ msgstr "Création du répertoire de hooks pacman"
+
+#, sh-format
+#~ msgid "Removing existing Nvidia pacman hook file"
+#~ msgstr "Suppression du fichier de hook pacman Nvidia existant"
+
+#, sh-format
+#~ msgid "Creating pacman hook for NVIDIA module regeneration"
+#~ msgstr "Création du hook pacman pour la régénération du module NVIDIA"
+
+#, sh-format
+#~ msgid "Clean old nvidia drivers dependencies"
+#~ msgstr "Nettoyage des dépendances des anciens pilotes NVIDIA"
+
+#, sh-format
+#~ msgid "Enabling NVIDIA services"
+#~ msgstr "Activation des services NVIDIA"
 
 #, sh-format
 #~ msgid "Apparmor installation"

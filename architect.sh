@@ -111,6 +111,7 @@ source src/system/apparmor.sh
 source src/system/usergroups.sh
 source src/system/audio.sh
 source src/system/bootloader.sh
+source src/system/lavd.sh
 
 # Display a big step with a visual separator
 function display_step() {
@@ -167,6 +168,7 @@ function main() {
     little_step usefull_package          "$(eval_gettext "Useful package installation")"
     little_step configure_sysctl_tweaks  "$(eval_gettext "sysctl kernel tweaks")"
     little_step firewall                 "$(eval_gettext "Firewall installation")"
+    little_step lavd                     "$(eval_gettext "Low Latency Scheduler")"
     # little_step apparmor                 "$(eval_gettext "Apparmor installation")"
     little_step shell_config             "$(eval_gettext "Shell configuration")"
     little_step add_groups_to_user       "$(eval_gettext "Adding user to necessary groups")"
