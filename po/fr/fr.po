@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Architect V2.0.4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-12-23 22:56+0100\n"
+"POT-Creation-Date: 2025-12-24 13:06+0100\n"
 "PO-Revision-Date: 2023-12-31 17:53+0100\n"
 "Last-Translator: Skythrew <mael.guerin@murena.io>\n"
 "Language-Team: French\n"
@@ -843,36 +843,36 @@ msgstr ""
 msgid "Shell configuration complete!"
 msgstr ""
 
-#: src/system/lavd.sh:7
+#: src/system/schedulers.sh:7
 #, sh-format
 msgid ""
-"Do you want to install and setup LAVD scheduler for low latency task like "
-"gaming ${RED}say No if unsure${RESET} /!\\ ?"
+"Do you want to setup a low-latency scheduler for gaming? ${RED}say No if "
+"unsure${RESET}"
 msgstr ""
 
-#: src/system/lavd.sh:16
+#: src/system/schedulers.sh:13
+#, sh-format
+msgid "Do you have an Intel CPU with P-cores and E-cores"
+msgstr ""
+
+#: src/system/schedulers.sh:16
+#, sh-format
+msgid "Using scx_flash in low-latency mode."
+msgstr ""
+
+#: src/system/schedulers.sh:26
 #, sh-format
 msgid "Creating systemd override directory"
 msgstr ""
 
-#: src/system/lavd.sh:24
+#: src/system/schedulers.sh:34
 #, sh-format
 msgid "Setting permissions on override file"
 msgstr ""
 
-#: src/system/lavd.sh:27
+#: src/system/schedulers.sh:37
 #, sh-format
 msgid "Reloading systemd daemon"
-msgstr ""
-
-#: src/system/lavd.sh:31
-#, sh-format
-msgid "Enable and start scx_loader with LAVD"
-msgstr ""
-
-#: src/system/lavd.sh:33
-#, sh-format
-msgid "LAVD scheduler has been configured and started successfully."
 msgstr ""
 
 #, sh-format
