@@ -21,16 +21,7 @@ A post-install script designed to set up a complete and ready-to-use **Arch Linu
 > > 
 > 🧠 **Note:** If you are using an **NVIDIA GPU**, it must be from the **16xx (Turing) series or newer** to use the **`nvidia-open-dkms`** driver (open kernel modules).  
 >  
-> If you own a **Pascal GTX 10xx** or an **older GPU** (e.g., **Maxwell**, **Kepler**, or earlier such as **GTX 9xx / 8xx / 7xx**), you need the **proprietary driver** instead.  
-> In that case, run the following command after the script:
-> ```bash
-> sudo pacman -S nvidia-dkms
-> ```
-> When prompted by `pacman`, **replace** `nvidia-open-dkms` with `nvidia-dkms`.
-> > ⚠️ **Important information:**  
-> [NVIDIA is planning to drop support for its Maxwell, Pascal, and Volta GPUs, along with the legacy proprietary driver](https://www.phoronix.com/news/Maxwell-Pascal-Volta-Legacy-Near).  
-> If you're using one of these GPUs, it's strongly recommended to upgrade to a newer graphics card, ideally an **AMD GPU** or a **NVIDIA Turing or newer** model that supports the new open kernel modules (`nvidia-open`).
-
+> If you own a **Pascal GTX 10xx** or an **older GPU** (e.g., **Maxwell**, **Kepler**, or earlier such as **GTX 9xx / 8xx / 7xx**), you need the **nvidia-580xx-dkms* from the AUR. [NVIDIA 590 driver drops Pascal and lower support](https://archlinux.org/news/nvidia-590-driver-drops-pascal-support-main-packages-switch-to-open-kernel-modules/)
 ---
 
 ## ⚙️ Installation Command
@@ -59,10 +50,11 @@ At the end of the script, you can delete the ~/Architect folder.
    - `clean-arch`
    - `fix-key`
    - `update-mirrors`
-3. **GPU Configuration** — NVIDIA/AMD/Intel setup.
-4. **AUR Support** — Install `yay` or `paru`, depending on your preference.
-5. **Optional Components** — Printers, Firewall, Bluetooth, Sound, etc.
-6. **Extra Software** — Browsers, games, apps, media tools, and more.
+3. **Low Latency Scheduler for Gaming and Desktop** — Flash for intel P+E cores and LAVD for other CPU
+4. **GPU Configuration** — NVIDIA/AMD/Intel setup.
+5. **AUR Support** — Install `yay` or `paru`, depending on your preference.
+6. **Optional Components** — Printers, Firewall, Bluetooth, Sound, etc.
+7. **Extra Software** — Browsers, games, apps, media tools, and more.
 
 ---
 
@@ -94,15 +86,7 @@ Un script post-installation pour **Arch Linux**, destiné à configurer rapideme
 > > 
 > 🧠 **Remarque :** Si vous utilisez un **GPU NVIDIA**, il doit appartenir à la série **16xx (Turing) ou plus récente** pour pouvoir utiliser le pilote **`nvidia-open-dkms`** (modules open source du noyau).  
 >
-> Si vous possédez une carte graphique **Pascal GTX 10xx** ou plus ancienne (par exemple **Maxwell**, **Kepler**, etc. comme les **GTX 9xx / 8xx / 7xx**), vous devez utiliser le **pilote propriétaire** à la place.  
-> Dans ce cas, exécutez la commande suivante après le script :
-> ```bash
-> sudo pacman -S nvidia-dkms
-> ```
-> Lorsque `pacman` vous le demande, **remplacez** `nvidia-open-dkms` par `nvidia-dkms`.
-> > ⚠️ **Info importante :**  
-> [NVIDIA prévoit d’abandonner prochainement le support de ses cartes Maxwell, Pascal et Volta ainsi que du pilote entièrement propriétaire](https://www.phoronix.com/news/Maxwell-Pascal-Volta-Legacy-Near).  
-> Si vous utilisez l’un de ces GPU, il est fortement recommandé d’envisager une mise à niveau vers une carte plus récente, **de préférence AMD** ou **une NVIDIA Turing ou plus récente** compatible avec les nouveaux pilotes open kernel modules (`nvidia-open`).
+> Si vous possédez une carte graphique **Pascal GTX 10xx** ou plus ancienne (par exemple **Maxwell**, **Kepler**, etc. comme les **GTX 9xx / 8xx / 7xx**), vous devez utiliser le **pilote nvidia-580xx-dkms** à la place disponible dans le AUR.[Le driver NVIDIA 590 abandonne le support de Pascal et des versions antérieures](https://archlinux.fr/accueil/le-driver-nvidia-590-abandonne-le-support-de-pascal-et-des-versions-anterieures-les-paquets-principaux-passent-aux-modules-open)
 
 ---
 
@@ -136,10 +120,11 @@ sudo pacman -S --needed git base-devel \
    - `clean-arch`
    - `fix-key`
    - `update-mirrors`
-3. **Configuration GPU** — Support complet pour NVIDIA, AMD, Intel.
-4. **Support AUR** — Installe `yay` ou `paru`.
-5. **Composants Optionnels** — Imprimantes, Firewall, Bluetooth, Audio, etc.
-6. **Installation de Logiciels** — Navigateur, multimédia, développement, .
+3. **Ordonnanceur Faible Latence Pour Jeux et Bureau** — Flash pour Intel P+E et LAVD pour les autres.
+4. **Configuration GPU** — Support complet pour NVIDIA, AMD, Intel.
+5. **Support AUR** — Installe `yay` ou `paru`.
+6. **Composants Optionnels** — Imprimantes, Firewall, Bluetooth, Audio, etc.
+7. **Installation de Logiciels** — Navigateur, multimédia, développement, .
 
 ---
 
