@@ -199,7 +199,7 @@ desiredgov=performance
 igpu_desiredgov=powersave
 igpu_power_threshold=0.3
 softrealtime=off
-renice=0
+renice=20
 ioprio=0
 inhibit_screensaver=1
 disable_splitlock=1
@@ -226,6 +226,8 @@ disable_splitlock=1
 ;require_supervisor=0
 
 [custom]
+start=notify-send "GameMode: Performance Active" && powerprofilesctl set performance
+end=notify-send "GameMode: Balanced Active" && powerprofilesctl set balanced
 ;start=notify-send "GameMode started"
 ;end=notify-send "GameMode ended"
 ;script_timeout=10'
