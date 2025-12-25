@@ -196,41 +196,17 @@ function install_software() {
         local config_content='[general]
 reaper_freq=5
 desiredgov=performance
-igpu_desiredgov=powersave
-igpu_power_threshold=0.3
-softrealtime=off
-renice=20
+desiredprof=performance
+softrealtime=auto
+renice=15
 ioprio=0
 inhibit_screensaver=1
 disable_splitlock=1
 
-[filter]
-;whitelist=RiseOfTheTombRaider
-;blacklist=HalfLife3
-
-[gpu]
-;apply_gpu_optimisations=0
-;gpu_device=0
-;nv_powermizer_mode=1
-;nv_core_clock_mhz_offset=0
-;nv_mem_clock_mhz_offset=0
-;amd_performance_level=high
-
-[cpu]
-;park_cores=no
-;pin_cores=yes
-
-[supervisor]
-;supervisor_whitelist=
-;supervisor_blacklist=
-;require_supervisor=0
-
 [custom]
-start=notify-send "GameMode: Performance Active" && powerprofilesctl set performance
-end=notify-send "GameMode: Balanced Active" && powerprofilesctl set balanced
-;start=notify-send "GameMode started"
-;end=notify-send "GameMode ended"
-;script_timeout=10'
+start=notify-send "GameMode: Performance Active"; powerprofilesctl set performance
+end=notify-send "GameMode: Balanced Active"; powerprofilesctl set balanced
+script_timeout=10'
 
         if [ ! -f /etc/gamemode.ini ]; then
             echo "$config_content" | sudo tee /etc/gamemode.ini > /dev/null
