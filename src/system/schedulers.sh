@@ -7,11 +7,11 @@ function lavd() {
     if ask_question "$(eval_gettext "Do you want to setup a low-latency scheduler for gaming? \${RED}say No if unsure\${RESET}")"; then
 
         # 1. Ask about Intel Hybrid Architecture (P+E Cores)
-        local sched_name="scx_cosmo"
+        local sched_name="scx_bpfland"
         local sched_mode="0"
 
         if ask_question "$(eval_gettext "Do you have an Intel CPU with P-cores and E-cores")"; then
-            sched_name="scx_cosmo"
+            sched_name="scx_bpfland"
             sched_mode="3"
         fi
 
