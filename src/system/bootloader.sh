@@ -8,7 +8,7 @@ function setup_system_loaders() {
     log_msg "$(eval_gettext "Checking if GRUB is installed")"
 
     # Only continue if the system uses GRUB
-    if [[ $BOOT_LOADER != "grub" ]]; then
+    if [[ "$BOOT_LOADER" != "grub" ]] || ! command -v grub-mkconfig &> /dev/null; then
         return
     fi
 
@@ -35,7 +35,12 @@ EOF
 
     # Enable OS prober for dual-boot detection
     install_one "os-prober"
-    exec_log "sudo sed -i 's/#\s*GRUB_DISABLE_OS_PROBER=false/GRUB_DISABLE_OS_PROBER=false/' '/etc/default/grub'" "$(eval_gettext "Enabling os-prober")"
+    
+    # Check if file exist before trying sed
+    if [ -f /etc/default/grub ]; then
+        exec_log "sudo sed -i 's/#\s*GRUB_DISABLE_OS_PROBER=false/GRUB_DISABLE_OS_PROBER=false/' '/etc/default/grub'" "$(eval_gettext "Enabling os-prober")"
+    fi
+
     exec_log "sudo os-prober" "$(eval_gettext "Running os-prober")"
     exec_log "sudo grub-mkconfig -o /boot/grub/grub.cfg" "$(eval_gettext "Updating GRUB")"
 
