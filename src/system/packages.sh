@@ -1,7 +1,6 @@
 # Load shared functions
 source src/cmd.sh
 
-
 function usefull_package() {
     local inlst="
         joystickwake
@@ -10,7 +9,6 @@ function usefull_package() {
         gst-plugins-base
         gst-plugins-ugly
         gst-plugin-pipewire
-        gstreamer-vaapi
         gst-plugins-good
         gst-libav
         gstreamer-vaapi
@@ -30,10 +28,10 @@ function usefull_package() {
         otf-font-awesome
         ttf-droid
         ntfs-3g
-        fuse2
-        fuse2fs
-        fuse3
+        dosfstools
         exfatprogs
+        fuse
+        gvfs
         bash-completion
         ffmpegthumbs
         man-db
@@ -41,10 +39,10 @@ function usefull_package() {
     "
     
     if [[ ${BTRFS} == true ]]; then
-        inlst+=" btrfs-progs btrfs-assistant btrfs-du btrfsmaintenance"
+        inlst+=" btrfs-progs btrfs-assistant btrfsmaintenance"
     fi
 
     install_lst "${inlst}"
     
-    sudo systemctl enable power-profiles-daemon
+    exec_log "sudo systemctl enable power-profiles-daemon" "$(eval_gettext "Enabling power profiles daemon")"
 }
