@@ -8,7 +8,7 @@ A post-install script designed to set up a complete and ready-to-use **Arch Linu
 ---
 
 > ⚠️ **DISCLAIMER**  
-> This script is derived from personal post-install notes and fully suits my hardware and needs. It has been thoroughly tested on my system but **comes with no warranty** for compatibility on your machine.
+> This script is derived from [personal post-install notes](https://github.com/Cardiacman13/Architect/wiki) and fully suits my hardware and needs. It has been thoroughly tested on my system but **comes with no warranty** for compatibility on your machine.
 >
 > This is not a distribution. It's a helper to **speed up post-installation**, and its maintenance is your responsibility.
 >
@@ -73,7 +73,7 @@ Un script post-installation pour **Arch Linux**, destiné à configurer rapideme
 ---
 
 > ⚠️ **AVERTISSEMENT**  
-> Ce script est tiré de notes personnelles. Il fonctionne parfaitement sur ma machine, mais **n'est garanti sur aucun autre système**.
+> Ce script est tiré de [notes personnelles](https://github.com/Cardiacman13/Architect/wiki). Il fonctionne parfaitement sur ma machine, mais **n'est garanti sur aucun autre système**.
 >
 > Ce n'est **pas une distribution**, mais un script pour **gagner du temps après l'installation**. Vous restez responsable de la maintenance de votre système.
 >
