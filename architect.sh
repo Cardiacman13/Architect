@@ -78,10 +78,13 @@ fi
 export LOG_FILE="$SCRIPT_DIR/logfile_$(date "+%Y%m%d-%H%M%S").log"
 
 # Detect the boot loader
+# Detect the boot loader
 if [[ -d "/boot/loader/entries" ]]; then
     export BOOT_LOADER="systemd-boot"
-else
+elif [[ -f "/boot/grub/grub.cfg" ]] || [[ -d "/boot/grub" ]]; then
     export BOOT_LOADER="grub"
+else
+    export BOOT_LOADER="other"
 fi
 
 # Detect Btrfs usage
