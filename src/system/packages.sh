@@ -34,6 +34,8 @@ function usefull_package() {
         gvfs
         bash-completion
         ffmpegthumbs
+        unzip
+        unrar
         man-db
         man-pages
     "
