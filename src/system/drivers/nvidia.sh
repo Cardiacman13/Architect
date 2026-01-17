@@ -12,7 +12,7 @@ function nvidia_earlyloading () {
 
 # Optimization of NVIDIA kernel parameters
 function nvidia_optimization() {
-    local conf_file="/etc/modprobe.d/nvidia-optimizations.conf"
+    local conf_file="/etc/modprobe.d/nvidia.conf"
     local options="options nvidia NVreg_UsePageAttributeTable=1 NVreg_InitializeSystemMemoryAllocations=0 NVreg_RegistryDwords=RmEnableAggressiveVblank=1"
 
     if [[ -f "$conf_file" ]]; then
