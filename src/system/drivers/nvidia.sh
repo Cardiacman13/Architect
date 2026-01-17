@@ -63,7 +63,7 @@ function nvidia_intel() {
     fi
 }
 
-# Main function with auto-detection for Modern vs Legacy drivers
+# Remove all to start clean
 function nvidia_drivers() {
     local -r unlst="
         nvidia-dkms
