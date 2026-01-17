@@ -15,11 +15,9 @@ function config_pacman() {
     # Set MAKEFLAGS to use all available CPU cores for compilation
     exec_log "sudo sed -i 's/#MAKEFLAGS=\"-j2\"/MAKEFLAGS=\"-j\$(nproc)\"/' /etc/makepkg.conf" "$(eval_gettext "Enabling multithread compilation")"
 
-    # Full system upgrade
-    exec_log "sudo pacman -Syyu --noconfirm" "$(eval_gettext "Updating full system \${RED}(might be long)\${RESET}")"
-
     # Install pacman-contrib for tools like paccache
-    exec_log "sudo pacman -S pacman-contrib --noconfirm" "$(eval_gettext "Installing pacman-contrib")"
+    # We do a sync (-Syyu) first to ensure we can find the packages
+    exec_log "sudo pacman -Syyu --noconfirm pacman-contrib" "$(eval_gettext "Installing pacman-contrib")"
 
     # Enable automatic cleaning of old package versions
     exec_log "sudo systemctl enable paccache.timer" "$(eval_gettext "Enabling paccache timer")"
@@ -30,18 +28,27 @@ function config_pacman() {
     fi
 
     # Create /usr/bin/update-mirrors script using proper EOF formatting
-    exec_log "sudo tee /usr/bin/update-mirrors > /dev/null << 'EOF'
+    exec_log "sudo install -m 755 /dev/stdin /usr/bin/update-mirrors << 'EOF'
 #!/bin/bash
-tmpfile=\$(mktemp)
-echo \"Using temporary file: \$tmpfile\"
-rate-mirrors --save=\$tmpfile arch --max-delay=43200 && \\
-  sudo cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist-backup && \\
-  sudo mv \$tmpfile /etc/pacman.d/mirrorlist && \\
-  sudo pacman -Syyu
-EOF" "$(eval_gettext "Creating update-mirrors script")"
+if [[ \$EUID -ne 0 ]]; then 
+   echo \"Error: please run update-mirrors as root (sudo).\"
+   exit 1
+fi
 
-    # Make it executable
-    exec_log "sudo chmod +x /usr/bin/update-mirrors" "$(eval_gettext "Making update-mirrors script executable")"
+tmpfile=\$(mktemp)
+trap \"rm -f \$tmpfile\" EXIT
+
+echo \"Ranking mirrors (max-delay: 6h)...\"
+if rate-mirrors --save=\$tmpfile arch --max-delay=21600; then
+    cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist-backup
+    mv \$tmpfile /etc/pacman.d/mirrorlist
+    echo \"Mirrors optimized. Running system upgrade...\"
+    pacman -Syyu --noconfirm
+else
+    echo \"Failed to rate mirrors. Current mirrorlist preserved.\"
+    exit 1
+fi
+EOF" "$(eval_gettext "Creating update-mirrors script")"
 }
 
 # Optimize and update mirrorlist using rate-mirrors wrapper
@@ -51,5 +58,6 @@ function mirrorlist() {
     install_one "rate-mirrors"
 
     # Use the new /usr/bin/update-mirrors binary
-    exec_log "update-mirrors" "$(eval_gettext "Running update-mirrors")"
+    # This now handles both mirror ranking AND the full system upgrade
+    exec_log "sudo update-mirrors" "$(eval_gettext "Running update-mirrors and full system upgrade")"
 }
