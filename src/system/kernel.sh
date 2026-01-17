@@ -15,7 +15,7 @@ function install_headers() {
 
 # Apply sysctl performance and memory tuning settings
 function configure_sysctl_tweaks() {
-    local sysctl_file="/etc/sysctl.d/99-architect-kernel.conf"
+    local sysctl_file="/etc/sysctl.d/70-architect-kernel.conf"
 
     # Remove existing sysctl file if it exists
     if [ -f "$sysctl_file" ]; then
