@@ -12,10 +12,6 @@ function usefull_package() {
         gst-plugins-good
         gst-libav
         gstreamer-vaapi
-        libva-mesa-driver
-        lib32-libva-mesa-driver
-        mesa-vdpau
-        lib32-mesa-vdpau
         xdg-utils
         rebuild-detector
         fastfetch
