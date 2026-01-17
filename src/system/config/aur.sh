@@ -7,8 +7,8 @@ function install_aur() {
 
     # Define AUR helpers and their respective Git URLs
     local -r aur_helpers=("yay" "paru")
-    local -r aur_repos=("https://aur.archlinux.org/yay-bin.git" "https://aur.archlinux.org/paru-bin.git")
-    local -r aur_dirs=("yay-bin" "paru-bin")
+    local -r aur_repos=("https://aur.archlinux.org/yay-bin.git" "https://aur.archlinux.org/paru.git")
+    local -r aur_dirs=("yay-bin" "paru")
 
     local choice=""
     local index=-1
