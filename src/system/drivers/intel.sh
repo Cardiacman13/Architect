@@ -14,8 +14,6 @@ function intel_drivers() {
         vulkan-mesa-layers
         libva-mesa-driver
         lib32-libva-mesa-driver
-        mesa-vdpau
-        lib32-mesa-vdpau
     "
 
     install_lst "${inlst}"
