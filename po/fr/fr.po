@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Architect V2.0.4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-01-17 09:55+0100\n"
+"POT-Creation-Date: 2026-01-17 16:32+0100\n"
 "PO-Revision-Date: 2026-01-17 10:00+0100\n"
 "Last-Translator: Gemini Architect Partner\n"
 "Language-Team: French\n"
@@ -31,7 +31,7 @@ msgstr "Options :"
 #: architect.sh:25
 #, sh-format
 msgid "  -h --help    : Display this help."
-msgstr "  -h --help    : Affiche cette aide."
+msgstr "  -h --help     : Affiche cette aide."
 
 #: architect.sh:26
 #, sh-format
@@ -209,7 +209,7 @@ msgstr "n"
 #: src/cmd.sh:137
 #, sh-format
 msgid "${RED}Error: installation failed${RESET}"
-msgstr "${RED}Erreur: l'installation a échoué${RESET}"
+msgstr "${RED}Erreur : l'installation a échoué${RESET}"
 
 #: src/de/detect.sh:31
 #, sh-format
@@ -289,7 +289,7 @@ msgid ""
 "${GREEN}Script completed successfully, the system must restart${RESET}: "
 "Press ${GREEN}Enter${RESET} to restart or ${RED}Ctrl+C${RESET} to cancel."
 msgstr ""
-"${GREEN}Script terminé avec succès, le système doit redémarrer${RESET}: "
+"${GREEN}Script terminé avec succès, le système doit redémarrer${RESET} : "
 "Appuyez sur ${GREEN}Entrée${RESET} pour redémarrer ou ${RED}Ctrl+C${RESET} "
 "pour annuler."
 
@@ -337,7 +337,7 @@ msgid ""
 "to skip): "
 msgstr ""
 "${BLUE}::${RESET} Paquets à installer (e.g., 1 2 3, 1-3, tous ou appuyez sur "
-"Entrée pour passer): "
+"Entrée pour passer) : "
 
 #: src/software/install.sh:102
 #, sh-format
@@ -697,35 +697,70 @@ msgstr "Ajout des modules NVIDIA à mkinitcpio.conf"
 msgid "NVIDIA modules already present in mkinitcpio.conf"
 msgstr "Les modules NVIDIA sont déjà présents dans mkinitcpio.conf"
 
-#: src/system/drivers/nvidia.sh:16
+#: src/system/drivers/nvidia.sh:19
+#, sh-format
+msgid "Removing old NVIDIA optimization file"
+msgstr "Suppression de l'ancien fichier d'optimisation NVIDIA"
+
+#: src/system/drivers/nvidia.sh:23
+#, sh-format
+msgid "Applying NVIDIA Kernel optimizations (PAT, Vblank, Memory)"
+msgstr "Application des optimisations noyau NVIDIA (PAT, Vblank, Mémoire)"
+
+#: src/system/drivers/nvidia.sh:31
+#, sh-format
+msgid "Creating pacman hooks directory"
+msgstr "Création du répertoire pour les hooks pacman"
+
+#: src/system/drivers/nvidia.sh:51
+#, sh-format
+msgid "Creating NVIDIA pacman hook"
+msgstr "Création du hook pacman pour NVIDIA"
+
+#: src/system/drivers/nvidia.sh:56
 #, sh-format
 msgid "Do you have an Intel/Nvidia Laptop ?"
 msgstr "Avez-vous un portable Intel/Nvidia ?"
 
-#: src/system/drivers/nvidia.sh:42
+#: src/system/drivers/nvidia.sh:81
 #, sh-format
 msgid "Clean old NVIDIA driver dependencies"
 msgstr "Nettoyage des anciennes dépendances NVIDIA"
 
-#: src/system/drivers/nvidia.sh:72
+#: src/system/drivers/nvidia.sh:85
+#, sh-format
+msgid "No NVIDIA GPU detected. Skipping."
+msgstr "Aucun GPU NVIDIA détecté. Ignoré."
+
+#: src/system/drivers/nvidia.sh:96
+#, sh-format
+msgid "Legacy NVIDIA GPU detected. Installing 550xx drivers."
+msgstr "GPU NVIDIA Legacy détecté. Installation des pilotes 550xx."
+
+#: src/system/drivers/nvidia.sh:110
+#, sh-format
+msgid "Modern NVIDIA GPU detected. Installing Open-DKMS drivers."
+msgstr "GPU NVIDIA moderne détecté. Installation des pilotes Open-DKMS."
+
+#: src/system/drivers/nvidia.sh:132
+#, sh-format
+msgid "Do you want to install CUDA ?"
+msgstr "Voulez-vous installer CUDA ?"
+
+#: src/system/drivers/nvidia.sh:137
 #, sh-format
 msgid "Enabling NVIDIA suspend/resume services"
 msgstr "Activation des services suspend/resume de NVIDIA"
 
-#: src/system/drivers/nvidia.sh:81
+#: src/system/drivers/nvidia.sh:144
 #, sh-format
 msgid "Enabling NVIDIA PowerD for supported laptop GPU"
 msgstr "Activation de NVIDIA PowerD (GPU portables supportés)"
 
-#: src/system/drivers/nvidia.sh:83
+#: src/system/drivers/nvidia.sh:148
 #, sh-format
-msgid "NVIDIA PowerD is not supported on Turing GPUs"
-msgstr "NVIDIA PowerD n'est pas supporté sur les GPUs Turing"
-
-#: src/system/drivers/nvidia.sh:86
-#, sh-format
-msgid "Not a laptop chassis; skipping NVIDIA PowerD"
-msgstr "Châssis non portable ; NVIDIA PowerD ignoré"
+msgid "Regenerating initramfs images"
+msgstr "Régénération des images initramfs"
 
 #: src/system/drivers/printer.sh:8
 #, sh-format
@@ -801,7 +836,7 @@ msgstr "Configuration de grub-btrfsd pour timeshift"
 #: src/system/internet.sh:11
 #, sh-format
 msgid "${RED}Error: No Internet connection${RESET}"
-msgstr "${RED}Erreur: Pas de connexion Internet${RESET}"
+msgstr "${RED}Erreur : pas de connexion Internet${RESET}"
 
 #: src/system/kernel.sh:22
 #, sh-format
@@ -829,8 +864,8 @@ msgid ""
 "Do you want to setup a low-latency scheduler for gaming? ${RED}say No if "
 "unsure${RESET}"
 msgstr ""
-"Voulez-vous configurer un planificateur low-latency pour le jeu ? "
-"${RED}Dites Non si vous n'êtes pas sûr${RESET}"
+"Voulez-vous configurer un planificateur low-latency pour le jeu ? ${RED}"
+"Dites Non si vous n'êtes pas sûr${RESET}"
 
 #: src/system/schedulers.sh:13
 #, sh-format
@@ -884,7 +919,7 @@ msgstr "Configuration du shell terminée !"
 
 #: src/system/zram.sh:7
 #, sh-format
-msgid "Do you want to configure ZRAM?"
+msgid "Do you want to configure ZRAM ?"
 msgstr "Voulez-vous configurer ZRAM ?"
 
 #: src/system/zram.sh:8
@@ -916,3 +951,15 @@ msgstr "Création de la règle udev pour zram et la swappiness"
 #, sh-format
 msgid "Starting zram device"
 msgstr "Démarrage du périphérique zram"
+
+#, sh-format
+#~ msgid "NVIDIA PowerD is not supported on Turing GPUs"
+#~ msgstr "NVIDIA PowerD n'est pas supporté sur les GPUs Turing"
+
+#, sh-format
+#~ msgid "Not a laptop chassis; skipping NVIDIA PowerD"
+#~ msgstr "Ce n'est pas un pc portable' ; NVIDIA PowerD ignoré"
+
+#, sh-format
+#~ msgid "Do you want to configure ZRAM?"
+#~ msgstr "Voulez-vous configurer ZRAM ?"
