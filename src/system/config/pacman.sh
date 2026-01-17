@@ -49,7 +49,4 @@ function mirrorlist() {
 
     # Ensure rate-mirrors is installed
     install_one "rate-mirrors"
-
-    # Use the new /usr/bin/update-mirrors binary
-    exec_log "update-mirrors" "$(eval_gettext "Running update-mirrors")"
 }
