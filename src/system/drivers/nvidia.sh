@@ -10,6 +10,19 @@ function nvidia_earlyloading () {
     fi
 }
 
+# Optimization of NVIDIA kernel parameters
+function nvidia_optimization() {
+    local conf_file="/etc/modprobe.d/nvidia-optimizations.conf"
+    local options="options nvidia NVreg_UsePageAttributeTable=1 NVreg_InitializeSystemMemoryAllocations=0 NVreg_RegistryDwords=RmEnableAggressiveVblank=1"
+
+    # Supprime le fichier s'il existe déjà pour garantir une configuration propre
+    if [[ -f "$conf_file" ]]; then
+        exec_log "sudo rm -f $conf_file" "$(eval_gettext "Removing old NVIDIA optimization file")"
+    fi
+
+    exec_log "echo '$options' | sudo tee $conf_file" \
+    "$(eval_gettext "Applying NVIDIA Kernel optimizations (PAT, Vblank, Memory)")"
+}
 
 # Optional installation of Intel GPU drivers for hybrid laptops
 function nvidia_intel() {
@@ -56,8 +69,9 @@ function nvidia_drivers() {
     "
     install_lst "${inlst}"
 
-    # call early loading NVIDIA fonction
+    # call early loading NVIDIA fonction and optimization
     nvidia_earlyloading
+    nvidia_optimization
 
     # Optional Intel GPU driver installation for hybrid laptops
     nvidia_intel
