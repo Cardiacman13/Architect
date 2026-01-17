@@ -11,8 +11,6 @@ function amd_drivers() {
         libva-mesa-driver
         lib32-libva-mesa-driver
         vulkan-mesa-layers
-        mesa-vdpau
-        lib32-mesa-vdpau
     "
 
     if ask_question "$(eval_gettext "Would you like to install ROCM (\${RED}say No if unsure\${RESET})")"; then
