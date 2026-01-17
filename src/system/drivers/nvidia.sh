@@ -15,13 +15,39 @@ function nvidia_optimization() {
     local conf_file="/etc/modprobe.d/nvidia-optimizations.conf"
     local options="options nvidia NVreg_UsePageAttributeTable=1 NVreg_InitializeSystemMemoryAllocations=0 NVreg_RegistryDwords=RmEnableAggressiveVblank=1"
 
-    # Supprime le fichier s'il existe déjà pour garantir une configuration propre
+    # Remove existing file to ensure a clean configuration
     if [[ -f "$conf_file" ]]; then
         exec_log "sudo rm -f $conf_file" "$(eval_gettext "Removing old NVIDIA optimization file")"
     fi
 
     exec_log "echo '$options' | sudo tee $conf_file" \
     "$(eval_gettext "Applying NVIDIA Kernel optimizations (PAT, Vblank, Memory)")"
+}
+
+# Create a pacman hook to rebuild initramfs on driver updates
+function nvidia_hook() {
+    local hook_dir="/etc/pacman.d/hooks"
+    local hook_file="${hook_dir}/nvidia.hook"
+
+    exec_log "sudo mkdir -p $hook_dir" "$(eval_gettext "Creating pacman hooks directory")"
+
+    local hook_content="[Trigger]
+Operation = Install
+Operation = Upgrade
+Operation = Remove
+Type = Package
+Target = nvidia-open-dkms
+Target = nvidia-utils
+
+[Action]
+Description = Update NVIDIA module in initcpio
+Depends = mkinitcpio
+When = PostTransaction
+NeedsTargets
+Exec = /usr/bin/mkinitcpio -P"
+
+    exec_log "echo '$hook_content' | sudo tee $hook_file" \
+    "$(eval_gettext "Creating NVIDIA pacman hook")"
 }
 
 # Optional installation of Intel GPU drivers for hybrid laptops
@@ -69,9 +95,10 @@ function nvidia_drivers() {
     "
     install_lst "${inlst}"
 
-    # call early loading NVIDIA fonction and optimization
+    # Configurations and Optimizations
     nvidia_earlyloading
     nvidia_optimization
+    nvidia_hook
 
     # Optional Intel GPU driver installation for hybrid laptops
     nvidia_intel
@@ -89,14 +116,12 @@ function nvidia_drivers() {
     local device_type
     device_type="$(cat /sys/devices/virtual/dmi/id/chassis_type)"
     if ((device_type >= 8 && device_type <= 11)); then
-        # Check for Turing GPUs (Device name starts with "TU")
         if ! lspci -d "10de:*:030x" -vm | grep -q 'Device:\s*TU'; then
             exec_log "sudo systemctl enable nvidia-powerd.service" \
                 "$(eval_gettext "Enabling NVIDIA PowerD for supported laptop GPU")"
-        else
-            log "$(eval_gettext "NVIDIA PowerD is not supported on Turing GPUs")"
         fi
-    else
-        log "$(eval_gettext "Not a laptop chassis; skipping NVIDIA PowerD")"
     fi
+
+    # Final rebuild of initramfs to apply early loading
+    exec_log "sudo mkinitcpio -P" "$(eval_gettext "Regenerating initramfs images")"
 }
