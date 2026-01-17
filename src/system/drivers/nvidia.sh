@@ -12,9 +12,10 @@ function nvidia_earlyloading () {
 
 # Optimization of NVIDIA kernel parameters
 function nvidia_optimization() {
-    local conf_file="/etc/modprobe.d/nvidia.conf"
+    local conf_file="/etc/modprobe.d/nvidia-optimizations.conf"
     local options="options nvidia NVreg_UsePageAttributeTable=1 NVreg_InitializeSystemMemoryAllocations=0 NVreg_RegistryDwords=RmEnableAggressiveVblank=1"
 
+    # Remove existing file to ensure a clean configuration
     if [[ -f "$conf_file" ]]; then
         exec_log "sudo rm -f $conf_file" "$(eval_gettext "Removing old NVIDIA optimization file")"
     fi
@@ -37,8 +38,8 @@ Operation = Remove
 Type = Package
 Target = nvidia-open-dkms
 Target = nvidia-utils
-Target = nvidia-550xx-dkms
-Target = nvidia-550xx-utils
+Target = nvidia-open
+Target = nvidia-open-lts
 
 [Action]
 Description = Update NVIDIA module in initcpio
@@ -63,17 +64,11 @@ function nvidia_intel() {
     fi
 }
 
-# Remove all to start clean
+# Main function to uninstall legacy NVIDIA drivers and install the correct set
 function nvidia_drivers() {
     local -r unlst="
-        nvidia-settings
-        lib32-nvidia-utils
-        nvidia-utils
         nvidia-open
-        nvidia-open-dkms
         nvidia-open-lts
-        lib32-opencl-nvidia
-        opencl-nvidia
         dxvk-nvapi-mingw
         lib32-nvidia-dev-utils-tkg
         lib32-opencl-nvidia-dev-tkg
@@ -83,64 +78,42 @@ function nvidia_drivers() {
         nvidia-dev-utils-tkg
         opencl-nvidia-dev-tkg
     "
+
     uninstall_lst "${unlst}" "$(eval_gettext "Clean old NVIDIA driver dependencies")"
 
-    # Detect GPU Architecture
-    if ! lspci -v | grep -Ei "VGA|3D" | grep -qi "NVIDIA"; then
-        log "$(eval_gettext "No NVIDIA GPU detected. Skipping.")"
-        return
-    fi
-
-    local is_legacy=false
-    if lspci | grep -qiE "GeForce (GTX (4|5|6|7|9|10)|GT (4|5|6|7|10))"; then
-        is_legacy=true
-    fi
-
-    local inlst
-    if [[ "$is_legacy" == true ]]; then
-        log "$(eval_gettext "Legacy NVIDIA GPU detected. Installing 550xx drivers.")"
-        inlst="
-            nvidia-580xx-dkms
-            nvidia-580xx-utils
-            lib32-nvidia-580xx-utils
-            nvidia-580xx-settings
-            opencl-nvidia-580xx
-            lib32-opencl-nvidia-580xx
-            vulkan-icd-loader
-            lib32-vulkan-icd-loader
-            egl-wayland
-            libva-nvidia-driver
-        "
-    else
-        log "$(eval_gettext "Modern NVIDIA GPU detected. Installing Open-DKMS drivers.")"
-        inlst="
-            nvidia-open-dkms
-            nvidia-utils
-            lib32-nvidia-utils
-            nvidia-settings
-            vulkan-icd-loader
-            lib32-vulkan-icd-loader
-            egl-wayland
-            opencl-nvidia
-            lib32-opencl-nvidia
-            libva-nvidia-driver
-        "
-    fi
-
+    # Install required NVIDIA packages
+    local -r inlst="
+        nvidia-open-dkms
+        nvidia-utils
+        lib32-nvidia-utils
+        nvidia-settings
+        vulkan-icd-loader
+        lib32-vulkan-icd-loader
+        egl-wayland
+        opencl-nvidia
+        lib32-opencl-nvidia
+        libva-nvidia-driver
+    "
     install_lst "${inlst}"
 
+    # Configurations and Optimizations
     nvidia_earlyloading
     nvidia_optimization
     nvidia_hook
+
+    # Optional Intel GPU driver installation for hybrid laptops
     nvidia_intel
 
-    if ask_question "$(eval_gettext "Do you want to install CUDA ?")"; then
+    # Optional CUDA installation
+    if ask_question "$(eval_gettext "Do you want to install CUDA (${RED}say No if unsure${RESET}) ?")"; then
         install_one "cuda"
     fi
 
+    # Enable NVIDIA suspend/resume services
     exec_log "sudo systemctl enable nvidia-suspend.service nvidia-hibernate.service nvidia-resume.service" \
         "$(eval_gettext "Enabling NVIDIA suspend/resume services")"
 
+    # Conditionally enable nvidia-powerd if on laptop and GPU is not Turing
     local device_type
     device_type="$(cat /sys/devices/virtual/dmi/id/chassis_type)"
     if ((device_type >= 8 && device_type <= 11)); then
@@ -150,5 +123,6 @@ function nvidia_drivers() {
         fi
     fi
 
+    # Final rebuild of initramfs to apply early loading
     exec_log "sudo mkinitcpio -P" "$(eval_gettext "Regenerating initramfs images")"
 }
