@@ -66,11 +66,14 @@ function nvidia_intel() {
 # Remove all to start clean
 function nvidia_drivers() {
     local -r unlst="
-        nvidia-dkms
+        nvidia-settings
+        lib32-nvidia-utils
+        nvidia-utils
         nvidia-open
         nvidia-open-dkms
-        nvidia
-        nvidia-lts
+        nvidia-open-lts
+        lib32-opencl-nvidia
+        opencl-nvidia
         dxvk-nvapi-mingw
         lib32-nvidia-dev-utils-tkg
         lib32-opencl-nvidia-dev-tkg
@@ -97,12 +100,12 @@ function nvidia_drivers() {
     if [[ "$is_legacy" == true ]]; then
         log "$(eval_gettext "Legacy NVIDIA GPU detected. Installing 550xx drivers.")"
         inlst="
-            nvidia-550xx-dkms
-            nvidia-550xx-utils
-            lib32-nvidia-550xx-utils
-            nvidia-550xx-settings
-            opencl-nvidia-550xx
-            lib32-opencl-nvidia-550xx
+            nvidia-580xx-dkms
+            nvidia-580xx-utils
+            lib32-nvidia-580xx-utils
+            nvidia-580xx-settings
+            opencl-nvidia-580xx
+            lib32-opencl-nvidia-580xx
             vulkan-icd-loader
             lib32-vulkan-icd-loader
             egl-wayland
