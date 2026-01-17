@@ -50,11 +50,14 @@ At the end of the script, you can delete the ~/Architect folder.
    - `clean-arch`
    - `fix-key`
    - `update-mirrors`
-3. **Low Latency Scheduler for Gaming and Desktop** — Flash for intel P+E cores and LAVD for other CPU
-4. **GPU Configuration** — NVIDIA/AMD/Intel setup.
-5. **AUR Support** — Install `yay` or `paru`, depending on your preference.
-6. **Optional Components** — Printers, Firewall, Bluetooth, Sound, etc.
-7. **Extra Software** — Browsers, games, apps, media tools, and more.
+3. **Scheduler Optimization** — Low Latency Scheduler for Gaming and Desktop.
+4. **Zram Install and Configuration** — Better settings for Zram
+5. **GPU Configuration** — NVIDIA/AMD/Intel setup.
+6. **AUR Support** — Install `yay` or `paru`, depending on your preference.
+7. **Dependencies & Multimedia Codecs** — Installation of essential environment tools (fonts, codecs, system utilities).
+8. **Shell Configuration** — Optional setup and customization of Fish, or Zsh.
+9. **Optional Components** — Printers, Firewall, Bluetooth, Sound, etc.
+10. **Extra Software** — Browsers, games, apps, media tools, and more.
 
 ---
 
@@ -120,11 +123,14 @@ sudo pacman -S --needed git base-devel \
    - `clean-arch`
    - `fix-key`
    - `update-mirrors`
-3. **Ordonnanceur Faible Latence Pour Jeux et Bureau** — Flash pour Intel P+E et LAVD pour les autres.
-4. **Configuration GPU** — Support complet pour NVIDIA, AMD, Intel.
-5. **Support AUR** — Installe `yay` ou `paru`.
-6. **Composants Optionnels** — Imprimantes, Firewall, Bluetooth, Audio, etc.
-7. **Installation de Logiciels** — Navigateur, multimédia, développement, .
+3. **optimisation du scheduler** — Ordonnanceur Faible Latence Pour Jeux et Bureau.
+4. **Zram installation et Configuration** — Amélioration de la configuration de Zram.
+5. **Configuration GPU** — Support complet pour NVIDIA, AMD, Intel.
+6. **Support AUR** — Installe `yay` ou `paru`.
+7. **Dépendances et Codecs multimédia** — Installation de l'environnement de base (polices, codecs, outils systèmes).
+8. **Configuration du Shell** — Installation et personnalisation optionelle et au choix de Fish ou Zsh.
+9. **Composants Optionnels** — Imprimantes, Firewall, Bluetooth, Audio, etc.
+10. **Installation de Logiciels** — Navigateur, multimédia, développement, .
 
 ---
 
