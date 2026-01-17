@@ -67,6 +67,8 @@ function nvidia_intel() {
 function nvidia_drivers() {
     local -r unlst="
         nvidia-dkms
+        nvidia-open
+        nvidia-open-dkms
         nvidia
         nvidia-lts
         dxvk-nvapi-mingw
