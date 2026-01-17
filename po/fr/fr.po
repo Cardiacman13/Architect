@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Architect V2.0.4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-12-24 13:06+0100\n"
-"PO-Revision-Date: 2023-12-31 17:53+0100\n"
-"Last-Translator: Skythrew <mael.guerin@murena.io>\n"
+"POT-Creation-Date: 2026-01-17 09:55+0100\n"
+"PO-Revision-Date: 2026-01-17 10:00+0100\n"
+"Last-Translator: Gemini Architect Partner\n"
 "Language-Team: French\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
@@ -61,117 +61,122 @@ msgstr "${GREEN}Privilèges d'administrateur accordés${RESET}"
 msgid "${RED}Root privileges denied${RESET}"
 msgstr "${RED}Privilèges d'administrateur refusés${RESET}"
 
-#: architect.sh:154
+#: architect.sh:158
 #, sh-format
 msgid "Initialization"
 msgstr "Initialisation"
 
-#: architect.sh:159
+#: architect.sh:163
 #, sh-format
 msgid "System preparation"
 msgstr "Préparation du système"
 
-#: architect.sh:161
+#: architect.sh:165
 #, sh-format
 msgid "Pacman configuration"
 msgstr "Configuration de pacman"
 
-#: architect.sh:162
+#: architect.sh:166
 #, sh-format
 msgid "AUR helper installation"
 msgstr "Installation du gestionnaire AUR"
 
-#: architect.sh:163
+#: architect.sh:167
 #, sh-format
 msgid "Mirrorlist configuration"
 msgstr "Configuration de la liste des miroirs"
 
-#: architect.sh:164
+#: architect.sh:168
 #, sh-format
 msgid "Kernel headers installation"
 msgstr "Installation des en-têtes (headers) du kernel"
 
-#: architect.sh:165
+#: architect.sh:169
 #, sh-format
 msgid "Kernel tweaks"
 msgstr "Optimisations du noyau"
 
-#: architect.sh:166
+#: architect.sh:170
+#, sh-format
+msgid "ZRAM configuration"
+msgstr "Configuration de ZRAM"
+
+#: architect.sh:171
 #, sh-format
 msgid "Sound server configuration"
 msgstr "Configuration du serveur son"
 
-#: architect.sh:167
+#: architect.sh:172
 #, sh-format
 msgid "System loaders configuration"
 msgstr "Configuration des chargeurs de démarrage"
 
-#: architect.sh:168
+#: architect.sh:173
 #, sh-format
 msgid "Useful package installation"
 msgstr "Installation des paquets utiles"
 
-#: architect.sh:169
+#: architect.sh:174
 #, sh-format
 msgid "sysctl kernel tweaks"
 msgstr "Optimisations sysctl du noyau"
 
-#: architect.sh:170
+#: architect.sh:175
 #, sh-format
 msgid "Firewall installation"
 msgstr "Configuration du pare-feu"
 
-#: architect.sh:171
+#: architect.sh:176
 #, sh-format
 msgid "Low Latency Scheduler"
-msgstr ""
+msgstr "Planificateur à faible latence (Low Latency)"
 
-#: architect.sh:173
+#: architect.sh:178
 #, sh-format
 msgid "Shell configuration"
 msgstr "Configuration du shell"
 
-#: architect.sh:174
+#: architect.sh:179
 #, sh-format
 msgid "Adding user to necessary groups"
 msgstr "Ajout de l'utilisateur aux groupes nécessaires"
 
-#: architect.sh:177
+#: architect.sh:182
 #, sh-format
 msgid "System configuration"
 msgstr "Configuration du système"
 
-#: architect.sh:179
+#: architect.sh:184
 #, sh-format
 msgid "Video drivers installation"
 msgstr "Installation des pilotes vidéo"
 
-#: architect.sh:180
+#: architect.sh:185
 #, sh-format
 msgid "Gamepad configuration"
 msgstr "Configuration des manettes"
 
-#: architect.sh:181
+#: architect.sh:186
 #, sh-format
 msgid "Printer configuration"
 msgstr "Configuration de(s) imprimante(s)"
 
-#: architect.sh:182
+#: architect.sh:187
 #, sh-format
 msgid "Bluetooth configuration"
 msgstr "Configuration du bluetooth"
 
-#: architect.sh:185
+#: architect.sh:190
 #, sh-format
 msgid "Environment configuration"
 msgstr "Configuration de l'environnement"
 
-#: architect.sh:187
+#: architect.sh:192
 #, sh-format
 msgid "Desktop environment detection"
 msgstr "Détection de l'environnement de bureau"
 
-#: architect.sh:191 architect.sh:192
+#: architect.sh:196 architect.sh:197
 #, sh-format
 msgid "Software installation"
 msgstr "Installation de logiciels"
@@ -501,17 +506,17 @@ msgstr "Création de /etc/pacman.d/hooks"
 msgid "Setting up GRUB hook"
 msgstr "Configuration du hook GRUB"
 
-#: src/system/bootloader.sh:38
+#: src/system/bootloader.sh:41
 #, sh-format
 msgid "Enabling os-prober"
 msgstr "Activation de os-prober"
 
-#: src/system/bootloader.sh:39
+#: src/system/bootloader.sh:44
 #, sh-format
 msgid "Running os-prober"
 msgstr "Exécution d'os-prober"
 
-#: src/system/bootloader.sh:40
+#: src/system/bootloader.sh:45
 #, sh-format
 msgid "Updating GRUB"
 msgstr "Mise à jour de GRUB"
@@ -700,27 +705,27 @@ msgstr "Avez-vous un portable Intel/Nvidia ?"
 #: src/system/drivers/nvidia.sh:42
 #, sh-format
 msgid "Clean old NVIDIA driver dependencies"
-msgstr ""
+msgstr "Nettoyage des anciennes dépendances NVIDIA"
 
 #: src/system/drivers/nvidia.sh:72
 #, sh-format
 msgid "Enabling NVIDIA suspend/resume services"
-msgstr ""
+msgstr "Activation des services suspend/resume de NVIDIA"
 
 #: src/system/drivers/nvidia.sh:81
 #, sh-format
 msgid "Enabling NVIDIA PowerD for supported laptop GPU"
-msgstr ""
+msgstr "Activation de NVIDIA PowerD (GPU portables supportés)"
 
 #: src/system/drivers/nvidia.sh:83
 #, sh-format
 msgid "NVIDIA PowerD is not supported on Turing GPUs"
-msgstr ""
+msgstr "NVIDIA PowerD n'est pas supporté sur les GPUs Turing"
 
 #: src/system/drivers/nvidia.sh:86
 #, sh-format
 msgid "Not a laptop chassis; skipping NVIDIA PowerD"
-msgstr ""
+msgstr "Châssis non portable ; NVIDIA PowerD ignoré"
 
 #: src/system/drivers/printer.sh:8
 #, sh-format
@@ -813,35 +818,10 @@ msgstr "Application des optimisations sysctl de la mémoire et du noyau"
 msgid "Reloading sysctl parameters"
 msgstr "Rechargement des paramètres sysctl"
 
-#: src/system/shell.sh:52
+#: src/system/packages.sh:49
 #, sh-format
-msgid "What is your default shell? (bash/zsh/fish): "
-msgstr ""
-
-#: src/system/shell.sh:72
-#, sh-format
-msgid "Switching default shell to zsh..."
-msgstr ""
-
-#: src/system/shell.sh:78
-#, sh-format
-msgid "Do you want to install oh-my-zsh?"
-msgstr ""
-
-#: src/system/shell.sh:79
-#, sh-format
-msgid "Installing oh-my-zsh..."
-msgstr ""
-
-#: src/system/shell.sh:92
-#, sh-format
-msgid "Switching default shell to fish..."
-msgstr ""
-
-#: src/system/shell.sh:107
-#, sh-format
-msgid "Shell configuration complete!"
-msgstr ""
+msgid "Enabling power profiles daemon"
+msgstr "Activation du démon de profils d'énergie (power-profiles-daemon)"
 
 #: src/system/schedulers.sh:7
 #, sh-format
@@ -849,119 +829,90 @@ msgid ""
 "Do you want to setup a low-latency scheduler for gaming? ${RED}say No if "
 "unsure${RESET}"
 msgstr ""
+"Voulez-vous configurer un planificateur low-latency pour le jeu ? "
+"${RED}Dites Non si vous n'êtes pas sûr${RESET}"
 
 #: src/system/schedulers.sh:13
 #, sh-format
 msgid "Do you have an Intel CPU with P-cores and E-cores"
-msgstr ""
+msgstr "Avez-vous un CPU Intel avec des P-cores et E-cores ?"
 
-#: src/system/schedulers.sh:16
-#, sh-format
-msgid "Using scx_flash in low-latency mode."
-msgstr ""
-
-#: src/system/schedulers.sh:26
+#: src/system/schedulers.sh:25
 #, sh-format
 msgid "Creating systemd override directory"
-msgstr ""
+msgstr "Création du répertoire de surcharge systemd"
 
-#: src/system/schedulers.sh:34
+#: src/system/schedulers.sh:33
 #, sh-format
 msgid "Setting permissions on override file"
-msgstr ""
+msgstr "Définition des permissions sur le fichier de surcharge"
 
-#: src/system/schedulers.sh:37
+#: src/system/schedulers.sh:36 src/system/zram.sh:47
 #, sh-format
 msgid "Reloading systemd daemon"
-msgstr ""
+msgstr "Rechargement du démon systemd"
 
+#: src/system/shell.sh:52
 #, sh-format
-#~ msgid "Uninstall gnome-software"
-#~ msgstr "Désinstaller gnome-software"
+msgid "What is your default shell? (bash/zsh/fish): "
+msgstr "Quel est votre shell par défaut ? (bash/zsh/fish) : "
 
+#: src/system/shell.sh:72
 #, sh-format
-#~ msgid "Adding 'gnome-software' to IgnorePkg in /etc/pacman.conf"
-#~ msgstr "Ajout de 'gnome-software' à IgnorePkg dans /etc/pacman.conf"
+msgid "Switching default shell to zsh..."
+msgstr "Changement du shell par défaut vers zsh..."
 
+#: src/system/shell.sh:78
 #, sh-format
-#~ msgid "Uninstall discover"
-#~ msgstr "Désinstaller discover"
+msgid "Do you want to install oh-my-zsh?"
+msgstr "Voulez-vous installer oh-my-zsh ?"
 
+#: src/system/shell.sh:79
 #, sh-format
-#~ msgid "Adding 'discover' to IgnorePkg in /etc/pacman.conf"
-#~ msgstr "Ajout de 'discover' à IgnorePkg dans /etc/pacman.conf"
+msgid "Installing oh-my-zsh..."
+msgstr "Installation de oh-my-zsh..."
 
+#: src/system/shell.sh:92
 #, sh-format
-#~ msgid "Enabling parallel downloads and ILoveCandy in pacman"
-#~ msgstr ""
-#~ "Activation des téléchargements en parallèle et du ILoveCandy dans pacman"
+msgid "Switching default shell to fish..."
+msgstr "Changement du shell par défaut vers fish..."
 
+#: src/system/shell.sh:107
 #, sh-format
-#~ msgid "Removing existing nvidia.conf file"
-#~ msgstr "Suppression du fichier nvidia.conf existant"
+msgid "Shell configuration complete!"
+msgstr "Configuration du shell terminée !"
 
+#: src/system/zram.sh:7
 #, sh-format
-#~ msgid "Setting advanced NVIDIA module options"
-#~ msgstr "Configuration des options avancées du module NVIDIA"
+msgid "Do you want to configure ZRAM?"
+msgstr "Voulez-vous configurer ZRAM ?"
 
+#: src/system/zram.sh:8
 #, sh-format
-#~ msgid "Removing existing NVIDIA udev rule"
-#~ msgstr "Suppression de la règle udev NVIDIA existante"
+msgid "Skipping ZRAM configuration."
+msgstr "Configuration de ZRAM ignorée."
 
+#: src/system/zram.sh:20
 #, sh-format
-#~ msgid "Creating NVIDIA udev rule for runtime power management"
-#~ msgstr ""
-#~ "Création de la règle udev NVIDIA pour la gestion de l'alimentation en "
-#~ "temps réel"
+msgid "Removing old zram configuration"
+msgstr "Suppression de l'ancienne configuration zram"
 
+#: src/system/zram.sh:24
 #, sh-format
-#~ msgid "Creating pacman hook directory"
-#~ msgstr "Création du répertoire de hooks pacman"
+msgid "Removing old zram udev rule"
+msgstr "Suppression de l'ancienne règle udev zram"
 
+#: src/system/zram.sh:29
 #, sh-format
-#~ msgid "Removing existing Nvidia pacman hook file"
-#~ msgstr "Suppression du fichier de hook pacman Nvidia existant"
+msgid "Creating zram-generator configuration"
+msgstr "Création de la configuration zram-generator"
 
+#: src/system/zram.sh:40
 #, sh-format
-#~ msgid "Creating pacman hook for NVIDIA module regeneration"
-#~ msgstr "Création du hook pacman pour la régénération du module NVIDIA"
+msgid "Creating udev rule for zram and swappiness"
+msgstr "Création de la règle udev pour zram et la swappiness"
 
+#: src/system/zram.sh:48
 #, sh-format
-#~ msgid "Clean old nvidia drivers dependencies"
-#~ msgstr "Nettoyage des dépendances des anciens pilotes NVIDIA"
-
-#, sh-format
-#~ msgid "Enabling NVIDIA services"
-#~ msgstr "Activation des services NVIDIA"
-
-#, sh-format
-#~ msgid "Apparmor installation"
-#~ msgstr "Installation d'AppArmor"
-
-#, sh-format
-#~ msgid "What is your default shell ? (bash/zsh/fish) : "
-#~ msgstr "Quel est votre shell par défaut ? (bash/zsh/fish) : "
-
-#, sh-format
-#~ msgid "Setting default shell to zsh..."
-#~ msgstr "Changement du shell par défaut en zsh..."
-
-#, sh-format
-#~ msgid ""
-#~ "Do you want to install oh-my-zsh ? This will install the default oh-my-"
-#~ "zsh's .zshrc configuration"
-#~ msgstr ""
-#~ "Voulez-vous installer oh-my-zsh ? Cela installera la configuration .zshrc "
-#~ "par défaut de oh-my-zsh"
-
-#, sh-format
-#~ msgid "You chose to install oh-my-zsh"
-#~ msgstr "Vous avez choisi d'installer oh-my-zsh"
-
-#, sh-format
-#~ msgid "Setting default shell to fish..."
-#~ msgstr "Changement du shell par défaut vers fish..."
-
-#, sh-format
-#~ msgid "Invalid choice"
-#~ msgstr "Choix invalide"
+msgid "Starting zram device"
+msgstr "Démarrage du périphérique zram"

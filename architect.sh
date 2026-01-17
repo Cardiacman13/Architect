@@ -115,6 +115,7 @@ source src/system/usergroups.sh
 source src/system/audio.sh
 source src/system/bootloader.sh
 source src/system/schedulers.sh
+source src/system/zram.sh
 
 # Display a big step with a visual separator
 function display_step() {
@@ -166,6 +167,7 @@ function main() {
     little_step mirrorlist               "$(eval_gettext "Mirrorlist configuration")"
     little_step install_headers          "$(eval_gettext "Kernel headers installation")"
     little_step configure_sysctl_tweaks  "$(eval_gettext "Kernel tweaks")"
+    little_step configure_zram           "$(eval_gettext "ZRAM configuration")"
     little_step sound_server             "$(eval_gettext "Sound server configuration")"
     little_step setup_system_loaders     "$(eval_gettext "System loaders configuration")"
     little_step usefull_package          "$(eval_gettext "Useful package installation")"
