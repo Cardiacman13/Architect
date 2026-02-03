@@ -14,16 +14,15 @@ sudo pacman-key --init && \
 sudo pacman-key --populate && \
 sudo pacman -Sy --noconfirm archlinux-keyring && \
 sudo pacman --noconfirm -Su"
-        [update-arch]="${aur_helper} -Syu --noconfirm"
+        [update-arch]="${aur_helper} -Syu"
         [update-grub]="sudo grub-mkconfig -o /boot/grub/grub.cfg"
-        [install-all-pkg]="sudo pacman -S \$(pacman -Qnq) --overwrite '*'"
     )
 
     # Add the clean-arch command based on the chosen AUR helper
     if [[ "${aur_helper}" == "yay" ]]; then
-        cmd_map[clean-arch]="yay -Sc --noconfirm && yay -Yc --noconfirm"
+        cmd_map[clean-arch]="sudo rm -rf /var/cache/pacman/pkg/download-* && yay -Sc && yay -Yc"
     elif [[ "${aur_helper}" == "paru" ]]; then
-        cmd_map[clean-arch]="paru -Sc --noconfirm && paru -c --noconfirm"
+        cmd_map[clean-arch]="sudo rm -rf /var/cache/pacman/pkg/download-* && paru -Sc && paru -c"
     fi
 
     # 2. Create or recreate executable scripts in /usr/bin for each command
