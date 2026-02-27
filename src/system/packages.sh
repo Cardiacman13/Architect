@@ -10,7 +10,7 @@ function usefull_package() {
         gst-plugin-pipewire
         gst-plugins-good
         gst-libav
-        gstreamer-vaapi
+        gst-plugin-va
         xdg-utils
         rebuild-detector
         fastfetch
