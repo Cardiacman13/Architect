@@ -164,11 +164,14 @@ function install_software() {
     if [[ "${packages}" =~ "virt-manager" ]]; then
         exec_log "sudo usermod -aG libvirt $(whoami)" "$(eval_gettext "Add the current user to the libvirt group")"
         exec_log "sudo usermod -aG kvm $(whoami)" "$(eval_gettext "Add the current user to the kvm group")"
-        exec_log "sudo systemctl enable --now libvirtd" "$(eval_gettext "Enable libvirtd")"
 
-        # Configure libvirtd socket (permissions)
-        sudo sed -i 's/#unix_sock_group = "libvirt"/unix_sock_group = "libvirt"/' /etc/libvirt/libvirtd.conf
-        sudo sed -i 's/#unix_sock_rw_perms = "0770"/unix_sock_rw_perms = "0770"/' /etc/libvirt/libvirtd.conf
+        # 1. Désactiver et masquer l'ancien démon monolithique (pour éviter les conflits)
+        exec_log "sudo systemctl disable --now libvirtd.service libvirtd.socket libvirtd-ro.socket libvirtd-admin.socket" "$(eval_gettext "Disable legacy libvirtd")"
+        exec_log "sudo systemctl mask libvirtd.service libvirtd.socket libvirtd-ro.socket libvirtd-admin.socket" "$(eval_gettext "Mask legacy libvirtd")"
+
+        # 2. Activer les nouveaux sockets modulaires
+        local virt_sockets="virtqemud.socket virtnetworkd.socket virtstoraged.socket virtnodedevd.socket virtsecretd.socket virtnwfilterd.socket virtproxyd.socket"
+        exec_log "sudo systemctl enable --now ${virt_sockets}" "$(eval_gettext "Enable modular libvirt sockets")"
 
         # -- Open relevant ports if firewalld is installed
         if command -v firewall-cmd >/dev/null 2>&1; then
