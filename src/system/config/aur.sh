@@ -2,12 +2,8 @@
 source src/cmd.sh
 
 function install_aur() {
-    # 1. Install base-devel (provides fakeroot) and git
-    exec_log "sudo pacman -S --noconfirm --needed base-devel git" "$(eval_gettext "Installing base-devel and git")"
-
-    # 2. Fix makepkg.conf: change 'debug' to '!debug' in the OPTIONS array to prevent build failures
-    exec_log "sudo sed -i '/^OPTIONS=(/ s/\\bdebug\\b/!debug/' /etc/makepkg.conf && sudo sed -i '/^OPTIONS=(/ s/!!debug/!debug/' /etc/makepkg.conf" \
-        "$(eval_gettext "Disabling debug option in makepkg.conf")"
+    # Install base-devel
+    exec_log "sudo pacman -S --noconfirm --needed base-devel" "$(eval_gettext "Installing base-devel")"
 
     # Define AUR helpers and their respective Git URLs
     local -r aur_helpers=("yay" "paru")
