@@ -165,11 +165,6 @@ function install_software() {
         exec_log "sudo usermod -aG libvirt $(whoami)" "$(eval_gettext "Add the current user to the libvirt group")"
         exec_log "sudo usermod -aG kvm $(whoami)" "$(eval_gettext "Add the current user to the kvm group")"
 
-        # 1. Désactiver et masquer l'ancien démon monolithique (pour éviter les conflits)
-        exec_log "sudo systemctl disable --now libvirtd.service libvirtd.socket libvirtd-ro.socket libvirtd-admin.socket" "$(eval_gettext "Disable legacy libvirtd")"
-        exec_log "sudo systemctl mask libvirtd.service libvirtd.socket libvirtd-ro.socket libvirtd-admin.socket" "$(eval_gettext "Mask legacy libvirtd")"
-
-        # 2. Activer les nouveaux sockets modulaires
         local virt_sockets="virtqemud.socket virtnetworkd.socket virtstoraged.socket virtnodedevd.socket virtsecretd.socket virtnwfilterd.socket virtproxyd.socket"
         exec_log "sudo systemctl enable --now ${virt_sockets}" "$(eval_gettext "Enable modular libvirt sockets")"
 
